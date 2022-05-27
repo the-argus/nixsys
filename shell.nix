@@ -9,7 +9,7 @@ pkgs.mkShell {
 
   shellHook = ''
     alias rebuild="sudo nixos-rebuild switch --flake .#"
-    alias update="nix flake update --recreate-lock-file"
+    alias update="nix flake update"
 
       echo "You can apply this flake to your system with \"rebuild\""
       echo "And update it with \"update\""
