@@ -1,6 +1,2 @@
-
-# contains partition uuids which are specific to my machine
-hardware-configuration.nix
-
 # built package
 result/
