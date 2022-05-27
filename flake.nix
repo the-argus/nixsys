@@ -2,7 +2,8 @@
   description = "the-argus nixos system configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-21.11";
+    #nixpkgs.url = "nixpkgs/nixos-21.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/master";
     # master so its unstable
     home-manager.url = "github:nix-community/home-manager/master";
     # home manager use out nixpkgs and not its own
