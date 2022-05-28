@@ -27,9 +27,6 @@
     };
   };
 
-  networking.hostName = "evil";
-  networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
-
   # PAM authentication for yubikey/solokey
   # line to add with mkOverride: "auth       required   pam_u2f.so"
   security.pam.services.login.text = pkgs.lib.mkDefault (pkgs.lib.mkAfter "# testing");
@@ -47,12 +44,6 @@
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;

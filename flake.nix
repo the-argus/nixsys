@@ -3,10 +3,12 @@
 
   inputs = {
     #nixpkgs.url = "nixpkgs/nixos-21.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/master";
-    # home manager use out nixpkgs and not its own
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    home-manager = {
+        url = "github:nix-community/home-manager/master";
+        # home manager use out nixpkgs and not its own
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -36,7 +38,7 @@
         inherit system username;
         homeDirectory = "/home/${username}";
         configuration = import ./user/${username};
-        stateVersion = "22.05";
+        # stateVersion = "22.05";
         extraSpecialArgs = inputs;
       };
     };
