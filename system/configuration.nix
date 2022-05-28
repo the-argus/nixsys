@@ -5,42 +5,42 @@
 { config, pkgs, ... }:
 
 {
+  #choose what host is being used (laptop or pc) ------------------------------
   imports =
-    [ # Include the results of the hardware scan.
-      ../hosts
+    [
+      ../hosts/laptop
     ];
+
+  # everything that follows is host-agnostic configuration --------------------
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
-	efi = {
-		canTouchEfiVariables = true;
-		efiSysMountPoint = "/efi";
-	};
-	grub = {
-		useOSProber = true;
-	};
-	systemd-boot = {
-		enable = true;
-	};
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/efi";
+    };
+    grub = {
+      useOSProber = true;
+    };
+    systemd-boot = {
+      enable = true;
+    };
   };
 
   # PAM authentication for yubikey/solokey
   # line to add with mkOverride: "auth       required   pam_u2f.so"
-  security.pam.services.login.text = pkgs.lib.mkDefault( pkgs.lib.mkAfter "# testing" );
+  security.pam.services.login.text = pkgs.lib.mkDefault (pkgs.lib.mkAfter "# testing");
 
   hardware.opengl = {
-    	enable = true;
-  	driSupport = true;
+    enable = true;
+    driSupport = true;
   };
 
   # enable nix flakes
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
-experimental-features = nix-command flakes
+    experimental-features = nix-command flakes
   '';
-
-  networking.hostName = "evil";
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -50,17 +50,18 @@ experimental-features = nix-command flakes
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.wlp0s20f3.useDHCP = true;
-  
+
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.argus = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "video"
+    ];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   programs.sway = {
     enable = true;
   };
@@ -126,10 +127,10 @@ experimental-features = nix-command flakes
 
   # backlight permissions
   services.udev.extraRules = ''
-SUBSYSTEM=="backlight", ACTION=="add", \
-	RUN+="${pkgs.coreutils-full}/bin/chgrp video /sys/class/backlight/%k/brightness", \
-	RUN+="${pkgs.coreutils-full}/bin/chmod g+w /sys/class/backlight/%k/brightness"
-    '';
+    SUBSYSTEM=="backlight", ACTION=="add", \
+    	RUN+="${pkgs.coreutils-full}/bin/chgrp video /sys/class/backlight/%k/brightness", \
+    	RUN+="${pkgs.coreutils-full}/bin/chmod g+w /sys/class/backlight/%k/brightness"
+  '';
 
   #sound.enable = false;
 
@@ -140,10 +141,6 @@ SUBSYSTEM=="backlight", ACTION=="add", \
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # wireplumber.enable = false;
-    # media-session.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -171,7 +168,7 @@ SUBSYSTEM=="backlight", ACTION=="add", \
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.11"; # Did you read the comment?
+  system.stateVersion = "22.05"; # Did you read the comment?
 
 }
 
