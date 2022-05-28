@@ -34,6 +34,9 @@
   hardware.opengl = {
     enable = true;
     driSupport = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
   };
 
   # enable nix flakes
@@ -58,6 +61,16 @@
     ];
   };
 
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  services.xserver.enable = true;
+  services.xserver.displayManager.startx.enable = true;
+  services.xserver.windowManager.awesome.enable = true;
+  services.xserver.useGlamor = false;
+  #	services.xserver.videoDrivers = [ "intel" ];
+  services.xserver.videoDriver = "intel";
+
   programs.sway = {
     enable = true;
   };
@@ -65,48 +78,42 @@
   xdg.portal.wlr.enable = true;
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    neofetch
-    curl
-    firefox
-    xorg.xinit
-    xorg.xorgserver
-    # xorg.xf86inputevdev
-    xorg.xf86inputsynaptics
-    xorg.xf86inputlibinput
-    xorg.xf86videointel
-    xorg.xauth
-    networkmanager
-    awesome
-    kitty
+    # shell
     zsh
     zsh-syntax-highlighting
     zsh-autocomplete
-    git
+
+    # wayland
+    waybar swaybg wofi wofi-emoji
+    wl-clipboard wlsunset grim slurp
+
+    # gui applications
     discord
-    ranger
-    waybar
-    gcc
-    wofi
-    swaybg
-    wofi-emoji
-    wl-clipboard
-    wlsunset
-    grim
-    slurp
-    zip
-    unzip
-    nodejs
-    acpilight
-    htop
     keepassxc
+    gnome.gnome-calculator
+    firefox
+    kitty
+
+    # tui applications
+    git
+    ranger
+    zip unzip
+    htop
+    neovim
+    neofetch
+    wget
+    curl
+    
+    # dev
+    gcc
+    nodejs
+    cargo
+
+    # util
+    acpilight
     pulseaudio
     pam_u2f
     polkit
-    flameshot
-    gnome.gnome-calculator
-    cargo
   ];
 
   fonts.fonts = with pkgs; [
