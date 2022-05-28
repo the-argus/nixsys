@@ -27,6 +27,9 @@
     };
   };
 
+  networking.hostName = "evil";
+  networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
+
   # PAM authentication for yubikey/solokey
   # line to add with mkOverride: "auth       required   pam_u2f.so"
   security.pam.services.login.text = pkgs.lib.mkDefault (pkgs.lib.mkAfter "# testing");
