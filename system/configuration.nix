@@ -68,6 +68,14 @@
   services.printing.enable = true;
 
   services.xserver.enable = true;
+
+  config.services.xserver = {
+    excludePackages = [
+      xorg.xterm
+      xorg.xf86inputevdev.out
+    ];
+  };
+
   services.xserver.displayManager.startx.enable = true;
   services.xserver.windowManager.awesome.enable = true;
   services.xserver.useGlamor = false;
@@ -102,15 +110,19 @@
     gnome.gnome-calculator
     firefox
     kitty
+    pcmanfm
+    mpv
 
     # tui applications
-    git
     ranger
+    neovim
+    htop
+
+    # cli applications
+    neofetch
+    git
     zip
     unzip
-    htop
-    neovim
-    neofetch
     wget
     curl
 
@@ -124,6 +136,7 @@
     pulseaudio
     pam_u2f
     polkit
+    xorg.xf86inputlibinput
   ];
 
   fonts.fonts = with pkgs; [
