@@ -27,6 +27,9 @@
     };
   };
 
+  # kernel version
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # PAM authentication for yubikey/solokey
   # line to add with mkOverride: "auth       required   pam_u2f.so"
   security.pam.services.login.text = pkgs.lib.mkDefault (pkgs.lib.mkAfter "# testing");
@@ -84,8 +87,14 @@
     zsh-autocomplete
 
     # wayland
-    waybar swaybg wofi wofi-emoji
-    wl-clipboard wlsunset grim slurp
+    waybar
+    swaybg
+    wofi
+    wofi-emoji
+    wl-clipboard
+    wlsunset
+    grim
+    slurp
 
     # gui applications
     discord
@@ -97,13 +106,14 @@
     # tui applications
     git
     ranger
-    zip unzip
+    zip
+    unzip
     htop
     neovim
     neofetch
     wget
     curl
-    
+
     # dev
     gcc
     nodejs
