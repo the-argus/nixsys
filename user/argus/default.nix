@@ -1,4 +1,7 @@
 { ... }:
 {
-nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowUnfree = true;
+    imports = [
+        ./zsh.nix
+    ];
 }
