@@ -69,9 +69,9 @@
 
   services.xserver.enable = true;
 
-  config.services.xserver = {
+  services.xserver = {
     excludePackages = with pkgs; [
-      xorg.xterm
+      xterm
       xorg.xf86inputevdev.out
     ];
   };
