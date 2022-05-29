@@ -141,6 +141,10 @@
     pam_u2f
     polkit
     xorg.xf86inputlibinput
+
+    # appearance
+    paper-gtk-theme
+    paper-icon-theme
   ];
 
   fonts.fonts = with pkgs; [
