@@ -131,6 +131,7 @@
     cargo
 
     # util
+    home-manager
     acpilight
     pulseaudio
     pam_u2f

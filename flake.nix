@@ -5,7 +5,7 @@
     #nixpkgs.url = "nixpkgs/nixos-21.11";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager = {
-        url = "github:nix-community/home-manager/master";
+        url = "github:nix-community/home-manager";
         # home manager use out nixpkgs and not its own
         inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -15,17 +15,11 @@
     let
       system = "x86_64-linux";
       username = "argus";
-
-      pkgs = import nixpkgs {
-        inherit system;
-      };
-
-      lib = nixpkgs.lib;
     in
     {
       nixosConfigurations = {
         # hostname (evil)
-        evil = lib.nixosSystem {
+        evil = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = inputs;
           modules = [
@@ -38,7 +32,7 @@
         inherit system username;
         homeDirectory = "/home/${username}";
         configuration = import ./user/${username};
-        # stateVersion = "22.05";
+        stateVersion = "22.11";
         extraSpecialArgs = inputs;
       };
     };
