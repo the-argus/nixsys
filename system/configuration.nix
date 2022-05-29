@@ -93,6 +93,9 @@
     # shell
     zsh
 
+    # xorg
+    rofi
+
     # wayland
     waybar
     swaybg
@@ -129,6 +132,7 @@
     gcc
     nodejs
     cargo
+    sumneko-lua-language-server
 
     # util
     home-manager
