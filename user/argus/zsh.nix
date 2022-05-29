@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   programs.zsh = {
+    enable = true;
     # syntaxHighlighting.enable = true;
     
     # historyIgnore = [ "exit" "ls" "history" "clear" "fg" "cd" ];
@@ -21,6 +22,10 @@
     };
     
     plugins = [
+      {
+        name = "zsh-syntax-highlighting";
+        src = pkgs.zsh-syntax-highlighting;
+      }
       {
         name = "zsh-autocomplete";
         src = pkgs.zsh-autocomplete;

@@ -90,9 +90,6 @@
   xdg.portal.wlr.enable = true;
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    # shell
-    zsh
-
     # xorg
     rofi
 
@@ -128,7 +125,6 @@
     unzip
     wget
     curl
-    protonup
 
     # dev
     gcc
@@ -143,6 +139,7 @@
     pam_u2f
     polkit
     xorg.xf86inputlibinput
+    libinput
 
     # appearance
     paper-gtk-theme
