@@ -144,6 +144,7 @@
     # appearance
     paper-gtk-theme
     paper-icon-theme
+    numix-cursor-theme
   ];
 
   fonts.fonts = with pkgs; [
