@@ -27,7 +27,7 @@
 
       # unused mostly
       cageff = "cage \"/bin/firefox -p Unconfigured\"";
-      awesomedoc = "firefox ${pkgs.awesome.doc}/share/docs/awesome/index.html & disown";
+      awesomedoc = "firefox ${pkgs.awesome.doc}/share/doc/awesome/doc/index.html & disown";
     };
 
     plugins =
@@ -83,11 +83,11 @@
       NEWLINE_PROMPT_START="❯ "
       MAIN_MODULE_SEPARATOR_START=""
       MAIN_MODULE_SEPARATOR_END=""
-      GIT_MODULE_SEPARATOR_START="$\{MODULE_SEPARATOR_START}on "
+      GIT_MODULE_SEPARATOR_START="$\\{MODULE_SEPARATOR_START}on "
       GIT_MODULE_SEPARATOR_END=""
-      PYTHON_MODULE_SEPARATOR_START="$\{MODULE_SEPARATOR_START}using python "
+      PYTHON_MODULE_SEPARATOR_START="$\\{MODULE_SEPARATOR_START}using python "
       PYTHON_MODULE_SEPARATOR_END=""
-      TIME_MODULE_SEPARATOR_START="$\{MODULE_SEPARATOR_START}took "
+      TIME_MODULE_SEPARATOR_START="$\\{MODULE_SEPARATOR_START}took "
       TIME_MODULE_SEPARATOR_END=""
 
       USER_HOST_SEP_STYLE="$REGULAR"
