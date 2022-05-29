@@ -128,6 +128,7 @@
     unzip
     wget
     curl
+    protonup
 
     # dev
     gcc

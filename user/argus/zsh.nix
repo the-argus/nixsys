@@ -1,9 +1,9 @@
+{ pkgs, ... }:
 {
-
   programs.zsh = {
-    syntaxHighlighting.enable = true;
+    # syntaxHighlighting.enable = true;
     
-    historyIgnore = [ "exit" "ls" "history" "clear" "fg" "cd" ];
+    # historyIgnore = [ "exit" "ls" "history" "clear" "fg" "cd" ];
     
     shellAliases = {
         sysconf = "sudo nvim /etc/nixos/configuration.nix";
@@ -33,7 +33,7 @@
   };
 
   # zshrc
-  pkgs.zsh.initExtra = ''
-    bindkey "''${key[Up]}" up-line-or-search
-  '';
+  # pkgs.zsh.initExtra = ''
+  #   bindkey "''${key[Up]}" up-line-or-search
+  # '';
 }

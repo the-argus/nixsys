@@ -32,7 +32,7 @@
         inherit system username;
         homeDirectory = "/home/${username}";
         configuration = import ./user/${username};
-        stateVersion = "22.11";
+        stateVersion = "22.05";
         extraSpecialArgs = inputs;
       };
     };
