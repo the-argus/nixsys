@@ -21,5 +21,6 @@
     bluez
     bluez-alsa
     bluez-tools
+    networkmanagerapplet
   ];
 }
