@@ -15,7 +15,7 @@
 
   # bluetooth------------------------------------------------------------------
   hardware.bluetooth.enable = true;
-  service.blueman.enable = true;
+  services.blueman.enable = true;
 
   environment.systemPackages = with pkgs; [
     bluez
