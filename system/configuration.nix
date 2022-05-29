@@ -114,6 +114,7 @@
     kitty
     pcmanfm
     mpv
+    heroic
 
     # tui applications
     ranger
