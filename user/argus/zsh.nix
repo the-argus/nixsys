@@ -42,7 +42,7 @@
       in
       map create [
         "zsh-syntax-highlighting"
-        "zsh-autocomplete"
+        #"zsh-autocomplete"
         "zsh-nix-shell"
       ];
 
