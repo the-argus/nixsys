@@ -131,6 +131,7 @@
     nodejs
     cargo
     sumneko-lua-language-server
+    rnix-lsp
 
     # util
     home-manager
@@ -142,9 +143,15 @@
     libinput
 
     # appearance
-    paper-gtk-theme
+    paper-gtk-theme # Paper
+    # Icons: Lounge-aux
+    # Themes: Lounge Lounge-compact Lounge-night Lounge-night-compact
+    lounge-gtk-theme
+    juno-theme # Juno Juno-mirage Juno-ocean Juno-palenight
+    graphite-gtk-theme # Graphite Graphite-dark Graphite-light Graphite-dark-hdpi Graphite-hdpi ....
+
     paper-icon-theme
-    numix-cursor-theme
+    numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
   ];
 
   fonts.fonts = with pkgs; [

@@ -6,7 +6,7 @@
         # font = "FiraCode Mono Nerd Font 11";
         
         cursorTheme = {
-            name = "Numix";
+            name = "Numix-Cursor";
             package = pkgs.numix-cursor-theme;
             size = 16;
         };
@@ -17,8 +17,8 @@
         };
 
         theme = {
-            name = "Paper";
-            package = pkgs.paper-gtk-theme;
+            name = "Graphite-dark";
+            package = pkgs.graphite-gtk-theme;
         };
 
         gtk3 = {
