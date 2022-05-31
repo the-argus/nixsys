@@ -112,9 +112,7 @@
     pcmanfm
     mpv
     heroic
-    spotify-tray
-    spotify
-    spicetify-cli
+    ncspot
 
     # tui applications
     ranger

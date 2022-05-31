@@ -46,6 +46,12 @@
         in
         map create [
           "zsh-syntax-highlighting"
+          "zsh-completions"
+          "zsh-vi-mode"
+          "deer"
+          "zsh-autopair"
+          "nix-zsh-completions"
+          "zsh-you-should-use"
           # "zsh-autocomplete"
         ] ++ [
           {
