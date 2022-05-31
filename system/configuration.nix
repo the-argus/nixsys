@@ -113,6 +113,10 @@
     mpv
     heroic
     ncspot
+    librespot
+    # spotify
+    # spotify-tray
+    # spicetify-cli
 
     # tui applications
     ranger
