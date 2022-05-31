@@ -89,6 +89,7 @@
 
   xdg.portal.wlr.enable = true;
   nixpkgs.config.allowUnfree = true;
+  environment.pathsToLink = [ "/share/zsh" ];
   environment.systemPackages = with pkgs; [
     # xorg
     rofi

@@ -11,6 +11,7 @@
 
       dotDir = dDir;
       enableCompletion = true;
+      enableSyntaxHighlighting = true;
 
       history = {
         path = "$HOME/${dDir}/histfile";
@@ -40,6 +41,17 @@
         awesomedoc = "firefox ${pkgs.awesome.doc}/share/doc/awesome/doc/index.html & disown";
       };
 
+      zplug = {
+        enable = true;
+        plugins = [
+            { name = "marlonrichert/zsh-autocomplete"; }
+            # { name = "Vifon/deer"; tags = [use:deer]; }
+            # { name = "zsh-users/zsh-completions"; }
+            # { name = "spwhitt/nix-zsh-completions"; }
+            { name = "hlissner/zsh-autopair"; }
+        ];
+      };
+
       plugins =
         [
           {
@@ -52,50 +64,21 @@
               sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
             };
           }
-          {
-            name = "zsh-syntax-highlighting";
-            file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
-            src = pkgs.zsh-syntax-highlighting;
-          }
-
-          # {
-          #   name = "zsh-autocomplete";
-          #   file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
-          #   src = pkgs.zsh-autocomplete;
-          # }
-          {
-            name = "deer";
-            src = pkgs.deer;
-          }
-          {
-            name = "zsh-completions";
-            src = pkgs.zsh-completions;
-          }
-          {
-            name = "nix-zsh-completions";
-            file = "share/zsh/plugins/nix/init.zsh";
-            src = pkgs.nix-zsh-completions + /share/zsh/site-functions;
-          }
-          {
-            name = "zsh-autopair";
-            file = "share/zsh/zsh-autopair/autopair.zsh";
-            src = pkgs.zsh-autopair;
-          }
         ];
 
-      # completionInit = ''
-      #   # compatibility between nix and autocomplete
-      #   bindkey "''${key[Up]}" up-line-or-search
+      completionInit = ''
+        # compatibility between nix and autocomplete
+        bindkey "''${key[Up]}" up-line-or-search
 
-      #   # minimum number of characters to type before autocomplete
-      #   zstyle ':autocomplete:*' min-input 1
-      #   # only insert up to common characters
-      #   zstyle ':autocomplete:*' insert-unambiguous yes
-      #   # dont move prompt up to make room for autocomplete very much
-      #   zstyle ':autocomplete:*' list-lines 4
-      #   # tab multiple times to move through menu
-      #   zstyle ':autocomplete:*' widget-style menu-select
-      # '';
+        # minimum number of characters to type before autocomplete
+        zstyle ':autocomplete:*' min-input 1
+        # only insert up to common characters
+        zstyle ':autocomplete:*' insert-unambiguous yes
+        # dont move prompt up to make room for autocomplete very much
+        zstyle ':autocomplete:*' list-lines 4
+        # tab multiple times to move through menu
+        zstyle ':autocomplete:*' widget-style menu-select
+      '';
 
 
       initExtra = ''
@@ -108,6 +91,15 @@
         autoload -U deer
 
         # CONFIG ----------------------------------------------------------------------
+
+        #
+        # DEER CONFIG
+        #
+        zle -N deer
+        bindkey '\ek' deer
+        zstyle ':deer:' height 35
+        zstyle :deer: show_hidden yes
+
 
         #
         # PROMPT CONFIG
