@@ -40,12 +40,12 @@
           createSourced = plugname:
             {
               name = plugname;
-              file = "share/${plugname}/${plugname}.plugin.zsh";
+              file = "${pkgs."${plugname}"}share/${plugname}/${plugname}.plugin.zsh";
             };
           createdFpathed = plugname:
             {
               name = plugname;
-              src = "share/zsh/site-functions";
+              src = "${pkgs."${plugname}"}/share/zsh/site-functions";
             };
         in
         map createSourced [
