@@ -138,13 +138,16 @@
         TIME_MODULE_SEPARATOR_START="took "
         TIME_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$TIME_MODULE_SEPARATOR_START"
         TIME_MODULE_SEPARATOR_END=""
+        NIX_MODULE_SEPARATOR_START="nixshell "
+        NIX_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$NIX_MODULE_SEPARATOR_START"
+        NIX_MODULE_SEPARATOR_END=""
 
         USER_HOST_SEP_STYLE="$REGULAR"
         HOST_DIR_SEP_STYLE="$REGULAR"
         MOD_SEP_STYLE="$REGULAR"
 
         # prompt module order
-        prompt='$(_start_module)$(_nix_module)$(_main_module)$(_time_module)$(_git_module)$(_python_module)'$'\n''$(_newline_module)'
+        prompt='$(_start_module)$(_main_module)$(_nix_module)$(_time_module)$(_git_module)$(_python_module)'$'\n''$(_newline_module)'
       '';
     };
 }
