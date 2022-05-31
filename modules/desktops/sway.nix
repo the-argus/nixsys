@@ -26,7 +26,11 @@ in
       grim
       slurp
     ];
-    
+
+    xdg.portal.extraPortals = with pkgs; [
+      pkgs.xdg-desktop-portal-wlr
+    ];
+
     # already done by enabling sway I believe but whatever
     programs.xwayland.enable = true;
   };

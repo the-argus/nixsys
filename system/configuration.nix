@@ -13,20 +13,6 @@
 
   # everything that follows is host-agnostic configuration --------------------
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/efi";
-    };
-    grub = {
-      useOSProber = true;
-    };
-    systemd-boot = {
-      enable = true;
-    };
-  };
-
   # kernel version
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -60,9 +46,6 @@
   nixpkgs.config.allowUnfree = true;
   environment.pathsToLink = [ "/share/zsh" ];
   environment.systemPackages = with pkgs; [
-    # xorg
-    rofi
-
     # gui applications
     discord
     keepassxc

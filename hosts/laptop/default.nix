@@ -5,11 +5,39 @@
     ./hardware-configuration.nix
     ../../modules
   ];
+  
+  # dual booting with windows boot loader mounted on /efi
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/efi";
+    };
+    grub = {
+      useOSProber = true;
+    };
+    systemd-boot = {
+      enable = true;
+    };
+  };
 
   desktops = {
     enable = true;
     sway.enable = true;
+    displayManager = "startx";
   };
+
+  # display -------------------------------------------------------------------
+  hardware.opengl = {
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
+    # extraPackages32 = with pkgs.pkgsi686Linux;
+    #   [ libva vaapiIntel libvdpau-va-gl vaapiVdpau ]
+    #   ++ lib.optionals config.services.pipewire.enable [ pipewire ];
+  };
+
+  #	services.xserver.videoDrivers = [ "intel" ];
+  services.xserver.videoDriver = "intel";
 
   # networking-----------------------------------------------------------------
   networking.hostName = "evil";

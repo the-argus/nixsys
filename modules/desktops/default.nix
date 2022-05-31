@@ -11,9 +11,6 @@ in
 
   options.desktops = {
     enable = mkEnableOption "Desktop";
-    wayland = {
-      enable = mkEnableOption "Wayland";
-    };
   };
 
   config = mkIf cfg.enable {
@@ -37,20 +34,6 @@ in
       numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
     ];
 
-    # xserver -----------------------------------------------------------------
-    services.xserver.enable = true;
-    services.xserver = {
-      excludePackages = with pkgs; [
-        xterm
-        xorg.xf86inputevdev.out
-      ];
-    };
-    services.xserver.displayManager.startx.enable = true;
-    services.xserver.windowManager.awesome.enable = true;
-    services.xserver.useGlamor = false;
-    #	services.xserver.videoDrivers = [ "intel" ];
-    services.xserver.videoDriver = "intel";
-
     # fonts -------------------------------------------------------------------
     fonts.fonts = with pkgs; [
       fira-code
@@ -71,12 +54,6 @@ in
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-      ];
-      # extraPackages32 = with pkgs.pkgsi686Linux;
-      #   [ libva vaapiIntel libvdpau-va-gl vaapiVdpau ]
-      #   ++ lib.optionals config.services.pipewire.enable [ pipewire ];
     };
 
     security.rtkit.enable = true;
