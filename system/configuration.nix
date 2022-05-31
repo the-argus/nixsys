@@ -49,7 +49,7 @@
   '';
 
   # Set your time zone.
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/Anchorage";
 
   programs.zsh.enable = true;
 
@@ -112,9 +112,7 @@
     pcmanfm
     mpv
     heroic
-    ncspot
-    librespot
-    # spotify
+    spot
     # spotify-tray
     # spicetify-cli
 

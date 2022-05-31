@@ -37,22 +37,26 @@
       plugins =
         let
           # function for creating plugin entries for zsh plugins from nixpkgs
-          create = plugname:
+          createSourced = plugname:
             {
               name = plugname;
               file = "share/${plugname}/${plugname}.plugin.zsh";
-              src = pkgs.${plugname};
+            };
+          createdFpathed = plugname:
+            {
+              name = plugname;
+              src = "share/zsh/site-functions";
             };
         in
-        map create [
+        map createSourced [
           "zsh-syntax-highlighting"
-          "zsh-completions"
+          "zsh-fzf-tab"
           "zsh-vi-mode"
-          "deer"
-          "zsh-autopair"
-          "nix-zsh-completions"
-          "zsh-you-should-use"
           # "zsh-autocomplete"
+        ] ++ map createdFpathed [
+          "zsh-completions"
+          "deer"
+          "nix-zsh-completions"
         ] ++ [
           {
             name = "zsh-nix-shell";
@@ -64,22 +68,34 @@
               sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
             };
           }
+
+          {
+            name = "nix-zsh-completions";
+            file = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix/init.zsh";
+          }
+          {
+            name = "zsh-autopair";
+            file = "share/zsh/zsh-autopair/autopair.zsh";
+          }
+          {
+            name = "zsh-you-should-use";
+            file = "share/zsh/plugins/you-should-use/you-should-use.plugin.zsh";
+          }
         ];
 
-      # my extra stuff
-      completionInit = ''
-        # compatibility between nix and autocomplete
-        bindkey "''${key[Up]}" up-line-or-search
+      # completionInit = ''
+      #   # compatibility between nix and autocomplete
+      #   bindkey "''${key[Up]}" up-line-or-search
 
-        # minimum number of characters to type before autocomplete
-        zstyle ':autocomplete:*' min-input 1
-        # only insert up to common characters
-        zstyle ':autocomplete:*' insert-unambiguous yes
-        # dont move prompt up to make room for autocomplete very much
-        zstyle ':autocomplete:*' list-lines 4
-        # tab multiple times to move through menu
-        zstyle ':autocomplete:*' widget-style menu-select
-      '';
+      #   # minimum number of characters to type before autocomplete
+      #   zstyle ':autocomplete:*' min-input 1
+      #   # only insert up to common characters
+      #   zstyle ':autocomplete:*' insert-unambiguous yes
+      #   # dont move prompt up to make room for autocomplete very much
+      #   zstyle ':autocomplete:*' list-lines 4
+      #   # tab multiple times to move through menu
+      #   zstyle ':autocomplete:*' widget-style menu-select
+      # '';
 
 
       initExtra = ''
