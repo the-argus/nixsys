@@ -20,7 +20,13 @@
       };
 
       shellAliases = {
-        sysconf = "sudo nvim /etc/nixos/configuration.nix";
+        # some aliases for applying my system configs
+        usrbuild = "[[ -e ./flake.nix ]] && home-manager switch --flake .";
+        sysbuild = "[[ -e ./flake.nix ]] && sudo nixos-rebuild switch --flake .";
+        rebuild = "[[ -e ./flake.nix ]] && sysbuild && usrbuild";
+        update = "[[ -e ./flake.nix ]] && nix flake update";
+
+        # regular aliases
         nf = "neofetch";
         fm = "ranger";
         search = "nix search nixpkgs";
@@ -41,6 +47,7 @@
             {
               name = plugname;
               file = "${pkgs."${plugname}"}share/${plugname}/${plugname}.plugin.zsh";
+              src = pkgs."${plugname}";
             };
           createdFpathed = plugname:
             {
@@ -72,14 +79,17 @@
           {
             name = "nix-zsh-completions";
             file = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix/init.zsh";
+            src = pkgs.nix-zsh-completions;
           }
           {
             name = "zsh-autopair";
             file = "share/zsh/zsh-autopair/autopair.zsh";
+            src = pkgs.zsh-autopair;
           }
           {
             name = "zsh-you-should-use";
             file = "share/zsh/plugins/you-should-use/you-should-use.plugin.zsh";
+            src = pkgs.zsh-you-should-use;
           }
         ];
 
@@ -134,7 +144,7 @@
         MOD_SEP_STYLE="$REGULAR"
 
         # prompt module order
-        prompt='$(_start_module)$(_main_module)$(_time_module)$(_git_module)$(_python_module)'$'\n''$(_newline_module)'
+        prompt='$(_start_module)$(_nix_module)$(_main_module)$(_time_module)$(_git_module)$(_python_module)'$'\n''$(_newline_module)'
       '';
     };
 }
