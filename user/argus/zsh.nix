@@ -41,30 +41,7 @@
       };
 
       plugins =
-        let
-          # function for creating plugin entries for zsh plugins from nixpkgs
-          createSourced = plugname:
-            {
-              name = plugname;
-              file = "${pkgs."${plugname}"}share/${plugname}/${plugname}.plugin.zsh";
-              src = pkgs."${plugname}";
-            };
-          createdFpathed = plugname:
-            {
-              name = plugname;
-              src = "${pkgs."${plugname}"}/share/zsh/site-functions";
-            };
-        in
-        map createSourced [
-          "zsh-syntax-highlighting"
-          "zsh-fzf-tab"
-          "zsh-vi-mode"
-          # "zsh-autocomplete"
-        ] ++ map createdFpathed [
-          "zsh-completions"
-          "deer"
-          "nix-zsh-completions"
-        ] ++ [
+        [
           {
             name = "zsh-nix-shell";
             file = "nix-shell.plugin.zsh";
@@ -75,21 +52,34 @@
               sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
             };
           }
+          {
+            name = "zsh-syntax-highlighting";
+            file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
+            src = pkgs.zsh-syntax-highlighting;
+          }
 
+          # {
+          #   name = "zsh-autocomplete";
+          #   file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
+          #   src = pkgs.zsh-autocomplete;
+          # }
+          {
+            name = "deer";
+            src = pkgs.deer;
+          }
+          {
+            name = "zsh-completions";
+            src = pkgs.zsh-completions;
+          }
           {
             name = "nix-zsh-completions";
-            file = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix/init.zsh";
-            src = pkgs.nix-zsh-completions;
+            file = "share/zsh/plugins/nix/init.zsh";
+            src = pkgs.nix-zsh-completions + /share/zsh/site-functions;
           }
           {
             name = "zsh-autopair";
             file = "share/zsh/zsh-autopair/autopair.zsh";
             src = pkgs.zsh-autopair;
-          }
-          {
-            name = "zsh-you-should-use";
-            file = "share/zsh/plugins/you-should-use/you-should-use.plugin.zsh";
-            src = pkgs.zsh-you-should-use;
           }
         ];
 
@@ -114,6 +104,8 @@
         # these should both be moved to flakes instead of floating around in other places
         source $HOME/.aliases
         source $HOME/.local/src/zsh-prompt/minimal.zsh
+
+        autoload -U deer
 
         # CONFIG ----------------------------------------------------------------------
 
