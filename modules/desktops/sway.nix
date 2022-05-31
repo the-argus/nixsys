@@ -16,7 +16,7 @@ in
       wrapperFeatures.gtk = true; # so that gtk works properly
     };
 
-    extraPackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       waybar
       swaybg
       wofi

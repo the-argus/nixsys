@@ -51,24 +51,6 @@ in
     #	services.xserver.videoDrivers = [ "intel" ];
     services.xserver.videoDriver = "intel";
 
-    # wayland -----------------------------------------------------------------
-
-    wayland_config = mkIf cfg.wayland.enable {
-      # XDG Config
-      xdg = {
-        portal = {
-          enable = true;
-          wlr.enable = true;
-          gtkUsePortal = true;
-          # extraPortals = with pkgs; [
-          #   xdg-desktop-portal-wlr
-          #   xdg-desktop-portal-kde
-          #   xdg-desktop-portal-gnome
-          # ];
-        };
-      };
-    };
-
     # fonts -------------------------------------------------------------------
     fonts.fonts = with pkgs; [
       fira-code
@@ -113,5 +95,4 @@ in
           RUN+="${pkgs.coreutils-full}/bin/chmod g+w /sys/class/backlight/%k/brightness"
     '';
   };
-
 }
