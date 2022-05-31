@@ -3,7 +3,13 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules
   ];
+
+  desktops = {
+    enable = true;
+    sway.enable = true;
+  };
 
   # networking-----------------------------------------------------------------
   networking.hostName = "evil";
