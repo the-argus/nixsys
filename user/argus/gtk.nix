@@ -17,7 +17,7 @@
         };
 
         theme = {
-            name = "Graphite-dark";
+            name = "Lounge";
             package = pkgs.graphite-gtk-theme;
         };
 

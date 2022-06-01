@@ -11,7 +11,6 @@ in
   config = mkIf cfg.enable {
     services.xserver.enable = true;
     services.xserver.windowManager.awesome.enable = true;
-    services.xserver.displayManager.startx.enable = true;
 
     # disable stuff I don't need
     services.xserver.useGlamor = false;
@@ -23,7 +22,8 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-
+        feh
+        xclip
     ];
   };
 }

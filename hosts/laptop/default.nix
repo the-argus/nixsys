@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ../../modules
   ];
-  
+
   # dual booting with windows boot loader mounted on /efi
   boot.loader = {
     efi = {
@@ -23,8 +23,9 @@
   desktops = {
     enable = true;
     sway.enable = true;
-    displayManager = "startx";
   };
+  # choose display manager
+  services.xserver.displayManager.startx.enable = true;
 
   # display -------------------------------------------------------------------
   hardware.opengl = {

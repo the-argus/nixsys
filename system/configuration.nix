@@ -46,12 +46,14 @@
   nixpkgs.config.allowUnfree = true;
   environment.pathsToLink = [ "/share/zsh" ];
   environment.systemPackages = with pkgs; [
-    # gui applications
-    discord
-    keepassxc
+    # gui applications---------
+    sxiv
     gnome.gnome-calculator
     firefox
     kitty
+
+    discord
+    keepassxc
     pcmanfm
     mpv
     heroic

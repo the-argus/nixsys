@@ -11,6 +11,9 @@ in
 
   options.desktops = {
     enable = mkEnableOption "Desktop";
+    wayland = {
+        enable = mkEnableOption "Wayland Display";
+    };
   };
 
   config = mkIf cfg.enable {

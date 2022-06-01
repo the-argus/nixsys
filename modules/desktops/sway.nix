@@ -25,6 +25,7 @@ in
       wlsunset
       grim
       slurp
+      imv
     ];
 
     xdg.portal.extraPortals = with pkgs; [
