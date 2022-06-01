@@ -25,7 +25,7 @@
         usrbuild = "[[ -e ./flake.nix ]] && home-manager switch --flake .";
         sysbuild = "[[ -e ./flake.nix ]] && sudo nixos-rebuild switch --flake .";
         rebuild = "[[ -e ./flake.nix ]] && sysbuild && usrbuild";
-        update = "[[ -e ./flake.nix ]] && nix flake update";
+        update = "[[ -e ./flake.nix ]] && git submodule update && git submodule foreach git pull && nix flake update";
 
         # regular aliases
         nf = "neofetch";

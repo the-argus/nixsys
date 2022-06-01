@@ -11,7 +11,7 @@ pkgs.mkShell {
 alias usrbuild="home-manager switch --flake ."
 alias sysbuild="sudo nixos-rebuild switch --flake ."
 alias rebuild="sysbuild && usrbuild"
-alias update="nix flake update"
+alias update="git submodule update && git submodule foreach git pull && nix flake update"
 
 
 echo -e "You can apply this flake to your system with \e[1mrebuild\e[0m"

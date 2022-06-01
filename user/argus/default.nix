@@ -1,8 +1,9 @@
 {
-    nixpkgs.config.allowUnfree = true;
-    imports = [
-        ./zsh.nix
-        ./git.nix
-        ./gtk.nix
-    ];
+  nixpkgs.config.allowUnfree = true;
+  imports = [
+    ./config # configures *everything* that can't be done in nix
+    ./zsh.nix
+    ./git.nix
+    ./gtk.nix
+  ];
 }
