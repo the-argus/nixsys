@@ -34,7 +34,11 @@ in
       graphite-gtk-theme # Graphite Graphite-dark Graphite-light Graphite-dark-hdpi Graphite-hdpi ....
 
       paper-icon-theme
+      zafiro-icons
+      pantheon.elementary-icon-theme
+      material-icons
       numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
+      capitaine-cursors
     ];
 
     # fonts -------------------------------------------------------------------

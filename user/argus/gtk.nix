@@ -17,7 +17,7 @@
         };
 
         theme = {
-            name = "Lounge";
+            name = "Juno";
             package = pkgs.graphite-gtk-theme;
         };
 
