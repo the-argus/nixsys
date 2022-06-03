@@ -3,5 +3,6 @@
         ./nvim
         ./ranger
         ./neofetch
+        ./zathura
     ];
 }

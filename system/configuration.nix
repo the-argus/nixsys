@@ -68,6 +68,7 @@
 
     # cli applications
     neofetch
+    tmatrix cmatrix
     git
     zip
     unzip
