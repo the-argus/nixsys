@@ -7,9 +7,9 @@
     ./gtk.nix
     
     # extra configuration modules
-    ./config/nvim/var
+    # ./config/nvim/var
   ];
   
   # "config" folder (stuff that isnt configured in nix)
-  nvim.lsp.profile = "no-csharp";
+  # nvim.lsp.profile = "no-csharp";
 }

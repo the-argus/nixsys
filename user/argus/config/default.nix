@@ -1,7 +1,7 @@
 { ... }: {
     imports = [
-        ./nvim
-        ./ranger
+        # ./nvim
+        #./ranger
         ./neofetch
         ./zathura
     ];

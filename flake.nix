@@ -13,10 +13,11 @@
     nvim-config = {
       url = "github:the-argus/nvim-config";
       flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nvim-config, ... }@inputs:
     let
       system = "x86_64-linux";
       username = "argus";

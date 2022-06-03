@@ -5,7 +5,7 @@
     #   ./var
     # ];
 
-    ".config/nvim" = nvim-config;
+    ".config/nvim" = "${nvim-config}";
     # copy base configuration
     # ".config/nvim" = builtins.fetchTarball {
     #   url = "https://github.com/the-argus/nvim-config/archive/refs/tags/v0.0.1.tar.gz";
