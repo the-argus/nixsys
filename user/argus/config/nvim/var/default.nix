@@ -1,4 +1,5 @@
 { pkgs, config, lib, ... }:
+with lib;
 let
   cfg = config.nvim;
   inherit (lib) mkIf mkOption;
