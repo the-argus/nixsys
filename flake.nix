@@ -5,9 +5,14 @@
     #nixpkgs.url = "nixpkgs/nixos-21.11";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager = {
-        url = "github:nix-community/home-manager";
-        # home manager use out nixpkgs and not its own
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+      # home manager use out nixpkgs and not its own
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nvim-config = {
+      url = "github:the-argus/nvim-config";
+      flake = false;
     };
   };
 

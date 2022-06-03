@@ -35,10 +35,27 @@
         "type": "indirect"
       }
     },
+    "nvim-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1653145380,
+        "narHash": "sha256-oIU6HXZc2OzQH2awoPIc8HFsoAK45lkxgFsthzboiJQ=",
+        "owner": "the-argus",
+        "repo": "nvim-config",
+        "rev": "781c8f3e89e19600ba1de00bc5949eb1004d6853",
+        "type": "github"
+      },
+      "original": {
+        "owner": "the-argus",
+        "repo": "nvim-config",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nvim-config": "nvim-config"
       }
     }
   },

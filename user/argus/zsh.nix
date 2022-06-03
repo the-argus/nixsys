@@ -44,11 +44,11 @@
       zplug = {
         enable = true;
         plugins = [
-            { name = "marlonrichert/zsh-autocomplete"; }
-            # { name = "Vifon/deer"; tags = [use:deer]; }
-            # { name = "zsh-users/zsh-completions"; }
-            # { name = "spwhitt/nix-zsh-completions"; }
-            { name = "hlissner/zsh-autopair"; }
+          { name = "marlonrichert/zsh-autocomplete"; }
+          # { name = "Vifon/deer"; tags = [use:deer]; }
+          # { name = "zsh-users/zsh-completions"; }
+          # { name = "spwhitt/nix-zsh-completions"; }
+          { name = "hlissner/zsh-autopair"; }
         ];
       };
 
