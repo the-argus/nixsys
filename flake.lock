@@ -51,11 +51,28 @@
         "type": "github"
       }
     },
+    "ranger-devicons": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1653224349,
+        "narHash": "sha256-YT7YFiTA2XtIoVzaVjUWMu6j4Nwo4iGzvOtjjWva/80=",
+        "owner": "alexanderjeurissen",
+        "repo": "ranger_devicons",
+        "rev": "49fe4753c89615a32f14b2f4c78bbd02ee76be3c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alexanderjeurissen",
+        "repo": "ranger_devicons",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nvim-config": "nvim-config"
+        "nvim-config": "nvim-config",
+        "ranger-devicons": "ranger-devicons"
       }
     }
   },

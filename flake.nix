@@ -15,9 +15,16 @@
       flake = false;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ranger-devicons = {
+      url = "github:alexanderjeurissen/ranger_devicons";
+      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, home-manager, nvim-config, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nvim-config, ranger-devicons, ... }@inputs:
     let
       system = "x86_64-linux";
       username = "argus";
