@@ -52,7 +52,7 @@
     firefox
     kitty
 
-    discord
+    #discord
     keepassxc
     pcmanfm
     mpv
