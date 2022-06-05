@@ -15,6 +15,6 @@
 
   # extra packages
   home.packages = with pkgs; [
-    discord
+    #discord
   ];
 }
