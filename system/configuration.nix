@@ -44,7 +44,19 @@
   };
 
   environment.pathsToLink = [ "/share/zsh" ];
+  
+  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    #discord
+    keepassxc
+    pcmanfm
+    gnome.gnome-calculator
+    firefox
+    heroic
+    spot
+    # spotify-tray
+    # spicetify-cli
+    
     # tui applications
     ranger
     neovim

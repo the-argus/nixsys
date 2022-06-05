@@ -13,21 +13,10 @@
   # nvim.lsp.profile = "no-csharp";
 
   # extra packages
-  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     # gui applications---------
     sxiv
-    gnome.gnome-calculator
-    firefox
     kitty
-
-    #discord
-    keepassxc
-    pcmanfm
     mpv
-    heroic
-    spot
-    # spotify-tray
-    # spicetify-cli
   ];
 }
