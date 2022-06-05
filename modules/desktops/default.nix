@@ -51,7 +51,7 @@ in
       noto-fonts-cjk
       liberation_ttf
       dina-font
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      #(nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];
 
 
