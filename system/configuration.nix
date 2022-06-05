@@ -27,7 +27,7 @@
   '';
 
   # Set your time zone.
-  time.timeZone = "America/Anchorage";
+  time.timeZone = "America/Los_Angeles";
 
   programs.zsh.enable = true;
 
@@ -43,24 +43,8 @@
     ];
   };
 
-  nixpkgs.config.allowUnfree = true;
   environment.pathsToLink = [ "/share/zsh" ];
   environment.systemPackages = with pkgs; [
-    # gui applications---------
-    sxiv
-    gnome.gnome-calculator
-    firefox
-    kitty
-
-    #discord
-    keepassxc
-    pcmanfm
-    mpv
-    heroic
-    spot
-    # spotify-tray
-    # spicetify-cli
-
     # tui applications
     ranger
     neovim
@@ -81,6 +65,7 @@
     cargo
     sumneko-lua-language-server
     rnix-lsp
+    libclang
 
     # util
     home-manager

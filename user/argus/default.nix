@@ -1,5 +1,4 @@
 { pkgs, ... }: {
-  nixpkgs.config.allowUnfree = true;
   imports = [
     ./config # configures *everything* that can't be done in nix
     ./zsh.nix
@@ -14,7 +13,21 @@
   # nvim.lsp.profile = "no-csharp";
 
   # extra packages
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
+    # gui applications---------
+    sxiv
+    gnome.gnome-calculator
+    firefox
+    kitty
+
     #discord
+    keepassxc
+    pcmanfm
+    mpv
+    heroic
+    spot
+    # spotify-tray
+    # spicetify-cli
   ];
 }
