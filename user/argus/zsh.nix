@@ -34,6 +34,7 @@
         matrix = "tmatrix -c default -C yellow -s 60 -f 0.2,0.3 -g 10,20 -l 1,50 -t \"hello, argus.\"";
         umatrix = "unimatrix -a -c yellow -f -s 95 -l aAcCgGkknnrR";
         vim = "nvim";
+	dvim = "XDG_CONFIG_HOME=/home/argus/.local/src/ nvim"; # use my non-nix configuration for debugging
         batt = "cat /sys/class/power_supply/BAT0/capacity";
 
         # unused mostly

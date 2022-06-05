@@ -18,5 +18,10 @@
     sxiv
     kitty
     mpv
+    
+    pinta
+    wl-color-picker
+    # color palette
+    epick pngquant
   ];
 }
