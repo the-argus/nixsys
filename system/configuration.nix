@@ -65,7 +65,7 @@
     cargo
     sumneko-lua-language-server
     rnix-lsp
-    libclang
+    # libclang
 
     # util
     home-manager
