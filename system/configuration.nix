@@ -45,7 +45,6 @@
 
   environment.pathsToLink = [ "/share/zsh" ];
   
-  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     #discord
     keepassxc
@@ -70,6 +69,7 @@
     unzip
     wget
     curl
+    ffmpeg
 
     # dev
     gcc

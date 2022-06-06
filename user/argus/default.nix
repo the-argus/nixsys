@@ -13,8 +13,10 @@
   # nvim.lsp.profile = "no-csharp";
 
   # extra packages
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     # gui applications---------
+    discord
     sxiv
     kitty
     mpv
@@ -23,5 +25,10 @@
     wl-color-picker
     # color palette
     epick pngquant
+
+    # tui
+    cava
+    transmission
+    ani-cli
   ];
 }
