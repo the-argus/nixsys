@@ -17,6 +17,7 @@
   home.packages = with pkgs; [
     # gui applications---------
     discord
+    pavucontrol
     sxiv
     kitty
     mpv
