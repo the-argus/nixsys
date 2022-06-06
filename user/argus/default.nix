@@ -15,13 +15,22 @@
   # extra packages
   nixpkgs.config.allowUnfreePredicate = (pkgs: true);
   home.packages = with pkgs; [
-    # gui applications---------
+    # unfree :(
     discord
     spotify-unwrapped
+
+    # gui applications---------
+    keepassxc
+    pcmanfm
+    gnome.gnome-calculator
+    heroic
     pavucontrol
     sxiv
     kitty
     mpv
+    
+    spotify-tray
+    spicetify-cli
     
     pinta
     wl-color-picker

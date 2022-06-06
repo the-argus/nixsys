@@ -46,15 +46,7 @@
   environment.pathsToLink = [ "/share/zsh" ];
   
   environment.systemPackages = with pkgs; [
-    #discord
-    keepassxc
-    pcmanfm
-    gnome.gnome-calculator
     firefox
-    heroic
-    spot
-    # spotify-tray
-    # spicetify-cli
     
     # tui applications
     ranger
