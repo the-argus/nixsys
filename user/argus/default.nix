@@ -13,10 +13,11 @@
   # nvim.lsp.profile = "no-csharp";
 
   # extra packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = (pkgs: true);
   home.packages = with pkgs; [
     # gui applications---------
     discord
+    spotify-unwrapped
     pavucontrol
     sxiv
     kitty
