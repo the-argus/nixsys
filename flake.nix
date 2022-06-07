@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nvim-config = {
       url = "github:the-argus/nvim-config";
       flake = false;
@@ -28,9 +33,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    arkenfox-userjs = {
+      url = "github:arkenfox/user.js";
+      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nvim-config, ranger-devicons, kanagawa-gtk, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, arkenfox-userjs, ... }@inputs:
     let
       system = "x86_64-linux";
       username = "argus";

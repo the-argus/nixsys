@@ -46,7 +46,7 @@
   environment.pathsToLink = [ "/share/zsh" ];
   
   environment.systemPackages = with pkgs; [
-    firefox
+    #firefox
     
     # tui applications
     ranger
