@@ -22,9 +22,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    kanagawa-gtk = {
+      url = "https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme";
+      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, home-manager, nvim-config, ranger-devicons, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nvim-config, ranger-devicons, kanagawa-gtk, ... }@inputs:
     let
       system = "x86_64-linux";
       username = "argus";

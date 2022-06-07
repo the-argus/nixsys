@@ -3,7 +3,7 @@
     ./config # configures *everything* that can't be done in nix
     ./zsh.nix
     ./git.nix
-    ./gtk.nix
+    ./gtk
     
     # extra configuration modules
     # ./config/nvim/var
