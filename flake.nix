@@ -23,7 +23,7 @@
     };
 
     kanagawa-gtk = {
-      url = "https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme";
+      url = "github:Fausto-Korpsvart/Kanagawa-GKT-Theme";
       flake = false;
       inputs.nixpkgs.follows = "nixpkgs";
     };
