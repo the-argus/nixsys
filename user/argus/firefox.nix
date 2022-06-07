@@ -1,9 +1,9 @@
-{ arkenfox-userjs, pkgs, ... }:
+{ arkenfox-userjs, lib, pkgs, ... }:
 {
   programs.firefox =
     let
       baseUserJS = builtins.readFile "${arkenfox-userjs}/user.js";
-      finalUserJS = baseUserJS + ''
+      finalUserJS = lib.strings.concatStrings [ baseUserJS ''
         // homepage
         user_pref("browser.startup.homepage", "about:home");
         user_pref("browser.newtabpage.enabled", true);
@@ -22,11 +22,11 @@
         // DRM content :(
         user_pref("media.gmp-widevinecdm.enabled", true);
         user_pref("media.eme.enabled", true);
-      '';
+      ''];
     in
     {
       enable = true;
-      package = pgks.firefox;
+      package = pkgs.firefox;
 
       extensions = [
         

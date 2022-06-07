@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "arkenfox-userjs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1654091479,
+        "narHash": "sha256-fw8BZSCgEMLAD1IYvnCxTwYAPCrobZmmE7Y+foydkLk=",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "662eddbc2124d9d09774da7d5bc385f45c287c0d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -51,6 +67,21 @@
         "type": "indirect"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1654630204,
+        "narHash": "sha256-q9ksI1u3soWfsQqAUoujCUFWNBnmrL2OpHKVmz5r1iA=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "a2f2142fb642cd56e348f24ef8698d199d2361cc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "nvim-config": {
       "flake": false,
       "locked": {
@@ -85,9 +116,11 @@
     },
     "root": {
       "inputs": {
+        "arkenfox-userjs": "arkenfox-userjs",
         "home-manager": "home-manager",
         "kanagawa-gtk": "kanagawa-gtk",
         "nixpkgs": "nixpkgs",
+        "nur": "nur",
         "nvim-config": "nvim-config",
         "ranger-devicons": "ranger-devicons"
       }
