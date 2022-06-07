@@ -1,17 +1,18 @@
-{ lib, kanagawa-gtk, stdenv, gtk-engine-murrine }:
+{ kanagawa-gtk, stdenv, gtk-engine-murrine, ... }:
 {
-    name = "Kanagawa-B";
-    pkg = stdenv.mkDerivation rec {
-      pname = "kanagawa";
-      version = "1.5";
-      
-      src = kanagawa-gtk;
+  name = "Kanagawa-B";
+  pkg = stdenv.mkDerivation rec {
+    pname = "kanagawa";
+    version = "0.1";
 
-      propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+    src = kanagawa-gtk;
 
-      installPhase = ''
-        mkdir -p $out/share/themes/kanagawa
-        cp -r themes/Kanagawa-B themes/Kanagawa-BL $out/share/themes
-      '';
-    };
+    propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+
+    installPhase = ''
+      mkdir -p $out/share/themes/kanagawa
+      cp -r themes/Kanagawa-B $out/share/themes
+      cp -r themes/Kanagawa-BL $out/share/themes
+    '';
+  };
 }

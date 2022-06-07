@@ -1,14 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, kanagawa-gtk, ... }:
 {
   gtk =
     let
-      theme = import ./themes/kanagawa.nix;
+      theme = import ./themes/kanagawa.nix {
+        inherit kanagawa-gtk;
+        stdenv = pkgs.stdenv;
+        gtk-engine-murrine = pkgs.gtk-engine-murrine;
+      };
     in
     {
       enable = true;
 
       font = {
-        name = "FiraCode";
+        name = "Fira Code";
         size = 11;
         package = pkgs.fira-code;
       };

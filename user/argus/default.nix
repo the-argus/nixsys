@@ -4,6 +4,7 @@
     ./zsh.nix
     ./git.nix
     ./gtk
+    # ./gtk/themes/kanagawa.nix
     
     # extra configuration modules
     # ./config/nvim/var
