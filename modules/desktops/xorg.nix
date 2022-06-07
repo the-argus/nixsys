@@ -24,7 +24,7 @@ in
     environment.systemPackages = with pkgs; [
         feh
         xclip
-        xauth
+        xorg.xauth
     ];
   };
 }
