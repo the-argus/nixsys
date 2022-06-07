@@ -32,11 +32,11 @@
         
       ];
 
-      profiles = {
-        name = "argus";
-        id = 1;
-        extraConfig = finalUserJS;
-        isDefault = true;
-      };
+#      profiles = {
+#        name = "argus";
+#        id = 1;
+#        extraConfig = finalUserJS;
+#        isDefault = true;
+#      };
     };
 }
