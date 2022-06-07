@@ -6,14 +6,14 @@ in
 {
   imports = [
     ./sway.nix
+    ./awesome.nix
+    ./wayland.nix
+    ./xorg.nix
   ];
 
 
   options.desktops = {
     enable = mkEnableOption "Desktop";
-    wayland = {
-        enable = mkEnableOption "Wayland Display";
-    };
   };
 
   config = mkIf cfg.enable {
