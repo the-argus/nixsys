@@ -23,8 +23,8 @@
 
         gtk3 = {
             bookmarks = [
-                "file:///home/argus/Desktop/programming"
                 "file:///home/argus/Downloads"
+                "file:///home/argus/Programming"
                 "file:///home/argus/Video"
                 "file:///home/argus/Music"
                 "file:///home/argus/Screenshots"
