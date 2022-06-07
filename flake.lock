@@ -20,6 +20,22 @@
         "type": "github"
       }
     },
+    "kanagawa-gtk": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1653853488,
+        "narHash": "sha256-MhpFf/Nae+BbMVpjAIWpZLgIGBxWPGn5FDPtNEoFlXY=",
+        "owner": "Fausto-Korpsvart",
+        "repo": "Kanagawa-GKT-Theme",
+        "rev": "8a1305f3c6a6a2e87e9bb77eb7daf5dce3eac9f2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Fausto-Korpsvart",
+        "repo": "Kanagawa-GKT-Theme",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1654230545,
@@ -70,6 +86,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "kanagawa-gtk": "kanagawa-gtk",
         "nixpkgs": "nixpkgs",
         "nvim-config": "nvim-config",
         "ranger-devicons": "ranger-devicons"
