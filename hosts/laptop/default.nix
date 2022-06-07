@@ -23,6 +23,7 @@
   desktops = {
     enable = true;
     sway.enable = true;
+    awesome.enable = true;
   };
   # choose display manager
   services.xserver.displayManager.startx.enable = true;
@@ -38,7 +39,18 @@
   };
 
   #	services.xserver.videoDrivers = [ "intel" ];
-  services.xserver.videoDriver = "intel";
+  services.xserver = {
+    videoDriver = "intel";
+    libinput.mouse = {
+      accelProfile = "flat";
+    };
+
+    config = ''
+      Section "ServerFlags"
+          Option      "AutoAddDevices"         "false"
+      EndSection
+    '';
+  };
 
   # networking-----------------------------------------------------------------
   networking.hostName = "evil";
