@@ -75,6 +75,7 @@
     home-manager
     pam_u2f
     polkit
+    usbutils
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
