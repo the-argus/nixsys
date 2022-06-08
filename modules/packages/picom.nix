@@ -50,8 +50,5 @@ in
           cp build/src/picom $out/bin/picom
         '';
       };
-    environment.systemPackages = [
-        config.packages.picom.package
-    ];
   };
 }

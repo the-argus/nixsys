@@ -44,9 +44,15 @@
       flake = false;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    awesome = {
+      url = "github:awesomeWM/awesome";
+      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, arkenfox-userjs, picom, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, arkenfox-userjs, picom, awesome, ... }@inputs:
     let
       system = "x86_64-linux";
       username = "argus";

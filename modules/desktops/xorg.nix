@@ -11,7 +11,6 @@ in
   config = mkIf cfg.enable {
     services.xserver = {
       enable = true;
-      windowManager.awesome.enable = true;
 
       libinput.enable = true;
       libinput.touchpad.naturalScrolling = false;
