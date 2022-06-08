@@ -41,9 +41,6 @@
   #	services.xserver.videoDrivers = [ "intel" ];
   services.xserver = {
     videoDriver = "intel";
-    libinput.mouse = {
-      accelProfile = "flat";
-    };
 
     config = ''
       Section "ServerFlags"

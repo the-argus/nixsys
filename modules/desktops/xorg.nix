@@ -9,12 +9,18 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.xserver.enable = true;
-    services.xserver.windowManager.awesome.enable = true;
-
-    # disable stuff I don't need
-    services.xserver.useGlamor = false;
     services.xserver = {
+      enable = true;
+      windowManager.awesome.enable = true;
+
+      libinput.enable = true;
+      libinput.touchpad.naturalScrolling = false;
+      libinput.touchpad.middleEmulation = true;
+      libinput.touchpad.tapping = true;
+      libinput.mouse.accelProfile = "flat";
+
+      # disable stuff I don't need
+      useGlamor = false;
       excludePackages = with pkgs; [
         xterm
         xorg.xf86inputevdev.out
@@ -22,11 +28,11 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-        feh
-        xclip
-        xorg.xauth
-        xorg.xf86inputsynaptics
-        xorg.xf86inputmouse
+      feh
+      xclip
+      xorg.xauth
+      xorg.xf86inputsynaptics
+      xorg.xf86inputmouse
     ];
   };
 }
