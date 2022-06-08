@@ -16,7 +16,7 @@ in
 
 
   config = mkIf cfg.enable {
-    package = pkgs.stdenv.mkDerivation
+    packages.picom.package = pkgs.stdenv.mkDerivation
       rec {
         pname = "picom-fork";
         version = "9.1";
@@ -41,13 +41,17 @@ in
         ];
 
         buildPhase = ''
-          meson --buildtype=release . build
+          meson --buildtype=release ${picom} build
           ninja -C build
         '';
 
         installPhase = ''
+          mkdir -p $out/bin
           cp build/src/picom $out/bin/picom
         '';
       };
+    environment.systemPackages = [
+        config.packages.picom.package
+    ];
   };
 }
