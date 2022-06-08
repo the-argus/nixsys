@@ -10,6 +10,7 @@ in
 
   config = mkIf cfg.enable {
     desktops.xorg.enable = true;
+    packages.picom.enable = true;
 
     environment.systemPackages = with pkgs; [
         rofi

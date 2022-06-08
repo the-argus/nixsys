@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, picom, ... }:
 let
   cfg = config.desktops.xorg;
   inherit (lib) mkIf mkEnableOption;
@@ -18,6 +18,11 @@ in
       libinput.touchpad.middleEmulation = true;
       libinput.touchpad.tapping = true;
       libinput.mouse.accelProfile = "flat";
+
+      # use the right picom fork
+      services.picom.package = pkgs.picom.overrideAttrs (o: {
+        src = picom;
+      });
 
       # disable stuff I don't need
       useGlamor = false;

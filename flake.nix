@@ -38,9 +38,15 @@
       flake = false;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    picom = {
+      url = "github:Arian8j2/picom-jonaburg-fix";
+      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, arkenfox-userjs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, arkenfox-userjs, picom, ... }@inputs:
     let
       system = "x86_64-linux";
       username = "argus";
