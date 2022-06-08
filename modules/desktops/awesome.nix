@@ -4,6 +4,10 @@ let
   inherit (lib) mkIf mkEnableOption;
 in
 {
+  imports = [
+    ../packages/picom.nix
+  ];
+
   options.desktops.awesome = {
     enable = mkEnableOption "Awesome Window Manager";
   };
@@ -12,8 +16,8 @@ in
     desktops.xorg.enable = true;
 
     environment.systemPackages = with pkgs; [
-        rofi
-        flameshot
+      rofi
+      flameshot
     ];
   };
 }
