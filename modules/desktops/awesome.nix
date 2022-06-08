@@ -14,7 +14,8 @@ in
 
   config = mkIf cfg.enable {
     desktops.xorg.enable = true;
-
+    
+    # installs custom picom fork
     packages.picom.enable = true;
 
     environment.systemPackages = with pkgs; [

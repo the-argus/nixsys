@@ -1,16 +1,22 @@
-{ pkgs, picom, ... }:
+{ lib, pkgs, picom, config, ... }:
 let
   cfg = config.packages.picom;
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib) mkIf mkEnableOption mkOption;
 in
 {
   options.packages.picom = {
     enable = mkEnableOption "Custom Packages";
+
+    package = mkOption {
+        #type = lib.types.derivation;
+        default = pkgs.picom;
+        description = "do not use";
+    };
   };
 
 
   config = mkIf cfg.enable {
-    picom = pkgs.stdenv.mkDerivation
+    package = pkgs.stdenv.mkDerivation
       rec {
         pname = "picom-fork";
         version = "9.1";
