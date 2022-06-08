@@ -121,11 +121,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1654630204,
-        "narHash": "sha256-q9ksI1u3soWfsQqAUoujCUFWNBnmrL2OpHKVmz5r1iA=",
+        "lastModified": 1654657455,
+        "narHash": "sha256-x09L2aBMuyAs+Ww7wQBScTlWqJ2fdKwqs8ANWuv8TOI=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "a2f2142fb642cd56e348f24ef8698d199d2361cc",
+        "rev": "f3bbd417e950de2793e1f376964d14051f2281fc",
         "type": "github"
       },
       "original": {
@@ -147,6 +147,22 @@
       "original": {
         "owner": "the-argus",
         "repo": "nvim-config",
+        "type": "github"
+      }
+    },
+    "picom": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1640117623,
+        "narHash": "sha256-1z4bKDoNgmG40y2DKTSSh1NCafrE1rkHkCB3ob8ibm4=",
+        "owner": "Arian8j2",
+        "repo": "picom-jonaburg-fix",
+        "rev": "31d25da22b44f37cbb9be49fe5c239ef8d00df12",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Arian8j2",
+        "repo": "picom-jonaburg-fix",
         "type": "github"
       }
     },
@@ -174,6 +190,7 @@
         "nixpkgs": "nixpkgs",
         "nur": "nur",
         "nvim-config": "nvim-config",
+        "picom": "picom",
         "ranger-devicons": "ranger-devicons"
       }
     },

@@ -19,10 +19,6 @@ in
       libinput.touchpad.tapping = true;
       libinput.mouse.accelProfile = "flat";
 
-      # use the right picom fork
-      services.picom.package = pkgs.picom.overrideAttrs (o: {
-        src = picom;
-      });
 
       # disable stuff I don't need
       useGlamor = false;
