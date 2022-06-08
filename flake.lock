@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "awesome": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1653855029,
+        "narHash": "sha256-4z3w6iuv+Gw2xRvhv2AX4suO6dl82woJn0p1nkEx3uM=",
+        "owner": "awesomeWM",
+        "repo": "awesome",
+        "rev": "3a542219f3bf129546ae79eb20e384ea28fa9798",
+        "type": "github"
+      },
+      "original": {
+        "owner": "awesomeWM",
+        "repo": "awesome",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -185,6 +201,7 @@
     "root": {
       "inputs": {
         "arkenfox-userjs": "arkenfox-userjs",
+        "awesome": "awesome",
         "home-manager": "home-manager",
         "kanagawa-gtk": "kanagawa-gtk",
         "nixpkgs": "nixpkgs",
