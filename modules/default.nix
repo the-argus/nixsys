@@ -1,6 +1,5 @@
 {
     imports =[
         ./desktops
-        ./packages
     ];    
 }
