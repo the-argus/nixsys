@@ -38,9 +38,9 @@
       profiles = {
         argus = {
           name = "argus";
-          id = 1;
+          id = 0;
           extraConfig = finalUserJS;
-          isDefault = true;
+          #isDefault = true;
         };
       };
     };

@@ -15,12 +15,14 @@
   # nvim.lsp.profile = "no-csharp";
 
   # allow access to NUR
-  nixpkgs.config.packageOverrides = pkgs: {
-    nur = nur { inherit pkgs; };
+  nixpkgs.config = {
+    packageOverrides = pkgs: {
+      nur = nur { inherit pkgs; };
+    };
+    allowUnfreePredicate = (pkgs: true);
   };
 
   # extra packages
-  nixpkgs.config.allowUnfreePredicate = (pkgs: true);
   home.packages = with pkgs; [
     # unfree :(
     discord
