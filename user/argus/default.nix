@@ -5,14 +5,7 @@
     ./git.nix
     ./gtk
     ./firefox.nix
-    # ./gtk/themes/kanagawa.nix
-
-    # extra configuration modules
-    # ./config/nvim/var
   ];
-
-  # "config" folder (stuff that isnt configured in nix)
-  # nvim.lsp.profile = "no-csharp";
 
   # allow access to NUR
   nixpkgs.config = {
@@ -38,16 +31,15 @@
     kitty
     mpv
 
-    spotify-tray
-    spicetify-cli
 
     pinta
-    wl-color-picker
     # color palette
+    wl-color-picker
     epick
     pngquant
 
     # tui
+    spicetify-cli
     cava
     transmission
     ani-cli
