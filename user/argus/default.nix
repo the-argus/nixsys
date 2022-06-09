@@ -16,7 +16,6 @@
   };
 
   # extra packages
-  services.flatpak.enable = true;
   home.packages = with pkgs; [
     # unfree :(
     # discord
@@ -45,7 +44,7 @@
     # cli
     spicetify-cli
     solo2-cli
-    solo-python
+    python310Packages.solo-python
     transmission
     ani-cli
 

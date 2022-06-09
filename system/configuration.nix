@@ -45,6 +45,7 @@
 
   environment.pathsToLink = [ "/share/zsh" ];
   
+  services.flatpak.enable = true;
   environment.systemPackages = with pkgs; [
     # tui applications
     ranger
