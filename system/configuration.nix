@@ -18,7 +18,18 @@
 
   # PAM authentication for yubikey/solokey
   # line to add with mkOverride: "auth       required   pam_u2f.so"
-  security.pam.services.login.text = pkgs.lib.mkDefault (pkgs.lib.mkAfter "# testing");
+  services.udev.extraRules = ''ACTION!="add|change", GOTO="solokeys_end"
+# SoloKeys rule
+
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a2ca", TAG+="uaccess"
+
+LABEL="solokeys_end"'';
+  
+  # line that might be necessary to add:
+  # @include common-auth
+  security.pam.services.login.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore ''
+    auth sufficient pam_u2f.so
+  '');
 
   # enable nix flakes
   nix.package = pkgs.nixFlakes;
@@ -44,7 +55,7 @@
   };
 
   environment.pathsToLink = [ "/share/zsh" ];
-  
+
   services.flatpak.enable = true;
   environment.systemPackages = with pkgs; [
     # tui applications
@@ -54,9 +65,12 @@
 
     # cli applications
     neofetch
-    tmatrix cmatrix
-    zip unzip
-    wget curl
+    tmatrix
+    cmatrix
+    zip
+    unzip
+    wget
+    curl
     ffmpeg
 
     # util
