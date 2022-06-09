@@ -1,13 +1,10 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, awesome, picom, ... }:
 let
   cfg = config.desktops.awesome;
+  packages = import ../../packages;
   inherit (lib) mkIf mkEnableOption;
 in
 {
-  imports = [
-    ../packages/picom.nix
-  ];
-
   options.desktops.awesome = {
     enable = mkEnableOption "Awesome Window Manager";
   };
@@ -15,22 +12,15 @@ in
   config = mkIf cfg.enable {
     desktops.xorg.enable = true;
 
-    # installs custom picom fork
-    packages.picom.enable = true;
-    packages.awesome.enable = true;
-
     windowManager.awesome = {
       enable = true;
-      package = packages.awesome.package;
+      package = packages.awesome { inherit pkgs; inherit awesome; };
     };
-
-    environment.systemPackages = [
-      packages.picom.package
-    ];
 
     environment.systemPackages = with pkgs; [
       rofi
       flameshot
+      packages.picom {inherit pkgs; inherit picom;}
     ];
   };
 }
