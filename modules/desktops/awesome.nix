@@ -19,7 +19,7 @@ in
 
     services.xserver.windowManager.awesome = {
       enable = true;
-      # package = derivations.awesome;
+      package = derivations.awesome;
     };
 
     environment.systemPackages = with pkgs; [
