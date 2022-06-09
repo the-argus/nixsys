@@ -1,7 +1,12 @@
 { lib, config, pkgs, awesome, picom, ... }:
 let
   cfg = config.desktops.awesome;
-  packages = import ../../packages;
+  derivations = {
+    awesome = import ../../packages/awesome.nix 
+        { inherit pkgs; inherit awesome; };
+    picom = import ../../packages/picom.nix
+        { inherit pkgs; inherit picom;}; 
+  };
   inherit (lib) mkIf mkEnableOption;
 in
 {
@@ -12,15 +17,15 @@ in
   config = mkIf cfg.enable {
     desktops.xorg.enable = true;
 
-    windowManager.awesome = {
+    services.xserver.windowManager.awesome = {
       enable = true;
-      package = packages.awesome { inherit pkgs; inherit awesome; };
+      # package = derivations.awesome;
     };
 
     environment.systemPackages = with pkgs; [
       rofi
       flameshot
-      packages.picom {inherit pkgs; inherit picom;}
+      derivations.picom
     ];
   };
 }
