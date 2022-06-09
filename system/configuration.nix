@@ -29,11 +29,6 @@ LABEL="solokeys_end"'';
   # @include common-auth
   security.pam.services.login.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore ''
     auth sufficient pam_u2f.so
-    @include common-auth
-  '');
-  security.pam.services.sudo.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore ''
-    auth sufficient pam_u2f.so
-    @include common-auth
   '');
 
   # enable nix flakes
