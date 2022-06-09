@@ -25,8 +25,7 @@ in
     environment.systemPackages = with pkgs; [
       rofi
       flameshot
-      picom
-      # derivations.picom
+      derivations.picom
     ];
   };
 }

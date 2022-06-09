@@ -50,17 +50,6 @@
       flake = false;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixpkgs.overlays = [
-        (self: super: 
-        {
-            awesome = super.awesome.overrideAttrs (old: {src = awesome;});
-        })
-        (self: super: 
-        {
-            picom = super.picom.overrideAttrs (old: {src = picom;});
-        })
-    ];
   };
 
   outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, arkenfox-userjs, picom, awesome, ... }@inputs:
