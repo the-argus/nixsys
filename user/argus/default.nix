@@ -1,6 +1,7 @@
 { pkgs, nur, ... }: {
   imports = [
     ./config # configures *everything* that can't be done in nix
+    ./local
     ./zsh.nix
     ./git.nix
     ./gtk

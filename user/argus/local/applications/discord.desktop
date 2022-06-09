@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Discord
+GenericName=Instant Messenger
+Exec=flatpak run com.discordapp.Discord
+Icon=discord

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Spotify
+GenericName=Music Player
+Exec=flatpak run com.spotify.Client
+Icon=spotify
