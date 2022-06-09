@@ -58,16 +58,8 @@
     wget curl
     ffmpeg
 
-    # dev
-    git
-    gcc
-    nodejs
-    cargo
-    sumneko-lua-language-server
-    rnix-lsp
-    libclang
-
     # util
+    git
     home-manager
     pam_u2f
     polkit

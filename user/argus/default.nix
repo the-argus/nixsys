@@ -12,14 +12,15 @@
     packageOverrides = pkgs: {
       nur = nur { inherit pkgs; };
     };
-    allowUnfreePredicate = (pkgs: true);
+    # allowUnfreePredicate = (pkgs: true);
   };
 
   # extra packages
+  services.flatpak.enable = true;
   home.packages = with pkgs; [
     # unfree :(
-    discord
-    spotify-unwrapped
+    # discord
+    # spotify-unwrapped
 
     # gui applications---------
     keepassxc
@@ -39,9 +40,20 @@
     pngquant
 
     # tui
-    spicetify-cli
     cava
+
+    # cli
+    spicetify-cli
+    solo2-cli
+    solo-python
     transmission
     ani-cli
+
+    # dev
+    nodejs
+    cargo
+    sumneko-lua-language-server
+    rnix-lsp
+    libclang
   ];
 }
