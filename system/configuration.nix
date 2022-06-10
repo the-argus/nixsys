@@ -27,7 +27,11 @@ LABEL="solokeys_end"'';
   
   # line that might be necessary to add:
   # @include common-auth
+  security.pam.u2f.enable = true;
   security.pam.services.login.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore ''
+    auth sufficient pam_u2f.so
+  '');
+  security.pam.services.sudo.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore ''
     auth sufficient pam_u2f.so
   '');
 
