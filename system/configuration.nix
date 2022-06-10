@@ -83,6 +83,7 @@ LABEL="solokeys_end"'';
     pam_u2f
     polkit
     usbutils
+    nix-index
   ];
 
   system.stateVersion = "22.11"; # Did you read the comment?
