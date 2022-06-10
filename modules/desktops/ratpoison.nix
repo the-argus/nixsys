@@ -20,6 +20,7 @@ in
     };
 
     environment.systemPackages = with pkgs; [
+      ratpoison.contrib
       rofi
       flameshot
       derivations.picom
