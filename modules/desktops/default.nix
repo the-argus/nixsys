@@ -9,6 +9,7 @@ in
     ./awesome.nix
     ./wayland.nix
     ./xorg.nix
+    ./ratpoison.nix
   ];
 
 

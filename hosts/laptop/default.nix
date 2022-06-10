@@ -24,6 +24,7 @@
     enable = true;
     sway.enable = true;
     awesome.enable = true;
+    ratpoison.enable = true;
   };
   # choose display manager
   services.xserver.displayManager.startx.enable = true;
