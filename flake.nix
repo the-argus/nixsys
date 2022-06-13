@@ -18,43 +18,36 @@
     nvim-config = {
       url = "github:the-argus/nvim-config";
       flake = false;
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ranger-devicons = {
       url = "github:alexanderjeurissen/ranger_devicons";
       flake = false;
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     kanagawa-gtk = {
       url = "github:Fausto-Korpsvart/Kanagawa-GKT-Theme";
       flake = false;
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     rose-pine-gtk = {
       url = "github:rose-pine/gtk";
       flake = false;
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     arkenfox-userjs = {
       url = "github:arkenfox/user.js";
       flake = false;
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     picom = {
       url = "github:Arian8j2/picom-jonaburg-fix";
       flake = false;
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     awesome = {
       url = "github:awesomeWM/awesome";
       flake = false;
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     spicetify-nix = {
@@ -63,8 +56,7 @@
     };
 
     font-icons = {
-      url = "https://aur.archlinux.org/ttf-font-icons.git";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "git+https://aur.archlinux.org/ttf-font-icons";
       flake = false;
     };
   };
