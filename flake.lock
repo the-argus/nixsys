@@ -210,7 +210,8 @@
         "picom": "picom",
         "ranger-devicons": "ranger-devicons",
         "rose-pine-gtk": "rose-pine-gtk",
-        "spicetify-nix": "spicetify-nix"
+        "spicetify-nix": "spicetify-nix",
+        "spicetify-themes": "spicetify-themes"
       }
     },
     "rose-pine-gtk": {
@@ -246,6 +247,22 @@
       "original": {
         "owner": "the-argus",
         "repo": "spicetify-nix",
+        "type": "github"
+      }
+    },
+    "spicetify-themes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1654047104,
+        "narHash": "sha256-v6KRTeXYgsL6bVSAY7qRjBCnKKELe9SSx7FVNRkbiRU=",
+        "owner": "morpheusthewhite",
+        "repo": "spicetify-themes",
+        "rev": "dd7a7e13e0dc7a717cc06bba9ea04ed29d70a30e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "morpheusthewhite",
+        "repo": "spicetify-themes",
         "type": "github"
       }
     },

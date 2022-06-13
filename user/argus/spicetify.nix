@@ -1,4 +1,4 @@
-{ pkgs, lib, spicetify-nix, ... }:
+{ pkgs, lib, spicetify-nix, spicetify-themes, ... }:
 {
   # allow spotify to be installed if you don't have unfree enabled already
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
@@ -20,6 +20,7 @@
     in
     {
       enable = true;
+      themeSrc = spicetify-themes;
       theme = "Dribbblish";
       colorScheme = "horizon";
       enabledCustomApps = [ "reddit" ];
