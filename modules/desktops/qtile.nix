@@ -20,6 +20,7 @@ in
     };
 
     environment.systemPackages = with pkgs; [
+      alacritty
       xsuspender
       xmousepasteblock
       xfce.xfce4-clipman-plugin
