@@ -53,7 +53,8 @@ in
       noto-fonts-cjk
       liberation_ttf
       dina-font
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      victor-mono
+      (nerdfonts.override { fonts = [ "FiraCode" "VictorMono" ]; })
     ];
 
 

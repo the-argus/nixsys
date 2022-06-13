@@ -2,10 +2,25 @@
 {
   gtk =
     let
-      theme = import ./themes/kanagawa.nix {
+      kanagawa = import ./themes/kanagawa.nix {
         inherit kanagawa-gtk;
         stdenv = pkgs.stdenv;
         gtk-engine-murrine = pkgs.gtk-engine-murrine;
+      };
+
+      paperIcons = {
+        name = "Paper-Mono-Dark";
+        package = pkgs.paper-icon-theme;
+      };
+
+      rosePineIcons = {
+        name = "rose-pine-icons";
+        package = pkgs.rose-pine-gtk-theme;
+      };
+
+      rosePineTheme = {
+        name = "rose-pine-gtk";
+        package = pkgs.rose-pine-gtk-theme;
       };
     in
     {
@@ -23,15 +38,9 @@
         size = 16;
       };
 
-      iconTheme = {
-        name = "Paper-Mono-Dark";
-        package = pkgs.paper-icon-theme;
-      };
+      iconTheme = rosePineIcons;
 
-      theme = {
-        name = theme.name;
-        package = theme.pkg;
-      };
+      theme = rosePineTheme;
 
       gtk3 = {
         bookmarks = [

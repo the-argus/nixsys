@@ -56,5 +56,8 @@
     sumneko-lua-language-server
     rnix-lsp
     libclang
+
+    # appearance
+    rose-pine-gtk-theme
   ];
 }

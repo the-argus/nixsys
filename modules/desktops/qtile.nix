@@ -28,6 +28,8 @@ in
       rofi
       flameshot
       derivations.picom
+
+      libnotify # notify-send scripts
     ];
   };
 }
