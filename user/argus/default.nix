@@ -7,7 +7,7 @@
     ./gtk
     ./firefox.nix
     ./alacritty.nix
-    ./spicetify.nix
+    #./spicetify.nix
   ];
 
   # allow access to NUR
