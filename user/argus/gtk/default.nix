@@ -1,5 +1,11 @@
 { pkgs, kanagawa-gtk, rose-pine-gtk, ... }:
 {
+  home.file = {
+    ".config/gtk-4.0" = {
+      source = "${rose-pine-gtk}/gtk4";
+      recursive = true;
+    };
+  };
   gtk =
     let
       kanagawa = import ./themes/kanagawa.nix {

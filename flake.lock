@@ -208,7 +208,24 @@
         "nur": "nur",
         "nvim-config": "nvim-config",
         "picom": "picom",
-        "ranger-devicons": "ranger-devicons"
+        "ranger-devicons": "ranger-devicons",
+        "rose-pine-gtk": "rose-pine-gtk"
+      }
+    },
+    "rose-pine-gtk": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1651682403,
+        "narHash": "sha256-xdOTgGw4eVFZQhJs1tqOKF/oA+6MF/S6WddZ/wsR9GA=",
+        "owner": "rose-pine",
+        "repo": "gtk",
+        "rev": "44016dc3eab13b52039e755e1f7868fa7b0a7690",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rose-pine",
+        "repo": "gtk",
+        "type": "github"
       }
     },
     "utils": {
