@@ -1,12 +1,14 @@
-{ pkgs, spicetify-nix, ... }:
+{ pkgs, lib, spicetify-nix, ... }:
 {
-  # allow spotify to be installed
+  # allow spotify to be installed if you don't have unfree enabled already
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "spotify-unwrapped"
   ];
-
-  # imports = [ (import "${spicetify-nix}/module.nix") ];
-
+  
+  # import the flake's module
+  imports = [ spicetify-nix ];
+  
+  # configure spicetify :)
   programs.spicetify =
     let
       av = pkgs.fetchFromGitHub {
