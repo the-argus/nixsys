@@ -1,7 +1,6 @@
 from libqtile import layout
 from color import colors
 from libqtile.config import Match
-from custom_layouts import CustomTile
 
 BORDER_WIDTH = 2
 MARGIN = 9
@@ -18,14 +17,6 @@ INACTIVE_COLOR = colors["orange"]
 
 floating = layout.Floating(
     border_focus=ACTIVE_COLOR, border_normal=INACTIVE_COLOR, border_width=2
-)
-
-customtile = CustomTile(
-    border_width=BORDER_WIDTH,
-    margin=WINDOW_MARGIN,
-    margin_on_single=not SMART_GAPS,
-    border_focus=ACTIVE_COLOR,
-    border_normal=INACTIVE_COLOR,
 )
 
 tile = layout.Tile(
