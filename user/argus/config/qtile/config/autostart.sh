@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # enable dunst
 killall -SIGUSR2 dunst
