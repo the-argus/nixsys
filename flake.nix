@@ -33,6 +33,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    rose-pine-gtk = {
+      url = "github:rose-pine/gtk";
+      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     arkenfox-userjs = {
       url = "github:arkenfox/user.js";
       flake = false;
@@ -52,7 +58,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, arkenfox-userjs, picom, awesome, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, rose-pine-gtk, arkenfox-userjs, picom, awesome, ... }@inputs:
     let
       system = "x86_64-linux";
       username = "argus";

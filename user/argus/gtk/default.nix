@@ -1,9 +1,15 @@
-{ pkgs, kanagawa-gtk, ... }:
+{ pkgs, kanagawa-gtk, rose-pine-gtk, ... }:
 {
   gtk =
     let
       kanagawa = import ./themes/kanagawa.nix {
         inherit kanagawa-gtk;
+        stdenv = pkgs.stdenv;
+        gtk-engine-murrine = pkgs.gtk-engine-murrine;
+      };
+
+      rose-pine = import ./themes/rose-pine.nix {
+        inherit rose-pine-gtk;
         stdenv = pkgs.stdenv;
         gtk-engine-murrine = pkgs.gtk-engine-murrine;
       };
@@ -14,13 +20,13 @@
       };
 
       rosePineIcons = {
-        name = "rose-pine-icons";
-        package = pkgs.rose-pine-gtk-theme;
+        name = rose-pine.iconName;
+        package = rose-pine.pkg;
       };
 
       rosePineTheme = {
-        name = "rose-pine-gtk";
-        package = pkgs.rose-pine-gtk-theme;
+        name = rose-pine.name;
+        package = rose-pine.pkg;
       };
     in
     {
