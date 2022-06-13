@@ -45,7 +45,7 @@
     cava
 
     # cli
-    python310Packages.solo-python
+    solo2-cli
     transmission
     ani-cli
 
