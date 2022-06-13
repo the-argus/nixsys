@@ -56,9 +56,14 @@
       flake = false;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spicetify-nix = {
+      url = "github:the-argus/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, rose-pine-gtk, arkenfox-userjs, picom, awesome, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, rose-pine-gtk, arkenfox-userjs, picom, awesome, spicetify-nix, ... }@inputs:
     let
       system = "x86_64-linux";
       username = "argus";
