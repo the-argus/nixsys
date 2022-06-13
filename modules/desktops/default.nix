@@ -10,6 +10,7 @@ in
     ./wayland.nix
     ./xorg.nix
     ./ratpoison.nix
+    ./qtile.nix
   ];
 
 
