@@ -6,7 +6,7 @@
   ];
   
   # import the flake's module
-  imports = [ spicetify-nix ];
+  imports = [ spicetify-nix.homeManagerModule ];
   
   # configure spicetify :)
   programs.spicetify =
