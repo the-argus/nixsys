@@ -136,16 +136,13 @@ keys = [
     Key([], "XF86AudioLowerVolume", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/volume.sh down")), desc="Lower volume"),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/volume.sh up")), desc="Raise volume"),
 
-    Key([], "XF86MonBrightnessUp", lazy.spawn("sh " + os.path.expanduser("~/.scripts/backlight/increase.sh")), desc="Increase brightness"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("sh " + os.path.expanduser("~/.scripts/backlight/decrease.sh")), desc="Decrease brightness"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/brightness.sh up")), desc="Increase brightness"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/brightness.sh down")), desc="Decrease brightness"),
 
-    Key([], "Print", lazy.spawn("sh " + os.path.expanduser("~/.scripts/take-screenshot.sh")), desc="Take a screenshot"),
+    Key([], "Print", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/screenshot.sh")), desc="Take a screenshot"),
 
-    Key([mod], "c", lazy.spawn("clipcat-menu"), desc="Open clipboard manager"),
-    
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
     Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc="Toggle floating"),
-
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
