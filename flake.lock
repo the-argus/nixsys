@@ -137,11 +137,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1655144258,
-        "narHash": "sha256-xUzM3J8T/pY7INgtJvdx3r6LZ+V36qvU/LpPmNnBIJU=",
+        "lastModified": 1655154663,
+        "narHash": "sha256-AwlTRUTv+XsniYrPru5ncq+NOd+xpjunO06jJjunGCc=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "41e65f43a93814688b55302f4060049a0598da30",
+        "rev": "49298d4e46f36c9685f65f056de1610f8b0cf525",
         "type": "github"
       },
       "original": {
@@ -233,36 +233,19 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "spicetify-themes": "spicetify-themes"
+        ]
       },
       "locked": {
-        "lastModified": 1655154330,
-        "narHash": "sha256-runhZLY4thUNa2kv5kKm2nOEbAYj1HgyyhXEtKp4bfs=",
+        "lastModified": 1655158089,
+        "narHash": "sha256-4s4mdUR6HDOhg0q4aDP1viwNKsqz4kdThq+a3OYvXPA=",
         "owner": "the-argus",
         "repo": "spicetify-nix",
-        "rev": "23b8b86e3dac22880a75962918c8a3f29249f704",
+        "rev": "dea65cda40eb1e10458a195073b837b24052f1a8",
         "type": "github"
       },
       "original": {
         "owner": "the-argus",
         "repo": "spicetify-nix",
-        "type": "github"
-      }
-    },
-    "spicetify-themes": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1654047104,
-        "narHash": "sha256-v6KRTeXYgsL6bVSAY7qRjBCnKKELe9SSx7FVNRkbiRU=",
-        "owner": "morpheusthewhite",
-        "repo": "spicetify-themes",
-        "rev": "dd7a7e13e0dc7a717cc06bba9ea04ed29d70a30e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "morpheusthewhite",
-        "repo": "spicetify-themes",
         "type": "github"
       }
     },
