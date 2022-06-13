@@ -6,6 +6,7 @@
     ./git.nix
     ./gtk
     ./firefox.nix
+    ./alacritty.nix
   ];
 
   # allow access to NUR

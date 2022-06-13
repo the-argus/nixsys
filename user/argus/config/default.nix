@@ -4,5 +4,6 @@
         ./ranger
         ./neofetch
         ./zathura
+        ./qtile
     ];
 }
