@@ -50,7 +50,6 @@
     cava
 
     # cli
-    spicetify-cli
     solo2-cli
     python310Packages.solo-python
     transmission
