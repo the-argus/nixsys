@@ -1,4 +1,6 @@
-{ pkgs, config, inputs, lib, font-icons, ... }:
+{ pkgs, config, inputs, lib, 
+#font-icons,
+... }:
 let
   cfg = config.desktops;
   inherit (lib) mkIf mkEnableOption;
@@ -54,7 +56,7 @@ in
       liberation_ttf
       dina-font
       victor-mono
-      import ../../packages/font-icons.nix { inherit pkgs; inherit font-icons;}
+#      import ../../packages/font-icons.nix { inherit pkgs; inherit font-icons;}
       (nerdfonts.override { fonts = [ "FiraCode" "VictorMono" ]; })
     ];
 

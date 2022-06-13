@@ -1,6 +1,11 @@
 { pkgs, spicetify-nix, ... }:
 {
-  imports = [ (import "${spicetify-nix}/module.nix") ];
+  # allow spotify to be installed
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "spotify-unwrapped"
+  ];
+
+  # imports = [ (import "${spicetify-nix}/module.nix") ];
 
   programs.spicetify =
     let

@@ -18,11 +18,6 @@
     # allowUnfreePredicate = (pkgs: true);
   };
 
-  # allow spotify to be installed
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "spotify-unwrapped"
-  ];
-
   # extra packages
   home.packages = with pkgs; [
     # unfree :(

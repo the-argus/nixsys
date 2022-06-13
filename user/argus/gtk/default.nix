@@ -1,40 +1,52 @@
 { pkgs, kanagawa-gtk, rose-pine-gtk, ... }:
+
+let
+  kanagawa = import ./themes/kanagawa.nix {
+    inherit kanagawa-gtk;
+    stdenv = pkgs.stdenv;
+    gtk-engine-murrine = pkgs.gtk-engine-murrine;
+  };
+
+  rose-pine = import ./themes/rose-pine.nix {
+    inherit rose-pine-gtk;
+    stdenv = pkgs.stdenv;
+    gtk-engine-murrine = pkgs.gtk-engine-murrine;
+  };
+
+  paperIcons = {
+    name = "Paper-Mono-Dark";
+    package = pkgs.paper-icon-theme;
+  };
+
+  rosePineIcons = {
+    name = rose-pine.iconName;
+    package = rose-pine.pkg;
+  };
+
+  rosePineTheme = {
+    name = rose-pine.name;
+    package = rose-pine.pkg;
+  };
+
+  selectedCursorTheme = "Numix-Cursor";
+  selectedCursorPackage = pkgs.numix-cursor-theme;
+in
 {
   home.file = {
     ".config/gtk-4.0" = {
       source = "${rose-pine-gtk}/gtk4";
       recursive = true;
     };
+
+    # xorg cursor
+    ".icons/default/index.theme" = {
+      text = ''
+        [Icon Theme]
+        Inherits=${selectedCursorTheme}
+      '';
+    };
   };
   gtk =
-    let
-      kanagawa = import ./themes/kanagawa.nix {
-        inherit kanagawa-gtk;
-        stdenv = pkgs.stdenv;
-        gtk-engine-murrine = pkgs.gtk-engine-murrine;
-      };
-
-      rose-pine = import ./themes/rose-pine.nix {
-        inherit rose-pine-gtk;
-        stdenv = pkgs.stdenv;
-        gtk-engine-murrine = pkgs.gtk-engine-murrine;
-      };
-
-      paperIcons = {
-        name = "Paper-Mono-Dark";
-        package = pkgs.paper-icon-theme;
-      };
-
-      rosePineIcons = {
-        name = rose-pine.iconName;
-        package = rose-pine.pkg;
-      };
-
-      rosePineTheme = {
-        name = rose-pine.name;
-        package = rose-pine.pkg;
-      };
-    in
     {
       enable = true;
 
@@ -45,8 +57,8 @@
       };
 
       cursorTheme = {
-        name = "Numix-Cursor";
-        package = pkgs.numix-cursor-theme;
+        name = selectedCursorTheme;
+        package = selectedCursorPackage;
         size = 16;
       };
 

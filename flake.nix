@@ -55,13 +55,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    font-icons = {
-      url = "git+https://aur.archlinux.org/ttf-font-icons";
-      flake = false;
-    };
+    # font-icons = {
+    #   url = "git+https://aur.archlinux.org/ttf-font-icons";
+    #   flake = false;
+    # };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, rose-pine-gtk, arkenfox-userjs, picom, awesome, spicetify-nix, font-icons, ... }@inputs:
+  outputs = {   self, nixpkgs, home-manager, nur,
+                nvim-config, ranger-devicons, arkenfox-userjs,
+                kanagawa-gtk, rose-pine-gtk,
+                picom, awesome,
+                spicetify-nix,
+                # font-icons,
+                ... }@inputs:
     let
       system = "x86_64-linux";
       username = "argus";
