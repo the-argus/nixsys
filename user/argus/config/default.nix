@@ -6,5 +6,6 @@
         ./zathura
         ./qtile
         ./rofi
+        ./dunst
     ];
 }
