@@ -132,9 +132,9 @@ keys = [
     Key([mod], "space", lazy.spawn("sh " + os.path.expanduser("~/.scripts/rofi-launchpad.sh")), desc="Rofi"), 
     Key([mod], "p", lazy.spawn("sh " + os.path.expanduser("~/.scripts/rofi-powermenu.sh")), desc="Powermenu"),
 
-    Key([], "XF86AudioMute", lazy.spawn("sh " + os.path.expanduser("~/.scripts/sound/volume-mute.sh")), desc="Mute volume"),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("sh " + os.path.expanduser("~/.scripts/sound/volume-down.sh")), desc="Lower volume"),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("sh " + os.path.expanduser("~/.scripts/sound/volume-up.sh")), desc="Raise volume"),
+    Key([], "XF86AudioMute", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/volume.sh mute")), desc="Mute volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/volume.sh down")), desc="Lower volume"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/volume.sh up")), desc="Raise volume"),
 
     Key([], "XF86MonBrightnessUp", lazy.spawn("sh " + os.path.expanduser("~/.scripts/backlight/increase.sh")), desc="Increase brightness"),
     Key([], "XF86MonBrightnessDown", lazy.spawn("sh " + os.path.expanduser("~/.scripts/backlight/decrease.sh")), desc="Decrease brightness"),
@@ -226,7 +226,7 @@ reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
-auto_minimize = True
+auto_minimize = False
 
 #wmname = "LG3D"
 wmname = "qtile"

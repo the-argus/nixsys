@@ -18,7 +18,7 @@ DEFAULT_BG = colors["bg"]
 WIDTH=34
 
 def launcher(qtile):
-    lazy.spawn("sh " + os.path.expanduser("~/.scripts/rofi-launchpad.sh"))
+    lazy.spawn("sh " + os.path.expanduser("~/.local/bin/rofi-launchpad.sh"))
     
 
 groupbox = [widget.GroupBox, {

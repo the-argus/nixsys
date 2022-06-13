@@ -59,7 +59,7 @@ all_comiccode = {
 }
 
 # selected font set
-font = all_comiccode
+font = all_firacode
 # usually like to have this in a different, fancy font
 # windowname = "VictorMono Nerd Font SemiBold Italic"
-windowname = "Comic Code Italic"
+windowname = "VictorMono Nerd Font Semibold"

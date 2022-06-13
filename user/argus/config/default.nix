@@ -5,5 +5,6 @@
         ./neofetch
         ./zathura
         ./qtile
+        ./rofi
     ];
 }
