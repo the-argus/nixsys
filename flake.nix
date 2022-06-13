@@ -61,9 +61,15 @@
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    font-icons = {
+      url = "https://aur.archlinux.org/ttf-font-icons.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, rose-pine-gtk, arkenfox-userjs, picom, awesome, spicetify-nix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, nvim-config, ranger-devicons, kanagawa-gtk, rose-pine-gtk, arkenfox-userjs, picom, awesome, spicetify-nix, font-icons, ... }@inputs:
     let
       system = "x86_64-linux";
       username = "argus";

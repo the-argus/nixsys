@@ -237,11 +237,11 @@
         "spicetify-themes": "spicetify-themes"
       },
       "locked": {
-        "lastModified": 1655102780,
+        "lastModified": 1655103187,
         "narHash": "sha256-MIMzx3T62QdVhFrjkaX2OfsQTKHNvlLjIQ8DI6WZHGU=",
         "owner": "the-argus",
         "repo": "spicetify-nix",
-        "rev": "14c5a771a7b13c17bd51836817a67fe57c02e024",
+        "rev": "fbcd04425c7a9a2727df4660b78fa2cff61b2871",
         "type": "github"
       },
       "original": {
