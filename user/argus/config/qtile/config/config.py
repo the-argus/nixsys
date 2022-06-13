@@ -129,7 +129,7 @@ keys = [
     Key([], "XF86Calculator", lazy.spawn("gnome-calculator"), desc="Open calculator"), 
 
     # scripts
-    Key([mod], "space", lazy.spawn("sh " + os.path.expanduser("~/.scripts/rofi-launchpad.sh")), desc="Rofi"), 
+    Key([mod], "space", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/rofi-launchpad.sh")), desc="Rofi"), 
     Key([mod], "p", lazy.spawn("sh " + os.path.expanduser("~/.scripts/rofi-powermenu.sh")), desc="Powermenu"),
 
     Key([], "XF86AudioMute", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/volume.sh mute")), desc="Mute volume"),
