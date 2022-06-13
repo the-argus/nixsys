@@ -20,7 +20,7 @@
     in
     {
       enable = true;
-      themeSrc = spicetify-themes;
+      themesSrc = spicetify-themes;
       theme = "Dribbblish";
       colorScheme = "horizon";
       enabledCustomApps = [ "reddit" ];
