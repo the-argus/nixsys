@@ -54,7 +54,7 @@
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     spicetify-themes = {
       url = "github:morpheusthewhite/spicetify-themes";
       flake = false;
@@ -66,17 +66,37 @@
     # };
   };
 
-  outputs = {   self, nixpkgs, home-manager, nur,
-                nvim-config, ranger-devicons, arkenfox-userjs,
-                kanagawa-gtk, rose-pine-gtk,
-                picom, awesome,
-                spicetify-nix, spicetify-themes,
-                # font-icons,
-                ... }@inputs:
+  outputs =
+    { self
+    , nixpkgs
+    , home-manager
+    , nur
+    , nvim-config
+    , ranger-devicons
+    , arkenfox-userjs
+    , kanagawa-gtk
+    , rose-pine-gtk
+    , picom
+    , awesome
+    , spicetify-nix
+    , spicetify-themes
+    , # font-icons,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       username = "argus";
       pkgs = import nixpkgs { inherit system; };
+
+      overlays = [
+        (self: super: {
+        # better discord performance, if its not installed via flatpak
+          discord = super.discord.override {
+            commandLineArgs =
+              "--no-sandbox --enable-accelerated-mjpeg-decode --enable-accelerated-video --ignore-gpu-blacklist --enable-native-gpu-memory-buffers --enable-gpu-rasterization";
+          };
+        })
+      ];
     in
     {
       nixosConfigurations = {
@@ -85,7 +105,10 @@
           inherit system;
           specialArgs = inputs;
           modules = [
-            ./system/configuration.nix
+            {
+                nixpkgs.overlays = overlays;
+                imports = [ ./system/configuration.nix ];
+            }
           ];
         };
       };
@@ -93,7 +116,10 @@
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit system username;
         homeDirectory = "/home/${username}";
-        configuration = import ./user/${username};
+        configuration = {pkgs, ...}: {
+            imports = [ ./user/${username} ];
+            nixpkgs.overlays = overlays;
+        };
         stateVersion = "22.05";
         extraSpecialArgs = inputs;
       };
