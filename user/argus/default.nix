@@ -31,8 +31,7 @@
     surge-XT
     oxefmsynth
     bespokesynth
-    airwave
-    (import ../../packages/vst-sdk-archive.nix {inherit pkgs;})
+    (import ../../packages/airwave.nix {inherit pkgs; inherit lib;})
 
     # gui applications---------
     keepassxc
