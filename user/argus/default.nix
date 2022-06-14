@@ -32,7 +32,7 @@
     oxefmsynth
     bespokesynth
     airwave
-    (import ../../packages/vst-sdk-archive.nix)
+    (import ../../packages/vst-sdk-archive.nix {inherit pkgs;})
 
     # gui applications---------
     keepassxc
