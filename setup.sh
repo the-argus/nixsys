@@ -1,5 +1,7 @@
 #!/bin/sh
 
 # nix cant automatically download this file
-wget https://www.steinberg.net/vst3sdk -O vst-sdk.zip
-nix-store --add-fixed sha256 vst-sdk.zip
+# using a specific name that works with nixpkgs
+wget https://www.steinberg.net/vst3sdk -O vstsdk368_08_11_2017_build_121.zip
+
+nix-store --add-fixed sha256 vstsdk368_08_11_2017_build_121.zip
