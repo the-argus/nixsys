@@ -15,14 +15,24 @@
     packageOverrides = pkgs: {
       nur = nur { inherit pkgs; };
     };
-    # allowUnfreePredicate = (pkgs: true);
+    allowUnfreePredicate = (pkgs: true);
   };
 
   # extra packages
   home.packages = with pkgs; [
     # unfree :(
     # discord
-    # spotify-unwrapped
+    spotify-unwrapped
+    spicetify-cli
+
+    # music
+    reaper
+    zam-plugins
+    surge-XT
+    oxefmsynth
+    bespokesynth
+    airwave
+    (import ../../packages/vst-sdk-archive.nix)
 
     # gui applications---------
     keepassxc
@@ -59,4 +69,24 @@
     # appearance
     rose-pine-gtk-theme
   ];
+
+  # music plugins
+  home.file = {
+    ".vst/zam" = {
+      source = pkgs.zam-plugins;
+      recursive = true;
+    };
+    ".vst/surge" = {
+      source = pkgs.surge-XT;
+      recursive = true;
+    };
+    ".vst/oxe" = {
+      source = pkgs.oxefmsynth;
+      recursive = true;
+    };
+    ".vst/bespoke" = {
+      source = pkgs.bespokesynth;
+      recursive = true;
+    };
+  };
 }
