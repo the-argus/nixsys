@@ -27,11 +27,23 @@
 
     # music
     reaper
+    lmms
+    
+    # airwave is unfortunately out of date
+    #(import ../../packages/airwave.nix {inherit pkgs; inherit lib;})
+
+    # plugins
     zam-plugins
+    cardinal
+    # TODO: Fire distortion, Ruina distortion
+    # Gatelab, filterstep, and panflow (use panflow for 70s drums)
+    # deelay (kinda like valhalla supermassive)
+
+    synths
     surge-XT
     oxefmsynth
     bespokesynth
-    (import ../../packages/airwave.nix {inherit pkgs; inherit lib;})
+    bespokesynth-with-vst2
 
     # gui applications---------
     keepassxc
@@ -72,19 +84,19 @@
   # music plugins
   home.file = {
     ".vst/zam" = {
-      source = pkgs.zam-plugins;
+      source = "${pkgs.zam-plugins}/lib/vst";
       recursive = true;
     };
     ".vst/surge" = {
-      source = pkgs.surge-XT;
+      source = "${pkgs.surge-XT}/lib/vst3";
       recursive = true;
     };
     ".vst/oxe" = {
-      source = pkgs.oxefmsynth;
+      source = "${pkgs.oxefmsynth}/lib/lxvst";
       recursive = true;
     };
     ".vst/bespoke" = {
-      source = pkgs.bespokesynth;
+      source = "${pkgs.bespokesynth-with-vst2}";
       recursive = true;
     };
   };
