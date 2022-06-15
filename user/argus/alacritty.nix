@@ -45,15 +45,15 @@
         let
           palette = import ./color.nix { };
 
-          # convert to alacritty format colors
-          ac = c: "0x" ++ c;
+          prepend0x = color: "0x${color}";
+          alacrittyColorFormat = name: color: "0x${color}";
 
-          cursorSettings = builtins.mapAttrs ac {
+          cursorSettings = builtins.mapAttrs alacrittyColorFormat {
             text = palette.bg;
             cursor = palette.altfg;
           };
 
-          alacrittyPalette = builtins.mapAttrs ac {
+          alacrittyPalette = builtins.mapAttrs alacrittyColorFormat {
             black = palette.black;
             red = palette.red;
             green = palette.green;
@@ -65,7 +65,7 @@
           };
         in
         {
-          primary = builtins.mapAttrs ac {
+          primary = builtins.mapAttrs alacrittyColorFormat {
             background = palette.bg;
             foreground = palette.fg;
           };
@@ -79,7 +79,7 @@
           };
           selection = {
             text = "CellForeground";
-            background = palette.altbg;
+            background = prepend0x palette.altbg;
           };
           normal = alacrittyPalette;
           bright = alacrittyPalette;
