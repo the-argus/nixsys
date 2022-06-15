@@ -8,7 +8,7 @@
   #choose what host is being used (laptop or pc) ------------------------------
   imports =
     [
-      ../modules/hosts
+      ../hosts/laptop
     ];
 
   # everything that follows is host-agnostic configuration --------------------
