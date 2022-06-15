@@ -1,18 +1,21 @@
 { ... }:
 let
+  black = "6e6a86";
+  red = "eb6f92";
+  green = "9ccfd8";
+  yellow = "f6c177";
+  blue = "31748f";
+  magenta = "c4a7e7";
+  cyan = "ebbcba";
+  white = "e0def4";
 
-  black = "0x6e6a86";
-  red = "0xeb6f92";
-  green = "0x9ccfd8";
-  yellow = "0xf6c177";
-  blue = "0x31748f";
-  magenta = "0xc4a7e7";
-  cyan = "0xebbcba";
-  white = "0xe0def4";
-  
-  bg = "0x191724";
+  bg = "191724";
   fg = white;
-  in
+
+  # inverted, in this case
+  altbg = "2A2738";
+  altfg = "796268";
+in
 {
   inherit black;
   inherit red;
@@ -26,10 +29,8 @@ let
   inherit bg;
   inherit fg;
 
-  
-  # inverted, in this case
-  altbg = "0x2A2738";
-  altfg = "0x796268";
+  inherit altbg;
+  inherit altfg;
 
   c0 = black;
   c1 = red;
@@ -39,7 +40,7 @@ let
   c5 = magenta;
   c6 = cyan;
   c7 = white;
-  
+
   # dunst
   dunstbg = bg;
   dunstfg = fg;

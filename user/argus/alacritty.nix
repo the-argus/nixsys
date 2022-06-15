@@ -45,12 +45,15 @@
         let
           palette = import ./color.nix { };
 
-          cursorSettings = {
+          # convert to alacritty format colors
+          ac = c: "0x" ++ c;
+
+          cursorSettings = builtins.mapAttrs ac {
             text = palette.bg;
             cursor = palette.altfg;
           };
 
-          alacrittyPalette = {
+          alacrittyPalette = builtins.mapAttrs ac {
             black = palette.black;
             red = palette.red;
             green = palette.green;
@@ -62,7 +65,7 @@
           };
         in
         {
-          primary = {
+          primary = builtins.mapAttrs ac {
             background = palette.bg;
             foreground = palette.fg;
           };
