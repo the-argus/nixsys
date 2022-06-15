@@ -1,5 +1,6 @@
 { ... }:
-{
+let
+
   black = "0x6e6a86";
   red = "0xeb6f92";
   green = "0x9ccfd8";
@@ -8,6 +9,16 @@
   magenta = "0xc4a7e7";
   cyan = "0xebbcba";
   white = "0xe0def4";
+  in
+{
+  inherit black;
+  inherit red;
+  inherit green;
+  inherit yellow;
+  inherit blue;
+  inherit magenta;
+  inherit cyan;
+  inherit white;
 
   bg = "0x191724";
   fg = "0xe0def4";
