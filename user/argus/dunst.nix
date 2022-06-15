@@ -135,6 +135,6 @@
       };
     in
     {
-      ".config/dunst".text = dunstrc;
+      ".config/dunst/dunstrc".text = dunstrc;
     };
 }
