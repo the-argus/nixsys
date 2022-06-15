@@ -10,7 +10,7 @@
           # The maximum height of a single notification, excluding the frame.
           height = 50;
           # Position the notification in the top right corner
-          origin = top-right;
+          origin = "top-right";
 
           # Offset from the origin
           offset = "9x53";

@@ -7,6 +7,7 @@
     ./gtk
     ./firefox.nix
     ./alacritty.nix
+    ./dunst.nix
     #./spicetify.nix
   ];
 
