@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   home.file =
     let
-      p = import ../../color.nix {};
+      p = import ./color.nix {};
       dunstrc = pkgs.lib.generators.toINI { } {
         global = {
           transparency = 0;
