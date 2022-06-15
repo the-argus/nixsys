@@ -3,8 +3,32 @@
     let
       p = import ./color.nix {};
       dunstrc = pkgs.lib.generators.toINI { } {
+        urgency_low = {
+          background = ''"#${p.dunstbg}"'';
+          foreground = ''"#${p.dunstfg}"'';
+          highlight = ''"#${p.dunsthi}"'';
+          timeout = 3;
+          # Icon for notifications with low urgency, uncomment to enable
+          #default_icon = "/path/to/icon";
+        };
+
+        urgency_normal = {
+          timeout = 10;
+          background = ''"#${p.dunstbg}"'';
+          foreground = ''"#${p.dunstfg}"'';
+        };
+
+        urgency_critical = {
+          background = ''"#${p.dunstbg}"'';
+          foreground = ''"#${p.dunstfg}"'';
+          frame_color = ''"#${p.dunsturgent}"'';
+          timeout = 0;
+        };
+
         global = {
           transparency = 0;
+
+          font = "Monospace 12";
 
           width = 300;
           # The maximum height of a single notification, excluding the frame.
@@ -109,28 +133,6 @@
 
         experimental = {
           per_monitor_dpi = false;
-        };
-
-        urgency_low = {
-          background = ''"#${p.dunstbg}"'';
-          foreground = ''"#${p.dunstfg}"'';
-          highlight = ''"#${p.dunsthi}"'';
-          timeout = 3;
-          # Icon for notifications with low urgency, uncomment to enable
-          #default_icon = "/path/to/icon";
-        };
-
-        urgency_normal = {
-          timeout = 10;
-          background = ''"#${p.dunstbg}"'';
-          foreground = ''"#${p.dunstfg}"'';
-        };
-
-        urgency_critical = {
-          background = ''"#${p.dunstbg}"'';
-          foreground = ''"#${p.dunstfg}"'';
-          frame_color = ''"#${p.dunsturgent}"'';
-          timeout = 0;
         };
       };
     in
