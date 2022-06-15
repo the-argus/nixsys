@@ -39,7 +39,7 @@
     # Gatelab, filterstep, and panflow (use panflow for 70s drums)
     # deelay (kinda like valhalla supermassive)
 
-    synths
+    # synths
     surge-XT
     oxefmsynth
     bespokesynth
