@@ -43,7 +43,7 @@
 
       colors =
         let
-          palette = import ./color.nix;
+          palette = import ./color.nix { };
 
           cursorSettings = {
             text = palette.bg;
