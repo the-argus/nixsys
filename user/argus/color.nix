@@ -9,6 +9,9 @@ let
   magenta = "0xc4a7e7";
   cyan = "0xebbcba";
   white = "0xe0def4";
+  
+  bg = "0x191724";
+  fg = white;
   in
 {
   inherit black;
@@ -20,8 +23,9 @@ let
   inherit cyan;
   inherit white;
 
-  bg = "0x191724";
-  fg = "0xe0def4";
+  inherit bg;
+  inherit fg;
+
   
   # inverted, in this case
   altbg = "0x2A2738";
@@ -35,4 +39,10 @@ let
   c5 = magenta;
   c6 = cyan;
   c7 = white;
+  
+  # dunst
+  dunstbg = bg;
+  dunstfg = fg;
+  dunsthi = yellow;
+  dunsturgent = red;
 }
