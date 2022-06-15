@@ -28,7 +28,7 @@
     # music
     reaper
     lmms
-    
+
     # airwave is unfortunately out of date
     #(import ../../packages/airwave.nix {inherit pkgs; inherit lib;})
 
@@ -38,11 +38,12 @@
     # TODO: Fire distortion, Ruina distortion
     # Gatelab, filterstep, and panflow (use panflow for 70s drums)
     # deelay (kinda like valhalla supermassive)
+    wineWowPackages.full
 
     # synths
     surge-XT
     oxefmsynth
-    bespokesynth
+    # bespokesynth
     bespokesynth-with-vst2
 
     # gui applications---------
@@ -79,6 +80,19 @@
 
     # appearance
     rose-pine-gtk-theme
+    # paper-gtk-theme # Paper
+    # Icons: Lounge-aux
+    # Themes: Lounge Lounge-compact Lounge-night Lounge-night-compact
+    # lounge-gtk-theme
+    # juno-theme # Juno Juno-mirage Juno-ocean Juno-palenight
+    # graphite-gtk-theme # Graphite Graphite-dark Graphite-light Graphite-dark-hdpi Graphite-hdpi ....
+
+    # paper-icon-theme
+    # zafiro-icons
+    # pantheon.elementary-icon-theme
+    # material-icons
+    # numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
+    # capitaine-cursors
   ];
 
   # music plugins
