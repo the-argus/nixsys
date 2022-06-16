@@ -1,4 +1,4 @@
-{ pkgs, picom, ... }: {
+{ pkgs, picom, hardware, ... }: {
   home.file = 
 let
     picomPkg = import ../../../../packages/picom.nix
@@ -7,7 +7,7 @@ let
     laptopAutostart = ''
 # laptop has bluetooth and wireless
 ${pkgs.blueman}/bin/blueman-applet &
-${pkgs.network-manager-applet}/bin/nm-applet &
+${pkgs.networkmanagerapplet}/bin/nm-applet &
     '';
 
     pcAutostart = ''
@@ -25,7 +25,7 @@ in
 #!/bin/sh
 
 ${pkgs.dunst}/bin/dunst &
-${pkgs.xfce4.xfce4-clipman-plugin}/bin/xfce4-clipman &
+${pkgs.xfce.xfce4-clipman-plugin}/bin/xfce4-clipman &
 ${pkgs.xsuspender}/bin/xsuspender &
 ${pkgs.xclip}/bin/xclip &
 
@@ -37,6 +37,8 @@ picom --config ~/.config/qtile/config/picom.conf &
 
 # restore feh wallpaper
 $HOME/.fehbg
+${if hardware == "laptop" then laptopAutostart else ""}
+${if hardware == "pc" then pcAutostart else ""}
     '';
   };
 }

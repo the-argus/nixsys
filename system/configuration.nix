@@ -2,16 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, hardware, ... }:
 
 {
-  #choose what host is being used (laptop or pc) ------------------------------
-  imports =
-    [
-      ../hosts/laptop
-    ];
-
-  # everything that follows is host-agnostic configuration --------------------
+  #choose what host is being used (laptop or pc)
+  imports = [] ++ 
+      (if hardware == "laptop" then [../hosts/laptop] else []) ++
+      (if hardware == "pc" then [../hosts/pc] else []);
 
   # kernel version
   boot.kernelPackages = pkgs.linuxPackages_latest;

@@ -97,13 +97,16 @@
           };
         })
       ];
+    
+    # whether to use laptop or PC configuration
+    hardware = "laptop";
     in
     {
       nixosConfigurations = {
         # hostname (evil)
         evil = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = inputs;
+          specialArgs = inputs // { inherit hardware; };
           modules = [
             {
                 nixpkgs.overlays = overlays;
@@ -121,7 +124,7 @@
             nixpkgs.overlays = overlays;
         };
         stateVersion = "22.05";
-        extraSpecialArgs = inputs;
+        extraSpecialArgs = inputs // { inherit hardware; };
       };
 
       devShell.${system} =
