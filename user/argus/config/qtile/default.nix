@@ -58,7 +58,7 @@
             "yellow": "#${p.yellow}",
             "blue": "#${p.blue}",
             "magenta": "#${p.magenta}",
-            "cyan": "#${p.cyan}",
+            "cyan": "#${p.altbg3}",
             "white": "#${p.white}",
             "orange": "#${p.black}",
             "pink": "#${p.altbg}"

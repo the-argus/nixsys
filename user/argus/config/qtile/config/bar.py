@@ -74,7 +74,7 @@ logo_image = [ widget.Image, {
         "margin" : 3,
         "filename" : "~/.config/qtile/icon/artixlinux-logo-flat.png",
         "mouse_callbacks":{
-            "Button1": lazy.spawn("sh " + os.path.expanduser("~/.scripts/rofi-launchpad.sh"))
+            "Button1": launcher(qtile)
         },
     }
 ]
@@ -89,7 +89,7 @@ logo = [widget.TextBox, {
                 "background": colors["magenta"],
                 "foreground": colors["bg"],
                 "mouse_callbacks":{
-                    "Button1": lazy.spawn("sh " + os.path.expanduser("~/.scripts/rofi-launchpad.sh")) 
+                    "Button1": launcher(qtile)
                 },
             }
         ]
