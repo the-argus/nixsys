@@ -8,7 +8,7 @@
     ./firefox.nix
     ./alacritty.nix
     ./dunst.nix
-    ./zathura
+    ./zathura.nix
     #./spicetify.nix
   ];
 

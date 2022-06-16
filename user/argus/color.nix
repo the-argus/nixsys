@@ -39,7 +39,7 @@ in
   
   # similar to regular bg
   inherit altbg2;
-  inherit altbg2;
+  inherit altfg2;
   
   inherit altbg3;
 
