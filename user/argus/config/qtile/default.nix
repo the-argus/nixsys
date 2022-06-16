@@ -15,7 +15,7 @@
         ${pkgs.xmousepasteblock}/bin/xmousepasteblock &
       '';
 
-      p = import ../../color.nix {};
+      p = import ../../color.nix { };
     in
     {
       ".config/qtile" = {
@@ -23,25 +23,28 @@
         recursive = true;
       };
 
-      ".config/qtile/autostart.sh".text = ''
-        #!/bin/sh
+      ".config/qtile/autostart.sh" = {
+        text = ''
+          #!/bin/sh
 
-        ${pkgs.dunst}/bin/dunst &
-        ${pkgs.xfce.xfce4-clipman-plugin}/bin/xfce4-clipman &
-        ${pkgs.xsuspender}/bin/xsuspender &
-        ${pkgs.xclip}/bin/xclip &
+          ${pkgs.dunst}/bin/dunst &
+          ${pkgs.xfce.xfce4-clipman-plugin}/bin/xfce4-clipman &
+          ${pkgs.xsuspender}/bin/xsuspender &
+          ${pkgs.xclip}/bin/xclip &
 
-        # start picom fr
-        # ${picomPkg}/bin/picom --config ~/.config/qtile/config/picom.conf &
+          # start picom fr
+          # ${picomPkg}/bin/picom --config ~/.config/qtile/config/picom.conf &
 
-        # start picom IF we have it installed
-        picom --config ~/.config/qtile/config/picom.conf &
+          # start picom IF we have it installed
+          picom --config ~/.config/qtile/config/picom.conf &
 
-        # restore feh wallpaper
-        $HOME/.fehbg
-        ${if hardware == "laptop" then laptopAutostart else ""}
-        ${if hardware == "pc" then pcAutostart else ""}
-      '';
+          # restore feh wallpaper
+          $HOME/.fehbg
+          ${if hardware == "laptop" then laptopAutostart else ""}
+          ${if hardware == "pc" then pcAutostart else ""}
+        '';
+        executable = true;
+      };
 
 
       ".config/qtile/color.py".text = ''
