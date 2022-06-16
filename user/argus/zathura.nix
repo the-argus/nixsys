@@ -4,7 +4,7 @@
       p = import ./color.nix { };
     in
     {
-      ".config/zathura" = {
+      ".config/zathura/zathurarc" = {
         text = ''
           set selection-clipboard clipboard
           set recolor                     "true"
