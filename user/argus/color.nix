@@ -17,6 +17,7 @@ let
   altfg = "796268";
 
   altbg2 = "1f1d2e";
+  altbg3 = "555169";
 in
 {
   inherit black;
@@ -36,6 +37,7 @@ in
   
   # similar to regular bg
   inherit altbg2;
+  inherit altbg3;
 
   c0 = black;
   c1 = red;

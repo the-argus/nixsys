@@ -51,7 +51,7 @@
         colors = {
             "bg": "#${p.altbg2}",
             "fg": "#${p.white}",
-            "fg_gutter": "#${p.cyan}",
+            "fg_gutter": "#${p.altbg3}",
             "black": "#${p.bg}",
             "red": "#${p.red}",
             "green": "#${p.green}",
