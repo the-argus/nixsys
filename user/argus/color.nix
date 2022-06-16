@@ -15,8 +15,10 @@ let
   # inverted, in this case
   altbg = "2A2738";
   altfg = "796268";
-
+  
+  altfg2 = "26233a";
   altbg2 = "1f1d2e";
+
   altbg3 = "555169";
 in
 {
@@ -37,6 +39,8 @@ in
   
   # similar to regular bg
   inherit altbg2;
+  inherit altbg2;
+  
   inherit altbg3;
 
   c0 = black;

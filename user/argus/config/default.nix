@@ -3,7 +3,6 @@
         ./nvim
         ./ranger
         ./neofetch
-        ./zathura
         ./qtile
         ./rofi
     ];

@@ -8,6 +8,7 @@
     ./firefox.nix
     ./alacritty.nix
     ./dunst.nix
+    ./zathura
     #./spicetify.nix
   ];
 
@@ -56,6 +57,7 @@
     sxiv
     kitty
     mpv
+    zathura
 
 
     pinta
