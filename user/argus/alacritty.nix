@@ -25,7 +25,7 @@
           main = "Fira Code";
         in
         {
-          size = 11;
+          size = 9;
           normal.family = main;
           bold.family = main;
           italic.family = main;
