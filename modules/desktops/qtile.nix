@@ -1,9 +1,9 @@
-{ lib, config, pkgs, picom, ... }:
+{ lib, config, pkgs, picom, unstable, ... }:
 let
   cfg = config.desktops.qtile;
   derivations = {
     picom = import ../../packages/picom.nix
-        { inherit pkgs; inherit picom;}; 
+        { pkgs = unstable; inherit picom;}; 
   };
   inherit (lib) mkIf mkEnableOption;
 in

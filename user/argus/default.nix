@@ -1,4 +1,4 @@
-{ pkgs, lib, nur, ... }: {
+{ pkgs, unstable, lib, nur, ... }: {
   imports = [
     ./config # configures *everything* that can't be done in nix
     ./local
@@ -9,15 +9,20 @@
     ./alacritty.nix
     ./dunst.nix
     ./zathura.nix
-    #./spicetify.nix
+    # ./spicetify.nix
   ];
 
   # allow access to NUR
   nixpkgs.config = {
-    packageOverrides = pkgs: {
-      nur = nur { inherit pkgs; };
-    };
-    allowUnfreePredicate = (pkgs: true);
+    # packageOverrides = pkgs: {
+    #   nur = nur { inherit pkgs; };
+    # };
+    # allowUnfreePredicate = (pkgs: true);
+    # allow spotify to be installed if you don't have unfree enabled already
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "spotify-unwrapped"
+      "reaper"
+    ];
   };
 
   # extra packages
@@ -36,7 +41,7 @@
 
     # plugins
     zam-plugins
-    cardinal
+    unstable.cardinal
     # TODO: Fire distortion, Ruina distortion
     # Gatelab, filterstep, and panflow (use panflow for 70s drums)
     # deelay (kinda like valhalla supermassive)
@@ -52,7 +57,7 @@
     keepassxc
     pcmanfm
     gnome.gnome-calculator
-    heroic
+    unstable.heroic
     pavucontrol
     sxiv
     kitty
@@ -62,7 +67,7 @@
 
     pinta
     # color palette
-    wl-color-picker
+    unstable.wl-color-picker
     epick
     pngquant
 
@@ -70,9 +75,9 @@
     cava
 
     # cli
-    solo2-cli
+    unstable.solo2-cli
     transmission
-    ani-cli
+    unstable.ani-cli
 
     # dev
     nodejs

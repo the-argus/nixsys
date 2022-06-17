@@ -1,4 +1,4 @@
-{ lib, config, pkgs, picom, ... }:
+{ lib, config, options, pkgs, picom, ... }:
 let
   cfg = config.desktops.xorg;
   inherit (lib) mkIf mkEnableOption;
@@ -21,11 +21,15 @@ in
 
       # disable stuff I don't need
       useGlamor = false;
-      excludePackages = with pkgs; [
-        xterm
-        xorg.xf86inputevdev.out
-      ];
-    };
+    }
+    // (if options.services.xserver ? "excludePackages" then
+      {
+        excludePackages = with pkgs; [
+          xterm
+          xorg.xf86inputevdev.out
+        ];
+      }
+    else { });
 
     environment.systemPackages = with pkgs; [
       feh

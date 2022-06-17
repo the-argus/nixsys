@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, hardware, ... }:
+{ config, pkgs, unstable, hardware, ... }:
 
 {
   #choose what host is being used (laptop or pc)
@@ -61,7 +61,7 @@ LABEL="solokeys_end"'';
   environment.systemPackages = with pkgs; [
     # tui applications
     ranger
-    neovim
+    unstable.neovim
     htop
 
     # cli applications
