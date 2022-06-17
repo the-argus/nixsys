@@ -50,15 +50,15 @@
       flake = false;
     };
 
-    spicetify-nix = {
-      url = "github:the-argus/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    spicetify-themes = {
-      url = "github:morpheusthewhite/spicetify-themes";
-      flake = false;
-    };
+    # spicetify-nix = {
+    #   url = "github:the-argus/spicetify-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    #
+    # spicetify-themes = {
+    #   url = "github:morpheusthewhite/spicetify-themes";
+    #   flake = false;
+    # };
 
     # font-icons = {
     #   url = "git+https://aur.archlinux.org/ttf-font-icons";
@@ -79,10 +79,10 @@
     , rose-pine-gtk
     , picom
     , awesome
-    , spicetify-nix
-    , spicetify-themes
-    , # font-icons,
-      ...
+    # , spicetify-nix
+    # , spicetify-themes
+    # , font-icons
+    ,  ...
     }@inputs:
     let
       system = "x86_64-linux";
