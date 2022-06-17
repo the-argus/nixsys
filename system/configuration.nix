@@ -11,7 +11,7 @@
       (if hardware == "pc" then [../hosts/pc] else []);
 
   # kernel version
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = unstable.linuxPackages_latest;
 
   # PAM authentication for yubikey/solokey
   # line to add with mkOverride: "auth       required   pam_u2f.so"
