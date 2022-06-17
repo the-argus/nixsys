@@ -152,11 +152,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1655438881,
-        "narHash": "sha256-bbodx1uMbLihOn4LNidNqKLs66xGH6fkZaUz38xHaXI=",
+        "lastModified": 1655456594,
+        "narHash": "sha256-d6a05XY1mDzp9GVZRbCfooyxyGfvspDjcu4/eDj2Iik=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "3d02f72e61403bb14e97780e0b1fc160517a8907",
+        "rev": "e0ad6195314caf1ecefef531fc893b45def46e6c",
         "type": "github"
       },
       "original": {
@@ -168,11 +168,11 @@
     "nvim-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1654712355,
-        "narHash": "sha256-UGYiA2D1r84wfmZZ4ToTB0WijokfrosRrqZeKLAkIFU=",
+        "lastModified": 1655483225,
+        "narHash": "sha256-aLShlWgiYoU8qUUMm98QF/LhEakD3foHMYCDOU6XLVc=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "3a8880c26faa22bd869d1f66aa4ea085aedaa4bb",
+        "rev": "bdaa870326bf3cfd383f361b76f44f6394c81cad",
         "type": "github"
       },
       "original": {
@@ -225,9 +225,7 @@
         "nvim-config": "nvim-config",
         "picom": "picom",
         "ranger-devicons": "ranger-devicons",
-        "rose-pine-gtk": "rose-pine-gtk",
-        "spicetify-nix": "spicetify-nix",
-        "spicetify-themes": "spicetify-themes"
+        "rose-pine-gtk": "rose-pine-gtk"
       }
     },
     "rose-pine-gtk": {
@@ -243,42 +241,6 @@
       "original": {
         "owner": "rose-pine",
         "repo": "gtk",
-        "type": "github"
-      }
-    },
-    "spicetify-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1655175963,
-        "narHash": "sha256-bdYcsKaxeTa5Q6hTOKpKo1VjibIxtWQB1KUL+PumTH4=",
-        "owner": "the-argus",
-        "repo": "spicetify-nix",
-        "rev": "819ebf64fdf998726498444369aee582ed9906c4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "the-argus",
-        "repo": "spicetify-nix",
-        "type": "github"
-      }
-    },
-    "spicetify-themes": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1654047104,
-        "narHash": "sha256-v6KRTeXYgsL6bVSAY7qRjBCnKKELe9SSx7FVNRkbiRU=",
-        "owner": "morpheusthewhite",
-        "repo": "spicetify-themes",
-        "rev": "dd7a7e13e0dc7a717cc06bba9ea04ed29d70a30e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "morpheusthewhite",
-        "repo": "spicetify-themes",
         "type": "github"
       }
     },
