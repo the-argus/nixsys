@@ -9,7 +9,7 @@
     ./alacritty.nix
     ./dunst.nix
     ./zathura.nix
-    # ./spicetify.nix
+    ./spicetify.nix
   ];
 
   # allow access to NUR
@@ -78,6 +78,7 @@
     unstable.solo2-cli
     transmission
     unstable.ani-cli
+    nix-prefetch-scripts
 
     # dev
     nodejs

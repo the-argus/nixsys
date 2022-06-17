@@ -50,15 +50,10 @@
       flake = false;
     };
 
-    # spicetify-nix = {
-    #   url = "github:the-argus/spicetify-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    #
-    # spicetify-themes = {
-    #   url = "github:morpheusthewhite/spicetify-themes";
-    #   flake = false;
-    # };
+    spicetify-nix = {
+      url = "github:the-argus/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # font-icons = {
     #   url = "git+https://aur.archlinux.org/ttf-font-icons";
@@ -80,7 +75,6 @@
     , picom
     , awesome
     # , spicetify-nix
-    # , spicetify-themes
     # , font-icons
     ,  ...
     }@inputs:

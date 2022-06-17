@@ -105,11 +105,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1655306633,
-        "narHash": "sha256-nv4FfWWV/dEelByjXJtJkoDPOHIsKfLq50RN3Hqq5Yk=",
+        "lastModified": 1655400192,
+        "narHash": "sha256-49OBVVRgb9H/PSmNT9W61+NRdDbuSJVuDDflwXlaUKU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b1957596ff1c7aa8c55c4512b7ad1c9672502e8e",
+        "rev": "3d7435c638baffaa826b85459df0fff47f12317d",
         "type": "github"
       },
       "original": {
@@ -152,11 +152,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1655456594,
-        "narHash": "sha256-d6a05XY1mDzp9GVZRbCfooyxyGfvspDjcu4/eDj2Iik=",
+        "lastModified": 1655488358,
+        "narHash": "sha256-oXZqOLTv9Llmq7X+ev2jie9YncLiSpgPbw7Duf/I7ps=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "e0ad6195314caf1ecefef531fc893b45def46e6c",
+        "rev": "5d73df697d26351ae5b43eb1cfe6bdc0d9ae030f",
         "type": "github"
       },
       "original": {
@@ -168,11 +168,11 @@
     "nvim-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1655483225,
-        "narHash": "sha256-aLShlWgiYoU8qUUMm98QF/LhEakD3foHMYCDOU6XLVc=",
+        "lastModified": 1655483841,
+        "narHash": "sha256-7U2ig6AR9lWpBl0kxTqRcyZGqLu13571IwnQucPkUUI=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "bdaa870326bf3cfd383f361b76f44f6394c81cad",
+        "rev": "4c18434b071f7e8c9499641a5f2497b467138a0f",
         "type": "github"
       },
       "original": {
@@ -225,7 +225,8 @@
         "nvim-config": "nvim-config",
         "picom": "picom",
         "ranger-devicons": "ranger-devicons",
-        "rose-pine-gtk": "rose-pine-gtk"
+        "rose-pine-gtk": "rose-pine-gtk",
+        "spicetify-nix": "spicetify-nix"
       }
     },
     "rose-pine-gtk": {
@@ -241,6 +242,26 @@
       "original": {
         "owner": "rose-pine",
         "repo": "gtk",
+        "type": "github"
+      }
+    },
+    "spicetify-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1655491562,
+        "narHash": "sha256-faVm9+wWpkOnjF+gfFk4XEALB/STAys4VcVM4d2VJZg=",
+        "owner": "the-argus",
+        "repo": "spicetify-nix",
+        "rev": "05b6b64861c80e1f4607426d5a83205c3d03cf32",
+        "type": "github"
+      },
+      "original": {
+        "owner": "the-argus",
+        "repo": "spicetify-nix",
         "type": "github"
       }
     },
