@@ -46,7 +46,7 @@
     surge-XT
     oxefmsynth
     # bespokesynth
-    bespokesynth-with-vst2
+    # bespokesynth-with-vst2
 
     # gui applications---------
     keepassxc
@@ -112,9 +112,9 @@
       source = "${pkgs.oxefmsynth}/lib/lxvst";
       recursive = true;
     };
-    ".vst/bespoke" = {
-      source = "${pkgs.bespokesynth-with-vst2}";
-      recursive = true;
-    };
+    # ".vst/bespoke" = {
+    #   source = "${pkgs.bespokesynth-with-vst2}";
+    #   recursive = true;
+    # };
   };
 }

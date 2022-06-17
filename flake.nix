@@ -2,8 +2,8 @@
   description = "the-argus nixos system configuration";
 
   inputs = {
-    #nixpkgs.url = "nixpkgs/nixos-21.11";
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-21.11";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       # home manager use out nixpkgs and not its own
@@ -87,6 +87,8 @@
       system = "x86_64-linux";
       username = "argus";
       pkgs = import nixpkgs { inherit system; };
+      # unstable = import nixpkgs-unstable { inherit system; };
+      unstable = nixpkgs-unstable.legacyPackages.${system};
 
       overlays = [
         (self: super: {
@@ -106,7 +108,7 @@
         # hostname (evil)
         evil = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = inputs // { inherit hardware; };
+          specialArgs = inputs // { inherit hardware; inherit unstable; };
           modules = [
             {
                 nixpkgs.overlays = overlays;
@@ -124,7 +126,7 @@
             nixpkgs.overlays = overlays;
         };
         stateVersion = "22.05";
-        extraSpecialArgs = inputs // { inherit hardware; };
+        extraSpecialArgs = inputs // { inherit hardware; inherit unstable; };
       };
 
       devShell.${system} =
