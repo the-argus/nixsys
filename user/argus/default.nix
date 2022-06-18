@@ -9,7 +9,7 @@
     ./alacritty.nix
     ./dunst.nix
     ./zathura.nix
-    ./spicetify.nix
+    # ./spicetify.nix
   ];
 
   # allow access to NUR
