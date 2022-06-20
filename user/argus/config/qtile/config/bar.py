@@ -61,7 +61,7 @@ systray = [widget.Systray, {
     ]
 
 spacer_small = [ widget.Spacer, {
-        "length" : 5,
+        "length" : 14,
         # these values are used by style func, not qtile
         "is_spacer": True,
         "inheirit": True,
@@ -71,7 +71,7 @@ spacer_small = [ widget.Spacer, {
 
 logo_image = [ widget.Image, {
         "background": colors["magenta"],
-        "margin" : 3,
+        "margin" : 6,
         "filename" : "~/.config/qtile/config/nixlogo-rosepine.png",
         "mouse_callbacks":{
             "Button1": launcher(qtile)
