@@ -74,9 +74,9 @@
     , rose-pine-gtk
     , picom
     , awesome
-    # , spicetify-nix
-    # , font-icons
-    ,  ...
+      # , spicetify-nix
+      # , font-icons
+    , ...
     }@inputs:
     let
       system = "x86_64-linux";
@@ -87,16 +87,16 @@
 
       overlays = [
         (self: super: {
-        # better discord performance, if its not installed via flatpak
+          # better discord performance, if its not installed via flatpak
           discord = super.discord.override {
             commandLineArgs =
               "--no-sandbox --enable-accelerated-mjpeg-decode --enable-accelerated-video --ignore-gpu-blacklist --enable-native-gpu-memory-buffers --enable-gpu-rasterization";
           };
         })
       ];
-    
-    # whether to use laptop or PC configuration
-    hardware = "laptop";
+
+      # whether to use laptop or PC configuration
+      hardware = "laptop";
     in
     {
       nixosConfigurations = {
@@ -106,19 +106,20 @@
           specialArgs = inputs // { inherit hardware; inherit unstable; };
           modules = [
             {
-                nixpkgs.overlays = overlays;
-                imports = [ ./system/configuration.nix ];
+              nixpkgs.overlays = overlays;
+              imports = [ ./system/configuration.nix ];
             }
           ];
         };
       };
 
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
         inherit system username;
         homeDirectory = "/home/${username}";
-        configuration = {pkgs, ...}: {
-            imports = [ ./user/${username} ];
-            nixpkgs.overlays = overlays;
+        configuration = { pkgs, ... }: {
+          imports = [ ./user/${username} ];
+          nixpkgs.overlays = overlays;
         };
         stateVersion = "22.05";
         extraSpecialArgs = inputs // { inherit hardware; inherit unstable; };
