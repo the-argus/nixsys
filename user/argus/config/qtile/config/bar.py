@@ -72,7 +72,7 @@ spacer_small = [ widget.Spacer, {
 logo_image = [ widget.Image, {
         "background": colors["magenta"],
         "margin" : 3,
-        "filename" : "~/.config/qtile/config/nixlogo-rosepine.jpg",
+        "filename" : "~/.config/qtile/config/nixlogo-rosepine.png",
         "mouse_callbacks":{
             "Button1": launcher(qtile)
         },
