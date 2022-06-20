@@ -66,6 +66,7 @@
 
 
     pinta
+    inkscape
     # color palette
     unstable.wl-color-picker
     epick
@@ -116,6 +117,10 @@
     };
     ".vst/oxe" = {
       source = "${pkgs.oxefmsynth}/lib/lxvst";
+      recursive = true;
+    };
+    ".vst/cardinal" = {
+      source = "${unstable.cardinal}/lib";
       recursive = true;
     };
     # ".vst/bespoke" = {
