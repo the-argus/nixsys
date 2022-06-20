@@ -72,7 +72,7 @@ spacer_small = [ widget.Spacer, {
 logo_image = [ widget.Image, {
         "background": colors["magenta"],
         "margin" : 3,
-        "filename" : "~/.config/qtile/icon/artixlinux-logo-flat.png",
+        "filename" : "~/.config/qtile/config/nixlogo-rosepine.jpg",
         "mouse_callbacks":{
             "Button1": launcher(qtile)
         },
@@ -170,7 +170,8 @@ time = [widget.Clock, {
 def widgetlist():
     return [
         spacer_small,
-        logo,
+        # logo,
+        logo_image,
         groupbox,
         windowname,
         systray,
