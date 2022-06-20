@@ -34,6 +34,8 @@ in
     environment.systemPackages = with pkgs; [
       feh
       xclip
+      xcolor
+      ueberzug
       xorg.xauth
       xorg.xf86inputsynaptics
       xorg.xf86inputmouse
