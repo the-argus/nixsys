@@ -225,8 +225,7 @@
         "nvim-config": "nvim-config",
         "picom": "picom",
         "ranger-devicons": "ranger-devicons",
-        "rose-pine-gtk": "rose-pine-gtk",
-        "spicetify-nix": "spicetify-nix"
+        "rose-pine-gtk": "rose-pine-gtk"
       }
     },
     "rose-pine-gtk": {
@@ -242,26 +241,6 @@
       "original": {
         "owner": "rose-pine",
         "repo": "gtk",
-        "type": "github"
-      }
-    },
-    "spicetify-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1655504565,
-        "narHash": "sha256-IX7pRgp9ZHqlfyatWppKZ2Ovo1EotgUKU+2NqZ10rvE=",
-        "owner": "the-argus",
-        "repo": "spicetify-nix",
-        "rev": "8196cd1da714b286043a8502e445d7dc23c847c7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "the-argus",
-        "repo": "spicetify-nix",
         "type": "github"
       }
     },
