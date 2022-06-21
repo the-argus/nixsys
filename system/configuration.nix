@@ -64,6 +64,7 @@ LABEL="solokeys_end"'';
     unstable.neovim
     htop
     lynx
+    w3m
 
     # cli applications
     neofetch
