@@ -63,6 +63,7 @@ LABEL="solokeys_end"'';
     ranger
     unstable.neovim
     htop
+    lynx
 
     # cli applications
     neofetch
