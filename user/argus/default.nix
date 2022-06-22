@@ -60,7 +60,8 @@
     # sorcer
     # rkrlv2
     # plujain-ramp
-
+    
+    # https://www.youtube.com/playlist?list=PLCXbZyyqusu3b3_CD6gHj4fKHE4AiesnJ
     # TODO: Fire distortion, Ruina distortion
     # AIRWINDOWS (NC-17 is cool)
     # Gatelab, filterstep, and panflow (use panflow for 70s drums)
