@@ -42,9 +42,48 @@
     # plugins
     zam-plugins
     unstable.cardinal
+
+    ChowPhaser
+    ChowKick
+    ChowCentaur
+    CHOWTapeModel
+    airwindows-lv2
+    odin2
+
+    tunefish
+    
+    # need to look up what these are (nix search lv2)
+    # talentedhack # autotalent ported to lv2
+    # x42-plugins
+    # vocproc
+    # x42-avldrums
+    # sorcer
+    # rkrlv2
+    # plujain-ramp
+
     # TODO: Fire distortion, Ruina distortion
+    # AIRWINDOWS (NC-17 is cool)
     # Gatelab, filterstep, and panflow (use panflow for 70s drums)
+    # Surge FX (Surge XT effects separated)
     # deelay (kinda like valhalla supermassive)
+    # driftmaker delay disentegration (creepy digital delay)
+    # emergence - grain delay thing, very visual, trip-hop-ey
+    # fogpad (open source babeyyy, check out the creator)
+    # PSP pianoverb (simulates having a sustaining piano in the room when a loud sound is played)
+    # all the CHOW plugins, CHOW matrix works on linux, open source
+    # GSatPlus (excellent sounding free saturation plugin)
+    # Burier (also saturation, absolutely destroys shit, can be a cool distortion pedal)
+    #           https://www.youtube.com/watch?v=lw03654HndM&list=PLCXbZyyqusu3b3_CD6gHj4fKHE4AiesnJ&index=3
+    # Melda Free Bundle https://www.meldaproduction.com/MFreeFXBundle
+    # Channe V (de-esser, compressor, limiter, pre, tape) analog obsession
+    # PreBox (analog obsession, saturation-ey mix glue thing)
+    # Magic Dice by baby audio (random delay)
+    # Amplitube CS (stompboxes tuner preamps and shit, freemium though)
+    # TDR Nova
+    # Zebralette U-he
+    
+    # other plugins i should get:
+    # modartt pianoteq 
     wineWowPackages.full
 
     # synths
