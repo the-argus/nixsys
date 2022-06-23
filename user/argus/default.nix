@@ -176,7 +176,7 @@
       recursive = true;
     };
     ".vst/CHOW/Centaur" = {
-      source = "${unstable.Centaur}";
+      source = "${unstable.ChowCentaur}";
       recursive = true;
     };
     ".vst/CHOW/TapeModel" = {
