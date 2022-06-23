@@ -2,12 +2,12 @@
 
 mode=$1
 
-increment=+2%
+increment=2%
 
 if [ $mode = "up" ]; then
-    pactl set-sink-volume @DEFAULT_SINK@ $increment
+    pactl set-sink-volume @DEFAULT_SINK@ +$increment
 elif [ $mode = "down" ]; then
-    pactl set-sink-volume @DEFAULT_SINK@ $increment
+    pactl set-sink-volume @DEFAULT_SINK@ -$increment
 elif [ $mode = "mute" ]; then
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 fi
