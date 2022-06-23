@@ -6,7 +6,6 @@
     # music
     reaper
     lmms
-    bitwig-studio
 
     # vst emulation
     wineWowPackages.full

@@ -23,7 +23,6 @@
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       "spotify-unwrapped"
       "reaper"
-      "bitwig-studio"
     ];
   };
 
