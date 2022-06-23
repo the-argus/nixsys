@@ -2,10 +2,12 @@
 
 mode=$1
 
+increment=2
+
 if [ $mode = "up" ]; then
-    xbacklight -inc 10
+    xbacklight -inc $increment
 elif [ $mode = "down" ]; then
-    xbacklight -dec 10
+    xbacklight -dec $increment
 fi
 
 # attempt to notify
