@@ -51,7 +51,7 @@
     odin2
 
     tunefish
-    
+
     # need to look up what these are (nix search lv2)
     # talentedhack # autotalent ported to lv2
     # x42-plugins
@@ -60,7 +60,7 @@
     # sorcer
     # rkrlv2
     # plujain-ramp
-    
+
     # https://www.youtube.com/playlist?list=PLCXbZyyqusu3b3_CD6gHj4fKHE4AiesnJ
     # TODO: Fire distortion, Ruina distortion
     # AIRWINDOWS (NC-17 is cool)
@@ -82,7 +82,7 @@
     # Amplitube CS (stompboxes tuner preamps and shit, freemium though)
     # TDR Nova
     # Zebralette U-he
-    
+
     # other plugins i should get:
     # modartt pianoteq 
     wineWowPackages.full
@@ -161,6 +161,38 @@
     };
     ".vst/cardinal" = {
       source = "${unstable.cardinal}/lib";
+      recursive = true;
+    };
+    ".vst/carla" = {
+      source = "${unstable.carla}/lib";
+      recursive = true;
+    };
+    ".vst/CHOW/Phaser" = {
+      source = "${unstable.ChowPhaser}";
+      recursive = true;
+    };
+    ".vst/CHOW/Kick" = {
+      source = "${unstable.ChowKick}";
+      recursive = true;
+    };
+    ".vst/CHOW/Centaur" = {
+      source = "${unstable.Centaur}";
+      recursive = true;
+    };
+    ".vst/CHOW/TapeModel" = {
+      source = "${unstable.CHOWTapeModel}";
+      recursive = true;
+    };
+    ".vst/airwindows" = {
+      source = "${unstable.airwindows-lv2}";
+      recursive = true;
+    };
+    ".vst/odin2" = {
+      source = "${unstable.odin2}";
+      recursive = true;
+    };
+    ".vst/tunefish" = {
+      source = "${unstable.tunefish}";
       recursive = true;
     };
     # ".vst/bespoke" = {
