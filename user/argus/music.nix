@@ -1,12 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, unstable, lib, ... }:
 # NOTE: some of these packages are installed both by being evaluated in
 # home.file and home.packages. to uninstall remove both.
 {
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "reaper"
-    "bitwig-studio"
-  ];
-
   home.packages = with pkgs; [
     # music
     reaper

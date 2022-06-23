@@ -22,6 +22,8 @@
     # allow spotify to be installed if you don't have unfree enabled already
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       "spotify-unwrapped"
+      "reaper"
+      "bitwig-studio"
     ];
   };
 
