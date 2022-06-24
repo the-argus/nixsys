@@ -50,6 +50,8 @@ LABEL="solokeys_end"'';
     extraGroups = [
       "wheel"
       "video"
+      "audio"
+      "jackaudio"
       "systemd-network"
       "networkmanager"
     ];

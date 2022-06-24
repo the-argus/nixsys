@@ -9,6 +9,9 @@
 
     # vst emulation
     wineWowPackages.full
+    winetricks
+    yabridge
+    yabridgectl
     carla
     # airwave is unfortunately out of date
     #(import ../../packages/airwave.nix {inherit pkgs; inherit lib;})
@@ -86,6 +89,10 @@
       source = "${unstable.carla}/lib";
       recursive = true;
     };
+    ".vst/yabridge" = {
+      source = "${pkgs.yabridge}/lib";
+      recursive = true;
+    };
     ".vst/CHOW/Phaser" = {
       source = "${unstable.ChowPhaser}";
       recursive = true;
@@ -114,9 +121,5 @@
       source = "${unstable.tunefish}";
       recursive = true;
     };
-    # ".vst/bespoke" = {
-    #   source = "${pkgs.bespokesynth-with-vst2}";
-    #   recursive = true;
-    # };
   };
 }

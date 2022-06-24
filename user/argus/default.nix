@@ -43,6 +43,7 @@
     kitty
     mpv
     zathura
+    qpwgraph
 
     pinta
     inkscape

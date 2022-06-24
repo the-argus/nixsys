@@ -30,6 +30,8 @@
   # choose display manager
   services.xserver.displayManager.startx.enable = true;
 
+  music.enable = true; # music production software and configuration
+
   # display -------------------------------------------------------------------
   hardware.opengl = {
     extraPackages = with pkgs; [
