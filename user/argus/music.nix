@@ -7,15 +7,6 @@
     reaper
     lmms
 
-    # vst emulation
-    wineWowPackages.full
-    winetricks
-    yabridge
-    yabridgectl
-    carla
-    # airwave is unfortunately out of date
-    #(import ../../packages/airwave.nix {inherit pkgs; inherit lib;})
-
     # plugins
     zam-plugins
     airwindows-lv2
