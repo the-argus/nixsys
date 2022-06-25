@@ -29,7 +29,6 @@
 
           ${pkgs.dunst}/bin/dunst &
           ${pkgs.xfce.xfce4-clipman-plugin}/bin/xfce4-clipman &
-          ${pkgs.xsuspender}/bin/xsuspender &
           ${pkgs.xclip}/bin/xclip &
 
           # start picom fr
