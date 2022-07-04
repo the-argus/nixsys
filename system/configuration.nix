@@ -6,7 +6,9 @@
 
 {
   #choose what host is being used (laptop or pc)
-  imports = [] ++ 
+  imports = [
+    ../modules
+  ] ++ 
       (if hardware == "laptop" then [../hosts/laptop] else []) ++
       (if hardware == "pc" then [../hosts/pc] else []);
 
@@ -37,6 +39,11 @@ LABEL="solokeys_end"'';
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
+  
+  # modules
+  music.enable = true; # music production software and configuration
+  virtualization.enable = true;
+  virtualization.passthrough.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -85,8 +92,14 @@ LABEL="solokeys_end"'';
     polkit
     usbutils
     nix-index
+    alsa-utils
+    ix
+
+    # essential
+    gcc
+    lld llvm
   ];
 
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "22.05";
 }
 

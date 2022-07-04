@@ -30,8 +30,6 @@
   # choose display manager
   services.xserver.displayManager.startx.enable = true;
 
-  music.enable = true; # music production software and configuration
-
   # display -------------------------------------------------------------------
   hardware.opengl = {
     extraPackages = with pkgs; [
@@ -55,7 +53,7 @@
 
   # networking-----------------------------------------------------------------
   networking.hostName = "evil";
-  networking.interfaces."wlp0s20f3" = { useDHCP = true; };
+  networking.interfaces."wlp0s20f3" = { useDHCP = false; };
   networking.wireless.interfaces = [ "wlp0s20f3" ];
   networking.networkmanager.enable = true;
   networking.useDHCP = false;
