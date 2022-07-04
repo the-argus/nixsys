@@ -5,7 +5,7 @@ let
 in
 {
   options.virtualization = {
-    enable = mkEnableOption "Music Production Software";
+    enable = mkEnableOption "Packages for virtualizing other systems.";
 
     passthrough = {
       enable = mkEnableOption "Single GPU passthrough utilities for my hardware.";
