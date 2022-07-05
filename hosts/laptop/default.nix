@@ -28,7 +28,26 @@
     qtile.enable = true;
   };
   # choose display manager
-  services.xserver.displayManager.startx.enable = true;
+  # services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.displayManager.startx.enable = true;
+  # services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.displayManager.ly = {
+  #   enable = true;
+  #   defaultUsers = "argus";
+  # };
+  services.greetd = {
+    enable = true;
+    settings = {
+      terminal = {
+        # only open the greeter on the first tty
+        vt = 1;
+      };
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        user = "argus";
+      };
+    };
+  };
 
   # display -------------------------------------------------------------------
   hardware.opengl = {
