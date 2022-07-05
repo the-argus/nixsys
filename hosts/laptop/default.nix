@@ -7,7 +7,9 @@
   ];
 
   # dual booting with windows boot loader mounted on /efi
-  boot.loader = {
+  boot = {
+    kernelParams = [ "quiet" ];
+    loader = {
     efi = {
       canTouchEfiVariables = true;
       efiSysMountPoint = "/efi";
@@ -19,6 +21,7 @@
       enable = true;
     };
   };
+  };
 
   desktops = {
     enable = true;
@@ -29,7 +32,7 @@
   };
   # choose display manager
   # services.xserver.desktopManager.plasma5.enable = true;
-  # services.xserver.displayManager.startx.enable = true;
+  services.xserver.displayManager.startx.enable = true;
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.displayManager.ly = {
   #   enable = true;
@@ -43,7 +46,16 @@
         vt = 1;
       };
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        command = ''
+        ${pkgs.greetd.tuigreet}/bin/tuigreet \
+        --sessions ${pkgs.xorg.xinit}/bin/startx,${pkgs.sway}/bin/sway \
+        --time \
+        --issue \
+        --remember \
+        --remember-session \
+        --asterisks \
+        --asterisks-char %
+        '';
         user = "argus";
       };
     };
