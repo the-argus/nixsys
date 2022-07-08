@@ -10,17 +10,17 @@
   boot = {
     kernelParams = [ "quiet" ];
     loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/efi";
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/efi";
+      };
+      grub = {
+        useOSProber = true;
+      };
+      systemd-boot = {
+        enable = true;
+      };
     };
-    grub = {
-      useOSProber = true;
-    };
-    systemd-boot = {
-      enable = true;
-    };
-  };
   };
 
   desktops = {
@@ -39,7 +39,7 @@
   #   defaultUsers = "argus";
   # };
   services.greetd = {
-    enable = true;
+    enable = false;
     settings = {
       terminal = {
         # only open the greeter on the first tty
@@ -47,14 +47,13 @@
       };
       default_session = {
         command = ''
-        ${pkgs.greetd.tuigreet}/bin/tuigreet \
-        --sessions ${pkgs.xorg.xinit}/bin/startx,${pkgs.sway}/bin/sway \
-        --time \
-        --issue \
-        --remember \
-        --remember-session \
-        --asterisks \
-        --asterisks-char %
+          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          --sessions ${pkgs.xorg.xinit}/bin/startx,${pkgs.sway}/bin/sway \
+          --time \
+          --issue \
+          --remember \
+          --remember-session \
+          --asterisks \
         '';
         user = "argus";
       };
