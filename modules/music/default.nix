@@ -8,16 +8,11 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      # jack2Full
-      # libjack2
-
       # vst emulation
       wineWowPackages.full
       winetricks
-      yabridge
-      yabridgectl
       # (import ../../packages/carla.nix {inherit pkgs;})
-      carla
+      # carla
       # airwave is unfortunately out of date
       #(import ../../packages/airwave.nix {inherit pkgs; inherit lib;})
     ];

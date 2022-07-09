@@ -2,10 +2,20 @@
 # NOTE: some of these packages are installed both by being evaluated in
 # home.file and home.packages. to uninstall remove both.
 {
+  imports = [
+    ./yabridge.nix
+  ];
+
+  programs.yabridge = {
+    enable = true;
+    paths = [
+      ".vst/CT-0W0"
+    ];
+  };
+
   home.packages = with pkgs; [
     # music
     reaper
-    lmms
 
     # plugins
     zam-plugins
@@ -78,10 +88,6 @@
     };
     ".vst/carla" = {
       source = "${unstable.carla}/lib";
-      recursive = true;
-    };
-    ".vst/yabridge" = {
-      source = "${pkgs.yabridge}/lib";
       recursive = true;
     };
     ".vst/CHOW/Phaser" = {
