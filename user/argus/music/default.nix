@@ -10,17 +10,8 @@
     enable = true;
     paths =
       let
-        ct0w0 = (pkgs.stdenv.mkDerivation {
-          name = "CT-0W0";
-          src = unstable.fetchurl {
-            url = "https://heckscaper.com/plugins/cb/ct0w0_vst364_20220610.zip";
-            sha256 = "138rj86gbp7dc4iavc880nhvylhy6m6srjpnnbx1i2lknd54islj";
-          };
-
-          nativeBuildInputs = [ pkgs.unzip ];
-
-          installPhase = "cp -r . $out";
-        });
+        mpkgs = pkgs.callPackage ./packages;
+        ct0w0 = mpkgs.synths.ct0w0;
       in
       [
         "${ct0w0}"
@@ -83,50 +74,58 @@
     # modartt pianoteq 
   ];
 
-  home.file = {
-    ".vst/zam" = {
-      source = "${pkgs.zam-plugins}/lib/vst";
-      recursive = true;
+  home.file =
+    let
+      mpkgs = pkgs.callPackage ./packages;
+    in
+    {
+      ".vst/dexed" = {
+        source = "${mpkgs.native.synths.dexed}";
+        recursive = true;
+      };
+      ".vst/zam" = {
+        source = "${pkgs.zam-plugins}/lib/vst";
+        recursive = true;
+      };
+      ".vst/surge" = {
+        source = "${pkgs.surge-XT}/lib/vst3";
+        recursive = true;
+      };
+      ".vst/oxe" = {
+        source = "${pkgs.oxefmsynth}/lib/lxvst";
+        recursive = true;
+      };
+      ".vst/cardinal" = {
+        source = "${unstable.cardinal}/lib";
+        recursive = true;
+      };
+      ".vst/CHOW/Phaser" = {
+        source = "${unstable.ChowPhaser}";
+        recursive = true;
+      };
+      ".vst/CHOW/Kick" = {
+        source = "${unstable.ChowKick}";
+        recursive = true;
+      };
+      ".vst/CHOW/Centaur" = {
+        source = "${unstable.ChowCentaur}";
+        recursive = true;
+      };
+      ".vst/CHOW/TapeModel" = {
+        source = "${unstable.CHOWTapeModel}";
+        recursive = true;
+      };
+      ".vst/airwindows" = {
+        source = "${unstable.airwindows-lv2}";
+        recursive = true;
+      };
+      ".vst/odin2" = {
+        source = "${unstable.odin2}";
+        recursive = true;
+      };
+      ".vst/tunefish" = {
+        source = "${unstable.tunefish}";
+        recursive = true;
+      };
     };
-    ".vst/surge" = {
-      source = "${pkgs.surge-XT}/lib/vst3";
-      recursive = true;
-    };
-    ".vst/oxe" = {
-      source = "${pkgs.oxefmsynth}/lib/lxvst";
-      recursive = true;
-    };
-    ".vst/cardinal" = {
-      source = "${unstable.cardinal}/lib";
-      recursive = true;
-    };
-    ".vst/CHOW/Phaser" = {
-      source = "${unstable.ChowPhaser}";
-      recursive = true;
-    };
-    ".vst/CHOW/Kick" = {
-      source = "${unstable.ChowKick}";
-      recursive = true;
-    };
-    ".vst/CHOW/Centaur" = {
-      source = "${unstable.ChowCentaur}";
-      recursive = true;
-    };
-    ".vst/CHOW/TapeModel" = {
-      source = "${unstable.CHOWTapeModel}";
-      recursive = true;
-    };
-    ".vst/airwindows" = {
-      source = "${unstable.airwindows-lv2}";
-      recursive = true;
-    };
-    ".vst/odin2" = {
-      source = "${unstable.odin2}";
-      recursive = true;
-    };
-    ".vst/tunefish" = {
-      source = "${unstable.tunefish}";
-      recursive = true;
-    };
-  };
 }
