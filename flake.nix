@@ -50,7 +50,7 @@
       flake = false;
     };
 
-    plymouth-themes = {
+    plymouth-themes-src = {
       url = "github:adi1090x/plymouth-themes";
       flake = false;
     };
@@ -79,7 +79,7 @@
     , rose-pine-gtk
     , picom
     , awesome
-    , plymouth-themes
+    , plymouth-themes-src
       # , spicetify-nix
       # , font-icons
     , ...
@@ -98,6 +98,10 @@
             commandLineArgs =
               "--no-sandbox --enable-accelerated-mjpeg-decode --enable-accelerated-video --ignore-gpu-blacklist --enable-native-gpu-memory-buffers --enable-gpu-rasterization";
           };
+        })
+
+        (self: super: {
+            plymouth-themes-package = import ./packages/plymouth-themes.nix { inherit pkgs; inherit plymouth-themes-src; };
         })
       ];
 

@@ -146,6 +146,22 @@
         "type": "github"
       }
     },
+    "plymouth-themes-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1626085315,
+        "narHash": "sha256-VNGvA8ujwjpC2rTVZKrXni2GjfiZk7AgAn4ZB4Baj2k=",
+        "owner": "adi1090x",
+        "repo": "plymouth-themes",
+        "rev": "bf2f570bee8e84c5c20caac353cbe1d811a4745f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "adi1090x",
+        "repo": "plymouth-themes",
+        "type": "github"
+      }
+    },
     "ranger-devicons": {
       "flake": false,
       "locked": {
@@ -173,6 +189,7 @@
         "nur": "nur",
         "nvim-config": "nvim-config",
         "picom": "picom",
+        "plymouth-themes-src": "plymouth-themes-src",
         "ranger-devicons": "ranger-devicons",
         "rose-pine-gtk": "rose-pine-gtk"
       }

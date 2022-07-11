@@ -23,6 +23,12 @@
     };
   };
 
+  boot.plymouth = {
+    enable = true;
+    themePackages = [ pkgs.plymouth-themes-package ];
+    theme = "lone";
+  };
+
   desktops = {
     enable = true;
     sway.enable = true;
