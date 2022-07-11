@@ -8,9 +8,23 @@
 
   programs.yabridge = {
     enable = true;
-    paths = [
-      ".vst/CT-0W0"
-    ];
+    paths =
+      let
+        ct0w0 = (pkgs.stdenv.mkDerivation {
+          name = "CT-0W0";
+          src = unstable.fetchurl {
+            url = "https://heckscaper.com/plugins/cb/ct0w0_vst364_20220610.zip";
+            sha256 = "138rj86gbp7dc4iavc880nhvylhy6m6srjpnnbx1i2lknd54islj";
+          };
+
+          nativeBuildInputs = [ pkgs.unzip ];
+
+          installPhase = "cp -r . $out";
+        });
+      in
+      [
+        "${ct0w0}"
+      ];
   };
 
   home.packages = with pkgs; [
@@ -84,10 +98,6 @@
     };
     ".vst/cardinal" = {
       source = "${unstable.cardinal}/lib";
-      recursive = true;
-    };
-    ".vst/carla" = {
-      source = "${unstable.carla}/lib";
       recursive = true;
     };
     ".vst/CHOW/Phaser" = {

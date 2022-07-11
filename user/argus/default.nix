@@ -9,7 +9,7 @@
     ./alacritty.nix
     ./dunst.nix
     ./zathura.nix
-    ./music.nix
+    ./music
     # ./spicetify.nix
   ];
 
