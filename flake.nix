@@ -50,6 +50,11 @@
       flake = false;
     };
 
+    plymouth-themes = {
+      url = "github:adi1090x/plymouth-themes";
+      flake = false;
+    };
+
     # spicetify-nix = {
     #   url = "github:the-argus/spicetify-nix";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -74,6 +79,7 @@
     , rose-pine-gtk
     , picom
     , awesome
+    , plymouth-themes
       # , spicetify-nix
       # , font-icons
     , ...
