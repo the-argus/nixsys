@@ -10,7 +10,7 @@
     enable = true;
     paths =
       let
-        mpkgs = pkgs.callPackage ./packages;
+        mpkgs = pkgs.callPackage ./packages {};
         ct0w0 = mpkgs.synths.ct0w0;
       in
       [
@@ -76,11 +76,11 @@
 
   home.file =
     let
-      mpkgs = pkgs.callPackage ./packages;
+      mpkgs = pkgs.callPackage ./packages {};
     in
     {
       ".vst/dexed" = {
-        source = "${mpkgs.native.synths.dexed}";
+        source = "${mpkgs.native.synths.dexed}/Dexed.vst3/Contents/x86_64-linux";
         recursive = true;
       };
       ".vst/zam" = {
