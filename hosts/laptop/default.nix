@@ -31,14 +31,16 @@
 
   desktops = {
     enable = true;
-    sway.enable = true;
-    awesome.enable = true;
-    ratpoison.enable = true;
-    qtile.enable = true;
+    # sway.enable = true;
+    # awesome.enable = true;
+    # ratpoison.enable = true;
+    # qtile.enable = true;
+    gnome.enable = true;
   };
   # choose display manager
   # services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.startx.enable = true;
+  # services.xserver.displayManager.startx.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.displayManager.ly = {
   #   enable = true;

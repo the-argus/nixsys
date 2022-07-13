@@ -13,6 +13,7 @@ in
     ./xorg.nix
     ./ratpoison.nix
     ./qtile.nix
+    ./gnome.nix
   ];
 
 
