@@ -1,4 +1,4 @@
-{ config, options, pkgs, ... }:
+{ config, options, pkgs, lib, ... }:
 let
   cfg = config.desktops.gnome;
   inherit (lib) mkIf mkEnableOption;
@@ -17,6 +17,8 @@ in
     environment.systemPackages = with pkgs; [
       gnomeExtensions.appindicator
     ];
+
+    hardware.pulseaudio.enable = false;
 
     environment.gnome.excludePackages = (with pkgs; [
       gnome-photos
