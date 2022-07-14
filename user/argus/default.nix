@@ -33,6 +33,8 @@
     spotify-unwrapped
     spicetify-cli
 
+    ungoogled-chromium
+
     # gui applications---------
     keepassxc
     pcmanfm
