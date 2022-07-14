@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, plymouth, ... }:
 
 {
   imports = [
@@ -8,26 +8,33 @@
 
   # dual booting with windows boot loader mounted on /efi
   boot = {
-    kernelParams = [ "quiet" ];
+    kernelParams = [ "quiet" "systemd.show_status=0" "loglevel=4" "rd.systemd.show_status=auto" "rd.udev.log-priority=3" ];
     loader = {
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/efi";
       };
-      grub = {
-        useOSProber = true;
-      };
+      # grub = {
+      #   # enable = true;
+      #   # version = 2;
+      #   # device = "/dev/disk/by-uuid/444dd843-a3b1-4e59-9d47-c62cfab94d8b";
+      #   useOSProber = true;
+      # };
       systemd-boot = {
         enable = true;
       };
     };
+    initrd.verbose = false;
   };
 
   boot.plymouth = {
     enable = true;
     themePackages = [ pkgs.plymouth-themes-package ];
-    theme = "lone";
+    theme = plymouth.themeName;
   };
+  
+  # makes plymouth wait 5 seconds while playing
+  systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 5";
 
   desktops = {
     enable = true;

@@ -1,5 +1,7 @@
 { pkgs
 , plymouth-themes-src
+, themePath
+, themeName
 , ...
 }:
 pkgs.stdenv.mkDerivation rec {
@@ -16,7 +18,7 @@ pkgs.stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
-      cp -r pack_3/lone $out/share/plymouth/themes
-    cat pack_3/lone/lone.plymouth | sed  "s@\/usr\/@$out\/@" > $out/share/plymouth/themes/lone/lone.plymouth
+      cp -r ${themePath} $out/share/plymouth/themes
+    cat ${themePath}/${themeName}.plymouth | sed  "s@\/usr\/@$out\/@" > $out/share/plymouth/themes/${themeName}/${themeName}.plymouth
   '';
 }

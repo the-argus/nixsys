@@ -67,6 +67,12 @@ LABEL="solokeys_end"'';
   environment.pathsToLink = [ "/share/zsh" ];
 
   services.flatpak.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+          xdg-desktop-portal-gtk
+    ];
+  };
   environment.systemPackages = with pkgs; [
     # tui applications
     ranger

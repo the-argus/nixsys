@@ -91,6 +91,12 @@
       # unstable = import nixpkgs-unstable { inherit system; };
       unstable = nixpkgs-unstable.legacyPackages.${system};
 
+      plymouth = let name = "cross_hud"; in
+        {
+          themeName = name;
+          themePath = "pack_1/${name}";
+        };
+
       overlays = [
         (self: super: {
           # better discord performance, if its not installed via flatpak
@@ -101,7 +107,9 @@
         })
 
         (self: super: {
-            plymouth-themes-package = import ./packages/plymouth-themes.nix { inherit pkgs; inherit plymouth-themes-src; };
+          plymouth-themes-package = import ./packages/plymouth-themes.nix ({
+            inherit pkgs; inherit plymouth-themes-src;
+          } // plymouth);
         })
       ];
 
@@ -113,7 +121,7 @@
         # hostname (evil)
         evil = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = inputs // { inherit hardware; inherit unstable; };
+          specialArgs = inputs // { inherit hardware; inherit unstable; inherit plymouth; };
           modules = [
             {
               nixpkgs.overlays = overlays;
