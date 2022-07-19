@@ -1,4 +1,4 @@
-{ pkgs, unstable, lib, nur, ... }: {
+{ pkgs, unstable, lib, nur, chrome-extensions, ... }: {
   imports = [
     ./config # configures *everything* that can't be done in nix
     ./local
@@ -26,14 +26,34 @@
     ];
   };
 
+  programs.chromium = {
+    enable = true;
+    package = unstable.ungoogled-chromium;
+
+    extensions = [
+      chrome-extensions.ublock-origin
+      # {
+      #   # chromium web store
+      #   id = "ocaahdebbfolfmndjeplogmgcagdmblk";
+      #   updateUrl = "https://raw.githubusercontent.com/NeverDecaf/chromium-web-store/master/updates.xml";
+      # }
+      # {
+      #   # ublock origin
+      #   id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
+      # }
+      # {
+      #   # keepassxc browser
+      #   id = "oboonakemofpalcgghocfoadofidjkkk";
+      # }
+    ];
+  };
+
   # extra packages
   home.packages = with pkgs; [
     # unfree :(
     # discord
     spotify-unwrapped
     spicetify-cli
-
-    ungoogled-chromium
 
     # gui applications---------
     keepassxc

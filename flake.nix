@@ -55,6 +55,11 @@
       flake = false;
     };
 
+    chrome-extensions = {
+      url = "github:the-argus/chrome-extensions-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # spicetify-nix = {
     #   url = "github:the-argus/spicetify-nix";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -80,6 +85,7 @@
     , picom
     , awesome
     , plymouth-themes-src
+    , chrome-extensions
       # , spicetify-nix
       # , font-icons
     , ...
@@ -123,6 +129,7 @@
           inherit system;
           specialArgs = inputs // { inherit hardware; inherit unstable; inherit plymouth; };
           modules = [
+            nur.nixosModules.nur
             {
               nixpkgs.overlays = overlays;
               imports = [ ./system/configuration.nix ];

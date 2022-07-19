@@ -19,17 +19,52 @@
     "awesome": {
       "flake": false,
       "locked": {
-        "lastModified": 1656603165,
-        "narHash": "sha256-RRpwAIYNLkovXI0y/eXO9uRDqB4qQcXlnYYUCEmx/EA=",
+        "lastModified": 1657641214,
+        "narHash": "sha256-SxydaQScu0kvBn3VOnT29/Sji0Y+7my+tO46mpMggAQ=",
         "owner": "awesomeWM",
         "repo": "awesome",
-        "rev": "9ca7bb487a5d1d2d5c102f94cd9e8cb5b6e7ffaa",
+        "rev": "b7bac1dc761f7e231355e76351500a97b27b6803",
         "type": "github"
       },
       "original": {
         "owner": "awesomeWM",
         "repo": "awesome",
         "type": "github"
+      }
+    },
+    "chrome-extensions": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1658110672,
+        "narHash": "sha256-+QBMCV1rW9TQbs3ZTC/9qwycCe7AhGk9/JswuGS+t98=",
+        "owner": "the-argus",
+        "repo": "chrome-extensions-nix",
+        "rev": "41c1c9b400e713e44686d911a57c01a9f6f7d360",
+        "type": "github"
+      },
+      "original": {
+        "owner": "the-argus",
+        "repo": "chrome-extensions-nix",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1656928814,
+        "narHash": "sha256-RIFfgBuKz6Hp89yRr7+NR5tzIAbn52h8vT6vXkYjZoM=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "7e2a3b3dfd9af950a856d66b0a7d01e3c18aa249",
+        "type": "github"
+      },
+      "original": {
+        "id": "flake-utils",
+        "type": "indirect"
       }
     },
     "home-manager": {
@@ -56,11 +91,11 @@
     "kanagawa-gtk": {
       "flake": false,
       "locked": {
-        "lastModified": 1655853426,
-        "narHash": "sha256-UtheIBbQLDJjmC0HtmOszvfnzDF0HNxHJuvcFyJZPLc=",
+        "lastModified": 1657839155,
+        "narHash": "sha256-9lYZZZR5PqzKa/KbIzbYUshlf1YGqUUsqBFR8OAa0js=",
         "owner": "Fausto-Korpsvart",
         "repo": "Kanagawa-GKT-Theme",
-        "rev": "5ec6821f38d524598613d2ff939dafe96cdf38a3",
+        "rev": "626421552f947ec7fb4ae550a6a3b55000c937bd",
         "type": "github"
       },
       "original": {
@@ -71,11 +106,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1657296039,
-        "narHash": "sha256-Ghh39+aS+pw5sTP/ZO8VIKE6sBhMadDaQZtf+3yu4Vc=",
+        "lastModified": 1657815135,
+        "narHash": "sha256-+5Jby1ayRjtSgsM5IpRNeUgdcIutCKQWR6sypRtd1RE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "71d7a4c037dc4f3e98d5c4a81b941933cf5bf675",
+        "rev": "c06d5fa9c605d143b15cafdbbb61c7c95388d76e",
         "type": "github"
       },
       "original": {
@@ -86,11 +121,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1657447684,
-        "narHash": "sha256-FCP9AuU1q6PE3vOeM5SFf58f/UKPBAsoSGDUGamNBbo=",
+        "lastModified": 1658015103,
+        "narHash": "sha256-mO+23f3SO+fBzEvbxRe6GkSB5Xp43CT2sV8Rs8MYdz8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5f43d8b088d3771274bcfb69d3c7435b1121ac88",
+        "rev": "8f485713f5e6b6883a9b6959afa98688360a3ecb",
         "type": "github"
       },
       "original": {
@@ -101,11 +136,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1657535550,
-        "narHash": "sha256-8WwxmlXe6o1Ob8rQan8R1H1NKSNaxqRuIuIU5RVhyd4=",
+        "lastModified": 1658092994,
+        "narHash": "sha256-fpl++/AgR7kv8fphMs1OdT0kdZE85vZ6z43+WlJ+IsM=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "f0faa262c28384df0c00ec2c64e8031c4fbd0a61",
+        "rev": "71eb57ed2b840bd9a54f90cc21b64174a74bf7e7",
         "type": "github"
       },
       "original": {
@@ -182,6 +217,7 @@
       "inputs": {
         "arkenfox-userjs": "arkenfox-userjs",
         "awesome": "awesome",
+        "chrome-extensions": "chrome-extensions",
         "home-manager": "home-manager",
         "kanagawa-gtk": "kanagawa-gtk",
         "nixpkgs": "nixpkgs",
@@ -197,11 +233,11 @@
     "rose-pine-gtk": {
       "flake": false,
       "locked": {
-        "lastModified": 1651682403,
-        "narHash": "sha256-xdOTgGw4eVFZQhJs1tqOKF/oA+6MF/S6WddZ/wsR9GA=",
+        "lastModified": 1658027130,
+        "narHash": "sha256-fmd3xhjQg9wVG0plmJ12bS7Dx/izgGMEtW1Q5SAZSlM=",
         "owner": "rose-pine",
         "repo": "gtk",
-        "rev": "44016dc3eab13b52039e755e1f7868fa7b0a7690",
+        "rev": "8c3c59b2867d0aea501a2d2379b9c51caf95f5a6",
         "type": "github"
       },
       "original": {

@@ -1,4 +1,4 @@
-{ arkenfox-userjs, lib, pkgs, ... }:
+{ arkenfox-userjs, lib, pkgs, unstable, ... }:
 {
   programs.firefox =
     let
@@ -29,7 +29,7 @@
     in
     {
       enable = true;
-      package = pkgs.firefox;
+      package = unstable.firefox;
 
       extensions = [
 
