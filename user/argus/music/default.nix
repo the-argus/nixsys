@@ -1,4 +1,4 @@
-{ pkgs, unstable, lib, ... }:
+{ pkgs, unstable, lib, homeDirectory, ... }:
 # NOTE: some of these packages are installed both by being evaluated in
 # home.file and home.packages. to uninstall remove both.
 {
@@ -10,12 +10,13 @@
     enable = true;
     paths =
       let
-        mpkgs = pkgs.callPackage ./packages {};
+        mpkgs = import ./packages { inherit pkgs; inherit homeDirectory; };
       in
       [
+        "${mpkgs.wineUser}"
         "${mpkgs.synths.ct0w0}"
       ];
-    extraPath = "${config.home.homeDirectory}/.wine/drive_c/Program Files";
+    extraPath = "${homeDirectory}/.wine/drive_c/Program Files";
   };
 
   home.packages = with pkgs; [
@@ -76,7 +77,7 @@
 
   home.file =
     let
-      mpkgs = pkgs.callPackage ./packages {};
+      mpkgs = pkgs.callPackage ./packages { };
     in
     {
       ".vst/dexed" = {

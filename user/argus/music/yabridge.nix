@@ -15,7 +15,7 @@ in
 
     extraPath = mkOption {
       type = types.str;
-      default = "${config.home.homeDirectory}/.wine/drive_c/Program Files";
+      default = "";
       description = "An out-of-store path to append to yabridge configuration.";
     };
 
@@ -38,6 +38,13 @@ in
       toCommand = path: "${cfg.ctlPackage}/bin/yabridgectl add ${path}";
       commands = map toCommand cfg.paths;
 
+      # edit yabridge config to explicitly include extraPath
+      escapedExtraPath = lib.strings.escape ["/"] cfg.extraPath;
+      patch =
+        if cfg.extraPath != "" then
+          ''sed -i "3s/\]$/,'${escapedExtraPath}']/" $out/config/yabridgectl/config.toml''
+        else "";
+
       scriptContents =
         ''
           mkdir $out
@@ -48,10 +55,9 @@ in
           echo $PATH
           ${cfg.ctlPackage}/bin/yabridgectl set --path=${cfg.package}/lib
           ${builtins.concatStringsSep "\n" commands}
+          ${patch}
+          cat $out/config/yabridgectl/config.toml
           ${cfg.ctlPackage}/bin/yabridgectl sync
-
-          # edit yabridge config to explicitly include extraPath
-          sed -i "3s/\]$/,'${cfg.extraPath}']/" $out/config/yabridgectl/config.toml
         '';
 
       tracer = builtins.trace scriptContents scriptContents;

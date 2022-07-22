@@ -93,6 +93,7 @@
     let
       system = "x86_64-linux";
       username = "argus";
+      homeDirectory = "/home/${username}";
       pkgs = import nixpkgs { inherit system; };
       # unstable = import nixpkgs-unstable { inherit system; };
       unstable = nixpkgs-unstable.legacyPackages.${system};
@@ -140,14 +141,13 @@
 
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        inherit system username;
-        homeDirectory = "/home/${username}";
+        inherit system username homeDirectory;
         configuration = { pkgs, ... }: {
           imports = [ ./user/${username} ];
           nixpkgs.overlays = overlays;
         };
         stateVersion = "22.05";
-        extraSpecialArgs = inputs // { inherit hardware; inherit unstable; };
+        extraSpecialArgs = inputs // { inherit hardware; inherit unstable; inherit homeDirectory; };
       };
 
       devShell.${system} =
