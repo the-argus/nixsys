@@ -14,7 +14,6 @@
       in
       [
         "${mpkgs.synths.ct0w0}"
-        "${mpkgs.effects.frohmage}"
       ];
   };
 

@@ -5,7 +5,6 @@
   };
 
   effects = {
-    frohmage = import ./effects/frohmage.nix { inherit pkgs; };
   };
 
   native = {
