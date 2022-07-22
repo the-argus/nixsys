@@ -15,6 +15,7 @@
       [
         "${mpkgs.synths.ct0w0}"
       ];
+    extraPath = "${config.home.homeDirectory}/.wine/drive_c/Program Files";
   };
 
   home.packages = with pkgs; [
