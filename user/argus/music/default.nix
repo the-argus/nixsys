@@ -11,10 +11,10 @@
     paths =
       let
         mpkgs = pkgs.callPackage ./packages {};
-        ct0w0 = mpkgs.synths.ct0w0;
       in
       [
-        "${ct0w0}"
+        "${mpkgs.synths.ct0w0}"
+        "${mpkgs.effects.frohmage}"
       ];
   };
 
