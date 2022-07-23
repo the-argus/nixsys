@@ -52,7 +52,6 @@ in
           export XDG_CONFIG_HOME=$out/config
           export HOME=$out/home
           PATH=${cfg.package}/bin:$PATH
-          echo $PATH
           ${cfg.ctlPackage}/bin/yabridgectl set --path=${cfg.package}/lib
           ${builtins.concatStringsSep "\n" commands}
           ${cfg.ctlPackage}/bin/yabridgectl sync
