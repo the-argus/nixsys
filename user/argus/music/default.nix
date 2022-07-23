@@ -16,7 +16,7 @@
         "${mpkgs.wineUser}"
         "${mpkgs.synths.ct0w0}"
       ];
-    extraPath = "${homeDirectory}/.wine/drive_c/Program Files";
+    # extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
   };
 
   home.packages = with pkgs; [
@@ -77,7 +77,7 @@
 
   home.file =
     let
-      mpkgs = pkgs.callPackage ./packages { };
+      mpkgs = import ./packages { inherit pkgs homeDirectory; };
     in
     {
       ".vst/dexed" = {
