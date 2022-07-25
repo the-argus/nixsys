@@ -4,7 +4,7 @@
     ./local
     ./zsh.nix
     ./git.nix
-    # ./gtk
+    ./gtk
     ./firefox.nix
     ./alacritty.nix
     ./dunst.nix
@@ -50,6 +50,7 @@
 
   # extra packages
   home.packages = with pkgs; [
+    dconf
     # unfree :(
     # discord
     spotify-unwrapped
