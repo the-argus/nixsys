@@ -56,6 +56,7 @@
     spicetify-cli
 
     # gui applications---------
+    element-desktop
     keepassxc
     pcmanfm
     gnome.gnome-calculator
