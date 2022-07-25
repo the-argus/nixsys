@@ -8,4 +8,7 @@ flatpak update
 flatpak install Discord
 # flatpak install Spotify
 
+# sync /home/argus/.wine/drive_c/yabridge
+# list of installed plugins there:
+# - https://www.ohmforce.com/frohmage
 yabridgectl sync
