@@ -5,4 +5,4 @@ to apply or update, enter the shell:
 then enter "rebuild" or "update", respectively
 
 # Choose laptop or PC configuration
-go to hosts/default.nix and change ``hosts.laptop`` to ``hosts.pc``
+change the string "laptop" to "pc" in flake.nix
