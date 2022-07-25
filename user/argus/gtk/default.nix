@@ -32,6 +32,7 @@ let
   selectedCursorPackage = pkgs.numix-cursor-theme;
 in
 {
+  home.packages = [pkgs.dconf];
   home.file = {
     ".config/gtk-4.0" = {
       source = "${rose-pine-gtk}/gtk4";

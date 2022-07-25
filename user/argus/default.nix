@@ -50,7 +50,6 @@
 
   # extra packages
   home.packages = with pkgs; [
-    dconf
     # unfree :(
     # discord
     spotify-unwrapped
