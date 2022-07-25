@@ -13,11 +13,11 @@ in
       description = "Paths to folders which contain .vst and .vst3 plugins.";
     };
 
-    # extraPath = mkOption {
-    #   type = types.str;
-    #   default = "";
-    #   description = "An out-of-store path to append to yabridge configuration.";
-    # };
+    extraPath = mkOption {
+      type = types.str;
+      default = "";
+      description = "An out-of-store path to append to yabridge configuration. Must be added to your DAW's VST search path.";
+    };
 
     package = mkOption {
       type = types.package;
@@ -39,11 +39,11 @@ in
       commands = map toCommand cfg.paths;
 
       # edit yabridge config to explicitly include extraPath
-      # escapedExtraPath = lib.strings.escape ["/"] cfg.extraPath;
-      # patch =
-      #   if cfg.extraPath != "" then
-      #     ''sed -i "3s/\]$/,'${escapedExtraPath}']/" $out/config/yabridgectl/config.toml''
-      #   else "";
+      escapedExtraPath = lib.strings.escape ["/"] cfg.extraPath;
+      patch =
+        if cfg.extraPath != "" then
+          ''sed -i "3s/\]$/,'${escapedExtraPath}']/" $out/config/yabridgectl/config.toml''
+        else "";
 
       scriptContents =
         ''
@@ -55,6 +55,8 @@ in
           ${cfg.ctlPackage}/bin/yabridgectl set --path=${cfg.package}/lib
           ${builtins.concatStringsSep "\n" commands}
           ${cfg.ctlPackage}/bin/yabridgectl sync
+
+          ${patch}
         '';
 
       tracer = builtins.trace scriptContents scriptContents;

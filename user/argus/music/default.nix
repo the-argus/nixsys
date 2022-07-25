@@ -13,10 +13,9 @@
         mpkgs = import ./packages { inherit pkgs; inherit homeDirectory; };
       in
       [
-        "${mpkgs.wineUser}"
         "${mpkgs.synths.ct0w0}"
       ];
-    # extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
+    extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
   };
 
   home.packages = with pkgs; [
