@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    audio-plugins = {
+      url = "github:the-argus/audio-plugins-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -77,10 +82,11 @@
     , nixpkgs-unstable
     , home-manager
     , nur
+    , audio-plugins
     , nvim-config
     , ranger-devicons
     , arkenfox-userjs
-    # , kanagawa-gtk
+      # , kanagawa-gtk
     , rose-pine-gtk
     , picom
     , awesome
@@ -143,11 +149,11 @@
         inherit pkgs;
         inherit system username homeDirectory;
         configuration = { pkgs, ... }: {
-          imports = [ ./user/${username} ];
+          imports = [ ./user/${username} audio-plugins.homeManagerModule ];
           nixpkgs.overlays = overlays;
         };
         stateVersion = "22.05";
-        extraSpecialArgs = inputs // { inherit hardware; inherit unstable; inherit homeDirectory; };
+        extraSpecialArgs = inputs // { inherit hardware unstable homeDirectory; mpkgs = audio-plugins.mpkgs; };
       };
 
       devShell.${system} =

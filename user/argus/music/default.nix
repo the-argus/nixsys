@@ -1,17 +1,10 @@
-{ pkgs, unstable, lib, homeDirectory, ... }:
+{ pkgs, unstable, lib, homeDirectory, mpkgs, ... }:
 # NOTE: some of these packages are installed both by being evaluated in
 # home.file and home.packages. to uninstall remove both.
 {
-  imports = [
-    ./yabridge.nix
-  ];
-
   programs.yabridge = {
     enable = true;
     paths =
-      let
-        mpkgs = import ./packages { inherit pkgs; inherit homeDirectory; };
-      in
       [
         "${mpkgs.synths.ct0w0}"
       ];
@@ -75,9 +68,6 @@
   ];
 
   home.file =
-    let
-      mpkgs = import ./packages { inherit pkgs homeDirectory; };
-    in
     {
       ".vst/dexed" = {
         source = "${mpkgs.native.synths.dexed}/Dexed.vst3/Contents/x86_64-linux";
