@@ -1,4 +1,4 @@
 { pkgs, ... }:
-pkgs.ungoogled-chromium.overrideAttrs (finalAttrs: previousAttrs: {
-    patches = [ ./patches/extension-search-path.patch ];
+pkgs.ungoogled-chromium.overrideAttrs (attrs: {
+    patches = (attrs.patches or []) ++ [ ./patches/extension-search-path.patch ];
 })

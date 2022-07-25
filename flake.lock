@@ -88,22 +88,6 @@
         "type": "github"
       }
     },
-    "kanagawa-gtk": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1657839155,
-        "narHash": "sha256-9lYZZZR5PqzKa/KbIzbYUshlf1YGqUUsqBFR8OAa0js=",
-        "owner": "Fausto-Korpsvart",
-        "repo": "Kanagawa-GKT-Theme",
-        "rev": "626421552f947ec7fb4ae550a6a3b55000c937bd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Fausto-Korpsvart",
-        "repo": "Kanagawa-GKT-Theme",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1658500284,
@@ -219,7 +203,6 @@
         "awesome": "awesome",
         "chrome-extensions": "chrome-extensions",
         "home-manager": "home-manager",
-        "kanagawa-gtk": "kanagawa-gtk",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",

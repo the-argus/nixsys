@@ -4,7 +4,7 @@
     ./local
     ./zsh.nix
     ./git.nix
-    ./gtk
+    # ./gtk
     ./firefox.nix
     ./alacritty.nix
     ./dunst.nix
@@ -53,7 +53,6 @@
     # unfree :(
     # discord
     spotify-unwrapped
-    spicetify-cli
 
     # gui applications---------
     element-desktop
@@ -79,6 +78,7 @@
     cava
 
     # cli
+    spicetify-cli
     unstable.solo2-cli
     transmission
     unstable.ani-cli
@@ -92,7 +92,7 @@
     libclang
 
     # appearance
-    rose-pine-gtk-theme
+    # rose-pine-gtk-theme
     # paper-gtk-theme # Paper
     # Icons: Lounge-aux
     # Themes: Lounge Lounge-compact Lounge-night Lounge-night-compact

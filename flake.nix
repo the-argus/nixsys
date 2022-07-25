@@ -25,10 +25,10 @@
       flake = false;
     };
 
-    kanagawa-gtk = {
-      url = "github:Fausto-Korpsvart/Kanagawa-GKT-Theme";
-      flake = false;
-    };
+    # kanagawa-gtk = {
+    #   url = "github:Fausto-Korpsvart/Kanagawa-GKT-Theme";
+    #   flake = false;
+    # };
 
     rose-pine-gtk = {
       url = "github:rose-pine/gtk";
@@ -80,7 +80,7 @@
     , nvim-config
     , ranger-devicons
     , arkenfox-userjs
-    , kanagawa-gtk
+    # , kanagawa-gtk
     , rose-pine-gtk
     , picom
     , awesome

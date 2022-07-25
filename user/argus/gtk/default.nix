@@ -1,4 +1,4 @@
-{ pkgs, kanagawa-gtk, rose-pine-gtk, ... }:
+{ pkgs, kanagawa-gtk, rose-pine-gtk, homeDirectory, ... }:
 
 let
   kanagawa = import ./themes/kanagawa.nix {
@@ -68,12 +68,12 @@ in
 
       gtk3 = {
         bookmarks = [
-          "file:///home/argus/Downloads"
-          "file:///home/argus/Programming"
-          "file:///home/argus/Video"
-          "file:///home/argus/Music"
-          "file:///home/argus/Screenshots"
-          "file:///home/argus/Wallpapers"
+          "file://${homeDirectory}/Downloads"
+          "file://${homeDirectory}/Programming"
+          "file://${homeDirectory}/Video"
+          "file://${homeDirectory}/Music"
+          "file://${homeDirectory}/Screenshots"
+          "file://${homeDirectory}/Wallpapers"
         ];
       };
     };
