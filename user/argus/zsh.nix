@@ -91,6 +91,49 @@
 
         source $HOME/.aliases # hole in reproducability bc i liked to add aliases quickly
 
+        function open () {
+        	xdg-open "$@">/dev/null 2>&1
+        }
+
+        function ls () { command ls --color=auto --group-directories-first "$@"; }
+
+        function lsl () {
+        	ls -la --color=always $1 | command grep "^d" && ls -la $1 | command grep -v "^d"
+        }
+
+        function diff () { command diff --color=auto "$@"; }
+
+        function grep () { command grep "$@" --color=always; }
+
+        function ip () { command ip -color=auto "$@"; }
+
+        function pc () { sudo pacman --color always "$@"; }
+
+        function pacman () { command pacman --color always "$@"; }
+
+        duk ()
+        {
+           sudo du -k "$@" | sort -n
+        }
+
+        function compress () {
+            ffmpeg \
+                -i "$1" \
+                -vcodec h264 \
+                -acodec mp2 \
+                COMPRESSED-$1;
+            }
+
+        function ytd () { youtube-dl -f bestvideo+bestaudio --merge-output-format mkv --all-subs --cookies ~/.scripts/youtube.com_cookies.txt "$1"; }
+
+        function record () {
+            ffmpeg -y \
+            -video_size 1920x1080 \
+            -framerate 24 -f x11grab -i :0.0 \
+            -f pulse -ac 2 -i default \
+            $HOME/Screenshots/screenrecord_`date '+%Y-%m-%d_%H-%M-%S'`.mp4 \
+            &> /tmp/screenrecord_`date '+%Y-%m-%d_%H-%M-%S'`.log
+        }
         autoload -U deer
 
         # CONFIG ----------------------------------------------------------------------
