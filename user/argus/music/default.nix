@@ -9,6 +9,16 @@
         "${mpkgs.synths.ct0w0}"
         "${mpkgs.synths.ctws1}"
         "${mpkgs.synths.ambi-vac}"
+        "${mpkgs.synths.damascus}"
+        "${mpkgs.synths.great-wall}"
+        "${mpkgs.synths.ill-logic}"
+        "${mpkgs.synths.ktso}"
+        "${mpkgs.synths.nuxx}"
+        "${mpkgs.synths.ouch}"
+        "${mpkgs.synths.psykic}"
+        "${mpkgs.synths.real-animal}"
+        "${mpkgs.synths.sota}"
+        "${mpkgs.synths.virtua-dub}"
       ];
     extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
   };

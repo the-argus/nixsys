@@ -18,17 +18,16 @@
     },
     "audio-plugins": {
       "inputs": {
-        "home-manager": "home-manager",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1658811494,
-        "narHash": "sha256-imhxT9Amlzkv7ZSKMoVR8Sq1+W+yTdTEbBss/GC6lcY=",
+        "lastModified": 1658849287,
+        "narHash": "sha256-pewiul8HzfHbUtxkRNdFTc7RZJXmqwrR/J31llO4jY4=",
         "owner": "the-argus",
         "repo": "audio-plugins-nix",
-        "rev": "77f72a9d9c1fc7a84eabf669433a71e9b49abd6c",
+        "rev": "d5c3ea15f4fd9cb2d040b2b2f909309ec3ccf8af",
         "type": "github"
       },
       "original": {
@@ -90,24 +89,6 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": "nixpkgs",
-        "utils": "utils"
-      },
-      "locked": {
-        "lastModified": 1658751516,
-        "narHash": "sha256-Y/3dHoTjbvYBtWd+TTBQJUIgDPO9d+Gqt05C5dyR7E4=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "dbed4c794d20d51027fc1107f063ec5be027dafc",
-        "type": "github"
-      },
-      "original": {
-        "id": "home-manager",
-        "type": "indirect"
-      }
-    },
-    "home-manager_2": {
-      "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -129,18 +110,17 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1654953433,
-        "narHash": "sha256-TwEeh4r50NdWHFAHQSyjCk2cZxgwUfcCCAJOhPdXB28=",
-        "owner": "nixos",
+        "lastModified": 1658682607,
+        "narHash": "sha256-XZ1fKlEkAQvgocuBYq9lXEP3eNW6gF9JHsPVsvkWMhU=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "90cd5459a1fd707819b9a3fb9c852beaaac3b79a",
+        "rev": "d1ca40ea766da1b639937084d18d3e54e4e5da1b",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "id": "nixpkgs",
+        "ref": "nixos-22.05",
+        "type": "indirect"
       }
     },
     "nixpkgs-unstable": {
@@ -158,28 +138,13 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1658682607,
-        "narHash": "sha256-XZ1fKlEkAQvgocuBYq9lXEP3eNW6gF9JHsPVsvkWMhU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d1ca40ea766da1b639937084d18d3e54e4e5da1b",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-22.05",
-        "type": "indirect"
-      }
-    },
     "nur": {
       "locked": {
-        "lastModified": 1658808597,
-        "narHash": "sha256-eF+5ofJJMmmg24qOKB182afQaWnK7ofJBWzoEsFRZ44=",
+        "lastModified": 1658845926,
+        "narHash": "sha256-v9gpfOF5F1dPdrdV/nn1wX+AtUTjU3p/3KYZ/yijt/A=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "832de65c95e35b7259e40816bef747169ad97b57",
+        "rev": "25e06800ddb3902f7849fea31a52b64e711ed711",
         "type": "github"
       },
       "original": {
@@ -258,8 +223,8 @@
         "audio-plugins": "audio-plugins",
         "awesome": "awesome",
         "chrome-extensions": "chrome-extensions",
-        "home-manager": "home-manager_2",
-        "nixpkgs": "nixpkgs_2",
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "nvim-config": "nvim-config",
@@ -282,21 +247,6 @@
       "original": {
         "owner": "rose-pine",
         "repo": "gtk",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "locked": {
-        "lastModified": 1653893745,
-        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     }
