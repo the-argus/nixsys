@@ -20,6 +20,9 @@
         "${mpkgs.synths.sota}"
         "${mpkgs.synths.virtua-dub}"
       ];
+    nativePaths = [
+        "${mpkgs.native.effects.tal-reverb-4}"
+    ];
     extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
   };
 
