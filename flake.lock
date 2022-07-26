@@ -16,6 +16,27 @@
         "type": "github"
       }
     },
+    "audio-plugins": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1658774615,
+        "narHash": "sha256-jGKaJBcYGpMH2OAueGxPkuKiLRDDyk59nzVWQBTigyI=",
+        "owner": "the-argus",
+        "repo": "audio-plugins-nix",
+        "rev": "7730be0362a52b8b303dcff51214cf71dccdc568",
+        "type": "github"
+      },
+      "original": {
+        "owner": "the-argus",
+        "repo": "audio-plugins-nix",
+        "type": "github"
+      }
+    },
     "awesome": {
       "flake": false,
       "locked": {
@@ -69,6 +90,24 @@
     },
     "home-manager": {
       "inputs": {
+        "nixpkgs": "nixpkgs",
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1658751516,
+        "narHash": "sha256-Y/3dHoTjbvYBtWd+TTBQJUIgDPO9d+Gqt05C5dyR7E4=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "dbed4c794d20d51027fc1107f063ec5be027dafc",
+        "type": "github"
+      },
+      "original": {
+        "id": "home-manager",
+        "type": "indirect"
+      }
+    },
+    "home-manager_2": {
+      "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -90,26 +129,27 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1658500284,
-        "narHash": "sha256-g7vwZ5UF8PvC9f2/7Zf5O6zxgJiMSuh1CiGZVuuOhEQ=",
-        "owner": "NixOS",
+        "lastModified": 1654953433,
+        "narHash": "sha256-TwEeh4r50NdWHFAHQSyjCk2cZxgwUfcCCAJOhPdXB28=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e3583ad6e533a9d8dd78f90bfa93812d390ea187",
+        "rev": "90cd5459a1fd707819b9a3fb9c852beaaac3b79a",
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-22.05",
-        "type": "indirect"
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1658648081,
-        "narHash": "sha256-RL5nr4Xhp0zQeEGG/I3t3FmqaI9QrBg5PH31NF+7A/A=",
+        "lastModified": 1658737577,
+        "narHash": "sha256-xosJ5nJT9HX+b6UWsSX6R+ap4AdZOCrl/r+IKFp2ASQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e494a908e8895b9cba18e21d5fc83362f64b3f6a",
+        "rev": "5a0e0d73b944157328d54c4ded1cf2f0146a86a5",
         "type": "github"
       },
       "original": {
@@ -118,13 +158,28 @@
         "type": "indirect"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1658682607,
+        "narHash": "sha256-XZ1fKlEkAQvgocuBYq9lXEP3eNW6gF9JHsPVsvkWMhU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d1ca40ea766da1b639937084d18d3e54e4e5da1b",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-22.05",
+        "type": "indirect"
+      }
+    },
     "nur": {
       "locked": {
-        "lastModified": 1658687126,
-        "narHash": "sha256-XjWs2yq9m4zYYCtxhhh2v2iVCa82qPD1iW4jZrUXDhY=",
+        "lastModified": 1658807027,
+        "narHash": "sha256-rrsFRpceQuVNlmNachd3b818L7jLTHTASdlUqDQEiF8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "f7c6a23aec7ac6e91a96686f8699649f7b33d8e1",
+        "rev": "3099c9c013779941e018250068e6c9c1d3018737",
         "type": "github"
       },
       "original": {
@@ -200,10 +255,11 @@
     "root": {
       "inputs": {
         "arkenfox-userjs": "arkenfox-userjs",
+        "audio-plugins": "audio-plugins",
         "awesome": "awesome",
         "chrome-extensions": "chrome-extensions",
-        "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
+        "home-manager": "home-manager_2",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "nvim-config": "nvim-config",
@@ -226,6 +282,21 @@
       "original": {
         "owner": "rose-pine",
         "repo": "gtk",
+        "type": "github"
+      }
+    },
+    "utils": {
+      "locked": {
+        "lastModified": 1653893745,
+        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
         "type": "github"
       }
     }
