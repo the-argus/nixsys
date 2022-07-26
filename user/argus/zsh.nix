@@ -44,6 +44,7 @@
           # { name = "zsh-users/zsh-completions"; }
           # { name = "spwhitt/nix-zsh-completions"; }
           { name = "hlissner/zsh-autopair"; }
+          { name = "the-argus/my-zsh"; }
         ];
       };
 
@@ -81,7 +82,7 @@
 
         # these should both be moved to flakes instead of floating around in other places
         source $HOME/.aliases
-        source $HOME/.local/src/zsh-prompt/minimal.zsh
+        # source $HOME/.local/src/zsh-prompt/minimal.zsh
 
         autoload -U deer
 
