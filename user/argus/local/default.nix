@@ -76,7 +76,6 @@
         exec = "alacritty -e ranger %F";
         comment = "Manage and explore files";
         mimeType = [ "inode/directory" ];
-        categories = [ "File" "Manager" "Browser" "Explorer" "Launcher" "Vi" "Vim" "Python" ];
       };
 
       # hide programs I don't launch from rofi
