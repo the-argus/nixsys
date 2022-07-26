@@ -1,5 +1,14 @@
 { pkgs, ... }:
 {
+  # programs.starship = {
+  #   enable = true;
+  #   settings = {
+  #     add_newline = false;
+  #   };
+  #   enableBashIntegration = true;
+  #   enableZshIntegration = true;
+  # };
+
   programs.zsh =
     let
       dDir = ".config/zsh";
@@ -28,7 +37,7 @@
         matrix = "tmatrix -c default -C yellow -s 60 -f 0.2,0.3 -g 10,20 -l 1,50 -t \"hello, argus.\"";
         umatrix = "unimatrix -a -c yellow -f -s 95 -l aAcCgGkknnrR";
         vim = "nvim";
-	dvim = "XDG_CONFIG_HOME=/home/argus/.local/src/ nvim"; # use my non-nix configuration for debugging
+        dvim = "XDG_CONFIG_HOME=/home/argus/.local/src/ nvim"; # use my non-nix configuration for debugging
         batt = "cat /sys/class/power_supply/BAT0/capacity";
 
         # unused mostly
@@ -80,9 +89,7 @@
       initExtra = ''
         # INCLUDES---------------------------------------------------------------------
 
-        # these should both be moved to flakes instead of floating around in other places
-        source $HOME/.aliases
-        # source $HOME/.local/src/zsh-prompt/minimal.zsh
+        source $HOME/.aliases # hole in reproducability bc i liked to add aliases quickly
 
         autoload -U deer
 
