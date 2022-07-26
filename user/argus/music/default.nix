@@ -4,6 +4,8 @@
 {
   programs.yabridge = {
     enable = true;
+    package = unstable.yabridge;
+    ctlPackage = unstable.yabridgectl;
     paths =
       [
         "${mpkgs.synths.ct0w0}"
@@ -19,6 +21,7 @@
         "${mpkgs.synths.real-animal}"
         "${mpkgs.synths.sota}"
         "${mpkgs.synths.virtua-dub}"
+        "${mpkgs.effects.ferric-tds}"
       ];
     nativePaths = [
         "${mpkgs.native.effects.tal-reverb-4}"
