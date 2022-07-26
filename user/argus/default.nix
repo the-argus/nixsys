@@ -55,6 +55,7 @@
     spotify-unwrapped
 
     # gui applications---------
+    obs-studio
     element-desktop
     keepassxc
     pcmanfm

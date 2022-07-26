@@ -7,6 +7,8 @@
     paths =
       [
         "${mpkgs.synths.ct0w0}"
+        "${mpkgs.synths.ctws1}"
+        "${mpkgs.synths.ambi-vac}"
       ];
     extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
   };
