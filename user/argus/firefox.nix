@@ -2,6 +2,7 @@
 {
   programs.firefox =
     let
+      assets = import ../../packages/firefox-assets { inherit pkgs; };
       baseUserJS = builtins.readFile "${arkenfox-userjs}/user.js";
       finalUserJS = lib.strings.concatStrings [
         baseUserJS
@@ -41,6 +42,281 @@
           id = 0;
           extraConfig = finalUserJS;
           #isDefault = true;
+          # rose pine color scheme
+          userChrome = ''
+            #fullscr-toggler { background-color: rgba(0, 0, 0, 0) !important; }
+            :root {
+              --uc-bg-color: #1F1D29;
+              --uc-show-new-tab-button: none;
+              --uc-show-tab-separators: none;
+              --uc-tab-separators-color: none;
+              --uc-tab-separators-width: none;
+              --uc-tab-fg-color: #9BCED7;
+              --autocomplete-popup-background: var(--mff-bg) !important;
+              --default-arrowpanel-background: var(--mff-bg) !important;
+              --default-arrowpanel-color: #fefefa !important;
+              --lwt-toolbarbutton-icon-fill: var(--mff-icon-color) !important;
+              --panel-disabled-color: #f9f9fa80;
+              --toolbar-bgcolor: var(--mff-bg) !important;
+              --urlbar-separator-color: transparent !important;
+              --mff-bg: #1F1D29;
+              --mff-icon-color: #9BCED7;
+              --mff-nav-toolbar-padding: 8px;
+              --mff-sidebar-bg: var(--mff-bg);
+              --mff-sidebar-color: #F1CA93;
+              --mff-tab-border-radius: 0px;
+              --mff-tab-color: #EA6F91;
+              --mff-tab-font-family: "FiraCode Nerd Font";
+              --mff-tab-font-size: 11pt;
+              --mff-tab-font-weight: 400;
+              --mff-tab-height: 32px;
+              --mff-tab-pinned-bg: #9BCED7;
+              --mff-tab-selected-bg: #403C58;
+              --mff-tab-soundplaying-bg: #9c89b8;
+              --mff-urlbar-color: #98c1d9;
+              --mff-urlbar-focused-color: #403C58;
+              --mff-urlbar-font-family: "Fira Code";
+              --mff-urlbar-font-size: 11pt;
+              --mff-urlbar-font-weight: 700;
+              --mff-urlbar-results-color: #F1CA93;
+              --mff-urlbar-results-font-family: "Fira Code";
+              --mff-urlbar-results-font-size: 11pt;
+              --mff-urlbar-results-font-weight: 700;
+              --mff-urlbar-results-url-color: #98c1d9;
+            }
+
+            #back-button > .toolbarbutton-icon{
+              --backbutton-background: transparent !important;
+              border: none !important;
+            }
+
+            #back-button {
+              list-style-image: url("${assets}/left-arrow.svg") !important;
+            }
+
+            #forward-button {
+              list-style-image: url("${assets}/right-arrow.svg") !important;
+            }
+
+            /* Options with pixel amounts could need to be adjusted, as this only works for my laptop's display */
+            #titlebar {
+              -moz-box-ordinal-group: 0 !important;
+            } 
+
+            .tabbrowser-tab:not([fadein]),
+            #tracking-protection-icon-container, 
+            #identity-box {
+              display: none !important;
+              border: none !important;
+            }
+            #urlbar-background, .titlebar-buttonbox-container, #nav-bar, .tabbrowser-tab:not([selected]) .tab-background{
+                background: var(--uc-bg-color) !important;
+              border: none !important;
+            }
+            #urlbar[breakout][breakout-extend] {
+                top: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
+                left: 0 !important;
+                width: 100% !important;
+            }
+
+            #urlbar[breakout][breakout-extend] > #urlbar-input-container {
+                height: var(--urlbar-height) !important;
+                padding-block: 0 !important;
+                padding-inline: 0 !important;
+            }
+
+            #urlbar[breakout][breakout-extend] > #urlbar-background {
+                animation-name: none !important;
+                box-shadow: none !important;
+            }
+            #urlbar-background {
+              box-shadow: none !important;
+            }
+            /*#tabs-newtab-button {
+              display: var(--uc-show-new-tab-button) !important;
+            }*/
+            .tabbrowser-tab::after {
+              border-left: var(--uc-tab-separators-width) solid var(--uc-tab-separators-color) !important;
+              display: var(--uc-show-tab-separators) !important;
+            }
+            .tabbrowser-tab[first-visible-tab][last-visible-tab]{
+              background-color: var(--uc-bar-bg-color) !important;
+            }
+            .tab-close-button.close-icon {
+              display: none !important;
+            }
+            .tabbrowser-tab:hover .tab-close-button.close-icon {
+              display: block !important;
+            }
+            #urlbar-input {
+              text-align: center !important;
+            }
+            #urlbar-input:focus {
+              text-align: left !important;
+            }
+            #urlbar-container {
+              margin-left: 3vw !important;
+            }
+            .tab-text.tab-label {
+              color: var(--uc-tab-fg-color) !important;
+            }
+            #navigator-toolbox {
+              border-bottom: 0px solid #ea6f91 !important;
+              background: var(--uc-bg-color) !important;
+            }
+
+            .urlbar-icon > image {
+              fill: var(--mff-icon-color) !important;
+              color: var(--mff-icon-color) !important;
+            }
+
+            .toolbarbutton-text {
+              color: var(--mff-icon-color)  !important;
+            }
+            .urlbar-icon {
+              color: var(--mff-icon-color)  !important;
+
+            }
+          '';
+
+          userContent = ''
+            :root {
+            	--dark_color1: #30333d;
+            	--dark_color2: #1F1D29;
+            	--dark_color3: #585e74;
+            	--dark_color4: #30333d;
+
+            	--word_color1: #ccaced;
+            	--word_color2: #c0c0c0;
+            	--word_color3: #dfd7d7;
+
+            	--light_color1: #e1e0e6;
+            	--light_color2: #adabb9;
+            	--light_color3: #9795a3;
+            	--light_color4: #878492;
+
+            	--other_color1: #332e56;
+            	--other_color2: #4b4757;
+            	--other_color3: #33313c;
+            }
+            /*================ LIGHT THEME ================*/
+            @media {
+            :root:not([style]),
+            :root[style*="--lwt-accent-color:rgb(227, 228, 230);"] {
+            	--base_color1: var(--light_color1);
+            	--base_color2: var(--light_color2);
+            	--base_color3: var(--light_color3);
+            	--base_color4: var(--light_color4);
+
+            	--outer_color1: var(--other_color1);
+            	--outer_color2: var(--other_color2);
+            	--outer_color3: var(--other_color3);
+
+            	--orbit_color: var(--dark_color3);
+            }
+            }
+            /*================ DARK THEME ================*/
+            @media {
+            :root[style*="--lwt-accent-color:rgb(12, 12, 13);"] {
+            	--base_color1: var(--dark_color1);
+            	--base_color2: var(--dark_color2);
+            	--base_color3: var(--dark_color3);
+            	--base_color4: var(--dark_color4);
+
+            	--outer_color1: var(--word_color1);
+            	--outer_color2: var(--word_color2);
+            	--outer_color3: var(--word_color3);
+
+            	--orbit_color: var(--light_color3);
+            }
+            }
+
+            /*============== PRIVATE THEME ==============*/
+            @media {
+            :root[privatebrowsingmode=temporary] {
+            	--base_color1: #291D4F;
+            	--base_color2: #3C3376;
+            	--base_color3: #4F499D;
+            	--base_color4: #625FC4;
+
+            	--outer_color1: #E571F0;
+            	--outer_color2: #D9CAF1;
+            	--outer_color3: #FFF5FF;
+
+            	--orbit_color: #B39FE3;
+            }
+            }
+
+            @-moz-document url(about:blank), url(about:newtab), url(about:home) {
+                html:not(#ublock0-epicker),
+                html:not(#ublock0-epicker) body,
+                #newtab-customize-overlay {
+                    background: var(--dark_color2) !important;
+                }
+
+                .search-wrapper input {
+                    background-color: var(--dark_color2) !important;
+                    color: var(--dark_color2) !important;
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+
+                .search-wrapper input:focus {
+                    color: var(--dark_color2) !important;
+                }
+
+                .search-wrapper .search-button {
+                    fill: var(--dark_color2) !important;
+                }
+
+                .search-wrapper .search-button:focus,
+                .search-wrapper .search-button:hover {
+                    background-color: transparent !important;
+                    fill: var(--dark_color2) !important;
+                }
+            }
+
+            /* Scrollbar */
+
+            *:not(select) {
+                scrollbar-color: var(--dark_color4) var(--dark_color1) !important;
+                scrollbar-width: thin !important;
+            }
+            ::-webkit-scrollbar,
+            .integrations-select-repos::-webkit-scrollbar {
+                max-height: var(--scrollbar-chrome-size) !important;
+                max-width: var(--scrollbar-chrome-size) !important;
+            }
+            ::-webkit-scrollbar,
+            .integrations-select-repos::-webkit-scrollbar,
+            ::-webkit-scrollbar-corner,
+            .integrations-select-repos::-webkit-scrollbar-corner,
+            ::-webkit-scrollbar-track,
+            .integrations-select-repos::-webkit-scrollbar-track,
+            ::-webkit-scrollbar-track-piece,
+            .integrations-select-repos::-webkit-scrollbar-track-piece {
+                background: var(--dark_color1) !important;
+            }
+            ::-webkit-scrollbar:hover,
+            .integrations-select-repos::-webkit-scrollbar:hover,
+            ::-webkit-scrollbar-corner:hover,
+            .integrations-select-repos::-webkit-scrollbar-corner:hover,
+            ::-webkit-scrollbar-track:hover,
+            .integrations-select-repos::-webkit-scrollbar-track:hover,
+            ::-webkit-scrollbar-track-piece:hover,
+            .integrations-select-repos::-webkit-scrollbar-track-piece:hover {
+                background: var(--dark_color3) !important;
+            }
+            ::-webkit-scrollbar-thumb,
+            .integrations-select-repos::-webkit-scrollbar-thumb {
+                background: var(--dark_color4) !important;
+                border-radius: var(--scrollbar-chrome-radius) !important;
+            }
+            ::-webkit-scrollbar-thumb:hover,
+            .integrations-select-repos::-webkit-scrollbar-thumb:hover {
+                background: var(--other_color1) !important;
+            }
+          '';
         };
       };
     };
