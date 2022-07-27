@@ -57,4 +57,11 @@ in
   dunstfg = fg;
   dunsthi = yellow;
   dunsturgent = red;
+  
+  # firefox
+  firefox-chrome-bg = altbg2;
+  firefox-tabtext = cyan; # rose pine 9BCED7
+  firefox-arrowpanel = white; # rose pine fefefa
+  firefox-panel-disabled = altbg2; # rose pine f9f9fa
+  firefox-sidebar = yellow; # rose pine F1CA93
 }

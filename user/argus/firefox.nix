@@ -2,6 +2,7 @@
 {
   programs.firefox =
     let
+      colors = import ./color.nix {};
       assets = import ../../packages/firefox-assets { inherit pkgs; };
       baseUserJS = builtins.readFile "${arkenfox-userjs}/user.js";
       finalUserJS = lib.strings.concatStrings [
@@ -46,24 +47,24 @@
           userChrome = ''
             #fullscr-toggler { background-color: rgba(0, 0, 0, 0) !important; }
             :root {
-              --uc-bg-color: #1F1D29;
+              --uc-bg-color: #${colors.firefox-chrome-bg};
               --uc-show-new-tab-button: none;
               --uc-show-tab-separators: none;
               --uc-tab-separators-color: none;
               --uc-tab-separators-width: none;
-              --uc-tab-fg-color: #9BCED7;
+              --uc-tab-fg-color: #${colors.firefox-tabtext};
               --autocomplete-popup-background: var(--mff-bg) !important;
               --default-arrowpanel-background: var(--mff-bg) !important;
-              --default-arrowpanel-color: #fefefa !important;
+              --default-arrowpanel-color: #${colors.firefox-arrowpanel} !important;
               --lwt-toolbarbutton-icon-fill: var(--mff-icon-color) !important;
-              --panel-disabled-color: #f9f9fa80;
+              --panel-disabled-color: #${colors.firefox-panel-disabled}80;
               --toolbar-bgcolor: var(--mff-bg) !important;
               --urlbar-separator-color: transparent !important;
-              --mff-bg: #1F1D29;
-              --mff-icon-color: #9BCED7;
+              --mff-bg: #${colors.firefox-chrome-bg};
+              --mff-icon-color: #${colors.firefox-tabtext};
               --mff-nav-toolbar-padding: 8px;
               --mff-sidebar-bg: var(--mff-bg);
-              --mff-sidebar-color: #F1CA93;
+              --mff-sidebar-color: #${colors.firefox-sidebar};
               --mff-tab-border-radius: 0px;
               --mff-tab-color: #EA6F91;
               --mff-tab-font-family: "FiraCode Nerd Font";
