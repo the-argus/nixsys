@@ -13,6 +13,9 @@
     nativePaths = [
       "${mpkgs.native.effects.tal-reverb-4}"
       "${mpkgs.native.effects.tal-filter-2}"
+      "${mpkgs.native.effects.tal-vocoder}"
+      "${mpkgs.native.effects.tal-chorus}"
+      "${mpkgs.native.synths.tal-noisemaker}"
     ];
     extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
   };
