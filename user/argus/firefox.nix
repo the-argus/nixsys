@@ -66,24 +66,24 @@
               --mff-sidebar-bg: var(--mff-bg);
               --mff-sidebar-color: #${colors.firefox-sidebar};
               --mff-tab-border-radius: 0px;
-              --mff-tab-color: #EA6F91;
+              --mff-tab-color: #${colors.firefox-tab};
               --mff-tab-font-family: "FiraCode Nerd Font";
               --mff-tab-font-size: 11pt;
               --mff-tab-font-weight: 400;
               --mff-tab-height: 32px;
-              --mff-tab-pinned-bg: #9BCED7;
-              --mff-tab-selected-bg: #403C58;
-              --mff-tab-soundplaying-bg: #9c89b8;
-              --mff-urlbar-color: #98c1d9;
-              --mff-urlbar-focused-color: #403C58;
+              --mff-tab-pinned-bg: #${colors.firefox-tabtext};
+              --mff-tab-selected-bg: #${colors.firefox-tab-selected};
+              --mff-tab-soundplaying-bg: #${colors.firefox-tab-soundplaying};
+              --mff-urlbar-color: #${colors.firefox-urlbar};
+              --mff-urlbar-focused-color: #${colors.firefox-urlbar-selected};
               --mff-urlbar-font-family: "Fira Code";
               --mff-urlbar-font-size: 11pt;
               --mff-urlbar-font-weight: 700;
-              --mff-urlbar-results-color: #F1CA93;
+              --mff-urlbar-results-color: #${colors.firefox-urlbar-results};
               --mff-urlbar-results-font-family: "Fira Code";
               --mff-urlbar-results-font-size: 11pt;
               --mff-urlbar-results-font-weight: 700;
-              --mff-urlbar-results-url-color: #98c1d9;
+              --mff-urlbar-results-url-color: #${colors.firefox-urlbar};
             }
 
             #back-button > .toolbarbutton-icon{
@@ -162,7 +162,7 @@
               color: var(--uc-tab-fg-color) !important;
             }
             #navigator-toolbox {
-              border-bottom: 0px solid #ea6f91 !important;
+              border-bottom: 0px solid #${colors.firefox-misc} !important;
               background: var(--uc-bg-color) !important;
             }
 
@@ -182,23 +182,23 @@
 
           userContent = ''
             :root {
-            	--dark_color1: #30333d;
-            	--dark_color2: #1F1D29;
-            	--dark_color3: #585e74;
-            	--dark_color4: #30333d;
+            	--dark_color1: #${colors.firefox-usercontent.d1};
+            	--dark_color2: #${colors.firefox-usercontent.d2};
+            	--dark_color3: #${colors.firefox-usercontent.d3};
+            	--dark_color4: #${colors.firefox-usercontent.d4};
 
-            	--word_color1: #ccaced;
-            	--word_color2: #c0c0c0;
-            	--word_color3: #dfd7d7;
+            	--word_color1: #${colors.firefox-usercontent.w1};
+            	--word_color2: #${colors.firefox-usercontent.w2};
+            	--word_color3: #${colors.firefox-usercontent.w3};
 
-            	--light_color1: #e1e0e6;
-            	--light_color2: #adabb9;
-            	--light_color3: #9795a3;
-            	--light_color4: #878492;
+            	--light_color1: #${colors.firefox-usercontent.l1};
+            	--light_color2: #${colors.firefox-usercontent.l2};
+            	--light_color3: #${colors.firefox-usercontent.l3};
+            	--light_color4: #${colors.firefox-usercontent.l4};
 
-            	--other_color1: #332e56;
-            	--other_color2: #4b4757;
-            	--other_color3: #33313c;
+            	--other_color1: #${colors.firefox-usercontent.o1};
+            	--other_color2: #${colors.firefox-usercontent.o2};
+            	--other_color3: #${colors.firefox-usercontent.o3};
             }
             /*================ LIGHT THEME ================*/
             @media {

@@ -60,8 +60,38 @@ in
   
   # firefox
   firefox-chrome-bg = altbg2;
-  firefox-tabtext = cyan; # rose pine 9BCED7
+  firefox-tabtext = green; # rose pine 9BCED7
   firefox-arrowpanel = white; # rose pine fefefa
   firefox-panel-disabled = altbg2; # rose pine f9f9fa
   firefox-sidebar = yellow; # rose pine F1CA93
+  firefox-tab = red; # rose pine EA6F91
+  firefox-tab-selected = bg; # rose pine 403C58
+  firefox-tab-soundplaying = magenta; # rose pine 9c89b8
+  firefox-urlbar = altbg2; # rose pine 98c1d9
+  firefox-urlbar-selected = bg; # rose pine 403C58
+  firefox-urlbar-results = yellow; # rose pine F1CA93
+  firefox-misc = cyan; # rose pine ea6f91
+  firefox-usercontent = {
+    # dark colors
+    d1 = bg;# "30333d";
+    d2 = altbg;#"1F1D29";
+    d3 = altbg2;#"585e74";
+    d4 = altbg3;#"30333d";
+    
+    # word colors
+    w1 = magenta;# "ccaced";
+    w2 = fg; #"c0c0c0";
+    w3 = white; #"dfd7d7";
+
+    # light colors
+    l1 = white; #"e1e0e6";
+    l2 = fg; #"adabb9";
+    l3 = altfg;# "9795a3";
+    l4 = white;#"878492";
+
+    # other colors
+    o1 = blue; #"332e56";
+    o2 = altbg; #"4b4757";
+    o3 = bg; #"33313c";
+  };
 }
