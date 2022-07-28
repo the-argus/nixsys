@@ -15,7 +15,7 @@ let
   # inverted, in this case
   altbg = "2A2738";
   altfg = "796268";
-  
+
   altfg2 = "26233a";
   altbg2 = "1f1d2e";
 
@@ -36,11 +36,11 @@ in
 
   inherit altbg;
   inherit altfg;
-  
+
   # similar to regular bg
   inherit altbg2;
   inherit altfg2;
-  
+
   inherit altbg3;
 
   c0 = black;
@@ -57,41 +57,59 @@ in
   dunstfg = fg;
   dunsthi = yellow;
   dunsturgent = red;
-  
+
   # firefox
-  firefox-chrome-bg = altbg2;
-  firefox-tabtext = green; # rose pine 9BCED7
-  firefox-arrowpanel = white; # rose pine fefefa
-  firefox-panel-disabled = altbg2; # rose pine f9f9fa
-  firefox-sidebar = yellow; # rose pine F1CA93
-  firefox-tab = red; # rose pine EA6F91
-  firefox-tab-selected = bg; # rose pine 403C58
-  firefox-tab-soundplaying = magenta; # rose pine 9c89b8
-  firefox-urlbar = altbg2; # rose pine 98c1d9
-  firefox-urlbar-selected = bg; # rose pine 403C58
-  firefox-urlbar-results = yellow; # rose pine F1CA93
-  firefox-misc = cyan; # rose pine ea6f91
-  firefox-usercontent = {
-    # dark colors
-    d1 = bg;# "30333d";
-    d2 = altbg;#"1F1D29";
-    d3 = altbg2;#"585e74";
-    d4 = altbg3;#"30333d";
-    
-    # word colors
-    w1 = magenta;# "ccaced";
-    w2 = fg; #"c0c0c0";
-    w3 = white; #"dfd7d7";
 
-    # light colors
-    l1 = white; #"e1e0e6";
-    l2 = fg; #"adabb9";
-    l3 = altfg;# "9795a3";
-    l4 = white;#"878492";
+  firefox =
+    let
+        ffbg = bg;
+        ffhi = green;
+    in
+  {
+    userChrome = {
+      # whole background
+      bg = ffbg;
+      # the url text
+      urlbar-selected = ffhi; # rose pine 403C58
+      # tab title text
+      tabtext = ffhi; # rose pine 9BCED7
 
-    # other colors
-    o1 = blue; #"332e56";
-    o2 = altbg; #"4b4757";
-    o3 = bg; #"33313c";
+      # dont matter 
+      panel-disabled = ffbg; # rose pine f9f9fa
+      arrowpanel = white; # rose pine fefefa
+      tab = red; # rose pine EA6F91
+      tab-selected = red; # rose pine 403C58
+      urlbar = yellow; # rose pine 98c1d9
+      urlbar-results = yellow; # rose pine F1CA93
+      sidebar = yellow; # rose pine F1CA93
+      tab-soundplaying = magenta; # rose pine 9c89b8
+      misc = cyan; # rose pine ea6f91
+    };
+    # user content (home page)
+    userContent = {
+      # dark colors
+      d2 = ffbg; #"1F1D29";
+      d4 = red; #"30333d";
+
+      # word colors
+      w1 = magenta; # "ccaced";
+      w2 = fg; #"c0c0c0";
+      w3 = white; #"dfd7d7";
+
+      # light colors
+      l1 = white; #"e1e0e6";
+      l2 = fg; #"adabb9";
+      l3 = altfg; # "9795a3";
+      l4 = white; #"878492";
+
+      # other colors
+      o1 = blue; #"332e56";
+      o2 = altbg; #"4b4757";
+
+      # dont matter
+      d1 = red; # "30333d";
+      d3 = altbg; #"585e74";
+      o3 = red; #"33313c";
+    };
   };
 }

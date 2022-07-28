@@ -2,7 +2,7 @@
 {
   programs.firefox =
     let
-      colors = import ./color.nix {};
+      colors = import ./color.nix { };
       assets = import ../../packages/firefox-assets { inherit pkgs; };
       baseUserJS = builtins.readFile "${arkenfox-userjs}/user.js";
       finalUserJS = lib.strings.concatStrings [
@@ -26,12 +26,39 @@
           // DRM content :(
           user_pref("media.gmp-widevinecdm.enabled", true);
           user_pref("media.eme.enabled", true);
+
+          // colors
+          user_pref("ui.systemUsesDarkTheme", 1);
+          user_pref("widget.content.gtk-theme-override", "rose-pine-gtk");
         ''
       ];
     in
     {
       enable = true;
       package = unstable.firefox;
+
+      # this is how you can set the gtk theme for firefox with home manager
+      # package =
+      #   let
+      #     parentPackage = unstable.firefox;
+      #     createSymlinkedFirefox = parent: pkgs.symlinkJoin
+      #       {
+      #         inherit (parent) name;
+      #         paths = [ parent ];
+      #         nativeBuildInputs = [ pkgs.makeWrapper ];
+      #         postBuild = ''
+      #           wrapProgram $out/bin/firefox \
+      #             --set GTK_THEME "rose-pine-gtk"
+      #         '';
+      #       };
+      #   in
+      #   pkgs.emptyDirectory.overrideAttrs (oa: {
+      #     override =
+      #       let
+      #         overridenFirefox = overrideFunc: (parentPackage.override) overrideFunc;
+      #       in
+      #       overrideFunc: (createSymlinkedFirefox (overridenFirefox overrideFunc));
+      #   });
 
       extensions = [
 
@@ -47,43 +74,43 @@
           userChrome = ''
             #fullscr-toggler { background-color: rgba(0, 0, 0, 0) !important; }
             :root {
-              --uc-bg-color: #${colors.firefox-chrome-bg};
+              --uc-bg-color: #${colors.firefox.userChrome.bg};
               --uc-show-new-tab-button: none;
               --uc-show-tab-separators: none;
               --uc-tab-separators-color: none;
               --uc-tab-separators-width: none;
-              --uc-tab-fg-color: #${colors.firefox-tabtext};
+              --uc-tab-fg-color: #${colors.firefox.userChrome.tabtext};
               --autocomplete-popup-background: var(--mff-bg) !important;
               --default-arrowpanel-background: var(--mff-bg) !important;
-              --default-arrowpanel-color: #${colors.firefox-arrowpanel} !important;
+              --default-arrowpanel-color: #${colors.firefox.userChrome.arrowpanel} !important;
               --lwt-toolbarbutton-icon-fill: var(--mff-icon-color) !important;
-              --panel-disabled-color: #${colors.firefox-panel-disabled}80;
+              --panel-disabled-color: #${colors.firefox.userChrome.panel-disabled}80;
               --toolbar-bgcolor: var(--mff-bg) !important;
               --urlbar-separator-color: transparent !important;
-              --mff-bg: #${colors.firefox-chrome-bg};
-              --mff-icon-color: #${colors.firefox-tabtext};
+              --mff-bg: #${colors.firefox.userChrome.bg};
+              --mff-icon-color: #${colors.firefox.userChrome.tabtext};
               --mff-nav-toolbar-padding: 8px;
               --mff-sidebar-bg: var(--mff-bg);
-              --mff-sidebar-color: #${colors.firefox-sidebar};
+              --mff-sidebar-color: #${colors.firefox.userChrome.sidebar};
               --mff-tab-border-radius: 0px;
-              --mff-tab-color: #${colors.firefox-tab};
+              --mff-tab-color: #${colors.firefox.userChrome.tab};
               --mff-tab-font-family: "FiraCode Nerd Font";
               --mff-tab-font-size: 11pt;
               --mff-tab-font-weight: 400;
               --mff-tab-height: 32px;
-              --mff-tab-pinned-bg: #${colors.firefox-tabtext};
-              --mff-tab-selected-bg: #${colors.firefox-tab-selected};
-              --mff-tab-soundplaying-bg: #${colors.firefox-tab-soundplaying};
-              --mff-urlbar-color: #${colors.firefox-urlbar};
-              --mff-urlbar-focused-color: #${colors.firefox-urlbar-selected};
+              --mff-tab-pinned-bg: #${colors.firefox.userChrome.tabtext};
+              --mff-tab-selected-bg: #${colors.firefox.userChrome.tab-selected};
+              --mff-tab-soundplaying-bg: #${colors.firefox.userChrome.tab-soundplaying};
+              --mff-urlbar-color: #${colors.firefox.userChrome.urlbar};
+              --mff-urlbar-focused-color: #${colors.firefox.userChrome.urlbar-selected};
               --mff-urlbar-font-family: "Fira Code";
               --mff-urlbar-font-size: 11pt;
               --mff-urlbar-font-weight: 700;
-              --mff-urlbar-results-color: #${colors.firefox-urlbar-results};
+              --mff-urlbar-results-color: #${colors.firefox.userChrome.urlbar-results};
               --mff-urlbar-results-font-family: "Fira Code";
               --mff-urlbar-results-font-size: 11pt;
               --mff-urlbar-results-font-weight: 700;
-              --mff-urlbar-results-url-color: #${colors.firefox-urlbar};
+              --mff-urlbar-results-url-color: #${colors.firefox.userChrome.urlbar};
             }
 
             #back-button > .toolbarbutton-icon{
@@ -151,6 +178,7 @@
             }
             #urlbar-input {
               text-align: center !important;
+              color: var(--mff-urlbar-focused-color) !important;
             }
             #urlbar-input:focus {
               text-align: left !important;
@@ -162,7 +190,7 @@
               color: var(--uc-tab-fg-color) !important;
             }
             #navigator-toolbox {
-              border-bottom: 0px solid #${colors.firefox-misc} !important;
+              border-bottom: 0px solid #${colors.firefox.userChrome.misc} !important;
               background: var(--uc-bg-color) !important;
             }
 
@@ -176,29 +204,28 @@
             }
             .urlbar-icon {
               color: var(--mff-icon-color)  !important;
-
             }
           '';
 
           userContent = ''
             :root {
-            	--dark_color1: #${colors.firefox-usercontent.d1};
-            	--dark_color2: #${colors.firefox-usercontent.d2};
-            	--dark_color3: #${colors.firefox-usercontent.d3};
-            	--dark_color4: #${colors.firefox-usercontent.d4};
+            	--dark_color1: #${colors.firefox.userContent.d1};
+            	--dark_color2: #${colors.firefox.userContent.d2};
+            	--dark_color3: #${colors.firefox.userContent.d3};
+            	--dark_color4: #${colors.firefox.userContent.d4};
 
-            	--word_color1: #${colors.firefox-usercontent.w1};
-            	--word_color2: #${colors.firefox-usercontent.w2};
-            	--word_color3: #${colors.firefox-usercontent.w3};
+            	--word_color1: #${colors.firefox.userContent.w1};
+            	--word_color2: #${colors.firefox.userContent.w2};
+            	--word_color3: #${colors.firefox.userContent.w3};
 
-            	--light_color1: #${colors.firefox-usercontent.l1};
-            	--light_color2: #${colors.firefox-usercontent.l2};
-            	--light_color3: #${colors.firefox-usercontent.l3};
-            	--light_color4: #${colors.firefox-usercontent.l4};
+            	--light_color1: #${colors.firefox.userContent.l1};
+            	--light_color2: #${colors.firefox.userContent.l2};
+            	--light_color3: #${colors.firefox.userContent.l3};
+            	--light_color4: #${colors.firefox.userContent.l4};
 
-            	--other_color1: #${colors.firefox-usercontent.o1};
-            	--other_color2: #${colors.firefox-usercontent.o2};
-            	--other_color3: #${colors.firefox-usercontent.o3};
+            	--other_color1: #${colors.firefox.userContent.o1};
+            	--other_color2: #${colors.firefox.userContent.o2};
+            	--other_color3: #${colors.firefox.userContent.o3};
             }
             /*================ LIGHT THEME ================*/
             @media {
