@@ -63,7 +63,7 @@ in
   firefox =
     let
         ffbg = bg;
-        ffhi = green;
+        ffhi = magenta;
     in
   {
     userChrome = {
