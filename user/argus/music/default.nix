@@ -9,14 +9,10 @@
     paths =
       [
         "${mpkgs.effects.ferric-tds}"
-      ] ++ (map (value: "${value}") mpkgs.sets.heckscaper);
+      ] ++ (map (value: "${value}") mpkgs.sets.heckscaper)
+      ++ (map (value: "${value}") mpkgs.sets.TAL);
     nativePaths = [
-      "${mpkgs.native.effects.tal-reverb-4}"
-      "${mpkgs.native.effects.tal-filter-2}"
-      "${mpkgs.native.effects.tal-vocoder}"
-      "${mpkgs.native.effects.tal-chorus}"
-      "${mpkgs.native.synths.tal-noisemaker}"
-    ];
+    ] ++ (map (value: "${value}") mpkgs.sets.native.TAL);
     extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
   };
 
