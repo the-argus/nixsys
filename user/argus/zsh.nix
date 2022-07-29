@@ -89,7 +89,8 @@
       initExtra = ''
         # INCLUDES---------------------------------------------------------------------
 
-        source $HOME/.aliases # hole in reproducability bc i liked to add aliases quickly
+        # hole in reproducability bc i liked to add aliases quickly
+        [ -f  "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
         function open () {
         	xdg-open "$@">/dev/null 2>&1
