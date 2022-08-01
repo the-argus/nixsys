@@ -1,4 +1,4 @@
-{ arkenfox-userjs, lib, pkgs, unstable, ... }:
+{ firefox-addons, arkenfox-userjs, lib, pkgs, unstable, ... }:
 {
   programs.firefox =
     let
@@ -27,11 +27,8 @@
           user_pref("media.gmp-widevinecdm.enabled", true);
           user_pref("media.eme.enabled", true);
 
-          // colors
-          // user_pref("ui.systemUsesDarkTheme", 1);
-          // user_pref("widget.content.gtk-theme-override", "rose-pine-gtk");
-
-          user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
+          user_pref("browser.startup.page", 3);
+          user_pref("privacy.clearOnShutdown.history", false);
         ''
       ];
     in
@@ -62,8 +59,10 @@
       #       overrideFunc: (createSymlinkedFirefox (overridenFirefox overrideFunc));
       #   });
 
-      extensions = [
-
+      extensions = with firefox-addons; [
+        ublock-origin
+        keepassxc-browser
+        vimium
       ];
 
       profiles = {

@@ -15,9 +15,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
+    # nur = {
+    #   url = "github:nix-community/NUR";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    rycee-expressions = {
+      url = "gitlab:rycee/nur-expressions";
+      flake = false;
     };
 
     nvim-config = {
@@ -81,7 +86,8 @@
     , nixpkgs
     , nixpkgs-unstable
     , home-manager
-    , nur
+    , rycee-expressions
+      # , nur
     , audio-plugins
     , nvim-config
     , ranger-devicons
@@ -101,8 +107,9 @@
       username = "argus";
       homeDirectory = "/home/${username}";
       pkgs = import nixpkgs { inherit system; };
-      # unstable = import nixpkgs-unstable { inherit system; };
       unstable = nixpkgs-unstable.legacyPackages.${system};
+
+      firefox-addons = (import "${rycee-expressions}" { inherit pkgs; }).firefox-addons;
 
       plymouth = let name = "cross_hud"; in
         {
@@ -136,7 +143,6 @@
           inherit system;
           specialArgs = inputs // { inherit hardware; inherit unstable; inherit plymouth; };
           modules = [
-            nur.nixosModules.nur
             {
               nixpkgs.overlays = overlays;
               imports = [ ./system/configuration.nix ];
@@ -153,7 +159,7 @@
           nixpkgs.overlays = overlays;
         };
         stateVersion = "22.05";
-        extraSpecialArgs = inputs // { inherit hardware unstable homeDirectory; mpkgs = audio-plugins.mpkgs; };
+        extraSpecialArgs = inputs // { inherit hardware unstable homeDirectory firefox-addons; mpkgs = audio-plugins.mpkgs; };
       };
 
       devShell.${system} =
