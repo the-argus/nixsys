@@ -67,6 +67,7 @@
     mpv
     zathura
     qpwgraph
+    qdirstat
 
     pinta
     inkscape
