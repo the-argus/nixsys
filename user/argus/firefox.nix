@@ -28,8 +28,10 @@
           user_pref("media.eme.enabled", true);
 
           // colors
-          user_pref("ui.systemUsesDarkTheme", 1);
-          user_pref("widget.content.gtk-theme-override", "rose-pine-gtk");
+          // user_pref("ui.systemUsesDarkTheme", 1);
+          // user_pref("widget.content.gtk-theme-override", "rose-pine-gtk");
+
+          user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
         ''
       ];
     in
