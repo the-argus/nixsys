@@ -12,6 +12,7 @@
       ] ++ (map (value: "${value}") mpkgs.sets.heckscaper)
       ++ (map (value: "${value}") mpkgs.sets.TAL);
     nativePaths = [
+      "${mpkgs.native.effects.fire}"
     ] ++ (map (value: "${value}") mpkgs.sets.native.TAL);
     extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
   };
