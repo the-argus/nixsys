@@ -2,7 +2,7 @@
 {
   programs.kitty =
     let
-      colors = import ./color.nix {};
+      colors = import ./color.nix { };
 
       kittyColorFormat = (key: (value: "#${value}"));
 
@@ -77,6 +77,19 @@
         window_margin_width = 5;
       } // themeFormatted;
 
-      keybindings = { };
+      keybindings = {
+        "ctrl+shift+r" = "discard_event";
+        "ctrl+shift+n" = "discard_event"; # open new window
+        "ctrl+shift+t" = "discard_event"; # open new tab
+        "ctrl+shift+w" = "discard_event"; # close window
+        "ctrl+shift+space" = "show_scrollback";
+        "ctrl+shift+h" = "no_op";
+
+        "ctrl+minus" = "change_font_size all -2.0";
+        "ctrl+shift+kp_subtract" = "change_font_size all -2.0";
+        "ctrl+equal" = "change_font_size all +2.0";
+        "ctrl+plus" = "change_font_size all +2.0";
+        "ctrl+kp_add" = "change_font_size all +2.0";
+      };
     };
 }
