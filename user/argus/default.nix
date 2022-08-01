@@ -7,6 +7,7 @@
     ./gtk
     ./firefox.nix
     ./alacritty.nix
+    ./kitty.nix
     ./dunst.nix
     ./zathura.nix
     ./music
@@ -63,7 +64,6 @@
     unstable.heroic
     pavucontrol
     sxiv
-    kitty
     mpv
     zathura
     qpwgraph
