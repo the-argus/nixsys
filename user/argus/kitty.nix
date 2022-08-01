@@ -2,33 +2,11 @@
 {
   programs.kitty =
     let
-      colors = import ./color.nix;
-    in
-    {
-      enable = true;
-      package = unstable.kitty;
+      colors = import ./color.nix {};
 
-      settings = with colors; {
-        font_family = "Fira Code";
-        font_size = 14.1;
+      kittyColorFormat = (key: (value: "#${value}"));
 
-        # no bells. Ever.
-        enable_audio_bell = false;
-        bell_on_tab = false;
-
-        confirm_os_window_close = 0;
-
-        open_url_with = "default";
-
-        cursor_shape = "underline";
-
-        adjust_line_height = 0;
-        adjust_column_width = 0;
-
-        disable_ligatures = "never";
-
-        window_margin_width = 5;
-      } // (builtins.mapAttrs (key: value: "#${value}") {
+      theme = with colors; {
         foreground = fg;
         background = bg;
         selection_foreground = fg;
@@ -69,7 +47,35 @@
         # white
         color7 = white;
         color15 = white;
-      });
+      };
+
+      themeFormatted = builtins.mapAttrs kittyColorFormat theme;
+    in
+    {
+      enable = true;
+      package = unstable.kitty;
+
+      settings = {
+        font_family = "Fira Code";
+        font_size = 14;
+
+        # no bells. Ever.
+        enable_audio_bell = false;
+        bell_on_tab = false;
+
+        confirm_os_window_close = 0;
+
+        open_url_with = "default";
+
+        cursor_shape = "underline";
+
+        adjust_line_height = 0;
+        adjust_column_width = 0;
+
+        disable_ligatures = "never";
+
+        window_margin_width = 5;
+      } // themeFormatted;
 
       keybindings = { };
     };

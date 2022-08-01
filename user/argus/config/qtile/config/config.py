@@ -40,7 +40,7 @@ from bar import my_bar
 
 mod = "mod4"
 #terminal = guess_terminal()
-terminal = "alacritty"
+terminal = "kitty"
 
 float_types = [
         "dialog"
