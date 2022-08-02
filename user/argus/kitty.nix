@@ -75,6 +75,9 @@
         disable_ligatures = "never";
 
         window_margin_width = 5;
+
+        allow_remote_control = "socket-only";
+        listen_on = "unix:/tmp/kitty";
       } // themeFormatted;
 
       keybindings = {
