@@ -83,7 +83,7 @@
         "ctrl+shift+t" = "discard_event"; # open new tab
         "ctrl+shift+w" = "discard_event"; # close window
         "ctrl+shift+space" = "show_scrollback";
-        "ctrl+shift+h" = "no_op";
+        "ctrl+shift+h" = "discard_event";
 
         "ctrl+minus" = "change_font_size all -2.0";
         "ctrl+shift+kp_subtract" = "change_font_size all -2.0";
