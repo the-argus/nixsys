@@ -2,15 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, unstable, hardware, ... }:
+{ config, pkgs, lib, unstable, hardware, ... }:
 
 {
   #choose what host is being used (laptop or pc)
   imports = [
     ../modules
-  ] ++ 
-      (if hardware == "laptop" then [../hosts/laptop] else []) ++
-      (if hardware == "pc" then [../hosts/pc] else []);
+  ] ++
+  (if hardware == "laptop" then [ ../hosts/laptop ] else [ ]) ++
+  (if hardware == "pc" then [ ../hosts/pc ] else [ ]);
 
   # kernel version
   boot.kernelPackages = unstable.linuxPackages_latest;
@@ -23,7 +23,7 @@
 KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a2ca", TAG+="uaccess"
 
 LABEL="solokeys_end"'';
-  
+
   # line that might be necessary to add:
   # @include common-auth
   security.pam.u2f.enable = true;
@@ -39,7 +39,7 @@ LABEL="solokeys_end"'';
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
-  
+
   # modules
   music.enable = true; # music production software and configuration
   virtualization.enable = true;
@@ -65,13 +65,12 @@ LABEL="solokeys_end"'';
   };
 
   environment.pathsToLink = [ "/share/zsh" ];
-
   services.flatpak.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
-          xdg-desktop-portal
-          xdg-desktop-portal-gtk
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
     ];
   };
   environment.systemPackages = with pkgs; [
@@ -104,7 +103,8 @@ LABEL="solokeys_end"'';
 
     # essential
     gcc
-    lld llvm
+    lld
+    llvm
   ];
 
   system.stateVersion = "22.05";

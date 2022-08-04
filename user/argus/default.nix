@@ -14,18 +14,10 @@
     ./spicetify.nix
   ];
 
-  # allow access to NUR
-  nixpkgs.config = {
-    # packageOverrides = pkgs: {
-    #   nur = nur { inherit pkgs; };
-    # };
-    # allowUnfreePredicate = (pkgs: true);
-    # allow spotify to be installed if you don't have unfree enabled already
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "spotify-unwrapped"
-      "reaper"
-    ];
-  };
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "spotify-unwrapped"
+    "reaper"
+  ];
 
   programs.chromium = {
     enable = true;
@@ -82,7 +74,6 @@
     cava
 
     # cli
-    spicetify-cli
     unstable.solo2-cli
     transmission
     unstable.ani-cli

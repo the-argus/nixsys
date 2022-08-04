@@ -53,27 +53,27 @@
       spotifyPackage = unstable.spotify-unwrapped;
       spicetifyPackage = unstable.spicetify-cli;
       enable = true;
-      theme = "Sleek";
-      colorScheme = "base";
-      enabledCustomApps = [ "new-releases" "lyrics-plus" ];
-      enabledExtensions = [
-        "fullAppDisplay.js"
-        "shuffle+.js"
-        "hidePodcasts.js"
-        "historyShortcut.js"
-        "genre.js"
-        "lastfm.js"
-      ];
-
-      thirdPartyCustomApps = {
-        localFiles = "${localFiles}";
-      };
-
-      thirdPartyExtensions = {
-        hidePodcasts = "${hidePodcasts}/hidePodcasts.js";
-        history = "${history}/historyShortcut.js";
-        genre = "${genre}/genre.js";
-        lastfm = "${lastfm}/src/lastfm.js";
-      };
+      # theme = "Sleek";
+      # colorScheme = "base";
+      # enabledCustomApps = [ "new-releases" "lyrics-plus" ];
+      # enabledExtensions = [
+      #   "fullAppDisplay.js"
+      #   "shuffle+.js"
+      #   "hidePodcasts.js"
+      #   "historyShortcut.js"
+      #   "genre.js"
+      #   "lastfm.js"
+      # ];
+      #
+      # thirdPartyCustomApps = {
+      #   localFiles = "${localFiles}";
+      # };
+      #
+      # thirdPartyExtensions = {
+      #   hidePodcasts = "${hidePodcasts}/hidePodcasts.js";
+      #   history = "${history}/historyShortcut.js";
+      #   genre = "${genre}/genre.js";
+      #   lastfm = "${lastfm}/src/lastfm.js";
+      # };
     };
 }

@@ -2,8 +2,8 @@
   description = "the-argus nixos system configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-22.05";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-22.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       # home manager use out nixpkgs and not its own
@@ -106,7 +106,13 @@
       username = "argus";
       homeDirectory = "/home/${username}";
       pkgs = import nixpkgs { inherit system; };
-      unstable = nixpkgs-unstable.legacyPackages.${system};
+      unstable = import nixpkgs-unstable {
+        inherit system; config.allowUnfreePredicate =
+        pkg: builtins.elem (pkgs.lib.getName pkg) [
+          "spotify-unwrapped"
+          "reaper"
+        ];
+      };
 
       firefox-addons = (import "${rycee-expressions}" { inherit pkgs; }).firefox-addons;
 
