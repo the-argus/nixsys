@@ -11,7 +11,7 @@
     ./dunst.nix
     ./zathura.nix
     ./music
-    # ./spicetify.nix
+    ./spicetify.nix
   ];
 
   # allow access to NUR
@@ -53,7 +53,7 @@
   home.packages = with pkgs; [
     # unfree :(
     # discord
-    spotify-unwrapped
+    # spotify-unwrapped
 
     # gui applications---------
     obs-studio
@@ -62,6 +62,7 @@
     pcmanfm
     gnome.gnome-calculator
     unstable.heroic
+    polymc
     pavucontrol
     sxiv
     mpv

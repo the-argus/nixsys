@@ -19,6 +19,7 @@
       };
     in
     {
+      spotifyPackage = pkgs.spotify-unwrapped;
       enable = true;
       theme = "Dribbblish";
       colorScheme = "horizon";

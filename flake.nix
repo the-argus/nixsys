@@ -70,10 +70,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # spicetify-nix = {
-    #   url = "github:the-argus/spicetify-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    spicetify-nix = {
+      url = "github:the-argus/spicetify-nix";
+    };
 
     # font-icons = {
     #   url = "git+https://aur.archlinux.org/ttf-font-icons";
@@ -98,7 +97,7 @@
     , awesome
     , plymouth-themes-src
     , chrome-extensions
-      # , spicetify-nix
+    , spicetify-nix
       # , font-icons
     , ...
     }@inputs:
