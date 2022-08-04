@@ -51,7 +51,7 @@
     {
       # use unstable channel for these because old versions tend to inject improperly
       spotifyPackage = unstable.spotify-unwrapped;
-      spicetifyPackage = unstable.spicetify-cli;
+      spicetifyPackage = import ../../packages/spicetify-cli-2.9.9.nix { inherit pkgs;};
       enable = true;
       # theme = "Sleek";
       # colorScheme = "base";
