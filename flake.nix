@@ -110,6 +110,7 @@
         inherit system; config.allowUnfreePredicate =
         pkg: builtins.elem (pkgs.lib.getName pkg) [
           "spotify-unwrapped"
+          "spotify"
           "reaper"
         ];
       };

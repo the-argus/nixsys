@@ -50,30 +50,31 @@
     in
     {
       # use unstable channel for these because old versions tend to inject improperly
+      # spotifyPackage = unstable.spotify // { version = unstable.spotify-unwrapped.version; };
       spotifyPackage = unstable.spotify-unwrapped;
-      spicetifyPackage = import ../../packages/spicetify-cli-2.9.9.nix { inherit pkgs;};
+      spicetifyPackage = unstable.spicetify-cli;
       enable = true;
-      # theme = "Sleek";
-      # colorScheme = "base";
-      # enabledCustomApps = [ "new-releases" "lyrics-plus" ];
-      # enabledExtensions = [
-      #   "fullAppDisplay.js"
-      #   "shuffle+.js"
-      #   "hidePodcasts.js"
-      #   "historyShortcut.js"
-      #   "genre.js"
-      #   "lastfm.js"
-      # ];
+      theme = "Dribbblish";
+      colorScheme = "rosepine";
+      enabledCustomApps = [ ];
+      enabledExtensions = [
+        "fullAppDisplay.js"
+        "shuffle+.js"
+        "hidePodcasts.js"
+        "historyShortcut.js"
+        "genre.js"
+        "lastfm.js"
+      ];
       #
       # thirdPartyCustomApps = {
       #   localFiles = "${localFiles}";
       # };
       #
-      # thirdPartyExtensions = {
-      #   hidePodcasts = "${hidePodcasts}/hidePodcasts.js";
-      #   history = "${history}/historyShortcut.js";
-      #   genre = "${genre}/genre.js";
-      #   lastfm = "${lastfm}/src/lastfm.js";
-      # };
+      thirdPartyExtensions = {
+        hidePodcasts = "${hidePodcasts}/hidePodcasts.js";
+        history = "${history}/historyShortcut.js";
+        genre = "${genre}/genre.js";
+        lastfm = "${lastfm}/src/lastfm.js";
+      };
     };
 }
