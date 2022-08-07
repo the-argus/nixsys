@@ -35,10 +35,18 @@ LABEL="solokeys_end"'';
   '');
 
   # enable nix flakes
-  nix.package = pkgs.nixFlakes;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  nix = {
+    package = pkgs.nixFlakes;
+    # gc = {
+    #   automatic = true;
+    #   dates = "weekly";
+    #   options = "--delete-old";
+    # };
+    settings = {
+      extra-experimental-features = [ "nix-command" "flakes" ];
+    };
+  };
+
 
   # modules
   music.enable = true; # music production software and configuration

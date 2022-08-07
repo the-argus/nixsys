@@ -52,29 +52,39 @@
       # use unstable channel for these because old versions tend to inject improperly
       # spotifyPackage = unstable.spotify // { version = unstable.spotify-unwrapped.version; };
       spotifyPackage = unstable.spotify-unwrapped;
-      spicetifyPackage = unstable.spicetify-cli;
+      # spicetifyPackage = unstable.spicetify-cli;
+      spicetifyPackage = import ../../packages/spicetify-cli-2.9.9.nix { inherit pkgs; };
       enable = true;
       theme = "Dribbblish";
       colorScheme = "rosepine";
-      enabledCustomApps = [ ];
+      enabledCustomApps = [
+        # "new-releases"
+        # {
+        #     name = "localFiles";
+        #     src = localFiles;
+        #     appendName = false;
+        # }
+      ];
       enabledExtensions = [
+        {
+          src = hidePodcasts;
+          filename = "hidePodcasts.js";
+        }
+        {
+          src = history;
+          filename = "historyShortcut.js";
+        }
+        {
+          src = genre;
+          filename = "genre.js";
+        }
+        {
+          src = "${lastfm}/src";
+          filename = "lastfm.js";
+        }
+        "dribbblish.js"
         "fullAppDisplay.js"
         "shuffle+.js"
-        "hidePodcasts.js"
-        "historyShortcut.js"
-        "genre.js"
-        "lastfm.js"
       ];
-      #
-      # thirdPartyCustomApps = {
-      #   localFiles = "${localFiles}";
-      # };
-      #
-      thirdPartyExtensions = {
-        hidePodcasts = "${hidePodcasts}/hidePodcasts.js";
-        history = "${history}/historyShortcut.js";
-        genre = "${genre}/genre.js";
-        lastfm = "${lastfm}/src/lastfm.js";
-      };
     };
 }
