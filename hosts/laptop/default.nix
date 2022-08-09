@@ -95,6 +95,9 @@
       EndSection
     '';
   };
+  
+  # hardware ------------------------------------------------------------------
+  hardware.openrazer.enable = true;
 
   # networking-----------------------------------------------------------------
   networking.hostName = "evil";
@@ -118,5 +121,6 @@
     bluez-tools
     networkmanagerapplet
     libimobiledevice
+    razergenie
   ];
 }

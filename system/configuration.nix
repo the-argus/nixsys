@@ -69,6 +69,8 @@ LABEL="solokeys_end"'';
       "jackaudio"
       "systemd-network"
       "networkmanager"
+      "openrazer"
+      "plugdev"
     ];
   };
 
