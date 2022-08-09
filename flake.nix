@@ -71,7 +71,7 @@
     };
 
     spicetify-nix = {
-      url = "github:the-argus/spicetify-nix?ref=dev";
+      url = "github:the-argus/spicetify-nix";
     };
 
     # font-icons = {

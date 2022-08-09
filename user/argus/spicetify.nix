@@ -10,79 +10,66 @@
 
   # configure spicetify :)
   programs.spicetify =
-    let
-      officialThemesOLD = pkgs.fetchgit {
-        url = "https://github.com/spicetify/spicetify-themes";
-        rev = "c2751b48ff9693867193fe65695a585e3c2e2133";
-        sha256 = "0rbqaxvyfz2vvv3iqik5rpsa3aics5a7232167rmyvv54m475agk";
-      };
-    in
-  {
-    # use unstable channel for these because old versions tend to inject improperly
-    # spotifyPackage = unstable.spotify // { version = unstable.spotify-unwrapped.version; };
-    spotifyPackage = unstable.spotify-unwrapped;
-    # spicetifyPackage = unstable.spicetify-cli;
-    spicetifyPackage = import ../../packages/spicetify-cli-2.9.9.nix { inherit pkgs; };
-    enable = true;
-    theme = {
-      name = "Dribbblish";
-      src = officialThemesOLD;
-      requiredExtensions = [
+    {
+      # use unstable channel for these because old versions tend to inject improperly
+      # spotifyPackage = unstable.spotify // { version = unstable.spotify-unwrapped.version; };
+      spotifyPackage = unstable.spotify-unwrapped;
+      # spicetifyPackage = unstable.spicetify-cli;
+      spicetifyPackage = pkgs.spicetify-cli.overrideAttrs (oa: rec {
+        pname = "spicetify-cli";
+        version = "2.9.9";
+        src = pkgs.fetchgit {
+          url = "https://github.com/spicetify/${pname}";
+          rev = "v${version}";
+          sha256 = "1a6lqp6md9adxjxj4xpxj0j1b60yv3rpjshs91qx3q7blpsi3z4z";
+        };
+      });
+      enable = true;
+      theme = spicetify-nix.pkgs.themes.Dribbblish;
+      colorScheme = "custom";
+
+      customColorScheme =
+        let colors = import ./color.nix { }; in
+        with colors;
         {
-          filename = "dribbblish.js";
-          src = "${officialThemesOLD}/Dribbblish";
-        }
+          text = cyan;
+          subtext = cyan;# "F0F0F0";
+          sidebar-text = white;
+          main = bg;
+          sidebar = altbg;
+          player = bg;
+          card = bg;
+          shadow = altbg2;
+          selected-row = altfg;# "797979";
+          button = blue;
+          button-active = blue;
+          button-disabled = altbg3;
+          tab-active = cyan;
+          notification = green;# "1db954";
+          notification-error = red;
+          misc = black;
+        };
+
+      enabledCustomApps = with spicetify-nix.pkgs.apps; [
+        new-releases
+        lyrics-plus
+        localFiles
       ];
-      patches = {
-        "xpui.js_find_8008" = ",(\\w+=)32,";
-        "xpui.js_repl_8008" = ",$\{1}56,";
-      };
-      injectCss = true;
-      replaceColors = true;
-      overwriteAssets = true;
-      appendName = true;
-      sidebarConfig = true;
+      enabledExtensions = with spicetify-nix.pkgs.extensions; [
+        # "playlistIcons.js" # only needed if not using dribbblish
+        "fullAlbumDate.js"
+        "listPlaylistsWithSong.js"
+        "playlistIntersection.js"
+        "showQueueDuration.js"
+        "featureShuffle.js"
+        "playNext.js"
+        "keyboardShortcut.js"
+        "lastfm.js"
+        "genre.js"
+        "historyShortcut.js"
+        "hidePodcasts.js"
+        "fullAppDisplay.js"
+        "shuffle+.js"
+      ];
     };
-    colorScheme = "custom";
-
-    customColorScheme = {
-      text = "ebbcba";
-      subtext = "F0F0F0";
-      sidebar-text = "e0def4";
-      main = "191724";
-      sidebar = "2a2837";
-      player = "191724";
-      card = "191724";
-      shadow = "1f1d2e";
-      selected-row = "797979";
-      button = "31748f";
-      button-active = "31748f";
-      button-disabled = "555169";
-      tab-active = "ebbcba";
-      notification = "1db954";
-      notification-error = "eb6f92";
-      misc = "6e6a86";
-    };
-
-    enabledCustomApps = with spicetify-nix.pkgs.apps; [
-      # new-releases
-      # localFiles
-    ];
-    enabledExtensions = with spicetify-nix.pkgs.extensions; [
-      "playlistIcons.js"
-      "fullAlbumDate.js"
-      "listPlaylistsWithSong.js"
-      "playlistIntersection.js"
-      "showQueueDuration.js"
-      "featureShuffle.js"
-      "playNext.js"
-      "keyboardShortcut.js"
-      "lastfm.js"
-      "genre.js"
-      "historyShortcut.js"
-      "hidePodcasts.js"
-      "fullAppDisplay.js"
-      "shuffle+.js"
-    ];
-  };
 }
