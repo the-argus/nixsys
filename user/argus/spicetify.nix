@@ -70,6 +70,13 @@
     ];
     enabledExtensions = with spicetify-nix.pkgs.extensions; [
       "playlistIcons.js"
+      "fullAlbumDate.js"
+      "listPlaylistsWithSong.js"
+      "playlistIntersection.js"
+      "showQueueDuration.js"
+      "featureShuffle.js"
+      "playNext.js"
+      "keyboardShortcut.js"
       "lastfm.js"
       "genre.js"
       "historyShortcut.js"
