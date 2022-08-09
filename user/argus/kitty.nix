@@ -58,6 +58,7 @@
       settings = {
         font_family = "Fira Code";
         font_size = 14;
+        background_opacity = "0.8";
 
         # no bells. Ever.
         enable_audio_bell = false;

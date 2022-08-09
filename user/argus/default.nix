@@ -61,7 +61,6 @@
     zathura
     qpwgraph
     qdirstat
-    neovide
 
     pinta
     inkscape
