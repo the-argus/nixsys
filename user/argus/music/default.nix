@@ -123,5 +123,15 @@
         source = "${unstable.tunefish}";
         recursive = true;
       };
+      ".config/REAPER/ColorThemes/logic.ReaperThemeZip" = {
+        source = pkgs.fetchurl {
+          # maybe also look into:
+          # https://stash.reaper.fm/theme/1932/CLogic.zip
+          # https://stash.reaper.fm/theme/2146/FLogic.zip
+          url = "https://stash.reaper.fm/30321/I%20Logic%20V2%20Public.ReaperThemeZip";
+          name = "logicpro-reapertheme-2.0.zip";
+          sha256 = "1zq7wapjnabshwq9b6jmkb8p5xv5mamvycfp94w6jp23qk3554pm";
+        };
+      };
     };
 }

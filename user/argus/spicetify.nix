@@ -54,6 +54,7 @@
         new-releases
         lyrics-plus
         localFiles
+        marketplace
       ];
       enabledExtensions = with spicetify-nix.pkgs.extensions; [
         # "playlistIcons.js" # only needed if not using dribbblish
