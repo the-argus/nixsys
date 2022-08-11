@@ -3,7 +3,7 @@
 # home.file and home.packages. to uninstall remove both.
 {
   programs.yabridge = {
-    enable = false;
+    enable = true;
     package = unstable.yabridge;
     ctlPackage = unstable.yabridgectl;
     plugins = with mpkgs; [
@@ -12,33 +12,50 @@
     ++ mpkgs.sets.heckscaper
     ++ mpkgs.sets.TAL;
 
-    nativePlugins = with mpkgs.native; [
-      effects.fire-bin
-      synths.dexed
-    ]
-    ++ mpkgs.sets.native.TAL;
+    nativePlugins =
+      let
+        # plugins packaged in audio-plugins-nix
+        internal = with mpkgs.native; [
+          effects.fire-bin
+          synths.dexed
+        ];
+        # plugins packaged in nixpkgs already
+        unwrapped = with unstable; [
+          ChowPhaser ChowKick ChowCentaur CHOWTapeModel
+          airwindows-lv2 odin2 tunefish
+        ];
+
+        wrapped = with mpkgs.lib; [
+          (wrapPluginPath pkgs.zam-plugins "lib/vst")
+          (wrapPluginPath pkgs.surge-XT "lib/vst3")
+          (wrapPluginPath pkgs.oxefmsynth "lib/lxvst")
+          (wrapPluginPath unstable.cardinal "lib")
+        ];
+      in
+      internal ++ wrapped ++ unwrapped
+      # all the TAL plugins that run natively on linux
+      ++ mpkgs.sets.native.TAL;
 
     extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
   };
 
+  home.file =
+    {
+      ".config/REAPER/ColorThemes/logic.ReaperThemeZip" = {
+        source = pkgs.fetchurl {
+          # maybe also look into:
+          # https://stash.reaper.fm/theme/1932/CLogic.zip
+          # https://stash.reaper.fm/theme/2146/FLogic.zip
+          url = "https://stash.reaper.fm/30321/I%20Logic%20V2%20Public.ReaperThemeZip";
+          name = "logicpro-reapertheme-2.0.zip";
+          sha256 = "1zq7wapjnabshwq9b6jmkb8p5xv5mamvycfp94w6jp23qk3554pm";
+        };
+      };
+    };
+
   home.packages = with pkgs; [
-    # music
     reaper
 
-    # plugins
-    zam-plugins
-    airwindows-lv2
-    unstable.cardinal
-    ChowPhaser
-    ChowKick
-    ChowCentaur
-    CHOWTapeModel
-
-    # synths
-    surge-XT
-    oxefmsynth
-    odin2
-    tunefish
     # bespokesynth
     # bespokesynth-with-vst2
 
@@ -78,66 +95,4 @@
     # other plugins i should get:
     # modartt pianoteq 
   ];
-
-  home.file =
-    {
-      ".vst/dexed" = {
-        source = "${mpkgs.native.synths.dexed}";
-        recursive = true;
-      };
-      ".vst/zam" = {
-        source = "${pkgs.zam-plugins}/lib/vst";
-        recursive = true;
-      };
-      ".vst/surge" = {
-        source = "${pkgs.surge-XT}/lib/vst3";
-        recursive = true;
-      };
-      ".vst/oxe" = {
-        source = "${pkgs.oxefmsynth}/lib/lxvst";
-        recursive = true;
-      };
-      ".vst/cardinal" = {
-        source = "${unstable.cardinal}/lib";
-        recursive = true;
-      };
-      ".vst/CHOW/Phaser" = {
-        source = "${unstable.ChowPhaser}";
-        recursive = true;
-      };
-      ".vst/CHOW/Kick" = {
-        source = "${unstable.ChowKick}";
-        recursive = true;
-      };
-      ".vst/CHOW/Centaur" = {
-        source = "${unstable.ChowCentaur}";
-        recursive = true;
-      };
-      ".vst/CHOW/TapeModel" = {
-        source = "${unstable.CHOWTapeModel}";
-        recursive = true;
-      };
-      ".vst/airwindows" = {
-        source = "${unstable.airwindows-lv2}";
-        recursive = true;
-      };
-      ".vst/odin2" = {
-        source = "${unstable.odin2}";
-        recursive = true;
-      };
-      ".vst/tunefish" = {
-        source = "${unstable.tunefish}";
-        recursive = true;
-      };
-      ".config/REAPER/ColorThemes/logic.ReaperThemeZip" = {
-        source = pkgs.fetchurl {
-          # maybe also look into:
-          # https://stash.reaper.fm/theme/1932/CLogic.zip
-          # https://stash.reaper.fm/theme/2146/FLogic.zip
-          url = "https://stash.reaper.fm/30321/I%20Logic%20V2%20Public.ReaperThemeZip";
-          name = "logicpro-reapertheme-2.0.zip";
-          sha256 = "1zq7wapjnabshwq9b6jmkb8p5xv5mamvycfp94w6jp23qk3554pm";
-        };
-      };
-    };
 }
