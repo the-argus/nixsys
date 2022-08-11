@@ -3,17 +3,21 @@
 # home.file and home.packages. to uninstall remove both.
 {
   programs.yabridge = {
-    enable = true;
+    enable = false;
     package = unstable.yabridge;
     ctlPackage = unstable.yabridgectl;
-    paths =
-      [
-        "${mpkgs.effects.ferric-tds}"
-      ] ++ (map (value: "${value}") mpkgs.sets.heckscaper)
-      ++ (map (value: "${value}") mpkgs.sets.TAL);
-    nativePaths = [
-      "${mpkgs.native.effects.fire-bin}"
-    ] ++ (map (value: "${value}") mpkgs.sets.native.TAL);
+    plugins = with mpkgs; [
+      effects.ferric-tds
+    ]
+    ++ mpkgs.sets.heckscaper
+    ++ mpkgs.sets.TAL;
+
+    nativePlugins = with mpkgs.native; [
+      effects.fire-bin
+      synths.dexed
+    ]
+    ++ mpkgs.sets.native.TAL;
+
     extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
   };
 
@@ -47,8 +51,10 @@
     # rkrlv2
     # plujain-ramp
 
+    # backburner
+    # Ruina distortion
+
     # https://www.youtube.com/playlist?list=PLCXbZyyqusu3b3_CD6gHj4fKHE4AiesnJ
-    # TODO: Fire distortion, Ruina distortion
     # AIRWINDOWS (NC-17 is cool)
     # Gatelab, filterstep, and panflow (use panflow for 70s drums)
     # Surge FX (Surge XT effects separated)
@@ -76,7 +82,7 @@
   home.file =
     {
       ".vst/dexed" = {
-        source = "${mpkgs.native.synths.dexed}/Dexed.vst3/Contents/x86_64-linux";
+        source = "${mpkgs.native.synths.dexed}";
         recursive = true;
       };
       ".vst/zam" = {
