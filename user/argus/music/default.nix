@@ -6,6 +6,8 @@
     enable = true;
     package = unstable.yabridge;
     ctlPackage = unstable.yabridgectl;
+    suppressFreemiumWarning = true;
+    suppressUnmaintainedWarning = true;
     plugins = with mpkgs; [
       effects.ferric-tds
     ]
