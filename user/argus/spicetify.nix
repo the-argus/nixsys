@@ -25,7 +25,6 @@
         };
       });
       enable = true;
-      # theme = spicetify-nix.pkgs.themes.SpotifyNoPremium;
       theme = spicetify-nix.pkgs.themes.Dribbblish;
       colorScheme = "custom";
 
