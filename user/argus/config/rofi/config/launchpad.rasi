@@ -8,10 +8,10 @@
  */
 
 configuration {
-	font:							"Comic Code Bold 14";
+	font:							"Fira Code Semibold 14";
     show-icons:                     true;
 	icon-theme: 					"rose-pine-icons";
-    display-drun: 					"";
+    display-drun: 					"";
     drun-display-format:            "{name}";
     disable-history:                false;
 	sidebar-mode: 					false;
@@ -42,7 +42,7 @@ prompt {
 	padding: 						-0.4% 0.7% -0.9% 0%;
 	background-color: 				@background-alt;
 	text-color: 					@foreground;
-	font:							"Comic Code Bold 22";
+	font:							"Fira Code Semibold 14";
 }
 
 entry {
@@ -50,7 +50,7 @@ entry {
     text-color:                     @foreground;
     placeholder-color:              @foreground;
     expand:                         true;
-    horizontal-align:               0;
+    horizontal-align:               0.5;
     placeholder:                    "Search";
     padding:                        0.0% 0% 0% 0%;
     blink:                          true;
@@ -58,6 +58,7 @@ entry {
 
 inputbar {
 	children: 						[ prompt, entry ];
+    orientation:                    vertical;
     background-color:               @background-bar;
     text-color:                     @foreground;
     expand:                         false;
@@ -65,7 +66,7 @@ inputbar {
     border-radius:                  6px;
 	border-color:					@accent;
     margin:                         0% 30% 0% 30%;
-    padding:                        1% 1% 1% 1%;
+    padding:                        0% 1% 1% 1%;
 }
 
 listview {
