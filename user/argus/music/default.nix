@@ -18,25 +18,39 @@
       let
         # plugins packaged in audio-plugins-nix
         internal = with mpkgs.native; [
-          effects.fire-bin
+          (mpkgs.lib.wrapPluginPath effects.fire-bin
+            "Fire-Linux/VST3/Fire.vst3/Contents/x86_64-linux")
           synths.dexed
         ];
         # plugins packaged in nixpkgs already
-        unwrapped = with unstable; [
-          ChowPhaser ChowKick ChowCentaur CHOWTapeModel
-          airwindows-lv2 odin2 tunefish
-        ];
-
         wrapped = with mpkgs.lib; [
           (wrapPluginPath pkgs.zam-plugins "lib/vst")
           (wrapPluginPath pkgs.surge-XT "lib/vst3")
           (wrapPluginPath pkgs.oxefmsynth "lib/lxvst")
-          (wrapPluginPath unstable.cardinal "lib")
+          (wrapPluginPath unstable.ChowPhaser "lib/vst3")
+          (wrapPluginPath unstable.odin2 "lib/vst3/Odin2.vst3/Contents/x86_64-linux")
+          # (wrapPluginPath unstable.cardinal "lib/vst3")
+          # (wrapPluginPath unstable.ChowCentaur "lib/vst3/ChowCentaur.vst3/Contents/x86_64-linux")
+          # (wrapPluginPath unstable.CHOWTapeModel "lib/vst3/CHOWTapeModel.vst3/Contents/x86_64-linux")
+          # (wrapPluginPath unstable.ChowKick "lib/vst3/ChowKick.vst3/Contents/x86_64-linux")
         ];
       in
-      internal ++ wrapped ++ unwrapped
+      internal ++ wrapped
       # all the TAL plugins that run natively on linux
       ++ mpkgs.sets.native.TAL;
+
+    lv2 =
+      let
+        wrapped = with mpkgs.lib; [
+          (wrapPluginPath unstable.ChowCentaur "lib/lv2/ChowCentaur.lv2")
+          (wrapPluginPath unstable.CHOWTapeModel "lib/lv2/CHOWTapeModel.lv2")
+          (wrapPluginPath unstable.ChowKick "lib/lv2/ChowKick.lv2")
+          (wrapPluginPath unstable.cardinal "lib/lv2")
+          (wrapPluginPath unstable.airwindows-lv2 "lib/lv2/Airwindows.lv2")
+          # (wrapPluginPath unstable.tunefish "lib/lv2/Tunefish4.lv2")
+        ];
+      in
+      wrapped;
 
     extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
   };
