@@ -25,46 +25,6 @@
       flake = false;
     };
 
-    nvim-config = {
-      url = "github:the-argus/nvim-config";
-      flake = false;
-    };
-
-    ranger-devicons = {
-      url = "github:alexanderjeurissen/ranger_devicons";
-      flake = false;
-    };
-
-    # kanagawa-gtk = {
-    #   url = "github:Fausto-Korpsvart/Kanagawa-GKT-Theme";
-    #   flake = false;
-    # };
-
-    rose-pine-gtk = {
-      url = "github:rose-pine/gtk";
-      flake = false;
-    };
-
-    arkenfox-userjs = {
-      url = "github:arkenfox/user.js";
-      flake = false;
-    };
-
-    picom = {
-      url = "github:Arian8j2/picom-jonaburg-fix";
-      flake = false;
-    };
-
-    awesome = {
-      url = "github:awesomeWM/awesome";
-      flake = false;
-    };
-
-    plymouth-themes-src = {
-      url = "github:adi1090x/plymouth-themes";
-      flake = false;
-    };
-
     chrome-extensions = {
       url = "github:the-argus/chrome-extensions-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,10 +34,16 @@
       url = "github:the-argus/spicetify-nix";
     };
 
-    # font-icons = {
-    #   url = "git+https://aur.archlinux.org/ttf-font-icons";
-    #   flake = false;
-    # };
+    # non-nix imports (need fast updates):
+    nvim-config = {
+      url = "github:the-argus/nvim-config";
+      flake = false;
+    };
+
+    arkenfox-userjs = {
+      url = "github:arkenfox/user.js";
+      flake = false;
+    };
   };
 
   outputs =
@@ -88,17 +54,10 @@
     , rycee-expressions
       # , nur
     , audio-plugins
-    , nvim-config
-    , ranger-devicons
-    , arkenfox-userjs
-      # , kanagawa-gtk
-    , rose-pine-gtk
-    , picom
-    , awesome
-    , plymouth-themes-src
     , chrome-extensions
     , spicetify-nix
-      # , font-icons
+    , nvim-config
+    , arkenfox-userjs
     , ...
     }@inputs:
     let
@@ -110,7 +69,6 @@
         inherit system; config.allowUnfreePredicate =
         pkg: builtins.elem (pkgs.lib.getName pkg) [
           "spotify-unwrapped"
-          "spotify"
           "reaper"
         ];
       };
@@ -131,10 +89,10 @@
               "--no-sandbox --enable-accelerated-mjpeg-decode --enable-accelerated-video --ignore-gpu-blacklist --enable-native-gpu-memory-buffers --enable-gpu-rasterization";
           };
         })
-
+        
         (self: super: {
           plymouth-themes-package = import ./packages/plymouth-themes.nix ({
-            inherit pkgs; inherit plymouth-themes-src;
+            inherit pkgs;
           } // plymouth);
         })
       ];
@@ -147,7 +105,9 @@
         # hostname (evil)
         evil = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = inputs // { inherit hardware; inherit unstable; inherit plymouth; };
+          specialArgs = inputs // {
+            inherit hardware; inherit unstable; inherit plymouth;
+          };
           modules = [
             {
               nixpkgs.overlays = overlays;

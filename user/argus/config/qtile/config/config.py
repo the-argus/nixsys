@@ -85,6 +85,22 @@ def dialogs(window):
     if window.name in float_names or window.window.get_wm_type() in float_types or window.window.get_wm_transient_for():
         window.floating = True
 
+@hook.subscribe.client_new
+def set_floating(window):
+    floating_types = ["notification", "toolbar", "splash", "dialog"]
+    floating_roles = ["EventDialog", "Msgcompose", "Preferences"]
+    floating_names = ["Terminator Preferences"]
+
+    if (window.window.get_wm_type() in floating_types or
+        window.window.get_wm_window_role() in floating_roles or
+        window.window.get_name() in floating_names or
+        window.window.get_wm_transient_for()):
+
+        screen = window.qtile.find_closest_screen(window.x, window.y)
+        window.floating = True
+        # window.x = int(screen.width / 2 - window.width / 2)
+        # window.y = int(screen.height / 2 - window.height / 2)
+
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html

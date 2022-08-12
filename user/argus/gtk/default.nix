@@ -1,16 +1,13 @@
-{ pkgs, kanagawa-gtk, rose-pine-gtk, homeDirectory, ... }:
+{ pkgs,  homeDirectory, ... }:
 
 let
   kanagawa = import ./themes/kanagawa.nix {
-    inherit kanagawa-gtk;
     stdenv = pkgs.stdenv;
     gtk-engine-murrine = pkgs.gtk-engine-murrine;
   };
 
   rose-pine = import ./themes/rose-pine.nix {
-    inherit rose-pine-gtk;
-    stdenv = pkgs.stdenv;
-    gtk-engine-murrine = pkgs.gtk-engine-murrine;
+    inherit (pkgs) stdenv gtk-engine-murrine fetchgit;
   };
 
   paperIcons = {
@@ -34,11 +31,6 @@ in
 {
   home.packages = [pkgs.dconf];
   home.file = {
-    ".config/gtk-4.0" = {
-      source = "${rose-pine-gtk}/gtk4";
-      recursive = true;
-    };
-
     # xorg cursor
     ".icons/default/index.theme" = {
       text = ''

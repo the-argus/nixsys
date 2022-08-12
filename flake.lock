@@ -23,32 +23,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1660229039,
-        "narHash": "sha256-9TlxPU+b3jVLLrt4tRdPtWteJhHDS7kSHsDJi9FRHiI=",
+        "lastModified": 1660232604,
+        "narHash": "sha256-PxF2JvyEVg8ZYfgHviLFiOlbJWr0YbZAmKqzpQT75do=",
         "owner": "the-argus",
         "repo": "audio-plugins-nix",
-        "rev": "b0cc601b11477a24c92497b3ddb14b2693ed7971",
+        "rev": "dd39e442c4a2e44ef60bad3e9ea2c138efe8c35d",
         "type": "github"
       },
       "original": {
         "owner": "the-argus",
         "repo": "audio-plugins-nix",
-        "type": "github"
-      }
-    },
-    "awesome": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1657641214,
-        "narHash": "sha256-SxydaQScu0kvBn3VOnT29/Sji0Y+7my+tO46mpMggAQ=",
-        "owner": "awesomeWM",
-        "repo": "awesome",
-        "rev": "b7bac1dc761f7e231355e76351500a97b27b6803",
-        "type": "github"
-      },
-      "original": {
-        "owner": "awesomeWM",
-        "repo": "awesome",
         "type": "github"
       }
     },
@@ -110,11 +94,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1660120254,
-        "narHash": "sha256-EMBa86JQ6W0och5Kxb1XmprgN/HFsSuJ9fRa2PtV3uk=",
+        "lastModified": 1660215038,
+        "narHash": "sha256-tqMyd5QB4MZh59wMHXqpro4hkKjz9ubQxkxFSuCuBGE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e4c9d950a3c54a0760b127d406f6528eb625eed8",
+        "rev": "45c9736ed69800a6ff2164fb4538c9e40dad25d6",
         "type": "github"
       },
       "original": {
@@ -171,96 +155,27 @@
         "type": "github"
       }
     },
-    "picom": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1640117623,
-        "narHash": "sha256-1z4bKDoNgmG40y2DKTSSh1NCafrE1rkHkCB3ob8ibm4=",
-        "owner": "Arian8j2",
-        "repo": "picom-jonaburg-fix",
-        "rev": "31d25da22b44f37cbb9be49fe5c239ef8d00df12",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Arian8j2",
-        "repo": "picom-jonaburg-fix",
-        "type": "github"
-      }
-    },
-    "plymouth-themes-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1626085315,
-        "narHash": "sha256-VNGvA8ujwjpC2rTVZKrXni2GjfiZk7AgAn4ZB4Baj2k=",
-        "owner": "adi1090x",
-        "repo": "plymouth-themes",
-        "rev": "bf2f570bee8e84c5c20caac353cbe1d811a4745f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "adi1090x",
-        "repo": "plymouth-themes",
-        "type": "github"
-      }
-    },
-    "ranger-devicons": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1653224349,
-        "narHash": "sha256-YT7YFiTA2XtIoVzaVjUWMu6j4Nwo4iGzvOtjjWva/80=",
-        "owner": "alexanderjeurissen",
-        "repo": "ranger_devicons",
-        "rev": "49fe4753c89615a32f14b2f4c78bbd02ee76be3c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alexanderjeurissen",
-        "repo": "ranger_devicons",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "arkenfox-userjs": "arkenfox-userjs",
         "audio-plugins": "audio-plugins",
-        "awesome": "awesome",
         "chrome-extensions": "chrome-extensions",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvim-config": "nvim-config",
-        "picom": "picom",
-        "plymouth-themes-src": "plymouth-themes-src",
-        "ranger-devicons": "ranger-devicons",
-        "rose-pine-gtk": "rose-pine-gtk",
         "rycee-expressions": "rycee-expressions",
         "spicetify-nix": "spicetify-nix"
-      }
-    },
-    "rose-pine-gtk": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1659019914,
-        "narHash": "sha256-5T9TVI53W9xau6tQPkqpNdoyKyminkXmfkXK8KIHs30=",
-        "owner": "rose-pine",
-        "repo": "gtk",
-        "rev": "af7897d54d8ce9f127ab7282d1aa862386dc8271",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rose-pine",
-        "repo": "gtk",
-        "type": "github"
       }
     },
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1660190565,
-        "narHash": "sha256-0eIqCy+MQpQ53FCnuuPt1dwD7biGk3u4u1eT0mU059s=",
+        "lastModified": 1660276956,
+        "narHash": "sha256-uNLdwZk+CGg+C5w7Vo6Kr0dtTEzKaqTrRC6bKMicaLg=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "1a1a9b76ab537d6ea041a87665b9383520839568",
+        "rev": "d70d8f632d89fc3f8e0e1d6e81266ff627ae177a",
         "type": "gitlab"
       },
       "original": {

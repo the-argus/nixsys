@@ -1,4 +1,4 @@
-{ rose-pine-gtk, stdenv, gtk-engine-murrine, ... }:
+{ stdenv, fetchgit, gtk-engine-murrine, ... }:
 {
   name = "rose-pine-gtk";
   iconName = "rose-pine-icons";
@@ -6,7 +6,11 @@
     pname = "rose-pine-gtk";
     version = "1.0";
 
-    src = rose-pine-gtk;
+    src = fetchgit {
+      url = "https://github.com/rose-pine/gtk";
+      sha256 = "0zdk0yig1jj5gvk4b7m254mk5nimm553wl5bpdddqnvpira56gz5";
+      rev = "af7897d54d8ce9f127ab7282d1aa862386dc8271";
+    };
 
     propagatedUserEnvPkgs = [ gtk-engine-murrine ];
 
