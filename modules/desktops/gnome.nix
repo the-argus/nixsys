@@ -19,6 +19,8 @@ in
     xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gnome ];
 
     environment.systemPackages = with pkgs.gnomeExtensions; [
+      # maui apps (replacements for evince, totem, and gedit respectively
+      shelf clip nota index-fm
       pkgs.sakura # preferred gtk terminal emulator
       appindicator
       # unstable.gnomeExtensions.transparent-window

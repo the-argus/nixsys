@@ -12,6 +12,8 @@ let
 
   marwaita = pkgs.callPackage ./themes/marwaita.nix {};
 
+  darkg = pkgs.callPackage ./themes/darkg.nix {};
+
   paperIcons = {
     name = "Paper-Mono-Dark";
     package = pkgs.paper-icon-theme;
@@ -22,6 +24,11 @@ let
     package = rose-pine.pkg;
   };
 
+  numixCircleIcons = {
+    name = "Numix-Circle"; # or Numix-Circle-Light
+    package = pkgs.numix-icon-theme-circle;
+  };
+
   rosePineTheme = {
     name = rose-pine.name;
     package = rose-pine.pkg;
@@ -30,6 +37,11 @@ let
   marwaitaTheme = {
     name = "Marwaita";
     package = marwaita;
+  };
+
+  darkGTheme = {
+    name = "DarkG";
+    package = darkg;
   };
 
   selectedCursorTheme = "Numix-Cursor";
@@ -62,9 +74,9 @@ in
         size = 16;
       };
 
-      iconTheme = rosePineIcons;
+      iconTheme = numixCircleIcons;
 
-      theme = marwaitaTheme;
+      theme = darkGTheme;
 
       gtk3 = {
         bookmarks = [

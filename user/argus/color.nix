@@ -54,7 +54,34 @@ let
     altbg3 = "4c566a";
   };
 
-  scheme = rosepine;
+  gtk4 =
+  let 
+    white = "F9F9F9";
+  in
+  rec {
+    black = "323232";
+    red = "E01818";
+    green = "41AC85";
+    yellow = "EA9B26";
+    blue = "3584E4";
+    magenta = "9367DA";
+    cyan = "56C9D0";
+    inherit white;
+
+    bg = "242424";
+    fg = white;
+
+    # inverted, in this case
+    altbg = white;
+    altfg = "353535";
+
+    altfg2 = altbg;
+    altbg2 = altfg;
+
+    altbg3 = altfg;
+  };
+
+  scheme = gtk4;
 
 in
 with scheme; {
