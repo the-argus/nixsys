@@ -10,6 +10,8 @@ let
     inherit (pkgs) stdenv gtk-engine-murrine fetchgit;
   };
 
+  marwaita = pkgs.callPackage ./themes/marwaita.nix {};
+
   paperIcons = {
     name = "Paper-Mono-Dark";
     package = pkgs.paper-icon-theme;
@@ -23,6 +25,11 @@ let
   rosePineTheme = {
     name = rose-pine.name;
     package = rose-pine.pkg;
+  };
+
+  marwaitaTheme = {
+    name = "Marwaita";
+    package = marwaita;
   };
 
   selectedCursorTheme = "Numix-Cursor";
@@ -57,7 +64,7 @@ in
 
       iconTheme = rosePineIcons;
 
-      theme = rosePineTheme;
+      theme = marwaitaTheme;
 
       gtk3 = {
         bookmarks = [

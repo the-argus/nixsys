@@ -19,16 +19,18 @@ in
     xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gnome ];
 
     environment.systemPackages = with pkgs.gnomeExtensions; [
+      pkgs.sakura # preferred gtk terminal emulator
       appindicator
-      unstable.gnomeExtensions.transparent-window
-      compiz-alike-windows-effect
+      # unstable.gnomeExtensions.transparent-window
+      # compiz-alike-windows-effect
       # compiz-windows-effect
-      desktop-cube
+      # desktop-cube
       burn-my-windows
       blur-my-shell
       just-perfection
       unstable.gnomeExtensions.keep-awake
       dash-to-panel
+      no-title-bar
       (pkgs.callPackage ../../packages/fly-pie { })
     ];
 
@@ -38,6 +40,7 @@ in
       gnome-photos
       gnome-tour
     ]) ++ (with pkgs.gnome; [
+      terminal
       cheese # webcam tool
       gnome-music
       epiphany # web browser
