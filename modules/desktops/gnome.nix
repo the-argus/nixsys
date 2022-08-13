@@ -19,9 +19,6 @@ in
     xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gnome ];
 
     environment.systemPackages = with pkgs.gnomeExtensions; [
-      # maui apps (replacements for evince, totem, and gedit respectively
-      (unstable) shelf clip nota index-fm
-      pkgs.sakura # preferred gtk terminal emulator
       appindicator
       # unstable.gnomeExtensions.transparent-window
       # compiz-alike-windows-effect
@@ -34,7 +31,14 @@ in
       dash-to-panel
       no-title-bar
       (pkgs.callPackage ../../packages/fly-pie { })
-    ];
+    ] ++ (with unstable; [
+      # maui apps (replacements for evince, totem, and gedit respectively
+      shelf
+      clip
+      nota
+      index-fm
+      pkgs.sakura # preferred gtk terminal emulator
+    ]);
 
     hardware.pulseaudio.enable = false;
 
