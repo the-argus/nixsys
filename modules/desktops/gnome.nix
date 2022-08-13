@@ -40,7 +40,7 @@ in
       gnome-photos
       gnome-tour
     ]) ++ (with pkgs.gnome; [
-      terminal
+      gnome-terminal
       cheese # webcam tool
       gnome-music
       epiphany # web browser
