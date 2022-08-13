@@ -1,0 +1,22 @@
+From a29f66647dfdad4b518f4857bb245c7121aff820 Mon Sep 17 00:00:00 2001
+From: Ian McFarlane <i.mcfarlane2002@gmail.com>
+Date: Fri, 12 Aug 2022 21:18:04 -0500
+Subject: [PATCH] shell patch
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 439fcf2..107fb01 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-SHELL := /bin/bash
++SHELL := /bin/sh
+ 
+ # We define these here to make the makefile easier to port to another extension.
+ NAME     := flypie
+-- 
+2.36.0
+

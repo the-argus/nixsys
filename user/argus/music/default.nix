@@ -10,6 +10,8 @@
     suppressUnmaintainedWarning = true;
     plugins = with mpkgs; [
       effects.ferric-tds
+      (mpkgs.lib.wrapPluginPath effects.tdr-nova "VST3/x64/TDR\\ Nova.vst3/Contents/x86_64-linux")
+      # effects.tdr-nova
     ]
     ++ mpkgs.sets.heckscaper
     ++ mpkgs.sets.TAL;
@@ -70,7 +72,7 @@
     };
 
   home.packages = with pkgs; [
-    reaper
+    unstable.reaper
 
     # bespokesynth
     # bespokesynth-with-vst2

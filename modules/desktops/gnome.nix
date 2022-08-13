@@ -14,8 +14,18 @@ in
 
     programs.dconf.enable = true;
 
-    environment.systemPackages = with pkgs; [
-      gnomeExtensions.appindicator
+    environment.systemPackages = with pkgs.gnomeExtensions; [
+      appindicator
+      transparent-window
+      compiz-alike-windows-effect
+      # compiz-windows-effect
+      desktop-cube
+      burn-my-windows
+      blur-my-shell
+      just-perfection
+      keep-awake
+      dash-to-panel
+      (pkgs.callPackage ../../packages/fly-pie {})
     ];
 
     hardware.pulseaudio.enable = false;
