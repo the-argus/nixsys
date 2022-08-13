@@ -1,0 +1,26 @@
+From 0469a5836bf9947a729b7b47237ccdd0c11de2f6 Mon Sep 17 00:00:00 2001
+From: Ian McFarlane <i.mcfarlane2002@gmail.com>
+Date: Fri, 12 Aug 2022 21:53:45 -0500
+Subject: [PATCH] remove install phase
+
+---
+ Makefile | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 439fcf2..819fa8e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -24,8 +24,7 @@ zip: $(ZIP_NAME)
+ 
+ # The install recipes creates the extension zip and installs it.
+ install: $(ZIP_NAME)
+-	gnome-extensions install "$(ZIP_NAME)" --force
+-	@echo "Extension installed successfully! Now restart the Shell ('Alt'+'F2', then 'r')."
++	echo "dummy install"
+ 
+ # This uninstalls the previously installed extension.
+ uninstall:
+-- 
+2.36.0
+

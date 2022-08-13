@@ -10,7 +10,7 @@
     suppressUnmaintainedWarning = true;
     plugins = with mpkgs; [
       effects.ferric-tds
-      (mpkgs.lib.wrapPluginPath effects.tdr-nova "VST3/x64/TDR\\ Nova.vst3/Contents/x86_64-linux")
+      # (mpkgs.lib.wrapPluginPath effects.tdr-nova "VST3/x64/TDR\\ Nova.vst3/Contents/x86_64-linux")
       # effects.tdr-nova
     ]
     ++ mpkgs.sets.heckscaper

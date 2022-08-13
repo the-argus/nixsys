@@ -80,7 +80,6 @@ LABEL="solokeys_end"'';
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal
-      xdg-desktop-portal-gtk
     ];
   };
   environment.systemPackages = with pkgs; [
