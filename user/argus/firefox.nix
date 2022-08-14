@@ -5,6 +5,7 @@
       colors = pkgs.callPackage ./color.nix {};
       assets = import ../../packages/firefox-assets { inherit pkgs; };
       baseUserJS = builtins.readFile "${arkenfox-userjs}/user.js";
+      font = (pkgs.callPackage ./themes.nix {}).font.name;
       finalUserJS = lib.strings.concatStrings [
         baseUserJS
         ''
@@ -95,7 +96,7 @@
               --mff-sidebar-color: #${colors.firefox.userChrome.sidebar};
               --mff-tab-border-radius: 0px;
               --mff-tab-color: #${colors.firefox.userChrome.tab};
-              --mff-tab-font-family: "FiraCode Nerd Font";
+              --mff-tab-font-family: "${font}";
               --mff-tab-font-size: 11pt;
               --mff-tab-font-weight: 400;
               --mff-tab-height: 32px;
@@ -104,11 +105,11 @@
               --mff-tab-soundplaying-bg: #${colors.firefox.userChrome.tab-soundplaying};
               --mff-urlbar-color: #${colors.firefox.userChrome.urlbar};
               --mff-urlbar-focused-color: #${colors.firefox.userChrome.urlbar-selected};
-              --mff-urlbar-font-family: "Fira Code";
+              --mff-urlbar-font-family: "${font}";
               --mff-urlbar-font-size: 11pt;
               --mff-urlbar-font-weight: 700;
               --mff-urlbar-results-color: #${colors.firefox.userChrome.urlbar-results};
-              --mff-urlbar-results-font-family: "Fira Code";
+              --mff-urlbar-results-font-family: "${font}";
               --mff-urlbar-results-font-size: 11pt;
               --mff-urlbar-results-font-weight: 700;
               --mff-urlbar-results-url-color: #${colors.firefox.userChrome.urlbar};

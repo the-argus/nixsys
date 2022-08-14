@@ -22,7 +22,7 @@
 
       font =
         let
-          main = "Fira Code";
+          main = (pkgs.callPackage ./themes.nix {}).font.name;
         in
         {
           size = 9;

@@ -4,6 +4,8 @@
     let
       colors = pkgs.callPackage ./color.nix {};
 
+      font = (pkgs.callPackage ./themes.nix {}).font.name;
+
       kittyColorFormat = (key: (value: "#${value}"));
 
       theme = with colors; {
@@ -56,7 +58,7 @@
       package = unstable.kitty;
 
       settings = {
-        font_family = "Fira Code";
+        font_family = font;
         font_size = 14;
         background_opacity = "0.8";
 
