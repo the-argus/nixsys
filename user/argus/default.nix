@@ -12,6 +12,7 @@
     ./zathura.nix
     ./music
     ./spicetify.nix
+    ./webcord.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
