@@ -31,7 +31,7 @@
           (wrapPluginPath pkgs.oxefmsynth "lib/lxvst")
           (wrapPluginPath unstable.ChowPhaser "lib/vst3")
           (wrapPluginPath unstable.odin2 "lib/vst3/Odin2.vst3/Contents/x86_64-linux")
-          # (wrapPluginPath unstable.cardinal "lib/vst3")
+          (wrapPluginPath unstable.cardinal "lib/vst3")
           # (wrapPluginPath unstable.ChowCentaur "lib/vst3/ChowCentaur.vst3/Contents/x86_64-linux")
           # (wrapPluginPath unstable.CHOWTapeModel "lib/vst3/CHOWTapeModel.vst3/Contents/x86_64-linux")
           # (wrapPluginPath unstable.ChowKick "lib/vst3/ChowKick.vst3/Contents/x86_64-linux")

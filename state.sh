@@ -12,3 +12,6 @@ flatpak install Discord
 # list of installed plugins there:
 # - https://www.ohmforce.com/frohmage
 yabridgectl sync
+
+# NOTES:
+# - ungoogled chromium profile color
