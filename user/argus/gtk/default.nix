@@ -1,7 +1,8 @@
 { pkgs,  homeDirectory, ... }:
 
 let
-  theme = (pkgs.callPackage ../themes.nix {}).gtk;
+  theme = (pkgs.callPackage ../themes.nix {});
+  gtk = theme.gtk;
 in
 {
   home.packages = [pkgs.dconf];
@@ -10,7 +11,7 @@ in
     ".icons/default/index.theme" = {
       text = ''
         [Icon Theme]
-        Inherits=${theme.cursorTheme.name}
+        Inherits=${gtk.cursorTheme.name}
       '';
     };
   };
@@ -18,14 +19,13 @@ in
     {
       enable = true;
       
-      font = theme.font;
+      font = theme.font.display;
 
-      cursorTheme = theme.cursorTheme;
+      cursorTheme = gtk.cursorTheme;
 
-      iconTheme = theme.iconTheme;
+      iconTheme = gtk.iconTheme;
       
-      # the system theme's gtk theme, lol
-      theme = theme.theme;
+      theme = gtk.theme;
 
       gtk3 = {
         bookmarks = [

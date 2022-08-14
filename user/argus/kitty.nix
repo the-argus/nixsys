@@ -4,9 +4,9 @@
     let
       colors = pkgs.callPackage ./color.nix {};
 
-      theme = (pkgs.callPackage ./themes.nix {});
-      font = theme.font.monospace;
-      opacity = theme.opacity;
+      systemTheme = (pkgs.callPackage ./themes.nix {});
+      font = systemTheme.font.monospace;
+      opacity = systemTheme.opacity;
 
       kittyColorFormat = (key: (value: "#${value}"));
 

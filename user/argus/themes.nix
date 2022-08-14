@@ -11,15 +11,15 @@ let
   discordThemes = pkgs.callPackage ./webcord/pkgs.nix { };
 
   # gtk themes -----------------------------------------------------
-  kanagawa = import ./themes/kanagawa.nix {
+  kanagawa = import ./gtk/themes/kanagawa.nix {
     stdenv = pkgs.stdenv;
     gtk-engine-murrine = pkgs.gtk-engine-murrine;
   };
-  rose-pine = import ./themes/rose-pine.nix {
+  rose-pine = import ./gtk/themes/rose-pine.nix {
     inherit (pkgs) stdenv gtk-engine-murrine fetchgit;
   };
-  marwaita = pkgs.callPackage ./themes/marwaita.nix { };
-  darkg = pkgs.callPackage ./themes/darkg.nix { };
+  marwaita = pkgs.callPackage ./gtk/themes/marwaita.nix { };
+  darkg = pkgs.callPackage ./gtk/themes/darkg.nix { };
 
   paperIcons = {
     name = "Paper-Mono-Dark";
@@ -81,9 +81,11 @@ let
       iconTheme = numixCircleIcons;
     };
     font = {
-      name = "Montserrat";
-      size = 12;
-      package = pkgs.montserrat;
+      display = {
+        name = "Montserrat";
+        size = 12;
+        package = pkgs.montserrat;
+      };
     };
     discordTheme = discordThemes.slate;
     scheme = schemes.gtk4;

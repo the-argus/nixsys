@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   schemes = import ./color-schemes.nix;
-  scheme = pkgs.callPackage ./themes.nix {};
+  scheme = (pkgs.callPackage ./themes.nix {}).scheme;
 in
 with scheme; (scheme // {
   c0 = black;
