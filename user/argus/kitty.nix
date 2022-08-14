@@ -4,7 +4,9 @@
     let
       colors = pkgs.callPackage ./color.nix {};
 
-      font = (pkgs.callPackage ./themes.nix {}).font.name;
+      theme = (pkgs.callPackage ./themes.nix {});
+      font = theme.font.monospace;
+      opacity = theme.opacity;
 
       kittyColorFormat = (key: (value: "#${value}"));
 
@@ -58,9 +60,9 @@
       package = unstable.kitty;
 
       settings = {
-        font_family = font;
-        font_size = 14;
-        background_opacity = "0.8";
+        font_family = font.name;
+        font_size = font.size;
+        background_opacity = opacity;
 
         # no bells. Ever.
         enable_audio_bell = false;

@@ -22,7 +22,7 @@
 
       font =
         let
-          main = (pkgs.callPackage ./themes.nix {}).font.name;
+          main = (pkgs.callPackage ./themes.nix {}).font.monospace.name;
         in
         {
           size = 9;

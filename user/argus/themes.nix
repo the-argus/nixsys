@@ -6,7 +6,7 @@ let
 
   # color schemes --------------------------------------------------
   schemes = import ./color-schemes.nix;
-  
+
   # discord theme packages -----------------------------------------
   discordThemes = pkgs.callPackage ./webcord/pkgs.nix { };
 
@@ -45,7 +45,7 @@ let
     name = "DarkG";
     package = darkg;
   };
-  
+
   # themes --------------------------------------------------
   rosePine = {
     gtk = {
@@ -58,27 +58,36 @@ let
       };
     };
     font = {
-      name = "Fira Code";
-      size = 11;
-      package = pkgs.fira-code;
+      monospace = {
+        name = "FiraCode Nerd Font";
+        size = 14;
+        package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+      };
+      display = {
+        name = "Fira Code";
+        size = 11;
+        package = pkgs.fira-code;
+      };
     };
     discordTheme = discordThemes.rosepine;
     scheme = schemes.rosepine;
+    opacity = "0.8";
   };
   defaultTheme = rosePine;
 
   gtk4 = override defaultTheme {
     gtk = {
-        theme = darkGTheme;
-        iconTheme = numixCircleIcons;
+      theme = darkGTheme;
+      iconTheme = numixCircleIcons;
     };
     font = {
-        name = "Montserrat";
-        size = 12;
-        package = pkgs.montserrat;
+      name = "Montserrat";
+      size = 12;
+      package = pkgs.montserrat;
     };
     discordTheme = discordThemes.slate;
     scheme = schemes.gtk4;
+    opacity = "1.0";
   };
 in
 defaultTheme
