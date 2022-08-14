@@ -33,10 +33,10 @@ in
       (pkgs.callPackage ../../packages/fly-pie { })
     ] ++ (with unstable; [
       # maui apps (replacements for evince, totem, and gedit respectively
-      shelf
-      clip
-      nota
-      index-fm
+      # shelf
+      # clip
+      # nota
+      # index-fm
       pkgs.sakura # preferred gtk terminal emulator
     ]);
 
