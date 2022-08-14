@@ -33,13 +33,14 @@ in
       no-titlebar-when-maximized
       gtk-title-bar
       (pkgs.callPackage ../../packages/fly-pie { })
-    ] ++ (with unstable; [
+    ] ++ (with pkgs; [
       # maui apps (replacements for evince, totem, and gedit respectively
       # shelf
       # clip
       # nota
       # index-fm
-      pkgs.sakura # preferred gtk terminal emulator
+      gnome.gedit # instead of text editor
+      sakura # preferred gtk terminal emulator
     ]);
 
     hardware.pulseaudio.enable = false;
@@ -47,7 +48,13 @@ in
     environment.gnome.excludePackages = (with pkgs; [
       gnome-photos
       gnome-tour
+      gnome-text-editor
     ]) ++ (with pkgs.gnome; [
+      gnome-contacts
+      gnome-clocks
+      gnome-maps
+      gnome-contacts
+      nautilus
       gnome-terminal
       cheese # webcam tool
       gnome-music
