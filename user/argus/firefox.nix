@@ -2,7 +2,7 @@
 {
   programs.firefox =
     let
-      colors = import ./color.nix;
+      colors = pkgs.callPackage ./color.nix {};
       assets = import ../../packages/firefox-assets { inherit pkgs; };
       baseUserJS = builtins.readFile "${arkenfox-userjs}/user.js";
       finalUserJS = lib.strings.concatStrings [

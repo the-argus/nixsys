@@ -39,8 +39,7 @@ in
       # clip
       # nota
       # index-fm
-      gnome.gedit # instead of text editor
-      sakura # preferred gtk terminal emulator
+      gnome.gnome-terminal
     ]);
 
     hardware.pulseaudio.enable = false;
@@ -49,7 +48,14 @@ in
       gnome-photos
       gnome-tour
       gnome-text-editor
+      gnome-console
+      gnome-usage
+      gnome-connections
+      gnome-secrets
     ]) ++ (with pkgs.gnome; [
+      gnome-logs
+      gnome-disk-utility
+      gnome-weather
       gnome-contacts
       gnome-clocks
       gnome-maps

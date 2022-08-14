@@ -30,7 +30,7 @@
 
       customColorScheme =
         let
-          colors = import ./color.nix;
+          colors = pkgs.callPackage ./color.nix {};
           center = colors.dribbblish.center;
           outer = colors.dribbblish.outer;
         in

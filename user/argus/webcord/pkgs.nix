@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-
-let
+{ pkgs, ...}:
+{
   fluent = pkgs.fetchgit {
     url = "https://github.com/DiscordStyles/Fluent";
     rev = "7a7b62e89648d845c7b388aab0a77febb628ea4b";
@@ -53,13 +52,4 @@ let
     dontPatch = false;
     installPhase = "cp -r . $out";
   });
-in
-{
-  home.file = {
-    ".config/WebCord/Themes" = {
-      source = slate;
-      # source = (mkFrostedGlass "https://raw.githubusercontent.com/the-argus/wallpapers/main/matte/delorean.png");
-      recursive = true;
-    };
-  };
 }

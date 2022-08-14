@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   home.file =
     let
-      p = import ./color.nix;
+      p = pkgs.callPackage ./color.nix {};
       dunstrc = pkgs.lib.generators.toINI { } {
         urgency_low = {
           background = ''"#${p.dunstbg}"'';

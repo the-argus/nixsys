@@ -1,6 +1,7 @@
+{ pkgs, ... }:
 let
   schemes = import ./color-schemes.nix;
-  scheme = schemes.gtk4;
+  scheme = pkgs.callPackage ./themes.nix {};
 in
 with scheme; (scheme // {
   c0 = black;

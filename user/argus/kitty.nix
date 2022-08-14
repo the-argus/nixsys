@@ -2,7 +2,7 @@
 {
   programs.kitty =
     let
-      colors = import ./color.nix;
+      colors = pkgs.callPackage ./color.nix {};
 
       kittyColorFormat = (key: (value: "#${value}"));
 
