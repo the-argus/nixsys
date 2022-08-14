@@ -18,6 +18,7 @@ in
     ./ratpoison.nix
     ./qtile.nix
     ./gnome.nix
+    ./plasma.nix
   ];
 
 

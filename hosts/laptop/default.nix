@@ -32,10 +32,10 @@
     themePackages = [ pkgs.plymouth-themes-package ];
     theme = plymouth.themeName;
   };
-  
+
   # makes plymouth wait 5 seconds while playing
   systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 5";
-
+  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass";
   desktops = {
     enable = true;
     # sway.enable = true;
@@ -43,6 +43,7 @@
     # ratpoison.enable = true;
     qtile.enable = true;
     gnome.enable = true;
+    plasma.enable = true;
   };
   # choose display manager
   # services.xserver.desktopManager.plasma5.enable = true;
@@ -95,7 +96,7 @@
       EndSection
     '';
   };
-  
+
   # hardware ------------------------------------------------------------------
   hardware.openrazer.enable = true;
 

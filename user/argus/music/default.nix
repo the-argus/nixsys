@@ -22,7 +22,7 @@
         internal = with mpkgs.native; [
           (mpkgs.lib.wrapPluginPath effects.fire-bin
             "Fire-Linux/VST3/Fire.vst3/Contents/x86_64-linux")
-          synths.dexed
+          # synths.dexed
         ];
         # plugins packaged in nixpkgs already
         wrapped = with mpkgs.lib; [
