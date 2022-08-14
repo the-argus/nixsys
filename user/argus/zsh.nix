@@ -43,6 +43,7 @@
         # unused mostly
         cageff = "cage \"/bin/firefox -p Unconfigured\"";
         awesomedoc = "firefox ${pkgs.awesome.doc}/share/doc/awesome/doc/index.html & disown";
+        gnome = "dbus-run-session -- gnome-shell --display-server --wayland";
       };
 
       zplug = {
