@@ -9,6 +9,12 @@
     enableZshIntegration = true;
   };
 
+  # make starship work with bash (nix develop)
+  home.file.".bashrc".text = ''
+    #!/bin/sh
+    eval "$(starship init bash)"
+  '';
+
   programs.zsh =
     let
       dDir = ".config/zsh";
@@ -24,7 +30,7 @@
 
       history = {
         path = "$HOME/${dDir}/histfile";
-        ignorePatterns = [ "ls *" "cd *" "exit" "clear" "fg" ];
+        ignorePatterns = [ "ls *" "exit" "clear" "fg" ];
         ignoreDups = true;
         share = true;
       };
