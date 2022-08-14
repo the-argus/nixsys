@@ -1,13 +1,13 @@
 { pkgs, ... }:
 {
-  # programs.starship = {
-  #   enable = true;
-  #   settings = {
-  #     add_newline = false;
-  #   };
-  #   enableBashIntegration = true;
-  #   enableZshIntegration = true;
-  # };
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+    };
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+  };
 
   programs.zsh =
     let
@@ -48,12 +48,12 @@
       zplug = {
         enable = true;
         plugins = [
+          # { name = "the-argus/my-zsh"; }
           { name = "marlonrichert/zsh-autocomplete"; }
           # { name = "Vifon/deer"; tags = [use:deer]; }
           # { name = "zsh-users/zsh-completions"; }
           # { name = "spwhitt/nix-zsh-completions"; }
           { name = "hlissner/zsh-autopair"; }
-          { name = "the-argus/my-zsh"; }
         ];
       };
 
@@ -89,7 +89,7 @@
       initExtra = ''
         # INCLUDES---------------------------------------------------------------------
 
-        # hole in reproducability bc i liked to add aliases quickly
+        # hole in reproducability bc i like to add aliases quickly
         [ -f  "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
         function open () {
@@ -152,33 +152,33 @@
         # PROMPT CONFIG
         #
 
-        PROMPT_START=""
-        NAME_HOST_SEPARATOR=" at "
-        HOST_DIR_SEPARATOR=" in "
-        MODULE_SEPARATOR_START=" "
-        MODULE_SEPARATOR_END=" "
-        NEWLINE_PROMPT_START="❯ "
-        MAIN_MODULE_SEPARATOR_START=""
-        MAIN_MODULE_SEPARATOR_END=""
-        GIT_MODULE_SEPARATOR_START="on "
-        GIT_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$GIT_MODULE_SEPARATOR_START"
-        GIT_MODULE_SEPARATOR_END=""
-        PYTHON_MODULE_SEPARATOR_START="using python "
-        PYTHON_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$PYTHON_MODULE_SEPARATOR_START"
-        PYTHON_MODULE_SEPARATOR_END=""
-        TIME_MODULE_SEPARATOR_START="took "
-        TIME_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$TIME_MODULE_SEPARATOR_START"
-        TIME_MODULE_SEPARATOR_END=""
-        NIX_MODULE_SEPARATOR_START="using "
-        NIX_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$NIX_MODULE_SEPARATOR_START"
-        NIX_MODULE_SEPARATOR_END=""
-
-        USER_HOST_SEP_STYLE="$REGULAR"
-        HOST_DIR_SEP_STYLE="$REGULAR"
-        MOD_SEP_STYLE="$REGULAR"
-
-        # prompt module order
-        prompt='$(_start_module)$(_main_module)$(_nix_module)$(_time_module)$(_git_module)$(_python_module)'$'\n''$(_newline_module)'
+        # PROMPT_START=""
+        # NAME_HOST_SEPARATOR=" at "
+        # HOST_DIR_SEPARATOR=" in "
+        # MODULE_SEPARATOR_START=" "
+        # MODULE_SEPARATOR_END=" "
+        # NEWLINE_PROMPT_START="❯ "
+        # MAIN_MODULE_SEPARATOR_START=""
+        # MAIN_MODULE_SEPARATOR_END=""
+        # GIT_MODULE_SEPARATOR_START="on "
+        # GIT_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$GIT_MODULE_SEPARATOR_START"
+        # GIT_MODULE_SEPARATOR_END=""
+        # PYTHON_MODULE_SEPARATOR_START="using python "
+        # PYTHON_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$PYTHON_MODULE_SEPARATOR_START"
+        # PYTHON_MODULE_SEPARATOR_END=""
+        # TIME_MODULE_SEPARATOR_START="took "
+        # TIME_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$TIME_MODULE_SEPARATOR_START"
+        # TIME_MODULE_SEPARATOR_END=""
+        # NIX_MODULE_SEPARATOR_START="using "
+        # NIX_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$NIX_MODULE_SEPARATOR_START"
+        # NIX_MODULE_SEPARATOR_END=""
+        #
+        # USER_HOST_SEP_STYLE="$REGULAR"
+        # HOST_DIR_SEP_STYLE="$REGULAR"
+        # MOD_SEP_STYLE="$REGULAR"
+        #
+        # # prompt module order
+        # prompt='$(_start_module)$(_main_module)$(_nix_module)$(_time_module)$(_git_module)$(_python_module)'$'\n''$(_newline_module)'
       '';
     };
 }
