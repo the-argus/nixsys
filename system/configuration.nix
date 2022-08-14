@@ -109,6 +109,7 @@ LABEL="solokeys_end"'';
     nix-index
     alsa-utils
     ix
+    killall
 
     # essential
     gcc
