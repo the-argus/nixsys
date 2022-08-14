@@ -15,6 +15,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    webcord = {
+      url = "github:fufexan/webcord-flake";
+    };
+
     # nur = {
     #   url = "github:nix-community/NUR";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -51,6 +55,7 @@
     , nixpkgs
     , nixpkgs-unstable
     , home-manager
+    , webcord
     , rycee-expressions
       # , nur
     , audio-plugins
@@ -89,7 +94,7 @@
               "--no-sandbox --enable-accelerated-mjpeg-decode --enable-accelerated-video --ignore-gpu-blacklist --enable-native-gpu-memory-buffers --enable-gpu-rasterization";
           };
         })
-        
+
         (self: super: {
           plymouth-themes-package = import ./packages/plymouth-themes.nix ({
             inherit pkgs;

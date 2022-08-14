@@ -1,4 +1,4 @@
-{ pkgs, unstable, lib, nur, chrome-extensions, ... }: {
+{ pkgs, unstable, lib, nur, chrome-extensions, webcord, ... }: {
   imports = [
     ./config # configures *everything* that can't be done in nix
     ./local
@@ -46,6 +46,7 @@
     # unfree :(
     # discord
     # spotify-unwrapped
+    (webcord.packages.${unstable.system}.default)
 
     # gui applications---------
     obs-studio

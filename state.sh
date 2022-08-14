@@ -5,7 +5,8 @@
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak update
-flatpak install Discord
+# flatpak install Steam
+# flatpak install FreeTube
 # flatpak install Spotify
 
 # sync /home/argus/.wine/drive_c/yabridge
@@ -15,3 +16,4 @@ yabridgectl sync
 
 # NOTES:
 # - ungoogled chromium profile color
+# - gnome extension settings :pensive:
