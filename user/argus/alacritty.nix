@@ -43,7 +43,7 @@
 
       colors =
         let
-          palette = import ./color.nix { };
+          palette = import ./color.nix;
 
           prepend0x = color: "0x${color}";
           alacrittyColorFormat = name: color: "0x${color}";

@@ -29,23 +29,27 @@
       colorScheme = "custom";
 
       customColorScheme =
-        let colors = import ./color.nix { }; in
+        let
+          colors = import ./color.nix;
+          center = colors.dribbblish.center;
+          outer = colors.dribbblish.outer;
+        in
         with colors;
         {
-          text = cyan;
-          subtext = cyan;# "F0F0F0";
-          sidebar-text = white;
-          main = bg;
-          sidebar = altbg;
+          text = center.text;
+          subtext = center.text; # "F0F0F0";
+          sidebar-text = outer.text; # use altfg if going for contrast on dribbs
+          main = center.bg;
+          sidebar = outer.bg; # and altbg here
           player = bg;
           card = bg;
           shadow = altbg2;
-          selected-row = altfg;# "797979";
-          button = blue;
-          button-active = blue;
+          selected-row = altfg; # "797979";
+          button = hi1;
+          button-active = hi1;
           button-disabled = altbg3;
-          tab-active = cyan;
-          notification = green;# "1db954";
+          tab-active = hi1;
+          notification = altfg; # "1db954";
           notification-error = red;
           misc = black;
         };

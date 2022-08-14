@@ -15,7 +15,7 @@
         ${pkgs.xmousepasteblock}/bin/xmousepasteblock &
       '';
 
-      p = import ../../color.nix { };
+      p = import ../../color.nix;
     in
     {
       ".config/qtile" = {
@@ -45,7 +45,7 @@
         executable = true;
       };
 
-
+      # use weird colors that dont match names...
       ".config/qtile/color.py".text = ''
         colors = {
             "bg": "#${p.altbg2}",
@@ -54,13 +54,13 @@
             "black": "#${p.bg}",
             "red": "#${p.red}",
             "green": "#${p.green}",
-            "yellow": "#${p.yellow}",
+            "yellow": "#${p.hi2}",
             "blue": "#${p.blue}",
-            "magenta": "#${p.magenta}",
+            "magenta": "#${p.hi1}",
             "cyan": "#${p.altbg3}",
             "white": "#${p.white}",
             "orange": "#${p.black}",
-            "pink": "#${p.altbg}"
+            "pink": "#${p.hi4}"
         }
       '';
     };

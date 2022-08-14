@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   home.file =
     let
-      p = import ./color.nix { };
+      p = import ./color.nix;
     in
     {
       ".config/zathura/zathurarc" = {
