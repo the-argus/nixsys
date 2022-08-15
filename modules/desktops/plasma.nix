@@ -13,11 +13,20 @@ in
     services.xserver.desktopManager.plasma5 = {
       enable = true;
       # excludePackages = with pkgs; [
-      #   # kwallet
-      #   # kwallet-pam
-      #   # kwalletmanager
+      #   elisa
+      #   gwenview
+      #   okular
+      #   konsole
+      #   dolphin
+      #   plasma-systemmonitor
       # ] ++ (with pkgs.plasma5Packages; [
-      #   
+      #   kwallet
+      #   kwallet-pam
+      #   kwalletmanager
+      #   khelpcenter
+      #   kinfocenter
+      #   plasma-systemmonitor
+      #   dolphin
       # ]);
       # mobile = {
       #   enable = false;

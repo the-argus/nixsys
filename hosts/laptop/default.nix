@@ -42,8 +42,8 @@
     # awesome.enable = true;
     # ratpoison.enable = true;
     qtile.enable = true;
-    # gnome.enable = true;
-    plasma.enable = true;
+    gnome.enable = true;
+    # plasma.enable = true;
   };
   # choose display manager
   # services.xserver.desktopManager.plasma5.enable = true;

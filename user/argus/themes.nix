@@ -92,4 +92,4 @@ let
     opacity = "1.0";
   };
 in
-gtk4
+rosePine
