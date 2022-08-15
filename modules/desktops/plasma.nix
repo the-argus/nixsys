@@ -27,10 +27,8 @@ in
 
     desktops.wayland.enable = true;
 
-    environment.systemPackages = with pkgs; [
-    ] ++ (with pkgs.plasma5Packages; [
-    ]);
-
-    hardware.pulseaudio.enable = false;
+    # environment.systemPackages = with pkgs; [
+    # ] ++ (with pkgs.plasma5Packages; [
+    # ]);
   };
 }
