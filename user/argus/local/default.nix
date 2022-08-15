@@ -38,6 +38,15 @@
       #   type = "Application";
       #   categories = [ "Network" "InstantMessaging" ];
       # };
+      webcord = {
+        name = "Discord";
+        comment = "All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.";
+        genericName = "Internet Messenger";
+        exec = ''webcord'';
+        icon = "discord";
+        type = "Application";
+        categories = [ "Network" "InstantMessaging" ];
+      };
 
       pavucontrol = {
         name = "Pavucontrol";
@@ -47,7 +56,7 @@
       };
 
       pcmanfm = {
-        name = "PCManFM";
+        name = "File Manager";
         exec = "pcmanfm";
         icon = "system-file-manager";
         type = "Application";
