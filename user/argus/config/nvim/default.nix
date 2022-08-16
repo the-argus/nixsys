@@ -4,10 +4,10 @@
       let
         text = ''
           local palette = {
-              base = '#${bg}00',
+              base = '#${terminal.bg}00',
               surface = '#${altbg2}',
               overlay = '#${altfg2}',
-              muted = '#${black}',
+              muted = '#${terminal.black}',
               subtle = '#${altfg3}',
               text = '#${white}',
               love = '#${red}',

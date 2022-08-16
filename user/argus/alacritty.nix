@@ -49,12 +49,12 @@
           alacrittyColorFormat = name: color: "0x${color}";
 
           cursorSettings = builtins.mapAttrs alacrittyColorFormat {
-            text = palette.bg;
+            text = palette.terminal.bg;
             cursor = palette.altfg;
           };
 
           alacrittyPalette = builtins.mapAttrs alacrittyColorFormat {
-            black = palette.black;
+            black = palette.terminal.black;
             red = palette.red;
             green = palette.green;
             yellow = palette.yellow;

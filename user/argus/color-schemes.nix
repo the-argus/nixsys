@@ -18,7 +18,7 @@
 
     altfg2 = "26233a";
     altbg2 = "1f1d2e";
-    
+
     altfg3 = "908caa";
     altbg3 = "555169";
 
@@ -40,6 +40,10 @@
         bg = altbg;
       };
     };
+    terminal = {
+      inherit bg;
+      inherit black;
+    };
   };
 
   nord = rec {
@@ -52,7 +56,7 @@
     cyan = "81a1c1";
     white = "eceff4";
 
-    bg = "3b4252";
+    bg = "4c566a";
     fg = white;
 
     # inverted, in this case
@@ -60,16 +64,16 @@
     altfg = "5e81ac";
 
     altfg2 = "eceff4";
-    altbg2 = "434c5e";
-    
+    altbg2 = "3b4252";
+
     altfg3 = altfg2;
-    altbg3 = "4c566a";
+    altbg3 = "434c5e";
 
     hi1 = blue;
     hi2 = cyan;
     hi3 = white;
     hi4 = green;
-    
+
     firefox = {
       highlight = hi1;
     };
@@ -80,8 +84,12 @@
       };
       outer = {
         text = hi3;
-        bg = altbg;
+        bg = altbg3;
       };
+    };
+    terminal = {
+      bg = black;
+      black = bg;
     };
   };
 
@@ -104,7 +112,7 @@
 
     altfg2 = "e9e9e9";
     altbg2 = "474747";
-    
+
     altfg3 = altfg2;
     altbg3 = "525252";
 
@@ -112,7 +120,7 @@
     hi2 = cyan;
     hi3 = white;
     hi4 = green;
-    
+
     firefox = {
       highlight = white;
     };
@@ -125,6 +133,10 @@
         text = hi3;
         bg = altfg;
       };
+    };
+    terminal = {
+      inherit bg;
+      inherit black;
     };
   };
 }

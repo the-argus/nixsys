@@ -12,7 +12,7 @@
 
       theme = with colors; {
         foreground = fg;
-        background = bg;
+        background = terminal.bg;
         selection_foreground = fg;
         selection_background = altbg;
 
@@ -22,7 +22,7 @@
 
         # black
         color0 = altfg2;
-        color8 = black;
+        color8 = terminal.black;
 
         # red
         color1 = red;
