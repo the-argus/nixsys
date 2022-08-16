@@ -18,7 +18,8 @@
 
     altfg2 = "26233a";
     altbg2 = "1f1d2e";
-
+    
+    altfg3 = "908caa";
     altbg3 = "555169";
 
     hi1 = magenta;
@@ -60,7 +61,8 @@
 
     altfg2 = "eceff4";
     altbg2 = "434c5e";
-
+    
+    altfg3 = altfg2;
     altbg3 = "4c566a";
 
     hi1 = blue;
@@ -102,7 +104,8 @@
 
     altfg2 = "e9e9e9";
     altbg2 = "474747";
-
+    
+    altfg3 = altfg2;
     altbg3 = "525252";
 
     hi1 = blue;
