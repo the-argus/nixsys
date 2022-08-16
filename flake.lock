@@ -329,11 +329,11 @@
     "nvim-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1660614515,
-        "narHash": "sha256-KrM0niJHo6elqr3A/tp77FYbXC+p52SppkEcB0bty1M=",
+        "lastModified": 1660617260,
+        "narHash": "sha256-s5Lew2rPHDqcX60HzWAxsDztZX3NCjEZRV30aN2rdJo=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "c05f41566b066402e905945793f24ca27716f4fd",
+        "rev": "e341da646be3bcec926763483ed8363f0697c92c",
         "type": "github"
       },
       "original": {
