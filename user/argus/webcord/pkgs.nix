@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 {
   fluent = pkgs.fetchgit {
     url = "https://github.com/DiscordStyles/Fluent";
@@ -52,4 +52,10 @@
     dontPatch = false;
     installPhase = "cp -r . $out";
   });
+
+  nordic = pkgs.fetchgit {
+    url = "https://github.com/orblazer/discord-nordic";
+    rev = "9808387ffcd2824e5b9a440f7e5e15ba2c8b7d00";
+    sha256 = "0ahrwxkla9gqjlgff337jcna20v5ncxlkcyssli89k75axvypzr1";
+  };
 }

@@ -68,7 +68,7 @@
     hi1 = blue;
     hi2 = cyan;
     hi3 = white;
-    hi4 = magenta;
+    hi4 = green;
     
     firefox = {
       highlight = hi1;

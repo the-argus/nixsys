@@ -20,6 +20,7 @@ let
   };
   marwaita = pkgs.callPackage ./gtk/themes/marwaita.nix { };
   darkg = pkgs.callPackage ./gtk/themes/darkg.nix { };
+  nord = pkgs.callPackage ./gtk/themes/nord.nix { };
 
   paperIcons = {
     name = "Paper-Mono-Dark";
@@ -44,6 +45,19 @@ let
   darkGTheme = {
     name = "DarkG";
     package = darkg;
+  };
+
+  nordicTheme = {
+    name = nord.name;
+    package = nord.pkg;
+  };
+  nordzyIcons = {
+    name = nord.iconName;
+    package = nord.iconPkg;
+  };
+  nordzyCursor = {
+    name = "Nordzy-Cursors";
+    package = nord.iconPkg;
   };
 
   # themes --------------------------------------------------
@@ -91,5 +105,16 @@ let
     scheme = schemes.gtk4;
     opacity = "1.0";
   };
+
+  nordic = override defaultTheme {
+    gtk = {
+      theme = nordicTheme;
+      iconTheme = nordzyIcons;
+      cursorTheme = nordzyCursor // { size = 16; };
+    };
+    discordTheme = discordThemes.nordic;
+    scheme = schemes.nord;
+    opacity = "0.8";
+  };
 in
-rosePine
+nordic
