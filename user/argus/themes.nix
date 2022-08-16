@@ -117,4 +117,4 @@ let
     opacity = "0.8";
   };
 in
-nordic
+rosePine
