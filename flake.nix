@@ -81,10 +81,10 @@
 
       firefox-addons = (import "${rycee-expressions}" { inherit pkgs; }).firefox-addons;
 
-      plymouth = let name = "cross_hud"; in
+      plymouth = let name = "rings"; in
         {
           themeName = name;
-          themePath = "pack_1/${name}";
+          themePath = "pack_4/${name}";
         };
 
       overlays = [
