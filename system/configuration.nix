@@ -54,7 +54,7 @@ LABEL="solokeys_end"'';
   virtualization.passthrough.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/New_York";
 
   programs.zsh.enable = true;
 
