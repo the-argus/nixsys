@@ -18,6 +18,8 @@
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "spotify-unwrapped"
     "reaper"
+    # "steam"
+    # "steam-original"
   ];
 
   programs.chromium = {
@@ -48,6 +50,7 @@
     # discord
     # spotify-unwrapped
     (webcord.packages.${unstable.system}.default)
+    # lutris
 
     # gui applications---------
     obs-studio
