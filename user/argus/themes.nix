@@ -61,7 +61,7 @@ let
   };
 
   # themes --------------------------------------------------
-  rosePine = {
+  defaultTheme = {
     gtk = {
       theme = rosePineTheme;
       iconTheme = rosePineIcons;
@@ -83,11 +83,14 @@ let
         package = pkgs.fira-code;
       };
     };
-    discordTheme = discordThemes.rosepine;
+    discordTheme = discordThemes.inScheme;
     scheme = schemes.rosepine;
     opacity = "0.8";
   };
-  defaultTheme = rosePine;
+
+  rosePine = override defaultTheme {
+    discordTheme = discordThemes.rosepine;
+  };
 
   gtk4 = override defaultTheme {
     gtk = {
@@ -117,4 +120,4 @@ let
     opacity = "0.8";
   };
 in
-nordic
+defaultTheme
