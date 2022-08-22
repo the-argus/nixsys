@@ -134,4 +134,4 @@ let
     };
   };
 in
-orchis
+defaultTheme
