@@ -123,12 +123,13 @@ let
   orchis = override defaultTheme {
     gtk = {
       theme = {
-        name = "Orchis";
+        name = "Orchis-Light"; # Orchis, Orchis-Light, Orchis-Compact, Orchis-Dark, Orchis-Dark-Compact, Orchis-Green, Orchis-Green Compact, etc
+        # colors: Green Grey Orange Pink Purple Red Yellow
         package = pkgs.orchis;
       };
       iconTheme = {
-        name = "Tela";
-        package = pkgs.tela-icon-theme;
+        name = "Tela-circle"; # or Tela-circle-dark
+        package = pkgs.tela-circle-icon-theme;
       };
     };
   };
