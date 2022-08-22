@@ -153,6 +153,8 @@
             echo -e "rebuild = \e[1msysbuild && usrbuild\e[0m"
             PATH=${pkgs.writeShellScriptBin "nix" ''
                     ${pkgs.nixFlakes}/bin/nix --experimental-features "nix-command flakes" "$@"
+            eval "$(${pkgs.direnv}/bin/direnv hook bash)"
+            ${pkgs.direnv}/bin/direnv allow
                 ''}/bin:$PATH
           '';
           # nativeBuildInputs = with pkgs; [
