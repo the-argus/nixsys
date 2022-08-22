@@ -24,7 +24,7 @@
 
   programs.chromium = {
     enable = true;
-    package = (import ../../packages/ungoogled-chromium { pkgs = unstable; });
+    package = pkgs.callPackage ../../packages/ungoogled-chromium {};
 
     extensions = [
       chrome-extensions.ublock-origin
