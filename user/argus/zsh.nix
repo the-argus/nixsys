@@ -155,6 +155,9 @@
         zstyle :deer: show_hidden yes
 
 
+        eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
+
+
         #
         # PROMPT CONFIG
         #

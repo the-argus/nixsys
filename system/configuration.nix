@@ -101,6 +101,8 @@ LABEL="solokeys_end"'';
     wget
     curl
     ffmpeg
+    direnv
+    nix-direnv-flakes
 
     # util
     git
