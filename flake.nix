@@ -136,25 +136,6 @@
 
       devShell.${system} =
         pkgs.mkShell {
-          shellHook = ''
-            alias usrbuild="home-manager switch --flake ."
-            alias sysbuild="nixos-rebuild switch --use-remote-sudo --flake ."
-            alias rebuild="sysbuild && usrbuild"
-            alias update="git submodule update && git submodule foreach git pull && nix flake update"
-
-
-            echo -e "You can apply this flake to your system with \e[1mrebuild\e[0m"
-            echo -e "And update it with \e[1mupdate\e[0m"
-            echo -e "And apply user configuration with \e[1musrbuild\e[0m and system configuration with \e[1msysbuild\e[0m"
-            echo -e "\n"
-            echo -e "update = \e[1mnix flake update\e[0m"
-            echo -e "usrbuild = \e[1mhome-manager switch --flake .\e[0m"
-            echo -e "sysbuild = \e[1m nixos-rebuild switch --use-remote-sudo --flake .\e[0m"
-            echo -e "rebuild = \e[1msysbuild && usrbuild\e[0m"
-            PATH=${pkgs.writeShellScriptBin "nix" ''
-                    ${pkgs.nixFlakes}/bin/nix --experimental-features "nix-command flakes" "$@"
-                ''}/bin:$PATH
-          '';
           # nativeBuildInputs = with pkgs; [
           # ];
         };
