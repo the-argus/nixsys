@@ -30,6 +30,12 @@
 
           user_pref("browser.startup.page", 3);
           user_pref("privacy.clearOnShutdown.history", false);
+
+          // Enable CSD
+          user_pref("browser.tabs.drawInTitlebar", true);
+
+          // Set UI density to normal
+          user_pref("browser.uidensity", 0);
         ''
       ];
     in
@@ -71,8 +77,6 @@
           name = "argus";
           id = 0;
           extraConfig = finalUserJS;
-          #isDefault = true;
-          # rose pine color scheme
           userChrome = ''
             #fullscr-toggler { background-color: rgba(0, 0, 0, 0) !important; }
             :root {
