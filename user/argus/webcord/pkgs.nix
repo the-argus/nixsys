@@ -69,7 +69,7 @@
           --background-secondary-alt: #${altfg2};
           --channeltextarea-background: #${altbg};
           --background-tertiary: #${bg};
-          --background-accent: #${hi3};
+          --background-accent: #${hi1};
           --text-normal: #${fg};
           --text-spotify: #${green};
           --text-muted: #${altfg3};
