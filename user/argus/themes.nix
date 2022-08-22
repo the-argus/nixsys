@@ -21,7 +21,6 @@ let
   marwaita = pkgs.callPackage ./gtk/themes/marwaita.nix { };
   darkg = pkgs.callPackage ./gtk/themes/darkg.nix { };
   nord = pkgs.callPackage ./gtk/themes/nord.nix { };
-  orchis = pkgs.callPackage ./gtk/themes/orchis.nix { };
 
   paperIcons = {
     name = "Paper-Mono-Dark";
@@ -46,10 +45,6 @@ let
   darkGTheme = {
     name = "DarkG";
     package = darkg;
-  };
-  orchisTheme = {
-    name = orchis.name;
-    package = orchis.pkg;
   };
 
   nordicTheme = {
@@ -127,9 +122,12 @@ let
 
   orchis = override defaultTheme {
     gtk = {
-      theme = orchisTheme;
+      theme = {
+        name = "Orchis";
+        package = pkgs.orchis;
+      };
       iconTheme = {
-        name = "Tela-icon-theme";
+        name = "Tela";
         package = pkgs.tela-icon-theme;
       };
     };
