@@ -133,11 +133,5 @@
         stateVersion = "22.05";
         extraSpecialArgs = inputs // { inherit hardware unstable homeDirectory firefox-addons; mpkgs = audio-plugins.mpkgs; };
       };
-
-      devShell.${system} =
-        pkgs.mkShell {
-          # nativeBuildInputs = with pkgs; [
-          # ];
-        };
     };
 }
