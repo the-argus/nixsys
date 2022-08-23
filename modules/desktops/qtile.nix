@@ -20,7 +20,6 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-      alacritty
       xmousepasteblock
       xfce.xfce4-clipman-plugin
       dunst

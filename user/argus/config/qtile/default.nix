@@ -1,4 +1,8 @@
 { pkgs, picom, hardware, ... }: {
+  home.packages = with pkgs; [
+    alacritty
+    kitty
+  ];
   home.file =
     let
       picomPkg = import ../../../../packages/picom.nix
@@ -15,7 +19,7 @@
         ${pkgs.xmousepasteblock}/bin/xmousepasteblock &
       '';
 
-      p = pkgs.callPackage ../../color.nix {};
+      p = pkgs.callPackage ../../color.nix { };
     in
     {
       ".config/qtile" = {

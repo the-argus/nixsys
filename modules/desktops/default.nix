@@ -19,6 +19,7 @@ in
     ./qtile.nix
     ./gnome.nix
     ./plasma.nix
+    ./i3gaps.nix
   ];
 
 
