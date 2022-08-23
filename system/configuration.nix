@@ -116,6 +116,7 @@ LABEL="solokeys_end"'';
     killall
 
     curlftpfs
+    sshfs
 
     # essential
     gcc
