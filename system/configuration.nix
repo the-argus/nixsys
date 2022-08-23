@@ -115,6 +115,8 @@ LABEL="solokeys_end"'';
     ix
     killall
 
+    curlftpfs
+
     # essential
     gcc
     lld
