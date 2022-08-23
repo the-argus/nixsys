@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-22.05";
     # nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    # nixpkgs-unstable.url = "github:the-argus/nixpkgs?ref=fix/chromium-extension-path";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
