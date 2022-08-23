@@ -142,6 +142,28 @@
             $HOME/Screenshots/screenrecord_`date '+%Y-%m-%d_%H-%M-%S'`.mp4 \
             &> /tmp/screenrecord_`date '+%Y-%m-%d_%H-%M-%S'`.log
         }
+        
+        # makes files with special characters compatible with fat and exfat
+        function filecompat () {
+            if [[ "$1" == "" ]]; then
+              echo "provide a directory to make files compatible in."
+            fi
+            local total=0
+            for file in "$1"/*; do
+              if [[ -d $file ]]; then
+                continue
+              fi
+              # new_filename=$(echo $file | tr -dc '[:alnum:]\n\r')
+              new_filename=${"$\{file//[^[:alnum:]]/}"}
+              if [[ $file == $new_filename ]]; then
+                continue
+              fi
+              mv -- "$file" "$new_filename"
+              total=$((total + 1))
+            done
+
+            echo "renamed $total files."
+        }
         autoload -U deer
 
         # CONFIG ----------------------------------------------------------------------
