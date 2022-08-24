@@ -68,17 +68,34 @@
     , ...
     }@inputs:
     let
+      # global configuration variables
+      # whether to use laptop or PC configuration
+      hardware = "laptop";
+      # use musl instead of glibc
+      useMusl = false;
+
       system = "x86_64-linux";
       username = "argus";
       homeDirectory = "/home/${username}";
-      pkgs = import nixpkgs { inherit system; };
-      unstable = import nixpkgs-unstable {
-        inherit system; config.allowUnfreePredicate =
-        pkg: builtins.elem (pkgs.lib.getName pkg) [
-          "spotify-unwrapped"
-          "reaper"
-        ];
+
+      localSystemAppend = {
+        # inherit system;
+        localSystem = {
+          inherit system;
+        } // (if useMusl then {
+          libc = "musl";
+        } else { });
       };
+
+      pkgs = import nixpkgs localSystemAppend;
+      unstable = import nixpkgs-unstable
+        {
+          config.allowUnfreePredicate =
+            pkg: builtins.elem (pkgs.lib.getName pkg) [
+              "spotify-unwrapped"
+              "reaper"
+            ];
+        } // localSystemAppend;
 
       firefox-addons = (import "${rycee-expressions}" { inherit pkgs; }).firefox-addons;
 
@@ -103,9 +120,6 @@
           } // plymouth);
         })
       ];
-
-      # whether to use laptop or PC configuration
-      hardware = "laptop";
     in
     {
       nixosConfigurations = {
@@ -113,7 +127,7 @@
         evil = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = inputs // {
-            inherit hardware; inherit unstable; inherit plymouth;
+            inherit hardware unstable plymouth useMusl;
           };
           modules = [
             {
@@ -132,9 +146,12 @@
           nixpkgs.overlays = overlays;
         };
         stateVersion = "22.05";
-        extraSpecialArgs = inputs // { inherit hardware unstable homeDirectory firefox-addons; mpkgs = audio-plugins.mpkgs; };
+        extraSpecialArgs = inputs // {
+          inherit hardware unstable homeDirectory firefox-addons useMusl;
+          mpkgs = audio-plugins.mpkgs;
+        };
       };
 
-      devShell.${system} = pkgs.mkShell {};
+      devShell.${system} = pkgs.mkShell { };
     };
 }

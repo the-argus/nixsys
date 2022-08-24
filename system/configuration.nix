@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, unstable, hardware, ... }:
+{ config, pkgs, lib, unstable, hardware, useMusl, ... }:
 
 {
   #choose what host is being used (laptop or pc)
@@ -47,6 +47,18 @@ LABEL="solokeys_end"'';
     settings = {
       extra-experimental-features = [ "nix-command" "flakes" ];
     };
+
+    # musl
+    binaryCaches = [
+      "https://cache.nixos.org/"
+    ] ++ (if useMusl then [
+      "https://cache.allvm.org/"
+    ] else [ ]);
+
+    binaryCachePublicKeys =
+      if useMusl then [
+        "gravity.cs.illinois.edu-1:yymmNS/WMf0iTj2NnD0nrVV8cBOXM9ivAkEdO1Lro3U="
+      ] else [ ];
   };
 
 
