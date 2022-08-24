@@ -114,6 +114,7 @@ LABEL="solokeys_end"'';
     alsa-utils
     ix
     killall
+    pciutils
 
     curlftpfs
     sshfs
