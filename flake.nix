@@ -74,6 +74,12 @@
       # use musl instead of glibc
       useMusl = false;
 
+      allowedUnfree = [
+        "spotify-unwrapped"
+        "reaper"
+        "slack"
+      ];
+
       system = "x86_64-linux";
       username = "argus";
       homeDirectory = "/home/${username}";
@@ -87,15 +93,14 @@
         } else { });
       };
 
-      pkgs = import nixpkgs localSystemAppend;
-      unstable = import nixpkgs-unstable
+      pkgsConfig =
         {
           config.allowUnfreePredicate =
-            pkg: builtins.elem (pkgs.lib.getName pkg) [
-              "spotify-unwrapped"
-              "reaper"
-            ];
+            pkg: builtins.elem (pkgs.lib.getName pkg) allowedUnfree;
         } // localSystemAppend;
+
+      pkgs = import nixpkgs pkgsConfig;
+      unstable = import nixpkgs-unstable pkgsConfig;
 
       firefox-addons = (import "${rycee-expressions}" { inherit pkgs; }).firefox-addons;
 

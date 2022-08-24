@@ -15,14 +15,6 @@
     ./webcord
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "spotify-unwrapped"
-    "reaper"
-    "slack"
-    # "steam"
-    # "steam-original"
-  ];
-
   programs.chromium = {
     enable = true;
     # package = pkgs.callPackage ../../packages/ungoogled-chromium {};
