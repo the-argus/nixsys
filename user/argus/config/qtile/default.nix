@@ -1,8 +1,4 @@
 { pkgs, picom, hardware, ... }: {
-  home.packages = with pkgs; [
-    alacritty
-    kitty
-  ];
   home.file =
     let
       picomPkg = import ../../../../packages/picom.nix

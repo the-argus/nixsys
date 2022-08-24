@@ -18,6 +18,7 @@
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "spotify-unwrapped"
     "reaper"
+    "slack"
     # "steam"
     # "steam-original"
   ];
@@ -48,6 +49,7 @@
   # extra packages
   home.packages = with pkgs; [
     # unfree :(
+    slack
     # discord
     # spotify-unwrapped
     (webcord.packages.${unstable.system}.default)
