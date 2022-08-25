@@ -73,6 +73,8 @@
       hardware = "laptop";
       # use musl instead of glibc
       useMusl = false;
+      # compile everything from source
+      useFlags = false;
 
       allowedUnfree = [
         "spotify-unwrapped"
@@ -84,23 +86,39 @@
       username = "argus";
       homeDirectory = "/home/${username}";
 
-      localSystemAppend = {
-        # inherit system;
-        localSystem = {
-          inherit system;
-        } // (if useMusl then {
-          libc = "musl";
-        } else { });
+      laptopArch = {
+        gcc = {
+          arch = "tigerlake";
+          tune = "tigerlake";
+        };
       };
+      pcArch = {
+        gcc = {
+          arch = "x86_64";
+          tune = "x86_64";
+        };
+      };
+      arch =
+        if hardware == "laptop" then laptopArch
+        else if hardware == "pc" then pcArch else { };
 
-      pkgsConfig =
+      pkgsInputs =
         {
-          config.allowUnfreePredicate =
-            pkg: builtins.elem (pkgs.lib.getName pkg) allowedUnfree;
-        } // localSystemAppend;
+          # inherit system;
+          config = {
+            allowUnfreePredicate =
+              pkg: builtins.elem (pkgs.lib.getName pkg) allowedUnfree;
+          };
+          localSystem = {
+            config = system;
+          } // (if useMusl then {
+            libc = "musl";
+          } else { })
+          // (if useFlags then arch else { });
+        };
 
-      pkgs = import nixpkgs pkgsConfig;
-      unstable = import nixpkgs-unstable pkgsConfig;
+      pkgs = import nixpkgs pkgsInputs;
+      unstable = import nixpkgs-unstable pkgsInputs;
 
       firefox-addons = (import "${rycee-expressions}" { inherit pkgs; }).firefox-addons;
 
@@ -132,7 +150,7 @@
         evil = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = inputs // {
-            inherit hardware unstable plymouth useMusl;
+            inherit hardware unstable plymouth useMusl useFlags;
           };
           modules = [
             {
@@ -152,7 +170,7 @@
         };
         stateVersion = "22.05";
         extraSpecialArgs = inputs // {
-          inherit hardware unstable homeDirectory firefox-addons useMusl;
+          inherit hardware unstable homeDirectory firefox-addons useMusl useFlags;
           mpkgs = audio-plugins.mpkgs;
         };
       };

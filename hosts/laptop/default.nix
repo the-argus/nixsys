@@ -1,4 +1,4 @@
-{ config, pkgs, plymouth, ... }:
+{ config, pkgs, useFlags, plymouth, ... }:
 
 {
   imports = [
@@ -126,3 +126,10 @@
     razergenie
   ];
 }
+# } //
+# (if useFlags then {
+#   nixpkgs.config.localSystem = {
+#     gcc.arch = "tigerlake";
+#     gcc.tune = "tigerlake";
+#   };
+# } else { })
