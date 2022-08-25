@@ -51,14 +51,14 @@ LABEL="solokeys_end"'';
     # musl
     binaryCaches = [
       "https://cache.nixos.org/"
-    ] ++ (if useMusl then [
+    # ] ++ (if useMusl then [
       "https://cache.allvm.org/"
-    ] else [ ]);
+    ];# else [ ]);
 
-    binaryCachePublicKeys =
-      if useMusl then [
+    binaryCachePublicKeys = [
+     # if useMusl then [
         "gravity.cs.illinois.edu-1:yymmNS/WMf0iTj2NnD0nrVV8cBOXM9ivAkEdO1Lro3U="
-      ] else [ ];
+      ];# else [ ];
   };
 
 

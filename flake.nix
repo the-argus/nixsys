@@ -72,7 +72,7 @@
       # whether to use laptop or PC configuration
       hardware = "laptop";
       # use musl instead of glibc
-      useMusl = false;
+      useMusl = true;
       # compile everything from source
       useFlags = false;
 
@@ -105,6 +105,7 @@
       pkgsInputs =
         {
           config = {
+            allowBroken = true;
             allowUnfreePredicate =
               pkg: builtins.elem (pkgs.lib.getName pkg) allowedUnfree;
           };
@@ -112,6 +113,7 @@
             inherit system;
           } // (if useMusl then {
             libc = "musl";
+            config = "x86_64-unknown-linux-musl";
           } else { })
           // (if useFlags then arch else { });
         };
