@@ -5,7 +5,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  nix.settings.requiredSystemFeatures = [ "gccarch-tigerlake" "nixos-test" "benchmark" "big-parallel" "kvm" ];
+  nix.settings.system-features = [ "gccarch-tigerlake" "nixos-test" "benchmark" "big-parallel" "kvm" ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];

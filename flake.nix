@@ -104,17 +104,17 @@
 
       pkgsInputs =
         {
-          # inherit system;
+          inherit system;
           config = {
             allowUnfreePredicate =
               pkg: builtins.elem (pkgs.lib.getName pkg) allowedUnfree;
           };
-          localSystem = {
-            config = system;
-          } // (if useMusl then {
-            libc = "musl";
-          } else { })
-          // (if useFlags then arch else { });
+          # localSystem = {
+          #   config = system;
+          # } // (if useMusl then {
+          #   libc = "musl";
+          # } else { })
+          # // (if useFlags then arch else { });
         };
 
       pkgs = import nixpkgs pkgsInputs;
