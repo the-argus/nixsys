@@ -72,7 +72,7 @@
       # whether to use laptop or PC configuration
       hardware = "laptop";
       # use musl instead of glibc
-      useMusl = true;
+      useMusl = false;
       # compile everything from source
       useFlags = false;
 
