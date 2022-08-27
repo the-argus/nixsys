@@ -66,6 +66,7 @@ LABEL="solokeys_end"'';
   music.enable = true; # music production software and configuration
   virtualization.enable = true;
   virtualization.passthrough.enable = true;
+  virtualization.passthrough.ovmfPackage = unstable.OVMFFull;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
