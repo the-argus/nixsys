@@ -27,8 +27,11 @@ in
     ({
       environment.systemPackages = [
         cfg.qemu.package
-      ];
+      ] ++ (mkIf cfg.passthrough.enable [
+        # pkgs.libvirt
+      ]);
     } // (mkIf cfg.passthrough.enable {
+    virtualisation.libvirtd.enable = true;
     # gpu passthrough stuff
     environment.etc = {
       "ovmf/edk2-x86_64-secure-code.fd" = {
