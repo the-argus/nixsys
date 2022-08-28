@@ -1,4 +1,4 @@
-{ config, pkgs, useFlags, plymouth, ... }:
+{ config, pkgs, useFlags, plymouth, hostname, username, ... }:
 
 {
   imports = [
@@ -53,7 +53,7 @@
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.displayManager.ly = {
   #   enable = true;
-  #   defaultUsers = "argus";
+  #   defaultUsers = username;
   # };
   services.greetd = {
     enable = false;
@@ -72,7 +72,7 @@
           --remember-session \
           --asterisks \
         '';
-        user = "argus";
+        user = username;
       };
     };
   };
@@ -102,7 +102,7 @@
   hardware.openrazer.enable = true;
 
   # networking-----------------------------------------------------------------
-  networking.hostName = "evil";
+  networking.hostName = hostname;
   networking.interfaces."wlp0s20f3" = { useDHCP = false; };
   networking.wireless.interfaces = [ "wlp0s20f3" ];
   networking.networkmanager.enable = true;

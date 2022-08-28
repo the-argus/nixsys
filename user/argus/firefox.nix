@@ -1,4 +1,4 @@
-{ firefox-addons, arkenfox-userjs, lib, pkgs, unstable, ... }:
+{ firefox-addons, arkenfox-userjs, lib, pkgs, unstable, username, ... }:
 {
   programs.firefox =
     let
@@ -73,8 +73,8 @@
       ];
 
       profiles = {
-        argus = {
-          name = "argus";
+        ${username} = {
+          name = username;
           id = 0;
           extraConfig = finalUserJS;
           userChrome = ''

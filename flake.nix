@@ -70,7 +70,7 @@
     let
       # global configuration variables
       # whether to use laptop or PC configuration
-      hardware = "laptop";
+      hardware = "pc";
       # use musl instead of glibc
       useMusl = true;
       # compile everything from source
@@ -84,6 +84,7 @@
 
       system = "x86_64-linux";
       username = "argus";
+      hostname = if hardware == "laptop" then "evil" else if hardware == "pc" then "mutant" else "evil";
       homeDirectory = "/home/${username}";
 
       laptopArch = {
@@ -148,10 +149,10 @@
     {
       nixosConfigurations = {
         # hostname (evil)
-        evil = nixpkgs.lib.nixosSystem {
+        ${hostname} = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = inputs // {
-            inherit hardware unstable plymouth useMusl useFlags;
+            inherit hardware unstable plymouth useMusl useFlags hostname username;
           };
           modules = [
             {
@@ -171,7 +172,7 @@
         };
         stateVersion = "22.05";
         extraSpecialArgs = inputs // {
-          inherit hardware unstable homeDirectory firefox-addons useMusl useFlags;
+          inherit hardware unstable homeDirectory firefox-addons useMusl useFlags username;
           mpkgs = audio-plugins.mpkgs;
         };
       };

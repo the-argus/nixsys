@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, unstable, hardware, useMusl, ... }:
+{ config, pkgs, lib, unstable, hardware, useMusl, username, ... }:
 
 {
   #choose what host is being used (laptop or pc)
@@ -70,11 +70,19 @@ LABEL="solokeys_end"'';
   # Set your time zone.
   time.timeZone = "America/New_York";
 
+  # console
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+  };
+
   programs.zsh.enable = true;
 
   users.defaultUserShell = pkgs.zsh;
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.argus = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = [
       "wheel"
