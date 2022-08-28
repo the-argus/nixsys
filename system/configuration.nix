@@ -66,6 +66,7 @@ LABEL="solokeys_end"'';
   music.enable = true; # music production software and configuration
   virtualization.enable = true;
   virtualization.passthrough.enable = true;
+  virtualization.passthrough.ovmfPackage = unstable.OVMFFull;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -138,6 +139,9 @@ LABEL="solokeys_end"'';
 
     curlftpfs
     sshfs
+
+    # useful linters
+    python310Packages.demjson3
 
     # essential
     gcc

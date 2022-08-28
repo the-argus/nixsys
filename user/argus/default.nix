@@ -52,7 +52,7 @@
     element-desktop
     keepassxc
     pcmanfm
-    gnome.gnome-calculator
+    qalculate-gtk
     unstable.heroic
     polymc
     pavucontrol

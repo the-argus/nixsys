@@ -47,7 +47,7 @@ float_types = [
     ]
 
 float_names = [
-        "Calculator",
+        "Qalculate!",
         "Bluetooth Devices",
         "Network Connections",
         "Color Picker",
@@ -142,7 +142,7 @@ keys = [
         desc="Toggle between split and unsplit sides of stack"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     
-    Key([], "XF86Calculator", lazy.spawn("gnome-calculator"), desc="Open calculator"), 
+    Key([], "XF86Calculator", lazy.spawn("qalculate-gtk"), desc="Open calculator"), 
 
     # scripts
     Key([mod], "space", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/rofi-launchpad.sh")), desc="Rofi"), 
