@@ -132,6 +132,9 @@ LABEL="solokeys_end"'';
     curlftpfs
     sshfs
 
+    # useful linters
+    python310Packages.demjson3
+
     # essential
     gcc
     lld
