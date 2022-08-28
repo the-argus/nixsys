@@ -53,6 +53,7 @@ in
       gnome-connections
       gnome-secrets
     ]) ++ (with pkgs.gnome; [
+      gnome-calculator
       gnome-logs
       gnome-disk-utility
       gnome-weather
