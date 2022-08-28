@@ -77,6 +77,7 @@
         "spotify-unwrapped"
         "reaper"
         "slack"
+        "steam" "steam-original"
       ];
 
       system = "x86_64-linux";

@@ -42,6 +42,7 @@
   home.packages = with pkgs; [
     # unfree :(
     slack
+    steam
     # discord
     # spotify-unwrapped
     (webcord.packages.${unstable.system}.default)
