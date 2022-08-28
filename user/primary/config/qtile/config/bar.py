@@ -2,6 +2,7 @@ from libqtile import qtile, widget, bar
 from libqtile.lazy import lazy
 from font import font, windowname
 from color import colors
+from info import hardware
 from layouts import MARGIN, BORDER_WIDTH
 import os
 
@@ -168,7 +169,7 @@ time = [widget.Clock, {
         ]
 
 def widgetlist():
-    return [
+    widgets = [
         spacer_small,
         # logo,
         logo_image,
@@ -176,7 +177,7 @@ def widgetlist():
         windowname,
         systray,
         cpu,
-        batt,
+        (batt if hardware == "laptop" else None),
 #        disk,
 #        net,
         mem,
@@ -185,6 +186,8 @@ def widgetlist():
         date,
         time,
     ]
+    while None in widgets:
+        widgets.remove(None)
 
 def style(widgetlist):
     # adds separator widgets in between the initial widget list

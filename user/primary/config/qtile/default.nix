@@ -45,6 +45,10 @@
         executable = true;
       };
 
+      ".config/qtile/info.py".text = ''
+        hardware = "${hardware}
+      '';
+
       # use weird colors that dont match names...
       ".config/qtile/color.py".text = ''
         colors = {
