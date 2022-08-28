@@ -80,7 +80,7 @@
       ];
 
       system = "x86_64-linux";
-      username = if hardware == "pc" then "archmage" else if hardware == "laptop" then "argus" else "argus";
+      username = "argus";
       hostname = if hardware == "laptop" then "evil" else if hardware == "pc" then "mutant" else "evil";
 
       # use musl instead of glibc
@@ -221,7 +221,7 @@
         inherit pkgs;
         inherit system username homeDirectory;
         configuration = { pkgs, ... }: {
-          imports = [ ./user/${username} audio-plugins.homeManagerModule ];
+          imports = [ ./user/primary audio-plugins.homeManagerModule ];
           nixpkgs.overlays = overlays;
         };
         stateVersion = "22.05";
