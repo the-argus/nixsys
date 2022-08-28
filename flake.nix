@@ -68,14 +68,11 @@
     , ...
     }@inputs:
     let
-      # global configuration variables
+      # global configuration variables ---------------------------------------
       # whether to use laptop or PC configuration
       hardware = "laptop";
-      # use musl instead of glibc
-      useMusl = false;
-      # compile everything from source
-      useFlags = false;
 
+      # unfree packages that i explicitly use
       allowedUnfree = [
         "spotify-unwrapped"
         "reaper"
@@ -84,8 +81,36 @@
 
       system = "x86_64-linux";
       username = "argus";
-      homeDirectory = "/home/${username}";
+      # use musl instead of glibc
+      useMusl = false;
+      # compile everything from source
+      useFlags = false;
+      # what optimizations to use (check https://github.com/fortuneteller2k/nixpkgs-f2k/blob/ca75dc2c9d41590ca29555cddfc86cf950432d5e/flake.nix#L237-L289)
+      USE = [
+        "-O3"
+        "-pipe"
+        "-ffloat-store"
+        "-fexcess-precision=fast"
+        "-ffast-math"
+        "-fno-rounding-math"
+        "-fno-signaling-nans"
+        "-fno-math-errno"
+        "-funsafe-math-optimizations"
+        "-fassociative-math"
+        "-freciprocal-math"
+        "-ffinite-math-only"
+        "-fno-signed-zeros"
+        "-fno-trapping-math"
+        "-frounding-math"
+        "-fsingle-precision-constant"
+        # not supported on clang 14 yet, and isn't ignored
+        # "-fcx-limited-range"
+        # "-fcx-fortran-rules"
+      ];
 
+      # optimizations --------------------------------------------------------
+      # architechtures include:
+      # x86-64-v2 x86-64-v3 x86-64-v4 tigerlake
       laptopArch = {
         gcc = {
           arch = "tigerlake";
@@ -101,6 +126,36 @@
       arch =
         if hardware == "laptop" then laptopArch
         else if hardware == "pc" then pcArch else { };
+
+      optimizedStdenv = pkgsToOptimize:
+        let
+          mkStdenv = march: stdenv:
+            # adds -march flag to the global USE flags and creates stdenv
+            pkgsToOptimize.stdenvAdapters.withCFlags
+              (USE ++ [ "-march=${march}" "-mtune=${march}" ])
+              stdenv;
+
+          # same thing but use -march=native
+          mkNativeStdenv = stdenv:
+            pkgsToOptimize.stdenvAdapters.impureUseNativeOptimizations
+              (pkgsToOptimize.stdenvAdapters.withCFlags USE stdenv);
+
+          optimizedStdenv = mkStdenv arch.gcc.arch pkgsToOptimize.stdenv;
+          optimizedClangStdenv =
+            mkStdenv arch.gcc.arch pkgsToOptimize.llvmPackages_14.stdenv;
+
+          optimizedNativeClangStdenv =
+            pkgs.lib.warn "using native optimizations, \
+                forfeiting reproducibility"
+              mkNativeStdenv
+              pkgsToOptimize.llvmPackages_14.stdenv;
+          optimizedNativeStdenv =
+            pkgs.lib.warn "using native optimizations, \
+                forfeiting reproducibility"
+              mkNativeStdenv
+              pkgsToOptimize.stdenv;
+        in
+        optimizedClangStdenv;
 
       pkgsInputs =
         {
@@ -129,21 +184,19 @@
           themePath = "pack_4/${name}";
         };
 
-      overlays = [
-        (self: super: {
-          # better discord performance, if its not installed via flatpak
-          discord = super.discord.override {
-            commandLineArgs =
-              "--no-sandbox --enable-accelerated-mjpeg-decode --enable-accelerated-video --ignore-gpu-blacklist --enable-native-gpu-memory-buffers --enable-gpu-rasterization";
-          };
-        })
+      homeDirectory = "/home/${username}";
 
+      overlays = [
         (self: super: {
           plymouth-themes-package = import ./packages/plymouth-themes.nix ({
             inherit pkgs;
           } // plymouth);
         })
-      ];
+      ] ++ (if useFlags then [
+        (self: super: {
+          stdenv = optimizedStdenv self;
+        })
+      ] else [ ]);
     in
     {
       nixosConfigurations = {
