@@ -46,7 +46,7 @@
       };
 
       ".config/qtile/info.py".text = ''
-        hardware = "${hardware}
+        hardware = "${hardware}"
       '';
 
       # use weird colors that dont match names...

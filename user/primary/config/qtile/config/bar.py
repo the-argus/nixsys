@@ -188,6 +188,7 @@ def widgetlist():
     ]
     while None in widgets:
         widgets.remove(None)
+    return widgets
 
 def style(widgetlist):
     # adds separator widgets in between the initial widget list
