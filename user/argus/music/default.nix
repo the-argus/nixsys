@@ -37,9 +37,9 @@
           # (wrapPluginPath unstable.ChowKick "lib/vst3/ChowKick.vst3/Contents/x86_64-linux")
         ];
       in
-      internal ++ wrapped
+      internal ++ wrapped;
       # all the TAL plugins that run natively on linux
-      ++ mpkgs.sets.native.TAL;
+      # ++ mpkgs.sets.native.TAL;
 
     lv2 =
       let

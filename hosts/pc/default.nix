@@ -4,40 +4,41 @@
   imports = [
     ./hardware-configuration.nix
   ];
-
   # Use the GRUB 2 boot loader.
   boot = {
-    kernelParams = [ "quiet" "systemd.show_status=0" "loglevel=4" "rd.systemd.show_status=auto" "rd.udev.log-priority=3" ];
-loader = {
-	efi = {
-		efiSysMountPoint = "/boot";
-		canTouchEfiVariables = true;
-	};
-	#systemd-boot.enable = true;
-grub = {
-    enable = true;
-    version = 2;
-    device = "nodev";
-    efiSupport = true;
-    useOSProber = true;
-    extraEntries = ''
-	menuentry "Reboot" {
-		reboot
-	}
-	menuentry "Poweroff" {
-		halt
-	}
-'';
-};
-  };
-    initrd.verbose = false;
-plymouth = {
-    enable = true;
-    themePackages = [ pkgs.plymouth-themes-package ];
-    theme = plymouth.themeName;
-  };
+    kernelParams = [ "nordrand" "quiet" "systemd.show_status=0" "loglevel=4" "rd.systemd.show_status=auto" "rd.udev.log-priority=3" ];
+    loader = {
+      efi = {
+        efiSysMountPoint = "/boot/efi";
+	canTouchEfiVariables = true;
+      };
+      systemd-boot.enable = true;
 
-};
+      # efi-only grub
+      grub = {
+        enable = false;
+        version = 2;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+        extraEntries = ''
+	  menuentry "Reboot" {
+	  	  reboot
+	  }
+	  menuentry "Poweroff" {
+		  halt
+	  }
+        '';
+      };
+    };
+
+    initrd.verbose = false;
+    plymouth = {
+      enable = true;
+      themePackages = [ pkgs.plymouth-themes-package ];
+      theme = plymouth.themeName;
+    };
+  };
 
   # makes plymouth wait 5 seconds while playing
   # systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 5";
@@ -56,8 +57,6 @@ plymouth = {
   };
   
   services.xserver.displayManager.startx.enable = true;
-
-
   
   # networking ----------------------------------------------------------------
   networking.hostName = "mutant"; # Define your hostname.

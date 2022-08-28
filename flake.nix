@@ -80,7 +80,7 @@
       ];
 
       system = "x86_64-linux";
-      username = "argus";
+      username = if hardware == "pc" then "archmage" else if hardware == "laptop" then "argus" else "argus";
       hostname = if hardware == "laptop" then "evil" else if hardware == "pc" then "mutant" else "evil";
 
       # use musl instead of glibc

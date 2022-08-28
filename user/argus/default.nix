@@ -21,7 +21,7 @@
     package = unstable.ungoogled-chromium;
 
     extensions = [
-      chrome-extensions.ublock-origin
+      # chrome-extensions.ublock-origin
       # {
       #   # chromium web store
       #   id = "ocaahdebbfolfmndjeplogmgcagdmblk";
