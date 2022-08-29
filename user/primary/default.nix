@@ -1,4 +1,6 @@
-{ pkgs, unstable, lib, nur, chrome-extensions, webcord, ... }: {
+{ pkgs, unstable, lib, nur, chrome-extensions, webcord,
+additionalPackages ? [],
+... }: {
   imports = [
     ./config # configures *everything* that can't be done in nix
     ./local
@@ -42,7 +44,6 @@
   home.packages = with pkgs; [
     # unfree :(
     slack
-    steam
     # discord
     # spotify-unwrapped
     (webcord.packages.${unstable.system}.default)
@@ -101,5 +102,5 @@
     # material-icons
     # numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
     # capitaine-cursors
-  ];
+  ] ++ additionalPackages;
 }

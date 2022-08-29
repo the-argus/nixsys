@@ -70,7 +70,7 @@
     let
       # global configuration variables ---------------------------------------
       # whether to use laptop or PC configuration
-      hardware = "pc";
+      hardware = "laptop";
 
       # unfree packages that i explicitly use
       allowedUnfree = [
@@ -84,7 +84,7 @@
       system = "x86_64-linux";
       username = "argus";
       hostname = if hardware == "laptop" then "evil" else if hardware == "pc" then "mutant" else "evil";
-      
+
       plymouth = let name = "rings"; in
         {
           themeName = name;
@@ -230,6 +230,25 @@
           inherit hardware unstable homeDirectory firefox-addons useMusl useFlags username;
           mpkgs = audio-plugins.mpkgs;
         };
+      };
+
+      createNixosConfiguration = settings: {
+        ${settings.hostname} = settings.pkgs.nixosSystem {
+          inherit (settings) pkgs system;
+          specialArgs = inputs // settings.extraSpecialArgs;
+        };
+      };
+
+      createHomeConfigurations = settings: rec {
+        inherit (settings) pkgs system username;
+        homeDirectory = "/home/${settings.username}";
+        configuration = { pkgs, ... }: {
+          imports = [ ./user/primary ] ++ settings.additionalModules;
+        };
+        stateVersion = "22.05";
+        extraSpecialArgs = inputs // {
+          inherit homeDirectory firefox-addons;
+        } // settings.extraExtraSpecialArgs;
       };
 
       devShell.${system} = pkgs.mkShell { };
