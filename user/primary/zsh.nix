@@ -50,6 +50,7 @@
         cageff = "cage \"/bin/firefox -p Unconfigured\"";
         awesomedoc = "firefox ${pkgs.awesome.doc}/share/doc/awesome/doc/index.html & disown";
         gnome = "XDG_SESSION_TYPE=wayland dbus-run-session -- gnome-shell --display-server --wayland";
+        ix = "curl -F 'f:1=<-' ix.io";
       };
 
       zplug = {
