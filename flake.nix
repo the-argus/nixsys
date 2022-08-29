@@ -77,12 +77,19 @@
         "spotify-unwrapped"
         "reaper"
         "slack"
-        "steam" "steam-original"
+        "steam"
+        "steam-original"
       ];
 
       system = "x86_64-linux";
       username = "argus";
       hostname = if hardware == "laptop" then "evil" else if hardware == "pc" then "mutant" else "evil";
+      
+      plymouth = let name = "rings"; in
+        {
+          themeName = name;
+          themePath = "pack_4/${name}";
+        };
 
       # use musl instead of glibc
       useMusl = false;
@@ -123,8 +130,8 @@
       };
       pcArch = {
         gcc = {
-          arch = "znver2";
-          tune = "znver2";
+          arch = "znver1";
+          tune = "znver1";
         };
       };
       arch =
@@ -135,13 +142,13 @@
         let
           mkStdenv = march: stdenv:
             # adds -march flag to the global USE flags and creates stdenv
-            pkgsToOptimize.stdenvAdapters.withCFlags
+            pkgsToOptimize.withCFlags
               (USE ++ [ "-march=${march}" "-mtune=${march}" ])
               stdenv;
 
           # same thing but use -march=native
           mkNativeStdenv = stdenv:
-            pkgsToOptimize.stdenvAdapters.impureUseNativeOptimizations
+            pkgsToOptimize.impureUseNativeOptimizations
               (pkgsToOptimize.stdenvAdapters.withCFlags USE stdenv);
 
           optimizedStdenv = mkStdenv arch.gcc.arch pkgsToOptimize.stdenv;
@@ -159,7 +166,7 @@
               mkNativeStdenv
               pkgsToOptimize.stdenv;
         in
-        optimizedClangStdenv;
+        optimizedStdenv;
 
       pkgsInputs =
         {
@@ -175,6 +182,18 @@
             config = "x86_64-unknown-linux-musl";
           } else { })
           // (if useFlags then arch else { });
+
+          overlays = [
+            (self: super: {
+              plymouth-themes-package = import ./packages/plymouth-themes.nix ({
+                pkgs = super;
+              } // plymouth);
+            })
+          ] ++ (if useFlags then [
+            (self: super: {
+              stdenv = optimizedStdenv super;
+            })
+          ] else [ ]);
         };
 
       pkgs = import nixpkgs pkgsInputs;
@@ -182,37 +201,18 @@
 
       firefox-addons = (import "${rycee-expressions}" { inherit pkgs; }).firefox-addons;
 
-      plymouth = let name = "rings"; in
-        {
-          themeName = name;
-          themePath = "pack_4/${name}";
-        };
-
       homeDirectory = "/home/${username}";
-
-      overlays = [
-        (self: super: {
-          plymouth-themes-package = import ./packages/plymouth-themes.nix ({
-            inherit pkgs;
-          } // plymouth);
-        })
-      ] ++ (if useFlags then [
-        (self: super: {
-          stdenv = optimizedStdenv self;
-        })
-      ] else [ ]);
     in
     {
       nixosConfigurations = {
-        # hostname (evil)
         ${hostname} = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
           inherit system;
           specialArgs = inputs // {
             inherit hardware unstable plymouth useMusl useFlags hostname username;
           };
           modules = [
             {
-              nixpkgs.overlays = overlays;
               imports = [ ./system/configuration.nix ];
             }
           ];
@@ -224,7 +224,6 @@
         inherit system username homeDirectory;
         configuration = { pkgs, ... }: {
           imports = [ ./user/primary audio-plugins.homeManagerModule ];
-          nixpkgs.overlays = overlays;
         };
         stateVersion = "22.05";
         extraSpecialArgs = inputs // {
