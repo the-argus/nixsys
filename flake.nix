@@ -233,7 +233,7 @@
       };
 
       createNixosConfiguration = settings: {
-        ${settings.hostname} = settings.pkgs.nixosSystem {
+        ${settings.hostname} = settings.pkgs.lib.nixosSystem {
           inherit (settings) pkgs system;
           specialArgs = inputs // settings.extraSpecialArgs;
         };
