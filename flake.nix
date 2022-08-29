@@ -248,7 +248,7 @@
         let
           homeDirectory = "/home/${settings.username}";
         in
-        {
+        home-manager.lib.homeManagerConfiguration {
           inherit (settings) pkgs system username;
           inherit homeDirectory;
           configuration = { pkgs, ... }: {
