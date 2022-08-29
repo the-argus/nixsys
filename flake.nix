@@ -244,17 +244,21 @@
         };
       };
 
-      createHomeConfigurations = settings: rec {
-        inherit (settings) pkgs system username;
-        homeDirectory = "/home/${settings.username}";
-        configuration = { pkgs, ... }: {
-          imports = [ ./user/primary ] ++ settings.additionalModules;
+      createHomeConfigurations = settings:
+        let
+          homeDirectory = "/home/${settings.username}";
+        in
+        {
+          inherit (settings) pkgs system username;
+          inherit homeDirectory;
+          configuration = { pkgs, ... }: {
+            imports = [ ./user/primary ] ++ settings.additionalModules;
+          };
+          stateVersion = "22.05";
+          extraSpecialArgs = inputs // {
+            inherit homeDirectory firefox-addons;
+          } // settings.extraExtraSpecialArgs;
         };
-        stateVersion = "22.05";
-        extraSpecialArgs = inputs // {
-          inherit homeDirectory firefox-addons;
-        } // settings.extraExtraSpecialArgs;
-      };
 
       devShell.${system} = pkgs.mkShell { };
     };
