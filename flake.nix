@@ -85,12 +85,13 @@
       hostname = if hardware == "laptop" then "evil" else if hardware == "pc" then "mutant" else "evil";
 
       # use musl instead of glibc
-      useMusl = false;
+      useMusl = true;
       # compile everything from source
-      useFlags = false;
+      useFlags = true;
       # what optimizations to use (check https://github.com/fortuneteller2k/nixpkgs-f2k/blob/ca75dc2c9d41590ca29555cddfc86cf950432d5e/flake.nix#L237-L289)
       USE = [
-        "-O3"
+        # "-O3"
+        "-O2"
         "-pipe"
         "-ffloat-store"
         "-fexcess-precision=fast"
@@ -122,8 +123,8 @@
       };
       pcArch = {
         gcc = {
-          arch = "x86_64";
-          tune = "x86_64";
+          arch = "znver2";
+          tune = "znver2";
         };
       };
       arch =
