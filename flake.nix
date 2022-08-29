@@ -237,6 +237,11 @@
           inherit (settings) pkgs system;
           specialArgs = inputs // settings.extraSpecialArgs;
         };
+        modules = [
+          {
+            imports = [ ./system/configuration.nix ];
+          }
+        ];
       };
 
       createHomeConfigurations = settings: rec {
