@@ -4,6 +4,8 @@
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
+  
+  nix.settings.system-features = [ "gccarch-znver2" "nixos-test" "benchmark" "big-parallel" "kvm" ];
 
   boot.initrd.availableKernelModules = [ "nvme" "ahci" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
