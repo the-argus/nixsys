@@ -1,19 +1,24 @@
-{ pkgs, picom, hardware, ... }: {
+{ pkgs, picom, settings, ... }: {
   home.file =
     let
       picomPkg = import ../../../../packages/picom.nix
         { inherit pkgs; inherit picom; };
 
-      laptopAutostart = ''
+      bluetoothAutostart = ''
         # laptop has bluetooth and wireless
         ${pkgs.blueman}/bin/blueman-applet &
+      '';
+
+      wirelessAutostart = ''
         ${pkgs.networkmanagerapplet}/bin/nm-applet &
       '';
 
-      pcAutostart = ''
+      mouseAutostart = ''
         # i use a mouse on my pc, so theres middleclick
         ${pkgs.xmousepasteblock}/bin/xmousepasteblock &
       '';
+
+      optional = condition: str: (if condition then str else "");
 
       p = pkgs.callPackage ../../color.nix { };
     in
@@ -39,14 +44,17 @@
 
           # restore feh wallpaper
           $HOME/.fehbg
-          ${if hardware == "laptop" then laptopAutostart else ""}
-          ${if hardware == "pc" then pcAutostart else ""}
+          ${optional settings.usesWireless wirelessAutostart}
+          ${optional settings.usesBluetooth bluetoothAutostart}
+          ${optional settings.usesMouse mouseAutostart}
         '';
         executable = true;
       };
 
       ".config/qtile/info.py".text = ''
-        hardware = "${hardware}"
+        hardware = {
+            "hasBattery": ${if settings.hasBattery then "True" else "False"}
+        }
       '';
 
       # use weird colors that dont match names...

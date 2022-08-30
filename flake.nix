@@ -3,8 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-22.05";
-    # nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    # nixpkgs-unstable.url = "github:the-argus/nixpkgs?ref=fix/chromium-extension-path";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
@@ -20,11 +18,6 @@
     webcord = {
       url = "github:fufexan/webcord-flake";
     };
-
-    # nur = {
-    #   url = "github:nix-community/NUR";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     rycee-expressions = {
       url = "gitlab:rycee/nur-expressions";
@@ -69,197 +62,185 @@
     }@inputs:
     let
       # global configuration variables ---------------------------------------
-      # whether to use laptop or PC configuration
-      hardware = "laptop";
-
-      # unfree packages that i explicitly use
-      allowedUnfree = [
-        "spotify-unwrapped"
-        "reaper"
-        "slack"
-        "steam"
-        "steam-original"
-      ];
-
-      system = "x86_64-linux";
-      username = "argus";
-      hostname = if hardware == "laptop" then "evil" else if hardware == "pc" then "mutant" else "evil";
-
-      plymouth = let name = "rings"; in
-        {
-          themeName = name;
-          themePath = "pack_4/${name}";
-        };
-
-      # use musl instead of glibc
-      useMusl = false;
-      # compile everything from source
-      useFlags = false;
-      # what optimizations to use (check https://github.com/fortuneteller2k/nixpkgs-f2k/blob/ca75dc2c9d41590ca29555cddfc86cf950432d5e/flake.nix#L237-L289)
-      USE = [
-        # "-O3"
-        "-O2"
-        "-pipe"
-        "-ffloat-store"
-        "-fexcess-precision=fast"
-        "-ffast-math"
-        "-fno-rounding-math"
-        "-fno-signaling-nans"
-        "-fno-math-errno"
-        "-funsafe-math-optimizations"
-        "-fassociative-math"
-        "-freciprocal-math"
-        "-ffinite-math-only"
-        "-fno-signed-zeros"
-        "-fno-trapping-math"
-        "-frounding-math"
-        "-fsingle-precision-constant"
-        # not supported on clang 14 yet, and isn't ignored
-        # "-fcx-limited-range"
-        # "-fcx-fortran-rules"
-      ];
-
-      # optimizations --------------------------------------------------------
-      # architechtures include:
-      # x86-64-v2 x86-64-v3 x86-64-v4 tigerlake
-      laptopArch = {
-        gcc = {
+      defaultGlobalSettings = {
+        system = "x86_64-linux";
+        username = "argus";
+        hostname = "evil";
+        # unfree packages that i explicitly use
+        allowedUnfree = [
+          "spotify-unwrapped"
+          "reaper"
+          "slack"
+        ];
+        plymouth = let name = "rings"; in
+          {
+            themeName = name;
+            themePath = "pack_4/${name}";
+          };
+        extraExtraSpecialArgs = { inherit (audio-plugins) mpkgs; };
+        additionalModules = [ audio-plugins.homeManagerModule ];
+        hardwareConfiguration = [ ./hosts/laptop ];
+        usesWireless = true;
+        usesBluetooth = true;
+        usesMouse = false; # enables xmousepasteblock for middle click
+        optimization = {
           arch = "tigerlake";
-          tune = "tigerlake";
+          # use musl instead of glibc
+          useMusl = false;
+          # compile everything from source
+          useFlags = false;
+          # what optimizations to use (check https://github.com/fortuneteller2k/nixpkgs-f2k/blob/ca75dc2c9d41590ca29555cddfc86cf950432d5e/flake.nix#L237-L289)
+          USE = [
+            # "-O3"
+            "-O2"
+            "-pipe"
+            "-ffloat-store"
+            "-fexcess-precision=fast"
+            "-ffast-math"
+            "-fno-rounding-math"
+            "-fno-signaling-nans"
+            "-fno-math-errno"
+            "-funsafe-math-optimizations"
+            "-fassociative-math"
+            "-freciprocal-math"
+            "-ffinite-math-only"
+            "-fno-signed-zeros"
+            "-fno-trapping-math"
+            "-frounding-math"
+            "-fsingle-precision-constant"
+            # not supported on clang 14 yet, and isn't ignored
+            # "-fcx-limited-range"
+            # "-fcx-fortran-rules"
+          ];
         };
       };
-      pcArch = {
-        gcc = {
-          arch = "znver1";
-          tune = "znver1";
-        };
-      };
-      arch =
-        if hardware == "laptop" then laptopArch
-        else if hardware == "pc" then pcArch else { };
 
-      optimizedStdenv = pkgsToOptimize:
+      # based on those settings, create any additional entries that 
+      # will be needed by the configuration
+
+      finalizeSettings = settings:
         let
-          mkStdenv = march: stdenv:
-            # adds -march flag to the global USE flags and creates stdenv
-            pkgsToOptimize.withCFlags
-              (USE ++ [ "-march=${march}" "-mtune=${march}" ])
-              stdenv;
+          optimizedStdenv = pkgsToOptimize:
+            let
+              inherit (settings.optimization) USE arch;
+              mkStdenv = march: stdenv:
+                # adds -march flag to the global USE flags and creates stdenv
+                pkgsToOptimize.withCFlags
+                  (USE ++ [ "-march=${march}" "-mtune=${march}" ])
+                  stdenv;
 
-          # same thing but use -march=native
-          mkNativeStdenv = stdenv:
-            pkgsToOptimize.impureUseNativeOptimizations
-              (pkgsToOptimize.stdenvAdapters.withCFlags USE stdenv);
+              # same thing but use -march=native
+              mkNativeStdenv = stdenv:
+                pkgsToOptimize.impureUseNativeOptimizations
+                  (pkgsToOptimize.stdenvAdapters.withCFlags USE stdenv);
 
-          optimizedStdenv = mkStdenv arch.gcc.arch pkgsToOptimize.stdenv;
-          optimizedClangStdenv =
-            mkStdenv arch.gcc.arch pkgsToOptimize.llvmPackages_14.stdenv;
+              optimizedStdenv = mkStdenv arch pkgsToOptimize.stdenv;
+              optimizedClangStdenv =
+                mkStdenv arch pkgsToOptimize.llvmPackages_14.stdenv;
 
-          optimizedNativeClangStdenv =
-            pkgs.lib.warn "using native optimizations, \
+              optimizedNativeClangStdenv =
+                nixpkgs.lib.warn "using native optimizations, \
                 forfeiting reproducibility"
-              mkNativeStdenv
-              pkgsToOptimize.llvmPackages_14.stdenv;
-          optimizedNativeStdenv =
-            pkgs.lib.warn "using native optimizations, \
+                  mkNativeStdenv
+                  pkgsToOptimize.llvmPackages_14.stdenv;
+              optimizedNativeStdenv =
+                nixpkgs.lib.warn "using native optimizations, \
                 forfeiting reproducibility"
-              mkNativeStdenv
-              pkgsToOptimize.stdenv;
+                  mkNativeStdenv
+                  pkgsToOptimize.stdenv;
+            in
+            optimizedStdenv;
+
+          systemCompilerSettings = {
+            gcc = {
+              arch = settings.optimization.arch;
+              tune = settings.optimization.arch;
+            };
+          };
+
+          pkgsInputs =
+            let
+              inherit (settings.optimization) useMusl useFlags;
+              inherit (settings) allowedUnfree system plymouth pkgs;
+            in
+            {
+              config = {
+                # allowBroken = true;
+                allowUnfreePredicate =
+                  pkg: builtins.elem (pkgs.lib.getName pkg) allowedUnfree;
+              };
+              localSystem = {
+                inherit system;
+              } // (if useMusl then {
+                libc = "musl";
+                config = "x86_64-unknown-linux-musl";
+              } else { })
+              // (if useFlags then systemCompilerSettings else { });
+
+              overlays = [
+                (self: super: {
+                  plymouth-themes-package = import ./packages/plymouth-themes.nix ({
+                    pkgs = super;
+                  } // plymouth);
+                })
+              ];
+            };
         in
-        optimizedStdenv;
-
-      pkgsInputs =
-        {
-          config = {
-            allowBroken = true;
-            allowUnfreePredicate =
-              pkg: builtins.elem (pkgs.lib.getName pkg) allowedUnfree;
-          };
-          localSystem = {
-            inherit system;
-          } // (if useMusl then {
-            libc = "musl";
-            config = "x86_64-unknown-linux-musl";
-          } else { })
-          // (if useFlags then arch else { });
-
-          overlays = [
-            (self: super: {
-              plymouth-themes-package = import ./packages/plymouth-themes.nix ({
-                pkgs = super;
-              } // plymouth);
-            })
-          ] ++ (if useFlags then [
-            (self: super: {
-              stdenv = optimizedStdenv super;
-            })
-          ] else [ ]);
-        };
-
-      pkgs = import nixpkgs pkgsInputs;
-      unstable = import nixpkgs-unstable pkgsInputs;
-
-      firefox-addons = (import "${rycee-expressions}" { inherit pkgs; }).firefox-addons;
-
-      homeDirectory = "/home/${username}";
+        (nixpkgs.lib.trivial.mergeAttrs settings rec {
+          features = [ "gccarch-${settings.optimization.arch}" ];
+          pkgs = import nixpkgs pkgsInputs;
+          unstable = import nixpkgs-unstable pkgsInputs;
+          homeDirectory = "/home/${settings.username}";
+          firefox-addons = (import "${rycee-expressions}" {
+            inherit pkgs;
+          }).firefox-addons;
+        });
     in
+    rec
     {
-      nixosConfigurations = {
-        ${hostname} = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
-          inherit system;
-          specialArgs = inputs // {
-            inherit hardware unstable plymouth useMusl useFlags hostname username;
+      createNixosConfiguration = settings:
+        let fs = finalizeSettings settings; in
+        {
+          ${fs.hostname} = nixpkgs.lib.nixosSystem {
+            inherit (fs) pkgs system;
+            specialArgs = inputs
+              // fs.extraSpecialArgs
+              // {
+              inherit (fs) unstable hostname username useMusl;
+              inherit (fs) useFlags plymouth usesWireless usesBluetooth;
+              settings = fs;
+            };
+            modules = [
+              {
+                imports = [ ./system/configuration.nix ];
+              }
+            ];
           };
-          modules = [
-            {
-              imports = [ ./system/configuration.nix ];
-            }
-          ];
         };
-      };
-
-      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        inherit system username homeDirectory;
-        configuration = { pkgs, ... }: {
-          imports = [ ./user/primary audio-plugins.homeManagerModule ];
-        };
-        stateVersion = "22.05";
-        extraSpecialArgs = inputs // {
-          inherit hardware unstable homeDirectory firefox-addons useMusl useFlags username;
-          mpkgs = audio-plugins.mpkgs;
-        };
-      };
-
-      createNixosConfiguration = settings: {
-        ${settings.hostname} = nixpkgs.lib.nixosSystem {
-          inherit (settings) pkgs system;
-          specialArgs = inputs // settings.extraSpecialArgs;
-          modules = [
-            {
-              imports = [ ./system/configuration.nix ];
-            }
-          ];
-        };
-      };
 
       createHomeConfigurations = settings:
-        let
-          homeDirectory = "/home/${settings.username}";
-        in
-        home-manager.lib.homeManagerConfiguration {
-          inherit (settings) pkgs system username;
-          inherit homeDirectory;
+        let fs = finalizeSettings settings; in
+        home-manager.lib.homeManagerConfiguration rec {
+          inherit (fs) pkgs system username homeDirectory;
           configuration = { pkgs, ... }: {
-            imports = [ ./user/primary ] ++ settings.additionalModules;
+            imports = [ ./user/primary ] ++ fs.additionalModules;
           };
           stateVersion = "22.05";
           extraSpecialArgs = inputs // {
-            inherit homeDirectory firefox-addons;
-          } // settings.extraExtraSpecialArgs;
+            inherit (fs) homeDirectory firefox-addons;
+          }
+            // fs.extraExtraSpecialArgs
+            // {
+            inherit (fs) unstable hostname username useMusl;
+            inherit (fs) useFlags plymouth usesWireless usesBluetooth;
+            settings = fs;
+          };
         };
 
-      devShell.${system} = pkgs.mkShell { };
+      nixosConfigurations = createNixosConfiguration defaultGlobalSettings;
+      homeConfigurations.${defaultGlobalSettings.username} =
+        createHomeConfigurations defaultGlobalSettings;
+      devShell.${defaultGlobalSettings.system} =
+        (finalizeSettings defaultGlobalSettings).pkgs.mkShell { };
     };
 }

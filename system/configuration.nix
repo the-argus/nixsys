@@ -2,15 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, unstable, hardware, useMusl, username, ... }:
+{ config, pkgs, lib, unstable, useMusl, username, settings, ... }:
 
 {
   #choose what host is being used (laptop or pc)
   imports = [
     ../modules
-  ] ++
-  (if hardware == "laptop" then [ ../hosts/laptop ] else [ ]) ++
-  (if hardware == "pc" then [ ../hosts/pc ] else [ ]);
+  ] ++ (if builtins.hasAttr "hardwareConfiguration" settings then
+    settings.hardwareConfiguration
+  else
+    [ ./hardware ]);
 
   # kernel version
   # boot.kernelPackages = unstable.linuxPackages_latest;
@@ -51,14 +52,14 @@ LABEL="solokeys_end"'';
     # musl
     binaryCaches = [
       "https://cache.nixos.org/"
-    # ] ++ (if useMusl then [
+      # ] ++ (if useMusl then [
       "https://cache.allvm.org/"
-    ];# else [ ]);
+    ]; # else [ ]);
 
     binaryCachePublicKeys = [
-     # if useMusl then [
-        "gravity.cs.illinois.edu-1:yymmNS/WMf0iTj2NnD0nrVV8cBOXM9ivAkEdO1Lro3U="
-      ];# else [ ];
+      # if useMusl then [
+      "gravity.cs.illinois.edu-1:yymmNS/WMf0iTj2NnD0nrVV8cBOXM9ivAkEdO1Lro3U="
+    ]; # else [ ];
   };
 
 

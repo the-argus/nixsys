@@ -177,7 +177,7 @@ def widgetlist():
         windowname,
         systray,
         cpu,
-        (batt if hardware == "laptop" else None),
+        (batt if hardware["hasBattery"] else None),
 #        disk,
 #        net,
         mem,
