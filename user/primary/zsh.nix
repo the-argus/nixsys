@@ -165,6 +165,16 @@
 
             echo "renamed $total files."
         }
+
+        function lock () {
+            sleep 0.2
+
+            ${pkgs.i3lock-fancy}/bin/i3lock-fancy -f "Fira-Code-Regular-Nerd-Font-Complete" -t "hello, argus."
+
+            pactl set-sink-mute @DEFAULT_SINK@ on
+            ~/.scripts/sound/dunst-volume-refresh.sh
+        }
+
         autoload -U deer
 
         # CONFIG ----------------------------------------------------------------------
