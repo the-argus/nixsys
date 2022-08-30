@@ -242,6 +242,8 @@
             settings = fs;
           };
         };
+      
+      inherit finalizeSettings;
 
       nixosConfigurations = createNixosConfiguration defaultGlobalSettings;
       homeConfigurations.${defaultGlobalSettings.username} =
