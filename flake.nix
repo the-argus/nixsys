@@ -217,7 +217,7 @@
             };
             modules = [
               {
-                imports = [ ./system/configuration.nix ];
+                imports = [ ./system/configuration.nix ./modules ];
               }
             ];
           };
