@@ -78,11 +78,16 @@
             themePath = "pack_4/${name}";
           };
         extraExtraSpecialArgs = { inherit (audio-plugins) mpkgs; };
+        extraSpecialArgs = { };
         additionalModules = [ audio-plugins.homeManagerModule ];
-        hardwareConfiguration = [ ./hosts/laptop ];
-        usesWireless = true;
-        usesBluetooth = true;
+        additionalUserPackages = [
+          #"steam"
+        ]; # will be evaluated later
+        hardwareConfiguration = [ ];
+        usesWireless = true; # install and autostart nm-applet
+        usesBluetooth = true; # install and autostart blueman applet
         usesMouse = false; # enables xmousepasteblock for middle click
+        hasBattery = true; # battery widget in tiling WMs
         optimization = {
           arch = "tigerlake";
           # use musl instead of glibc
@@ -161,13 +166,13 @@
           pkgsInputs =
             let
               inherit (settings.optimization) useMusl useFlags;
-              inherit (settings) allowedUnfree system plymouth pkgs;
+              inherit (settings) allowedUnfree system plymouth;
             in
             {
               config = {
                 # allowBroken = true;
                 allowUnfreePredicate =
-                  pkg: builtins.elem (pkgs.lib.getName pkg) allowedUnfree;
+                  pkg: builtins.elem (nixpkgs.lib.getName pkg) allowedUnfree;
               };
               localSystem = {
                 inherit system;
@@ -233,6 +238,7 @@
             // {
             inherit (fs) unstable hostname username useMusl;
             inherit (fs) useFlags plymouth usesWireless usesBluetooth;
+            inherit (fs) additionalUserPackages;
             settings = fs;
           };
         };

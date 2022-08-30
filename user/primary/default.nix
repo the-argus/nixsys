@@ -1,5 +1,5 @@
 { pkgs, unstable, lib, nur, chrome-extensions, webcord,
-additionalPackages ? [],
+additionalUserPackages ? [],
 ... }: {
   imports = [
     ./config # configures *everything* that can't be done in nix
@@ -102,5 +102,5 @@ additionalPackages ? [],
     # material-icons
     # numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
     # capitaine-cursors
-  ] ++ additionalPackages;
+  ] ++ (map (pkgName: pkgs.${pkgName}) additionalUserPackages);
 }

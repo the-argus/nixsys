@@ -9,7 +9,9 @@
   imports = [
     ../modules
   ] ++ (if builtins.hasAttr "hardwareConfiguration" settings then
-    settings.hardwareConfiguration
+    (if settings.hardwareConfiguration != [ ] then
+      settings.hardwareConfiguration
+    else [ ./hardware ])
   else
     [ ./hardware ]);
 
