@@ -7,7 +7,7 @@
     ];
 
   nix.settings.system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ]
-    ++ [ settings.features ];
+    ++ settings.features;
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
