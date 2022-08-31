@@ -8,12 +8,7 @@
   #choose what host is being used (laptop or pc)
   imports = [
     ../modules
-  ] ++ (if builtins.hasAttr "hardwareConfiguration" settings then
-    (if settings.hardwareConfiguration != [ ] then
-      settings.hardwareConfiguration
-    else [ ./hardware ])
-  else
-    [ ./hardware ]);
+  ] ++ settings.hardwareConfiguration;
 
   # kernel version
   # boot.kernelPackages = unstable.linuxPackages_latest;
