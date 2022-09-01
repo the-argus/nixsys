@@ -3,7 +3,7 @@ let
   cfg = config.desktops.qtile;
   derivations = {
     picom = import ../../packages/picom.nix
-        { pkgs = unstable; inherit picom;}; 
+      { pkgs = unstable; inherit picom; };
   };
   inherit (lib) mkIf mkEnableOption;
 in
@@ -18,6 +18,11 @@ in
     services.xserver.windowManager.qtile = {
       enable = true;
     };
+
+    environment.sessionVariables = {
+      TERM = "kitty";
+    };
+
 
     environment.systemPackages = with pkgs; [
       xmousepasteblock

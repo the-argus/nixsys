@@ -1,6 +1,12 @@
-{ pkgs, unstable, lib, nur, chrome-extensions, webcord,
-additionalUserPackages ? [],
-... }: {
+{ pkgs
+, unstable
+, lib
+, nur
+, chrome-extensions
+, webcord
+, additionalUserPackages ? [ ]
+, ...
+}: {
   imports = [
     ./config # configures *everything* that can't be done in nix
     ./local
@@ -38,6 +44,16 @@ additionalUserPackages ? [],
       #   id = "oboonakemofpalcgghocfoadofidjkkk";
       # }
     ];
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    associations.added = {
+      "inode/directory" = [ "ranger.desktop" ];
+    };
+    defaultApplications = {
+      "inode/directory" = [ "ranger.desktop" ];
+    };
   };
 
   # extra packages
