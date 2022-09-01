@@ -42,6 +42,6 @@
      unset f
     fi
 
-    PYTHONDONTWRITEBYTECODE="yes" exec qtile start
+    PYTHONDONTWRITEBYTECODE="yes" GTK_USE_PORTAL=0 exec qtile start
   '';
 }
