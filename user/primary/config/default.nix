@@ -41,6 +41,9 @@
      done
      unset f
     fi
+    
+    # supplied by pkgs.dbus
+    dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
     PYTHONDONTWRITEBYTECODE="yes" GTK_USE_PORTAL=0 exec qtile start
   '';
