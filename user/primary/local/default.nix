@@ -82,7 +82,7 @@
         type = "Application";
         noDisplay = true;
         terminal = true;
-        exec = "$TERM -e ranger %F";
+        exec = "\\$TERM -e ranger %F";
         comment = "Manage and explore files";
         mimeType = [ "inode/directory" ];
       };
