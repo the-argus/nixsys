@@ -134,6 +134,7 @@ LABEL="solokeys_end"'';
     ix
     killall
     pciutils
+    inetutils
 
     curlftpfs
     sshfs
