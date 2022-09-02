@@ -1,6 +1,4 @@
 { pkgs, unstable, lib, homeDirectory, mpkgs, ... }:
-# NOTE: some of these packages are installed both by being evaluated in
-# home.file and home.packages. to uninstall remove both.
 {
   programs.yabridge = {
     enable = true;
@@ -37,9 +35,9 @@
           # (wrapPluginPath unstable.ChowKick "lib/vst3/ChowKick.vst3/Contents/x86_64-linux")
         ];
       in
-      internal ++ wrapped;
+      internal ++ wrapped
       # all the TAL plugins that run natively on linux
-      # ++ mpkgs.sets.native.TAL;
+      ++ mpkgs.sets.native.TAL;
 
     lv2 =
       let
