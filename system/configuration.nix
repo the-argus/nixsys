@@ -13,7 +13,7 @@
   # kernel version
   # boot.kernelPackages = unstable.linuxPackages_latest;
   # boot.kernelPackages = unstable.linuxPackages_zen;
-  boot.kernelPackages = lib.mkDefault unstable.linux_xanmod_latest;
+  boot.kernelPackages = lib.mkDefault unstable.linuxPackages_xanmod_latest;
 
   # PAM authentication for yubikey/solokey
   # line to add with mkOverride: "auth       required   pam_u2f.so"
