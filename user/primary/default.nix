@@ -66,9 +66,9 @@
   home.packages = with pkgs; [
     # unfree :(
     slack
-    # discord
+    discord
     # spotify-unwrapped
-    (webcord.packages.${unstable.system}.default)
+    # (webcord.packages.${unstable.system}.default)
     # lutris
 
     # gui applications---------
