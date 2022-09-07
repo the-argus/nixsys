@@ -172,7 +172,7 @@
             ${pkgs.i3lock-fancy}/bin/i3lock-fancy -f "Fira-Code-Regular-Nerd-Font-Complete" -t "hello, argus."
 
             pactl set-sink-mute @DEFAULT_SINK@ on
-            ~/.scripts/sound/dunst-volume-refresh.sh
+            ~/.local/bin/volume.sh refresh
         }
 
         autoload -U deer

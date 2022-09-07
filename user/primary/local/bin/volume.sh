@@ -10,6 +10,11 @@ elif [ $mode = "down" ]; then
     pactl set-sink-volume @DEFAULT_SINK@ -$increment
 elif [ $mode = "mute" ]; then
     pactl set-sink-mute @DEFAULT_SINK@ toggle
+elif [ $mode = "refresh" ]; then
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+else
+    echo "command needed, one of \"refresh\", \"up\" \"down\" or \"mute\"."
+    exit 1
 fi
 
 # Arbitrary but unique message tag
