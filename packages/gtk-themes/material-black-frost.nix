@@ -8,7 +8,7 @@ stdenv.mkDerivation {
   };
   installPhase = ''
     mkdir $out
-    cp $src/* $out
+    cp $src/* $out -r
     ${coreutils-full}/bin/chmod w+r $out/*
     # README causes a collision in home manager path for some reason
     rm $out/README.md
