@@ -12,7 +12,7 @@
     ./local
     ./zsh.nix
     ./git.nix
-    ./gtk
+    ./gtk.nix
     ./firefox.nix
     ./alacritty.nix
     ./kitty.nix
@@ -20,7 +20,6 @@
     ./zathura.nix
     ./music
     ./spicetify.nix
-    ./webcord
     ./i3.nix
   ];
 
