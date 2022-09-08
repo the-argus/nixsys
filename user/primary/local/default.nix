@@ -47,6 +47,11 @@
       #   type = "Application";
       #   categories = [ "Network" "InstantMessaging" ];
       # };
+      webcord = {
+        name = "Webcord";
+        exec = ''webcord'';
+        icon = "discord";
+      };
 
       pavucontrol = {
         name = "Pavucontrol";
