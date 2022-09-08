@@ -69,7 +69,7 @@
     slack
     discord
     # spotify-unwrapped
-    # (webcord.packages.${unstable.system}.default)
+    (webcord.packages.${unstable.system}.default)
     # lutris
 
     # gui applications---------
