@@ -27,7 +27,7 @@ in
     });
     inherit size;
   };
-  posysImproved = {
+  posysImproved = rec {
     name = "Posy_Cursor"; # can also append _Black _Mono _Mono_Black and _Strokeless
     package = mkCursorTheme name (pkgs.fetchgit {
       url = "https://github.com/simtrami/posy-improved-cursor-linux";
