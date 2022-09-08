@@ -43,4 +43,4 @@ rec {
     inherit bg;
     inherit black;
   };
-};
+}
