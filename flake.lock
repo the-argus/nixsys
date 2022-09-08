@@ -458,17 +458,17 @@
         "webcord": "webcord_2"
       },
       "locked": {
-        "lastModified": 1660242753,
-        "narHash": "sha256-M9ibcsDzWHp/678lTyxwwgXgdFx2d1YCevoGEIBVnxc=",
+        "lastModified": 1660244708,
+        "narHash": "sha256-Ba3UD4yVcgNhG/mMibrwRWdaLx6niaU3rmcyqGCjgvg=",
         "owner": "fufexan",
         "repo": "webcord-flake",
-        "rev": "0892178832a090f0b9ab1a61e20f5d1389cfb23e",
+        "rev": "fa24774ddc5c6dcd502d8109e631c45434b2f2cd",
         "type": "github"
       },
       "original": {
         "owner": "fufexan",
         "repo": "webcord-flake",
-        "rev": "0892178832a090f0b9ab1a61e20f5d1389cfb23e",
+        "rev": "fa24774ddc5c6dcd502d8109e631c45434b2f2cd",
         "type": "github"
       }
     },

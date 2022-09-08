@@ -17,7 +17,7 @@
 
     webcord = {
       # pin the old working webcord version
-      url = "github:fufexan/webcord-flake?rev=0892178832a090f0b9ab1a61e20f5d1389cfb23e";
+      url = "github:fufexan/webcord-flake?rev=fa24774ddc5c6dcd502d8109e631c45434b2f2cd";
     };
 
     rycee-expressions = {
