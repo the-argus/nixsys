@@ -44,6 +44,8 @@ LABEL="solokeys_end"'';
     # };
     settings = {
       extra-experimental-features = [ "nix-command" "flakes" ];
+      substituters = [ "https://webcord.cachix.org" ];
+      trusted-public-keys = [ "webcord.cachix.org-1:l555jqOZGHd2C9+vS8ccdh8FhqnGe8L78QrHNn+EFEs=" ];
     };
 
     # musl
