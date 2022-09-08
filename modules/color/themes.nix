@@ -1,8 +1,6 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
-  inherit (lib) types mkOption;
-
-  override = lib.attrsets.recursiveUpdate;
+  override = pkgs.lib.attrsets.recursiveUpdate;
 
   # color schemes --------------------------------------------------
   schemes = import ./schemes.nix;
