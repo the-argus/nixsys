@@ -3,7 +3,7 @@ let
   override = pkgs.lib.attrsets.recursiveUpdate;
 
   # color schemes --------------------------------------------------
-  schemes = import ./schemes.nix;
+  schemes = import ./schemes;
 
   # discord theme packages -----------------------------------------
   discordThemes = pkgs.callPackage ../../packages/discord-themes.nix { };
