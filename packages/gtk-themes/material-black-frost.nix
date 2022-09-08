@@ -8,6 +8,10 @@ stdenv.mkDerivation {
   };
   installPhase = ''
     mkdir $out/share/themes -p
-    cp $src/* $out/share/themes -r 
+    mkdir $out/share/icons -p
+    cp -r $src/Black-Frost-Numix-FLAT $out/share/icons
+    cp -r $src/Black-Frost-Numix $out/share/icons
+    cp -r $src/Black-Frost-Suru $out/share/icons
+    cp $src/Material-Black-Frost $out/share/themes -r 
   '';
 }
