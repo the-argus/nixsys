@@ -6,7 +6,7 @@ let
     inherit name src;
     installPhase = ''
       mkdir $out/share/icons -p
-      cp -r $src $out/share/icons
+      cp -r $src/* $out/share/icons/${name}
     '';
   };
 in
