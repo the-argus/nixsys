@@ -5,7 +5,7 @@ let
   mkCursorTheme = name: src: stdenv.mkDerivation {
     inherit name src;
     installPhase = ''
-      mkdir $out/share/icons -p
+      mkdir $out/share/icons/${name} -p
       cp -r $src/* $out/share/icons/${name}
     '';
   };
