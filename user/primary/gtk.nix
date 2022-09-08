@@ -1,7 +1,7 @@
 { pkgs,  homeDirectory, ... }:
 
 let
-  theme = (pkgs.callPackage ../themes.nix {});
+  theme = (pkgs.callPackage ./themes.nix {});
   gtk = theme.gtk;
 in
 {
