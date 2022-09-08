@@ -7,7 +7,7 @@ stdenv.mkDerivation {
     sha256 = "0vk1hslfglqk8vpp4h403hzxkj447y5plf04swk5h5jcz21ik265";
   };
   installPhase = ''
-    mkdir $out/share/themes
-    cp $src/* $out/share/themes/ -r 
+    mkdir $out/share/themes -p
+    cp $src/* $out/share/themes -r 
   '';
 }
