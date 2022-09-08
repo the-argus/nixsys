@@ -18,19 +18,31 @@ in
 
     desktops.xorg.enable = true;
 
-    services.xserver.windowManager.i3 = {
-      enable = true;
-      package = pkgs.i3-gaps;
-      extraPackages = with pkgs; [
-        xmousepasteblock
-        xfce.xfce4-clipman-plugin
-        dunst
-        rofi
-        flameshot
-        derivations.picom
+    environment.systemPackages = with pkgs; [
+      xmousepasteblock
+      xfce.xfce4-clipman-plugin
+      dunst
+      rofi
+      flameshot
+      derivations.picom
 
-        libnotify # notify-send scripts
-      ];
-    };
+      libnotify # notify-send scripts
+    ];
+
+    # this module is redundant with the hm module
+    # services.xserver.windowManager.i3 = {
+    #   enable = true;
+    #   package = pkgs.i3-gaps;
+    #   extraPackages = with pkgs; [
+    #     xmousepasteblock
+    #     xfce.xfce4-clipman-plugin
+    #     dunst
+    #     rofi
+    #     flameshot
+    #     derivations.picom
+
+    #     libnotify # notify-send scripts
+    #   ];
+    # };
   };
 }

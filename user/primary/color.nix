@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  schemes = import ./color-schemes.nix;
+  schemes = import ../../modules/color/schemes;
   scheme = (pkgs.callPackage ./themes.nix {}).scheme;
 in
 with scheme; (scheme // {

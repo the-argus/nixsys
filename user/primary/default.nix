@@ -21,6 +21,7 @@
     ./music
     ./spicetify.nix
     ./webcord
+    ./i3.nix
   ];
 
   programs.chromium = {
