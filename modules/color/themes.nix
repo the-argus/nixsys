@@ -83,13 +83,9 @@ rec {
         package = pkgs.fira-code;
       };
     };
-    discordTheme = discordThemes.inScheme;
+    discordTheme = discordThemes.rosepine;
     scheme = schemes.rosepine;
     opacity = "0.8";
-  };
-
-  rosePine = override defaultTheme {
-    discordTheme = discordThemes.rosepine;
   };
 
   gtk4 = override defaultTheme {

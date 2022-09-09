@@ -4,7 +4,8 @@ with (pkgs.callPackage ./pkgs.nix { });
   home.file = {
     ".config/WebCord/Themes" =
       let
-        theme = (pkgs.callPackage ../themes.nix { }).discordTheme;
+        # this will only be loaded by calling "webcord --add-css-theme=~/.config/WebCord/Themes"
+        theme = (pkgs.callPackage ./themes.nix { }).discordTheme;
       in
       {
         source = theme;
