@@ -437,11 +437,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1662693958,
-        "narHash": "sha256-1WoyQxDJIz3QYbpIkDLBoeEIOLCRDqntoTwQnXlJN3Y=",
+        "lastModified": 1662694163,
+        "narHash": "sha256-NscJUo6fx7wGVW/L/UKSxbXhWJyZ2DF2xbdkbRjWf4Q=",
         "owner": "the-argus",
         "repo": "spicetify-nix",
-        "rev": "749b4471084066b28fa2af31cb7e24d4c469a226",
+        "rev": "262e442cf895fe4948c985124f7bdda4e14cf3cb",
         "type": "github"
       },
       "original": {
