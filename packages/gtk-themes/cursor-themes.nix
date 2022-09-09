@@ -29,11 +29,18 @@ in
   };
   posysImproved = rec {
     name = "Posy_Cursor"; # can also append _Black _Mono _Mono_Black and _Strokeless
-    package = mkCursorTheme name (pkgs.fetchgit {
-      url = "https://github.com/simtrami/posy-improved-cursor-linux";
-      sha256 = "0hm5sbwr5ban9a30zwjlnsamd0528m5ysz44vq52mcd8cqd3j02j";
-      rev = "db36bf343471ea5dd9a9f596181f2559c6e09ddf";
-    });
+    package = stdenv.mkDerivation {
+      inherit name;
+      src = (pkgs.fetchgit {
+        url = "https://github.com/simtrami/posy-improved-cursor-linux";
+        sha256 = "0hm5sbwr5ban9a30zwjlnsamd0528m5ysz44vq52mcd8cqd3j02j";
+        rev = "db36bf343471ea5dd9a9f596181f2559c6e09ddf";
+      });
+      installPhase = ''
+        mkdir $out/share/icons/${name} -p
+        cp -r $src/${name} $out/share/icons/${name}
+      '';
+    };
     inherit size;
   };
   numix = {
