@@ -205,7 +205,7 @@
                 # also add the theme to pkgs
               ] ++ (if (builtins.hasAttr "theme" settings) then [
                 (self: super: {
-                  inherit (settings) theme;
+                  flakeTheme = settings.theme;
                 })
               ] else [ ]);
             };

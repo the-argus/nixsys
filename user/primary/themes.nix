@@ -4,12 +4,12 @@ let
   themes = (pkgs.callPackage ../../modules/color/themes.nix { });
   default = themes.defaultTheme;
 in
-(if builtins.hasAttr "theme" pkgs then
+(if builtins.hasAttr "flakeTheme" pkgs then
   (
     if builtins.typeOf pkgs.theme == "string" then
-      themes.${pkgs.theme}
+      themes.${pkgs.flakeTheme}
     else if builtins.typeOf pkgs.theme == "set" then
-      pkgs.theme
+      pkgs.flakeTheme
     else
       default
   )
