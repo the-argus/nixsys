@@ -6,7 +6,7 @@ let
 in
 (if builtins.hasAttr "flakeTheme" pkgs then
   (
-    if builtins.typeOf pkgs.theme == "string" then
+    if builtins.typeOf pkgs.flakeTheme == "string" then
       themes.${pkgs.flakeTheme}
     else if builtins.typeOf pkgs.theme == "set" then
       pkgs.flakeTheme
