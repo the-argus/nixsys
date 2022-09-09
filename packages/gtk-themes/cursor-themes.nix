@@ -38,7 +38,7 @@ in
       });
       installPhase = ''
         mkdir $out/share/icons/${name} -p
-        cp -r $src/${name} $out/share/icons/${name}
+        cp -r $src/${name}/* $out/share/icons/${name}
       '';
     };
     inherit size;
