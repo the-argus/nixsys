@@ -129,16 +129,15 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1661946571,
-        "narHash": "sha256-WFlivDtGWgTzcCw2CPVskyETQFR5/2txNxcjpOhUM6A=",
-        "owner": "fufexan",
+        "lastModified": 1662507674,
+        "narHash": "sha256-vnXfje4pfTqDEqI837GCT+hNKqzfVwPen++gnLVO9F0=",
+        "owner": "nix-community",
         "repo": "dream2nix",
-        "rev": "8a8981ea28dac0150736a6a91be76ed5a03976ba",
+        "rev": "5ba9061857e3e265538c9785bb56bda2bb8f9bca",
         "type": "github"
       },
       "original": {
-        "owner": "fufexan",
-        "ref": "electron",
+        "owner": "nix-community",
         "repo": "dream2nix",
         "type": "github"
       }
@@ -458,17 +457,16 @@
         "webcord": "webcord_2"
       },
       "locked": {
-        "lastModified": 1661860914,
-        "narHash": "sha256-jO7Ut9SKQ8aq/K4C3ZyUeBnRQKYB9GMreSTem1pqERQ=",
+        "lastModified": 1662387088,
+        "narHash": "sha256-eB9O9UIkeKHKyCF5oNw3a+wukeaLQMNl4OvJIeR5hRo=",
         "owner": "fufexan",
         "repo": "webcord-flake",
-        "rev": "a1ee6ae816e693f4bc43cc12a0a783b30147eb33",
+        "rev": "6a2a625df8a607c4a42aa921877ad65be73a2eb0",
         "type": "github"
       },
       "original": {
         "owner": "fufexan",
         "repo": "webcord-flake",
-        "rev": "a1ee6ae816e693f4bc43cc12a0a783b30147eb33",
         "type": "github"
       }
     },
