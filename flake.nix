@@ -16,7 +16,7 @@
     };
 
     webcord = {
-      url = "github:the-argus/webcord-flake";
+      url = "github:fufexan/webcord-flake";
     };
 
     rycee-expressions = {

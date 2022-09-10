@@ -458,15 +458,15 @@
         "webcord": "webcord_2"
       },
       "locked": {
-        "lastModified": 1662820529,
-        "narHash": "sha256-0jZn1I5pOOjkIDLA+cj4isFbMhQz6UAypmNzvpCSz0c=",
-        "owner": "the-argus",
+        "lastModified": 1662387088,
+        "narHash": "sha256-eB9O9UIkeKHKyCF5oNw3a+wukeaLQMNl4OvJIeR5hRo=",
+        "owner": "fufexan",
         "repo": "webcord-flake",
-        "rev": "61e931ed4b311dc747fdb1070b678b7be61fc1d5",
+        "rev": "6a2a625df8a607c4a42aa921877ad65be73a2eb0",
         "type": "github"
       },
       "original": {
-        "owner": "the-argus",
+        "owner": "fufexan",
         "repo": "webcord-flake",
         "type": "github"
       }
