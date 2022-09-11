@@ -31,7 +31,7 @@
               picomConfigLocation = "~/.config/qtile/config/picom.conf";
             }
           )
-          .autostart
+          .autoStart
         }
       '';
       executable = true;
