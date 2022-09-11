@@ -26,7 +26,10 @@
           builtins.concatStringsSep "\n"
           (
             pkgs.callPackage ../../lib/xorg.nix
-            {picomConfigLocation = "~/.config/qtile/config/picom.conf";}
+            {
+              inherit settings;
+              picomConfigLocation = "~/.config/qtile/config/picom.conf";
+            }
           )
           .autostart
         }

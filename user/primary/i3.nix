@@ -60,7 +60,10 @@
         map (cmd: {command = cmd;})
         (
           pkgs.callPackage ./lib/xorg.nix
-          {picomConfigLocation = "~/.config/i3/picom.conf";}
+          {
+            picomConfigLocation = "~/.config/i3/picom.conf";
+            inherit settings;
+          }
         );
     };
 
