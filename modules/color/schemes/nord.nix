@@ -43,4 +43,4 @@ rec {
     bg = black;
     black = bg;
   };
-};
+}
