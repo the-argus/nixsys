@@ -7,8 +7,10 @@
   mkTheme = fetchArgs: (stdenv.mkDerivation {
     name = builtins.baseNameOf fetchArgs.url;
     src = fetchgit fetchArgs;
-    postInstall = ''
-      mv $out/*.theme.css $out/THEME.theme.css
+    installPhase = ''
+      mkdir $out
+      mv *.theme.css THEME.theme.css
+      mv . $out
     '';
   });
 in {
