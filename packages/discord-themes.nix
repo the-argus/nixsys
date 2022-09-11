@@ -10,7 +10,7 @@
     installPhase = ''
       mkdir $out
       mv *.theme.css THEME.theme.css
-      mv . $out
+      mv * $out
     '';
   });
 in {
