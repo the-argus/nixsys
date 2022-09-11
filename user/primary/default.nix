@@ -79,7 +79,8 @@
         # gui applications---------
         webcordPkg
         (callPackage ../../packages/discord-theme-installer.nix {
-            inherit ((callPackage ./themes.nix {}).theme) discordTheme;
+          inherit ((callPackage ./themes.nix {}).theme) discordTheme;
+          inherit webcordPkg;
         })
         obs-studio
         element-desktop

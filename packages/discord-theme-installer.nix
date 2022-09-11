@@ -2,6 +2,7 @@
   emptyDirectory,
   stdenv,
   discordTheme,
+  webcordPkg,
 }:
 stdenv.mkDerivation {
   src = emptyDirectory;
