@@ -78,14 +78,9 @@
 
         # gui applications---------
         webcordPkg
-        (pkgs.runCommandLocal ''
-          ${webcordPkg}/bin/webcord --add-css-theme=${
-            (
-              pkgs.callPackage ./themes.nix {}
-            )
-            .discordTheme
-          }
-        '' {})
+        (callPackage ../../packages/discord-theme-installer.nix {
+            inherit ((callPackage ./themes.nix {}).theme) discordTheme;
+        })
         obs-studio
         element-desktop
         keepassxc
