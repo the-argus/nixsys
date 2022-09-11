@@ -65,84 +65,83 @@
   };
 
   # extra packages
-  home.packages = with pkgs;
-    [
-      # unfree :(
-      slack
-      discord
-      # spotify-unwrapped
-      # lutris
+  home.packages = let
+    webcordPkg = webcord.packages.${unstable.system}.default;
+  in
+    with pkgs;
+      [
+        # unfree :(
+        slack
+        discord
+        # spotify-unwrapped
+        # lutris
 
-      # gui applications---------
-      ((webcord.packages.${unstable.system}.default).overrideAttrs
-        (oa: {
-          postInstall =
-            (oa.postInstall or "")
-            + ''
-              $out/bin/webcord --add-css-theme=${
-                (
-                  pkgs.callPackage ./themes.nix {}
-                )
-                .discordTheme
-              }
-            '';
-        }))
-      obs-studio
-      element-desktop
-      keepassxc
-      pcmanfm
-      qalculate-gtk
-      unstable.heroic
-      polymc
-      pavucontrol
-      sxiv
-      mpv
-      zathura
-      qpwgraph
-      qdirstat
+        # gui applications---------
+        webcordPkg
+        (pkgs.runCommandLocal ''
+          ${webcordPkg}/bin/webcord --add-css-theme=${
+            (
+              pkgs.callPackage ./themes.nix {}
+            )
+            .discordTheme
+          }
+        '' {})
+        obs-studio
+        element-desktop
+        keepassxc
+        pcmanfm
+        qalculate-gtk
+        unstable.heroic
+        polymc
+        pavucontrol
+        sxiv
+        mpv
+        zathura
+        qpwgraph
+        qdirstat
 
-      pinta
-      inkscape
-      # color palette
-      unstable.wl-color-picker
-      epick
-      pngquant
+        pinta
+        inkscape
+        # color palette
+        unstable.wl-color-picker
+        epick
+        pngquant
 
-      # tui
-      cava
+        # tui
+        cava
 
-      # cli
-      unstable.solo2-cli
-      transmission
-      unstable.ani-cli
-      nix-prefetch-scripts
+        # cli
+        unstable.solo2-cli
+        transmission
+        unstable.ani-cli
+        nix-prefetch-scripts
 
-      # dev
-      nodejs
-      cargo
-      sumneko-lua-language-server
-      rnix-lsp
-      libclang
+        # dev
+        nodejs
+        cargo
+        sumneko-lua-language-server
+        rnix-lsp
+        libclang
 
-      # useful linters
-      python310Packages.demjson3
-      alejandra
+        # useful linters
+        python310Packages.demjson3
+        alejandra
 
-      # appearance
-      # rose-pine-gtk-theme
-      # paper-gtk-theme # Paper
-      # Icons: Lounge-aux
-      # Themes: Lounge Lounge-compact Lounge-night Lounge-night-compact
-      # lounge-gtk-theme
-      # juno-theme # Juno Juno-mirage Juno-ocean Juno-palenight
-      # graphite-gtk-theme # Graphite Graphite-dark Graphite-light Graphite-dark-hdpi Graphite-hdpi ....
+        # appearance
+        # rose-pine-gtk-theme
+        # paper-gtk-theme # Paper
+        # Icons: Lounge-aux
+        # Themes: Lounge Lounge-compact Lounge-night Lounge-night-compact
+        # lounge-gtk-theme
+        # juno-theme # Juno Juno-mirage Juno-ocean Juno-palenight
+        # graphite-gtk-theme # Graphite Graphite-dark Graphite-light Graphite-dark-hdpi Graphite-hdpi ....
 
-      # paper-icon-theme
-      # zafiro-icons
-      # pantheon.elementary-icon-theme
-      # material-icons
-      # numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
-      # capitaine-cursors
-    ]
-    ++ (map (pkgName: pkgs.${pkgName}) additionalUserPackages);
+        # paper-icon-theme
+        # zafiro-icons
+        # pantheon.elementary-icon-theme
+        # material-icons
+        # numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
+        # capitaine-cursors
+      ]
+      ++ (map (pkgName: pkgs.${pkgName}) additionalUserPackages);
 }
