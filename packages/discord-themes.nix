@@ -5,6 +5,7 @@
   ...
 }: let
   mkTheme = fetchArgs: (stdenv.mkDerivation {
+    name = builtins.baseNameOf fetchArgs.url;
     src = fetchgit fetchArgs;
     patchPhase = ''
       cp -r $src/* .
