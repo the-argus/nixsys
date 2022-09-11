@@ -77,6 +77,7 @@
         themeName = name;
         themePath = "pack_4/${name}";
       };
+      terminal = "kitty";
       extraExtraSpecialArgs = {inherit (audio-plugins) mpkgs;};
       extraSpecialArgs = {};
       additionalModules = [audio-plugins.homeManagerModule];

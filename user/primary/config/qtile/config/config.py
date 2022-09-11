@@ -37,10 +37,10 @@ from color import colors
 from font import font
 from layouts import custom_layouts, floating
 from bar import my_bar
+from info import terminal
 
 mod = "mod4"
 #terminal = guess_terminal()
-terminal = "kitty"
 
 float_types = [
         "dialog"

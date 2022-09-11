@@ -12,26 +12,6 @@
         inherit picom;
       };
 
-    bluetoothAutostart = ''
-      # laptop has bluetooth and wireless
-      ${pkgs.blueman}/bin/blueman-applet &
-    '';
-
-    wirelessAutostart = ''
-      ${pkgs.networkmanagerapplet}/bin/nm-applet &
-    '';
-
-    mouseAutostart = ''
-      # i use a mouse on my pc, so theres middleclick
-      ${pkgs.xmousepasteblock}/bin/xmousepasteblock &
-    '';
-
-    optional = condition: str: (
-      if condition
-      then str
-      else ""
-    );
-
     p = pkgs.callPackage ../../color.nix {};
   in {
     ".config/qtile" = {
@@ -42,22 +22,14 @@
     ".config/qtile/autostart.sh" = {
       text = ''
         #!/bin/sh
-
-        ${pkgs.dunst}/bin/dunst &
-        ${pkgs.xfce.xfce4-clipman-plugin}/bin/xfce4-clipman &
-        ${pkgs.xclip}/bin/xclip &
-
-        # start picom fr
-        # ${picomPkg}/bin/picom --config ~/.config/qtile/config/picom.conf &
-
-        # start picom IF we have it installed
-        picom --config ~/.config/qtile/config/picom.conf &
-
-        # restore feh wallpaper
-        $HOME/.fehbg
-        ${optional settings.usesWireless wirelessAutostart}
-        ${optional settings.usesBluetooth bluetoothAutostart}
-        ${optional settings.usesMouse mouseAutostart}
+        ${
+          builtins.concatStringsSep "\n"
+          (
+            pkgs.callPackage ../../lib/xorg.nix
+            {picomConfigLocation = "~/.config/qtile/config/picom.conf";}
+          )
+          .autostart
+        }
       '';
       executable = true;
     };
@@ -70,6 +42,7 @@
         else "False"
       }
       }
+      terminal = ${pkgs.${settings.terminal}}/bin/${settings.terminal}
     '';
 
     # use weird colors that dont match names...
