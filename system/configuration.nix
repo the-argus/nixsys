@@ -141,10 +141,7 @@ LABEL="solokeys_end"'';
     curlftpfs
     sshfs
 
-    # useful linters
-    python310Packages.demjson3
-
-    # essential
+    # build - essential
     gcc
     lld
     llvm

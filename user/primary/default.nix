@@ -109,6 +109,10 @@
     rnix-lsp
     libclang
 
+    # useful linters
+    python310Packages.demjson3
+    alejandra
+
     # appearance
     # rose-pine-gtk-theme
     # paper-gtk-theme # Paper
