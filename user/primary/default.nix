@@ -79,7 +79,12 @@
           postInstall =
             (oa.postInstall or "")
             + ''
-              $out/bin/webcord --add-css-theme=${settings.theme.discordTheme}
+              $out/bin/webcord --add-css-theme=${
+                (
+                  pkgs.callPackage ./themes.nix {}
+                )
+                .discordTheme
+              }
             '';
         }))
       obs-studio
