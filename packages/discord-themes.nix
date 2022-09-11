@@ -7,9 +7,8 @@
   mkTheme = fetchArgs: (stdenv.mkDerivation {
     name = builtins.baseNameOf fetchArgs.url;
     src = fetchgit fetchArgs;
-    patchPhase = ''
-      cp -r $src/* .
-      mv *.theme.css THEME.theme.css
+    postInstall = ''
+      mv $out/*.theme.css $out/THEME.theme.css
     '';
   });
 in {

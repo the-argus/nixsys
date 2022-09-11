@@ -72,6 +72,7 @@
       [
         # unfree :(
         slack
+        discord
         # spotify-unwrapped
         # lutris
 
