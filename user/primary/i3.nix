@@ -18,6 +18,7 @@
         bg = mkColor colors.hi1;
         inactive-bg = (mkColor colors.bg) + "CC";
         text = bg;
+        inactive-text = bg;
         urgent-bg = colors.red;
         inactive-border = (mkColor colors.bg) + "00";
 

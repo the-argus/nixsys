@@ -9,7 +9,7 @@
     then str
     else ""
   );
-in {
+in rec {
   bluetoothAutostart = ''
     # laptop has bluetooth and wireless
     ${pkgs.blueman}/bin/blueman-applet &
