@@ -51,8 +51,8 @@
         inner = 10;
         outer = 0;
         # theres also: horizontal vertical top left bottom right
-        smartGaps = true;
-        smartBorders = true;
+        smartGaps = "on";
+        smartBorders = "off";
       };
       terminal = "${pkgs.${settings.terminal}}/bin/${settings.terminal}";
 
