@@ -7,7 +7,11 @@
 stdenv.mkDerivation {
   name = "DiscordThemeInstaller";
   src = emptyDirectory;
-  buildCommand = "${webcordPkg}/bin/webcord --add-css-theme=${discordTheme}/THEME.theme.css";
+  buildCommand = ''
+    mkdir userData
+    XDG_CONFIG_HOME=userData
+    ${webcordPkg}/bin/webcord --add-css-theme=${discordTheme}/THEME.theme.css
+  '';
   dontInstall = true;
   dontPatch = true;
   dontUnpack = true;
