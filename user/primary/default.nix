@@ -5,6 +5,7 @@
   nur,
   chrome-extensions,
   webcord,
+  settings,
   additionalUserPackages ? [],
   ...
 }: {
@@ -70,10 +71,17 @@
       slack
       discord
       # spotify-unwrapped
-      (webcord.packages.${unstable.system}.default)
       # lutris
 
       # gui applications---------
+      ((webcord.packages.${unstable.system}.default).overrideAttrs
+        (oa: {
+          postInstall =
+            (oa.postInstall or "")
+            + ''
+              $out/bin/webcord --add-css-theme=${settings.theme.discordTheme}
+            '';
+        }))
       obs-studio
       element-desktop
       keepassxc
