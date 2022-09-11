@@ -1,73 +1,78 @@
-{ pkgs, unstable, lib, homeDirectory, mpkgs, ... }:
 {
+  pkgs,
+  unstable,
+  lib,
+  homeDirectory,
+  mpkgs,
+  ...
+}: {
   programs.yabridge = {
     enable = true;
     package = unstable.yabridge;
     ctlPackage = unstable.yabridgectl;
     suppressFreemiumWarning = true;
     suppressUnmaintainedWarning = true;
-    plugins = with mpkgs; [
-      effects.ferric-tds
-      # (mpkgs.lib.wrapPluginPath effects.tdr-nova "VST3/x64/TDR\\ Nova.vst3/Contents/x86_64-linux")
-      # effects.tdr-nova
-    ]
-    ++ mpkgs.sets.heckscaper
-    ++ mpkgs.sets.TAL;
+    plugins = with mpkgs;
+      [
+        effects.ferric-tds
+        # (mpkgs.lib.wrapPluginPath effects.tdr-nova "VST3/x64/TDR\\ Nova.vst3/Contents/x86_64-linux")
+        # effects.tdr-nova
+      ]
+      ++ mpkgs.sets.heckscaper
+      ++ mpkgs.sets.TAL;
 
-    nativePlugins =
-      let
-        # plugins packaged in audio-plugins-nix
-        internal = with mpkgs.native; [
-          (mpkgs.lib.wrapPluginPath effects.fire-bin
-            "Fire-Linux/VST3/Fire.vst3/Contents/x86_64-linux")
-          # synths.dexed
-        ];
-        # plugins packaged in nixpkgs already
-        wrapped = with mpkgs.lib; [
-          (wrapPluginPath pkgs.zam-plugins "lib/vst")
-          (wrapPluginPath pkgs.surge-XT "lib/vst3")
-          (wrapPluginPath pkgs.oxefmsynth "lib/lxvst")
-          (wrapPluginPath unstable.ChowPhaser "lib/vst3")
-          (wrapPluginPath unstable.odin2 "lib/vst3/Odin2.vst3/Contents/x86_64-linux")
-          (wrapPluginPath unstable.cardinal "lib/vst3")
-          # (wrapPluginPath unstable.ChowCentaur "lib/vst3/ChowCentaur.vst3/Contents/x86_64-linux")
-          # (wrapPluginPath unstable.CHOWTapeModel "lib/vst3/CHOWTapeModel.vst3/Contents/x86_64-linux")
-          # (wrapPluginPath unstable.ChowKick "lib/vst3/ChowKick.vst3/Contents/x86_64-linux")
-        ];
-      in
-      internal ++ wrapped
+    nativePlugins = let
+      # plugins packaged in audio-plugins-nix
+      internal = with mpkgs.native; [
+        (mpkgs.lib.wrapPluginPath effects.fire-bin
+          "Fire-Linux/VST3/Fire.vst3/Contents/x86_64-linux")
+        # synths.dexed
+      ];
+      # plugins packaged in nixpkgs already
+      wrapped = with mpkgs.lib; [
+        (wrapPluginPath pkgs.zam-plugins "lib/vst")
+        (wrapPluginPath pkgs.surge-XT "lib/vst3")
+        (wrapPluginPath pkgs.oxefmsynth "lib/lxvst")
+        (wrapPluginPath unstable.ChowPhaser "lib/vst3")
+        (wrapPluginPath unstable.odin2 "lib/vst3/Odin2.vst3/Contents/x86_64-linux")
+        (wrapPluginPath unstable.cardinal "lib/vst3")
+        # (wrapPluginPath unstable.ChowCentaur "lib/vst3/ChowCentaur.vst3/Contents/x86_64-linux")
+        # (wrapPluginPath unstable.CHOWTapeModel "lib/vst3/CHOWTapeModel.vst3/Contents/x86_64-linux")
+        # (wrapPluginPath unstable.ChowKick "lib/vst3/ChowKick.vst3/Contents/x86_64-linux")
+      ];
+    in
+      internal
+      ++ wrapped
       # all the TAL plugins that run natively on linux
       ++ mpkgs.sets.native.TAL;
 
-    lv2 =
-      let
-        wrapped = with mpkgs.lib; [
-          (wrapPluginPath unstable.ChowCentaur "lib/lv2/ChowCentaur.lv2")
-          (wrapPluginPath unstable.CHOWTapeModel "lib/lv2/CHOWTapeModel.lv2")
-          (wrapPluginPath unstable.ChowKick "lib/lv2/ChowKick.lv2")
-          (wrapPluginPath unstable.cardinal "lib/lv2")
-          (wrapPluginPath unstable.airwindows-lv2 "lib/lv2/Airwindows.lv2")
-          # (wrapPluginPath unstable.tunefish "lib/lv2/Tunefish4.lv2")
-        ];
-      in
+    lv2 = let
+      wrapped = with mpkgs.lib; [
+        (wrapPluginPath unstable.ChowCentaur "lib/lv2/ChowCentaur.lv2")
+        (wrapPluginPath unstable.CHOWTapeModel "lib/lv2/CHOWTapeModel.lv2")
+        (wrapPluginPath unstable.ChowKick "lib/lv2/ChowKick.lv2")
+        (wrapPluginPath unstable.cardinal "lib/lv2")
+        (wrapPluginPath unstable.airwindows-lv2 "lib/lv2/Airwindows.lv2")
+        # (wrapPluginPath unstable.tunefish "lib/lv2/Tunefish4.lv2")
+      ];
+    in
       wrapped;
 
     extraPath = "${homeDirectory}/.wine/drive_c/yabridge";
   };
 
-  home.file =
-    {
-      ".config/REAPER/ColorThemes/logic.ReaperThemeZip" = {
-        source = pkgs.fetchurl {
-          # maybe also look into:
-          # https://stash.reaper.fm/theme/1932/CLogic.zip
-          # https://stash.reaper.fm/theme/2146/FLogic.zip
-          url = "https://stash.reaper.fm/30321/I%20Logic%20V2%20Public.ReaperThemeZip";
-          name = "logicpro-reapertheme-2.0.zip";
-          sha256 = "1zq7wapjnabshwq9b6jmkb8p5xv5mamvycfp94w6jp23qk3554pm";
-        };
+  home.file = {
+    ".config/REAPER/ColorThemes/logic.ReaperThemeZip" = {
+      source = pkgs.fetchurl {
+        # maybe also look into:
+        # https://stash.reaper.fm/theme/1932/CLogic.zip
+        # https://stash.reaper.fm/theme/2146/FLogic.zip
+        url = "https://stash.reaper.fm/30321/I%20Logic%20V2%20Public.ReaperThemeZip";
+        name = "logicpro-reapertheme-2.0.zip";
+        sha256 = "1zq7wapjnabshwq9b6jmkb8p5xv5mamvycfp94w6jp23qk3554pm";
       };
     };
+  };
 
   home.packages = with pkgs; [
     unstable.reaper
@@ -109,6 +114,6 @@
     # Zebralette U-he
 
     # other plugins i should get:
-    # modartt pianoteq 
+    # modartt pianoteq
   ];
 }

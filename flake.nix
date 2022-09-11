@@ -45,227 +45,241 @@
     };
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , nixpkgs-unstable
-    , home-manager
-    , webcord
-    , rycee-expressions
-      # , nur
-    , audio-plugins
-    , chrome-extensions
-    , spicetify-nix
-    , nvim-config
-    , arkenfox-userjs
-    , ...
-    }@inputs:
-    let
-      # global configuration variables ---------------------------------------
-      defaultGlobalSettings = {
-        system = "x86_64-linux";
-        username = "argus";
-        hostname = "evil";
-        # unfree packages that i explicitly use
-        allowedUnfree = [
-          "spotify-unwrapped"
-          "reaper"
-          "slack"
-        ];
-        plymouth = let name = "rings"; in
-          {
-            themeName = name;
-            themePath = "pack_4/${name}";
-          };
-        extraExtraSpecialArgs = { inherit (audio-plugins) mpkgs; };
-        extraSpecialArgs = { };
-        additionalModules = [ audio-plugins.homeManagerModule ];
-        additionalUserPackages = [
-          #"steam"
-        ]; # will be evaluated later
-        hardwareConfiguration = [ ./system/hardware ];
-        usesWireless = true; # install and autostart nm-applet
-        usesBluetooth = true; # install and autostart blueman applet
-        usesMouse = false; # enables xmousepasteblock for middle click
-        hasBattery = true; # battery widget in tiling WMs
-        optimization = {
-          arch = "tigerlake";
-          # use musl instead of glibc
-          useMusl = false;
-          # compile everything from source
-          useFlags = false;
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-unstable,
+    home-manager,
+    webcord,
+    rycee-expressions,
+    # , nur
+    audio-plugins,
+    chrome-extensions,
+    spicetify-nix,
+    nvim-config,
+    arkenfox-userjs,
+    ...
+  } @ inputs: let
+    # global configuration variables ---------------------------------------
+    defaultGlobalSettings = {
+      system = "x86_64-linux";
+      username = "argus";
+      hostname = "evil";
+      # unfree packages that i explicitly use
+      allowedUnfree = [
+        "spotify-unwrapped"
+        "reaper"
+        "slack"
+      ];
+      plymouth = let
+        name = "rings";
+      in {
+        themeName = name;
+        themePath = "pack_4/${name}";
+      };
+      extraExtraSpecialArgs = {inherit (audio-plugins) mpkgs;};
+      extraSpecialArgs = {};
+      additionalModules = [audio-plugins.homeManagerModule];
+      additionalUserPackages = [
+        #"steam"
+      ]; # will be evaluated later
+      hardwareConfiguration = [./system/hardware];
+      usesWireless = true; # install and autostart nm-applet
+      usesBluetooth = true; # install and autostart blueman applet
+      usesMouse = false; # enables xmousepasteblock for middle click
+      hasBattery = true; # battery widget in tiling WMs
+      optimization = {
+        arch = "tigerlake";
+        # use musl instead of glibc
+        useMusl = false;
+        # compile everything from source
+        useFlags = false;
 
-          useNative = false;
-          useClang = false;
-          # what optimizations to use (check https://github.com/fortuneteller2k/nixpkgs-f2k/blob/ca75dc2c9d41590ca29555cddfc86cf950432d5e/flake.nix#L237-L289)
-          USE = [
-            # "-O3"
-            "-O2"
-            "-pipe"
-            "-ffloat-store"
-            "-fexcess-precision=fast"
-            "-ffast-math"
-            "-fno-rounding-math"
-            "-fno-signaling-nans"
-            "-fno-math-errno"
-            "-funsafe-math-optimizations"
-            "-fassociative-math"
-            "-freciprocal-math"
-            "-ffinite-math-only"
-            "-fno-signed-zeros"
-            "-fno-trapping-math"
-            "-frounding-math"
-            "-fsingle-precision-constant"
-            # not supported on clang 14 yet, and isn't ignored
-            # "-fcx-limited-range"
-            # "-fcx-fortran-rules"
-          ];
+        useNative = false;
+        useClang = false;
+        # what optimizations to use (check https://github.com/fortuneteller2k/nixpkgs-f2k/blob/ca75dc2c9d41590ca29555cddfc86cf950432d5e/flake.nix#L237-L289)
+        USE = [
+          # "-O3"
+          "-O2"
+          "-pipe"
+          "-ffloat-store"
+          "-fexcess-precision=fast"
+          "-ffast-math"
+          "-fno-rounding-math"
+          "-fno-signaling-nans"
+          "-fno-math-errno"
+          "-funsafe-math-optimizations"
+          "-fassociative-math"
+          "-freciprocal-math"
+          "-ffinite-math-only"
+          "-fno-signed-zeros"
+          "-fno-trapping-math"
+          "-frounding-math"
+          "-fsingle-precision-constant"
+          # not supported on clang 14 yet, and isn't ignored
+          # "-fcx-limited-range"
+          # "-fcx-fortran-rules"
+        ];
+      };
+    };
+
+    # based on those settings, create any additional entries that
+    # will be needed by the configuration
+
+    finalizeSettings = settings: let
+      optimizedStdenv = pkgsToOptimize: let
+        inherit (settings.optimization) USE arch useClang useNative;
+        mkStdenv = march: stdenv:
+        # adds -march flag to the global USE flags and creates stdenv
+          pkgsToOptimize.withCFlags
+          (USE ++ ["-march=${march}" "-mtune=${march}"])
+          stdenv;
+
+        # same thing but use -march=native
+        mkNativeStdenv = stdenv:
+          pkgsToOptimize.impureUseNativeOptimizations
+          (pkgsToOptimize.stdenvAdapters.withCFlags USE stdenv);
+
+        optimizedStdenv = mkStdenv arch pkgsToOptimize.stdenv;
+        optimizedClangStdenv =
+          mkStdenv arch pkgsToOptimize.llvmPackages_14.stdenv;
+
+        optimizedNativeClangStdenv =
+          nixpkgs.lib.warn "using native optimizations, \
+                forfeiting reproducibility"
+          mkNativeStdenv
+          pkgsToOptimize.llvmPackages_14.stdenv;
+        optimizedNativeStdenv =
+          nixpkgs.lib.warn "using native optimizations, \
+                forfeiting reproducibility"
+          mkNativeStdenv
+          pkgsToOptimize.stdenv;
+      in
+        if useNative
+        then
+          if useClang
+          then optimizedNativeClangStdenv
+          else optimizedNativeStdenv
+        else if useClang
+        then optimizedClangStdenv
+        else optimizedStdenv;
+
+      systemCompilerSettings = {
+        gcc = {
+          arch = settings.optimization.arch;
+          tune = settings.optimization.arch;
         };
       };
 
-      # based on those settings, create any additional entries that 
-      # will be needed by the configuration
-
-      finalizeSettings = settings:
-        let
-          optimizedStdenv = pkgsToOptimize:
-            let
-              inherit (settings.optimization) USE arch useClang useNative;
-              mkStdenv = march: stdenv:
-                # adds -march flag to the global USE flags and creates stdenv
-                pkgsToOptimize.withCFlags
-                  (USE ++ [ "-march=${march}" "-mtune=${march}" ])
-                  stdenv;
-
-              # same thing but use -march=native
-              mkNativeStdenv = stdenv:
-                pkgsToOptimize.impureUseNativeOptimizations
-                  (pkgsToOptimize.stdenvAdapters.withCFlags USE stdenv);
-
-              optimizedStdenv = mkStdenv arch pkgsToOptimize.stdenv;
-              optimizedClangStdenv =
-                mkStdenv arch pkgsToOptimize.llvmPackages_14.stdenv;
-
-              optimizedNativeClangStdenv =
-                nixpkgs.lib.warn "using native optimizations, \
-                forfeiting reproducibility"
-                  mkNativeStdenv
-                  pkgsToOptimize.llvmPackages_14.stdenv;
-              optimizedNativeStdenv =
-                nixpkgs.lib.warn "using native optimizations, \
-                forfeiting reproducibility"
-                  mkNativeStdenv
-                  pkgsToOptimize.stdenv;
-            in
-            if useNative then
-              if useClang then
-                optimizedNativeClangStdenv
-              else
-                optimizedNativeStdenv
-            else
-              if useClang then
-                optimizedClangStdenv
-              else
-                optimizedStdenv;
-
-          systemCompilerSettings = {
-            gcc = {
-              arch = settings.optimization.arch;
-              tune = settings.optimization.arch;
-            };
-          };
-
-          pkgsInputs =
-            let
-              inherit (settings.optimization) useMusl useFlags;
-              inherit (settings) allowedUnfree system plymouth;
-            in
-            {
-              config = {
-                # allowBroken = true;
-                allowUnfreePredicate =
-                  pkg: builtins.elem (nixpkgs.lib.getName pkg) allowedUnfree;
-              };
-              localSystem = {
-                inherit system;
-              } // (if useMusl then {
-                libc = "musl";
-                config = "x86_64-unknown-linux-musl";
-              } else { })
-              // (if useFlags then systemCompilerSettings else { });
-
-              overlays = [
-                (self: super: {
-                  plymouth-themes-package = import ./packages/plymouth-themes.nix ({
-                    pkgs = super;
-                  } // plymouth);
-                })
-                # also add the theme to pkgs
-              ] ++ (if (builtins.hasAttr "theme" settings) then [
-                (self: super: {
-                  flakeTheme = settings.theme;
-                })
-              ] else [ ]);
-            };
-        in
-        (nixpkgs.lib.trivial.mergeAttrs settings rec {
-          features = [ "gccarch-${settings.optimization.arch}" ];
-          pkgs = import nixpkgs pkgsInputs;
-          unstable = import nixpkgs-unstable pkgsInputs;
-          homeDirectory = "/home/${settings.username}";
-          firefox-addons = (import "${rycee-expressions}" {
-            inherit pkgs;
-          }).firefox-addons;
-        });
-    in
-    rec
-    {
-      createNixosConfiguration = settings:
-        let fs = finalizeSettings settings; in
-        {
-          ${fs.hostname} = nixpkgs.lib.nixosSystem {
-            inherit (fs) pkgs system;
-            specialArgs = inputs
-              // fs.extraSpecialArgs
-              // {
-              inherit (fs) unstable hostname username useMusl;
-              inherit (fs) useFlags plymouth usesWireless usesBluetooth;
-              settings = fs;
-            };
-            modules = [
-              {
-                imports = [ ./system/configuration.nix ./modules ];
-              }
-            ];
-          };
+      pkgsInputs = let
+        inherit (settings.optimization) useMusl useFlags;
+        inherit (settings) allowedUnfree system plymouth;
+      in {
+        config = {
+          # allowBroken = true;
+          allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowedUnfree;
         };
+        localSystem =
+          {
+            inherit system;
+          }
+          // (
+            if useMusl
+            then {
+              libc = "musl";
+              config = "x86_64-unknown-linux-musl";
+            }
+            else {}
+          )
+          // (
+            if useFlags
+            then systemCompilerSettings
+            else {}
+          );
 
-      createHomeConfigurations = settings:
-        let fs = finalizeSettings settings; in
-        home-manager.lib.homeManagerConfiguration rec {
-          inherit (fs) pkgs system username homeDirectory;
-          configuration = { pkgs, ... }: {
-            imports = [ ./user/primary ] ++ fs.additionalModules;
+        overlays =
+          [
+            (self: super: {
+              plymouth-themes-package = import ./packages/plymouth-themes.nix ({
+                  pkgs = super;
+                }
+                // plymouth);
+            })
+            # also add the theme to pkgs
+          ]
+          ++ (
+            if (builtins.hasAttr "theme" settings)
+            then [
+              (self: super: {
+                flakeTheme = settings.theme;
+              })
+            ]
+            else []
+          );
+      };
+    in (nixpkgs.lib.trivial.mergeAttrs settings rec {
+      features = ["gccarch-${settings.optimization.arch}"];
+      pkgs = import nixpkgs pkgsInputs;
+      unstable = import nixpkgs-unstable pkgsInputs;
+      homeDirectory = "/home/${settings.username}";
+      firefox-addons =
+        (import "${rycee-expressions}" {
+          inherit pkgs;
+        })
+        .firefox-addons;
+    });
+  in rec
+  {
+    createNixosConfiguration = settings: let
+      fs = finalizeSettings settings;
+    in {
+      ${fs.hostname} = nixpkgs.lib.nixosSystem {
+        inherit (fs) pkgs system;
+        specialArgs =
+          inputs
+          // fs.extraSpecialArgs
+          // {
+            inherit (fs) unstable hostname username useMusl;
+            inherit (fs) useFlags plymouth usesWireless usesBluetooth;
+            settings = fs;
           };
-          stateVersion = "22.05";
-          extraSpecialArgs = inputs // {
+        modules = [
+          {
+            imports = [./system/configuration.nix ./modules];
+          }
+        ];
+      };
+    };
+
+    createHomeConfigurations = settings: let
+      fs = finalizeSettings settings;
+    in
+      home-manager.lib.homeManagerConfiguration rec {
+        inherit (fs) pkgs system username homeDirectory;
+        configuration = {pkgs, ...}: {
+          imports = [./user/primary] ++ fs.additionalModules;
+        };
+        stateVersion = "22.05";
+        extraSpecialArgs =
+          inputs
+          // {
             inherit (fs) homeDirectory firefox-addons;
           }
-            // fs.extraExtraSpecialArgs
-            // {
+          // fs.extraExtraSpecialArgs
+          // {
             inherit (fs) unstable hostname username useMusl;
             inherit (fs) useFlags plymouth usesWireless usesBluetooth;
             inherit (fs) additionalUserPackages;
             settings = fs;
           };
-        };
+      };
 
-      inherit finalizeSettings;
+    inherit finalizeSettings;
 
-      nixosConfigurations = createNixosConfiguration defaultGlobalSettings;
-      homeConfigurations.${defaultGlobalSettings.username} =
-        createHomeConfigurations defaultGlobalSettings;
-      devShell.${defaultGlobalSettings.system} =
-        (finalizeSettings defaultGlobalSettings).pkgs.mkShell { };
-    };
+    nixosConfigurations = createNixosConfiguration defaultGlobalSettings;
+    homeConfigurations.${defaultGlobalSettings.username} =
+      createHomeConfigurations defaultGlobalSettings;
+    devShell.${defaultGlobalSettings.system} =
+      (finalizeSettings defaultGlobalSettings).pkgs.mkShell {};
+  };
 }

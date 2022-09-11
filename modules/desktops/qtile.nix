@@ -1,13 +1,22 @@
-{ lib, config, pkgs, picom, unstable, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  picom,
+  unstable,
+  ...
+}: let
   cfg = config.desktops.qtile;
   derivations = {
-    picom = import ../../packages/picom.nix
-      { pkgs = unstable; inherit picom; };
+    picom =
+      import ../../packages/picom.nix
+      {
+        pkgs = unstable;
+        inherit picom;
+      };
   };
   inherit (lib) mkIf mkEnableOption;
-in
-{
+in {
   options.desktops.qtile = {
     enable = mkEnableOption "Qtile Window Manager";
   };
@@ -22,7 +31,6 @@ in
     environment.sessionVariables = {
       TERM = "kitty";
     };
-
 
     environment.systemPackages = with pkgs; [
       xmousepasteblock

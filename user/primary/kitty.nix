@@ -1,65 +1,68 @@
-{ pkgs, lib, unstable, ... }:
 {
-  programs.kitty =
-    let
-      colors = pkgs.callPackage ./color.nix {};
+  pkgs,
+  lib,
+  unstable,
+  ...
+}: {
+  programs.kitty = let
+    colors = pkgs.callPackage ./color.nix {};
 
-      systemTheme = (pkgs.callPackage ./themes.nix {});
-      font = systemTheme.font.monospace;
-      opacity = systemTheme.opacity;
+    systemTheme = pkgs.callPackage ./themes.nix {};
+    font = systemTheme.font.monospace;
+    opacity = systemTheme.opacity;
 
-      kittyColorFormat = (key: (value: "#${value}"));
+    kittyColorFormat = key: (value: "#${value}");
 
-      theme = with colors; {
-        foreground = fg;
-        background = terminal.bg;
-        selection_foreground = fg;
-        selection_background = altbg;
+    theme = with colors; {
+      foreground = fg;
+      background = terminal.bg;
+      selection_foreground = fg;
+      selection_background = altbg;
 
-        cursor = altfg;
-        cursor_text_color = bg;
-        url_color = magenta;
+      cursor = altfg;
+      cursor_text_color = bg;
+      url_color = magenta;
 
-        # black
-        color0 = altfg2;
-        color8 = terminal.black;
+      # black
+      color0 = altfg2;
+      color8 = terminal.black;
 
-        # red
-        color1 = red;
-        color9 = red;
+      # red
+      color1 = red;
+      color9 = red;
 
-        # green
-        color2 = green;
-        color10 = green;
+      # green
+      color2 = green;
+      color10 = green;
 
-        # yellow
-        color3 = yellow;
-        color11 = yellow;
+      # yellow
+      color3 = yellow;
+      color11 = yellow;
 
-        # blue
-        color4 = blue;
-        color12 = blue;
+      # blue
+      color4 = blue;
+      color12 = blue;
 
-        # magenta
-        color5 = magenta;
-        color13 = magenta;
+      # magenta
+      color5 = magenta;
+      color13 = magenta;
 
-        # cyan
-        color6 = cyan;
-        color14 = cyan;
+      # cyan
+      color6 = cyan;
+      color14 = cyan;
 
-        # white
-        color7 = white;
-        color15 = white;
-      };
+      # white
+      color7 = white;
+      color15 = white;
+    };
 
-      themeFormatted = builtins.mapAttrs kittyColorFormat theme;
-    in
-    {
-      enable = true;
-      package = unstable.kitty;
+    themeFormatted = builtins.mapAttrs kittyColorFormat theme;
+  in {
+    enable = true;
+    package = unstable.kitty;
 
-      settings = {
+    settings =
+      {
         font_family = font.name;
         font_size = font.size;
         background_opacity = opacity;
@@ -83,21 +86,22 @@
 
         allow_remote_control = "socket-only";
         listen_on = "unix:/tmp/kitty";
-      } // themeFormatted;
+      }
+      // themeFormatted;
 
-      keybindings = {
-        "ctrl+shift+r" = "discard_event";
-        "ctrl+shift+n" = "discard_event"; # open new window
-        "ctrl+shift+t" = "discard_event"; # open new tab
-        "ctrl+shift+w" = "discard_event"; # close window
-        "ctrl+shift+space" = "show_scrollback";
-        "ctrl+shift+h" = "discard_event";
+    keybindings = {
+      "ctrl+shift+r" = "discard_event";
+      "ctrl+shift+n" = "discard_event"; # open new window
+      "ctrl+shift+t" = "discard_event"; # open new tab
+      "ctrl+shift+w" = "discard_event"; # close window
+      "ctrl+shift+space" = "show_scrollback";
+      "ctrl+shift+h" = "discard_event";
 
-        "ctrl+minus" = "change_font_size all -2.0";
-        "ctrl+shift+kp_subtract" = "change_font_size all -2.0";
-        "ctrl+equal" = "change_font_size all +2.0";
-        "ctrl+plus" = "change_font_size all +2.0";
-        "ctrl+kp_add" = "change_font_size all +2.0";
-      };
+      "ctrl+minus" = "change_font_size all -2.0";
+      "ctrl+shift+kp_subtract" = "change_font_size all -2.0";
+      "ctrl+equal" = "change_font_size all +2.0";
+      "ctrl+plus" = "change_font_size all +2.0";
+      "ctrl+kp_add" = "change_font_size all +2.0";
     };
+  };
 }

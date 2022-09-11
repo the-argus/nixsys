@@ -1,15 +1,14 @@
-{ pkgs
-, config
-, inputs
-, lib
-, #font-icons,
+{
+  pkgs,
+  config,
+  inputs,
+  lib,
+  #font-icons,
   ...
-}:
-let
+}: let
   cfg = config.desktops;
   inherit (lib) mkIf mkEnableOption;
-in
-{
+in {
   imports = [
     ./sway.nix
     ./awesome.nix
@@ -21,7 +20,6 @@ in
     ./plasma.nix
     ./i3gaps.nix
   ];
-
 
   options.desktops = {
     enable = mkEnableOption "Desktop";
@@ -50,11 +48,10 @@ in
       dina-font
       victor-mono
 
-      (import ../../packages/font-icons.nix { inherit pkgs; })
+      (import ../../packages/font-icons.nix {inherit pkgs;})
       #      import ../../packages/font-icons.nix { inherit pkgs; inherit font-icons;}
-      (nerdfonts.override { fonts = [ "FiraCode" "VictorMono" ]; })
+      (nerdfonts.override {fonts = ["FiraCode" "VictorMono"];})
     ];
-
 
     # hardware ----------------------------------------------------------------
     # OpenGL

@@ -1,4 +1,8 @@
-{ pkgs, stdenv, ... }:
+{
+  pkgs,
+  stdenv,
+  ...
+}:
 stdenv.mkDerivation {
   name = "MaterialBlackFrost-Theme";
   src = pkgs.fetchgit {
@@ -12,6 +16,6 @@ stdenv.mkDerivation {
     cp -r $src/Black-Frost-Numix-FLAT $out/share/icons
     cp -r $src/Black-Frost-Numix $out/share/icons
     cp -r $src/Black-Frost-Suru $out/share/icons
-    cp $src/Material-Black-Frost $out/share/themes -r 
+    cp $src/Material-Black-Frost $out/share/themes -r
   '';
 }

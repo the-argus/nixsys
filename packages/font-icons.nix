@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.stdenv.mkDerivation {
   pname = "font-icons";
   version = "1.0";

@@ -1,14 +1,22 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, lib, unstable, useMusl, username, settings, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  unstable,
+  useMusl,
+  username,
+  settings,
+  ...
+}: {
   #choose what host is being used (laptop or pc)
-  imports = [
-    ../modules
-  ] ++ settings.hardwareConfiguration;
+  imports =
+    [
+      ../modules
+    ]
+    ++ settings.hardwareConfiguration;
 
   # kernel version
   # boot.kernelPackages = unstable.linuxPackages_latest;
@@ -17,12 +25,12 @@
 
   # PAM authentication for yubikey/solokey
   # line to add with mkOverride: "auth       required   pam_u2f.so"
-  services.udev.extraRules = ''ACTION!="add|change", GOTO="solokeys_end"
-# SoloKeys rule
+  services.udev.extraRules = ''    ACTION!="add|change", GOTO="solokeys_end"
+    # SoloKeys rule
 
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a2ca", TAG+="uaccess"
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a2ca", TAG+="uaccess"
 
-LABEL="solokeys_end"'';
+    LABEL="solokeys_end"'';
 
   # line that might be necessary to add:
   # @include common-auth
@@ -43,9 +51,9 @@ LABEL="solokeys_end"'';
     #   options = "--delete-old";
     # };
     settings = {
-      extra-experimental-features = [ "nix-command" "flakes" ];
-      substituters = [ "https://webcord.cachix.org" ];
-      trusted-public-keys = [ "webcord.cachix.org-1:l555jqOZGHd2C9+vS8ccdh8FhqnGe8L78QrHNn+EFEs=" ];
+      extra-experimental-features = ["nix-command" "flakes"];
+      substituters = ["https://webcord.cachix.org"];
+      trusted-public-keys = ["webcord.cachix.org-1:l555jqOZGHd2C9+vS8ccdh8FhqnGe8L78QrHNn+EFEs="];
     };
 
     # musl
@@ -60,7 +68,6 @@ LABEL="solokeys_end"'';
       "gravity.cs.illinois.edu-1:yymmNS/WMf0iTj2NnD0nrVV8cBOXM9ivAkEdO1Lro3U="
     ]; # else [ ];
   };
-
 
   # modules
   music.enable = true; # music production software and configuration
@@ -97,7 +104,7 @@ LABEL="solokeys_end"'';
     ];
   };
 
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = ["/share/zsh"];
   services.flatpak.enable = true;
   # xdg.portal = {
   #   enable = false;
@@ -149,4 +156,3 @@ LABEL="solokeys_end"'';
 
   system.stateVersion = "22.05";
 }
-

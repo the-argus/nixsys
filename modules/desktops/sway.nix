@@ -1,9 +1,12 @@
-{ lib, config, pkgs, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   cfg = config.desktops.sway;
   inherit (lib) mkIf mkEnableOption;
-in
-{
+in {
   options.desktops.sway = {
     enable = mkEnableOption "Sway Window Manager";
   };

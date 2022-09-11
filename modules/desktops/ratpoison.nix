@@ -1,13 +1,22 @@
-{ lib, config, pkgs, unstable, picom, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  unstable,
+  picom,
+  ...
+}: let
   cfg = config.desktops.ratpoison;
   derivations = {
-    picom = import ../../packages/picom.nix
-        { pkgs = unstable; inherit picom;}; 
+    picom =
+      import ../../packages/picom.nix
+      {
+        pkgs = unstable;
+        inherit picom;
+      };
   };
   inherit (lib) mkIf mkEnableOption;
-in
-{
+in {
   options.desktops.ratpoison = {
     enable = mkEnableOption "Ratpoison Window Manager";
   };

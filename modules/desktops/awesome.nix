@@ -1,15 +1,29 @@
-{ lib, config, pkgs, unstable, awesome, picom, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  unstable,
+  awesome,
+  picom,
+  ...
+}: let
   cfg = config.desktops.awesome;
   derivations = {
-    awesome = import ../../packages/awesome.nix 
-        { pkgs = unstable; inherit awesome; };
-    picom = import ../../packages/picom.nix
-        { pkgs = unstable; inherit picom;}; 
+    awesome =
+      import ../../packages/awesome.nix
+      {
+        pkgs = unstable;
+        inherit awesome;
+      };
+    picom =
+      import ../../packages/picom.nix
+      {
+        pkgs = unstable;
+        inherit picom;
+      };
   };
   inherit (lib) mkIf mkEnableOption;
-in
-{
+in {
   options.desktops.awesome = {
     enable = mkEnableOption "Awesome Window Manager";
   };

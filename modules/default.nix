@@ -1,7 +1,7 @@
 {
-    imports =[
-        ./desktops
-        ./music
-        ./virtualization
-    ];    
+  imports = [
+    ./desktops
+    ./music
+    ./virtualization
+  ];
 }

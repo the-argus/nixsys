@@ -1,9 +1,12 @@
-{ lib, config, pkgs, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   cfg = config.desktops.wayland;
   inherit (lib) mkIf mkEnableOption;
-in
-{
+in {
   options.desktops.wayland = {
     enable = mkEnableOption "Wayland Display";
   };

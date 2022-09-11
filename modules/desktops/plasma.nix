@@ -1,9 +1,14 @@
-{ config, options, unstable, pkgs, lib, ... }:
-let
+{
+  config,
+  options,
+  unstable,
+  pkgs,
+  lib,
+  ...
+}: let
   cfg = config.desktops.plasma;
   inherit (lib) mkIf mkEnableOption;
-in
-{
+in {
   options.desktops.plasma = {
     enable = mkEnableOption "KDE Plasma Desktop Environment";
   };

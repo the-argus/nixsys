@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   fluent = pkgs.fetchgit {
     url = "https://github.com/DiscordStyles/Fluent";
     rev = "7a7b62e89648d845c7b388aab0a77febb628ea4b";
@@ -83,10 +82,10 @@
           --interactive-active: #${fg};
           --ping: #${red};
           --background-modifier-selected: #${altfg2}b4;
-          --scrollbar-thin-thumb: #${bg}; 
-          --scrollbar-thin-track: transparent; 
-          --scrollbar-auto-thumb: #${bg}; 
-          --scrollbar-auto-track: transparent; 
+          --scrollbar-thin-thumb: #${bg};
+          --scrollbar-thin-track: transparent;
+          --scrollbar-auto-thumb: #${bg};
+          --scrollbar-auto-track: transparent;
       }
 
       .theme-light {
@@ -161,14 +160,13 @@
           background-color: var(--background-modifier-selected)!important;
       }
     '';
-  in
-  (pkgs.stdenv.mkDerivation {
+  in (pkgs.stdenv.mkDerivation {
     name = "discord-theme-in-color";
     buildPhase = ''
     '';
     installPhase = ''
-        mkdir $out
-        cp ${css} $out/scheme.theme.css
+      mkdir $out
+      cp ${css} $out/scheme.theme.css
     '';
     dontUnpack = true;
   });

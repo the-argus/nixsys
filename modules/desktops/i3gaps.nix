@@ -1,20 +1,29 @@
-{ lib, config, pkgs, picom, unstable, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  picom,
+  unstable,
+  ...
+}: let
   cfg = config.desktops.i3gaps;
   derivations = {
-    picom = import ../../packages/picom.nix
-      { pkgs = unstable; inherit picom; };
+    picom =
+      import ../../packages/picom.nix
+      {
+        pkgs = unstable;
+        inherit picom;
+      };
   };
   inherit (lib) mkIf mkEnableOption;
-in
-{
+in {
   options.desktops.i3gaps = {
     enable = mkEnableOption "I3 Window Manager";
   };
 
   config = mkIf cfg.enable {
     # fix for i3blocks if i ever use it
-    environment.pathsToLink = [ "/libexec" ];
+    environment.pathsToLink = ["/libexec"];
 
     desktops.xorg.enable = true;
 

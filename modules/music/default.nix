@@ -1,9 +1,12 @@
-{ pkgs, config, lib, ... }:
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   cfg = config.music;
   inherit (lib) mkIf mkEnableOption mkOption;
-in
-{
+in {
   options.music.enable = mkEnableOption "Music Production Software";
 
   config = mkIf cfg.enable {
@@ -21,7 +24,6 @@ in
 
     # low latency setup
     services.pipewire = {
-
       jack.enable = true;
       # config = {
       #   pipewire = {

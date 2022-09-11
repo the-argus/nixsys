@@ -1,4 +1,9 @@
-{ stdenv, fetchgit, gtk-engine-murrine, ... }:
+{
+  stdenv,
+  fetchgit,
+  gtk-engine-murrine,
+  ...
+}:
 stdenv.mkDerivation rec {
   pname = "marwaita-gtk";
   version = "1.0";
@@ -10,7 +15,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [gtk-engine-murrine];
 
   installPhase = ''
     mkdir -p $out/share/themes

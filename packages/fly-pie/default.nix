@@ -1,13 +1,13 @@
-{ stdenv
-, lib
-, fetchFromGitHub
-, gitUpdater
-, gettext
-, glib
-, zip
-, unzip
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  gitUpdater,
+  gettext,
+  glib,
+  zip,
+  unzip,
 }:
-
 stdenv.mkDerivation rec {
   pname = "gnome-shell-extension-fly-pie";
   version = "16";
@@ -20,11 +20,14 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [
-    gettext glib zip unzip
+    gettext
+    glib
+    zip
+    unzip
   ];
 
   dontPatch = false;
-  patches = [ ./0001-shell-patch.patch ./0001-remove-install-phase.patch ];
+  patches = [./0001-shell-patch.patch ./0001-remove-install-phase.patch];
 
   installPhase = ''
     ls .

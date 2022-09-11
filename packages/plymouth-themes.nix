@@ -1,7 +1,8 @@
-{ pkgs
-, themePath
-, themeName
-, ...
+{
+  pkgs,
+  themePath,
+  themeName,
+  ...
 }:
 pkgs.stdenv.mkDerivation rec {
   pname = "adi1090x-plymouth";

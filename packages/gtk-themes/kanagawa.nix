@@ -1,4 +1,8 @@
-{ stdenv, gtk-engine-murrine, ... }:
+{
+  stdenv,
+  gtk-engine-murrine,
+  ...
+}:
 stdenv.mkDerivation rec {
   pname = "kanagawa";
   version = "0.1";
@@ -9,7 +13,7 @@ stdenv.mkDerivation rec {
     ref = "94e98184d2af3484ee38223572ba167b198d50fc";
   };
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [gtk-engine-murrine];
 
   installPhase = ''
     mkdir -p $out/share/themes/kanagawa

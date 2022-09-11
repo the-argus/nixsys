@@ -1,4 +1,9 @@
-{ stdenv, fetchgit, gtk-engine-murrine, ... }:
+{
+  stdenv,
+  fetchgit,
+  gtk-engine-murrine,
+  ...
+}:
 stdenv.mkDerivation rec {
   pname = "rose-pine-gtk";
   version = "1.0";
@@ -9,7 +14,7 @@ stdenv.mkDerivation rec {
     rev = "af7897d54d8ce9f127ab7282d1aa862386dc8271";
   };
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [gtk-engine-murrine];
 
   installPhase = ''
     mkdir -p $out/share/themes/rose-pine-gtk

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.carla.overrideAttrs (finalAttrs: previousAttrs: {
   nativeBuildInputs = with pkgs; [
     gcc

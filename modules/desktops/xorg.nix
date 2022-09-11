@@ -1,35 +1,42 @@
-{ lib, config, options, pkgs, picom, ... }:
-let
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  picom,
+  ...
+}: let
   cfg = config.desktops.xorg;
   inherit (lib) mkIf mkEnableOption;
-in
-{
+in {
   options.desktops.xorg = {
     enable = mkEnableOption "X.org Display Server";
   };
 
   config = mkIf cfg.enable {
-    services.xserver = {
-      enable = true;
-
-      libinput.enable = true;
-      libinput.touchpad.naturalScrolling = false;
-      libinput.touchpad.middleEmulation = true;
-      libinput.touchpad.tapping = true;
-      libinput.mouse.accelProfile = "flat";
-
-
-      # disable stuff I don't need
-      useGlamor = false;
-    }
-    // (if options.services.xserver ? "excludePackages" then
+    services.xserver =
       {
-        excludePackages = with pkgs; [
-          xterm
-          xorg.xf86inputevdev.out
-        ];
+        enable = true;
+
+        libinput.enable = true;
+        libinput.touchpad.naturalScrolling = false;
+        libinput.touchpad.middleEmulation = true;
+        libinput.touchpad.tapping = true;
+        libinput.mouse.accelProfile = "flat";
+
+        # disable stuff I don't need
+        useGlamor = false;
       }
-    else { });
+      // (
+        if options.services.xserver ? "excludePackages"
+        then {
+          excludePackages = with pkgs; [
+            xterm
+            xorg.xf86inputevdev.out
+          ];
+        }
+        else {}
+      );
 
     environment.systemPackages = with pkgs; [
       feh

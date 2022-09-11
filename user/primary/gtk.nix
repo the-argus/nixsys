@@ -1,10 +1,11 @@
-{ pkgs,  homeDirectory, ... }:
-
-let
-  theme = (pkgs.callPackage ./themes.nix {});
-  gtk = theme.gtk;
-in
 {
+  pkgs,
+  homeDirectory,
+  ...
+}: let
+  theme = pkgs.callPackage ./themes.nix {};
+  gtk = theme.gtk;
+in {
   home.packages = [pkgs.dconf];
   home.file = {
     # xorg cursor
@@ -15,27 +16,26 @@ in
       '';
     };
   };
-  gtk =
-    {
-      enable = true;
-      
-      font = theme.font.display;
+  gtk = {
+    enable = true;
 
-      cursorTheme = gtk.cursorTheme;
+    font = theme.font.display;
 
-      iconTheme = gtk.iconTheme;
-      
-      theme = gtk.theme;
+    cursorTheme = gtk.cursorTheme;
 
-      gtk3 = {
-        bookmarks = [
-          "file://${homeDirectory}/Downloads"
-          "file://${homeDirectory}/Programming"
-          "file://${homeDirectory}/Video"
-          "file://${homeDirectory}/Music"
-          "file://${homeDirectory}/Screenshots"
-          "file://${homeDirectory}/Wallpapers"
-        ];
-      };
+    iconTheme = gtk.iconTheme;
+
+    theme = gtk.theme;
+
+    gtk3 = {
+      bookmarks = [
+        "file://${homeDirectory}/Downloads"
+        "file://${homeDirectory}/Programming"
+        "file://${homeDirectory}/Video"
+        "file://${homeDirectory}/Music"
+        "file://${homeDirectory}/Screenshots"
+        "file://${homeDirectory}/Wallpapers"
+      ];
     };
+  };
 }

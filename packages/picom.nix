@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.picom.overrideAttrs (finalAttrs: previousAttrs: {
   src = pkgs.fetchgit {
     url = "https://github.com/Arian8j2/picom-jonaburg-fix";

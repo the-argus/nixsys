@@ -1,15 +1,14 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   override = pkgs.lib.attrsets.recursiveUpdate;
 
   # color schemes --------------------------------------------------
   schemes = import ./schemes;
 
   # discord theme packages -----------------------------------------
-  discordThemes = pkgs.callPackage ../../packages/discord-themes.nix { };
+  discordThemes = pkgs.callPackage ../../packages/discord-themes.nix {};
 
   # gtk themes -----------------------------------------------------
-  allThemes = pkgs.callPackage ../../packages/gtk-themes { };
+  allThemes = pkgs.callPackage ../../packages/gtk-themes {};
   inherit (allThemes) kanagawa rose-pine marwaita darkg nord;
   inherit (allThemes) cursorThemes materialBlackFrost;
 
@@ -36,7 +35,6 @@ let
     name = "Black-Frost-Numix-FLAT"; # also Black-Frost-Numix and Black-Frost-Suru
   };
 
-
   paperIcons = {
     name = "Paper-Mono-Dark";
     package = pkgs.paper-icon-theme;
@@ -61,9 +59,7 @@ let
     name = "NordArc";
     package = nord;
   };
-in
-rec {
-
+in rec {
   # themes --------------------------------------------------
   defaultTheme = {
     gtk = {
@@ -75,7 +71,7 @@ rec {
       monospace = {
         name = "FiraCode Nerd Font";
         size = 14;
-        package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+        package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
       };
       display = {
         name = "Fira Code";
