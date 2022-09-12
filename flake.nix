@@ -30,7 +30,7 @@
     };
 
     spicetify-nix = {
-      url = "github:the-argus/spicetify-nix?ref=dev";
+      url = "github:the-argus/spicetify-nix";
     };
 
     # non-nix imports (need fast updates):
