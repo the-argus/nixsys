@@ -148,6 +148,8 @@
     curlftpfs
     sshfs
 
+    openssh
+
     # build - essential
     gcc
     lld
