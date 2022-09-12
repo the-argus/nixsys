@@ -126,7 +126,8 @@ in rec {
     };
   };
 
-  drifter = override defaultTheme {
+  drifter = override defaultTheme rec {
+    font = defaultTheme.font;
     scheme = schemes.drifter;
     gtk = {
       iconTheme = materialBlackFrostIcons;
@@ -134,6 +135,8 @@ in rec {
       cursorTheme = cursorThemes.breezeXBlack;
     };
     opacity = "0.7";
-    discordTheme = discordThemes.inScheme;
+    discordTheme = discordThemes.mkDiscordThemeFromSystemTheme {
+      inherit scheme font;
+    };
   };
 }
