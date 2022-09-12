@@ -134,5 +134,6 @@ in rec {
       cursorTheme = cursorThemes.breezeXBlack;
     };
     opacity = "0.7";
+    discordTheme = discordThemes.inScheme;
   };
 }
