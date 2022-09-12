@@ -45,9 +45,11 @@
       #   type = "Application";
       #   categories = [ "Network" "InstantMessaging" ];
       # };
-      webcord = {
+      webcord = let
+        theme = (pkgs.callPackage ../themes.nix {}).discordTheme;
+      in {
         name = "Webcord";
-        exec = ''webcord'';
+        exec = ''webcord --add-css-theme=${theme}/THEME.theme.css'';
         icon = "discord";
       };
 

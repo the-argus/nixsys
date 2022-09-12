@@ -78,10 +78,6 @@
 
         # gui applications---------
         webcordPkg
-        (callPackage ../../packages/discord-theme-installer.nix {
-          inherit (callPackage ./themes.nix {}) discordTheme;
-          inherit webcordPkg;
-        })
         obs-studio
         element-desktop
         keepassxc
