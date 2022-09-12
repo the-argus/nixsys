@@ -281,11 +281,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1662821606,
-        "narHash": "sha256-Z9z9iSH+tgJ0iyRcBfEQRwELgjnhpVXsktiWiFe3SuY=",
+        "lastModified": 1662911228,
+        "narHash": "sha256-oJOrB2lEeBLaO8g1DKG5PK9a1zyOWypkscrEfxxEj8A=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "93a0067a9c85c17764f7755947e6ecf52dc47d8a",
+        "rev": "c97e777ff06fcb8d37dcdf5e21e9eff1f34f0e90",
         "type": "github"
       },
       "original": {
@@ -458,11 +458,11 @@
         "webcord": "webcord_2"
       },
       "locked": {
-        "lastModified": 1662901119,
-        "narHash": "sha256-tab8KTHTzJjAm7s/n0tk2ZsI6VNr69WqQiiVbQrUm2o=",
+        "lastModified": 1662959566,
+        "narHash": "sha256-rajDG3utME/F6TdwIUPs44soARIx59+NOZPNCJzeUqA=",
         "owner": "fufexan",
         "repo": "webcord-flake",
-        "rev": "529d1721ed91cc7166c2c7b81f8f4bd23ae678b7",
+        "rev": "f1f6a0a7278459bcbfe792ad8caf7e029eeb1c32",
         "type": "github"
       },
       "original": {
