@@ -10,7 +10,7 @@ stdenv.mkDerivation {
   buildCommand = ''
     mkdir userData
     XDG_CONFIG_HOME=userData
-    ${webcordPkg}/bin/webcord --add-css-theme=${discordTheme}/THEME.theme.css
+    ${webcordPkg}/bin/webcord --add-css-theme=${discordTheme}/THEME.theme.css -m
   '';
   dontInstall = true;
   dontPatch = true;
