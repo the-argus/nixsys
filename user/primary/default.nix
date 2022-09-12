@@ -79,6 +79,8 @@
         # gui applications---------
         webcordPkg
         obs-studio
+        gimp
+        thunderbird
         element-desktop
         keepassxc
         pcmanfm
