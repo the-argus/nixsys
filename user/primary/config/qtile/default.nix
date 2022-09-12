@@ -45,7 +45,7 @@
         else "False"
       }
       }
-      terminal = ${pkgs.${settings.terminal}}/bin/${settings.terminal}
+      terminal = "${pkgs.${settings.terminal}}/bin/${settings.terminal}"
     '';
 
     # use weird colors that dont match names...
