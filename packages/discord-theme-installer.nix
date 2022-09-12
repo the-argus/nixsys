@@ -1,12 +1,16 @@
 {
   emptyDirectory,
   stdenv,
+  fontconfig,
   discordTheme,
   webcordPkg,
 }:
 stdenv.mkDerivation {
   name = "DiscordThemeInstaller";
   src = emptyDirectory;
+  buildInputs = [
+    fontconfig
+  ];
   buildCommand = ''
     mkdir userData
     XDG_CONFIG_HOME=userData
