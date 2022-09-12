@@ -8,7 +8,7 @@ rec {
   cyan = "81a1c1";
   white = "eceff4";
 
-  bg = "4c566a";
+  bg = "434c5e";
   fg = white;
 
   # inverted, in this case
@@ -19,7 +19,7 @@ rec {
   altbg2 = "3b4252";
 
   altfg3 = altfg2;
-  altbg3 = "434c5e";
+  altbg3 = "4c566a";
 
   hi1 = blue;
   hi2 = cyan;
