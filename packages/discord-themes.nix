@@ -182,7 +182,7 @@ in {
       '';
       installPhase = ''
         mkdir $out
-        cp ${css} $out/scheme.theme.css
+        cp ${css} $out/THEME.theme.css
       '';
       dontUnpack = true;
     });
