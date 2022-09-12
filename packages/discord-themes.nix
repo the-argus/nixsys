@@ -77,7 +77,7 @@ in {
     with systemTheme.scheme; let
       font = systemTheme.font.display;
       # light mode literally not supported lol
-      css = builtins.toFile "scheme.theme.css" ''
+      css = builtins.toFile "THEME.theme.css" ''
         .theme-dark {
             --background-primary: #${altfg2};
             --background-secondary: #${altbg2};
