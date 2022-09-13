@@ -61,7 +61,7 @@
     ...
   } @ inputs: let
     # global configuration variables ---------------------------------------
-    defaultGlobalSettings = {
+    defaultGlobalSettings = rec {
       system = "x86_64-linux";
       username = "argus";
       hostname = "evil";
@@ -78,7 +78,7 @@
         themePath = "pack_4/${name}";
       };
       terminal = "kitty";
-      extraExtraSpecialArgs = {inherit (audio-plugins) mpkgs;};
+      extraExtraSpecialArgs = {mpkgs = audio-plugins.mpkgSets.${system};};
       extraSpecialArgs = {};
       additionalModules = [audio-plugins.homeManagerModule];
       additionalUserPackages = [

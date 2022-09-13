@@ -4,7 +4,9 @@
   lib,
   spicetify-nix,
   ...
-}: {
+}: let
+  spicePkgs = spicetify-nix.pkgSets.${pkgs.system};
+in {
   # allow spotify to be installed if you don't have unfree enabled already
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
@@ -30,7 +32,7 @@
       };
     });
     enable = true;
-    theme = spicetify-nix.pkgs.themes.Dribbblish;
+    theme = spicePkgs.themes.Dribbblish;
     colorScheme = "custom";
 
     customColorScheme = let
@@ -57,13 +59,13 @@
         misc = black;
       };
 
-    enabledCustomApps = with spicetify-nix.pkgs.apps; [
+    enabledCustomApps = with spicePkgs.apps; [
       new-releases
       lyrics-plus
       localFiles
       marketplace
     ];
-    enabledExtensions = with spicetify-nix.pkgs.extensions; [
+    enabledExtensions = with spicePkgs.extensions; [
       # "playlistIcons.js" # only needed if not using dribbblish
       "fullAlbumDate.js"
       "listPlaylistsWithSong.js"
