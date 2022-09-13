@@ -31,7 +31,6 @@ in {
     iconTheme = gtk.iconTheme;
 
     # theme = gtk.theme
-    theme = "GtkNix";
 
     gtk3 = {
       bookmarks = [
