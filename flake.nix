@@ -33,6 +33,8 @@
       url = "github:the-argus/spicetify-nix";
     };
 
+    gtk-nix.url = "github:the-argus/gtk-nix";
+
     # non-nix imports (need fast updates):
     nvim-config = {
       url = "github:the-argus/nvim-config";
@@ -56,6 +58,7 @@
     audio-plugins,
     chrome-extensions,
     spicetify-nix,
+    gtk-nix,
     nvim-config,
     arkenfox-userjs,
     ...

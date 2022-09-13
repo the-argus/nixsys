@@ -1,11 +1,13 @@
 {
   pkgs,
   homeDirectory,
+  gtk-nix,
   ...
 }: let
   theme = pkgs.callPackage ./themes.nix {};
   gtk = theme.gtk;
 in {
+  imports = [ gtk-nix.homeManagerModule ];
   home.packages = [pkgs.dconf];
   home.file = {
     # xorg cursor
@@ -16,16 +18,20 @@ in {
       '';
     };
   };
+  
+  gtkNix.enable = true;
+
   gtk = {
     enable = true;
 
     font = theme.font.display;
 
     cursorTheme = gtk.cursorTheme;
-
+   
     iconTheme = gtk.iconTheme;
 
-    theme = gtk.theme;
+    # theme = gtk.theme
+    theme = "GtkNix";
 
     gtk3 = {
       bookmarks = [
