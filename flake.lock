@@ -390,11 +390,11 @@
         "source": "source"
       },
       "locked": {
-        "lastModified": 1663083016,
-        "narHash": "sha256-UauIG82qUHgELMD0CazOwk/HQbx+bGvtq/G7/B4rD4g=",
+        "lastModified": 1663083094,
+        "narHash": "sha256-9SqreLGCqDlRuYd94PbOFqbFsKL7Bc/lPPVEuORRSw0=",
         "owner": "the-argus",
         "repo": "gtk-nix",
-        "rev": "0bc6f3ff9383d9037faa429830c24003c4cb38af",
+        "rev": "53ef37adec6cfe7ca666bb5d834357e38de6d366",
         "type": "github"
       },
       "original": {
