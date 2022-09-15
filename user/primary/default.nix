@@ -119,6 +119,7 @@
 
         # useful linters
         python310Packages.demjson3
+        python310Packages.mdformat
         unstable.alejandra
 
         # appearance
