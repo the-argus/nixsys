@@ -44,7 +44,7 @@ in {
       in {
         surface = {
           strongest = p.bg;
-          strong = p.altfg;
+          strong = p.bg;
           moderate = p.altbg2;
           weak = p.altbg3;
           weakest = p.altbg3;
