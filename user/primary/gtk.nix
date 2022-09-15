@@ -83,7 +83,16 @@ in {
 
     iconTheme = gtk.iconTheme;
 
-    # theme = gtk.theme
+    theme = mkIf (
+      if (builtins.typeOf gtk.theme == "string")
+      then
+        (
+          if gtk.theme == "gtkNix"
+          then false
+          else abort "You set gtk.theme to a string, but its not gtkTheme"
+        )
+      else gtk.theme
+    );
 
     gtk3 = {
       bookmarks = [
