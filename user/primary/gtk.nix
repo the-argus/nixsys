@@ -22,7 +22,7 @@ in {
   gtkNix = let
     p = theme.scheme;
   in
-    lib.mkIf (
+    pkgs.lib.mkIf (
       if (builtins.typeOf gtk.theme == "string")
       then (gtk.theme == "gtkNix")
       else false
