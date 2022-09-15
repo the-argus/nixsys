@@ -61,9 +61,10 @@
   };
 in rec {
   # themes --------------------------------------------------
-  defaultTheme = {
+  defaultTheme = rec {
     gtk = {
-      theme = rosePineTheme;
+      # theme = rosePineTheme;
+      theme = "gtkNix";
       iconTheme = rosePineIcons;
       cursorTheme = cursorThemes.posysImproved;
     };
@@ -79,9 +80,16 @@ in rec {
         package = pkgs.fira-code;
       };
     };
-    discordTheme = discordThemes.rosepine;
+    discordTheme = discordThemes.mkDiscordThemeFromSystemTheme {
+      inherit scheme font;
+    };
     scheme = schemes.rosepine;
     opacity = "0.8";
+  };
+
+  rosepine = override defaultTheme {
+    discordTheme = discordThemes.rosepine;
+    gtk.theme = rosePineTheme;
   };
 
   gtk4 = override defaultTheme {

@@ -119,7 +119,7 @@
 
         # useful linters
         python310Packages.demjson3
-        alejandra
+        unstable.alejandra
 
         # appearance
         # rose-pine-gtk-theme
