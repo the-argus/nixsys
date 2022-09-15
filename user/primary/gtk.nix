@@ -7,7 +7,7 @@
   theme = pkgs.callPackage ./themes.nix {};
   gtk = theme.gtk;
 in {
-  imports = [ gtk-nix.homeManagerModule ];
+  imports = [gtk-nix.homeManagerModule];
   home.packages = [pkgs.dconf];
   home.file = {
     # xorg cursor
@@ -18,8 +18,15 @@ in {
       '';
     };
   };
-  
-  gtkNix.enable = true;
+
+  gtkNix = {
+    enable = true;
+    # palette = {
+    #   surface = {
+    #     strongest = "";
+    #   };
+    # };
+  };
 
   gtk = {
     enable = true;
@@ -27,7 +34,7 @@ in {
     font = theme.font.display;
 
     cursorTheme = gtk.cursorTheme;
-   
+
     iconTheme = gtk.iconTheme;
 
     # theme = gtk.theme
