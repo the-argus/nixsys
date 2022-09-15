@@ -33,6 +33,7 @@ in {
         spacing-medium = "0.8em";
         spacing-large = "1.2em";
         radius = "8px";
+        disabled-opacity = 0.6;
       };
       palette = let
         # use this set for both normal and highlight colors
