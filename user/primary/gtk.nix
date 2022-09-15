@@ -83,16 +83,18 @@ in {
 
     iconTheme = gtk.iconTheme;
 
-    theme = builtins.trace "this is the loop" (pkgs.lib.mkIf (
-      if (builtins.typeOf gtk.theme == "string")
-      then
-        (
-          if gtk.theme == "gtkNix"
-          then false
-          else abort "You set gtk.theme to a string, but its not gtkTheme"
-        )
-      else gtk.theme
-    ));
+    theme =
+      pkgs.lib.mkIf (
+        if (builtins.typeOf gtk.theme == "string")
+        then
+          (
+            if gtk.theme == "gtkNix"
+            then false
+            else abort "You set gtk.theme to a string, but its not gtkTheme"
+          )
+        else true
+      )
+      gtk.theme;
 
     gtk3 = {
       bookmarks = [
