@@ -50,7 +50,6 @@ in {
           weakest = p.altbg3;
         };
         whites = let
-          # white colors all default to pure white
           mkWhite = alpha: "${p.white}${alpha}";
         in {
           strongest = mkWhite "FF";
@@ -60,7 +59,6 @@ in {
           weakest = mkWhite "0F";
         };
         blacks = let
-          # white colors all default to pure white
           mkBlack = alpha: "${p.black}${alpha}";
         in {
           strongest = mkBlack "FF";
