@@ -120,6 +120,10 @@ in rec {
     opacity = "0.8";
   };
 
+  nordicWithGtkNix = override nordic {
+    gtk.theme = "gtkNix";
+  };
+
   orchis = override defaultTheme {
     gtk = {
       theme = {
