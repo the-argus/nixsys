@@ -83,7 +83,7 @@ in {
 
     iconTheme = gtk.iconTheme;
 
-    theme = mkIf (
+    theme = pkgs.lib.mkIf (
       if (builtins.typeOf gtk.theme == "string")
       then
         (
