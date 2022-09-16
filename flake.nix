@@ -74,6 +74,7 @@
         "reaper"
         "slack"
       ];
+      allowBroken = false;
       plymouth = let
         name = "rings";
       in {
@@ -180,7 +181,7 @@
         inherit (settings) allowedUnfree system plymouth;
       in {
         config = {
-          # allowBroken = true;
+          inherit (settings) allowBroken;
           allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowedUnfree;
         };
         localSystem =
