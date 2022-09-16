@@ -29,9 +29,6 @@ in {
     ) {
       enable = true;
       configuration = {
-        spacing-small = "0.5em";
-        spacing-medium = "0.8em";
-        spacing-large = "1.2em";
         radius = "8px";
         disabled-opacity = 0.6;
       };
