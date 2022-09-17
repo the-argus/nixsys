@@ -50,13 +50,12 @@
     #   dates = "weekly";
     #   options = "--delete-old";
     # };
+    distributedBuilds = true;
+    buildMachines = ["ssh://servers@rpmc.duckdns.org aarch64-linux,x86_64-linux"];
     settings = {
       extra-experimental-features = ["nix-command" "flakes"];
       substituters = ["https://webcord.cachix.org"];
       trusted-public-keys = ["webcord.cachix.org-1:l555jqOZGHd2C9+vS8ccdh8FhqnGe8L78QrHNn+EFEs="];
-      builders = [
-        "ssh://servers@rpmc.duckdns.org aarch64-linux,x86_64-linux"
-      ];
     };
 
     # musl
