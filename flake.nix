@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-remotebuild.url = "github:nixos/nixpkgs?ref=nixos-22.05";
+    nixpkgs-remotebuild.url = "github:the-argus/nixpkgs?ref=fix/ue4-build";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       # home manager use out nixpkgs and not its own

@@ -471,16 +471,16 @@
     },
     "nixpkgs-remotebuild": {
       "locked": {
-        "lastModified": 1663244735,
-        "narHash": "sha256-+EukKkeAx6ithOLM1u5x4D12ZFuoi6vpPYjhNDmLz1o=",
-        "owner": "nixos",
+        "lastModified": 1663421035,
+        "narHash": "sha256-ch973bAc3S/Cu5W9Q15ozSGKTbsiovfSGU6FE0RzjYg=",
+        "owner": "the-argus",
         "repo": "nixpkgs",
-        "rev": "178fea1414ae708a5704490f4c49ec3320be9815",
+        "rev": "ba992ce3cac1ac313076a3908fdd2e75d86ef872",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "nixos-22.05",
+        "owner": "the-argus",
+        "ref": "fix/ue4-build",
         "repo": "nixpkgs",
         "type": "github"
       }
