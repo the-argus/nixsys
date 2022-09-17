@@ -35,7 +35,7 @@
   # line that might be necessary to add:
   # @include common-auth
   security.pam.u2f.enable = true;
-  security.pam.services.login.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore ''
+  security.pam.services.login.text = lib.mkDefault (lib.mkBefore ''
     auth sufficient pam_u2f.so
   '');
   security.pam.services.sudo.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore ''
@@ -43,43 +43,35 @@
   '');
 
   # enable nix flakes
-  nix = {
-    package = pkgs.nixFlakes;
-    # gc = {
-    #   automatic = true;
-    #   dates = "weekly";
-    #   options = "--delete-old";
-    # };
-    distributedBuilds = true;
-    buildMachines = [
-      {
-        hostName = "rpmc.duckdns.org";
-        systems = ["aarch64-linux"];
-        sshUser = "servers";
-        sshKey = "/root/.ssh/id_ed25519";
-        supportedFeatures = [ "big-parallel" ];
-        maxJobs = 4;
-        speedFactor = 2;
-      }
-    ];
-    settings = {
-      extra-experimental-features = ["nix-command" "flakes"];
-      substituters = ["https://webcord.cachix.org"];
-      trusted-public-keys = ["webcord.cachix.org-1:l555jqOZGHd2C9+vS8ccdh8FhqnGe8L78QrHNn+EFEs="];
+  nix = let
+    override = lib.attrsets.recursiveUpdate;
+    defaultSettings = {
+      package = pkgs.nixFlakes;
+      # gc = {
+      #   automatic = true;
+      #   dates = "weekly";
+      #   options = "--delete-old";
+      # };
+      settings = {
+        extra-experimental-features = ["nix-command" "flakes"];
+        substituters = ["https://webcord.cachix.org"];
+        trusted-public-keys = ["webcord.cachix.org-1:l555jqOZGHd2C9+vS8ccdh8FhqnGe8L78QrHNn+EFEs="];
+      };
+
+      # musl
+      binaryCaches = [
+        "https://cache.nixos.org/"
+        # ] ++ (if useMusl then [
+        "https://cache.allvm.org/"
+      ]; # else [ ]);
+
+      binaryCachePublicKeys = [
+        # if useMusl then [
+        "gravity.cs.illinois.edu-1:yymmNS/WMf0iTj2NnD0nrVV8cBOXM9ivAkEdO1Lro3U="
+      ]; # else [ ];
     };
-
-    # musl
-    binaryCaches = [
-      "https://cache.nixos.org/"
-      # ] ++ (if useMusl then [
-      "https://cache.allvm.org/"
-    ]; # else [ ]);
-
-    binaryCachePublicKeys = [
-      # if useMusl then [
-      "gravity.cs.illinois.edu-1:yymmNS/WMf0iTj2NnD0nrVV8cBOXM9ivAkEdO1Lro3U="
-    ]; # else [ ];
-  };
+  in
+    override defaultSettings (settings.nix or {});
 
   # modules
   music.enable = true; # music production software and configuration
@@ -124,47 +116,49 @@
   #     xdg-desktop-portal
   #   ];
   # };
-  environment.systemPackages = with pkgs; [
-    # tui applications
-    ranger
-    unstable.neovim
-    htop
-    lynx
-    w3m
+  environment.systemPackages = with pkgs;
+    [
+      # tui applications
+      ranger
+      unstable.neovim
+      htop
+      lynx
+      w3m
 
-    # cli applications
-    neofetch
-    tmatrix
-    cmatrix
-    zip
-    unzip
-    wget
-    curl
-    ffmpeg
-    direnv
-    nix-direnv-flakes
+      # cli applications
+      neofetch
+      tmatrix
+      cmatrix
+      zip
+      unzip
+      wget
+      curl
+      ffmpeg
+      direnv
+      nix-direnv-flakes
 
-    # util
-    git
-    home-manager
-    pam_u2f
-    polkit
-    usbutils
-    nix-index
-    alsa-utils
-    ix
-    killall
-    pciutils
-    inetutils
+      # util
+      git
+      home-manager
+      pam_u2f
+      polkit
+      usbutils
+      nix-index
+      alsa-utils
+      ix
+      killall
+      pciutils
+      inetutils
 
-    curlftpfs
-    sshfs
+      curlftpfs
+      sshfs
 
-    # build - essential
-    gcc
-    lld
-    llvm
-  ];
+      # build - essential
+      gcc
+      lld
+      llvm
+    ]
+    ++ (settings.additionalSystemPackages or []);
 
   system.stateVersion = "22.05";
 }

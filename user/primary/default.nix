@@ -74,7 +74,6 @@
         # unfree :(
         slack
         discord
-        remotebuild.ue4
         # spotify-unwrapped
         # lutris
 
@@ -140,5 +139,9 @@
         # numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
         # capitaine-cursors
       ]
-      ++ (map (pkgName: pkgs.${pkgName}) additionalUserPackages);
+      ++ (map (pkgName:
+        if builtins.typeOf pkgName == "set"
+        then ${pkgName.set}.${pkgName.package}
+        else pkgs.${pkgName})
+      additionalUserPackages);
 }

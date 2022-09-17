@@ -128,6 +128,7 @@
           # "-fcx-fortran-rules"
         ];
       };
+      nix = {}; # dont edit nix settings
     };
 
     # based on those settings, create any additional entries that
