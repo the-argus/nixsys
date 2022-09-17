@@ -54,7 +54,7 @@
     buildMachines = [
       {
         hostName = "rpmc.duckdns.org";
-        systems = ["aarch64-linux" "x86_64-linux"];
+        systems = ["aarch64-linux"];
         sshUser = "servers";
         sshKey = "/root/.ssh/id_ed25519";
         maxJobs = 4;
