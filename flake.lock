@@ -471,11 +471,27 @@
     },
     "nixpkgs-remotebuild": {
       "locked": {
-        "lastModified": 1663428939,
-        "narHash": "sha256-FNSKr3QPYKOf6AI2dgi0P3aFRYQA8LaxJMK7BbCXrtM=",
+        "lastModified": 1663410121,
+        "narHash": "sha256-+SN249gXLmawmwTVo3AhydVoVwgi/gbqutJV7YHrj0Y=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "f21492b413295ab60f538d5e1812ab908e3e3292",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-22.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-ue4-patched": {
+      "locked": {
+        "lastModified": 1663428211,
+        "narHash": "sha256-8sY9w7qS0pXy70n7/GVrWkDzmCqaRswqNbeNM058D2g=",
         "owner": "the-argus",
         "repo": "nixpkgs",
-        "rev": "acbfbc25e5c031edda1ee237e06465494820eee1",
+        "rev": "ef601bb5c5dd056f5aa696f35d8914df986a6982",
         "type": "github"
       },
       "original": {
@@ -660,6 +676,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-remotebuild": "nixpkgs-remotebuild",
+        "nixpkgs-ue4-patched": "nixpkgs-ue4-patched",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvim-config": "nvim-config",
         "rycee-expressions": "rycee-expressions",

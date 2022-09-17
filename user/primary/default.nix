@@ -2,6 +2,7 @@
   pkgs,
   unstable,
   remotebuild,
+  ue4-patched,
   lib,
   nur,
   chrome-extensions,
@@ -140,7 +141,7 @@
         # capitaine-cursors
       ]
       ++ (map (pkgName: let
-        pkgsets = {inherit pkgs unstable remotebuild;};
+        pkgsets = {inherit pkgs unstable remotebuild ue4-patched;};
       in
         if builtins.typeOf pkgName == "set"
         then pkgsets.${pkgName.set}.${pkgName.package}
