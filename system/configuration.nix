@@ -51,7 +51,16 @@
     #   options = "--delete-old";
     # };
     distributedBuilds = true;
-    buildMachines = ["ssh://servers@rpmc.duckdns.org aarch64-linux,x86_64-linux"];
+    buildMachines = [
+      {
+        hostname = "rpmc.duckdns.org";
+        systems = ["aarch64-linux" "x86_64-linux"];
+        sshUser = "servers";
+        sshKey = "/home/argus/.ssh/id_ed25519";
+        maxJobs = 4;
+        speedFactor = 2;
+      }
+    ];
     settings = {
       extra-experimental-features = ["nix-command" "flakes"];
       substituters = ["https://webcord.cachix.org"];
