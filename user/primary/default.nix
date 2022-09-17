@@ -73,6 +73,7 @@
         # unfree :(
         slack
         discord
+        unstable.ue4
         # spotify-unwrapped
         # lutris
 
