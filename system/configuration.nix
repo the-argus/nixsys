@@ -6,6 +6,7 @@
   pkgs,
   lib,
   unstable,
+  remotebuild,
   useMusl,
   username,
   settings,
@@ -158,7 +159,11 @@
       lld
       llvm
     ]
-    ++ (settings.additionalSystemPackages or []);
+    ++ (map (pkgName:
+      if builtins.typeOf pkgName == "set"
+      then ${pkgName.set}.${pkgName.package}
+      else pkgs.${pkgName})
+    additionalSystemPackages);
 
   system.stateVersion = "22.05";
 }

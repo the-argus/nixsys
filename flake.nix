@@ -129,6 +129,7 @@
         ];
       };
       nix = {}; # dont edit nix settings
+      additionalSystemPackages = [];
     };
 
     # based on those settings, create any additional entries that
