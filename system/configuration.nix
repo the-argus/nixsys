@@ -159,11 +159,13 @@
       lld
       llvm
     ]
-    ++ (map (pkgName:
+    ++ (map (pkgName: let
+      pkgsets = {inherit pkgs unstable remotebuild;};
+    in
       if builtins.typeOf pkgName == "set"
-      then ${pkgName.set}.${pkgName.package}
+      then pkgsets.${pkgName.set}.${pkgName.package}
       else pkgs.${pkgName})
-    additionalSystemPackages);
+    settings.additionalSystemPackages);
 
   system.stateVersion = "22.05";
 }
