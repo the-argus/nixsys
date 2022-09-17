@@ -253,7 +253,7 @@
           inputs
           // fs.extraSpecialArgs
           // {
-            inherit (fs) unstable hostname username useMusl;
+            inherit (fs) unstable hostname username useMusl remotebuild;
             inherit (fs) useFlags plymouth usesWireless usesBluetooth;
             settings = fs;
           };
@@ -281,7 +281,7 @@
           }
           // fs.extraExtraSpecialArgs
           // {
-            inherit (fs) unstable hostname username useMusl;
+            inherit (fs) unstable hostname username useMusl remotebuild;
             inherit (fs) useFlags plymouth usesWireless usesBluetooth;
             inherit (fs) additionalUserPackages;
             settings = fs;

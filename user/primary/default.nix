@@ -1,6 +1,7 @@
 {
   pkgs,
   unstable,
+  remotebuild,
   lib,
   nur,
   chrome-extensions,
@@ -73,7 +74,7 @@
         # unfree :(
         slack
         discord
-        unstable.ue4
+        remotebuild.ue4
         # spotify-unwrapped
         # lutris
 
