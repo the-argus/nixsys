@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-remotebuild.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       # home manager use out nixpkgs and not its own
@@ -51,6 +52,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
+    nixpkgs-remotebuild,
     home-manager,
     webcord,
     rycee-expressions,
@@ -226,6 +228,13 @@
       features = ["gccarch-${settings.optimization.arch}"];
       pkgs = import nixpkgs pkgsInputs;
       unstable = import nixpkgs-unstable pkgsInputs;
+      remotebuild =
+        # version of pkgs meant to be compiled on remote aarch64 server
+        import nixpkgs-remotebuild
+        (pkgs.lib.attrsets.recursiveUpdate pkgsInputs {
+          localSystem.system = "aarch64-linux";
+          crossSystem.system = "x86_64-linux";
+        });
       homeDirectory = "/home/${settings.username}";
       firefox-addons =
         (import "${rycee-expressions}" {
