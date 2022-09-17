@@ -57,6 +57,7 @@
         systems = ["aarch64-linux"];
         sshUser = "servers";
         sshKey = "/root/.ssh/id_ed25519";
+        supportedFeatures = [ "big-parallel" ];
         maxJobs = 4;
         speedFactor = 2;
       }
