@@ -485,22 +485,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-ue4-patched": {
-      "locked": {
-        "lastModified": 1663428211,
-        "narHash": "sha256-8sY9w7qS0pXy70n7/GVrWkDzmCqaRswqNbeNM058D2g=",
-        "owner": "the-argus",
-        "repo": "nixpkgs",
-        "rev": "ef601bb5c5dd056f5aa696f35d8914df986a6982",
-        "type": "github"
-      },
-      "original": {
-        "owner": "the-argus",
-        "ref": "fix/ue4-build",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1663268520,
@@ -676,7 +660,6 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-remotebuild": "nixpkgs-remotebuild",
-        "nixpkgs-ue4-patched": "nixpkgs-ue4-patched",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvim-config": "nvim-config",
         "rycee-expressions": "rycee-expressions",

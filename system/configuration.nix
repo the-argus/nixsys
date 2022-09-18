@@ -7,7 +7,6 @@
   lib,
   unstable,
   remotebuild,
-  ue4-patched,
   useMusl,
   username,
   settings,
@@ -161,7 +160,7 @@
       llvm
     ]
     ++ (map (pkgName: let
-      pkgsets = {inherit pkgs unstable remotebuild ue4-patched;};
+      pkgsets = {inherit pkgs unstable remotebuild;};
     in
       if builtins.typeOf pkgName == "set"
       then pkgsets.${pkgName.set}.${pkgName.package}

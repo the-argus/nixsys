@@ -5,7 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-remotebuild.url = "github:nixos/nixpkgs?ref=nixos-22.05";
-    nixpkgs-ue4-patched.url = "github:the-argus/nixpkgs?ref=fix/ue4-build";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       # home manager use out nixpkgs and not its own
@@ -54,7 +53,6 @@
     nixpkgs,
     nixpkgs-unstable,
     nixpkgs-remotebuild,
-    nixpkgs-ue4-patched,
     home-manager,
     webcord,
     rycee-expressions,
@@ -232,7 +230,6 @@
       features = ["gccarch-${settings.optimization.arch}"];
       pkgs = import nixpkgs pkgsInputs;
       unstable = import nixpkgs-unstable pkgsInputs;
-      ue4-patched = import nixpkgs-ue4-patched pkgsInputs;
       remotebuild =
         # version of pkgs meant to be compiled on remote aarch64 server
         import nixpkgs-remotebuild
@@ -259,7 +256,6 @@
           // fs.extraSpecialArgs
           // {
             inherit (fs) unstable hostname username useMusl remotebuild;
-            inherit (fs) ue4-patched;
             inherit (fs) useFlags plymouth usesWireless usesBluetooth;
             settings = fs;
           };
@@ -288,7 +284,6 @@
           // fs.extraExtraSpecialArgs
           // {
             inherit (fs) unstable hostname username useMusl remotebuild;
-            inherit (fs) ue4-patched;
             inherit (fs) useFlags plymouth usesWireless usesBluetooth;
             inherit (fs) additionalUserPackages;
             settings = fs;
