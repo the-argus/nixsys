@@ -130,6 +130,8 @@
       };
       nix = {}; # dont edit nix settings
       additionalSystemPackages = [];
+      remotebuildOverrides = {};
+      unstableOverrides = {};
     };
 
     # based on those settings, create any additional entries that
@@ -180,12 +182,12 @@
         };
       };
 
-      pkgsInputs = let
-        inherit (settings.optimization) useMusl useFlags;
-        inherit (settings) allowedUnfree system plymouth;
+      mkPkgsInputs = settingsSet: let
+        inherit (settingsSet.optimization) useMusl useFlags;
+        inherit (settingsSet) allowedUnfree system plymouth;
       in {
         config = {
-          inherit (settings) allowBroken;
+          inherit (settingsSet) allowBroken;
           allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowedUnfree;
         };
         localSystem =
@@ -217,26 +219,32 @@
             # also add the theme to pkgs
           ]
           ++ (
-            if (builtins.hasAttr "theme" settings)
+            if (builtins.hasAttr "theme" settingsSet)
             then [
               (self: super: {
-                flakeTheme = settings.theme;
+                flakeTheme = settingsSet.theme;
               })
             ]
             else []
           );
       };
+
+      pkgs = import nixpkgs (mkPkgsInputs settings);
+      override = pkgs.lib.attrsets.recursiveUpdate;
     in (nixpkgs.lib.trivial.mergeAttrs settings rec {
       features = ["gccarch-${settings.optimization.arch}"];
-      pkgs = import nixpkgs pkgsInputs;
-      unstable = import nixpkgs-unstable pkgsInputs;
+      inherit pkgs;
+      unstable = import nixpkgs-unstable (mkPkgsInputs (
+        override settings (settings.unstableOverrides)
+      ));
       remotebuild =
         # version of pkgs meant to be compiled on remote aarch64 server
         import nixpkgs-remotebuild
-        (pkgs.lib.attrsets.recursiveUpdate pkgsInputs {
-          localSystem.system = "aarch64-linux";
-          crossSystem.system = "x86_64-linux";
-        });
+        (override (override (mkPkgsInputs settings) {
+            localSystem.system = "aarch64-linux";
+            crossSystem.system = "x86_64-linux";
+          })
+          settings.remotebuildOverrides);
       homeDirectory = "/home/${settings.username}";
       firefox-addons =
         (import "${rycee-expressions}" {
