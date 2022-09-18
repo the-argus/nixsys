@@ -87,6 +87,33 @@
       extraExtraSpecialArgs = {mpkgs = audio-plugins.mpkgSets.${system};};
       extraSpecialArgs = {};
       additionalModules = [audio-plugins.homeManagerModule];
+      packageSelections = {
+        # packages to override with their unstable versions
+        # all of these are things that i might want to move
+        # to remotebuild at some point (so theyre FOSS)
+        unstable = [
+          "alejandra"
+          "wl-color-picker"
+          "heroic"
+          "solo2-cli"
+          "ani-cli"
+          "ungoogled-chromium"
+          "firefox"
+          "linuxPackages_latest"
+          "linuxPackages_zen"
+          "linuxPackages_xanmod_latest"
+          "OVMFFull"
+          "neovim"
+          "kitty"
+        ];
+        # packages to build remotely
+        remotebuild = [
+          # "linuxPackages_latest"
+          # "linuxPackages_zen"
+          # "linuxPackages_xanmod_latest"
+          # "qtile"
+        ];
+      };
       additionalUserPackages = [
         #"steam"
       ]; # will be evaluated later
@@ -229,11 +256,26 @@
           );
       };
 
-      pkgs = import nixpkgs (mkPkgsInputs settings);
-      override = pkgs.lib.attrsets.recursiveUpdate;
-    in (nixpkgs.lib.trivial.mergeAttrs settings rec {
-      features = ["gccarch-${settings.optimization.arch}"];
-      inherit pkgs;
+      # get a set of all packages that will be overriden
+      manualOverlays = pkgSet: selections:
+        builtins.listToAttrs (map (value: {
+            name = value;
+            value = pkgSet.${value};
+          })
+          selections);
+      # save the values that will be overriden by remotebuild AND unstable into
+      # pkgs.original before overriding them
+      saveOriginal = pkgSet:
+        pkgSet
+        // {
+          original = manualOverlays pkgSet (
+            settings.packageSelections.unstable
+            ++ settings.packageSelections.remotebuild
+          );
+        };
+      override = nixpkgs.lib.attrsets.recursiveUpdate;
+
+      # create the package sets
       unstable = import nixpkgs-unstable (mkPkgsInputs (
         override settings (settings.unstableOverrides)
       ));
@@ -245,6 +287,15 @@
             crossSystem.system = "x86_64-linux";
           })
           settings.remotebuildOverrides);
+      applyOverlays = pkgSet:
+        override pkgSet (
+          (manualOverlays unstable settings.packageSelections.unstable)
+          // (manualOverlays remotebuild settings.packageSelections.remotebuild)
+        );
+      pkgs = applyOverlays (saveOriginal (import nixpkgs (mkPkgsInputs settings)));
+    in (nixpkgs.lib.trivial.mergeAttrs settings rec {
+      features = ["gccarch-${settings.optimization.arch}"];
+      inherit pkgs unstable remotebuild;
       homeDirectory = "/home/${settings.username}";
       firefox-addons =
         (import "${rycee-expressions}" {

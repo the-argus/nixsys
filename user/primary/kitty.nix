@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  unstable,
   ...
 }: {
   programs.kitty = let
@@ -59,7 +58,7 @@
     themeFormatted = builtins.mapAttrs kittyColorFormat theme;
   in {
     enable = true;
-    package = unstable.kitty;
+    package = pkgs.kitty;
 
     settings =
       {

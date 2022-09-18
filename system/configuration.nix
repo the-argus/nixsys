@@ -20,9 +20,9 @@
     ++ settings.hardwareConfiguration;
 
   # kernel version
-  # boot.kernelPackages = unstable.linuxPackages_latest;
-  # boot.kernelPackages = unstable.linuxPackages_zen;
-  boot.kernelPackages = lib.mkDefault unstable.linuxPackages_xanmod_latest;
+  # boot.kernelPackages = linuxPackages_latest;
+  # boot.kernelPackages = linuxPackages_zen;
+  boot.kernelPackages = lib.mkDefault linuxPackages_xanmod_latest;
 
   # PAM authentication for yubikey/solokey
   # line to add with mkOverride: "auth       required   pam_u2f.so"
@@ -78,7 +78,7 @@
   music.enable = true; # music production software and configuration
   virtualization.enable = true;
   virtualization.passthrough.enable = true;
-  virtualization.passthrough.ovmfPackage = unstable.OVMFFull;
+  virtualization.passthrough.ovmfPackage = OVMFFull;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -121,7 +121,7 @@
     [
       # tui applications
       ranger
-      unstable.neovim
+      neovim
       htop
       lynx
       w3m

@@ -29,7 +29,7 @@
   programs.chromium = {
     enable = true;
     # package = pkgs.callPackage ../../packages/ungoogled-chromium {};
-    package = unstable.ungoogled-chromium;
+    package = ungoogled-chromium;
 
     extensions = [
       # chrome-extensions.ublock-origin
@@ -67,7 +67,7 @@
 
   # extra packages
   home.packages = let
-    webcordPkg = webcord.packages.${unstable.system}.default;
+    webcordPkg = webcord.packages.${pkgs.system}.default;
   in
     with pkgs;
       [
@@ -86,7 +86,7 @@
         keepassxc
         pcmanfm
         qalculate-gtk
-        unstable.heroic
+        heroic
         polymc
         pavucontrol
         sxiv
@@ -98,7 +98,7 @@
         pinta
         inkscape
         # color palette
-        unstable.wl-color-picker
+        wl-color-picker
         epick
         pngquant
 
@@ -106,9 +106,9 @@
         cava
 
         # cli
-        unstable.solo2-cli
+        solo2-cli
         transmission
-        unstable.ani-cli
+        ani-cli
         nix-prefetch-scripts
 
         # dev
@@ -121,7 +121,7 @@
         # useful linters
         python310Packages.demjson3
         python310Packages.mdformat
-        unstable.alejandra
+        alejandra
 
         # appearance
         # rose-pine-gtk-theme
