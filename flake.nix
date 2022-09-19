@@ -258,11 +258,13 @@
 
       override = nixpkgs.lib.attrsets.recursiveUpdate;
 
-      # get a set of all packages that will be overriden
+      # modify pkgsInputSet to include overlays from settings.packageSelections
       mkOverlays = pkgSet: pkgsInputSet: selections:
         override pkgsInputSet {
           overlays =
             pkgsInputSet.overlays
+            # turn selections into an attrset of the packages for overlay
+            # wrapped in (self: super: ...) so it works as an overlay
             ++ nixpkgs.lib.lists.singleton (self: super:
               builtins.listToAttrs (map (value:
                 if builtins.typeOf value == "string"
@@ -275,7 +277,7 @@
                   if builtins.hasAttr "set3" value
                   then {
                     name = value.set1;
-                    value = {
+                    value = override pkgSet.${value.set1} {
                       ${value.set2} = {
                         ${value.set3} =
                           pkgSet.${value.set1}.${value.set2}.${value.set3};
@@ -287,7 +289,7 @@
                       if builtins.hasAttr "set2" value
                       then {
                         name = value.set1;
-                        value = {
+                        value = override pkgSet.${value.set1} {
                           ${value.set2} = pkgSet.${value.set1}.${value.set2};
                         };
                       }
