@@ -257,8 +257,13 @@
       };
 
       # get a set of all packages that will be overriden
-      manualOverlays = pkgSet: selections:
-        builtins.trace (pkgSet.lib.foldr (a: b: a + b) "" selections) (builtins.listToAttrs (map (value:
+      manualOverlays = pkgSet: selections: let
+        toS = inp:
+          if builtins.typeOf inp == "string"
+          then inp
+          else inp.set2;
+      in
+        builtins.trace (pkgSet.lib.foldr (a: b: (toS a) + (toS b)) "" selections) (builtins.listToAttrs (map (value:
           if builtins.typeOf value == "string"
           then {
             name = value;
