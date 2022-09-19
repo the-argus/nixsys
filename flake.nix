@@ -256,55 +256,46 @@
           );
       };
 
-      # get a set of all packages that will be overriden
-      manualOverlays = pkgSet: selections: let
-        toS = inp:
-          if builtins.typeOf inp == "string"
-          then inp
-          else inp.set2;
-      in
-        builtins.trace (pkgSet.lib.foldr (a: b: (toS a) + (toS b)) "" selections) (builtins.listToAttrs (map (value:
-          if builtins.typeOf value == "string"
-          then {
-            name = value;
-            value = pkgSet.${value};
-          }
-          else if builtins.typeOf value == "set"
-          then
-            if builtins.hasAttr "set3" value
-            then {
-              name = builtins.trace "set1: ${value.set1}\tset2: ${value.set2}\tset3: ${value.set3}\n" value.set1;
-              value = {
-                ${value.set2} = {
-                  ${value.set3} =
-                    pkgSet.${value.set1}.${value.set2}.${value.set3};
-                };
-              };
-            }
-            else
-              (
-                if builtins.hasAttr "set2" value
-                then {
-                  name = builtins.trace "set1: ${value.set1}\tset2: ${value.set2}\n" value.set1;
-                  value = {
-                    ${value.set2} = pkgSet.${value.set1}.${value.set2};
-                  };
-                }
-                else {}
-              )
-          else abort "override not one of type \"set\" or \"string\"")
-        selections));
-      # save the values that will be overriden by remotebuild AND unstable into
-      # pkgs.original before overriding them
-      saveOriginal = pkgSet:
-        pkgSet
-        // {
-          original = manualOverlays pkgSet (
-            settings.packageSelections.unstable
-            ++ settings.packageSelections.remotebuild
-          );
-        };
       override = nixpkgs.lib.attrsets.recursiveUpdate;
+
+      # get a set of all packages that will be overriden
+      mkOverlays = pkgSet: pkgsInputSet: selections:
+        override pkgsInputSet {
+          overlays =
+            pkgsInputSet.overlays
+            ++ nixpkgs.lib.lists.singleton (self: super:
+              builtins.listToAttrs (map (value:
+                if builtins.typeOf value == "string"
+                then {
+                  name = value;
+                  value = pkgSet.${value};
+                }
+                else if builtins.typeOf value == "set"
+                then
+                  if builtins.hasAttr "set3" value
+                  then {
+                    name = value.set1;
+                    value = {
+                      ${value.set2} = {
+                        ${value.set3} =
+                          pkgSet.${value.set1}.${value.set2}.${value.set3};
+                      };
+                    };
+                  }
+                  else
+                    (
+                      if builtins.hasAttr "set2" value
+                      then {
+                        name = value.set1;
+                        value = {
+                          ${value.set2} = pkgSet.${value.set1}.${value.set2};
+                        };
+                      }
+                      else {}
+                    )
+                else abort "override not one of type \"set\" or \"string\"")
+              selections));
+        };
 
       # create the package sets
       unstable = import nixpkgs-unstable (mkPkgsInputs (
@@ -318,12 +309,14 @@
             crossSystem.system = "x86_64-linux";
           })
           settings.remotebuildOverrides);
-      applyOverlays = pkgSet:
-        override pkgSet (
-          (manualOverlays unstable settings.packageSelections.unstable)
-          // (manualOverlays remotebuild settings.packageSelections.remotebuild)
-        );
-      pkgs = applyOverlays (saveOriginal (import nixpkgs (mkPkgsInputs settings)));
+      # add the overlays to pkgInputs
+      pkgs =
+        import nixpkgs
+        (mkOverlays unstable
+          (mkOverlays remotebuild
+            (mkPkgsInputs settings)
+            settings.packageSelections.remotebuild)
+          settings.packageSelections.unstable);
     in (nixpkgs.lib.trivial.mergeAttrs settings rec {
       features = ["gccarch-${settings.optimization.arch}"];
       inherit pkgs unstable remotebuild;
