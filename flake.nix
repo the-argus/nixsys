@@ -278,8 +278,7 @@
           then {
             name = value.set1;
             value = {
-              ${value.set2} =
-                pkgSet.${value.set1}.${value.set2}.${value.set3};
+              ${value.set2} = pkgSet.${value.set1}.${value.set2};
             };
           }
           else {})
