@@ -269,25 +269,36 @@
             name = value;
             value = pkgSet.${value};
           }
-          else if builtins.hasAttr "set3" value
-          then {
-            name = value.set1;
-            value = {
-              ${value.set2} = {
-                ${value.set3} =
-                  builtins.trace "set1: ${value.set1}\tset2: ${value.set2}\tset3: ${value.set3}\n"
-                  pkgSet.${value.set1}.${value.set2}.${value.set3};
-              };
-            };
-          }
-          else if builtins.hasAttr "set2" value
-          then {
-            name = value.set1;
-            value = builtins.trace "set1: ${value.set1}\tset2: ${value.set2}\n" {
-              ${value.set2} = pkgSet.${value.set1}.${value.set2};
-            };
-          }
-          else {})
+          else
+            (
+              if builtins.typeOf value == "set"
+              then
+                (
+                  if builtins.hasAttr "set3" value
+                  then {
+                    name = value.set1;
+                    value = {
+                      ${value.set2} = {
+                        ${value.set3} =
+                          builtins.trace "set1: ${value.set1}\tset2: ${value.set2}\tset3: ${value.set3}\n"
+                          pkgSet.${value.set1}.${value.set2}.${value.set3};
+                      };
+                    };
+                  }
+                  else
+                    (
+                      if builtins.hasAttr "set2" value
+                      then {
+                        name = value.set1;
+                        value = builtins.trace "set1: ${value.set1}\tset2: ${value.set2}\n" {
+                          ${value.set2} = pkgSet.${value.set1}.${value.set2};
+                        };
+                      }
+                      else {}
+                    )
+                )
+              else abort "override not one of type \"set\" or \"string\""
+            ))
         selections));
       # save the values that will be overriden by remotebuild AND unstable into
       # pkgs.original before overriding them
