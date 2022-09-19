@@ -29,7 +29,7 @@
   programs.chromium = {
     enable = true;
     # package = pkgs.callPackage ../../packages/ungoogled-chromium {};
-    package = ungoogled-chromium;
+    package = pkgs.ungoogled-chromium;
 
     extensions = [
       # chrome-extensions.ublock-origin
