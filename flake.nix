@@ -258,7 +258,7 @@
 
       # get a set of all packages that will be overriden
       manualOverlays = pkgSet: selections:
-        builtins.listToAttrs (map (value:
+        builtins.trace (pkgSet.lib.foldr (a: b: a + b) "" selections) (builtins.listToAttrs (map (value:
           if builtins.typeOf value == "string"
           then {
             name = value;
@@ -283,7 +283,7 @@
             };
           }
           else {})
-        selections);
+        selections));
       # save the values that will be overriden by remotebuild AND unstable into
       # pkgs.original before overriding them
       saveOriginal = pkgSet:
