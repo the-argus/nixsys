@@ -270,6 +270,7 @@
             value = {
               ${value.set2} = {
                 ${value.set3} =
+                  builtins.trace "set1: ${value.set1}\tset2: ${value.set2}\tset3: ${value.set3}\n"
                   pkgSet.${value.set1}.${value.set2}.${value.set3};
               };
             };
@@ -277,7 +278,7 @@
           else if builtins.hasAttr "set2" value
           then {
             name = value.set1;
-            value = {
+            value = builtins.trace "set1: ${value.set1}\tset2: ${value.set2}\n" {
               ${value.set2} = pkgSet.${value.set1}.${value.set2};
             };
           }
