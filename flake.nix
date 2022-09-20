@@ -214,11 +214,20 @@
         inherit (settingsSet.optimization) useMusl useFlags;
         inherit (settingsSet) allowedUnfree system plymouth;
       in {
-        config = {
-          inherit (settingsSet) allowBroken;
-          allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowedUnfree;
-          replaceStdenv = { pkgs }: optimizedStdenv pkgs;
-        };
+        config =
+          {
+            inherit (settingsSet) allowBroken;
+            allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowedUnfree;
+          }
+          // (
+            if
+              settingsSet.optimization.useFlags
+              or settingsSet.optimization.useClang
+            then {
+              replaceStdenv = {pkgs}: optimizedStdenv pkgs;
+            }
+            else {}
+          );
         localSystem =
           {
             inherit system;
