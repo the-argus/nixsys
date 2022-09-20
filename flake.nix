@@ -217,6 +217,7 @@
         config = {
           inherit (settingsSet) allowBroken;
           allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowedUnfree;
+          replaceStdenv = { pkgs }: optimizedStdenv pkgs;
         };
         localSystem =
           {
