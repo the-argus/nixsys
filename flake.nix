@@ -117,6 +117,7 @@
       additionalUserPackages = [
         #"steam"
       ]; # will be evaluated later
+      additionalOverlays = [];
       hardwareConfiguration = [./system/hardware];
       usesWireless = true; # install and autostart nm-applet
       usesBluetooth = true; # install and autostart blueman applet
@@ -236,7 +237,8 @@
           );
 
         overlays =
-          [
+          settings.additionalOverlays
+          ++ [
             (self: super: {
               plymouth-themes-package = import ./packages/plymouth-themes.nix ({
                   pkgs = super;
