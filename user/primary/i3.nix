@@ -70,8 +70,8 @@
         enable = true;
         position = 2;
         settings = {
+          inherit align;
           min_width = min_width + 50;
-          align = center;
           format = "\"NIXHOME : %free free / %total\"";
         };
       };
