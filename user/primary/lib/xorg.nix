@@ -9,7 +9,7 @@
     then str
     else ""
   );
-  optionalList = lib.lists.optional;
+  optionalList = lib.lists.optionals;
 
   execShell = path: "${path} &";
   execI3 = path: "--no-startup-id ${path}";
