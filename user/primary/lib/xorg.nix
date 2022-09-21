@@ -12,7 +12,7 @@
   optionalList = lib.lists.optionals;
 
   execShell = path: "${path} &";
-  execI3 = path: "--no-startup-id ${path}";
+  execI3 = path: "${path}";
 in rec {
   startxAliases = {
     i3 = "startx $HOME/.xinitrc i3";
