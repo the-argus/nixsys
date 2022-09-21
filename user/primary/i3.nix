@@ -4,7 +4,7 @@
   ...
 }: {
   xsession.windowManager.i3 = {
-    enable = false;
+    enable = true;
     package = pkgs.i3-gaps;
 
     config = let
