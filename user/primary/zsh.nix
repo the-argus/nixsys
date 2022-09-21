@@ -1,6 +1,7 @@
 {
   pkgs,
   username,
+  settings,
   ...
 }: {
   programs.starship = {
@@ -36,23 +37,25 @@
       share = true;
     };
 
-    shellAliases = {
-      # regular aliases
-      nf = "neofetch";
-      fm = "ranger";
-      search = "nix search nixpkgs";
-      matrix = "tmatrix -c default -C yellow -s 60 -f 0.2,0.3 -g 10,20 -l 1,50 -t \"hello, ${username}.\"";
-      umatrix = "unimatrix -a -c yellow -f -s 95 -l aAcCgGkknnrR";
-      vim = "nvim";
-      dvim = "XDG_CONFIG_HOME=/home/${username}/.local/src/ nvim"; # use my non-nix configuration for debugging
-      batt = "cat /sys/class/power_supply/BAT0/capacity";
+    shellAliases =
+      {
+        # regular aliases
+        nf = "neofetch";
+        fm = "ranger";
+        search = "nix search nixpkgs";
+        matrix = "tmatrix -c default -C yellow -s 60 -f 0.2,0.3 -g 10,20 -l 1,50 -t \"hello, ${username}.\"";
+        umatrix = "unimatrix -a -c yellow -f -s 95 -l aAcCgGkknnrR";
+        vim = "nvim";
+        dvim = "XDG_CONFIG_HOME=/home/${username}/.local/src/ nvim"; # use my non-nix configuration for debugging
+        batt = "cat /sys/class/power_supply/BAT0/capacity";
 
-      # unused mostly
-      cageff = "cage \"/bin/firefox -p Unconfigured\"";
-      awesomedoc = "firefox ${pkgs.awesome.doc}/share/doc/awesome/doc/index.html & disown";
-      gnome = "XDG_SESSION_TYPE=wayland dbus-run-session -- gnome-shell --display-server --wayland";
-      ix = "curl -F 'f:1=<-' ix.io";
-    };
+        # unused mostly
+        cageff = "cage \"/bin/firefox -p Unconfigured\"";
+        awesomedoc = "firefox ${pkgs.awesome.doc}/share/doc/awesome/doc/index.html & disown";
+        gnome = "XDG_SESSION_TYPE=wayland dbus-run-session -- gnome-shell --display-server --wayland";
+        ix = "curl -F 'f:1=<-' ix.io";
+      }
+      ++ (pkgs.callPackage ./lib/xorg.nix {inherit settings;}).startxAliases;
 
     zplug = {
       enable = true;
