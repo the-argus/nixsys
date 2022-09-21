@@ -19,8 +19,8 @@
         position = 5;
         settings = {
           inherit align min_width;
-          format_up = "\"wireless: %essid\"";
-          format_down = "\"wireless:  down\"";
+          format_up = "wireless: %essid";
+          format_down = "wireless:  down";
         };
       };
       "ethernet _first_" = {
@@ -28,8 +28,8 @@
         position = 6;
         settings = {
           inherit align min_width;
-          format_up = "\"E: (%speed)\"";
-          format_down = "\"E: down\"";
+          format_up = "E: (%speed)";
+          format_down = "E: down";
         };
       };
       cpu_usage = {
@@ -37,11 +37,11 @@
         position = 3;
         settings = {
           inherit min_width align;
-          format = "\"CPU %usage\"";
+          format = "CPU %usage";
           max_threshold = 75;
-          format_above_threshold = "\"DANGER: CPU %usage\"";
+          format_above_threshold = "DANGER: CPU %usage";
           degraded_threshold = 25;
-          format_above_degraded_threshold = "\"CPU %usage\"";
+          format_above_degraded_threshold = "CPU %usage";
         };
       };
       "battery all" = {
@@ -49,12 +49,12 @@
         position = 7;
         settings = {
           inherit min_width align;
-          format = "\"%status %percentage %emptytime\"";
-          format_down = "\"empty\"";
-          status_chr = "\"battery ^\"";
-          status_bat = "\"battery -\"";
-          status_unk = "\"battery ?\"";
-          status_full = "\"battery -\"";
+          format = "%status %percentage %emptytime";
+          format_down = "empty";
+          status_chr = "battery ^";
+          status_bat = "battery -";
+          status_unk = "battery ?";
+          status_full = "battery -";
         };
       };
       "disk \"/\"" = {
@@ -63,7 +63,7 @@
         settings = {
           inherit align;
           min_width = min_width + 50;
-          format = "\"NIXROOT : %free free / %total\"";
+          format = "NIXROOT : %free free / %total";
         };
       };
       "disk \"/home\"" = {
@@ -72,14 +72,14 @@
         settings = {
           inherit align;
           min_width = min_width + 50;
-          format = "\"NIXHOME : %free free / %total\"";
+          format = "NIXHOME : %free free / %total";
         };
       };
       "tztime local" = {
         enable = true;
         position = 8;
         settings = {
-          format = "\"%Y-%m-%d %I:%M\"";
+          format = "%Y-%m-%d %I:%M";
         };
       };
     };
