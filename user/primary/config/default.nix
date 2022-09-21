@@ -44,7 +44,7 @@
 
     # supplied by pkgs.dbus
     dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-    
+
     if [[ $1 == "i3" ]]; then
         exec i3
     elif [[ $1 == "qtile" ]]; then

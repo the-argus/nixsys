@@ -55,7 +55,7 @@
         gnome = "XDG_SESSION_TYPE=wayland dbus-run-session -- gnome-shell --display-server --wayland";
         ix = "curl -F 'f:1=<-' ix.io";
       }
-      ++ (pkgs.callPackage ./lib/xorg.nix {inherit settings;}).startxAliases;
+      // (pkgs.callPackage ./lib/xorg.nix {inherit settings;}).startxAliases;
 
     zplug = {
       enable = true;
