@@ -44,7 +44,13 @@
 
     # supplied by pkgs.dbus
     dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-
-    PYTHONDONTWRITEBYTECODE="yes" GTK_USE_PORTAL=0 exec qtile start
+    
+    if [[ $1 == "i3" ]]; then
+        exec i3
+    elif [[ $1 == "qtile" ]]; then
+        PYTHONDONTWRITEBYTECODE="yes" GTK_USE_PORTAL=0 exec qtile start
+    else
+        PYTHONDONTWRITEBYTECODE="yes" GTK_USE_PORTAL=0 exec qtile start
+    fi
   '';
 }
