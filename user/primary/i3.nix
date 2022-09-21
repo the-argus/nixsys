@@ -57,7 +57,7 @@
           status_full = "battery -";
         };
       };
-      "disk \"/\"" = {
+      "disk /" = {
         enable = true;
         position = 1;
         settings = {
@@ -66,7 +66,7 @@
           format = "NIXROOT : %free free / %total";
         };
       };
-      "disk \"/home\"" = {
+      "disk /home" = {
         enable = true;
         position = 2;
         settings = {
