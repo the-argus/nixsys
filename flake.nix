@@ -122,6 +122,7 @@
       usesWireless = true; # install and autostart nm-applet
       usesBluetooth = true; # install and autostart blueman applet
       usesMouse = false; # enables xmousepasteblock for middle click
+      usesEthernet = false;
       hasBattery = true; # battery widget in tiling WMs
       optimization = {
         arch = "tigerlake";
@@ -354,6 +355,7 @@
           // {
             inherit (fs) unstable hostname username useMusl remotebuild;
             inherit (fs) useFlags plymouth usesWireless usesBluetooth;
+            inherit (fs) usesEthernet;
             settings = fs;
           };
         modules = [

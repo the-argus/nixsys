@@ -16,7 +16,7 @@
 in rec {
   startxAliases = {
     i3 = "startx $HOME/.xinitrc i3";
-    qtile = "startx $HOME/.xinitrc i3";
+    qtile = "startx $HOME/.xinitrc qtile";
   };
   bluetoothAutostart = [
     # laptop has bluetooth and wireless

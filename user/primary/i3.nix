@@ -3,6 +3,87 @@
   settings,
   ...
 }: {
+  programs.i3status = {
+    enable = true;
+    general = {
+      colors = false;
+      interval = 5;
+    };
+
+    modules = let
+      min_width = 200;
+      align = "center";
+    in {
+      "wireless _first_" = {
+        enable = settings.usesWireless;
+        position = 5;
+        settings = {
+          inherit align min_width;
+          format_up = "\"wireless: %essid\"";
+          format_down = "\"wireless:  down\"";
+        };
+      };
+      "ethernet _first_" = {
+        enable = settings.usesEthernet;
+        position = 6;
+        settings = {
+          inherit align min_width;
+          format_up = "\"E: (%speed)\"";
+          format_down = "\"E: down\"";
+        };
+      };
+      cpu_usage = {
+        enable = true;
+        position = 3;
+        settings = {
+          inherit min_width align;
+          format = "\"CPU %usage\"";
+          max_threshold = 75;
+          format_above_threshold = "\"DANGER: CPU %usage\"";
+          degraded_threshold = 25;
+          format_above_degraded_threshold = "\"CPU %usage\"";
+        };
+      };
+      "battery all" = {
+        enable = true;
+        position = 7;
+        settings = {
+          inherit min_width align;
+          format = "\"%status %percentage %emptytime\"";
+          format_down = "\"empty\"";
+          status_chr = "\"battery ^\"";
+          status_bat = "\"battery -\"";
+          status_unk = "\"battery ?\"";
+          status_full = "\"battery -\"";
+        };
+      };
+      "disk \"/\"" = {
+        enable = true;
+        position = 1;
+        settings = {
+          inherit align;
+          min_width = min_width + 50;
+          format = "\"NIXROOT : %free free / %total\"";
+        };
+      };
+      "disk \"/home\"" = {
+        enable = true;
+        position = 2;
+        settings = {
+          min_width = min_width + 50;
+          align = center;
+          format = "\"NIXHOME : %free free / %total\"";
+        };
+      };
+      "tztime local" = {
+        enable = true;
+        position = 8;
+        settings = {
+          format = "\"%Y-%m-%d %I:%M\"";
+        };
+      };
+    };
+  };
   xsession.windowManager.i3 = {
     enable = true;
     package = pkgs.i3-gaps;
