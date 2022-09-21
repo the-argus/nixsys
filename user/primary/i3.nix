@@ -58,16 +58,11 @@
 
       startup =
         map (cmd: {command = cmd;})
-        (
-          (
-            pkgs.callPackage ./lib/xorg.nix
-            {
-              picomConfigLocation = "~/.config/i3/picom.conf";
-              inherit settings;
-            }
-          )
-          .autoStart
-        );
+        ((pkgs.callPackage ./lib/xorg.nix {inherit settings;})
+          .mkAutoStart {
+            isI3 = true;
+            picomConfigLocation = "~/.config/i3/picom.conf";
+          });
     };
 
     extraConfig = '''';

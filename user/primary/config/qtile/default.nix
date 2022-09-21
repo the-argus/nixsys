@@ -24,14 +24,10 @@
         #!/bin/sh
         ${
           builtins.concatStringsSep "\n"
-          (
-            pkgs.callPackage ../../lib/xorg.nix
-            {
-              inherit settings;
+          ((pkgs.callPackage ../../lib/xorg.nix {inherit settings;})
+            .mkAutoStart {
               picomConfigLocation = "~/.config/qtile/config/picom.conf";
-            }
-          )
-          .autoStart
+            })
         }
       '';
       executable = true;

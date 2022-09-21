@@ -2,7 +2,6 @@
   pkgs,
   lib,
   settings,
-  picomConfigLocation,
   ...
 }: let
   optional = condition: str: (
@@ -32,7 +31,10 @@ in rec {
       "${pkgs.xmousepasteblock}/bin/xmousepasteblock"
     ];
 
-  autoStart = {isI3 ? false}: let
+  mkAutoStart = {
+    isI3 ? false,
+    picomConfigLocation ? "~/.config/picom/picom.conf",
+  }: let
     execFunc =
       if isI3
       then execI3
