@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   settings,
   picomConfigLocation,
   ...
@@ -9,31 +10,50 @@
     then str
     else ""
   );
+  optionalList = lib.lists.optional;
+
+  execShell = path: "${path} &";
+  execI3 = path: "--no-startup-id ${path}";
 in rec {
-  bluetoothAutostart = ''
-    # laptop has bluetooth and wireless
-    ${pkgs.blueman}/bin/blueman-applet &
-  '';
+  bluetoothAutostart = {execFunc ? execShell}:
+    map execFunc [
+      # laptop has bluetooth and wireless
+      "${pkgs.blueman}/bin/blueman-applet"
+    ];
 
-  wirelessAutostart = ''
-    ${pkgs.networkmanagerapplet}/bin/nm-applet &
-  '';
+  wirelessAutostart = {execFunc ? execShell}:
+    map execFunc [
+      "${pkgs.networkmanagerapplet}/bin/nm-applet"
+    ];
 
-  mouseAutostart = ''
-    # i use a mouse on my pc, so theres middleclick
-    ${pkgs.xmousepasteblock}/bin/xmousepasteblock &
-  '';
+  mouseAutostart = {execFunc ? execShell}:
+    map execFunc [
+      # i use a mouse on my pc, so theres middleclick
+      "${pkgs.xmousepasteblock}/bin/xmousepasteblock"
+    ];
 
-  autoStart = [
-    "${pkgs.dunst}/bin/dunst &"
-    "${pkgs.xfce.xfce4-clipman-plugin}/bin/xfce4-clipman &"
-    "${pkgs.xclip}/bin/xclip &"
-    "picom --config ${picomConfigLocation} &"
+  autoStart = {isI3 ? false}: let
+    execFunc =
+      if isI3
+      then execI3
+      else execShell;
+  in
+    map execFunc [
+      "${pkgs.dunst}/bin/dunst"
+      "${pkgs.xfce.xfce4-clipman-plugin}/bin/xfce4-clipman"
+      "${pkgs.xclip}/bin/xclip"
+      "picom --config ${picomConfigLocation}"
 
-    # restore feh wallpaper
-    "$HOME/.fehbg"
-    "${optional settings.usesWireless wirelessAutostart}"
-    "${optional settings.usesBluetooth bluetoothAutostart}"
-    "${optional settings.usesMouse mouseAutostart}"
-  ];
+      # restore feh wallpaper
+      "$HOME/.fehbg"
+    ]
+    ++ (optionalList settings.usesWireless (wirelessAutostart {
+      inherit execFunc;
+    }))
+    ++ (optionalList settings.usesBluetooth (bluetoothAutostart {
+      inherit execFunc;
+    }))
+    ++ (optionalList settings.usesMouse (mouseAutostart {
+      inherit execFunc;
+    }));
 }

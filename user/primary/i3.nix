@@ -8,23 +8,23 @@
     package = pkgs.i3-gaps;
 
     config = let
-      colors = (pkgs.callPackage ./themes.nix {}).scheme;
+      systemColors = (pkgs.callPackage ./themes.nix {}).scheme;
     in {
       modifier = "Mod4"; # super key
       workspaceAutoBackAndForth = true;
 
       colors = let
         mkColor = color: "#${color}";
-        bg = mkColor colors.hi1;
-        inactive-bg = (mkColor colors.bg) + "CC";
+        bg = mkColor systemColors.hi1;
+        inactive-bg = (mkColor systemColors.bg) + "CC";
         text = bg;
         inactive-text = bg;
-        urgent-bg = colors.red;
-        inactive-border = (mkColor colors.bg) + "00";
+        urgent-bg = mkColor systemColors.red;
+        inactive-border = (mkColor systemColors.bg) + "00";
 
         transparent = "#00000000";
         indicator = "#424242";
-        childBorder = mkColor colors.altfg;
+        childBorder = mkColor systemColors.altfg;
       in rec {
         background = transparent;
         focused = {
