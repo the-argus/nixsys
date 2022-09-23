@@ -41,11 +41,11 @@ in {
         };
       in {
         surface = {
-          strongest = p.altbg3;
-          strong = p.altbg3;
+          strongest = p.bg;
+          strong = p.bg;
           moderate = p.altbg2;
-          weak = p.bg;
-          weakest = p.bg;
+          weak = p.altbg3;
+          weakest = p.altbg3;
         };
         whites = let
           mkWhite = alpha: "${p.white}${alpha}";
