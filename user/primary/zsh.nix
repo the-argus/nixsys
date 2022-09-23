@@ -41,7 +41,6 @@
       {
         # regular aliases
         nf = "neofetch";
-        fm = "ranger";
         search = "nix search nixpkgs";
         matrix = "tmatrix -c default -C yellow -s 60 -f 0.2,0.3 -g 10,20 -l 1,50 -t \"hello, ${username}.\"";
         umatrix = "unimatrix -a -c yellow -f -s 95 -l aAcCgGkknnrR";
@@ -121,9 +120,21 @@
 
       function ip () { command ip -color=auto "$@"; }
 
-      function pc () { sudo pacman --color always "$@"; }
-
-      function pacman () { command pacman --color always "$@"; }
+      function fm {
+        local IFS=$'\t\n'
+        local tempfile="$(mktemp -t tmp.XXXXXX)"
+        local ranger_cmd=(
+          command
+          ranger
+          --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
+        )
+        
+        $\\{ranger_cmd[@]} "$@"
+        if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+          cd -- "$(cat "$tempfile")" || return
+        fi
+        command rm -f -- "$tempfile" 2>/dev/null
+      }
 
       duk ()
       {
