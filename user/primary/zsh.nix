@@ -22,7 +22,10 @@
     eval "$(starship init bash)"
   '';
 
-  modernUnix.enable = true;
+  programs.modernUnix = {
+    enable = true;
+    initExtra = ''alias df="duf"'';
+  };
 
   programs.zsh = let
     dDir = ".config/zsh";
