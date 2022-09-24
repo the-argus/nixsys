@@ -2,8 +2,11 @@
   pkgs,
   username,
   settings,
+  modern-unix,
   ...
 }: {
+  imports = [modern-unix.homeManagerModule];
+
   programs.starship = {
     enable = true;
     settings = {
@@ -18,6 +21,8 @@
     #!/bin/sh
     eval "$(starship init bash)"
   '';
+
+  modernUnix.enable = true;
 
   programs.zsh = let
     dDir = ".config/zsh";
@@ -84,19 +89,19 @@
       }
     ];
 
-    completionInit = ''
-      # compatibility between nix and autocomplete
-      bindkey "''${key[Up]}" up-line-or-search
+    # completionInit = ''
+    #   # compatibility between nix and autocomplete
+    #   bindkey "''${key[Up]}" up-line-or-search
 
-      # minimum number of characters to type before autocomplete
-      zstyle ':autocomplete:*' min-input 1
-      # only insert up to common characters
-      zstyle ':autocomplete:*' insert-unambiguous yes
-      # dont move prompt up to make room for autocomplete very much
-      zstyle ':autocomplete:*' list-lines 4
-      # tab multiple times to move through menu
-      zstyle ':autocomplete:*' widget-style menu-select
-    '';
+    #   # minimum number of characters to type before autocomplete
+    #   zstyle ':autocomplete:*' min-input 1
+    #   # only insert up to common characters
+    #   zstyle ':autocomplete:*' insert-unambiguous yes
+    #   # dont move prompt up to make room for autocomplete very much
+    #   zstyle ':autocomplete:*' list-lines 4
+    #   # tab multiple times to move through menu
+    #   zstyle ':autocomplete:*' widget-style menu-select
+    # '';
 
     initExtra = ''
       # INCLUDES---------------------------------------------------------------------
@@ -128,7 +133,7 @@
           ranger
           --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
         )
-        
+
         $\\{ranger_cmd[@]} "$@"
         if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
           cd -- "$(cat "$tempfile")" || return
@@ -205,39 +210,7 @@
 
 
       eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
-
-
-      #
-      # PROMPT CONFIG
-      #
-
-      # PROMPT_START=""
-      # NAME_HOST_SEPARATOR=" at "
-      # HOST_DIR_SEPARATOR=" in "
-      # MODULE_SEPARATOR_START=" "
-      # MODULE_SEPARATOR_END=" "
-      # NEWLINE_PROMPT_START="❯ "
-      # MAIN_MODULE_SEPARATOR_START=""
-      # MAIN_MODULE_SEPARATOR_END=""
-      # GIT_MODULE_SEPARATOR_START="on "
-      # GIT_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$GIT_MODULE_SEPARATOR_START"
-      # GIT_MODULE_SEPARATOR_END=""
-      # PYTHON_MODULE_SEPARATOR_START="using python "
-      # PYTHON_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$PYTHON_MODULE_SEPARATOR_START"
-      # PYTHON_MODULE_SEPARATOR_END=""
-      # TIME_MODULE_SEPARATOR_START="took "
-      # TIME_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$TIME_MODULE_SEPARATOR_START"
-      # TIME_MODULE_SEPARATOR_END=""
-      # NIX_MODULE_SEPARATOR_START="using "
-      # NIX_MODULE_SEPARATOR_START="$MODULE_SEPARATOR_START$NIX_MODULE_SEPARATOR_START"
-      # NIX_MODULE_SEPARATOR_END=""
-      #
-      # USER_HOST_SEP_STYLE="$REGULAR"
-      # HOST_DIR_SEP_STYLE="$REGULAR"
-      # MOD_SEP_STYLE="$REGULAR"
-      #
-      # # prompt module order
-      # prompt='$(_start_module)$(_main_module)$(_nix_module)$(_time_module)$(_git_module)$(_python_module)'$'\n''$(_newline_module)'
+      eval "$(modernunix)"
     '';
   };
 }

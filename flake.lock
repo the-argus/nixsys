@@ -386,7 +386,9 @@
     "gtk-nix": {
       "inputs": {
         "dream2nix": "dream2nix",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "source": "source"
       },
       "locked": {
@@ -454,19 +456,40 @@
         "type": "indirect"
       }
     },
-    "nixpkgs": {
+    "modern-unix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1662911228,
-        "narHash": "sha256-oJOrB2lEeBLaO8g1DKG5PK9a1zyOWypkscrEfxxEj8A=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "c97e777ff06fcb8d37dcdf5e21e9eff1f34f0e90",
+        "lastModified": 1664057384,
+        "narHash": "sha256-/jxzIRkd1OerdGCPWxaoqpGnYMfaLkWu2bQ0oofa7P8=",
+        "owner": "the-argus",
+        "repo": "modern-unix-flake",
+        "rev": "590e928f58ad6af9b64bb03c602cbd33454f34e0",
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-unstable",
-        "type": "indirect"
+        "owner": "the-argus",
+        "repo": "modern-unix-flake",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1663855239,
+        "narHash": "sha256-A2B7rlFKmBikRwz/cmayWcTAhyIOdp2whjVCDGhg9Xw=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "bcc68429a50c4ac051920c72c60e417202c19d79",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-22.05",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-remotebuild": {
@@ -497,52 +520,6 @@
       "original": {
         "owner": "nixos",
         "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1663855239,
-        "narHash": "sha256-A2B7rlFKmBikRwz/cmayWcTAhyIOdp2whjVCDGhg9Xw=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "bcc68429a50c4ac051920c72c60e417202c19d79",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-22.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1655043425,
-        "narHash": "sha256-A+oT+aQGhW5lXy8H0cqBLsYtgcnT5glmGOXWQDcGw6I=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "914ef51ffa88d9b386c71bdc88bffc5273c08ada",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-unstable",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
-        "lastModified": 1663684946,
-        "narHash": "sha256-2+miCrlBWC3ELfz862mJ4U8qQyfiD+XLzD9p6k/WzCs=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "0d7222c92f0503d15176281c7182d2782dc1b6da",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -658,7 +635,8 @@
         "chrome-extensions": "chrome-extensions",
         "gtk-nix": "gtk-nix",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2",
+        "modern-unix": "modern-unix",
+        "nixpkgs": "nixpkgs",
         "nixpkgs-remotebuild": "nixpkgs-remotebuild",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvim-config": "nvim-config",
@@ -736,7 +714,9 @@
     },
     "spicetify-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1663206926,
@@ -755,7 +735,9 @@
     "webcord": {
       "inputs": {
         "dream2nix": "dream2nix_2",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "webcord": "webcord_2"
       },
       "locked": {

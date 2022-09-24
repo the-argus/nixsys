@@ -16,10 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    webcord = {
-      url = "github:fufexan/webcord-flake";
-    };
-
     rycee-expressions = {
       url = "gitlab:rycee/nur-expressions";
       flake = false;
@@ -30,11 +26,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    webcord = {
+      url = "github:fufexan/webcord-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    gtk-nix.url = "github:the-argus/gtk-nix";
+    gtk-nix = {
+      url = "github:the-argus/gtk-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    modern-unix = {
+      url = "github:the-argus/modern-unix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # non-nix imports (need fast updates):
     nvim-config = {
@@ -60,6 +67,7 @@
     audio-plugins,
     chrome-extensions,
     spicetify-nix,
+    modern-unix,
     gtk-nix,
     nvim-config,
     arkenfox-userjs,
