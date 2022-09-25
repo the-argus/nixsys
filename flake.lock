@@ -524,6 +524,21 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1664067556,
+        "narHash": "sha256-FKxmpX/jx4b2TFI+qoP7HzmksyPki9tkME6Rn8Z6DLg=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2d74c2522259b8b3ce66176c2b9878710c2ddf3e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nvim-config": {
       "flake": false,
       "locked": {
@@ -735,9 +750,7 @@
     "webcord": {
       "inputs": {
         "dream2nix": "dream2nix_2",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs_2",
         "webcord": "webcord_2"
       },
       "locked": {
