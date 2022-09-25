@@ -104,7 +104,7 @@ in {
       ];
     };
 
-    plugins = [zsh-nix-shell];
+    plugins = with plugins; [zsh-nix-shell];
 
     # completionInit = ''
     #   # compatibility between nix and autocomplete
