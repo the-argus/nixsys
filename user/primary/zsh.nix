@@ -5,7 +5,29 @@
   modern-unix,
   ...
 }: let
-  enableModernUnix = false;
+  enableModernUnix = true;
+  plugins = {
+    my-zsh = {name = "the-argus/my-zsh";};
+    zsh-autocomplete = {name = "marlonrichert/zsh-autocomplete";};
+    deer = {
+      name = "Vifon/deer";
+      tags = [use:deer];
+    };
+    zsh-completions = {name = "zsh-users/zsh-completions";};
+    nix-zsh-completions = {name = "spwhitt/nix-zsh-completions";};
+    zsh-autopair = {name = "hlissner/zsh-autopair";};
+
+    zsh-nix-shell = {
+      name = "zsh-nix-shell";
+      file = "nix-shell.plugin.zsh";
+      src = pkgs.fetchFromGitHub {
+        owner = "chisui";
+        repo = "zsh-nix-shell";
+        rev = "v0.5.0";
+        sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
+      };
+    };
+  };
 in {
   imports = [modern-unix.homeManagerModule];
 
@@ -42,12 +64,13 @@ in {
     dotDir = dDir;
     enableCompletion = true;
     enableSyntaxHighlighting = true;
+    enableAutosuggestions = true;
 
     history = {
       path = "$HOME/${dDir}/histfile";
       ignorePatterns = ["ls *" "exit" "clear" "fg"];
       ignoreDups = true;
-      share = true;
+      share = false;
     };
 
     shellAliases =
@@ -71,31 +94,17 @@ in {
 
     zplug = {
       enable = true;
-      plugins = [
-        # { name = "the-argus/my-zsh"; }
-        # {name = "marlonrichert/zsh-autocomplete";}
-        {
-          name = "Vifon/deer";
-          tags = [use:deer];
-        }
-        {name = "zsh-users/zsh-completions";}
-        {name = "spwhitt/nix-zsh-completions";}
-        {name = "hlissner/zsh-autopair";}
+      plugins = with plugins; [
+        # my-zsh # I just use starship now
+        # zsh-autocomplete
+        # deer # broot or ranger is better really
+        zsh-completions
+        # nix-zsh-completions # these dont work and have weird side effects
+        zsh-autopair
       ];
     };
 
-    plugins = [
-      {
-        name = "zsh-nix-shell";
-        file = "nix-shell.plugin.zsh";
-        src = pkgs.fetchFromGitHub {
-          owner = "chisui";
-          repo = "zsh-nix-shell";
-          rev = "v0.5.0";
-          sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
-        };
-      }
-    ];
+    plugins = [zsh-nix-shell];
 
     # completionInit = ''
     #   # compatibility between nix and autocomplete
@@ -139,7 +148,7 @@ in {
         local ranger_cmd=(
           command
           ranger
-          --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
+          --cmd="map q chain shell echo %d > "$tempfile"; quitall"
         )
 
         ${"$\{ranger_cmd[@]}"} "$@"
@@ -148,6 +157,10 @@ in {
         fi
         command rm -f -- "$tempfile" 2>/dev/null
       }
+
+      alias ranger=fm
+      alias look="command ranger"
+      alias view="command ranger"
 
       duk ()
       {
@@ -204,17 +217,16 @@ in {
           ~/.local/bin/volume.sh refresh
       }
 
-      autoload -U deer
-
       # CONFIG ----------------------------------------------------------------------
 
       #
       # DEER CONFIG
       #
-      zle -N deer
-      bindkey '\ek' deer
-      zstyle ':deer:' height 35
-      zstyle :deer: show_hidden yes
+      # autoload -U deer
+      # zle -N deer
+      # bindkey '\ek' deer
+      # zstyle ':deer:' height 35
+      # zstyle :deer: show_hidden yes
 
 
       eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
