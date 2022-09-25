@@ -17,6 +17,8 @@
     nix-zsh-completions = {name = "spwhitt/nix-zsh-completions";};
     zsh-autopair = {name = "hlissner/zsh-autopair";};
 
+    sandboxd = {name = "benvan/sandboxd";};
+
     zsh-nix-shell = {
       name = "zsh-nix-shell";
       file = "nix-shell.plugin.zsh";
@@ -50,9 +52,32 @@ in {
     enable = enableModernUnix;
     initExtra = ''alias df="duf"'';
     excludePackages = with pkgs; [
-      mcfly
+      # mcfly
     ];
+    initZoxide = false; # handle this in sandboxd
   };
+
+  home.file.".config/sandboxd/sandboxrc".text = ''
+    sandbox_init_zoxide() {
+      eval "$(zoxide init zsh)"
+    }
+
+    # sandbox_init_mcfly() {
+    #   eval "$(mcfly init zsh)"
+    # }
+
+    sandbox_init_completion() {
+      autoload -U compinit && compinit
+    }
+
+    sandbox_hook zoxide z
+    sandbox_hook zoxide cd
+    sandbox_hook completion cd
+    sandbox_hook completion git
+    sandbox_hook completion ls
+
+    # sandbox_hook mcfly mcfly
+  '';
 
   programs.zsh = let
     dDir = ".config/zsh";
@@ -101,10 +126,13 @@ in {
         zsh-completions
         # nix-zsh-completions # these dont work and have weird side effects
         zsh-autopair
+        sandboxd
       ];
     };
 
     plugins = with plugins; [zsh-nix-shell];
+
+    completionInit = "";
 
     # completionInit = ''
     #   # compatibility between nix and autocomplete
@@ -121,7 +149,6 @@ in {
     # '';
 
     initExtra = ''
-      zmodload zsh/zprof
       # INCLUDES---------------------------------------------------------------------
 
       # hole in reproducability bc i like to add aliases quickly
@@ -131,15 +158,30 @@ in {
       	xdg-open "$@">/dev/null 2>&1
       }
 
-      function ls () { command ls --color=auto --group-directories-first "$@"; }
-
-      function lsl () {
-      	ls -la --color=always $1 | command grep "^d" && ls -la $1 | command grep -v "^d"
+      ${
+        if !enableModernUnix
+        then ''
+          function ls () { command ls --color=auto --group-directories-first "$@"; } ''
+        else ""
       }
 
-      function diff () { command diff --color=auto "$@"; }
+      function lsl () {
+      	ls -la ${
+        if !enableModernUnix
+        then ''--color=always $1 | command grep "^d" && ls -la $1 | command grep -v "^d"''
+        else ""
+      }
+      }
 
-      function grep () { command grep "$@" --color=always; }
+      ${
+        if !enableModernUnix
+        then ''
+          function diff () { command diff --color=auto "$@"; }
+
+          function grep () { command grep "$@" --color=always; }
+        ''
+        else ""
+      }
 
       function ip () { command ip -color=auto "$@"; }
 
@@ -236,8 +278,6 @@ in {
         then "eval \"$(modern-unix)\""
         else ""
       }
-
-      zprof
     '';
   };
 }
