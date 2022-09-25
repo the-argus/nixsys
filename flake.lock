@@ -463,11 +463,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1664079268,
-        "narHash": "sha256-7SSIFN0435WrDifYKH52ARxHUXs8CDQ2GMbiXhUJ1qc=",
+        "lastModified": 1664122836,
+        "narHash": "sha256-uBti58vB6o2xRmxZv36NJcmemOTehY/wSJ69GmFphFM=",
         "owner": "the-argus",
         "repo": "modern-unix-flake",
-        "rev": "fe758f7fafe8d4ddfc3262b65180bf3c29c65cc8",
+        "rev": "ed18c9461a8ac23bd100cd2c98a93fc623863b3e",
         "type": "github"
       },
       "original": {
@@ -526,11 +526,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1663850217,
-        "narHash": "sha256-tp9nXo1/IdN/xN9m06ryy0QUAEfoN6K56ObM/1QTAjc=",
+        "lastModified": 1664017330,
+        "narHash": "sha256-919WZKBTxFdTkzIK6uJXE7hwSPQb7e/ekybxxWaotR4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ae1dc133ea5f1538d035af41e5ddbc2ebcb67b90",
+        "rev": "fde244a8c7655bc28616864e2290ad9c95409c2c",
         "type": "github"
       },
       "original": {
