@@ -8,7 +8,7 @@
     nixpkgs-localbuild.url = "github:nixos/nixpkgs?ref=nixos-22.05";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
-      # home manager use out nixpkgs and not its own
+      # home manager use our nixpkgs and not its own
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
