@@ -226,28 +226,27 @@
         inherit (settingsSet.optimization) useMusl useFlags;
         inherit (settingsSet) allowedUnfree system plymouth name;
       in {
-        config =
-          {
-            inherit (settingsSet) allowBroken;
-            allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowedUnfree;
-          }
-          // (
-            if
-              settingsSet.optimization.useFlags
-              or settingsSet.optimization.useClang
-            then {
-              replaceStdenv = {
-                pkgs,
-                unstable,
-                remotebuild,
-                localbuild,
-              }: let
-                pkgSets = {inherit unstable remotebuild localbuild pkgs;};
-              in
-                builtins.trace "Optimizing for ${settingsSet.name}" (optimizedStdenv (pkgSets.${settingsSet.name}));
-            }
-            else {}
-          );
+        config = {
+          inherit (settingsSet) allowBroken;
+          allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) allowedUnfree;
+        };
+        # // (
+        #   if
+        #     settingsSet.optimization.useFlags
+        #     or settingsSet.optimization.useClang
+        #   then {
+        #     replaceStdenv = {
+        #       pkgs,
+        #       unstable,
+        #       remotebuild,
+        #       localbuild,
+        #     }: let
+        #       pkgSets = {inherit unstable remotebuild localbuild pkgs;};
+        #     in
+        #       optimizedStdenv (pkgSets.${settingsSet.name});
+        #   }
+        #   else {}
+        # );
         localSystem =
           {
             inherit system;
