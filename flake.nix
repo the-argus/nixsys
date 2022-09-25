@@ -245,7 +245,7 @@
               }: let
                 pkgSets = {inherit unstable remotebuild localbuild pkgs;};
               in
-                optimizedStdenv (pkgSets.${settings.name});
+                optimizedStdenv (pkgSets.${settingsSet.name});
             }
             else {}
           );
