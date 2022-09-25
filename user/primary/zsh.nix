@@ -213,7 +213,7 @@
 
 
       eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
-      eval "$(modernunix)"
+      eval "$(modern-unix)"
     '';
   };
 }
