@@ -25,6 +25,9 @@
   programs.modernUnix = {
     enable = true;
     initExtra = ''alias df="duf"'';
+    excludePackages = with pkgs; [
+      zoxide
+    ];
   };
 
   programs.zsh = let
