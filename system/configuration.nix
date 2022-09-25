@@ -117,55 +117,47 @@
   #     xdg-desktop-portal
   #   ];
   # };
-  environment.systemPackages = with pkgs;
-    [
-      # tui applications
-      ranger
-      neovim
-      htop
-      lynx
-      w3m
+  environment.systemPackages = with pkgs; [
+    # tui applications
+    ranger
+    neovim
+    htop
+    lynx
+    w3m
 
-      # cli applications
-      neofetch
-      tmatrix
-      cmatrix
-      zip
-      unzip
-      wget
-      curl
-      ffmpeg
-      direnv
-      nix-direnv-flakes
+    # cli applications
+    neofetch
+    tmatrix
+    cmatrix
+    zip
+    unzip
+    wget
+    curl
+    ffmpeg
+    direnv
+    nix-direnv-flakes
 
-      # util
-      git
-      home-manager
-      pam_u2f
-      polkit
-      usbutils
-      nix-index
-      alsa-utils
-      ix
-      killall
-      pciutils
-      inetutils
+    # util
+    git
+    home-manager
+    pam_u2f
+    polkit
+    usbutils
+    nix-index
+    alsa-utils
+    ix
+    killall
+    pciutils
+    inetutils
 
-      curlftpfs
-      sshfs
+    curlftpfs
+    sshfs
 
-      # build - essential
-      gcc
-      lld
-      llvm
-    ]
-    ++ (map (pkgName: let
-      pkgsets = {inherit pkgs unstable remotebuild;};
-    in
-      if builtins.typeOf pkgName == "set"
-      then pkgsets.${pkgName.set}.${pkgName.package}
-      else pkgs.${pkgName})
-    settings.additionalSystemPackages);
+    # build - essential
+    gcc
+    lld
+    llvm
+  ];
 
   system.stateVersion = "22.05";
 }

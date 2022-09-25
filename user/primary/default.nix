@@ -69,81 +69,73 @@
   home.packages = let
     webcordPkg = webcord.packages.${pkgs.system}.default;
   in
-    with pkgs;
-      [
-        # unfree :(
-        slack
-        discord
-        # spotify-unwrapped
-        # lutris
+    with pkgs; [
+      # unfree :(
+      slack
+      discord
+      # spotify-unwrapped
+      # lutris
 
-        # gui applications---------
-        webcordPkg
-        obs-studio
-        gimp
-        thunderbird
-        element-desktop
-        keepassxc
-        pcmanfm
-        qalculate-gtk
-        heroic
-        polymc
-        pavucontrol
-        sxiv
-        mpv
-        zathura
-        qpwgraph
-        qdirstat
+      # gui applications---------
+      webcordPkg
+      obs-studio
+      gimp
+      thunderbird
+      element-desktop
+      keepassxc
+      pcmanfm
+      qalculate-gtk
+      heroic
+      polymc
+      pavucontrol
+      sxiv
+      mpv
+      zathura
+      qpwgraph
+      qdirstat
 
-        pinta
-        inkscape
-        # color palette
-        wl-color-picker
-        epick
-        pngquant
+      pinta
+      inkscape
+      # color palette
+      wl-color-picker
+      epick
+      pngquant
 
-        # tui
-        cava
+      # tui
+      cava
 
-        # cli
-        solo2-cli
-        transmission
-        ani-cli
-        nix-prefetch-scripts
+      # cli
+      solo2-cli
+      transmission
+      ani-cli
+      nix-prefetch-scripts
 
-        # dev
-        nodejs
-        cargo
-        sumneko-lua-language-server
-        rnix-lsp
-        libclang
+      # dev
+      nodejs
+      cargo
+      sumneko-lua-language-server
+      rnix-lsp
+      libclang
 
-        # useful linters
-        python310Packages.demjson3
-        python310Packages.mdformat
-        alejandra
+      # useful linters
+      python310Packages.demjson3
+      python310Packages.mdformat
+      alejandra
 
-        # appearance
-        # rose-pine-gtk-theme
-        # paper-gtk-theme # Paper
-        # Icons: Lounge-aux
-        # Themes: Lounge Lounge-compact Lounge-night Lounge-night-compact
-        # lounge-gtk-theme
-        # juno-theme # Juno Juno-mirage Juno-ocean Juno-palenight
-        # graphite-gtk-theme # Graphite Graphite-dark Graphite-light Graphite-dark-hdpi Graphite-hdpi ....
+      # appearance
+      # rose-pine-gtk-theme
+      # paper-gtk-theme # Paper
+      # Icons: Lounge-aux
+      # Themes: Lounge Lounge-compact Lounge-night Lounge-night-compact
+      # lounge-gtk-theme
+      # juno-theme # Juno Juno-mirage Juno-ocean Juno-palenight
+      # graphite-gtk-theme # Graphite Graphite-dark Graphite-light Graphite-dark-hdpi Graphite-hdpi ....
 
-        # paper-icon-theme
-        # zafiro-icons
-        # pantheon.elementary-icon-theme
-        # material-icons
-        # numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
-        # capitaine-cursors
-      ]
-      ++ (map (pkgName: let
-        pkgsets = {inherit pkgs unstable remotebuild;};
-      in
-        if builtins.typeOf pkgName == "set"
-        then pkgsets.${pkgName.set}.${pkgName.package}
-        else pkgs.${pkgName})
-      additionalUserPackages);
+      # paper-icon-theme
+      # zafiro-icons
+      # pantheon.elementary-icon-theme
+      # material-icons
+      # numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
+      # capitaine-cursors
+    ];
 }
