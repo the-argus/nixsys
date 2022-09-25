@@ -241,11 +241,10 @@
                 unstable,
                 remotebuild,
                 localbuild,
-                settings,
               }: let
                 pkgSets = {inherit unstable remotebuild localbuild pkgs;};
               in
-                optimizedStdenv (pkgSets.${settingsSet.name});
+                builtins.trace "Optimizing for ${settingsSet.name}" (optimizedStdenv (pkgSets.${settingsSet.name}));
             }
             else {}
           );
