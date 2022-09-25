@@ -26,7 +26,7 @@
     enable = true;
     initExtra = ''alias df="duf"'';
     excludePackages = with pkgs; [
-      zoxide
+      mcfly
     ];
   };
 
