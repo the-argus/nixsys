@@ -168,9 +168,10 @@
       };
       nix = {}; # dont edit nix settings
       additionalSystemPackages = [];
-      remotebuildOverrides = {};
-      localbuildOverrides = {};
-      unstableOverrides = {};
+      name = "pkgs";
+      remotebuildOverrides = {name = "remotebuild";};
+      localbuildOverrides = {name = "localbuild";};
+      unstableOverrides = {name = "unstable";};
     };
 
     # based on those settings, create any additional entries that
@@ -223,7 +224,7 @@
 
       mkPkgsInputs = settingsSet: let
         inherit (settingsSet.optimization) useMusl useFlags;
-        inherit (settingsSet) allowedUnfree system plymouth;
+        inherit (settingsSet) allowedUnfree system plymouth name;
       in {
         config =
           {
@@ -235,7 +236,16 @@
               settingsSet.optimization.useFlags
               or settingsSet.optimization.useClang
             then {
-              replaceStdenv = {pkgs}: optimizedStdenv pkgs;
+              replaceStdenv = {
+                pkgs,
+                unstable,
+                remotebuild,
+                localbuild,
+                settings,
+              }: let
+                pkgSets = {inherit unstable remotebuild localbuild pkgs;};
+              in
+                optimizedStdenv (pkgSets.${settings.name});
             }
             else {}
           );
@@ -351,7 +361,7 @@
           settings.packageSelections.unstable);
     in (nixpkgs.lib.trivial.mergeAttrs settings rec {
       features = ["gccarch-${settings.optimization.arch}"];
-      inherit pkgs unstable remotebuild;
+      inherit pkgs unstable remotebuild localbuild;
       homeDirectory = "/home/${settings.username}";
       firefox-addons =
         (import "${rycee-expressions}" {
@@ -372,7 +382,7 @@
           // {
             inherit (fs) unstable hostname username useMusl remotebuild;
             inherit (fs) useFlags plymouth usesWireless usesBluetooth;
-            inherit (fs) usesEthernet;
+            inherit (fs) usesEthernet localbuild;
             settings = fs;
           };
         modules = [
