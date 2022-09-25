@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-remotebuild.url = "github:nixos/nixpkgs?ref=nixos-22.05";
+    nixpkgs-localbuild.url = "github:nixos/nixpkgs?ref=nixos-22.05";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       # home manager use out nixpkgs and not its own
@@ -58,6 +59,7 @@
     nixpkgs,
     nixpkgs-unstable,
     nixpkgs-remotebuild,
+    nixpkgs-localbuild,
     home-manager,
     webcord,
     rycee-expressions,
@@ -119,6 +121,7 @@
           # "linuxPackages_xanmod_latest"
           # "qtile"
         ];
+        localbuild = [];
       };
       additionalUserPackages = [
         #"steam"
@@ -166,6 +169,7 @@
       nix = {}; # dont edit nix settings
       additionalSystemPackages = [];
       remotebuildOverrides = {};
+      localbuildOverrides = {};
       unstableOverrides = {};
     };
 
@@ -330,12 +334,19 @@
             crossSystem.system = "x86_64-linux";
           })
           settings.remotebuildOverrides);
+      localbuild =
+        # version of pkgs meant to be compiled on remote aarch64 server
+        import nixpkgs-localbuild
+        (override (mkPkgsInputs settings)
+          settings.remotebuildOverrides);
       # add the overlays to pkgInputs
       pkgs =
         import nixpkgs
         (mkOverlays unstable
           (mkOverlays remotebuild
-            (mkPkgsInputs settings)
+            (mkOverlays localbuild
+              (mkPkgsInputs settings)
+              settings.packageSelections.localbuild)
             settings.packageSelections.remotebuild)
           settings.packageSelections.unstable);
     in (nixpkgs.lib.trivial.mergeAttrs settings rec {

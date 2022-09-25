@@ -492,6 +492,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-localbuild": {
+      "locked": {
+        "lastModified": 1664029467,
+        "narHash": "sha256-ir7JbsLp2mqseCs3qI+Z/pkt+Gh+GfANbYcI5I+Gvnk=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "893b6b9f6c4ed0c7efdb84bd300a499a2da9fa51",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-22.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-remotebuild": {
       "locked": {
         "lastModified": 1664029467,
@@ -652,6 +668,7 @@
         "home-manager": "home-manager",
         "modern-unix": "modern-unix",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-localbuild": "nixpkgs-localbuild",
         "nixpkgs-remotebuild": "nixpkgs-remotebuild",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvim-config": "nvim-config",
