@@ -463,11 +463,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1664078431,
-        "narHash": "sha256-Q3+nk9/hshSlamGfcOLySzdTvdPj9WP+m+EbACG7LGc=",
+        "lastModified": 1664079268,
+        "narHash": "sha256-7SSIFN0435WrDifYKH52ARxHUXs8CDQ2GMbiXhUJ1qc=",
         "owner": "the-argus",
         "repo": "modern-unix-flake",
-        "rev": "63585f552d6cb50f339aac2267f5657a3e889d25",
+        "rev": "fe758f7fafe8d4ddfc3262b65180bf3c29c65cc8",
         "type": "github"
       },
       "original": {
@@ -697,11 +697,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1663992154,
-        "narHash": "sha256-YuJFBG3EHTZLoOb9qPuiTg9cjTtQ7lsXy+45D9TGZUM=",
+        "lastModified": 1664078574,
+        "narHash": "sha256-sW994u9LKqq6/zFbHr1UOwlbFSQ7THCQe3mXCq9iiJQ=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "21faa23d377a3bcf2f681715251f5eacae9e62c1",
+        "rev": "2fb3be7ddd0ee810abff0defb8969237e6a3d361",
         "type": "gitlab"
       },
       "original": {
