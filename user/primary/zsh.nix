@@ -121,6 +121,7 @@ in {
     # '';
 
     initExtra = ''
+      zmodload zsh/zprof
       # INCLUDES---------------------------------------------------------------------
 
       # hole in reproducability bc i like to add aliases quickly
@@ -235,6 +236,8 @@ in {
         then "eval \"$(modern-unix)\""
         else ""
       }
+
+      zprof
     '';
   };
 }
