@@ -137,7 +137,7 @@
           --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
         )
 
-        $\\{ranger_cmd[@]} "$@"
+        ${"$\{ranger_cmd[@]}"} "$@"
         if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
           cd -- "$(cat "$tempfile")" || return
         fi
