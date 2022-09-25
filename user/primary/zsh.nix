@@ -4,7 +4,9 @@
   settings,
   modern-unix,
   ...
-}: {
+}: let
+  enableModernUnix = false;
+in {
   imports = [modern-unix.homeManagerModule];
 
   programs.starship = {
@@ -23,7 +25,7 @@
   '';
 
   programs.modernUnix = {
-    enable = false;
+    enable = enableModernUnix;
     initExtra = ''alias df="duf"'';
     excludePackages = with pkgs; [
       mcfly
@@ -216,7 +218,11 @@
 
 
       eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
-      eval "$(modern-unix)"
+      ${
+        if enableModernUnix
+        then "eval \"$(modern-unix)\""
+        else ""
+      }
     '';
   };
 }
