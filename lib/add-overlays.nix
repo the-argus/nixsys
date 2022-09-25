@@ -4,42 +4,53 @@
   selections,
   override,
   ...
-}:
-override pkgsInputs {
-  overlays =
-    pkgsInputs.overlays
-    # turn selections into an attrset of the packages for overlay
-    # wrapped in (self: super: ...) so it works as an overlay
-    ++ pkgs.lib.lists.singleton (self: super:
-      builtins.listToAttrs (map (value:
-        if builtins.typeOf value == "string"
-        then {
-          name = value;
-          value = pkgs.${value};
-        }
-        else if builtins.typeOf value == "set"
-        then
-          if builtins.hasAttr "set3" value
+}: let
+  pkgDescriptorSetToOverlayEntry = pkgDescriptor:
+    if builtins.typeOf pkgDescriptor == "string"
+    then {
+      name = pkgDescriptor;
+      value = pkgs.${pkgDescriptor};
+    }
+    else if builtins.typeOf pkgDescriptor == "set"
+    then
+      if builtins.hasAttr "set3" pkgDescriptor
+      then {
+        name = pkgDescriptor.set1;
+        value = override pkgs.${pkgDescriptor.set1} {
+          ${pkgDescriptor.set2} = {
+            ${pkgDescriptor.set3} =
+              pkgs
+              .${pkgDescriptor.set1}
+              .${pkgDescriptor.set2}
+              .${pkgDescriptor.set3};
+          };
+        };
+      }
+      else
+        (
+          if builtins.hasAttr "set2" pkgDescriptor
           then {
-            name = value.set1;
-            value = override pkgs.${value.set1} {
-              ${value.set2} = {
-                ${value.set3} =
-                  pkgs.${value.set1}.${value.set2}.${value.set3};
-              };
+            name = pkgDescriptor.set1;
+            value = override pkgs.${pkgDescriptor.set1} {
+              ${pkgDescriptor.set2} =
+                pkgs
+                .${pkgDescriptor.set1}
+                .${pkgDescriptor.set2};
             };
           }
-          else
-            (
-              if builtins.hasAttr "set2" value
-              then {
-                name = value.set1;
-                value = override pkgs.${value.set1} {
-                  ${value.set2} = pkgs.${value.set1}.${value.set2};
-                };
-              }
-              else {}
-            )
-        else abort "override not one of type \"set\" or \"string\"")
-      selections));
-}
+          else {}
+        )
+    else abort "Overlay descriptor not one of type \"set\" or \"string\"";
+in
+  override pkgsInputs {
+    overlays =
+      pkgsInputs.overlays
+      ++ map (value: (
+        self: super: let
+          overlayEntry = pkgDescriptorSetToOverlayEntry value;
+        in {
+          ${overlayEntry.name} = overlayEntry.value;
+        }
+      ))
+      selections;
+  }
