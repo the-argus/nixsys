@@ -23,7 +23,7 @@
   '';
 
   programs.modernUnix = {
-    enable = true;
+    enable = false;
     initExtra = ''alias df="duf"'';
     excludePackages = with pkgs; [
       mcfly
