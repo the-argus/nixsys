@@ -123,7 +123,8 @@
         extraSpecialArgs =
           inputs
           // {
-            inherit (fs) homeDirectory firefox-addons;
+            inherit (fs) homeDirectory;
+            inherit firefox-addons;
             mpkgs = audio-plugins.mpkgSets.${system};
           }
           // fs.extraExtraSpecialArgs
