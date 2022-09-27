@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-remotebuild.url = "github:nixos/nixpkgs?ref=nixos-22.05";
-    nixpkgs-localbuild.url = "github:nixos/nixpkgs?ref=nixos-22.05";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       # home manager use our nixpkgs and not its own
@@ -58,8 +56,6 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
-    nixpkgs-remotebuild,
-    nixpkgs-localbuild,
     home-manager,
     webcord,
     rycee-expressions,
@@ -76,7 +72,7 @@
     myLib = import ./lib {inherit (nixpkgs) lib;};
     finalizeSettings = settings:
       myLib.globalConfig.addPkgsToSettings {
-        inherit nixpkgs-unstable nixpkgs-remotebuild nixpkgs-localbuild nixpkgs;
+        inherit nixpkgs-unstable nixpkgs;
         inherit settings;
       };
     defaultGlobalSettings = myLib.globalConfig.defaults;

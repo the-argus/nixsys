@@ -8,8 +8,6 @@
     addOverlays = import ./add-overlays.nix;
     addPkgsToSettings = {
       nixpkgs-unstable,
-      nixpkgs-localbuild,
-      nixpkgs-remotebuild,
       nixpkgs,
       settings,
     }: let
@@ -21,7 +19,7 @@
         ));
       remotebuild =
         # version of pkgs meant to be compiled on remote aarch64 server
-        import nixpkgs-remotebuild
+        import nixpkgs
         (override (override (mkPkgsInputs settings) {
             localSystem.system = "aarch64-linux";
             crossSystem.system = "x86_64-linux";
@@ -29,7 +27,7 @@
           settings.remotebuildOverrides);
       localbuild =
         # version of pkgs meant to be compiled on my machine
-        import nixpkgs-localbuild
+        import nixpkgs
         (override (mkPkgsInputs settings)
           settings.remotebuildOverrides);
 
