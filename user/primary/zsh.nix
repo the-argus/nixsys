@@ -55,6 +55,7 @@ in {
       # mcfly
     ];
     initZoxide = false; # handle this in sandboxd
+    replaceLsWithLsd = false; # do this myself
   };
 
   home.file.".config/sandboxd/sandboxrc".text = ''
@@ -110,6 +111,8 @@ in {
         matrix = "tmatrix -c default -C yellow -s 60 -f 0.2,0.3 -g 10,20 -l 1,50 -t \"hello, ${username}.\"";
         umatrix = "unimatrix -a -c yellow -f -s 95 -l aAcCgGkknnrR";
         dvim = "XDG_CONFIG_HOME=/home/${username}/.local/src/ nvim"; # use my non-nix configuration for debugging
+        fim = "nvim $(fd -t f | fzf)";
+        vim = "nvim";
         batt = "cat /sys/class/power_supply/BAT0/capacity";
 
         # unused mostly
@@ -163,7 +166,9 @@ in {
         if !enableModernUnix
         then ''
           function ls () { command ls --color=auto --group-directories-first "$@"; } ''
-        else ""
+        else ''
+          function ls () { lsd --color=auto --group-dirs=first "$@"; }
+        ''
       }
 
       function lsl () {
@@ -200,6 +205,7 @@ in {
           cd -- "$(cat "$tempfile")" || return
         fi
         command rm -f -- "$tempfile" 2>/dev/null
+        clear
       }
 
       alias ranger=fm
@@ -260,20 +266,6 @@ in {
           pactl set-sink-mute @DEFAULT_SINK@ on
           ~/.local/bin/volume.sh refresh
       }
-
-      # function nvim () {
-      #   if [ $# -lt 2 ]; then
-      #     # just open fuzzy finder and then pipe
-      #     # into nvim
-      #     command nvim $(fd -t f | fzf)
-      #   elif [ -f $2 ]; then
-      #     command nvim $@
-      #   else
-      #     # open fuzzy finder with an initial query of
-      #     # the non-file argument
-      #     command nvim $(fd -t f | fzf --query $2)
-      #   fi
-      # }
 
       # CONFIG ----------------------------------------------------------------------
 
