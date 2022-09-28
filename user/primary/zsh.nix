@@ -165,16 +165,21 @@ in {
       ${
         if !enableModernUnix
         then ''
-          function ls () { command ls --color=auto --group-directories-first "$@"; } ''
+          function ls () {
+            command ls --color=auto --group-directories-first "$@"
+          }
+        ''
         else ''
-          function ls () { lsd --color=auto --group-dirs=first "$@"; }
+          function ls () {
+            lsd --color=auto --group-dirs=first "$@"
+          }
         ''
       }
 
       function lsl () {
       	ls -la ${
         if !enableModernUnix
-        then ''--color=always $1 | command grep "^d" && ls -la $1 | command grep -v "^d"''
+        then ''--color=always $@ | command grep "^d" && ls -la $1 | command grep -v "^d"''
         else ""
       }
       }
