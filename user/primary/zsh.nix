@@ -118,7 +118,7 @@ in {
         # unused mostly
         cageff = "cage \"/bin/firefox -p Unconfigured\"";
         awesomedoc = "firefox ${pkgs.awesome.doc}/share/doc/awesome/doc/index.html & disown";
-        gnome = "XDG_SESSION_TYPE=wayland dbus-run-session -- gnome-shell --display-server --wayland";
+        gnome = "dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY && XDG_SESSION_TYPE=wayland dbus-run-session -- gnome-shell --display-server --wayland";
         ix = "curl -F 'f:1=<-' ix.io";
       }
       // (pkgs.callPackage ./lib/xorg.nix {inherit settings;}).startxAliases;
