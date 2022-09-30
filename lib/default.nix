@@ -10,7 +10,7 @@
     lib.lists.foldr (current: prev: prev.${current}) set subsets;
 
   stringsToPkgs = pkgs: stringList:
-    map (pkgName: (parseSubSetString pkgs stringList)) stringList;
+    map (pkgName: (parseSubSetString pkgs pkgName)) stringList;
 
   globalConfig = rec {
     defaults = import ./settings-defaults.nix; # default settings
