@@ -1,5 +1,17 @@
 {lib, ...}: rec {
   override = lib.attrsets.recursiveUpdate;
+
+  parseSubSetString = set: string: let
+    # hello.my.name.is becomes [ "hello" "my" "name" "is" ]
+    subsets =
+      lib.lists.remove []
+      (builtins.split "~" (builtins.replaceStrings ["."] ["~"] string));
+  in
+    lib.lists.foldr (current: prev: prev.${current}) set subsets;
+
+  stringsToPkgs = pkgs: stringList:
+    map (pkgName: (parseSubSetString pkgs stringList)) stringList;
+
   globalConfig = rec {
     defaults = import ./settings-defaults.nix; # default settings
     mkPkgsInputs = settings: (import ./make-pkgs-inputs.nix {
