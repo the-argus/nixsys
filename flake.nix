@@ -102,11 +102,10 @@
 
     createHomeConfigurations = settings: let
       fs = finalizeSettings settings;
-      firefox-addons =
-        (import "${rycee-expressions}" {
-          inherit (fs) pkgs;
-        })
-        .firefox-addons;
+      inherit
+        (import "${rycee-expressions}" {inherit (fs) pkgs;})
+        firefox-addons
+        ;
     in
       home-manager.lib.homeManagerConfiguration rec {
         inherit (fs) pkgs system username homeDirectory;
