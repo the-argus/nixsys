@@ -4,7 +4,9 @@
   attrNamesToList = attrs: let
     names = builtins.mapAttrs (name: value: name) attrs;
   in
-    lib.attrsets.collect (value: true) attrs;
+    lib.attrsets.collect
+    (value: builtins.typeOf value != "set" && builtins.typeOf value != "list")
+    attrs;
 
   debugSetToString = set: setname:
     "Attribute names of ${setname}:"
