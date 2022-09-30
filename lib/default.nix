@@ -7,9 +7,10 @@
 
   parseSubSetString = set: string: let
     # hello.my.name.is becomes [ "hello" "my" "name" "is" ]
-    subsets =
+    subsets = lib.lists.reverseList (
       lib.lists.remove []
-      (builtins.split "~" (builtins.replaceStrings ["."] ["~"] string));
+      (builtins.split "~" (builtins.replaceStrings ["."] ["~"] string))
+    );
   in
     lib.lists.foldr (current: prev:
       if builtins.hasAttr current prev
