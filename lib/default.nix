@@ -1,16 +1,9 @@
 {lib, ...}: rec {
   override = lib.attrsets.recursiveUpdate;
 
-  attrNamesToList = attrs: let
-    names = builtins.mapAttrs (name: value: name) attrs;
-  in
-    lib.attrsets.collect
-    (value: builtins.typeOf value != "set" && builtins.typeOf value != "list")
-    attrs;
-
   debugSetToString = set: setname:
     "Attribute names of ${setname}:"
-    + (builtins.concatStringsSep "\n" (attrNamesToList set));
+    + (builtins.concatStringsSep "\n" (builtins.attrNames set));
 
   parseSubSetString = set: string: let
     # hello.my.name.is becomes [ "hello" "my" "name" "is" ]
