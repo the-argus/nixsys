@@ -1,13 +1,29 @@
 {lib, ...}: rec {
   override = lib.attrsets.recursiveUpdate;
 
+  attrNamesToList = attrs: let
+    names = builtins.mapAttrs (name: value: name) attrs;
+  in
+    lib.attrsets.collect (value: true) attrs;
+
+  debugSetToString = set: setname:
+    "Attribute names of ${setname}:"
+    + (builtins.concatStringsSep "\n" (attrNamesToList set));
+
   parseSubSetString = set: string: let
     # hello.my.name.is becomes [ "hello" "my" "name" "is" ]
     subsets =
       lib.lists.remove []
       (builtins.split "~" (builtins.replaceStrings ["."] ["~"] string));
   in
-    lib.lists.foldr (current: prev: prev.${current}) set subsets;
+    lib.lists.foldr (current: prev:
+      if builtins.hasAttr prev current
+      then prev.${current}
+      else
+        builtins.trace "${debugSetToString prev "previous"}\n current: ${current}"
+        (abort "what"))
+    set
+    subsets;
 
   stringsToPkgs = pkgs: stringList:
     map (pkgName: (parseSubSetString pkgs pkgName)) stringList;
