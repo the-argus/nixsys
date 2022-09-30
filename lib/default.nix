@@ -17,7 +17,7 @@
       (builtins.split "~" (builtins.replaceStrings ["."] ["~"] string));
   in
     lib.lists.foldr (current: prev:
-      if builtins.hasAttr prev current
+      if builtins.hasAttr current prev
       then prev.${current}
       else
         builtins.trace "${debugSetToString prev "previous"}\n current: ${current}"
