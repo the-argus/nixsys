@@ -139,5 +139,5 @@
         # numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
         # capitaine-cursors
       ]
-      ++ (map (pkgname: pkgs.${pkgname} additionalUserPackages));
+      ++ (map (pkgname: pkgs.${pkgname}) additionalUserPackages);
 }
