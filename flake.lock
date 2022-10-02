@@ -463,11 +463,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1664727034,
-        "narHash": "sha256-M/qYNQFpoum4AwGJaTuHK4s+Zkwa55LvdpPxJ0I3FKU=",
+        "lastModified": 1664741416,
+        "narHash": "sha256-Vt17os1YwXP9ZKdqe6RdLWtxLwQ4gHxV7J4yf7nrb3o=",
         "owner": "the-argus",
         "repo": "modern-unix-flake",
-        "rev": "d8b9195938f12571098af2c02db82540edf23a1a",
+        "rev": "c59e19cc6921f98b75a9f9f2364b303b9915e257",
         "type": "github"
       },
       "original": {
