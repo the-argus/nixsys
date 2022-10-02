@@ -55,7 +55,6 @@ in {
       # mcfly
     ];
     initZoxide = false; # handle this in sandboxd
-    replaceLsWithLsd = false; # do this myself
   };
 
   home.file.".config/sandboxd/sandboxrc".text = ''
@@ -162,26 +161,25 @@ in {
       	xdg-open "$@">/dev/null 2>&1
       }
 
+      function ls () {
+        command ls --color=auto --group-directories-first $@
+      }
+      function lsl () {
+      	ls -la $@ | command grep "^d" && ls -la $1 | command grep -v "^d"
+      }
+
       ${
         if !enableModernUnix
         then ''
-          function ls () {
-            command ls --color=auto --group-directories-first "$@"
-          }
         ''
         else ''
-          function ls () {
-            lsd --color=auto --group-dirs=first "$@"
+          function lsd () {
+            lsd --color=auto --group-dirs=first $@
+          }
+          function lsdl () {
+            lsd -la $@
           }
         ''
-      }
-
-      function lsl () {
-      	ls -la ${
-        if !enableModernUnix
-        then ''--color=always $@ | command grep "^d" && ls -la $1 | command grep -v "^d"''
-        else ""
-      }
       }
 
       ${
