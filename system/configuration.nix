@@ -84,6 +84,10 @@
   # Set your time zone.
   time.timeZone = "America/New_York";
 
+  documentation.doc.enable = false;
+  # this line is hardcoded to be green
+  services.getty.greetingLine = "Welcome, ${username}.";
+
   # console
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
