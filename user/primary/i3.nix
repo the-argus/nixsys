@@ -82,6 +82,10 @@
           format = "%Y-%m-%d %I:%M";
         };
       };
+      # disabled modules
+      ipv6.enable = false;
+      load.enable = false;
+      memory.enable = false;
     };
   };
   xsession.windowManager.i3 = {
