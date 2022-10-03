@@ -3,6 +3,10 @@
   settings,
   ...
 }: {
+  home.packages = [
+    proggyfonts
+  ];
+
   programs.i3status = {
     enable = true;
     general = {
@@ -82,10 +86,19 @@
           format = "%Y-%m-%d %I:%M";
         };
       };
+      memory = {
+        enable = true;
+        position = 9;
+        settings = {
+          inherit min_width align;
+          format = "%used | %available";
+          format_degraded = "MEMORY < %available";
+          threshold_degraded = "1G";
+        };
+      };
       # disabled modules
       ipv6.enable = false;
       load.enable = false;
-      memory.enable = false;
     };
   };
   xsession.windowManager.i3 = {
@@ -131,6 +144,44 @@
         };
         # placeholder window is default but can be configured
       };
+
+      bars = [
+        {
+          mode = "hide";
+          position = "top";
+          trayOutput = "primary"; # originally none
+          fonts = {
+            names = ["ProggySquareTT"];
+            size = 12.0;
+          };
+          extraConfig = ''
+            bindsym button1 nop
+            tray_padding 0
+            workspace_min_width 40
+            i3bar_command i3bar -t
+          '';
+          colors = rec {
+            background = inactive-bg; #000000CC
+            urgentWorkspace = {
+              border = urgent-bg;
+              background = urgent-bg;
+              inherit text;
+            };
+            inactiveWorkspace = {
+              border = inactive-bg;
+              background = inactive-bg;
+              text = indicator;
+            };
+            # i have a single monitor in all my setups
+            activeWorkspace = inactiveWorkspace;
+            focusedWorkspace = {
+              border = bg;
+              background = bg;
+              text = inactive-bg;
+            };
+          };
+        }
+      ];
 
       gaps = {
         inner = 10;

@@ -143,7 +143,7 @@ in rec {
     scheme = schemes.drifter;
     gtk = {
       iconTheme = materialBlackFrostIcons;
-      theme = materialBlackFrostTheme;
+      theme = "gtkNix";
       cursorTheme = cursorThemes.breezeXBlack;
     };
     opacity = "0.7";
