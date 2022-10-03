@@ -51,11 +51,11 @@
     "arkenfox-userjs": {
       "flake": false,
       "locked": {
-        "lastModified": 1664656438,
-        "narHash": "sha256-jBgIICxPD/QDPsvmBZEzFJDPoh4VIM9bKcdH+8Snw0s=",
+        "lastModified": 1664804850,
+        "narHash": "sha256-gv22QyhQVaswFXJM4fSJF+sy9ESC1oc8TcDMc0FZXRw=",
         "owner": "arkenfox",
         "repo": "user.js",
-        "rev": "4bc98005ec0ae56726a38d0854c645b407194278",
+        "rev": "958acf9c2ec920113ffeacfdf7f562e8d435de06",
         "type": "github"
       },
       "original": {
@@ -494,11 +494,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1664538465,
-        "narHash": "sha256-EnlC7dDKX7X1wlnXkB1gmn9rBZQ0J9+biVTZHw//8us=",
+        "lastModified": 1664687381,
+        "narHash": "sha256-9czSuDzS+OGGwq2kC4KXBLXWfYaup+oLB+AA1Md25U4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "10ecda252ce1b3b1d6403caeadbcc8f30d5ab796",
+        "rev": "59d2991d4256cdca1c0cda45d876c80a0fe45c31",
         "type": "github"
       },
       "original": {
@@ -680,11 +680,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1664683381,
-        "narHash": "sha256-UqDOV8+iRQ7wrmar2rJR++sMMbWGkmI5vxwsM8SqRss=",
+        "lastModified": 1664783677,
+        "narHash": "sha256-MEieqxJnXaqZ59LEW3HMFUIQCEhu3d6VVOLInXYzo/I=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "3d5bc4c4d1aa1e180cd8ead8f5c23a847398c533",
+        "rev": "bb244b312d2117244bb5afd35070e5a9467126e3",
         "type": "gitlab"
       },
       "original": {
