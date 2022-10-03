@@ -146,7 +146,8 @@
 
       bars = [
         {
-          mode = "hide";
+          mode = "dock";
+          hiddenState = "hide";
           position = "top";
           trayOutput = "primary"; # originally none
           fonts = {
