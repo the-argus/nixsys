@@ -3,7 +3,7 @@
   settings,
   ...
 }: {
-  home.packages = [
+  home.packages = with pkgs; [
     proggyfonts
   ];
 
