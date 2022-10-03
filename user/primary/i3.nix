@@ -101,29 +101,28 @@
       load.enable = false;
     };
   };
-  xsession.windowManager.i3 = {
+  xsession.windowManager.i3 = let
+    systemColors = (pkgs.callPackage ./themes.nix {}).scheme;
+    mkColor = color: "#${color}";
+    bg = mkColor systemColors.hi1;
+    inactive-bg = (mkColor systemColors.bg) + "CC";
+    text = bg;
+    inactive-text = bg;
+    urgent-bg = mkColor systemColors.red;
+    inactive-border = (mkColor systemColors.bg) + "00";
+
+    transparent = "#00000000";
+    indicator = "#424242";
+    childBorder = mkColor systemColors.altfg;
+  in {
     enable = true;
     package = pkgs.i3-gaps;
 
-    config = let
-      systemColors = (pkgs.callPackage ./themes.nix {}).scheme;
-    in {
+    config = {
       modifier = "Mod4"; # super key
       workspaceAutoBackAndForth = true;
 
-      colors = let
-        mkColor = color: "#${color}";
-        bg = mkColor systemColors.hi1;
-        inactive-bg = (mkColor systemColors.bg) + "CC";
-        text = bg;
-        inactive-text = bg;
-        urgent-bg = mkColor systemColors.red;
-        inactive-border = (mkColor systemColors.bg) + "00";
-
-        transparent = "#00000000";
-        indicator = "#424242";
-        childBorder = mkColor systemColors.altfg;
-      in rec {
+      colors = rec {
         background = transparent;
         focused = {
           border = bg;
