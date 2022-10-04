@@ -12,7 +12,7 @@
 
     audio-plugins = {
       url = "github:the-argus/audio-plugins-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     rycee-expressions = {

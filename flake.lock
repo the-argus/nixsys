@@ -51,11 +51,11 @@
     "arkenfox-userjs": {
       "flake": false,
       "locked": {
-        "lastModified": 1664804850,
-        "narHash": "sha256-gv22QyhQVaswFXJM4fSJF+sy9ESC1oc8TcDMc0FZXRw=",
+        "lastModified": 1664904885,
+        "narHash": "sha256-XUjX+Tno3EU/3IXR/WCn4M5gVR+sKjCzpKcV31dqzWA=",
         "owner": "arkenfox",
         "repo": "user.js",
-        "rev": "958acf9c2ec920113ffeacfdf7f562e8d435de06",
+        "rev": "db04bc44f2982ae8e39f10d056bc7cfe7804d4fd",
         "type": "github"
       },
       "original": {
@@ -66,16 +66,14 @@
     },
     "audio-plugins": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1664662719,
-        "narHash": "sha256-fCJYz1STMiZj4kKJS3Bey1v5Hv1ax9LbBxVs655k3MM=",
+        "lastModified": 1664913840,
+        "narHash": "sha256-NzVtwmAhZWMv3/gWwn6G7Y9IiSYpNYk7ilObtfrL8jQ=",
         "owner": "the-argus",
         "repo": "audio-plugins-nix",
-        "rev": "1473b57be02177da0f100ad26012033fd82bd449",
+        "rev": "aa70751ba12261344f94f74875e92c551b0c9956",
         "type": "github"
       },
       "original": {
@@ -478,16 +476,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1664790708,
-        "narHash": "sha256-fzxmpOPjzOVIt9KeDN4EDPI13xJn+u0uMxheKCWken8=",
+        "lastModified": 1664780719,
+        "narHash": "sha256-Oxe6la5dSqRfJogjtY4sRzJjDDqvroJIVkcGEOT87MA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "81a3237b64e67b66901c735654017e75f0c50943",
+        "rev": "fd54651f5ffb4a36e8463e0c327a78442b26cbe7",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-22.05",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -509,6 +507,22 @@
       }
     },
     "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1664790708,
+        "narHash": "sha256-fzxmpOPjzOVIt9KeDN4EDPI13xJn+u0uMxheKCWken8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "81a3237b64e67b66901c735654017e75f0c50943",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-22.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1663684946,
         "narHash": "sha256-2+miCrlBWC3ELfz862mJ4U8qQyfiD+XLzD9p6k/WzCs=",
@@ -635,7 +649,7 @@
         "gtk-nix": "gtk-nix",
         "home-manager": "home-manager",
         "modern-unix": "modern-unix",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvim-config": "nvim-config",
         "rycee-expressions": "rycee-expressions",
@@ -733,7 +747,7 @@
     "webcord": {
       "inputs": {
         "dream2nix": "dream2nix_2",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "webcord": "webcord_2"
       },
       "locked": {
