@@ -7,7 +7,7 @@
   ...
 }: {
   programs.yabridge = {
-    enable = true;
+    enable = false;
     package = unstable.yabridge;
     ctlPackage = unstable.yabridgectl;
     suppressFreemiumWarning = true;
