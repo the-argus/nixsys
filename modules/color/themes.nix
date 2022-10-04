@@ -92,11 +92,11 @@ in rec {
     gtk = {
       theme = {
         package = pkgs.gruvbox-dark-gtk;
-        name = "GruvboxDarkGtk";
+        name = "gruvbox-dark";
       };
       iconTheme = {
         package = pkgs.gruvbox-dark-icons-gtk;
-        name = "GruvboxDarkGtkIcons";
+        name = "oomox-gruvbox-dark";
       };
       cursorTheme = cursorThemes.googleDotBlack;
     };
