@@ -120,7 +120,7 @@
         nodePackages.fixjson
         mdl # markdown lint
         alejandra
-        nodePackages.prettier_d_slim
+        nodePackages.prettier
         sumneko-lua-language-server
         rnix-lsp
         libclang # clangd
