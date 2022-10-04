@@ -100,7 +100,7 @@ in rec {
       };
       cursorTheme = cursorThemes.googleDotBlack;
     };
-    discordTheme = discordTheme.mkDiscordThemeFromSystemTheme {
+    discordTheme = discordThemes.mkDiscordThemeFromSystemTheme {
       inherit scheme;
       inherit (defaultTheme) font;
     };
