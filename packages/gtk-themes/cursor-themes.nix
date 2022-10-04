@@ -26,7 +26,7 @@ in {
     name = "GoogleDotBlack";
     package = mkCursorTheme name (builtins.fetchTarball {
       url = "https://github.com/ful1e5/Google_Cursor/releases/download/v1.1.3/GoogleDot-Black.tar.gz";
-      sha256 = "112ycb125aiy467439ndgwl7f8a8lbzcn3fmyv3m3gvz0nq6knh6";
+      sha256 = "sha256:0kn49c99vk28iijrwp8cnv98sac3pb3jrk6pn12l3ws8q269363f";
     });
     inherit size;
   };
