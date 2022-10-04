@@ -114,14 +114,15 @@
         # dev
         nodejs
         cargo
+
+        # useful linters, formatters, or both
+        python310Packages.demjson3 # jsonlint
+        mdl # markdown lint
+        alejandra
+        nodePackages.prettier_d_slim
         sumneko-lua-language-server
         rnix-lsp
         libclang
-
-        # useful linters
-        python310Packages.demjson3
-        python310Packages.mdformat
-        alejandra
 
         # appearance
         # rose-pine-gtk-theme
