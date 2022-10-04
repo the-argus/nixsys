@@ -21,7 +21,7 @@
     ./kitty.nix
     ./dunst.nix
     ./zathura.nix
-    ./music
+    ./music.nix
     ./spicetify.nix
     ./i3.nix
   ];
