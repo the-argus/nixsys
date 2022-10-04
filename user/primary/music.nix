@@ -7,9 +7,7 @@
   ...
 }: {
   programs.yabridge = {
-    enable = false;
-    package = unstable.yabridge;
-    ctlPackage = unstable.yabridgectl;
+    enable = true;
     suppressFreemiumWarning = true;
     suppressUnmaintainedWarning = true;
     plugins = with mpkgs;
