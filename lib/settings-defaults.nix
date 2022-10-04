@@ -7,6 +7,7 @@
     "spotify-unwrapped"
     "reaper"
     "slack"
+    "discord"
   ];
   allowBroken = false;
   plymouth = let
