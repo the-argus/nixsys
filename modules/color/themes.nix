@@ -87,6 +87,25 @@ in rec {
     opacity = "0.8";
   };
 
+  gruvbox = override defaultTheme rec {
+    scheme = schemes.gruv;
+    gtk = {
+      theme = {
+        package = pkgs.gruvbox-dark-gtk;
+        name = "GruvboxDarkGtk";
+      };
+      iconTheme = {
+        package = pkgs.gruvbox-dark-icons-gtk;
+        name = "GruvboxDarkGtkIcons";
+      };
+      cursorTheme = cursorThemes.googleDotBlack;
+    };
+    discordTheme = discordTheme.mkDiscordThemeFromSystemTheme {
+      inherit scheme;
+      inherit (defaultTheme) font;
+    };
+  };
+
   rosepine = override defaultTheme {
     discordTheme = discordThemes.rosepine;
     gtk.theme = rosePineTheme;
