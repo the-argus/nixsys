@@ -151,7 +151,7 @@
           position = "top";
           trayOutput = "primary"; # originally none
           fonts = {
-            names = ["ProggySquareTT"];
+            names = ["ProggySquare"];
             size = 12.0;
           };
           extraConfig = ''
