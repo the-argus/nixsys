@@ -218,8 +218,9 @@
           "window_type = 'dropdown_menu'",
           "window_type = 'menu'",
           "window_type = 'tooltip'",
-          "WM_NAME@:s = 'menu'"
+          "WM_NAME@:s = 'menu'",
           #	"QTILE_FLOATING@:s = 'True'"
+          "class_g     = 'i3bar'",
       ];
       round-borders = 1;
       round-borders-exclude = [
@@ -284,6 +285,7 @@
       # opacity-rule = []
       opacity-rule = [
       #  "80:class_g     = 'Rofi'"
+         "100:class_g     = 'i3bar'",
       ];
       blur-method = "dual_kawase";
       blur-strength = 7;
@@ -299,6 +301,7 @@
           "window_type = 'dropdown_menu'",
           "window_type = 'menu'",
           "class_g = 'rofi'",
+          "class_g     = 'i3bar'",
       ];
 
       experimental-backends = true;
