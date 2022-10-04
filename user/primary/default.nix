@@ -117,12 +117,13 @@
 
         # useful linters, formatters, or both
         python310Packages.demjson3 # jsonlint
+        nodePackages.fixjson
         mdl # markdown lint
         alejandra
         nodePackages.prettier_d_slim
         sumneko-lua-language-server
         rnix-lsp
-        libclang
+        libclang # clangd
 
         # appearance
         # rose-pine-gtk-theme
