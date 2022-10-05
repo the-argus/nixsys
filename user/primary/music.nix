@@ -7,7 +7,7 @@
   ...
 }: {
   programs.yabridge = {
-    enable = true;
+    enable = false;
     suppressFreemiumWarning = true;
     suppressUnmaintainedWarning = true;
     plugins = with mpkgs;
