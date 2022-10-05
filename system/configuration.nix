@@ -84,9 +84,9 @@
   # Set your time zone.
   time.timeZone = "America/New_York";
 
-  documentation.doc.enable = false;
+  # documentation.doc.enable = false;
   # this line is hardcoded to be green
-  services.getty.greetingLine = "Welcome, ${username}.";
+  # services.getty.greetingLine = "Welcome, ${username}.";
 
   # console
   # Select internationalisation properties.
