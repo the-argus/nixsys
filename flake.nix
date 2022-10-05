@@ -11,8 +11,8 @@
     };
 
     audio-plugins = {
-      url = "github:the-argus/audio-plugins-nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:the-argus/audio-plugins-nix?ref=yabridge-packaging";
+      # inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     rycee-expressions = {
