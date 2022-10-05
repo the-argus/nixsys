@@ -23,9 +23,6 @@ in {
         libinput.touchpad.middleEmulation = true;
         libinput.touchpad.tapping = true;
         libinput.mouse.accelProfile = "flat";
-
-        # disable stuff I don't need
-        useGlamor = false;
       }
       // (
         if options.services.xserver ? "excludePackages"
