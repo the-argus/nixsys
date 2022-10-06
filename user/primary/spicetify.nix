@@ -32,8 +32,9 @@ in {
       };
     });
     enable = true;
-    theme = spicePkgs.themes.Dribbblish;
-    colorScheme = "custom";
+    # theme = spicePkgs.themes.Dribbblish;
+    theme = spicePkgs.themes.RetroBlur;
+    # colorScheme = "custom";
 
     customColorScheme = let
       colors = pkgs.callPackage ./color.nix {};
