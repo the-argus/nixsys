@@ -1,8 +1,8 @@
 {username}: let
-  color1 = "\\033[32m";
-  color2 = "\\033[34m";
-  color3 = "\\033[33m";
-  color4 = "\\033[35m";
+  color1 = "^[[1;32m";
+  color2 = "^[[1;34m";
+  color3 = "^[[1;33m";
+  color4 = "^[[1;35m";
 in "
   ${color1}          ::::.    ${color2}':::::     ::::'
   ${color1}          ':::::    ${color2}':::::.  ::::'
