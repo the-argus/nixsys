@@ -44,6 +44,8 @@
     auth sufficient pam_u2f.so
   '');
 
+  environment.etc.issue.source = lib.mkForce ../assets/etc.issue;
+
   # enable nix flakes
   nix = let
     override = lib.attrsets.recursiveUpdate;
