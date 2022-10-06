@@ -1,8 +1,11 @@
-{username}: let
-  color1 = "[1;32m";
-  color2 = "[1;34m";
-  color3 = "[1;33m";
-  color4 = "[1;35m";
+{
+  username,
+  includeWelcome ? true,
+}: let
+  color1 = "[1;34m";
+  color2 = "[1;36m";
+  color3 = "[1;29m";
+  color4 = "[1;32m";
 in "
   ${color1}          ::::.    ${color2}':::::     ::::'
   ${color1}          ':::::    ${color2}':::::.  ::::'
@@ -10,9 +13,13 @@ in "
   ${color1}      .......:::::..... ${color2}::::::::
   ${color1}     ::::::::::::::::::. ${color2}::::::    ${color1}::::.
       ::::::::::::::::::::: ${color2}:::::.  ${color1}.::::'
-  ${color2}           .....           ::::' ${color1}:::::'                          ${color3}w l  me
-  ${color2}          :::::            '::' ${color1}:::::'                           ${color3} e co
-  ${color2} ........:::::               ' ${color1}:::::::::::.                      ${color3}welcome, ${color4}${username}.
+  ${color2}           .....           ::::' ${color1}:::::'
+  ${color2}          :::::            '::' ${color1}:::::'
+  ${color2} ........:::::               ' ${color1}:::::::::::.${
+  if includeWelcome
+  then "                      ${color3}welcome, ${color4}${username}."
+  else ""
+}
   ${color2}:::::::::::::                 ${color1}:::::::::::::
   ${color2} ::::::::::: ${color1}..              ${color1}:::::
   ${color2}     .::::: ${color1}.:::            ${color1}:::::
