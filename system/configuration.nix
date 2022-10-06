@@ -44,7 +44,9 @@
     auth sufficient pam_u2f.so
   '');
 
-  environment.etc.issue.source = lib.mkForce ../assets/etc.issue;
+  environment.etc.issue.source =
+    lib.mkForce (pkgs.writeText "issue"
+      (import ../assets/issues/braille-large-welcome.nix {inherit username;}));
 
   # enable nix flakes
   nix = let
