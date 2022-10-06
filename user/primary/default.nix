@@ -118,7 +118,7 @@
         # useful linters, formatters, or both
         python310Packages.demjson3 # jsonlint
         nodePackages.fixjson
-        mdl # markdown lint
+        nodePackages.markdownlint-cli
         alejandra
         nodePackages.prettier
         sumneko-lua-language-server
