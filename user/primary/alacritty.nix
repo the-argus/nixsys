@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: {
   programs.alacritty = {
@@ -24,7 +25,7 @@
       };
 
       font = let
-        main = (pkgs.callPackage ./themes.nix {}).font.monospace.name;
+        main = config.system.theme.font.monospace.name;
       in {
         size = 9;
         normal.family = main;

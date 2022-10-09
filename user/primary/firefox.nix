@@ -5,6 +5,7 @@
   pkgs,
   unstable,
   username,
+  config,
   ...
 }: {
   programs.firefox = let
@@ -62,7 +63,7 @@
     };
     assets = import ../../packages/firefox-assets {inherit pkgs;};
     baseUserJS = builtins.readFile "${arkenfox-userjs}/user.js";
-    font = (pkgs.callPackage ./themes.nix {}).font.display.name;
+    font = config.system.theme.font.display.name;
     finalUserJS = lib.strings.concatStrings [
       baseUserJS
       ''

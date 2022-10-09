@@ -1,6 +1,7 @@
 {
   pkgs,
   unstable,
+  banner,
   remotebuild,
   lib,
   nur,
@@ -8,6 +9,7 @@
   webcord,
   settings,
   additionalUserPackages ? [],
+  config,
   ...
 }: {
   imports = [
@@ -24,8 +26,21 @@
     ./music.nix
     ./spicetify.nix
     ./i3.nix
-    (import ./themes.nix).scheme
+    banner.module
+    ({lib, ...}: {
+      options.system.theme = lib.mkOption {
+        type = lib.types.nullOr lib.types.attrs;
+        default = null;
+      };
+    })
   ];
+
+  system.theme = pkgs.callPackage ./themes.nix {};
+
+  banner.palette =
+    import
+    config.system.theme.scheme
+    {inherit pkgs banner;};
 
   programs.chromium = {
     enable = true;

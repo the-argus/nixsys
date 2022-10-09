@@ -1,5 +1,5 @@
 {
-  rosepine = import ./rosepine.nix;
+  rosepine = ./rosepine.nix;
 
   nord = import ./nord.nix;
 

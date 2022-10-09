@@ -2,10 +2,10 @@
   pkgs,
   homeDirectory,
   gtk-nix,
+  config,
   ...
 }: let
-  theme = pkgs.callPackage ./themes.nix {};
-  gtk = theme.gtk;
+  gtk = config.system.theme.gtk;
 in {
   imports = [gtk-nix.homeManagerModule];
   home.packages = [pkgs.dconf];
@@ -20,62 +20,66 @@ in {
   };
 
   gtkNix = let
-    p = theme.scheme;
+    p = config.banner.palette;
   in
-    pkgs.lib.mkIf (
-      if (builtins.typeOf gtk.theme == "string")
-      then (gtk.theme == "gtkNix")
-      else false
-    ) {
-      enable = true;
-      configuration = {
-        radius = "8px";
-        disabled-opacity = 0.6;
-      };
-      palette = let
-        # use this set for both normal and highlight colors
-        colors = {
-          inherit (p) red yellow green cyan blue;
-          purple = p.magenta;
-          # neither orange nor pink are set here, i dont think they show up in the theme anyways
+    with p;
+      pkgs.lib.mkIf (
+        if (builtins.typeOf gtk.theme == "string")
+        then (gtk.theme == "gtkNix")
+        else false
+      ) {
+        enable = true;
+        configuration = {
+          radius = "8px";
+          disabled-opacity = 0.6;
         };
-      in {
-        surface = {
-          strongest = p.bg;
-          strong = p.bg;
-          moderate = p.altbg2;
-          weak = p.altbg3;
-          weakest = p.altbg3;
-        };
-        whites = let
-          mkWhite = alpha: "${p.white}${alpha}";
+        palette = let
+          # use this set for both normal and highlight colors
+          colors = {
+            red = base09;
+            yellow = base0A;
+            green = base0B;
+            cyan = base0C;
+            blue = base0D;
+            purple = base0E;
+          };
         in {
-          strongest = mkWhite "FF";
-          strong = mkWhite "DE";
-          moderate = mkWhite "57";
-          weak = mkWhite "24";
-          weakest = mkWhite "0F";
+          surface = {
+            strongest = base00;
+            strong = base00;
+            moderate = base02;
+            weak = base03;
+            weakest = base03;
+          };
+          whites = let
+            mkWhite = alpha: "${base05}${alpha}";
+          in {
+            strongest = mkWhite "FF";
+            strong = mkWhite "DE";
+            moderate = mkWhite "57";
+            weak = mkWhite "24";
+            weakest = mkWhite "0F";
+          };
+          blacks = let
+            mkBlack = alpha: "${base00}${alpha}";
+          in {
+            strongest = mkBlack "FF";
+            strong = mkBlack "DE";
+            moderate = mkBlack "6B";
+            weak = mkBlack "26";
+            weakest = mkBlack "0F";
+          };
+          lightColors = colors;
+          normalColors = colors;
+          primaryAccent = highlight;
+          secondaryAccent = hialt0;
         };
-        blacks = let
-          mkBlack = alpha: "${p.black}${alpha}";
-        in {
-          strongest = mkBlack "FF";
-          strong = mkBlack "DE";
-          moderate = mkBlack "6B";
-          weak = mkBlack "26";
-          weakest = mkBlack "0F";
-        };
-        lightColors = colors;
-        normalColors = colors;
-        primaryAccent = p.hi1;
-        secondaryAccent = p.hi2;
       };
-    };
 
   gtk = {
     enable = true;
 
-    font = theme.font.display;
+    font = config.system.theme.font.display;
 
     cursorTheme = gtk.cursorTheme;
 

@@ -2,6 +2,7 @@
   pkgs,
   picom,
   settings,
+  config,
   ...
 }: {
   home.file = let

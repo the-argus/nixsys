@@ -73,7 +73,11 @@ in {
     sha256 = "0ahrwxkla9gqjlgff337jcna20v5ncxlkcyssli89k75axvypzr1";
   };
 
-  mkDiscordThemeFromSystemTheme = {...}:
+  mkDiscordThemeFromSystemTheme = {
+    config,
+    systemTheme,
+    ...
+  }:
     with config.banner.palette; let
       font = systemTheme.font.display;
       # light mode literally not supported lol

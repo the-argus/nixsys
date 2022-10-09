@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.file = let
     inherit (config.banner) palette;
     dunstbg = palette.base00;

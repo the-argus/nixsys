@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.file = {
     ".local/bin" = {
       source = ./bin;
@@ -46,7 +50,10 @@
       #   categories = [ "Network" "InstantMessaging" ];
       # };
       webcord = let
-        theme = (pkgs.callPackage ../themes.nix {}).discordTheme;
+        theme = let
+          systemTheme = pkgs.callPackage ../themes.nix {};
+        in
+          pkgs.callPackage theme.discordTheme {inherit config systemTheme;};
       in {
         name = "Webcord";
         exec = ''webcord --add-css-theme=${theme}/THEME.theme.css'';

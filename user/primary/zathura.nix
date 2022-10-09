@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.file = with config.banner.palette; {
     ".config/zathura/zathurarc" = {
       text = ''

@@ -80,9 +80,7 @@ in rec {
         package = pkgs.fira-code;
       };
     };
-    discordTheme = discordThemes.mkDiscordThemeFromSystemTheme {
-      inherit scheme font;
-    };
+    discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
     scheme = schemes.rosepine;
     opacity = "0.8";
   };
@@ -163,8 +161,6 @@ in rec {
       cursorTheme = cursorThemes.breezeXBlack;
     };
     opacity = "0.7";
-    discordTheme = discordThemes.mkDiscordThemeFromSystemTheme {
-      inherit scheme font;
-    };
+    discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
   };
 }

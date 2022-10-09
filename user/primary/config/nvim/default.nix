@@ -1,27 +1,28 @@
 {
   pkgs,
   nvim-config,
+  config,
   ...
 }: {
-  home.file = with (pkgs.callPackage ../../themes.nix {}).scheme; {
+  home.file = with config.system.theme.scheme; {
     ".config/nvim" = let
       text = ''
         local palette = {
-            base = '#${terminal.bg}00',
-            surface = '#${altbg2}',
-            overlay = '#${altfg2}',
-            muted = '#${terminal.black}',
-            subtle = '#${altfg3}',
+            base = '#${base00}00',
+            surface = '#${base02}',
+            overlay = '#${base02}',
+            muted = '#${base00}',
+            subtle = '#${base03}',
             text = '#${white}',
-            love = '#${red}',
-            gold = '#${yellow}',
-            rose = '#${cyan}',
-            pine = '#${blue}',
-            foam = '#${green}',
-            iris = '#${magenta}',
-            highlight_low = '#${altbg}',
-            highlight_med = '#${altbg3}',
-            highlight_high = '#${altbg3}',
+            love = '#${base09}',
+            gold = '#${base0A}',
+            rose = '#${base0B}',
+            pine = '#${base0C}',
+            foam = '#${base0D}',
+            iris = '#${base0E}',
+            highlight_low = '#${base01}',
+            highlight_med = '#${base03}',
+            highlight_high = '#${base03}',
             opacity = 0.1,
             none = 'NONE',
         }

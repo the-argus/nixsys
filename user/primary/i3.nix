@@ -1,6 +1,7 @@
 {
   pkgs,
   settings,
+  config,
   ...
 }: {
   home.packages = with pkgs; [
@@ -102,18 +103,18 @@
     };
   };
   xsession.windowManager.i3 = let
-    systemColors = (pkgs.callPackage ./themes.nix {}).scheme;
+    banner = config.banner.palette;
     mkColor = color: "#${color}";
-    bg = mkColor systemColors.hi1;
-    inactive-bg = (mkColor systemColors.bg) + "CC";
+    bg = mkColor banner.highlight;
+    inactive-bg = (mkColor banner.base00) + "CC";
     text = bg;
     inactive-text = bg;
-    urgent-bg = mkColor systemColors.red;
-    inactive-border = (mkColor systemColors.bg) + "00";
+    urgent-bg = mkColor banner.urgent;
+    inactive-border = (mkColor banner.base00) + "00";
 
     transparent = "#00000000";
     indicator = "#424242";
-    childBorder = mkColor systemColors.altfg;
+    childBorder = mkColor banner.base02;
   in {
     enable = true;
     package = pkgs.i3-gaps;

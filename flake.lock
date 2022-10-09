@@ -88,11 +88,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1665203680,
-        "narHash": "sha256-7Q+leTxY9zK9Oc0DSw6wcZZZjVFus2EJus22NZWuQVg=",
+        "lastModified": 1665291078,
+        "narHash": "sha256-qMOkXN/wAf0memTIf1iXZ5idGuCtuQoix8SawQtQg8k=",
         "owner": "the-argus",
         "repo": "banner.nix",
-        "rev": "fa0a6cfcb3653150256b8a0a01b1d0e1bf4a8f78",
+        "rev": "516513a4bcd7dd3a8792c8e2245c726a326b6026",
         "type": "github"
       },
       "original": {
@@ -730,11 +730,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1665260559,
-        "narHash": "sha256-/J3zqgDeyFOWCZhgO+lO0xTRvzDOMYGNSqDitVYBPVE=",
+        "lastModified": 1665288174,
+        "narHash": "sha256-FQTpXYjEGCYHQ9hF986rNpmT595XH8P22jStI3YEa6c=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "280a7952a413e485227c0031a2f40eec5aa7a358",
+        "rev": "655ca397aafd6f3ae81946154f34983367950d56",
         "type": "gitlab"
       },
       "original": {

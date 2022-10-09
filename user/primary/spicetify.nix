@@ -3,6 +3,7 @@
   unstable,
   lib,
   spicetify-nix,
+  config,
   ...
 }: let
   spicePkgs = spicetify-nix.pkgSets.${pkgs.system};
@@ -40,7 +41,7 @@ in {
         text = hialt2;
         bg = base00;
       };
-      outer = {
+      outer = with config.banner.palette; {
         text = hialt2;
         bg = base02;
       };
