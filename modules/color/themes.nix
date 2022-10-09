@@ -65,7 +65,7 @@
     package = nord;
   };
 
-  availableThemes = {
+  availableThemes = rec {
     defaultTheme = rec {
       gtk = {
         # theme = rosePineTheme;
