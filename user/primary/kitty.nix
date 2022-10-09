@@ -21,8 +21,8 @@
       url_color = link;
 
       # black
-      color0 = base00;
-      color8 = base01;
+      color0 = base03;
+      color8 = base03;
 
       # red
       color1 = base09;

@@ -1,17 +1,10 @@
 {
   pkgs,
-  picom,
   settings,
   config,
   ...
 }: {
   home.file = let
-    picomPkg =
-      import ../../../../packages/picom.nix
-      {
-        inherit pkgs;
-        inherit picom;
-      };
   in {
     ".config/qtile" = {
       source = ./config;
@@ -48,24 +41,6 @@
           "bg": "#${base00}",
           "fg": "#${base05}",
           "fg_gutter": "#${base03}",
-          "black": "#${base04}",
-          "urgent": "#${urgent}",
-          "warn": "#${warn}",
-          "confirm": "#${confirm}",
-          "link": "#${link}",
-          "highlight": "#${highlight}",
-          "hialt0": "#${hialt0}",
-          "hialt1": "#${hialt1}",
-          "hialt2": "#${hialt2}",
-
-          "pfg08": "#${pfg08}",
-          "pfg09": "#${pfg09}",
-          "pfg0A": "#${pfg0A}",
-          "pfg0B": "#${pfg0B}",
-          "pfg0C": "#${pfg0C}",
-          "pfg0D": "#${pfg0D}",
-          "pfg0E": "#${pfg0E}",
-          "pfg0F": "#${pfg0F}",
 
           "base00": "#${base00}",
           "base01": "#${base01}",
@@ -83,6 +58,25 @@
           "base0D": "#${base0D}",
           "base0E": "#${base0E}",
           "base0F": "#${base0F}",
+
+          "pfg08": "#${pfg08}",
+          "pfg09": "#${pfg09}",
+          "pfg0A": "#${pfg0A}",
+          "pfg0B": "#${pfg0B}",
+          "pfg0C": "#${pfg0C}",
+          "pfg0D": "#${pfg0D}",
+          "pfg0E": "#${pfg0E}",
+          "pfg0F": "#${pfg0F}",
+          
+          "highlight": "#${highlight}",
+          "hialt0": "#${hialt0}",
+          "hialt1": "#${hialt1}",
+          "hialt2": "#${hialt2}",
+
+          "urgent": "#${urgent}",
+          "warn": "#${warn}",
+          "confirm": "#${confirm}",
+          "link": "#${link}",
       }
     '';
   };

@@ -50,11 +50,11 @@
 
         cursorSettings = builtins.mapAttrs alacrittyColorFormat {
           text = palette.base00;
-          cursor = palette.base02;
+          cursor = palette.base05;
         };
 
         alacrittyPalette = builtins.mapAttrs alacrittyColorFormat {
-          black = palette.base01;
+          black = palette.base03;
           red = palette.base09;
           green = palette.base0A;
           yellow = palette.base0B;

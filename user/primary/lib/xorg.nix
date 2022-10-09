@@ -2,6 +2,7 @@
   pkgs,
   lib,
   settings,
+  picom,
   ...
 }: let
   optional = condition: str: (
@@ -40,12 +41,19 @@ in rec {
       if isI3
       then execI3
       else execShell;
+
+    picomPkg =
+      import ../../../../packages/picom.nix
+      {
+        inherit pkgs;
+        inherit picom;
+      };
   in
     map execFunc ([
         "${pkgs.dunst}/bin/dunst"
         "${pkgs.xfce.xfce4-clipman-plugin}/bin/xfce4-clipman"
         "${pkgs.xclip}/bin/xclip"
-        "picom --config ${picomConfigLocation} > ~/picom.log 2>&1"
+        "${picomPkg}/bin/picom --config ${picomConfigLocation} > ~/picom.log 2>&1"
 
         # restore feh wallpaper
         "$HOME/.fehbg"
