@@ -6,7 +6,7 @@
   override = pkgs.lib.attrsets.recursiveUpdate;
 
   # color schemes --------------------------------------------------
-  schemes = import ./schemes {inherit banner;};
+  schemes = pkgs.callPackage ./schemes {inherit banner;};
 
   # discord theme packages -----------------------------------------
   discordThemes = pkgs.callPackage ../../packages/discord-themes.nix {};

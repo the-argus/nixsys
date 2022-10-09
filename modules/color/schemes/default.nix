@@ -1,4 +1,8 @@
-{banner, ...}: {
+{
+  pkgs,
+  banner,
+  ...
+}: {
   rosepine = banner.lib.parsers.basicYamlToBanner ./rosepine.yaml;
 
   nord = import ./nord.nix;
