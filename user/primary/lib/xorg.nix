@@ -43,10 +43,9 @@ in rec {
       else execShell;
 
     picomPkg =
-      import ../../../../packages/picom.nix
+      import ../../../packages/picom.nix
       {
-        inherit pkgs;
-        inherit picom;
+        inherit pkgs picom;
       };
   in
     map execFunc ([
