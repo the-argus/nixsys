@@ -1,11 +1,15 @@
 {pkgs, ...}: {
   home.file = let
-    p = pkgs.callPackage ./color.nix {};
+    inherit (config.banner) palette;
+    dunstbg = palette.base00;
+    dunstfg = palette.base05;
+    dunsthi = palette.highlight;
+    dunsturgent = palette.urgent;
     dunstrc = pkgs.lib.generators.toINI {} {
       urgency_low = {
-        background = ''"#${p.dunstbg}"'';
-        foreground = ''"#${p.dunstfg}"'';
-        highlight = ''"#${p.dunsthi}"'';
+        background = ''"#${dunstbg}"'';
+        foreground = ''"#${dunstfg}"'';
+        highlight = ''"#${dunsthi}"'';
         timeout = 3;
         # Icon for notifications with low urgency, uncomment to enable
         #default_icon = "/path/to/icon";
@@ -13,14 +17,14 @@
 
       urgency_normal = {
         timeout = 10;
-        background = ''"#${p.dunstbg}"'';
-        foreground = ''"#${p.dunstfg}"'';
+        background = ''"#${dunstbg}"'';
+        foreground = ''"#${dunstfg}"'';
       };
 
       urgency_critical = {
-        background = ''"#${p.dunstbg}"'';
-        foreground = ''"#${p.dunstfg}"'';
-        frame_color = ''"#${p.dunsturgent}"'';
+        background = ''"#${dunstbg}"'';
+        foreground = ''"#${dunstfg}"'';
+        frame_color = ''"#${dunsturgent}"'';
         timeout = 0;
       };
 

@@ -26,21 +26,21 @@ groupbox = [widget.GroupBox, {
                 "font" : font["clear"]["family"],
                 "padding" : font["clear"]["padding"],
                 "fontsize" : font["clear"]["fontsize"],
-                "foreground": colors["cyan"],
+                "foreground": colors["fg_gutter"],
                 "highlight_method": "text",
-                "block_highlight_text_color": colors["white"],
+                "block_highlight_text_color": colors["fg"],
                 "active": colors["fg"],
-                "inactive": colors["cyan"],
+                "inactive": colors["fg_gutter"],
                 "rounded": False,
-                "highlight_color": [colors["fg"], colors["yellow"]],
+                "highlight_color": [colors["fg"], colors["highlight"]],
                 "urgent_alert_method": "line",
-                "urgent_text": colors["red"],
-                "urgent_border": colors["red"],
+                "urgent_text": colors["urgent"],
+                "urgent_border": colors["urgent"],
                 "disable_drag": True,
                 "use_mouse_wheel": False,
                 "hide_unused": False,
                 "spacing": 5,
-                "this_current_screen_border": colors["yellow"],
+                "this_current_screen_border": colors["highlight"],
             }
         ]
 
@@ -55,8 +55,8 @@ windowname = [widget.WindowName, {
         ]
 
 systray = [widget.Systray, {
-        "background": colors["orange"],
-        "foreground": colors["black"],
+        "background": colors["base04"],
+        "foreground": colors["fg"],
         "theme_path": "rose-pine-gtk",
         }
     ]
@@ -71,7 +71,7 @@ spacer_small = [ widget.Spacer, {
 ]
 
 logo_image = [ widget.Image, {
-        "background": colors["magenta"],
+        "background": colors["hialt0"],
         "margin" : 6,
         "filename" : "~/.config/qtile/config/nixlogo-rosepine.png",
         "mouse_callbacks":{
@@ -87,7 +87,7 @@ logo = [widget.TextBox, {
                 "fontsize" : font["clear"]["fontsize"]*1.6,
                 "text": " ",
                 #"text": " Σ",
-                "background": colors["magenta"],
+                "background": colors["hialt0"],
                 "foreground": colors["bg"],
                 "mouse_callbacks":{
                     "Button1": launcher(qtile)
@@ -98,7 +98,7 @@ logo = [widget.TextBox, {
 cpu = [widget.CPU, {
                 **fontinfo,
                 "format": " {freq_current}GHz {load_percent}%",
-                "background": colors["yellow"],
+                "background": colors["highlight"],
                 "foreground": colors["bg"]
             }
         ]
@@ -106,7 +106,7 @@ cpu = [widget.CPU, {
 disk = [widget.DF, {
                 **fontinfo,
                 "partition": "/",
-                "warn_color": colors["red"],
+                "warn_color": colors["warn"],
                 "warn_space":40,
                 "visible_on_warn": False,
                 "measure":"G",
@@ -119,7 +119,7 @@ net = [widget.Net, {
                 "format": "\u2193 {down} \u2191 {up}",
                 "interface": "wlp0s20f3",
                 "update_interval": 3,
-                "background": colors["pink"]
+                "background": colors["base03"]
             }
         ]
 
@@ -133,9 +133,9 @@ mem = [widget.Memory, {
 
 batt = [widget.Battery, {
                 **fontinfo,
-                "background": colors["magenta"],
+                "background": colors["hialt0"],
                 "foreground": colors["bg"],
-                "low_foreground": colors["red"],
+                "low_foreground": colors["urgent"],
                 "low_background": None,
                 "low_percentage": 0.30,
                 "charge_char": "",
@@ -150,14 +150,14 @@ batt = [widget.Battery, {
 
 layout = [widget.CurrentLayout, {
                 **fontinfo,
-                "background": colors["pink"]
+                "background": colors["base02"]
             }
         ]
 
 date = [widget.Clock, {
                 **fontinfo,
                 "format": '%m/%d/%Y',
-                "background": colors["orange"]
+                "background": colors["base03"]
             }
         ]
 

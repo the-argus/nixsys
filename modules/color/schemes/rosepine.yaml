@@ -1,0 +1,36 @@
+scheme: "Rosé Pine"
+# original author of the base16 for rosepine
+author: "Emilia Dunfelt <sayhi@dunfelt.se>"
+base00: "191724"
+base01: "1f1d2e"
+base02: "26233a"
+base03: "555169"
+base04: "6e6a86"
+base05: "e0def4"
+base06: "f0f0f3"
+base07: "c5c3ce"
+base08: "e2e1e7"
+base09: "eb6f92"
+base0A: "f6c177"
+base0B: "ebbcba"
+base0C: "31748f"
+base0D: "9ccfd8"
+base0E: "c4a7e7"
+base0F: "e5e5e5"
+# banner extensions
+pfg08: "191724"
+pfg09: "191724"
+pfg0A: "191724"
+pfg0B: "e0def4"
+pfg0C: "191724"
+pfg0D: "191724"
+pfg0E: "191724"
+pfg0F: "191724"
+highlight: "f6c177" # yellow is my favorite :)
+hialt0: "c4a7e7" # purple
+hialt1: "f6c177"
+hialt2: "ebbcba" # cyan
+urgent: "eb6f92"
+warn: "f6c177"
+confirm: "9ccfd8"
+link: "c4a7e7" # purple links

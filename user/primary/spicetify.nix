@@ -36,27 +36,32 @@ in {
     colorScheme = "custom";
 
     customColorScheme = let
-      colors = pkgs.callPackage ./color.nix {};
-      center = colors.dribbblish.center;
-      outer = colors.dribbblish.outer;
+      center = with config.banner.palette; {
+        text = hialt2;
+        bg = base00;
+      };
+      outer = {
+        text = hialt2;
+        bg = base02;
+      };
     in
-      with colors; {
+      with config.banner.palette; {
         text = center.text;
         subtext = center.text; # "F0F0F0";
         sidebar-text = outer.text; # use altfg if going for contrast on dribbs
         main = center.bg;
         sidebar = outer.bg; # and altbg here
-        player = bg;
-        card = bg;
-        shadow = altbg2;
-        selected-row = altfg; # "797979";
-        button = hi1;
-        button-active = hi1;
-        button-disabled = altbg3;
-        tab-active = hi1;
-        notification = altfg; # "1db954";
-        notification-error = red;
-        misc = black;
+        player = base00;
+        card = base00;
+        shadow = base02;
+        selected-row = base02; # "797979";
+        button = highlight;
+        button-active = highlight;
+        button-disabled = base03;
+        tab-active = highlight;
+        notification = base01; # "1db954";
+        notification-error = urgent;
+        misc = base04;
       };
 
     enabledCustomApps = with spicePkgs.apps; [

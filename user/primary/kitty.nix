@@ -4,55 +4,53 @@
   ...
 }: {
   programs.kitty = let
-    colors = pkgs.callPackage ./color.nix {};
-
     systemTheme = pkgs.callPackage ./themes.nix {};
     font = systemTheme.font.monospace;
     opacity = systemTheme.opacity;
 
     kittyColorFormat = key: (value: "#${value}");
 
-    theme = with colors; {
-      foreground = fg;
-      background = terminal.bg;
-      selection_foreground = fg;
-      selection_background = altbg;
+    theme = with config.banner.palette; {
+      foreground = base05;
+      background = base00;
+      selection_foreground = base05;
+      selection_background = base02;
 
-      cursor = altfg;
-      cursor_text_color = bg;
-      url_color = magenta;
+      cursor = base05;
+      cursor_text_color = base00;
+      url_color = link;
 
       # black
-      color0 = altfg2;
-      color8 = terminal.black;
+      color0 = base00;
+      color8 = base01;
 
       # red
-      color1 = red;
-      color9 = red;
+      color1 = base09;
+      color9 = base09;
 
       # green
-      color2 = green;
-      color10 = green;
+      color2 = base0A;
+      color10 = base0A;
 
       # yellow
-      color3 = yellow;
-      color11 = yellow;
+      color3 = base0B;
+      color11 = base0B;
 
       # blue
-      color4 = blue;
-      color12 = blue;
+      color4 = base0C;
+      color12 = base0C;
 
       # magenta
-      color5 = magenta;
-      color13 = magenta;
+      color5 = base0D;
+      color13 = base0D;
 
       # cyan
-      color6 = cyan;
-      color14 = cyan;
+      color6 = base0E;
+      color14 = base0E;
 
       # white
-      color7 = white;
-      color15 = white;
+      color7 = base05;
+      color15 = base05;
     };
 
     themeFormatted = builtins.mapAttrs kittyColorFormat theme;

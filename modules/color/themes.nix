@@ -100,10 +100,7 @@ in rec {
       };
       cursorTheme = cursorThemes.googleDotBlack;
     };
-    discordTheme = discordThemes.mkDiscordThemeFromSystemTheme {
-      inherit scheme;
-      inherit (defaultTheme) font;
-    };
+    discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
   };
 
   rosepine = override defaultTheme {

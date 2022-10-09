@@ -24,6 +24,7 @@
     ./music.nix
     ./spicetify.nix
     ./i3.nix
+    (import ./themes.nix).scheme
   ];
 
   programs.chromium = {
@@ -110,6 +111,8 @@
         transmission
         ani-cli
         nix-prefetch-scripts
+        tigervnc
+        distrobox
 
         # dev
         nodejs

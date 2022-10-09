@@ -10,6 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    banner.url = "github:the-argus/banner.nix";
+
     audio-plugins = {
       url = "github:the-argus/audio-plugins-nix?ref=yabridge-packaging";
       # inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -58,6 +60,7 @@
     nixpkgs-unstable,
     home-manager,
     webcord,
+    banner,
     rycee-expressions,
     # , nur
     audio-plugins,

@@ -43,30 +43,29 @@
       };
 
       colors = let
-        palette = pkgs.callPackage ./color.nix {};
-
+        inherit (config.banner) palette;
         prepend0x = color: "0x${color}";
         alacrittyColorFormat = name: color: "0x${color}";
 
         cursorSettings = builtins.mapAttrs alacrittyColorFormat {
-          text = palette.terminal.bg;
-          cursor = palette.altfg;
+          text = palette.base00;
+          cursor = palette.base02;
         };
 
         alacrittyPalette = builtins.mapAttrs alacrittyColorFormat {
-          black = palette.terminal.black;
-          red = palette.red;
-          green = palette.green;
-          yellow = palette.yellow;
-          blue = palette.blue;
-          magenta = palette.magenta;
-          cyan = palette.cyan;
-          white = palette.white;
+          black = palette.base01;
+          red = palette.base09;
+          green = palette.base0A;
+          yellow = palette.base0B;
+          blue = palette.base0C;
+          magenta = palette.base0D;
+          cyan = palette.base0E;
+          white = palette.base05;
         };
       in {
         primary = builtins.mapAttrs alacrittyColorFormat {
-          background = palette.bg;
-          foreground = palette.fg;
+          background = palette.base00;
+          foreground = palette.base05;
         };
 
         cursor = cursorSettings;

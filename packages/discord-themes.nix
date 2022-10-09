@@ -73,34 +73,34 @@ in {
     sha256 = "0ahrwxkla9gqjlgff337jcna20v5ncxlkcyssli89k75axvypzr1";
   };
 
-  mkDiscordThemeFromSystemTheme = systemTheme:
-    with systemTheme.scheme; let
+  mkDiscordThemeFromSystemTheme = {...}:
+    with config.banner.palette; let
       font = systemTheme.font.display;
       # light mode literally not supported lol
       css = builtins.toFile "THEME.theme.css" ''
         .theme-dark {
-            --background-primary: #${altfg2};
-            --background-secondary: #${altbg2};
-            --background-secondary-alt: #${altfg2};
-            --channeltextarea-background: #${altbg};
-            --background-tertiary: #${bg};
-            --background-accent: #${hi1};
-            --text-normal: #${fg};
-            --text-spotify: #${green};
-            --text-muted: #${altfg3};
-            --text-link: #${blue};
-            --background-floating: #${altbg2};
-            --header-primary: #${fg};
-            --header-secondary: #${blue};
-            --header-spotify: #${blue};
-            --interactive-normal: #${fg};
-            --interactive-hover: #${hi1};
-            --interactive-active: #${fg};
-            --ping: #${red};
-            --background-modifier-selected: #${altfg2}b4;
-            --scrollbar-thin-thumb: #${bg};
+            --background-primary: #${base02};
+            --background-secondary: #${base01};
+            --background-secondary-alt: #${base02};
+            --channeltextarea-background: #${base03};
+            --background-tertiary: #${base00};
+            --background-accent: #${highlight};
+            --text-normal: #${base05};
+            --text-spotify: #1DB954;
+            --text-muted: #${base03};
+            --text-link: #${link};
+            --background-floating: #${base01};
+            --header-primary: #${base05};
+            --header-secondary: #${base0B};
+            --header-spotify: #${base0B};
+            --interactive-normal: #${base05};
+            --interactive-hover: #${highlight};
+            --interactive-active: #${base05};
+            --ping: #${highlight};
+            --background-modifier-selected: #${base02}b4;
+            --scrollbar-thin-thumb: #${base00};
             --scrollbar-thin-track: transparent;
-            --scrollbar-auto-thumb: #${bg};
+            --scrollbar-auto-thumb: #${base00};
             --scrollbar-auto-track: transparent;
         }
 

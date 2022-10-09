@@ -8,7 +8,58 @@
   ...
 }: {
   programs.firefox = let
-    colors = pkgs.callPackage ./color.nix {};
+    colors = with config.banner.palette; {
+      firefox = let
+        ffbg = base00;
+        ffhi = highlight;
+      in {
+        userChrome = {
+          # whole background
+          bg = ffbg;
+          # the url text
+          urlbar-selected = ffhi; # rose pine 403C58
+          # tab title text
+          tabtext = ffhi; # rose pine 9BCED7
+
+          # dont matter
+          panel-disabled = ffbg; # rose pine f9f9fa
+          arrowpanel = base05; # rose pine fefefa
+          tab = urgent; # rose pine EA6F91
+          tab-selected = urgent; # rose pine 403C58
+          urlbar = ffhi; # rose pine 98c1d9
+          urlbar-results = ffhi; # rose pine F1CA93
+          sidebar = ffhi; # rose pine F1CA93
+          tab-soundplaying = warn; # rose pine 9c89b8
+          misc = hialt0; # rose pine ea6f91
+        };
+        # user content (home page)
+        userContent = {
+          # dark colors
+          d2 = ffbg; #"1F1D29";
+          d4 = base06; #"30333d";
+
+          # word colors
+          w1 = hialt0; # "ccaced";
+          w2 = base05; #"c0c0c0";
+          w3 = base05; #"dfd7d7";
+
+          # light colors
+          l1 = base05; #"e1e0e6";
+          l2 = base05; #"adabb9";
+          l3 = base07; # "9795a3";
+          l4 = base05; #"878492";
+
+          # other colors
+          o1 = link; #"332e56";
+          o2 = base02; #"4b4757";
+
+          # dont matter
+          d1 = urgent; # "30333d";
+          d3 = base02; #"585e74";
+          o3 = urgent; #"33313c";
+        };
+      };
+    };
     assets = import ../../packages/firefox-assets {inherit pkgs;};
     baseUserJS = builtins.readFile "${arkenfox-userjs}/user.js";
     font = (pkgs.callPackage ./themes.nix {}).font.display.name;
