@@ -1,7 +1,11 @@
-{pkgs, ...}:
+{
+  pkgs,
+  banner,
+  ...
+}:
 # if settings had a theme, it gets added to pkgs set in flake.nix
 let
-  themes = pkgs.callPackage ../../modules/color/themes.nix {};
+  themes = pkgs.callPackage ../../modules/color/themes.nix {inherit banner;};
   default = themes.defaultTheme;
 in (
   if builtins.hasAttr "flakeTheme" pkgs
