@@ -5,7 +5,7 @@
 }: {
   rosepine = banner.lib.parsers.basicYamlToBanner ./rosepine.yaml;
 
-  nord = import ./nord.nix;
+  nord = banner.lib.parsers.basicYamlToBanner ./nord.yaml;
 
   gtk4 = import ./gtk4.nix;
 
