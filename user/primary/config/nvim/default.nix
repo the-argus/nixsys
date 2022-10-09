@@ -13,7 +13,7 @@
             overlay = '#${base02}',
             muted = '#${base00}',
             subtle = '#${base03}',
-            text = '#${white}',
+            text = '#${base05}',
             love = '#${base09}',
             gold = '#${base0A}',
             rose = '#${base0B}',
@@ -22,7 +22,7 @@
             iris = '#${base0E}',
             highlight_low = '#${base01}',
             highlight_med = '#${base03}',
-            highlight_high = '#${base03}',
+            highlight_high = '#${base06}',
             opacity = 0.1,
             none = 'NONE',
         }
