@@ -51,7 +51,7 @@
       # };
       webcord = let
         theme = let
-          systemTheme = pkgs.callPackage ../themes.nix {};
+          systemTheme = config.system.theme;
         in
           pkgs.callPackage systemTheme.discordTheme {inherit config systemTheme;};
       in {

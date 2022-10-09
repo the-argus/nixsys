@@ -30,7 +30,7 @@
     banner.module
   ];
 
-  banner.palette = (pkgs.callPackage ./themes.nix {}).scheme;
+  banner.palette = config.system.theme.scheme;
 
   programs.chromium = {
     enable = true;
