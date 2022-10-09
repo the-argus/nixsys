@@ -63,8 +63,7 @@
     };
     assets = import ../../packages/firefox-assets {inherit pkgs;};
     baseUserJS = builtins.readFile "${arkenfox-userjs}/user.js";
-    systemTheme = pkgs.callPackage ./themes.nix {};
-    font = systemTheme.font.display.name;
+    font = config.system.theme.font.display.name;
     finalUserJS = lib.strings.concatStrings [
       baseUserJS
       ''

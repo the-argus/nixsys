@@ -5,9 +5,8 @@
   ...
 }: {
   programs.kitty = let
-    systemTheme = pkgs.callPackage ./themes.nix {};
-    font = systemTheme.font.monospace;
-    opacity = systemTheme.opacity;
+    font = config.system.theme.font.monospace;
+    opacity = config.system.theme.opacity;
 
     kittyColorFormat = key: (value: "#${value}");
 

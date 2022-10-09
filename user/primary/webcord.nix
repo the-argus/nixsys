@@ -8,7 +8,7 @@ with (pkgs.callPackage ./pkgs.nix {}); {
     ".config/WebCord/Themes" = let
       # this will only be loaded by calling "webcord --add-css-theme=~/.config/WebCord/Themes"
       theme = let
-        systemTheme = pkgs.callPackage ./themes.nix {};
+        systemTheme = config.system.theme;
       in
         pkgs.callPackage systemTheme.discordTheme {inherit config systemTheme;};
     in {
