@@ -25,7 +25,7 @@
       };
 
       font = let
-        main = config.system.theme.font.monospace.name;
+        main = (pkgs.callPackage ./themes.nix {}).font.monospace.name;
       in {
         size = 9;
         normal.family = main;

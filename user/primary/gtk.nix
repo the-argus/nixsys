@@ -5,7 +5,8 @@
   config,
   ...
 }: let
-  gtk = config.system.theme.gtk;
+  systemTheme = pkgs.callPackage ./themes.nix {};
+  gtk = systemTheme.gtk;
 in {
   imports = [gtk-nix.homeManagerModule];
   home.packages = [pkgs.dconf];
@@ -79,7 +80,7 @@ in {
   gtk = {
     enable = true;
 
-    font = config.system.theme.font.display;
+    font = systemTheme.font.display;
 
     cursorTheme = gtk.cursorTheme;
 
