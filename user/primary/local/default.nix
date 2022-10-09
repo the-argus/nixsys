@@ -53,7 +53,12 @@
         theme = let
           systemTheme = config.system.theme;
         in
-          pkgs.callPackage systemTheme.discordTheme {inherit config systemTheme;};
+          if builtins.typeOf systemTheme.discordTheme == "lambda"
+          then
+            pkgs.callPackage
+            systemTheme.discordTheme
+            {inherit config systemTheme;}
+          else systemTheme.discordTheme;
       in {
         name = "Webcord";
         exec = ''webcord --add-css-theme=${theme}/THEME.theme.css'';
