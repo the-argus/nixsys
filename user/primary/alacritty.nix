@@ -78,7 +78,7 @@
         };
         selection = {
           text = "CellForeground";
-          background = prepend0x palette.altbg;
+          background = prepend0x palette.base02;
         };
         normal = alacrittyPalette;
         bright = alacrittyPalette;
