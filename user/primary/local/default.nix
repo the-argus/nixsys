@@ -53,7 +53,7 @@
         theme = let
           systemTheme = pkgs.callPackage ../themes.nix {};
         in
-          pkgs.callPackage theme.discordTheme {inherit config systemTheme;};
+          pkgs.callPackage systemTheme.discordTheme {inherit config systemTheme;};
       in {
         name = "Webcord";
         exec = ''webcord --add-css-theme=${theme}/THEME.theme.css'';
