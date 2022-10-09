@@ -1,8 +1,12 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  banner,
+  ...
+}: let
   override = pkgs.lib.attrsets.recursiveUpdate;
 
   # color schemes --------------------------------------------------
-  schemes = import ./schemes;
+  schemes = import ./schemes {inherit banner;};
 
   # discord theme packages -----------------------------------------
   discordThemes = pkgs.callPackage ../../packages/discord-themes.nix {};

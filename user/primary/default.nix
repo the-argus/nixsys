@@ -27,20 +27,9 @@
     ./spicetify.nix
     ./i3.nix
     banner.module
-    ({lib, ...}: {
-      options.system.theme = lib.mkOption {
-        type = lib.types.nullOr lib.types.attrs;
-        default = null;
-      };
-    })
   ];
 
-  system.theme = pkgs.callPackage ./themes.nix {};
-
-  banner.palette =
-    import
-    config.system.theme.scheme
-    {inherit pkgs banner;};
+  banner.palette = (pkgs.callPackage ./themes.nix {}).scheme;
 
   programs.chromium = {
     enable = true;
