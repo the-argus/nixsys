@@ -32,7 +32,8 @@
       color-override = builtins.toFile "color-override.lua" text;
 
       overridenConfig = pkgs.stdenv.mkDerivation {
-        name = "overriden-neovim-config";
+        pname = "overriden-neovim-config";
+        version = "0.0.1";
         src = nvim-config;
         buildPhase = ''
           cp ${color-override} lua/color-override.lua
