@@ -29,13 +29,13 @@
 
         return palette
       '';
-      override = builtins.toFile "color-override.lua" text;
+      color-override = builtins.toFile "color-override.lua" text;
 
       overridenConfig = pkgs.stdenv.mkDerivation {
         name = "overriden-neovim-config";
         src = nvim-config;
         buildPhase = ''
-          cp ${override} lua/color-override.lua
+          cp ${color-override} lua/color-override.lua
           ${pkgs.coreutils-full}/bin/chmod -R a+wr .
         '';
         installPhase = "cp -r . $out";
