@@ -32,7 +32,7 @@ groupbox = [widget.GroupBox, {
                 "active": colors["fg"],
                 "inactive": colors["fg_gutter"],
                 "rounded": False,
-                "highlight_color": [colors["fg"], colors["highlight"]],
+                "highlight_color": [colors["fg"], colors["hialt0"]],
                 "urgent_alert_method": "line",
                 "urgent_text": colors["urgent"],
                 "urgent_border": colors["urgent"],
@@ -40,7 +40,7 @@ groupbox = [widget.GroupBox, {
                 "use_mouse_wheel": False,
                 "hide_unused": False,
                 "spacing": 5,
-                "this_current_screen_border": colors["highlight"],
+                "this_current_screen_border": colors["hialt0"],
             }
         ]
 
@@ -71,7 +71,7 @@ spacer_small = [ widget.Spacer, {
 ]
 
 logo_image = [ widget.Image, {
-        "background": colors["hialt0"],
+        "background": colors["highlight"],
         "margin" : 6,
         "filename" : "~/.config/qtile/config/nixlogo-rosepine.png",
         "mouse_callbacks":{
@@ -87,7 +87,7 @@ logo = [widget.TextBox, {
                 "fontsize" : font["clear"]["fontsize"]*1.6,
                 "text": " ",
                 #"text": " Σ",
-                "background": colors["hialt0"],
+                "background": colors["highlight"],
                 "foreground": colors["bg"],
                 "mouse_callbacks":{
                     "Button1": launcher(qtile)
@@ -98,7 +98,7 @@ logo = [widget.TextBox, {
 cpu = [widget.CPU, {
                 **fontinfo,
                 "format": " {freq_current}GHz {load_percent}%",
-                "background": colors["highlight"],
+                "background": colors["hialt0"],
                 "foreground": colors["bg"]
             }
         ]
@@ -133,7 +133,7 @@ mem = [widget.Memory, {
 
 batt = [widget.Battery, {
                 **fontinfo,
-                "background": colors["hialt0"],
+                "background": colors["highlight"],
                 "foreground": colors["bg"],
                 "low_foreground": colors["urgent"],
                 "low_background": None,
