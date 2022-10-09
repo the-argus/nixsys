@@ -62,14 +62,14 @@ in {
           }
           // settings.plymouth);
       })
-    ]
-    ++ (
-      if (builtins.hasAttr "theme" settings)
-      then [
-        (self: super: {
-          flakeTheme = settings.theme;
-        })
-      ]
-      else []
-    );
+    ];
+  # ++ (
+  #   if (builtins.hasAttr "theme" settings)
+  #   then [
+  #     (self: super: {
+  #       flakeTheme = settings.theme;
+  #     })
+  #   ]
+  #   else []
+  # );
 }

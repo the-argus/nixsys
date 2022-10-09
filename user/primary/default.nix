@@ -26,6 +26,7 @@
     ./music.nix
     ./spicetify.nix
     ./i3.nix
+    ../../modules/color/themes.nix
     banner.module
   ];
 

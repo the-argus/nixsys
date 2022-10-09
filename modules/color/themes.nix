@@ -1,6 +1,7 @@
 {
   pkgs,
   banner,
+  settings,
   ...
 }: let
   override = pkgs.lib.attrsets.recursiveUpdate;
@@ -63,108 +64,126 @@
     name = "NordArc";
     package = nord;
   };
-in rec {
-  # themes --------------------------------------------------
-  defaultTheme = rec {
-    gtk = {
-      # theme = rosePineTheme;
-      theme = "gtkNix";
-      iconTheme = rosePineIcons;
-      cursorTheme = cursorThemes.posysImproved;
-    };
-    font = {
-      monospace = {
-        name = "FiraCode Nerd Font";
-        size = 14;
-        package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
-      };
-      display = {
-        name = "Fira Code";
-        size = 11;
-        package = pkgs.fira-code;
-      };
-    };
-    discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
-    scheme = schemes.rosepine;
-    opacity = "0.8";
-  };
 
-  gruvbox = override defaultTheme rec {
-    scheme = schemes.gruv;
-    gtk = {
-      theme = {
-        package = pkgs.gruvbox-dark-gtk;
-        name = "gruvbox-dark";
+  availableThemes = {
+    defaultTheme = rec {
+      gtk = {
+        # theme = rosePineTheme;
+        theme = "gtkNix";
+        iconTheme = rosePineIcons;
+        cursorTheme = cursorThemes.posysImproved;
       };
-      iconTheme = {
-        package = pkgs.gruvbox-dark-icons-gtk;
-        name = "oomox-gruvbox-dark";
+      font = {
+        monospace = {
+          name = "FiraCode Nerd Font";
+          size = 14;
+          package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+        };
+        display = {
+          name = "Fira Code";
+          size = 11;
+          package = pkgs.fira-code;
+        };
       };
-      cursorTheme = cursorThemes.googleDotBlack;
+      discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
+      scheme = schemes.rosepine;
+      opacity = "0.8";
     };
-    discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
-  };
 
-  rosepine = override defaultTheme {
-    discordTheme = discordThemes.rosepine;
-    gtk.theme = rosePineTheme;
-  };
-
-  gtk4 = override defaultTheme {
-    gtk = {
-      theme = darkGTheme;
-      iconTheme = numixCircleIcons;
+    gruvbox = override defaultTheme rec {
+      scheme = schemes.gruv;
+      gtk = {
+        theme = {
+          package = pkgs.gruvbox-dark-gtk;
+          name = "gruvbox-dark";
+        };
+        iconTheme = {
+          package = pkgs.gruvbox-dark-icons-gtk;
+          name = "oomox-gruvbox-dark";
+        };
+        cursorTheme = cursorThemes.googleDotBlack;
+      };
+      discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
     };
-    font = {
-      display = {
-        name = "Montserrat";
-        size = 12;
-        package = pkgs.montserrat;
+
+    rosepine = override defaultTheme {
+      discordTheme = discordThemes.rosepine;
+      gtk.theme = rosePineTheme;
+    };
+
+    gtk4 = override defaultTheme {
+      gtk = {
+        theme = darkGTheme;
+        iconTheme = numixCircleIcons;
+      };
+      font = {
+        display = {
+          name = "Montserrat";
+          size = 12;
+          package = pkgs.montserrat;
+        };
+      };
+      discordTheme = discordThemes.slate;
+      scheme = schemes.gtk4;
+      opacity = "1.0";
+    };
+
+    nordic = override defaultTheme {
+      gtk = {
+        theme = nordicTheme;
+        iconTheme = nordzyIcons;
+        cursorTheme = cursorThemes.nordzyCursor;
+      };
+      discordTheme = discordThemes.nordic;
+      scheme = schemes.nord;
+      opacity = "0.8";
+    };
+
+    nordicWithGtkNix = override nordic {
+      gtk.theme = "gtkNix";
+    };
+
+    orchis = override defaultTheme {
+      gtk = {
+        theme = {
+          name = "Orchis-Light"; # Orchis, Orchis-Light, Orchis-Compact, Orchis-Dark, Orchis-Dark-Compact, Orchis-Green, Orchis-Green Compact, etc
+          # colors: Green Grey Orange Pink Purple Red Yellow
+          package = pkgs.orchis;
+        };
+        iconTheme = {
+          name = "Tela-circle"; # or Tela-circle-dark
+          package = pkgs.tela-circle-icon-theme;
+        };
       };
     };
-    discordTheme = discordThemes.slate;
-    scheme = schemes.gtk4;
-    opacity = "1.0";
-  };
 
-  nordic = override defaultTheme {
-    gtk = {
-      theme = nordicTheme;
-      iconTheme = nordzyIcons;
-      cursorTheme = cursorThemes.nordzyCursor;
-    };
-    discordTheme = discordThemes.nordic;
-    scheme = schemes.nord;
-    opacity = "0.8";
-  };
-
-  nordicWithGtkNix = override nordic {
-    gtk.theme = "gtkNix";
-  };
-
-  orchis = override defaultTheme {
-    gtk = {
-      theme = {
-        name = "Orchis-Light"; # Orchis, Orchis-Light, Orchis-Compact, Orchis-Dark, Orchis-Dark-Compact, Orchis-Green, Orchis-Green Compact, etc
-        # colors: Green Grey Orange Pink Purple Red Yellow
-        package = pkgs.orchis;
+    drifter = override defaultTheme rec {
+      font = defaultTheme.font;
+      scheme = schemes.drifter;
+      gtk = {
+        iconTheme = materialBlackFrostIcons;
+        theme = "gtkNix";
+        cursorTheme = cursorThemes.breezeXBlack;
       };
-      iconTheme = {
-        name = "Tela-circle"; # or Tela-circle-dark
-        package = pkgs.tela-circle-icon-theme;
-      };
+      opacity = "0.7";
+      discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
     };
   };
-
-  drifter = override defaultTheme rec {
-    font = defaultTheme.font;
-    scheme = schemes.drifter;
-    gtk = {
-      iconTheme = materialBlackFrostIcons;
-      theme = "gtkNix";
-      cursorTheme = cursorThemes.breezeXBlack;
+in {
+  options = {
+    system.theme = lib.mkOption {
+      type = lib.types.attrs;
+      default =
+        if builtins.hasAttr "theme" settings
+        then
+          (
+            if builtins.typeOf settings.theme == "string"
+            then availableThemes.${settings.theme}
+            else if builtins.typeOf settings.theme == "set"
+            then settings.theme
+            else availableThemes.defaultTheme
+          )
+        else availableThemes.defaultTheme;
     };
-    opacity = "0.7";
-    discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
   };
 }
