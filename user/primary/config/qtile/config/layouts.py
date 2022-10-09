@@ -12,8 +12,8 @@ WINDOW_MARGIN = MARGIN  # int(MARGIN/2)
 # only used by monad wide and monad tall
 SINGLE_BORDER_WIDTH = BORDER_WIDTH
 
-ACTIVE_COLOR = colors["magenta"]
-INACTIVE_COLOR = colors["orange"]
+ACTIVE_COLOR = colors["highlight"]
+INACTIVE_COLOR = colors["base03"]
 
 floating = layout.Floating(
     border_focus=ACTIVE_COLOR, border_normal=INACTIVE_COLOR, border_width=2

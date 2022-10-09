@@ -26,10 +26,10 @@ pfg0C: "191724"
 pfg0D: "191724"
 pfg0E: "191724"
 pfg0F: "191724"
-highlight: "f6c177" # yellow is my favorite :)
-hialt0: "c4a7e7" # purple
-hialt1: "f6c177"
-hialt2: "ebbcba" # cyan
+highlight: "c4a7e7"
+hialt0: "f6c177"
+hialt1: "c4a7e7"
+hialt2: "31748f" # pine green
 urgent: "eb6f92"
 warn: "f6c177"
 confirm: "9ccfd8"
