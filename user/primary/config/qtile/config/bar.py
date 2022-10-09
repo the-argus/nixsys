@@ -164,7 +164,7 @@ date = [widget.Clock, {
 time = [widget.Clock, {
                 **fontinfo,
                 "format": '%I:%M %p ',
-                "background": colors["fg_gutter"]
+                "background": colors["base04"]
             }
         ]
 
