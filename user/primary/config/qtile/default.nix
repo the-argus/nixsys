@@ -67,7 +67,7 @@
           "pfg0D": "#${pfg0D}",
           "pfg0E": "#${pfg0E}",
           "pfg0F": "#${pfg0F}",
-          
+
           "highlight": "#${highlight}",
           "hialt0": "#${hialt0}",
           "hialt1": "#${hialt1}",
