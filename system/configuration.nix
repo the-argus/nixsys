@@ -86,7 +86,7 @@
   virtualization.passthrough.ovmfPackage = pkgs.OVMFFull;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = lib.mkDefault "America/New_York";
 
   # documentation.doc.enable = false;
   # this line is hardcoded to be green
