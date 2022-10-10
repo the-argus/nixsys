@@ -14,8 +14,8 @@ fontinfo = dict(
     fontsize=font["secondary"]["fontsize"]
 )
 
-DEFAULT_FG = colors["base00"]
-DEFAULT_BG = colors["base05"]
+DEFAULT_FG = colors["base05"]
+DEFAULT_BG = colors["base00"]
 WIDTH=34
 
 def launcher(qtile):
