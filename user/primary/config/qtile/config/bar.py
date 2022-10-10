@@ -14,8 +14,8 @@ fontinfo = dict(
     fontsize=font["secondary"]["fontsize"]
 )
 
-DEFAULT_FG = colors["fg"]
-DEFAULT_BG = colors["bg"]
+DEFAULT_FG = colors["base00"]
+DEFAULT_BG = colors["base05"]
 WIDTH=34
 
 def launcher(qtile):
@@ -26,13 +26,13 @@ groupbox = [widget.GroupBox, {
                 "font" : font["clear"]["family"],
                 "padding" : font["clear"]["padding"],
                 "fontsize" : font["clear"]["fontsize"],
-                "foreground": colors["fg_gutter"],
+                "foreground": colors["base03"],
                 "highlight_method": "text",
-                "block_highlight_text_color": colors["fg"],
-                "active": colors["fg"],
-                "inactive": colors["fg_gutter"],
+                "block_highlight_text_color": DEFAULT_FG,
+                "active": DEFAULT_FG,
+                "inactive": colors["base03"],
                 "rounded": False,
-                "highlight_color": [colors["fg"], colors["hialt0"]],
+                "highlight_color": [DEFAULT_FG, colors["hialt0"]],
                 "urgent_alert_method": "line",
                 "urgent_text": colors["urgent"],
                 "urgent_border": colors["urgent"],
@@ -49,14 +49,14 @@ windowname = [widget.WindowName, {
                 "fontsize": 16,
                 "padding": 3,
                 "format": '{name}',
-                "background": colors["fg_gutter"],
+                "background": colors["base03"],
                 "center_aligned": True
             }
         ]
 
 systray = [widget.Systray, {
-        "background": colors["base04"],
-        "foreground": colors["fg"],
+        "background": colors["ansi00"], # needs to always be dark
+        "foreground": DEFAULT_FG,
         "theme_path": "rose-pine-gtk",
         }
     ]
@@ -88,7 +88,7 @@ logo = [widget.TextBox, {
                 "text": " ",
                 #"text": " Σ",
                 "background": colors["highlight"],
-                "foreground": colors["bg"],
+                "foreground": colors["pfg-highlight"],
                 "mouse_callbacks":{
                     "Button1": launcher(qtile)
                 },
@@ -99,7 +99,7 @@ cpu = [widget.CPU, {
                 **fontinfo,
                 "format": " {freq_current}GHz {load_percent}%",
                 "background": colors["hialt0"],
-                "foreground": colors["bg"]
+                "foreground": colors["pfg-hialt0"]
             }
         ]
 
@@ -134,7 +134,7 @@ mem = [widget.Memory, {
 batt = [widget.Battery, {
                 **fontinfo,
                 "background": colors["highlight"],
-                "foreground": colors["bg"],
+                "foreground": colors["pfg-highlight"],
                 "low_foreground": colors["urgent"],
                 "low_background": None,
                 "low_percentage": 0.30,

@@ -21,36 +21,36 @@
       url_color = link;
 
       # black
-      color0 = base03;
-      color8 = base03;
+      color0 = ansi00;
+      color8 = ansi00;
 
       # red
-      color1 = base09;
-      color9 = base09;
+      color1 = ansi01;
+      color9 = ansi01;
 
       # green
-      color2 = base0D;
-      color10 = base0D;
+      color2 = ansi02;
+      color10 = ansi02;
 
       # yellow
-      color3 = base0A;
-      color11 = base0A;
+      color3 = ansi03;
+      color11 = ansi03;
 
       # blue
-      color4 = base0C;
-      color12 = base0C;
+      color4 = ansi04;
+      color12 = ansi04;
 
       # magenta
-      color5 = base0E;
-      color13 = base0E;
+      color5 = ansi05;
+      color13 = ansi05;
 
       # cyan
-      color6 = base0B;
-      color14 = base0B;
+      color6 = ansi06;
+      color14 = ansi06;
 
       # white
-      color7 = base05;
-      color15 = base05;
+      color7 = ansi07;
+      color15 = ansi07;
     };
 
     themeFormatted = builtins.mapAttrs kittyColorFormat theme;

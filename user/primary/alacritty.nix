@@ -54,14 +54,14 @@
         };
 
         alacrittyPalette = builtins.mapAttrs alacrittyColorFormat {
-          black = palette.base03;
-          red = palette.base09;
-          green = palette.base0D;
-          yellow = palette.base0A;
-          blue = palette.base0C;
-          magenta = palette.base0E;
-          cyan = palette.base0B;
-          white = palette.base05;
+          black = palette.ansi00;
+          red = palette.ansi01;
+          green = palette.ansi02;
+          yellow = palette.ansi03;
+          blue = palette.ansi04;
+          magenta = palette.ansi05;
+          cyan = palette.ansi06;
+          white = palette.ansi07;
         };
       in {
         primary = builtins.mapAttrs alacrittyColorFormat {
