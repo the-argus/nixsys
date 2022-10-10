@@ -9,7 +9,7 @@
 
   gtk4 = import ./gtk4.nix;
 
-  drifter = import ./drifter.nix;
+  drifter = banner.lib.parsers.basicYamlToBanner ./drifter.yaml;
 
   gruv = import ./gruv.nix;
 }
