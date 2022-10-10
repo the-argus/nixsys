@@ -55,7 +55,7 @@ windowname = [widget.WindowName, {
         ]
 
 systray = [widget.Systray, {
-        "background": colors["ansi00"], # needs to always be dark
+        "background": colors["base02"],
         "foreground": DEFAULT_FG,
         "theme_path": "rose-pine-gtk",
         }
