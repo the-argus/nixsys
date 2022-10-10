@@ -102,9 +102,10 @@
 
   programs.zsh.enable = true;
 
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.bash;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [
       "wheel"
