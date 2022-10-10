@@ -36,13 +36,13 @@
       }
       terminal = "${pkgs.${settings.terminal}}/bin/${settings.terminal}"
     '';
-    
+
     # translate nix banner palette into python
     ".config/qtile/color.py".text = with config.banner.palette; ''
       colors = {
           ${builtins.concatStringsSep "\n"
         (lib.attrsets.mapAttrsToList
-          (name: value: "\"${name}\": \"#${value}\"")
+          (name: value: "\"${name}\": \"#${value}\",")
           config.banner.palette)}
       }
     '';
