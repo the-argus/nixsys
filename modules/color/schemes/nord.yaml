@@ -19,7 +19,7 @@ base0F: "B48EAD"
 
 # banner extensions
 highlight:      "8FBCBB"
-hialt0:         "5E81AC"
+hialt0:         "81A1C1"
 hialt1:         "8FBCBB"
 hialt2:         "ECEFF4"
 urgent:         "BF616A"
@@ -28,7 +28,7 @@ confirm:        "A3BE8C"
 link:           "5E81AC"
 
 pfg-highlight:  "2E3440"
-pfg-hialt0:     "E5E9F0"
+pfg-hialt0:     "2E3440"
 pfg-hialt1:     "2E3440"
 pfg-hialt2:     "2E3440"
 pfg-urgent:     "2E3440"
