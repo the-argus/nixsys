@@ -165,7 +165,7 @@ time = [widget.Clock, {
                 **fontinfo,
                 "format": '%I:%M %p ',
                 "background": colors["base04"],
-                "foreground": colors["base07"]
+                "foreground": colors["base05"]
             }
         ]
 
