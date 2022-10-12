@@ -88,11 +88,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1665539033,
-        "narHash": "sha256-5CoJx9lNG7RbqqLQGizVPwmXCkbAfk8ABCwDHWWUHGs=",
+        "lastModified": 1665539136,
+        "narHash": "sha256-Bgqw+Zld2zXGXCyof2lXPv3B5+fD9Q6hGxhppD8DM8E=",
         "owner": "the-argus",
         "repo": "banner.nix",
-        "rev": "aac2c80674d5dc6bfed4ea008a2fe9076aecbcdb",
+        "rev": "8180b921e1d8942cef1aaed3b19dacf5ccbed538",
         "type": "github"
       },
       "original": {
