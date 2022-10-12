@@ -94,10 +94,11 @@
     gruvbox = override defaultTheme rec {
       scheme = schemes.gruv;
       gtk = {
-        theme = {
-          package = pkgs.gruvbox-dark-gtk;
-          name = "gruvbox-dark";
-        };
+        theme = "gtkNix";
+        # theme = {
+        #   package = pkgs.gruvbox-dark-gtk;
+        #   name = "gruvbox-dark";
+        # };
         iconTheme = {
           package = pkgs.gruvbox-dark-icons-gtk;
           name = "oomox-gruvbox-dark";

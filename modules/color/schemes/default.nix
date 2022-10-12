@@ -11,5 +11,5 @@
 
   drifter = banner.lib.parsers.basicYamlToBanner ./drifter.yaml;
 
-  gruv = import ./gruv.nix;
+  gruv = banner.lib.parsers.basicYamlToBanner ./gruvbox.yaml;
 }

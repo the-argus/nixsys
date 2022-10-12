@@ -1,0 +1,47 @@
+scheme: "Gruvbox dark, medium"
+author: "Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)"
+base00: "282828" # ----
+base01: "3c3836" # ---
+base02: "504945" # --
+base03: "665c54" # -
+base04: "bdae93" # +
+base05: "d5c4a1" # ++
+base06: "ebdbb2" # +++
+base07: "fbf1c7" # ++++
+base08: "fb4934" # red
+base09: "fe8019" # orange
+base0A: "fabd2f" # yellow
+base0B: "b8bb26" # green
+base0C: "8ec07c" # aqua/cyan
+base0D: "83a598" # blue
+base0E: "d3869b" # purple
+base0F: "d65d0e" # brown
+
+
+# banner extensions
+highlight:      "fe8019"
+hialt0:         "E99C26"
+hialt1:         "E5A62D"
+hialt2:         "D2A83B"
+urgent:         "fb4934"
+warn:           "fe8019"
+confirm:        "fabd2f"
+link:           "83a598"
+
+pfg-highlight:  "282828"
+pfg-hialt0:     "d5c4a1"
+pfg-hialt1:     "d5c4a1"
+pfg-hialt2:     "d5c4a1"
+pfg-urgent:     "282828"
+pfg-warn:       "282828"
+pfg-confirm:    "282828"
+pfg-link:       "282828"
+
+ansi00:         "3c3836"
+ansi01:         "fb4934"
+ansi02:         "fabd2f"
+ansi03:         "b8bb26"
+ansi04:         "83a598"
+ansi05:         "d3869b"
+ansi06:         "8ec07c"
+ansi07:         "d5c4a1"
