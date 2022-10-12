@@ -5,6 +5,15 @@
     "Attribute names of ${setname}:"
     + (builtins.concatStringsSep "\n" (builtins.attrNames set));
 
+  debugSetTypes = set: let
+    string =
+      builtins.concatStringsSep "\n"
+      (builtins.attrValues (builtins.mapAttrs
+        (name: value: "Value ${name} is of type ${builtins.typeOf value}")
+        set));
+  in
+    builtins.trace string set;
+
   parseSubSetString = set: string: let
     # hello.my.name.is becomes [ "hello" "my" "name" "is" ]
     subsets = lib.lists.reverseList (

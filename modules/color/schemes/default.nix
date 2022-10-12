@@ -2,7 +2,9 @@
   pkgs,
   banner,
   ...
-}: {
+}: let
+  lib = import ../../../lib {inherit (pkgs) lib;};
+in {
   rosepine = banner.lib.parsers.basicYamlToBanner ./rosepine.yaml;
 
   nord = banner.lib.parsers.basicYamlToBanner ./nord.yaml;
@@ -11,5 +13,5 @@
 
   drifter = banner.lib.parsers.basicYamlToBanner ./drifter.yaml;
 
-  gruv = banner.lib.parsers.basicYamlToBanner ./gruvbox.yaml;
+  gruv = lib.debugSetTypes (banner.lib.parsers.basicYamlToBanner ./gruvbox.yaml);
 }
