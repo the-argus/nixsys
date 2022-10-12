@@ -18,7 +18,12 @@
     [
       ../modules
     ]
-    ++ settings.hardwareConfiguration;
+    ++ settings.hardwareConfiguration
+    ++ (
+      if settings.useDvorak
+      then [./dvorak.nix]
+      else []
+    );
 
   # kernel version
   # boot.kernelPackages = pkgs.linuxPackages_latest;

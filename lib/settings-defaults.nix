@@ -2,6 +2,7 @@
   system = "x86_64-linux";
   username = "argus";
   hostname = "evil";
+  useDvorak = true;
   # unfree packages that i explicitly use
   allowedUnfree = [
     "spotify-unwrapped"
