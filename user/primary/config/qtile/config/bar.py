@@ -128,6 +128,7 @@ mem = [widget.Memory, {
                 "format": ": {MemUsed:.2f}/{MemTotal:.2f}{mm}",
                 "update_interval": 1.0,
                 "measure_mem": "G",
+                "background": colors["base00"]
             }
         ]
 
@@ -150,21 +151,21 @@ batt = [widget.Battery, {
 
 layout = [widget.CurrentLayout, {
                 **fontinfo,
-                "background": colors["base02"]
+                "background": colors["base01"]
             }
         ]
 
 date = [widget.Clock, {
                 **fontinfo,
                 "format": '%m/%d/%Y',
-                "background": colors["base03"]
+                "background": colors["base02"]
             }
         ]
 
 time = [widget.Clock, {
                 **fontinfo,
                 "format": '%I:%M %p ',
-                "background": colors["base04"],
+                "background": colors["base03"],
             }
         ]
 
