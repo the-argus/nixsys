@@ -13,5 +13,5 @@ in {
 
   drifter = banner.lib.parsers.basicYamlToBanner ./drifter.yaml;
 
-  gruv = lib.debugSetTypes (banner.lib.parsers.basicYamlToBanner ./gruvbox.yaml);
+  gruv = banner.lib.parsers.basicYamlToBanner ./gruvbox.yaml;
 }
