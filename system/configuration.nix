@@ -57,7 +57,8 @@
   nix = let
     override = lib.attrsets.recursiveUpdate;
     defaultSettings = {
-      package = pkgs.nixVersions.stable;
+      package = lib.mkDefault pkgs.nixVersions.stable;
+      # package =  pkgs.nixVersions.nix_2_7;
       # gc = {
       #   automatic = true;
       #   dates = "weekly";
