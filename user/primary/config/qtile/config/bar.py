@@ -55,7 +55,7 @@ windowname = [widget.WindowName, {
         ]
 
 systray = [widget.Systray, {
-        "background": colors["base02"],
+        "background": colors["ansi00"],
         "foreground": DEFAULT_FG,
         "theme_path": "rose-pine-gtk",
         }
@@ -128,7 +128,7 @@ mem = [widget.Memory, {
                 "format": ": {MemUsed:.2f}/{MemTotal:.2f}{mm}",
                 "update_interval": 1.0,
                 "measure_mem": "G",
-                "background": colors["base00"]
+                "background": colors["base01"]
             }
         ]
 
@@ -151,21 +151,21 @@ batt = [widget.Battery, {
 
 layout = [widget.CurrentLayout, {
                 **fontinfo,
-                "background": colors["base01"]
+                "background": colors["base02"]
             }
         ]
 
 date = [widget.Clock, {
                 **fontinfo,
                 "format": '%m/%d/%Y',
-                "background": colors["base02"]
+                "background": colors["base03"]
             }
         ]
 
 time = [widget.Clock, {
                 **fontinfo,
                 "format": '%I:%M %p ',
-                "background": colors["base03"],
+                "background": colors["base02"],
             }
         ]
 
