@@ -6,18 +6,76 @@
   ...
 }: let
   enableModernUnix = true;
+
+  mkProtectedSource = filepath: ''
+    if [[ -f "${filepath}" ]]; then
+      source "${filepath}"
+    fi
+  '';
+
   plugins = {
     my-zsh = {name = "the-argus/my-zsh";};
-    zsh-autocomplete = {name = "marlonrichert/zsh-autocomplete";};
+    zsh-autocomplete = rec {
+      name = "marlonrichert/zsh-autocomplete";
+      source = pkgs.fetchgit {
+        url = "https://github.com/marlonrichert/zsh-autocomplete";
+        rev = "aed8e17de6d16dca940a344117894f3e57022ed5";
+        sha256 = "0p02iqnxc93ifmyr5m9zxkbbl5xhydqyki5m11h6kw9i94gy9m15";
+      };
+      init = ''
+        source ${source}/zsh-autocomplete.plugin.zsh
+        #THERE SHOULD BE NO CALLS TO COMPINIT IF THIS IS USED
+      '';
+    };
     deer = {
       name = "Vifon/deer";
       tags = [use:deer];
     };
-    zsh-completions = {name = "zsh-users/zsh-completions";};
-    nix-zsh-completions = {name = "spwhitt/nix-zsh-completions";};
-    zsh-autopair = {name = "hlissner/zsh-autopair";};
+    zsh-completions = {
+      name = "zsh-users/zsh-completions";
+      source = pkgs.fetchgit {
+        url = "https://github.com/zsh-users/zsh-completions";
+        rev = "879f4b6515d3e7808e8d97d65c679ed8d044f57a";
+        sha256 = "11bsbx9jx1n9hqb2lmw3dmv0s585sh5sppz476w71qkq8xmar3c0";
+      };
+      init = ''
+        fpath=(${source} $fpath)
+      '';
+    };
+    nix-zsh-completions = rec {
+      name = "spwhitt/nix-zsh-completions";
+      source = pkgs.fetchgit {
+        url = "https://github.com/spwhitt/nix-zsh-completions";
+        rev = "468d8cf752a62b877eba1a196fbbebb4ce4ebb6f";
+        sha256 = "16r0l7c1jp492977p8k6fcw2jgp6r43r85p6n3n1a53ym7kjhs2d";
+      };
+      init = ''
+        source ${source}/nix-zsh-completions.plugin.zsh
+        fpath=(${source} $fpath)
+      '';
+    };
+    zsh-autopair = rec {
+      name = "hlissner/zsh-autopair";
+      source = pkgs.fetchgit {
+        url = "https://github.com/hlissner/zsh-autopair";
+        rev = "396c38a7468458ba29011f2ad4112e4fd35f78e6";
+        sha256 = "0q9wg8jlhlz2xn08rdml6fljglqd1a2gbdp063c8b8ay24zz2w9x";
+      };
+      init = ''
+        source ${source}/autopair.zsh
+        autopair-init
+      '';
+    };
 
-    sandboxd = {name = "benvan/sandboxd";};
+    sandboxd = rec {
+      name = "benvan/sandboxd";
+      source = pkgs.fetchgit {
+        url = "https://github.com/benvan/sandboxd";
+        rev = "91e0b6ae7bf960271bc69261f3582f144acdf234";
+        sha256 = "04jsx86h32jm8h6c5y4b0az8r47shnv7iyjg1fpqvw1xxvrdwf58";
+      };
+      init = "source ${source}/sandboxd.plugin.zsh";
+    };
 
     zsh-nix-shell = {
       name = "zsh-nix-shell";
@@ -28,6 +86,9 @@
         rev = "v0.5.0";
         sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
       };
+      init = ''
+        source ${src}/nix-shell.plugin.zsh
+      '';
     };
   };
 in {
@@ -123,7 +184,7 @@ in {
       // (pkgs.callPackage ./lib/xorg.nix {inherit settings;}).startxAliases;
 
     zplug = {
-      enable = true;
+      enable = false;
       plugins = with plugins; [
         # my-zsh # I just use starship now
         # zsh-autocomplete
@@ -135,7 +196,7 @@ in {
       ];
     };
 
-    plugins = with plugins; [zsh-nix-shell];
+    # plugins = with plugins; [zsh-nix-shell];
 
     completionInit = ''
       # compatibility between nix and autocomplete
@@ -152,7 +213,13 @@ in {
     '';
 
     initExtra = ''
-      # INCLUDES---------------------------------------------------------------------
+      # PLUGINS----------------------------------------------------------------
+      ${sandboxd.init}
+      ${nix-zsh-completions.init}
+      ${zsh-completions.init}
+      ${zsh-nix-shell.init}
+      ${zsh-autopair.init}
+      # INCLUDES---------------------------------------------------------------
 
       # hole in reproducability bc i like to add aliases quickly
       [ -f  "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
