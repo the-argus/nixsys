@@ -8,11 +8,15 @@
 }: let
   inherit (lib) mkIf mkEnableOption mkOption types;
 in {
-  options.virtualization.containers.podman.enable = mkOption {
-    description = "Enable podman";
-    type = types.bool;
-    default = true;
-  };
+  # options.virtualization.containers.podman.enable = mkOption {
+  #   description = "Enable podman";
+  #   type = types.bool;
+  #   default = true;
+  # };
+  options.virtualization.containers.podman.enable =
+    mkEnableOption
+    "Enable podman";
+
   config = mkIf (config.virtualization.containers.podman.enable
     && config.virtualization.containers.enable) {
     users.extraUsers.${username} = {
