@@ -205,8 +205,6 @@ in {
       ${zsh-completions.init}
       ${zsh-nix-shell.init}
       ${zsh-autopair.init}
-      # autoload -Uz compinit
-      compinit
       # INCLUDES---------------------------------------------------------------
 
       # hole in reproducability bc i like to add aliases quickly
