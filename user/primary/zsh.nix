@@ -39,19 +39,7 @@
         sha256 = "11bsbx9jx1n9hqb2lmw3dmv0s585sh5sppz476w71qkq8xmar3c0";
       };
       init = ''
-        fpath+=(${source})
-      '';
-    };
-    nix-zsh-completions = rec {
-      name = "spwhitt/nix-zsh-completions";
-      source = pkgs.fetchgit {
-        url = "https://github.com/spwhitt/nix-zsh-completions";
-        rev = "468d8cf752a62b877eba1a196fbbebb4ce4ebb6f";
-        sha256 = "16r0l7c1jp492977p8k6fcw2jgp6r43r85p6n3n1a53ym7kjhs2d";
-      };
-      init = ''
-        source ${source}/nix-zsh-completions.plugin.zsh
-        fpath+=(${source})
+        fpath+=(${source}/src)
       '';
     };
     zsh-autopair = rec {
@@ -217,7 +205,7 @@ in {
       ${zsh-completions.init}
       ${zsh-nix-shell.init}
       ${zsh-autopair.init}
-      autoload -Uz compinit
+      # autoload -Uz compinit
       compinit
       # INCLUDES---------------------------------------------------------------
 
