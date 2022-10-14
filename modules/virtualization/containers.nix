@@ -14,10 +14,10 @@ in {
         docker = mkEnableOption "Enable docker and its daemon";
         podman = mkEnableOption "Enable podman";
       };
-      default = {
-        docker = false;
-        podman = false;
-      };
+    };
+    default = {
+      docker = false;
+      podman = false;
     };
   };
 
