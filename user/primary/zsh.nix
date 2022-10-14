@@ -39,7 +39,7 @@
         sha256 = "11bsbx9jx1n9hqb2lmw3dmv0s585sh5sppz476w71qkq8xmar3c0";
       };
       init = ''
-        fpath=(${source} $fpath)
+        fpath+=(${source})
       '';
     };
     nix-zsh-completions = rec {
@@ -51,7 +51,7 @@
       };
       init = ''
         source ${source}/nix-zsh-completions.plugin.zsh
-        fpath=(${source} $fpath)
+        fpath+=(${source})
       '';
     };
     zsh-autopair = rec {
@@ -216,8 +216,8 @@ in {
       # PLUGINS----------------------------------------------------------------
       ${sandboxd.init}
       ${zsh-completions.init}
-      ${zsh-nix-shell.init}
-      ${zsh-autopair.init}
+      # $\{zsh-nix-shell.init}
+      # $\{zsh-autopair.init}
       # INCLUDES---------------------------------------------------------------
 
       # hole in reproducability bc i like to add aliases quickly
@@ -231,7 +231,7 @@ in {
         command ls --color=auto --group-directories-first $@
       }
       function lsl () {
-      	ls -la $@ | command grep "^d" && ls -la $1 | command grep -v "^d"
+      	command ls -la --color=auto --group-directories-first $@ | command grep "^d" && ls -la $1 | command grep -v "^d"
       }
 
       ${
