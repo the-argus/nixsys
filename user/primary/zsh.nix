@@ -212,7 +212,7 @@ in {
       zstyle ':autocomplete:*' widget-style menu-select
     '';
 
-    initExtra = ''
+    initExtra = with plugins; ''
       # PLUGINS----------------------------------------------------------------
       ${sandboxd.init}
       ${nix-zsh-completions.init}
