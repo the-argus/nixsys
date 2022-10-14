@@ -214,10 +214,10 @@ in {
 
     initExtra = with plugins; ''
       # PLUGINS----------------------------------------------------------------
-      ${sandboxd.init}
-      ${zsh-completions.init}
-      # $\{zsh-nix-shell.init}
-      # $\{zsh-autopair.init}
+      # $\{sandboxd.init}
+      # $\{zsh-completions.init}
+      ${zsh-nix-shell.init}
+      ${zsh-autopair.init}
       # INCLUDES---------------------------------------------------------------
 
       # hole in reproducability bc i like to add aliases quickly
