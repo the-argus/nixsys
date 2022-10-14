@@ -135,7 +135,6 @@ in {
     sandbox_hook zoxide cd
     sandbox_hook completion cd
     sandbox_hook completion git
-    sandbox_hook completion ls
     sandbox_hook completion systemctl
     sandbox_hook completion kill
     sandbox_hook completion killall
