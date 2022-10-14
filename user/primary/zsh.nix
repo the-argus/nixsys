@@ -196,7 +196,7 @@ in {
     };
 
     # plugins = with plugins; [zsh-nix-shell];
-
+    completionInit = '''';
     # completionInit = ''
     #   # compatibility between nix and autocomplete
     #   bindkey "''${key[Up]}" up-line-or-search
@@ -217,6 +217,8 @@ in {
       ${zsh-completions.init}
       ${zsh-nix-shell.init}
       ${zsh-autopair.init}
+      autoload -Uz compinit
+      compinit
       # INCLUDES---------------------------------------------------------------
 
       # hole in reproducability bc i like to add aliases quickly
