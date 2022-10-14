@@ -26,28 +26,32 @@ in {
       virtualisation.docker.enable = true;
       users.users.${username}.extraGroups = ["docker"];
     }
-    // (mkIf config.virtualization.containers.podman.enable {
-      users.extraUsers.${username} = {
-        subUidRanges = [
-          {
-            startUid = 100000;
-            count = 65536;
-          }
-        ];
-        subGidRanges = [
-          {
-            startGid = 100000;
-            count = 65536;
-          }
-        ];
-      };
-      virtualisation.podman = {
-        enable = true;
+    // (
+      if config.virtualization.containers.podman.enable
+      then {
+        users.extraUsers.${username} = {
+          subUidRanges = [
+            {
+              startUid = 100000;
+              count = 65536;
+            }
+          ];
+          subGidRanges = [
+            {
+              startGid = 100000;
+              count = 65536;
+            }
+          ];
+        };
+        virtualisation.podman = {
+          enable = true;
 
-        # Required for containers under podman-compose to be able to talk to each other.
-        defaultNetwork.dnsname.enable = true;
+          # Required for containers under podman-compose to be able to talk to each other.
+          defaultNetwork.dnsname.enable = true;
 
-        extraPackages = [pkgs.podman-compose];
-      };
-    });
+          extraPackages = [pkgs.podman-compose];
+        };
+      }
+      else {}
+    );
 }
