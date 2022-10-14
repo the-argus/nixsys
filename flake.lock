@@ -730,11 +730,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1665655189,
-        "narHash": "sha256-/LrANKYmOKtrlbxXhlbNe8YpaHtqTexORk+bW3JPyDo=",
+        "lastModified": 1665720165,
+        "narHash": "sha256-+Me0Hc7nYOosGdgZDOx2hMboxFF9XXoyK2HHFCgsrhw=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "36989a69eb520eff67782b800c6e9458f37a51dd",
+        "rev": "0b114f19521f336190d5fc5ce51f061de80ddf74",
         "type": "gitlab"
       },
       "original": {
@@ -767,11 +767,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1665718744,
-        "narHash": "sha256-3E6/xJ4oxZBSsaP7Ez3iE5oEs+D58E5qIo9RhAo+y84=",
+        "lastModified": 1665787727,
+        "narHash": "sha256-qG2NRs63HKo0tzhJIi6uorl92UAhjveG0ZyQhMO/mwc=",
         "owner": "the-argus",
         "repo": "spicetify-nix",
-        "rev": "91f123e732306cea344a8b9becab842fb26806c0",
+        "rev": "88630978870a87e347da6202d2d19b7e37f27343",
         "type": "github"
       },
       "original": {
