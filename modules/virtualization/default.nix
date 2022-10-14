@@ -6,8 +6,10 @@
   ...
 }: let
   cfg = config.virtualization;
-  inherit (lib) mkIf mkEnableOption mkOption;
+  inherit (lib) mkIf mkEnableOption mkOption types;
 in {
+  imports = [./containers.nix];
+
   options.virtualization = {
     enable = mkEnableOption "Packages for virtualizing other systems.";
 
@@ -30,36 +32,6 @@ in {
   config =
     mkIf cfg.enable
     ({
-        # containerization
-        users.users.${username}.extraGroups = ["docker"];
-        users.extraUsers.${username} = {
-          subUidRanges = [
-            {
-              startUid = 100000;
-              count = 65536;
-            }
-          ];
-          subGidRanges = [
-            {
-              startGid = 100000;
-              count = 65536;
-            }
-          ];
-        };
-        virtualisation = {
-          docker = {
-            enable = true;
-          };
-          podman = {
-            enable = true;
-
-            # Required for containers under podman-compose to be able to talk to each other.
-            defaultNetwork.dnsname.enable = true;
-
-            extraPackages = [pkgs.podman-compose];
-          };
-        };
-
         environment.systemPackages =
           [
             cfg.qemu.package
