@@ -11,13 +11,13 @@ in {
   options.virtualization.containers = mkOption {
     type = types.submodule {
       options = {
-        docker = mkEnableOption "Enable docker and its daemon";
-        podman = mkEnableOption "Enable podman";
+        docker.enable = mkEnableOption "Enable docker and its daemon";
+        podman.enable = mkEnableOption "Enable podman";
       };
     };
     default = {
-      docker = false;
-      podman = false;
+      docker.enable = false;
+      podman.enable = false;
     };
   };
 
