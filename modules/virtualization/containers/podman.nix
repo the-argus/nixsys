@@ -17,8 +17,7 @@ in {
     mkEnableOption
     "Enable podman";
 
-  config = mkIf (config.virtualization.containers.podman.enable
-    && config.virtualization.containers.enable) {
+  config = mkIf config.virtualization.containers.podman.enable {
     users.extraUsers.${username} = {
       subUidRanges = [
         {
