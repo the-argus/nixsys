@@ -31,7 +31,7 @@
       name = "Vifon/deer";
       tags = [use:deer];
     };
-    zsh-completions = {
+    zsh-completions = rec {
       name = "zsh-users/zsh-completions";
       source = pkgs.fetchgit {
         url = "https://github.com/zsh-users/zsh-completions";
@@ -77,7 +77,7 @@
       init = "source ${source}/sandboxd.plugin.zsh";
     };
 
-    zsh-nix-shell = {
+    zsh-nix-shell = rec {
       name = "zsh-nix-shell";
       file = "nix-shell.plugin.zsh";
       src = pkgs.fetchFromGitHub {
