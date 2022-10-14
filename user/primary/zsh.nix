@@ -214,7 +214,7 @@ in {
 
     initExtra = with plugins; ''
       # PLUGINS----------------------------------------------------------------
-      # $\{sandboxd.init}
+      ${sandboxd.init}
       # $\{zsh-completions.init}
       ${zsh-nix-shell.init}
       ${zsh-autopair.init}
