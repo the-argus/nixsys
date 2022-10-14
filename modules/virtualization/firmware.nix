@@ -27,9 +27,9 @@ in {
       "ovmf/edk2-x86_64-secure-code.fd" = {
         source = config.virtualization.qemuPackage + "/share/qemu/edk2-x86_64-secure-code.fd";
       };
-      "ovmf/OVMF_VARS.fd".source = (cfg.passthrough.ovmfPackage.fd) + /FV/OVMF_VARS.fd;
-      "ovmf/OVMF_CODE.fd".source = (cfg.passthrough.ovmfPackage.fd) + /FV/OVMF_CODE.fd;
-      "ovmf/OVMF.fd".source = (cfg.passthrough.ovmfPackage.fd) + /FV/OVMF.fd;
+      "ovmf/OVMF_VARS.fd".source = (cfg.ovmfPackage.fd) + /FV/OVMF_VARS.fd;
+      "ovmf/OVMF_CODE.fd".source = (cfgovmfPackage.fd) + /FV/OVMF_CODE.fd;
+      "ovmf/OVMF.fd".source = (cfg.ovmfPackage.fd) + /FV/OVMF.fd;
     };
   };
 }
