@@ -198,19 +198,19 @@ in {
 
     # plugins = with plugins; [zsh-nix-shell];
 
-    completionInit = ''
-      # compatibility between nix and autocomplete
-      bindkey "''${key[Up]}" up-line-or-search
+    # completionInit = ''
+    #   # compatibility between nix and autocomplete
+    #   bindkey "''${key[Up]}" up-line-or-search
 
-      # minimum number of characters to type before autocomplete
-      zstyle ':autocomplete:*' min-input 1
-      # only insert up to common characters
-      zstyle ':autocomplete:*' insert-unambiguous yes
-      # dont move prompt up to make room for autocomplete very much
-      zstyle ':autocomplete:*' list-lines 4
-      # tab multiple times to move through menu
-      zstyle ':autocomplete:*' widget-style menu-select
-    '';
+    #   # minimum number of characters to type before autocomplete
+    #   zstyle ':autocomplete:*' min-input 1
+    #   # only insert up to common characters
+    #   zstyle ':autocomplete:*' insert-unambiguous yes
+    #   # dont move prompt up to make room for autocomplete very much
+    #   zstyle ':autocomplete:*' list-lines 4
+    #   # tab multiple times to move through menu
+    #   zstyle ':autocomplete:*' widget-style menu-select
+    # '';
 
     initExtra = with plugins; ''
       # PLUGINS----------------------------------------------------------------
