@@ -14,7 +14,7 @@ in {
     default = true;
   };
 
-  config = (mkIf config.virtualization.containers.docker.enablee
+  config = mkIf (config.virtualization.containers.docker.enable
     && config.virtualization.containers.enable) {
     virtualisation.docker.enable = true;
     users.users.${username}.extraGroups = ["docker"];
