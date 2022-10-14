@@ -33,7 +33,7 @@ in {
       };
     });
     enable = true;
-    theme = spicePkgs.themes.Dribbblish;
+    theme = spicePkgs.themes.RetroBlur;
     colorScheme = "custom";
 
     customColorScheme = let
