@@ -85,9 +85,11 @@
       mkCssColor = name: color: ''@define-color ${name} #${color};'';
       font = config.system.theme.font.display;
     in ''
-      # insert the nix configured banner palette as css
+      /*  insert the nix configured banner palette as css */
       ${builtins.concatStringsSep "\n"
-        (lib.attrsets.mapAttrsToList mkCssColor config.banner.palette)}
+        (lib.lists.remove config.banner.palette.author
+          (lib.lists.remove config.banner.palette.scheme
+            (lib.attrsets.mapAttrsToList mkCssColor config.banner.palette)))}
 
       * {
       	border: none;
