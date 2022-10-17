@@ -82,7 +82,7 @@
     };
 
     style = let
-      mkCssColor = name: color: ''@define-color ${name} #${hexcolor};'';
+      mkCssColor = name: color: ''@define-color ${name} #${color};'';
       font = config.system.theme.font.display;
     in ''
       # insert the nix configured banner palette as css
