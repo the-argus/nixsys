@@ -7,7 +7,7 @@
     enable = true;
 
     settings = {
-      layer = "top";
+      layer = ["top"];
       modules-left = [
         "sway/window"
         "sway/mode"
