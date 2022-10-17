@@ -6,77 +6,79 @@
   programs.waybar = {
     enable = true;
 
-    settings = {
-      layer = ["top"];
-      modules-left = [
-        "sway/window"
-        "sway/mode"
-      ];
-      modules-center = ["sway/workspaces"];
-      modules-right = [
-        "custom/media"
-        "tray"
-        "network"
-        "battery"
-        "clock"
-        "custom/powerbutton"
-      ];
-      margin-left = 4;
-      margin-right = 6;
-      margin-top = 6;
-      margin-bottom = -2;
-      battery = {
-        format = "{capacity}% {icon}";
-        format-icons = [
-          ""
-          ""
-          ""
-          ""
-          ""
+    settings = [
+      {
+        layer = "top";
+        modules-left = [
+          "sway/window"
+          "sway/mode"
         ];
-      };
-      "sway/window" = {
-        format = "{}";
-        all-outputs = true;
-        max-length = 70;
-      };
-      clock = {
-        format = "{:%I:%M %p}";
-        format-alt = "{:%a, %d. %b  %H:%M}";
-      };
-      tray = {
-        icon-size = 20;
-        spacing = 10;
-        show-passive-items = false;
-      };
-      network = {
-        format = "{ifname}";
-        format-wifi = "{essid} ";
-        format-disconnected = ""; # An empty format will hide the module.
-        tooltip-format-wifi = ''{signalStrength}% strength,\n{frequency} MHz.'';
-        tooltip-format-disconnected = "Disconnected";
-        max-length = 50;
-        on-click = "nm-connection-editor";
-      };
-      "custom/media" = {
-        format = "{icon}{}";
-        return-type = "json";
-        format-icons = {
-          Playing = " ";
-          Paused = " ";
+        modules-center = ["sway/workspaces"];
+        modules-right = [
+          "custom/media"
+          "tray"
+          "network"
+          "battery"
+          "clock"
+          "custom/powerbutton"
+        ];
+        margin-left = 4;
+        margin-right = 6;
+        margin-top = 6;
+        margin-bottom = -2;
+        battery = {
+          format = "{capacity}% {icon}";
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
-        max-length = 50;
-        exec = ''playerctl metadata --format '{\"text\": \"{{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F'';
-        on-click = "playerctl play-pause";
-        on-scroll-down = "playerctl next";
-        on-scroll-up = "playerctl previous";
-      };
-      "custom/powerbutton" = {
-        format = "⏻";
-        max-length = 50;
-        on-click = "~/.scripts/rofi-powermenu.sh";
-      };
-    };
+        "sway/window" = {
+          format = "{}";
+          all-outputs = true;
+          max-length = 70;
+        };
+        clock = {
+          format = "{:%I:%M %p}";
+          format-alt = "{:%a, %d. %b  %H:%M}";
+        };
+        tray = {
+          icon-size = 20;
+          spacing = 10;
+          show-passive-items = false;
+        };
+        network = {
+          format = "{ifname}";
+          format-wifi = "{essid} ";
+          format-disconnected = ""; # An empty format will hide the module.
+          tooltip-format-wifi = ''{signalStrength}% strength,\n{frequency} MHz.'';
+          tooltip-format-disconnected = "Disconnected";
+          max-length = 50;
+          on-click = "nm-connection-editor";
+        };
+        "custom/media" = {
+          format = "{icon}{}";
+          return-type = "json";
+          format-icons = {
+            Playing = " ";
+            Paused = " ";
+          };
+          max-length = 50;
+          exec = ''playerctl metadata --format '{\"text\": \"{{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F'';
+          on-click = "playerctl play-pause";
+          on-scroll-down = "playerctl next";
+          on-scroll-up = "playerctl previous";
+        };
+        "custom/powerbutton" = {
+          format = "⏻";
+          max-length = 50;
+          on-click = "~/.scripts/rofi-powermenu.sh";
+        };
+      }
+    ];
 
     style = let
       mkCssColor = name: color: ''@define-color ${name} #${color};'';
