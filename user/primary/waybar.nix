@@ -93,7 +93,7 @@
       	border: none;
       	border-radius: 0;
       	font-family: "${font.name}";
-      	font-size: ${font.size}px;
+      	font-size: ${builtins.toString font.size}px;
       	min-height: 0;
       	margin: 0px;
       }
@@ -225,7 +225,7 @@
         background: @base02;
         color: @base07;
       	font-weight: bold;
-      	font-size: ${font.size + 2}px;
+      	font-size: ${builtins.toString (font.size + 2)}px;
         padding: 5px 10px 0px 10px;
       	margin: 0 2px;
       }
