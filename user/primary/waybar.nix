@@ -66,10 +66,7 @@
           Paused = " ";
         };
         max-length = 50;
-        exec =
-          ''playerctl metadata --format '{\"text\": \"{{title}}\", ''
-          + ''\"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": ''
-          ''\"{{status}}\", \"class\": \"{{status}}\"}' -F'';
+        exec = ''playerctl metadata --format '{\"text\": \"{{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F'';
         on-click = "playerctl play-pause";
         on-scroll-down = "playerctl next";
         on-scroll-up = "playerctl previous";
