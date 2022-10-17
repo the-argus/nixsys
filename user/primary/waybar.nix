@@ -87,8 +87,8 @@
     in ''
       /*  insert the nix configured banner palette as css */
       ${builtins.concatStringsSep "\n"
-        (lib.lists.remove config.banner.palette.author
-          (lib.lists.remove config.banner.palette.scheme
+        (lib.lists.remove (mkCssColor config.banner.palette.author)
+          (lib.lists.remove (mkCssColor config.banner.palette.scheme)
             (lib.attrsets.mapAttrsToList mkCssColor config.banner.palette)))}
 
       * {
