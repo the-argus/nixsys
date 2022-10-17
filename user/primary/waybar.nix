@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   programs.waybar = {
@@ -85,7 +86,8 @@
       font = config.system.theme.font.display;
     in ''
       # insert the nix configured banner palette as css
-      ${builtins.mapAttrs mkCssColor config.banner.palette}
+      ${builtins.concatStringsSep "\n"
+        (lib.attrsets.mapAttrsToList mkCssColor config.banner.palette)}
 
       * {
       	border: none;
