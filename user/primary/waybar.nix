@@ -136,8 +136,8 @@
       }
 
       #workspaces button.urgent {
-      	background: @hialt0;
-      	color: @pf-hialt0;
+      	background: @urgent;
+      	color: @pf-urgent;
       }
 
       #mode {
