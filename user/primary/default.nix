@@ -94,7 +94,6 @@
         pcmanfm
         qalculate-gtk
         heroic
-        polymc
         pavucontrol
         sxiv
         mpv
