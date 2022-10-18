@@ -1,5 +1,7 @@
 {
   pkgs,
+  lib,
+  banner,
   settings,
   config,
   ...
@@ -103,105 +105,95 @@
     };
   };
   xsession.windowManager.i3 = let
-    banner = config.banner.palette;
-    mkColor = color: "#${color}";
-    bg = mkColor banner.highlight;
-    inactive-bg = (mkColor banner.base00) + "CC";
-    text = bg;
-    inactive-text = bg;
-    urgent-bg = mkColor banner.urgent;
-    inactive-border = (mkColor banner.base00) + "00";
+    common = {
+      banner = config.banner.palette;
+      mkColor = color: "#${color}";
+      bg = mkColor banner.highlight;
+      inactive-bg = let
+        opacity = config.system.theme.opacity;
+      in
+        (mkColor banner.base00)
+        + (banner.lib.decimalToHex (
+          lib.strings.toInt (255 * opacity)
+        ));
+      text = bg;
+      inactive-text = bg;
+      urgent-bg = mkColor banner.urgent;
+      inactive-border = (mkColor banner.base00) + "00";
 
-    transparent = "#00000000";
-    indicator = "#424242";
-    childBorder = mkColor banner.base02;
+      transparent = "#00000000";
+      indicator = "#424242";
+      childBorder = mkColor banner.base02;
+    };
+    inherit
+      (common)
+      banner
+      mkColor
+      bg
+      inactive-bg
+      text
+      inactive-text
+      urgent-bg
+      inactive-border
+      transparent
+      indicator
+      childBorder
+      ;
   in {
     enable = true;
     package = pkgs.i3-gaps;
-
-    config = {
-      modifier = "Mod4"; # super key
-      workspaceAutoBackAndForth = true;
-
-      colors = rec {
-        background = transparent;
-        focused = {
-          border = bg;
-          background = bg;
-          inherit text indicator childBorder;
-        };
-        focusedInactive = {
-          border = inactive-border;
-          background = inactive-bg;
-          text = inactive-text;
-          inherit indicator childBorder;
-        };
-        unfocused = focusedInactive;
-        urgent = {
-          border = urgent-bg;
-          background = urgent-bg;
-          inherit text indicator childBorder;
-        };
-        # placeholder window is default but can be configured
+    config =
+      (import ./lib/i3-common.nix {inherit config pkgs lib settings common;})
+      # add everything that is unique to i3
+      // {
+        startup =
+          map (cmd: {command = cmd;})
+          (
+            (pkgs.callPackage ./lib/xorg.nix {inherit settings;})
+            .mkAutoStart {
+              isI3 = true;
+              picomConfigLocation = "~/.config/i3/picom.conf";
+            }
+          );
+        bars = [
+          {
+            mode = "dock";
+            hiddenState = "hide";
+            position = "top";
+            trayOutput = "primary"; # originally none
+            fonts = {
+              names = ["ProggySquare"];
+              size = 12.0;
+            };
+            extraConfig = ''
+              bindsym button1 nop
+              tray_padding 0
+              workspace_min_width 40
+              i3bar_command i3bar -t
+            '';
+            colors = rec {
+              background = inactive-bg; #000000CC
+              urgentWorkspace = {
+                border = urgent-bg;
+                background = urgent-bg;
+                inherit text;
+              };
+              inactiveWorkspace = {
+                border = inactive-bg;
+                background = inactive-bg;
+                text = indicator;
+              };
+              # i have a single monitor in all my setups
+              activeWorkspace = inactiveWorkspace;
+              focusedWorkspace = {
+                border = bg;
+                background = bg;
+                text = inactive-bg;
+              };
+            };
+          }
+        ];
       };
-
-      bars = [
-        {
-          mode = "dock";
-          hiddenState = "hide";
-          position = "top";
-          trayOutput = "primary"; # originally none
-          fonts = {
-            names = ["ProggySquare"];
-            size = 12.0;
-          };
-          extraConfig = ''
-            bindsym button1 nop
-            tray_padding 0
-            workspace_min_width 40
-            i3bar_command i3bar -t
-          '';
-          colors = rec {
-            background = inactive-bg; #000000CC
-            urgentWorkspace = {
-              border = urgent-bg;
-              background = urgent-bg;
-              inherit text;
-            };
-            inactiveWorkspace = {
-              border = inactive-bg;
-              background = inactive-bg;
-              text = indicator;
-            };
-            # i have a single monitor in all my setups
-            activeWorkspace = inactiveWorkspace;
-            focusedWorkspace = {
-              border = bg;
-              background = bg;
-              text = inactive-bg;
-            };
-          };
-        }
-      ];
-
-      gaps = {
-        inner = 10;
-        outer = 0;
-        # theres also: horizontal vertical top left bottom right
-        smartGaps = true;
-        smartBorders = "off";
-      };
-      terminal = "${pkgs.${settings.terminal}}/bin/${settings.terminal}";
-
-      startup =
-        map (cmd: {command = cmd;})
-        ((pkgs.callPackage ./lib/xorg.nix {inherit settings;})
-          .mkAutoStart {
-            isI3 = true;
-            picomConfigLocation = "~/.config/i3/picom.conf";
-          });
-    };
-
     extraConfig = '''';
   };
 
