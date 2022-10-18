@@ -117,7 +117,7 @@
         border-radius: 0px;
       	background: transparent;
       	color: @highlight;
-        background-color: transparent;
+        background-color: @pfg-highlight;
       	font-weight: bold;
       	border: 2px solid @highlight;
         border-radius: 0px;
@@ -132,7 +132,6 @@
       #workspaces button.focused {
         background: @highlight;
         color: @pfg-highlight;
-      	border: 2px solid @pfg-highlight;
       }
 
       #workspaces button.urgent {
