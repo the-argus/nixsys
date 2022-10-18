@@ -82,7 +82,7 @@ in rec {
   in {
     names = [(mainfont.name) "monospace"];
     style = "Bold";
-    size = mainfont.size;
+    size = mainfont.size + 0.0;
   };
 
 
