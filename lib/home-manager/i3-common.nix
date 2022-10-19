@@ -19,7 +19,10 @@ in rec {
       pow = base: exp: let
         range = lib.lists.range 1 exp;
       in
-        lib.lists.foldr (next: prev: base * prev) 0 range;
+        if exp <= 0
+        then abort "this power function cannot handle exponents of 0 or less."
+        else lib.lists.foldr (next: prev: base * prev) 1 range;
+
       splitFloat = (
         # turn digits into sets of integers and their length
         map (value: {
