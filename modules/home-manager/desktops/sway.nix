@@ -15,29 +15,12 @@ in {
 
   config = mkIf cfg.enable {
     wayland.windowManager.sway = let
-      common = {
-        banner = config.banner.palette;
-        mkColor = color: "#${color}";
-        bg = mkColor banner.highlight;
-        inactive-bg = let
-          opacity = config.system.theme.opacity;
-        in
-          (mkColor banner.base00)
-          + (banner.lib.decimalToHex (
-            lib.strings.toInt (255 * opacity)
-          ));
-        text = bg;
-        inactive-text = bg;
-        urgent-bg = mkColor banner.urgent;
-        inactive-border = (mkColor banner.base00) + "00";
-
-        transparent = "#00000000";
-        indicator = "#424242";
-        childBorder = mkColor banner.base02;
+      common = import ../../../lib/home-manager/i3-common.nix {
+        inherit config pkgs lib settings;
       };
       inherit
         (common)
-        banner
+        palette
         mkColor
         bg
         inactive-bg
@@ -53,9 +36,7 @@ in {
       enable = true;
       package = pkgs.i3-gaps;
       config =
-        (import ../../../lib/home-manager/i3-common.nix {
-          inherit config pkgs lib settings common;
-        })
+        common.config
         # add everything that is unique to i3
         // {
           # startup = ...
