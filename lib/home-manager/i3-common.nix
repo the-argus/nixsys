@@ -33,22 +33,24 @@ in rec {
           # split into digits
           (lib.strings.splitString "." str)
         );
+        # get first value normally (whole number stays)
         wholeNumber = let num = builtins.elemAt splitFloat 0; in num.value;
+        # get fraction part separately)
         fraction = let
           num = builtins.elemAt splitFloat 1;
           power = builtins.trace "10 to the power of ${builtins.toString num.length}: 
         ${builtins.toString (pow 10 num.length)}" (pow 10 num.length);
         in
-          wholeNumber + fraction;
-
-        floatToInt = float: let
-          floatStr = builtins.toString float;
-          floatStrSplit = lib.strings.splitString "." floatStr;
-          intStr = builtins.elemAt floatStrSplit 0;
-        in
-          lib.strings.toInt intStr;
+          num.value / power;
       in
-        num.value / power;
+        wholeNumber + fraction;
+
+      floatToInt = float: let
+        floatStr = builtins.toString float;
+        floatStrSplit = lib.strings.splitString "." floatStr;
+        intStr = builtins.elemAt floatStrSplit 0;
+      in
+        lib.strings.toInt intStr;
     in
       (mkColor palette.base00)
       + (banner.lib.color.decimalToHex (floatToInt (256
