@@ -53,7 +53,9 @@ in {
       enable = true;
       package = pkgs.i3-gaps;
       config =
-        (import ./lib/i3-common.nix {inherit config pkgs lib settings common;})
+        (import ../../../lib/home-manager/i3-common.nix {
+          inherit config pkgs lib settings common;
+        })
         # add everything that is unique to i3
         // {
           # startup = ...
