@@ -5,13 +5,15 @@
   settings,
   banner,
   ...
-}: rec {
+}: let
+  inherit (config.system) theme;
+in rec {
   commonInputs = rec {
     inherit (config.banner) palette;
     mkColor = color: "#${color}";
     bg = mkColor palette.highlight;
     inactive-bg = let
-      opacity = config.system.theme.opacity;
+      opacity = theme.opacity;
     in
       (mkColor palette.base00)
       + (banner.lib.decimalToHex (
@@ -100,7 +102,7 @@
     };
 
     fonts = let
-      mainfont = config.system.theme.font.monospace;
+      mainfont = theme.font.monospace;
     in {
       names = [(mainfont.name) "monospace"];
       style = "Bold";
