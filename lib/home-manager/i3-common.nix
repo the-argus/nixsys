@@ -17,7 +17,7 @@ in rec {
       opacity = theme.opacity;
     in
       (mkColor palette.base00)
-      + (banner.lib.decimalToHex (
+      + (banner.lib.color.decimalToHex (
         lib.strings.toInt (255 * opacity)
       ));
     text = bg;
