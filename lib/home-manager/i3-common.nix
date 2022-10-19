@@ -23,7 +23,7 @@ in rec {
       splitFloat = (
         # turn digits into sets of integers and their length
         map (value: {
-          value = lib.strings.toInt value;
+          value = (lib.strings.toInt value) + 0.0;
           length = builtins.stringLength value;
         })
         # split into digits
@@ -32,8 +32,10 @@ in rec {
       wholeNumber = let num = builtins.elemAt splitFloat 0; in num.value;
       fraction = let
         num = builtins.elemAt splitFloat 1;
+        power = builtins.trace "10 to the power of ${num.length}: 
+        ${pow 10 num.length}" (pow 10 num.length);
       in
-        num.value / (pow 10 num.length);
+        num.value / power;
     in
       (mkColor palette.base00)
       + (banner.lib.color.decimalToHex (256
