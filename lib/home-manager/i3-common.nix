@@ -23,28 +23,38 @@ in rec {
         then abort "this power function cannot handle exponents of 0 or less."
         else lib.lists.foldr (next: prev: base * prev) 1 range;
 
-      splitFloat = (
-        # turn digits into sets of integers and their length
-        map (value: {
-          value = (lib.strings.toInt value) + 0.0;
-          length = builtins.stringLength value;
-        })
-        # split into digits
-        (lib.strings.splitString "." opacity)
-      );
-      wholeNumber = let num = builtins.elemAt splitFloat 0; in num.value;
-      fraction = let
-        num = builtins.elemAt splitFloat 1;
-        power = builtins.trace "10 to the power of ${builtins.toString num.length}: 
+      stringToFloat = str: let
+        splitFloat = (
+          # turn digits into sets of integers and their length
+          map (value: {
+            value = (lib.strings.toInt value) + 0.0;
+            length = builtins.stringLength value;
+          })
+          # split into digits
+          (lib.strings.splitString "." str)
+        );
+        wholeNumber = let num = builtins.elemAt splitFloat 0; in num.value;
+        fraction = let
+          num = builtins.elemAt splitFloat 1;
+          power = builtins.trace "10 to the power of ${builtins.toString num.length}: 
         ${builtins.toString (pow 10 num.length)}" (pow 10 num.length);
+        in
+          wholeNumber + fraction;
+
+        floatToInt = float: let
+          floatStr = builtins.toString float;
+          floatStrSplit = lib.strings.splitString "." floatStr;
+          intStr = builtins.elemAt floatStrSplit 0;
+        in
+          lib.strings.toInt intStr;
       in
         num.value / power;
     in
       (mkColor palette.base00)
-      + (banner.lib.color.decimalToHex (256
+      + (banner.lib.color.decimalToHex (floatToInt (256
         * (
-          wholeNumber + fraction
-        )));
+          stringToFloat opacity
+        ))));
     text = bg;
     inactive-text = bg;
     urgent-bg = mkColor palette.urgent;
