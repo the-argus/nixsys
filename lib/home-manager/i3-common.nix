@@ -41,7 +41,7 @@
       indicator
       childBorder
       ;
-  in {
+  in rec {
     modifier = lib.mkDefault "Mod4"; # super key
     workspaceAutoBackAndForth = lib.mkDefault true;
 
