@@ -5,7 +5,7 @@
   settings,
   ...
 }: rec {
-  commonInputs = {
+  commonInputs = rec {
     inherit (config.banner) palette;
     mkColor = color: "#${color}";
     bg = mkColor palette.highlight;
