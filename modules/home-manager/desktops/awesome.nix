@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.desktops.awesome;
-  inherit (lib) mkEnableOption;
+  inherit (lib) mkEnableOption mkIf;
 in {
   options.desktops.awesome = {
     enable = mkEnableOption "Awesome window manager configuration.";

@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.desktops.gnome;
-  inherit (lib) mkEnableOption;
+  inherit (lib) mkEnableOption mkIf;
 in {
   options.desktops.gnome = {
     enable = mkEnableOption "Gnome desktop environment configuration.";
