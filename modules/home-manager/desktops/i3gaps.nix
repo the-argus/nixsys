@@ -114,7 +114,7 @@ in {
     };
     xsession.windowManager.i3 = let
       common = import ../../../lib/home-manager/i3-common.nix {
-        inherit config pkgs lib settings;
+        inherit config pkgs lib settings banner;
       };
       inherit
         (common.commonInputs)

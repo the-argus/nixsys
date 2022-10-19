@@ -3,6 +3,7 @@
   lib,
   config,
   settings,
+  banner,
   ...
 }: rec {
   commonInputs = rec {
