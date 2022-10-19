@@ -87,13 +87,6 @@ in {
           in
             commandsOnce ++ commandsAlways;
           bars = [
-            {
-              position = "top";
-              swaybar_command = "waybar";
-              # mode = "hide";
-              # hiddenState = "hide";
-              # modifier = "Mod4";
-            }
           ];
           # in sway i use a floating bar and id like the windows to always match
           # its gaps from the left and right
@@ -292,6 +285,15 @@ in {
         # Utilities
         #
           bindsym XF86Calculator exec qalculate-gtk
+
+        bar {
+          swaybar_command = "waybar";
+          position = "top";
+          # mode = "hide";
+          # hiddenState = "hide";
+          # modifier = "Mod4";
+        }
+
       '';
     };
   };
