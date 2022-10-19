@@ -15,11 +15,31 @@ in rec {
     bg = mkColor palette.highlight;
     inactive-bg = let
       opacity = theme.opacity;
+
+      pow = base: exp: let
+        range = lib.lists.range 1 exp;
+      in
+        lib.lists.foldr (next: prev: base * prev) 0 range;
+      splitFloat = (
+        # turn digits into sets of integers and their length
+        map (value: {
+          value = lib.strings.toInt value;
+          length = builtins.stringLength value;
+        })
+        # split into digits
+        (lib.strings.splitString "." opacity)
+      );
+      wholeNumber = let num = builtins.elemAt splitFloat 0; in num.value;
+      fraction = let
+        num = builtins.elemAt splitFloat 1;
+      in
+        num.value / (pow 10 num.length);
     in
       (mkColor palette.base00)
-      + (banner.lib.color.decimalToHex (
-        lib.strings.toInt (255 * opacity)
-      ));
+      + (banner.lib.color.decimalToHex (256
+        * (
+          wholeNumber + fraction
+        )));
     text = bg;
     inactive-text = bg;
     urgent-bg = mkColor palette.urgent;
