@@ -60,7 +60,7 @@ in {
         // {
           # startup = ...
           startup = let
-            mkStartup = list: always:
+            mkStartup = always: list:
               map (command: {
                 inherit command always;
               })
