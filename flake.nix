@@ -115,7 +115,11 @@
         inherit (fs) pkgs system username homeDirectory;
         configuration = {pkgs, ...}: {
           imports =
-            [./user/primary audio-plugins.homeManagerModule]
+            [
+              ./user/primary
+              audio-plugins.homeManagerModule
+              ./modules/home-manager
+            ]
             ++ fs.additionalModules;
         };
         stateVersion = "22.05";

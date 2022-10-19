@@ -26,6 +26,12 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # fix overlap between plasma and gnome
+    programs.ssh.askPassword =
+      mkIf (cfg.gnome.enable && cfg.plasma.enable)
+      (pkgs.lib.mkForce
+        "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass");
+
     # Enable CUPS to print documents.
     services.printing.enable = true;
 
