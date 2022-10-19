@@ -168,7 +168,10 @@ in {
         gnome = "dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY && XDG_SESSION_TYPE=wayland dbus-run-session -- gnome-shell --display-server --wayland";
         ix = "curl -F 'f:1=<-' ix.io";
       }
-      // (pkgs.callPackage ./lib/xorg.nix {inherit settings;}).startxAliases;
+      // (pkgs.callPackage
+        ../../lib/home-manager/xorg.nix
+        {inherit settings;})
+      .startxAliases;
 
     zplug = {
       enable = false;
