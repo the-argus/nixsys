@@ -28,7 +28,7 @@
 
   config = let
     inherit
-      (common)
+      (commonInputs)
       banner
       mkColor
       bg
