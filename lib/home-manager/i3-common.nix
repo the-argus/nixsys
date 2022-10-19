@@ -7,9 +7,10 @@
   ...
 }: let
   inherit (config.system) theme;
+  inherit (config) banner;
 in rec {
   commonInputs = rec {
-    inherit (config.banner) palette;
+    inherit (banner) palette;
     mkColor = color: "#${color}";
     bg = mkColor palette.highlight;
     inactive-bg = let
