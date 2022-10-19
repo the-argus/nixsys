@@ -27,6 +27,7 @@
     ./spicetify.nix
     ./waybar.nix
     ../../modules/color/themes.nix
+    ../../modules/home-manager
     banner.module
   ];
 

@@ -118,7 +118,6 @@
             [
               ./user/primary
               audio-plugins.homeManagerModule
-              ./modules/home-manager
             ]
             ++ fs.additionalModules;
         };
