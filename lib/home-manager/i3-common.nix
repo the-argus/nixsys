@@ -32,8 +32,8 @@ in rec {
       wholeNumber = let num = builtins.elemAt splitFloat 0; in num.value;
       fraction = let
         num = builtins.elemAt splitFloat 1;
-        power = builtins.trace "10 to the power of ${num.length}: 
-        ${pow 10 num.length}" (pow 10 num.length);
+        power = builtins.trace "10 to the power of ${builtins.toString num.length}: 
+        ${builtins.toString (pow 10 num.length)}" (pow 10 num.length);
       in
         num.value / power;
     in
