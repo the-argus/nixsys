@@ -150,8 +150,8 @@ in {
           bindsym XF86Calculator exec qalculate-gtk
 
         bar {
-          swaybar_command = "waybar";
-          position = "top";
+          swaybar_command waybar
+          position top
           # mode = "hide";
           # hiddenState = "hide";
           # modifier = "Mod4";
