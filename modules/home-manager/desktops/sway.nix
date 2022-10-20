@@ -76,7 +76,7 @@ in {
 
           output = {
             "*" = {
-              bg = "~/Wallpapers/matte/delorean.png";
+              bg = "~/Wallpapers/matte/delorean.png fill";
             };
             "eDP-1" = {
               pos = "0 520";
