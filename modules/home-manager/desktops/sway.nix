@@ -138,7 +138,6 @@ in {
           set $scr_aux HDMI-A-1
           set $scr_main eDP-1
           set $native_width 1920
-          bindsym $mod+Return exec $term
 
           # Kill focused window
           bindsym $mod+Shift+q kill
