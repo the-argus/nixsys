@@ -121,7 +121,7 @@ in {
       extraConfig = ''
           set $mod Mod4
           set $menu wofi --show drun -I
-          bindsym $mod+space exec $menu
+          bindsym $mod+Control+space exec $menu
 
           # Exit sway
           bindsym $mod+Control+p exit
