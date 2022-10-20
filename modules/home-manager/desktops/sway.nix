@@ -119,6 +119,7 @@ in {
           };
         };
       extraConfig = ''
+          set $mod "Mod4";
           set $menu wofi --show drun -I
           bindsym $mod+space exec $menu
 
