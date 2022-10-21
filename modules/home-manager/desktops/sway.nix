@@ -34,7 +34,6 @@ in {
         ;
     in {
       enable = true;
-      package = pkgs.i3-gaps;
       config =
         common.config
         # add everything that is unique to i3
@@ -57,11 +56,14 @@ in {
                 # "exec mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" HDMI-A-1 ${vidpaper}"
                 # "exec swaybg --image $imgpaper --output \"*\""
                 # "exec /bin/sh ~/.scripts/random-mpvpaper.sh"
-
-                # neither of these even work
-                "exec ${pkgs.networkmanagerapplet}/bin/nm-applet"
-                "exec ${pkgs.blueman}/bin/blueman-applet"
-              ];
+              ]
+              # neither of these even work
+              ++ (lib.lists.optional
+                settings.usesWireless
+                "exec ${pkgs.networkmanagerapplet}/bin/nm-applet")
+              ++ (lib.lists.optional
+                settings.usesBluetooth
+                "exec ${pkgs.blueman}/bin/blueman-applet");
             commandsAlways =
               mkStartup true [
               ];
@@ -71,7 +73,7 @@ in {
           ];
           # in sway i use a floating bar and id like the windows to always match
           # its gaps from the left and right
-          gaps.smartGaps = false;
+          # gaps.smartGaps = false;
           menu = "${pkgs.wofi}/bin/wofi --show drun -I";
 
           output = {

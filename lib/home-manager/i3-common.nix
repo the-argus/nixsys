@@ -105,13 +105,13 @@ in rec {
       hideEdgeBorders = "smart";
       commands = let
         # this is the same as float criteria i believe
-        float = app_id: {
+        float = class: {
           command = "floating enable";
-          criteria = {inherit app_id;};
+          criteria = {inherit class;};
         };
-        rmBorder = app_id: {
+        rmBorder = class: {
           command = "default_border 0";
-          criteria = {inherit app_id;};
+          criteria = {inherit class;};
         };
       in [
         (float "nm-connection-editor")
@@ -147,7 +147,7 @@ in rec {
       size = mainfont.size + 0.0;
     };
 
-    colors = builtins.mapAttrs (name: value: lib.mkDefault value) rec {
+    colors = rec {
       background = transparent;
       focused = {
         border = bg;
