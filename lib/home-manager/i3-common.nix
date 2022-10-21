@@ -107,7 +107,7 @@ in rec {
         # this is the same as float criteria i believe
         float = class: {
           command = "floating enable";
-          criteria = {inherit id;};
+          criteria = {inherit class;};
         };
         rmBorder = class: {
           command = "default_border 0";
