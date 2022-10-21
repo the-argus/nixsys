@@ -34,7 +34,6 @@ in {
         ;
     in {
       enable = true;
-      package = pkgs.i3-gaps;
       config =
         common.config
         # add everything that is unique to i3
