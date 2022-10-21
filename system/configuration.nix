@@ -175,7 +175,13 @@
       llvm
     ]
     ++ ((import ../lib {inherit lib;}).stringsToPkgs
-      pkgs
+      (map (value: let
+        pkgSets = {inherit unstable localbuild remotebuild;};
+      in
+        if builtins.typeOf value == "set"
+        then pkgSets.${value.set}.${value.package}
+        else value)
+      pkgs)
       additionalSystemPackages);
 
   system.stateVersion = "22.05";

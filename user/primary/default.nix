@@ -3,6 +3,7 @@
   unstable,
   banner,
   remotebuild,
+  localbuild,
   lib,
   nur,
   chrome-extensions,
@@ -170,6 +171,12 @@
         # capitaine-cursors
       ]
       ++ ((import ../../lib {inherit lib;}).stringsToPkgs
-        pkgs
+        (map (value: let
+          pkgSets = {inherit unstable localbuild remotebuild;};
+        in
+          if builtins.typeOf value == "set"
+          then pkgSets.${value.set}.${value.package}
+          else value)
+        pkgs)
         additionalUserPackages);
 }
