@@ -118,7 +118,7 @@ in {
       };
       inherit
         (common.commonInputs)
-        banner
+        palette
         mkColor
         bg
         inactive-bg
