@@ -34,7 +34,10 @@
         (parseSubSetString
           availablePkgSets.${value.set}
           value.package)
-      else value)
+      else
+        parseSubSetString
+        availablePkgSets.pkgs
+        value)
     stringList;
 
   globalConfig = rec {
