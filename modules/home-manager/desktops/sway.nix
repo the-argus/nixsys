@@ -74,7 +74,7 @@ in {
           ];
           # in sway i use a floating bar and id like the windows to always match
           # its gaps from the left and right
-          gaps.smartGaps = false;
+          # gaps.smartGaps = false;
           menu = "${pkgs.wofi}/bin/wofi --show drun -I";
 
           output = {
