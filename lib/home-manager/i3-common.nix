@@ -147,7 +147,7 @@ in rec {
       size = mainfont.size + 0.0;
     };
 
-    colors = builtins.mapAttrs (name: value: lib.mkDefault value) rec {
+    colors = rec {
       background = transparent;
       focused = {
         border = bg;
