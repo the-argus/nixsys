@@ -171,12 +171,6 @@
         # capitaine-cursors
       ]
       ++ ((import ../../lib {inherit lib;}).stringsToPkgs
-        (map (value: let
-          pkgSets = {inherit unstable localbuild remotebuild;};
-        in
-          if builtins.typeOf value == "set"
-          then pkgSets.${value.set}.${value.package}
-          else value)
-        pkgs)
+        {inherit unstable localbuild remotebuild pkgs;}
         additionalUserPackages);
 }

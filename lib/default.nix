@@ -15,6 +15,7 @@
     builtins.trace string set;
 
   parseSubSetString = set: string: let
+    # from ``pkgs`` and "lib.out" this will grab pkgs.lib.out
     # hello.my.name.is becomes [ "hello" "my" "name" "is" ]
     subsets = lib.lists.reverseList (
       lib.lists.remove []
@@ -26,8 +27,15 @@
     set
     subsets;
 
-  stringsToPkgs = pkgs: stringList:
-    map (pkgName: (parseSubSetString pkgs pkgName)) stringList;
+  stringsToPkgs = availablePkgSets: stringList:
+    map (value:
+      if builtins.typeOf value == "set"
+      then
+        (parseSubSetString
+          availablePkgSets.${value.set}
+          value.package)
+      else value)
+    stringList;
 
   globalConfig = rec {
     defaults = import ./settings-defaults.nix; # default settings
