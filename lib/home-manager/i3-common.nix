@@ -105,13 +105,13 @@ in rec {
       hideEdgeBorders = "smart";
       commands = let
         # this is the same as float criteria i believe
-        float = id: {
+        float = class: {
           command = "floating enable";
           criteria = {inherit id;};
         };
-        rmBorder = id: {
+        rmBorder = class: {
           command = "default_border 0";
-          criteria = {inherit id;};
+          criteria = {inherit class;};
         };
       in [
         (float "nm-connection-editor")

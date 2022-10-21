@@ -59,8 +59,16 @@ in {
                 # "exec /bin/sh ~/.scripts/random-mpvpaper.sh"
 
                 # neither of these even work
-                "exec ${pkgs.networkmanagerapplet}/bin/nm-applet"
-                "exec ${pkgs.blueman}/bin/blueman-applet"
+                ${
+                  if settings.usesWireless
+                  then "exec ${pkgs.networkmanagerapplet}/bin/nm-applet"
+                  else ""
+                }
+                ${
+                  if settings.usesBluetooth
+                  then "exec ${pkgs.blueman}/bin/blueman-applet"
+                  else ""
+                }
               ];
             commandsAlways =
               mkStartup true [

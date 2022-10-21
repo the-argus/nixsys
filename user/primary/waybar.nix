@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  settings,
   ...
 }: {
   programs.waybar = {
@@ -51,15 +52,22 @@
           spacing = 10;
           show-passive-items = false;
         };
-        network = {
-          format = "{ifname}";
-          format-wifi = "{essid} ";
-          format-disconnected = ""; # An empty format will hide the module.
-          tooltip-format-wifi = ''{signalStrength}% strength,\n{frequency} MHz.'';
-          tooltip-format-disconnected = "Disconnected";
-          max-length = 50;
-          on-click = "nm-connection-editor";
-        };
+        network =
+          {
+            format = "{ifname}";
+            format-wifi = "{essid} ";
+            format-disconnected = ""; # An empty format will hide the module.
+            tooltip-format-wifi = ''{signalStrength}% strength,\n{frequency} MHz.'';
+            tooltip-format-disconnected = "Disconnected";
+            max-length = 50;
+          }
+          // (
+            if settings.usesWireless
+            then {
+              on-click = "nm-connection-editor";
+            }
+            else {}
+          );
         "custom/media" = {
           format = "{icon}{}";
           return-type = "json";
