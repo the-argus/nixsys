@@ -57,19 +57,14 @@ in {
                 # "exec mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" HDMI-A-1 ${vidpaper}"
                 # "exec swaybg --image $imgpaper --output \"*\""
                 # "exec /bin/sh ~/.scripts/random-mpvpaper.sh"
-
-                # neither of these even work
-                ${
-                  if settings.usesWireless
-                  then "exec ${pkgs.networkmanagerapplet}/bin/nm-applet"
-                  else ""
-                }
-                ${
-                  if settings.usesBluetooth
-                  then "exec ${pkgs.blueman}/bin/blueman-applet"
-                  else ""
-                }
-              ];
+              ]
+              # neither of these even work
+              ++ (lib.lists.optional
+                settings.usesWireless
+                "exec ${pkgs.networkmanagerapplet}/bin/nm-applet")
+              ++ (lib.lists.optional
+                settings.usesBluetooth
+                "exec ${pkgs.blueman}/bin/blueman-applet");
             commandsAlways =
               mkStartup true [
               ];
