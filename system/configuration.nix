@@ -113,6 +113,7 @@
   users.users.${username} = {
     shell = pkgs.zsh;
     isNormalUser = true;
+    initialPassword = "test";
     extraGroups = [
       "wheel"
       "video"
