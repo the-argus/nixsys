@@ -3,6 +3,7 @@
   lib,
   settings,
   picom,
+  config,
   ...
 }: let
   optional = condition: str: (
@@ -15,10 +16,15 @@
   execShell = path: "${path} &";
   execI3 = path: "${path}";
 in rec {
-  startxAliases = {
-    i3 = "startx $HOME/.xinitrc i3";
-    qtile = "startx $HOME/.xinitrc qtile";
-  };
+  startxAliases = let
+    mkAlias = wmName: (lib.optionalAttrs
+      config.desktops.${wmName}.enable
+      {i3 = "startx $HOME/.xinitrc ${wmName}";});
+  in
+    (mkAlias "i3gaps")
+    // (mkAlias "qtile")
+    // (mkAlias "ratpoison")
+    // (mkAlias "awesome");
   bluetoothAutostart = [
     # laptop has bluetooth and wireless
     "${pkgs.blueman}/bin/blueman-applet"

@@ -44,11 +44,16 @@
     # supplied by pkgs.dbus
     dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
-    if [[ $1 == "i3" ]]; then
+    if [[ $1 == "i3gaps" ]]; then
         exec i3
     elif [[ $1 == "qtile" ]]; then
         PYTHONDONTWRITEBYTECODE="yes" GTK_USE_PORTAL=0 exec qtile start
+    elif [[ $1 == "awesome" ]]; then
+        exec awesome
+    elif [[ $1 == "ratpoison" ]]; then
+        exec ratpoison
     else
+        # default to qtile
         PYTHONDONTWRITEBYTECODE="yes" GTK_USE_PORTAL=0 exec qtile start
     fi
   '';
