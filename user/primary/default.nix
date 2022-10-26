@@ -118,7 +118,6 @@
         ani-cli
         nix-prefetch-scripts
         tigervnc
-        distrobox
 
         # dev
         nodejs
