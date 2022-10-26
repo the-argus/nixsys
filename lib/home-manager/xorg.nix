@@ -19,7 +19,7 @@ in rec {
   startxAliases = let
     mkAlias = wmName: (lib.optionalAttrs
       config.desktops.${wmName}.enable
-      {i3 = "startx $HOME/.xinitrc ${wmName}";});
+      {${wmName} = "startx $HOME/.xinitrc ${wmName}";});
   in
     (mkAlias "i3gaps")
     // (mkAlias "qtile")
