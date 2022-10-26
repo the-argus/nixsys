@@ -86,6 +86,7 @@
         # lutris
 
         # gui applications---------
+        prismlauncher
         webcordPkg
         obs-studio
         gimp
