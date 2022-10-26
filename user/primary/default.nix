@@ -125,6 +125,7 @@
         cargo
 
         # useful linters, formatters, or both
+        deadnix
         python310Packages.demjson3 # jsonlint
         nodePackages.fixjson
         nodePackages.markdownlint-cli
