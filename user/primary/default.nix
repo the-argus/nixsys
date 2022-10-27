@@ -86,6 +86,7 @@
         # lutris
 
         # gui applications---------
+        prismlauncher
         webcordPkg
         obs-studio
         gimp
@@ -118,13 +119,13 @@
         ani-cli
         nix-prefetch-scripts
         tigervnc
-        distrobox
 
         # dev
         nodejs
         cargo
 
         # useful linters, formatters, or both
+        deadnix
         python310Packages.demjson3 # jsonlint
         nodePackages.fixjson
         nodePackages.markdownlint-cli
