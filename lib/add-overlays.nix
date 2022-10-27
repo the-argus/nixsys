@@ -46,7 +46,7 @@ in
     overlays =
       pkgsInputs.overlays
       ++ map (value: (
-        self: super: let
+        _: _: let
           overlayEntry = pkgDescriptorSetToOverlayEntry value;
         in {
           ${overlayEntry.name} = overlayEntry.value;

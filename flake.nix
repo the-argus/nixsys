@@ -55,21 +55,12 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    webcord,
-    banner,
     rycee-expressions,
     # , nur
     audio-plugins,
-    chrome-extensions,
-    spicetify-nix,
-    modern-unix,
-    gtk-nix,
-    nvim-config,
-    arkenfox-userjs,
     ...
   } @ inputs: let
     myLib = import ./lib {inherit (nixpkgs) lib;};
@@ -113,7 +104,7 @@
     in
       home-manager.lib.homeManagerConfiguration rec {
         inherit (fs) pkgs system username homeDirectory;
-        configuration = {pkgs, ...}: {
+        configuration = {...}: {
           imports =
             [
               ./user/primary

@@ -21,7 +21,7 @@ in rec {
       in
         if exp <= 0
         then abort "this power function cannot handle exponents of 0 or less."
-        else lib.lists.foldr (next: prev: base * prev) 1 range;
+        else lib.lists.foldr (_: prev: base * prev) 1 range;
 
       stringToFloat = str: let
         splitFloat = (
@@ -38,8 +38,7 @@ in rec {
         # get fraction part separately)
         fraction = let
           num = builtins.elemAt splitFloat 1;
-          power = builtins.trace "10 to the power of ${builtins.toString num.length}: 
-        ${builtins.toString (pow 10 num.length)}" (pow 10 num.length);
+          power = pow 10 num.length;
         in
           num.value / power;
       in
@@ -70,8 +69,6 @@ in rec {
   config = let
     inherit
       (commonInputs)
-      banner
-      mkColor
       bg
       inactive-bg
       text
@@ -168,7 +165,7 @@ in rec {
       };
       # placeholder window is default but can be configured
     };
-    gaps = builtins.mapAttrs (name: value: lib.mkDefault value) rec {
+    gaps = builtins.mapAttrs (_: value: lib.mkDefault value) rec {
       inner = 10;
       outer = 0;
       # theres also: horizontal vertical top left bottom right

@@ -9,12 +9,6 @@
 }: let
   enableModernUnix = true;
 
-  mkProtectedSource = filepath: ''
-    if [[ -f "${filepath}" ]]; then
-      source "${filepath}"
-    fi
-  '';
-
   plugins = {
     my-zsh = {name = "the-argus/my-zsh";};
     zsh-autocomplete = rec {

@@ -23,7 +23,7 @@ in {
     # spotifyPackage = unstable.spotify // { version = unstable.spotify-unwrapped.version; };
     spotifyPackage = unstable.spotify-unwrapped;
     # spicetifyPackage = unstable.spicetify-cli;
-    spicetifyPackage = pkgs.spicetify-cli.overrideAttrs (oa: rec {
+    spicetifyPackage = pkgs.spicetify-cli.overrideAttrs (_: rec {
       pname = "spicetify-cli";
       version = "2.9.9";
       src = pkgs.fetchgit {

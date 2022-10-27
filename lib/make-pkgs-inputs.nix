@@ -56,7 +56,7 @@ in {
   overlays =
     settings.additionalOverlays
     ++ [
-      (self: super: {
+      (_: super: {
         plymouth-themes-package = import ../packages/plymouth-themes.nix ({
             pkgs = super;
           }

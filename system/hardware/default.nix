@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  useFlags,
   plymouth,
   hostname,
   username,

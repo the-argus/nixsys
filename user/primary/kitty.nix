@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   config,
   ...
 }: {
@@ -8,7 +7,7 @@
     font = config.system.theme.font.monospace;
     opacity = config.system.theme.opacity;
 
-    kittyColorFormat = key: (value: "#${value}");
+    kittyColorFormat = _: (value: "#${value}");
 
     theme = with config.banner.palette; {
       foreground = base05;

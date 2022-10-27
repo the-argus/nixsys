@@ -6,11 +6,6 @@
   config,
   ...
 }: let
-  optional = condition: str: (
-    if condition
-    then str
-    else ""
-  );
   optionalList = lib.lists.optionals;
 
   execShell = path: "${path} &";
