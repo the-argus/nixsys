@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  inputs,
   lib,
   #font-icons,
   ...

@@ -20,17 +20,7 @@ in {
       };
       inherit
         (common)
-        palette
-        mkColor
         bg
-        inactive-bg
-        text
-        inactive-text
-        urgent-bg
-        inactive-border
-        transparent
-        indicator
-        childBorder
         ;
       cfg = config.wayland.windowManager.sway;
     in {
@@ -48,7 +38,7 @@ in {
               list;
 
             commandsOnce = let
-              vidpaper = "~/Wallpapers/animated/video/compressed-koi.mp4";
+              # vidpaper = "~/Wallpapers/animated/video/compressed-koi.mp4";
             in
               mkStartup false ([
                   "exec ${pkgs.wlsunset}/bin/wlsunset -l 43.2 -L -77.6 -t 5000 -T 6500"

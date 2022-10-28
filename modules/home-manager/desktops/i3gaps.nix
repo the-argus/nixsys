@@ -118,17 +118,10 @@ in {
       };
       inherit
         (common.commonInputs)
-        palette
-        mkColor
         bg
-        inactive-bg
         text
-        inactive-text
         urgent-bg
-        inactive-border
-        transparent
         indicator
-        childBorder
         ;
     in {
       enable = true;

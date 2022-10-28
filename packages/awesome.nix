@@ -1,6 +1,6 @@
 {pkgs, ...}:
 # basic override of awesome to use git master source code
-pkgs.awesome.overrideAttrs (finalAttrs: previousAttrs: {
+pkgs.awesome.overrideAttrs (_: {
   src = pkgs.fetchgit {
     url = "https://github.com/awesomeWM/awesome";
     rev = "b7bac1dc761f7e231355e76351500a97b27b6803";

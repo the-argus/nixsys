@@ -3,10 +3,9 @@
   lib,
   options,
   config,
-  username,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption mkOption types;
+  inherit (lib) mkIf mkOption types;
   cfg = config.virtualization.firmware;
 in {
   options.virtualization.firmware = {

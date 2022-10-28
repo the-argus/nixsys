@@ -5,10 +5,7 @@
   remotebuild,
   localbuild,
   lib,
-  nur,
-  chrome-extensions,
   webcord,
-  settings,
   additionalUserPackages ? [],
   config,
   ...

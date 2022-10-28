@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}: {
+{config, ...}: {
   programs.alacritty = {
     enable = true;
 
@@ -46,7 +41,7 @@
       colors = let
         inherit (config.banner) palette;
         prepend0x = color: "0x${color}";
-        alacrittyColorFormat = name: color: "0x${color}";
+        alacrittyColorFormat = _: color: "0x${color}";
 
         cursorSettings = builtins.mapAttrs alacrittyColorFormat {
           text = palette.base00;

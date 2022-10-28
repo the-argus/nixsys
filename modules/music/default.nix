@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.music;
-  inherit (lib) mkIf mkEnableOption mkOption;
+  inherit (lib) mkIf mkEnableOption;
 in {
   options.music.enable = mkEnableOption "Music Production Software";
 

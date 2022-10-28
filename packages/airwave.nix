@@ -1,11 +1,6 @@
-{
-  pkgs,
-  lib,
-  unstable,
-  ...
-}:
+{unstable, ...}:
 # original file https://github.com/NixOS/nixpkgs/blob/1cf5591a99f9d1f0b4bff66f1533917f4c597112/pkgs/applications/audio/airwave/default.nix
-unstable.airwave.overrideAttrs (finalAttrs: previousAttrs: let
+unstable.airwave.overrideAttrs (_: let
   vst-sdk = unstable.stdenv.mkDerivation rec {
     name = "vstsdk368_08_11_2017_build_121";
     src = unstable.fetchurl {

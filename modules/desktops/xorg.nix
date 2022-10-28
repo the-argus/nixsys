@@ -3,7 +3,6 @@
   config,
   options,
   pkgs,
-  picom,
   ...
 }: let
   cfg = config.desktops.xorg;

@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  username,
   ...
 }: let
   cfg = config.virtualization;
