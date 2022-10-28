@@ -119,6 +119,7 @@ in {
       inherit
         (common.commonInputs)
         bg
+        inactive-bg
         text
         urgent-bg
         indicator
