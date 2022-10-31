@@ -42,6 +42,8 @@ in {
             in
               mkStartup false ([
                   "exec ${pkgs.wlsunset}/bin/wlsunset -l 43.2 -L -77.6 -t 5000 -T 6500"
+                  exec
+                  "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -c sway; swaymsg exit"
                   # "exec oguri"
                   # "exec mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" eDP-1 ${vidpaper}"
                   # "exec mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" HDMI-A-1 ${vidpaper}"
@@ -215,6 +217,12 @@ in {
           # hiddenState = "hide";
           # modifier = "Mod4";
         }
+
+        bindsym Mod4+shift+e exec swaynag \
+          -t warning \
+          -m 'What do you want to do?' \
+          -b 'Poweroff' 'systemctl poweroff' \
+          -b 'Reboot' 'systemctl reboot'
 
       '';
     };
