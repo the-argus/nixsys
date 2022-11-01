@@ -91,6 +91,10 @@
       opacity = "0.8";
     };
 
+    amber-forest = override defaultTheme rec {
+      scheme = schemes.amber-forest;
+    };
+
     gruvbox = override defaultTheme rec {
       scheme = schemes.gruv;
       gtk = {
