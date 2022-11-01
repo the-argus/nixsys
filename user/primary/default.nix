@@ -107,6 +107,8 @@
         epick
         pngquant
 
+        (pkgs.callPackage ../../packages/xgifwallpaper.nix {})
+
         # tui
         cava
 
