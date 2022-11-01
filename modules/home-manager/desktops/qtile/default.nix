@@ -3,6 +3,7 @@
   lib,
   settings,
   config,
+  banner,
   ...
 }: let
   cfg = config.desktops.qtile;
@@ -46,12 +47,14 @@ in {
       '';
 
       # translate nix banner palette into python
-      ".config/qtile/color.py".text = with config.banner.palette; ''
+      ".config/qtile/color.py".text = let
+        colorPalette = banner.lib.util.removeMeta config.banner.palette;
+      in ''
         colors = {
             ${builtins.concatStringsSep "\n"
           (lib.attrsets.mapAttrsToList
             (name: value: "\"${name}\": \"#${value}\",")
-            config.banner.palette)}
+            colorPalette)}
         }
       '';
     };
