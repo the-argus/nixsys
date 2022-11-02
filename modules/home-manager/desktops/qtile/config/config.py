@@ -84,6 +84,8 @@ def dialogs(window):
     """Floating dialog"""
     if window.name in float_names or window.window.get_wm_type() in float_types or window.window.get_wm_transient_for():
         window.floating = True
+    if "Godot_Engine" in window.window.get_wm_class() or "Godot_Engine" == window.window.get_wm_class():
+        window.floating = True
 
 @hook.subscribe.client_new
 def set_floating(window):
