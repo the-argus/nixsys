@@ -34,7 +34,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gtk-nix = {
-      url = "github:the-argus/gtk-nix?ref=banner";
+      url = "github:the-argus/gtk-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     modern-unix = {
