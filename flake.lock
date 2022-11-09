@@ -623,6 +623,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-old": {
+      "locked": {
+        "lastModified": 1667921968,
+        "narHash": "sha256-EI+//LbhUzX471LHq8GgB+oUHpdA2rsiXpY1q5tDYGw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "df2bcbbd1c2aa144261cf1b0003c889c075dc693",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-22.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1667901915,
@@ -673,6 +689,21 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1668017383,
+        "narHash": "sha256-PkYnP/CzFyRGMWLaZsbL3Je82jLubqQf/pQdbkIHjWk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "444a64008a10a0566c6999f88fa9cd0ed4d0d9d2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1664876616,
         "narHash": "sha256-OxZntLnFgKbGUrPJJNLMxxj4yUaN/30+LG9N81ADqZE=",
         "owner": "NixOS",
@@ -690,16 +721,15 @@
       "inputs": {
         "banner": "banner_3",
         "nix2vim": "nix2vim",
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
+        "nixpkgs": "nixpkgs_4",
+        "nixpkgs-old": "nixpkgs-old"
       },
       "locked": {
-        "lastModified": 1667973414,
-        "narHash": "sha256-yW7K3NnCPXNho2FkYHLizikM08Dn1RKT7FvTLosCjXg=",
+        "lastModified": 1668019835,
+        "narHash": "sha256-/C2JP0DpshauWoK5M3NrEPH3Vm1jG6on3eJcoNLcI9k=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "8a095047f1bdb8d20ac15d63fea126cf8626366f",
+        "rev": "00544eecf942da828717f694225739261d1a3177",
         "type": "github"
       },
       "original": {
@@ -886,7 +916,7 @@
     "webcord": {
       "inputs": {
         "dream2nix": "dream2nix_2",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "webcord": "webcord_2"
       },
       "locked": {

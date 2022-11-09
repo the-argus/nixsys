@@ -43,10 +43,7 @@
     };
 
     # non-nix imports (need fast updates):
-    nvim-config = {
-      url = "github:the-argus/nvim-config";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    nvim-config.url = "github:the-argus/nvim-config";
 
     arkenfox-userjs = {
       url = "github:arkenfox/user.js";
