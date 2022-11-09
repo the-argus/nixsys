@@ -137,7 +137,9 @@
     [
       # tui applications
       ranger
-      (nvim-config.packages.${pkgs.system}.default)
+      (nvim-config.packages.${pkgs.system}.mkNeovim {
+        bannerPalette = config.system.theme.scheme;
+      })
       htop
       lynx
       w3m
