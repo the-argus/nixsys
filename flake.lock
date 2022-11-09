@@ -695,11 +695,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1667959545,
-        "narHash": "sha256-6EbnYmYQRvMtAONciVGRsZDbxmNF45rmq6WoLltcfqM=",
+        "lastModified": 1667960222,
+        "narHash": "sha256-DsJN7NpVC2O2KYaUkMQpxqNHnQNgQnrB7TdqKCGvrjI=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "efbdc7da30d0ecc60682d099e62b4e3c7f4f929e",
+        "rev": "e369f14dae5644bb4f6ad459ff3ee3bce980c675",
         "type": "github"
       },
       "original": {
