@@ -137,7 +137,7 @@
     [
       # tui applications
       ranger
-      nvim-config
+      (nvim-config.packages.${pkgs.system}.default)
       htop
       lynx
       w3m
