@@ -61,6 +61,7 @@
     rycee-expressions,
     # , nur
     audio-plugins,
+    nvim-config,
     ...
   } @ inputs: let
     myLib = import ./lib {inherit (nixpkgs) lib;};
