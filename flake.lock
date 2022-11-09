@@ -708,11 +708,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1667957086,
-        "narHash": "sha256-4LB/QZjEeJ0H06IWv/eHR1ZHx6IiaV08gMIo6ibUnDA=",
+        "lastModified": 1667959545,
+        "narHash": "sha256-6EbnYmYQRvMtAONciVGRsZDbxmNF45rmq6WoLltcfqM=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "8a0bee2c64a4f4c78b24eb0eb840ec1874cb2ab4",
+        "rev": "efbdc7da30d0ecc60682d099e62b4e3c7f4f929e",
         "type": "github"
       },
       "original": {
