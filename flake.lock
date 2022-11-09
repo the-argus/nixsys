@@ -695,11 +695,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1667960421,
-        "narHash": "sha256-1Pl47RHz4IES8ZmiPmnKqvmrvjUh52jXaIF5EAwf9nc=",
+        "lastModified": 1667973414,
+        "narHash": "sha256-yW7K3NnCPXNho2FkYHLizikM08Dn1RKT7FvTLosCjXg=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "32a618891732f9e73f59fda3d6c86e734a6d7f4b",
+        "rev": "8a095047f1bdb8d20ac15d63fea126cf8626366f",
         "type": "github"
       },
       "original": {
@@ -850,11 +850,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1667909434,
-        "narHash": "sha256-kx0a5c0gFCYD16j+RyZpBAVS7LJkVhzNEB87AG6ozQA=",
+        "lastModified": 1667966581,
+        "narHash": "sha256-dW/orQJueX1JBbgwiR7TSEIEVR/XkSLQmNPKa4oSoX4=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "4bcd7310c8449b3dcf114f93f5d89ec082a5029d",
+        "rev": "c0eb34b18aa78c8eea1c3be36c9bc683159da7ea",
         "type": "gitlab"
       },
       "original": {
