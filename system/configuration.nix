@@ -10,6 +10,7 @@
   username,
   settings,
   additionalSystemPackages,
+  nvim-config,
   ...
 }: {
   #choose what host is being used (laptop or pc)
@@ -136,7 +137,7 @@
     [
       # tui applications
       ranger
-      neovim
+      (nvim-config.packages.${pkgs.system}.default)
       htop
       lynx
       w3m

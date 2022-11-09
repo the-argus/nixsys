@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./nvim
     ./ranger
     ./neofetch
     ./rofi
