@@ -691,7 +691,7 @@
         "banner": "banner_3",
         "nix2vim": "nix2vim",
         "nixpkgs": [
-          "nixpkgs-unstable"
+          "nixpkgs"
         ]
       },
       "locked": {
