@@ -1,8 +1,8 @@
 {pkgs, ...}:
 pkgs.picom.overrideAttrs (_: {
   src = pkgs.fetchgit {
-    url = "https://github.com/pijulius/picom";
-    rev = "982bb43e5d4116f1a37a0bde01c9bda0b88705b9";
-    sha256 = "04rji6a9qdih04qk3mc0bg8hj6c1ccdn28jk4gh4gxfmq14qnav2";
+    url = "https://github.com/Arian8j2/picom-jonaburg-fix";
+    rev = "31d25da22b44f37cbb9be49fe5c239ef8d00df12";
+    sha256 = "0vkf4azs2xr0j03vkmn4z9ll4lw7j8s2k0rdsfw630hd78l1ngnp";
   };
 })
