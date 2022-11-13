@@ -53,7 +53,7 @@ in rec {
         "${pkgs.dunst}/bin/dunst"
         "${pkgs.xfce.xfce4-clipman-plugin}/bin/xfce4-clipman"
         "${pkgs.xclip}/bin/xclip"
-        "${picomPkg}/bin/picom --config ${picomConfigLocation} > ~/picom.log 2>&1"
+        "${picomPkg}/bin/picom --config ${picomConfigLocation} --experimental-backends > ~/picom.log 2>&1"
 
         # restore feh wallpaper
         "$HOME/.fehbg"
