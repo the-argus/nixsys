@@ -725,11 +725,11 @@
         "nixpkgs-old": "nixpkgs-old"
       },
       "locked": {
-        "lastModified": 1668375643,
-        "narHash": "sha256-uQkuEU8MFq3tWzjODwrj7Bhzl5lI60qkz5LbLIBmyAI=",
+        "lastModified": 1668401194,
+        "narHash": "sha256-bLs5Q25t+Azs3twy/R44KTk/gkBeX7hjRm3kwSYxGzc=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "3129e5913c501c31391c3e4fcf2f73996be2689d",
+        "rev": "756f8839b29b3e2429ccaf49f5c7a79635d7549f",
         "type": "github"
       },
       "original": {
@@ -880,11 +880,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1668340045,
-        "narHash": "sha256-s6+kRNK5RQ4WvHKZr4XQ47dwKu11yMo4SxYyW+UbXk4=",
+        "lastModified": 1668398569,
+        "narHash": "sha256-dKKr4PDQy5w411VlsMHq2p1n6rZOW5ungErdSaO+4DU=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "32e8e21382d91a227f2f495f8548f645fea8b89f",
+        "rev": "e0c23091284e093c2dab93d0ad3f737281778865",
         "type": "gitlab"
       },
       "original": {
