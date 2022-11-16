@@ -162,6 +162,8 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
     Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc="Toggle floating"),
 
+    Key([mod], 'period', lazy.next_screen(), desc='Next monitor'),
+
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
