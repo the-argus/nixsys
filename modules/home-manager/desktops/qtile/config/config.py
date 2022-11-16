@@ -31,7 +31,8 @@ import subprocess
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-#from libqtile.utils import guess_terminal
+
+# from libqtile.utils import guess_terminal
 
 from color import colors
 from font import font
@@ -40,22 +41,20 @@ from bar import my_bar
 from info import terminal
 
 mod = "mod4"
-#terminal = guess_terminal()
+# terminal = guess_terminal()
 
-float_types = [
-        "dialog"
-    ]
+float_types = ["dialog"]
 
 float_names = [
-        "Qalculate!",
-        "Bluetooth Devices",
-        "Network Connections",
-        "Color Picker",
-        "Steam Guard - Computer Authorization Required"
-        ]
+    "Qalculate!",
+    "Bluetooth Devices",
+    "Network Connections",
+    "Color Picker",
+    "Steam Guard - Computer Authorization Required",
+]
 
-#@hook.subscribe.client_new
-#def float_to_front(qtile):
+# @hook.subscribe.client_new
+# def float_to_front(qtile):
 #    """
 #    Bring all floating windows of the group to front
 #    """
@@ -63,29 +62,43 @@ float_names = [
 #        if window.floating:
 #            window.cmd_bring_to_front()
 
+
 @hook.subscribe.client_new
 def browser(c):
-    if c.window.get_wm_class() == ('chromium', 'Chromium'):
-       c.togroup(c.qtile.current_group.name)
+    if c.window.get_wm_class() == ("chromium", "Chromium"):
+        c.togroup(c.qtile.current_group.name)
+
 
 @hook.subscribe.float_change
 @hook.subscribe.client_new
 @hook.subscribe.client_focus
 def set_hint(window):
-    window.window.set_property("QTILE_FLOATING", str(window.floating), type="STRING", format=8)
+    window.window.set_property(
+        "QTILE_FLOATING", str(window.floating), type="STRING", format=8
+    )
+
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    home = os.path.expanduser("~/.config/qtile/autostart.sh")
     subprocess.run([home])
+
 
 @hook.subscribe.client_new
 def dialogs(window):
     """Floating dialog"""
-    if window.name in float_names or window.window.get_wm_type() in float_types or window.window.get_wm_transient_for():
+    if (
+        window.name in float_names
+        or window.window.get_wm_type() in float_types
+        or window.window.get_wm_transient_for()
+    ):
         window.floating = True
-    if "Godot_Engine" in window.window.get_wm_class() or "Godot_Engine" == window.window.get_wm_class():
+    if (
+        "Godot_Engine" in window.window.get_wm_class()
+        or "Godot_Engine" == window.window.get_wm_class()
+    ):
         window.floating = True
+
 
 @hook.subscribe.client_new
 def set_floating(window):
@@ -93,120 +106,170 @@ def set_floating(window):
     floating_roles = ["EventDialog", "Msgcompose", "Preferences"]
     floating_names = ["Terminator Preferences"]
 
-    if (window.window.get_wm_type() in floating_types or
-        window.window.get_wm_window_role() in floating_roles or
-        window.window.get_name() in floating_names or
-        window.window.get_wm_transient_for()):
+    if (
+        window.window.get_wm_type() in floating_types
+        or window.window.get_wm_window_role() in floating_roles
+        or window.window.get_name() in floating_names
+        or window.window.get_wm_transient_for()
+    ):
 
         screen = window.qtile.find_closest_screen(window.x, window.y)
         window.floating = True
         # window.x = int(screen.width / 2 - window.width / 2)
         # window.y = int(screen.height / 2 - window.height / 2)
 
+
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
-
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod, "mod1"], "space", lazy.layout.next(),
-        desc="Move window focus to other window"),
-
+    Key(
+        [mod, "mod1"],
+        "space",
+        lazy.layout.next(),
+        desc="Move window focus to other window",
+    ),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
-        desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
-        desc="Move window to the right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(),
-        desc="Move window down"),
+    Key(
+        [mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"
+    ),
+    Key(
+        [mod, "shift"],
+        "l",
+        lazy.layout.shuffle_right(),
+        desc="Move window to the right",
+    ),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(),
-        desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(),
-        desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(),
-        desc="Grow window down"),
+    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key(
+        [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
+    ),
+    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack"),
+    Key(
+        [mod, "shift"],
+        "Return",
+        lazy.layout.toggle_split(),
+        desc="Toggle between split and unsplit sides of stack",
+    ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    
-    Key([], "XF86Calculator", lazy.spawn("qalculate-gtk"), desc="Open calculator"), 
-
+    Key([], "XF86Calculator", lazy.spawn("qalculate-gtk"), desc="Open calculator"),
     # scripts
-    Key([mod], "space", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/rofi-launchpad.sh")), desc="Rofi"), 
-    Key([mod], "p", lazy.spawn("sh " + os.path.expanduser("~/.scripts/rofi-powermenu.sh")), desc="Powermenu"),
-
-    Key([], "XF86AudioMute", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/volume.sh mute")), desc="Mute volume"),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/volume.sh down")), desc="Lower volume"),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/volume.sh up")), desc="Raise volume"),
-
-    Key([], "XF86MonBrightnessUp", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/brightness.sh up")), desc="Increase brightness"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/brightness.sh down")), desc="Decrease brightness"),
-
-    Key([], "Print", lazy.spawn("sh " + os.path.expanduser("~/.local/bin/screenshot.sh")), desc="Take a screenshot"),
-
+    Key(
+        [mod],
+        "space",
+        lazy.spawn("sh " + os.path.expanduser("~/.local/bin/rofi-launchpad.sh")),
+        desc="Rofi",
+    ),
+    Key(
+        [mod],
+        "p",
+        lazy.spawn("sh " + os.path.expanduser("~/.scripts/rofi-powermenu.sh")),
+        desc="Powermenu",
+    ),
+    Key(
+        [],
+        "XF86AudioMute",
+        lazy.spawn("sh " + os.path.expanduser("~/.local/bin/volume.sh mute")),
+        desc="Mute volume",
+    ),
+    Key(
+        [],
+        "XF86AudioLowerVolume",
+        lazy.spawn("sh " + os.path.expanduser("~/.local/bin/volume.sh down")),
+        desc="Lower volume",
+    ),
+    Key(
+        [],
+        "XF86AudioRaiseVolume",
+        lazy.spawn("sh " + os.path.expanduser("~/.local/bin/volume.sh up")),
+        desc="Raise volume",
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessUp",
+        lazy.spawn("sh " + os.path.expanduser("~/.local/bin/brightness.sh up")),
+        desc="Increase brightness",
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessDown",
+        lazy.spawn("sh " + os.path.expanduser("~/.local/bin/brightness.sh down")),
+        desc="Decrease brightness",
+    ),
+    Key(
+        [],
+        "Print",
+        lazy.spawn("sh " + os.path.expanduser("~/.local/bin/screenshot.sh")),
+        desc="Take a screenshot",
+    ),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
     Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc="Toggle floating"),
-
-    Key([mod], 'period', lazy.next_screen(), desc='Next monitor'),
-
+    Key([mod], "period", lazy.next_screen(), desc="Next monitor"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
-
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "p", lazy.shutdown(), desc="Shutdown Qtile"),
-#    Key([mod], "r", lazy.spawncmd(),
-#        desc="Spawn a command using a prompt widget"),
+    #    Key([mod], "r", lazy.spawncmd(),
+    #        desc="Spawn a command using a prompt widget"),
 ]
 
-#groups = [ Group(f"{i+1}", label="♥") for i in range(5)]
-groups = [ Group(f"{i+1}", label="") for i in range(5)]
+# groups = [ Group(f"{i+1}", label="♥") for i in range(5)]
+groups = [Group(f"{i+1}", label="") for i in range(5)]
 
 #  groups = [
-    #  Group("1", label=""),
-    #  Group("2", label=""),
-    #  Group("3", label=""),
-    #  #  Group(
-        #  #  "3",
-        #  #  label="",
-        #  #  matches=[
-            #  #  Match(wm_class=["zoom"]),
-        #  #  ],
-    #  #  ),
-    #  Group("4", label=""),
-    #  Group("5", label="")
+#  Group("1", label=""),
+#  Group("2", label=""),
+#  Group("3", label=""),
+#  #  Group(
+#  #  "3",
+#  #  label="",
+#  #  matches=[
+#  #  Match(wm_class=["zoom"]),
+#  #  ],
+#  #  ),
+#  Group("4", label=""),
+#  Group("5", label="")
 #  ]
 
 
 for i in groups:
-    keys.extend([
-        # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen(),
-            desc="Switch to group {}".format(i.name)),
-
-        # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
-            desc="Switch to & move focused window to group {}".format(i.name)),
-        # Or, use below if you prefer not to switch to that group.
-        # # mod1 + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-        #     desc="move focused window to group {}".format(i.name)),
-    ])
+    keys.extend(
+        [
+            # mod1 + letter of group = switch to group
+            Key(
+                [mod],
+                i.name,
+                lazy.group[i.name].toscreen(),
+                desc="Switch to group {}".format(i.name),
+            ),
+            # mod1 + shift + letter of group = switch to & move focused window to group
+            Key(
+                [mod, "shift"],
+                i.name,
+                lazy.window.togroup(i.name, switch_group=True),
+                desc="Switch to & move focused window to group {}".format(i.name),
+            ),
+            # Or, use below if you prefer not to switch to that group.
+            # # mod1 + shift + letter of group = move focused window to group
+            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+            #     desc="move focused window to group {}".format(i.name)),
+        ]
+    )
 
 layouts = custom_layouts
 floating_layout = floating
@@ -218,18 +281,21 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 screens = [
-    Screen(
-        top=my_bar()
-    ),
+    Screen(top=my_bar()),
 ]
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(),
-         start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
+    Drag(
+        [mod],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position(),
+    ),
+    Drag(
+        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+    ),
+    Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
 dgroups_key_binder = None
@@ -245,5 +311,5 @@ reconfigure_screens = True
 # focus, should we respect this or not?
 auto_minimize = False
 
-#wmname = "LG3D"
+# wmname = "LG3D"
 wmname = "qtile"
