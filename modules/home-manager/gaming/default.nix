@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  inherit (lib) mkOption mkIf;
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.gaming;
 in {
   options.gaming = {
