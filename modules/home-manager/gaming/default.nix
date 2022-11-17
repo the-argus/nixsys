@@ -15,11 +15,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.config.allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) [
-        "steam"
-        "steam-original"
-      ];
     home.packages = with pkgs;
       [
         heroic
