@@ -61,8 +61,13 @@ in {
     # hardware ----------------------------------------------------------------
     # OpenGL
     hardware.opengl = {
-      enable = true;
       driSupport = true;
+      driSupport32Bit = true;
+      extraPackages = with pkgs; [
+      ];
+      extraPackages32 = with pkgs.pkgsi686Linux;
+        [libva libvdpau-va-gl vaapiVdpau]
+        ++ lib.optionals config.services.pipewire.enable [pipewire];
     };
 
     security.rtkit.enable = true;
@@ -72,6 +77,7 @@ in {
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    hardware.pulseaudio.support32Bit = config.hardware.pulseaudio.enable;
 
     hardware.acpilight.enable = true;
     # backlight permissions

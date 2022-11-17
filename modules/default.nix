@@ -4,5 +4,6 @@
     ./music
     ./virtualization
     ./color/themes.nix
+    ./gaming
   ];
 }

@@ -80,10 +80,8 @@
         slack
         discord
         # spotify-unwrapped
-        # lutris
 
         # gui applications---------
-        prismlauncher
         webcordPkg
         obs-studio
         gimp
@@ -92,7 +90,6 @@
         keepassxc
         pcmanfm
         qalculate-gtk
-        heroic
         pavucontrol
         sxiv
         mpv

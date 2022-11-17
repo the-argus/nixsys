@@ -11,6 +11,8 @@
     ../../modules
   ];
 
+  hardware.pulseaudio.support32Bit = config.hardware.pulseaudio.enable;
+
   # dual booting with windows boot loader mounted on /efi
   boot = {
     kernelParams = ["quiet" "systemd.show_status=0" "loglevel=4" "rd.systemd.show_status=auto" "rd.udev.log-priority=3"];
@@ -84,12 +86,13 @@
 
   # display -------------------------------------------------------------------
   hardware.opengl = {
+    driSupport = true;
+    driSupport32Bit = true;
     extraPackages = with pkgs; [
-      intel-media-driver
     ];
-    # extraPackages32 = with pkgs.pkgsi686Linux;
-    #   [ libva vaapiIntel libvdpau-va-gl vaapiVdpau ]
-    #   ++ lib.optionals config.services.pipewire.enable [ pipewire ];
+    extraPackages32 = with pkgs.pkgsi686Linux;
+      [libva libvdpau-va-gl vaapiVdpau]
+      ++ lib.optionals config.services.pipewire.enable [pipewire];
   };
 
   #	services.xserver.videoDrivers = [ "intel" ];
