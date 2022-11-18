@@ -13,7 +13,7 @@
     banner.url = "github:the-argus/banner.nix";
 
     audio-plugins = {
-      url = "github:the-argus/audio-plugins-nix?ref=yabridge-packaging";
+      url = "github:the-argus/audio-plugins-nix";
       # inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
