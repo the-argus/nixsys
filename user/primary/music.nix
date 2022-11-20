@@ -8,8 +8,8 @@
 }: {
   programs.yabridge = {
     enable = true;
-    package = unstable.yabridge;
-    ctlPackage = unstable.yabridgectl;
+    # package = unstable.yabridge;
+    # ctlPackage = unstable.yabridgectl;
     suppressFreemiumWarning = true;
     suppressUnmaintainedWarning = true;
     plugins = with mpkgs;
