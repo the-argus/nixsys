@@ -86,11 +86,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1668903691,
-        "narHash": "sha256-2J2w+pjmYCwttSTCsh8Zs0TMktun8cP4e/eXADabZcM=",
+        "lastModified": 1668903896,
+        "narHash": "sha256-1/eZAJT/UZSjoAGgjTdcho8AmBGJGjgFkZhceBALcBY=",
         "owner": "the-argus",
         "repo": "audio-plugins-nix",
-        "rev": "b3cad70e26073a8199ecc659eafd3ab237e87c76",
+        "rev": "6481daa50c2f8a7111e44d76ec2ff9916e1084d4",
         "type": "github"
       },
       "original": {
