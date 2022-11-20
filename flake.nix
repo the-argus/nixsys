@@ -12,10 +12,7 @@
 
     banner.url = "github:the-argus/banner.nix";
 
-    audio-plugins = {
-      url = "github:the-argus/audio-plugins-nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    audio-plugins.url = "github:the-argus/audio-plugins-nix";
 
     rycee-expressions = {
       url = "gitlab:rycee/nur-expressions";
