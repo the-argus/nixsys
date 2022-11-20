@@ -105,7 +105,7 @@
           imports =
             [
               ./user/primary
-              audio-plugins.homeManagerModule
+              audio-plugins.homeManagerModules.${system}
             ]
             ++ fs.additionalModules;
         };
