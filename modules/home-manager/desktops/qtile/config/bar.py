@@ -191,7 +191,7 @@ time = [
 
 def widgetlist():
     widgets = [
-        spacer_small(logo_image[1]["background"])
+        spacer_small(logo_image[1]["background"]),
         # logo,
         logo_image,
         groupbox,
