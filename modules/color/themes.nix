@@ -95,7 +95,11 @@
           # size = 11;
           # package = pkgs.fira-code;
         };
-        monospace = display;
+        monospace = {
+          name = "Sarasa Gothic";
+          size = 14;
+          package = pkgs.sarasa-gothic;
+        };
       };
       discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
       scheme = schemes.rosepine;
