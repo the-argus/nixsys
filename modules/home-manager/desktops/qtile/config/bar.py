@@ -145,7 +145,7 @@ mem = [
         "format": ": {MemUsed:.2f}/{MemTotal:.2f}{mm}",
         "update_interval": 1.0,
         "measure_mem": "G",
-        "background": colors["base01"],
+        "background": colors["base02"],
     },
 ]
 
@@ -155,8 +155,8 @@ batt = [
         **fontinfo,
         "background": colors["highlight"],
         "foreground": colors["pfg-highlight"],
-        "low_foreground": colors["urgent"],
-        "low_background": None,
+        "low_foreground": colors["pfg-urgent"],
+        "low_background": colors["urgent"],
         "low_percentage": 0.30,
         "charge_char": "",
         "discharge_char": "",
@@ -168,11 +168,11 @@ batt = [
     },
 ]
 
-layout = [widget.CurrentLayout, {**fontinfo, "background": colors["base02"]}]
+layout = [widget.CurrentLayout, {**fontinfo, "background": colors["base00"]}]
 
 date = [
     widget.Clock,
-    {**fontinfo, "format": "%m/%d/%Y", "background": colors["base03"]},
+    {**fontinfo, "format": "%m/%d/%Y", "background": colors["base01"]},
 ]
 
 time = [
@@ -192,16 +192,16 @@ def widgetlist():
         logo_image,
         groupbox,
         windowname,
-        systray,
         cpu,
         (batt if hardware["hasBattery"] else None),
         #        disk,
         #        net,
-        mem,
+        # mem,
         #        batt,
         layout,
         date,
         time,
+        systray
     ]
     while None in widgets:
         widgets.remove(None)
