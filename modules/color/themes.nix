@@ -88,7 +88,7 @@
         #   };
         # };
         display = {
-          name = "Victor Mono";
+          name = "Victor Mono Semibold";
           size = 12;
           package = pkgs.victor-mono;
           # name = "Fira Code";
