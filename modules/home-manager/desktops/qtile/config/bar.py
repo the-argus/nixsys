@@ -69,11 +69,11 @@ systray = [
 ]
 
 
-def spacer_small(bg_color):
+def spacer_small(bg_color, length):
     return [
         widget.Spacer,
         {
-            "length": 14,
+            "length": length,
             "background": bg_color,
             # these values are used by style func, not qtile
             "is_spacer": True,
@@ -191,7 +191,7 @@ time = [
 
 def widgetlist():
     widgets = [
-        spacer_small(logo_image[1]["background"]),
+        spacer_small(logo_image[1]["background"], 14),
         # logo,
         logo_image,
         groupbox,
@@ -206,7 +206,7 @@ def widgetlist():
         date,
         time,
         systray,
-        spacer_small(systray[1]["background"])
+        spacer_small(systray[1]["background"], -20)
     ]
     while None in widgets:
         widgets.remove(None)
