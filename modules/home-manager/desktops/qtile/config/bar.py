@@ -201,7 +201,8 @@ def widgetlist():
         layout,
         date,
         time,
-        systray
+        systray,
+        spacer_small
     ]
     while None in widgets:
         widgets.remove(None)
