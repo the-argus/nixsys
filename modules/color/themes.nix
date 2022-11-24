@@ -74,19 +74,19 @@
         iconTheme = rosePineIcons;
         cursorTheme = cursorThemes.posysImproved;
       };
-      font = {
-        monospace = {
-          name = "VictorMono Nerd Font"; # "FiraCode Nerd Font";
-          size = 14;
-          package = pkgs.nerdfonts.override {
-            fonts = [
-              "VictorMono"
-              /*
-              "FiraCode "
-              */
-            ];
-          };
-        };
+      font = rec {
+        # monospace = {
+        #   name = "VictorMono Nerd Font"; # "FiraCode Nerd Font";
+        #   size = 14;
+        #   package = pkgs.nerdfonts.override {
+        #     fonts = [
+        #       "VictorMono"
+        #       /*
+        #       "FiraCode "
+        #       */
+        #     ];
+        #   };
+        # };
         display = {
           name = "Victor Mono";
           size = 12;
@@ -95,6 +95,7 @@
           # size = 11;
           # package = pkgs.fira-code;
         };
+        monospace = display;
       };
       discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
       scheme = schemes.rosepine;
