@@ -76,14 +76,24 @@
       };
       font = {
         monospace = {
-          name = "FiraCode Nerd Font";
+          name = "VictorMono Nerd Font"; # "FiraCode Nerd Font";
           size = 14;
-          package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+          package = pkgs.nerdfonts.override {
+            fonts = [
+              "VictorMono"
+              /*
+              "FiraCode "
+              */
+            ];
+          };
         };
         display = {
-          name = "Fira Code";
-          size = 11;
-          package = pkgs.fira-code;
+          name = "Victor Mono";
+          size = 12;
+          package = pkgs.victor-mono;
+          # name = "Fira Code";
+          # size = 11;
+          # package = pkgs.fira-code;
         };
       };
       discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
