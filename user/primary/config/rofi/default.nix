@@ -152,9 +152,7 @@
     '';
 in {
   home.file = {
-    ".config/rofi/launchpad.rasi" = {
-      source = rasi;
-    };
+    ".config/rofi/launchpad.rasi".text = rasi;
   };
 
   home.packages = pkgs.lib.lists.optionals replaceFont [font.package];
