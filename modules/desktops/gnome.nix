@@ -60,6 +60,10 @@ in {
         gnome-usage
         gnome-connections
         gnome-secrets
+        gnome-console
+        baobab
+        simple-scan
+        yelp
       ])
       ++ (with pkgs.gnome; [
         gnome-calculator
@@ -83,6 +87,14 @@ in {
         iagno # go game
         hitori # sudoku game
         atomix # puzzle game
+        baobab # disk usage analyzer
+        file-roller
+        gnome-calendar
+        simple-scan
+        gnome-font-viewer
+        gnome-system-monitor
+        yelp
+        eog
       ]);
   };
 }

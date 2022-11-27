@@ -2,7 +2,6 @@
   imports = [
     ./ranger
     ./neofetch
-    ./rofi
   ];
 
   home.file.".xinitrc".text = ''

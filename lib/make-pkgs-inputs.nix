@@ -61,6 +61,15 @@ in {
             pkgs = super;
           }
           // settings.plymouth);
+        gnome =
+          super.gnome
+          // {
+            seahorse = super.seahorse.overrideAttrs (_: {
+              postInstall = ''
+                rm $out/share/applications/org.gnome.seahorse.Application.desktop
+              '';
+            });
+          };
       })
     ];
   # ++ (
