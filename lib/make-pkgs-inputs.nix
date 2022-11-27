@@ -64,7 +64,7 @@ in {
         gnome =
           super.gnome
           // {
-            seahorse = super.seahorse.overrideAttrs (_: {
+            seahorse = super.gnome.seahorse.overrideAttrs (_: {
               postInstall = ''
                 rm $out/share/applications/org.gnome.seahorse.Application.desktop
               '';
