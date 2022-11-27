@@ -10,7 +10,6 @@
   username,
   settings,
   additionalSystemPackages,
-  nvim-config,
   config,
   ...
 }: {
@@ -137,10 +136,8 @@
   environment.systemPackages = with pkgs;
     [
       # tui applications
+      (lib.meta.lowPrio vim)
       ranger
-      (nvim-config.packages.${pkgs.system}.mkNeovim {
-        bannerPalette = config.system.theme.scheme;
-      })
       htop
       lynx
       w3m

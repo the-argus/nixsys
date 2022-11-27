@@ -8,6 +8,7 @@
   webcord,
   additionalUserPackages ? [],
   config,
+  nvim-config,
   ...
 }: {
   imports = [
@@ -76,16 +77,16 @@
   in
     with pkgs;
       [
+        (nvim-config.packages.${pkgs.system}.mkNeovim {
+          bannerPalette = config.system.theme.scheme;
+        })
         # unfree :(
         slack
         discord
-        # spotify-unwrapped
 
         # gui applications---------
         webcordPkg
         obs-studio
-        gimp
-        thunderbird
         element-desktop
         keepassxc
         pcmanfm
@@ -98,7 +99,6 @@
         qdirstat
 
         pinta
-        inkscape
         # color palette
         wl-color-picker
         epick
@@ -119,53 +119,6 @@
         # dev
         nodejs
         cargo
-
-        # useful linters, formatters, or both
-        deadnix
-        python310Packages.demjson3 # jsonlint
-        nodePackages.fixjson
-        nodePackages.markdownlint-cli
-        alejandra
-        nodePackages.prettier
-        sumneko-lua-language-server
-        rnix-lsp
-        libclang # clangd
-
-        # typing games
-        # thokr     # another simply game with the added ability to tweet
-        # your results
-        # ktouch    # underwhelming, QWERTY-only. provides a useful
-        # capitalization lesson for my bad shift habits
-        # ttyper    # simple game, just typing random words then it tells
-        # you your speed
-        # toipe     # another simple game, looks nice too
-
-        tipp10 # in-depth QWERTY trainer, could support dvorak with
-        # a bit of effort (key replacement filter)
-        klavaro # good for QWERTY, but only lets you do systemwide
-        # dvorak
-        gtypist # very good for qwerty, also requires systemwide
-        # dvorak
-        gotypist # makes you practice fast, slow, and medium.
-        # cool typing experiment, idk how good it is really
-        #typespeed  # words come flying at you from the left side. fun
-        # game, idk how good it really is for typing
-
-        # appearance
-        # rose-pine-gtk-theme
-        # paper-gtk-theme # Paper
-        # Icons: Lounge-aux
-        # Themes: Lounge Lounge-compact Lounge-night Lounge-night-compact
-        # lounge-gtk-theme
-        # juno-theme # Juno Juno-mirage Juno-ocean Juno-palenight
-        # graphite-gtk-theme # Graphite Graphite-dark Graphite-light Graphite-dark-hdpi Graphite-hdpi ....
-
-        # paper-icon-theme
-        # zafiro-icons
-        # pantheon.elementary-icon-theme
-        # material-icons
-        # numix-cursor-theme # Numix-Cursor Numix-Cursor-Light
-        # capitaine-cursors
       ]
       ++ ((import ../../lib {inherit lib;}).stringsToPkgs
         {inherit unstable localbuild remotebuild pkgs;}
