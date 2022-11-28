@@ -95,6 +95,7 @@ in {
         gnome-system-monitor
         yelp
         eog
+        gnome-color-manager
       ]);
   };
 }
