@@ -12,6 +12,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      qt5.qtwayland
+    ];
     # XDG Config
     xdg = {
       portal = {
