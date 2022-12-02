@@ -26,13 +26,13 @@
 
   rasi =
     /*
-    *
-    * Author  : Aditya Shakya
-    * Mail    : adi1090x@gmail.com
-    * Github  : @adi1090x
-    * Twitter : @adi1090x
-    *
-    */
+     *
+     * Author  : Aditya Shakya
+     * Mail    : adi1090x@gmail.com
+     * Github  : @adi1090x
+     * Twitter : @adi1090x
+     *
+     */
     ''
       configuration {
       	font:							"${font.name} ${builtins.toString font.size}";
