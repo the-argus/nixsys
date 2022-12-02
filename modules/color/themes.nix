@@ -75,30 +75,26 @@
         cursorTheme = cursorThemes.posysImproved;
       };
       font = rec {
-        # monospace = {
-        #   name = "VictorMono Nerd Font"; # "FiraCode Nerd Font";
-        #   size = 14;
-        #   package = pkgs.nerdfonts.override {
-        #     fonts = [
-        #       "VictorMono"
-        #       /*
-        #       "FiraCode "
-        #       */
-        #     ];
-        #   };
-        # };
-        display = {
-          name = "Victor Mono Semibold";
-          size = 12;
-          package = pkgs.victor-mono;
-          # name = "Fira Code";
-          # size = 11;
-          # package = pkgs.fira-code;
-        };
         monospace = {
-          name = "Sarasa Gothic";
+          name = "FiraCode Nerd Font"; # "VictorMono Nerd Font";
           size = 14;
-          package = pkgs.sarasa-gothic;
+          package = pkgs.nerdfonts.override {
+            fonts = [
+              # "VictorMono"
+              "FiraCode "
+            ];
+          };
+          #   name = "Sarasa Gothic";
+          #   size = 14;
+          #   package = pkgs.sarasa-gothic;
+        };
+        display = {
+          # name = "Victor Mono Semibold";
+          # size = 12;
+          # package = pkgs.victor-mono;
+          name = "Fira Code";
+          size = 11;
+          package = pkgs.fira-code;
         };
       };
       discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
