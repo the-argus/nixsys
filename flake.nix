@@ -64,6 +64,7 @@
         inherit settings;
       };
     defaultGlobalSettings = myLib.globalConfig.defaults;
+    stateVersion = "22.11";
   in rec
   {
     createNixosConfiguration = settings: let
@@ -79,6 +80,7 @@
             inherit (fs) useFlags plymouth usesWireless usesBluetooth;
             inherit (fs) usesEthernet hostname username;
             inherit (fs) additionalSystemPackages;
+            inherit stateVersion;
             settings = fs;
           };
         modules = [
@@ -117,6 +119,7 @@
             inherit (fs) useFlags useMusl useClang;
             inherit (fs) usesEthernet usesWireless usesBluetooth;
             inherit (fs) additionalUserPackages hostname username;
+            inherit stateVersion;
             settings = fs;
           };
       };

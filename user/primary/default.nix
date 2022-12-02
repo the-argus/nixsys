@@ -9,6 +9,8 @@
   additionalUserPackages ? [],
   config,
   nvim-config,
+  username,
+  stateVersion,
   ...
 }: {
   imports = [
@@ -30,6 +32,10 @@
     ../../modules/home-manager
     banner.module
   ];
+
+  home = {
+    inherit username stateVersion;
+  };
 
   banner.palette = config.system.theme.scheme;
 
