@@ -35,6 +35,7 @@
 
   home = {
     inherit username stateVersion;
+    homeDirectory = "/home/${username}";
   };
 
   banner.palette = config.system.theme.scheme;
