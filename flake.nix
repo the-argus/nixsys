@@ -97,22 +97,19 @@
         ;
     in
       home-manager.lib.homeManagerConfiguration rec {
-        inherit (fs) pkgs system username homeDirectory;
-        configuration = {...}: {
-          imports =
-            [
-              ./user/primary
-              audio-plugins.homeManagerModules.${system}
-            ]
-            ++ fs.additionalModules;
-        };
-        stateVersion = "22.11";
+        inherit (fs) pkgs;
+        modules =
+          [
+            ./user/primary
+            audio-plugins.homeManagerModules.${fs.system}
+          ]
+          ++ fs.additionalModules;
         extraSpecialArgs =
           inputs
           // {
             inherit (fs) homeDirectory;
             inherit firefox-addons;
-            mpkgs = audio-plugins.mpkgSets.${system};
+            mpkgs = audio-plugins.mpkgSets.${fs.system};
           }
           // fs.extraExtraSpecialArgs
           // {
