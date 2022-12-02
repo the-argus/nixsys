@@ -23,15 +23,16 @@ in {
     # spotifyPackage = unstable.spotify // { version = unstable.spotify-unwrapped.version; };
     spotifyPackage = unstable.spotify-unwrapped;
     # spicetifyPackage = unstable.spicetify-cli;
-    spicetifyPackage = pkgs.spicetify-cli.overrideAttrs (_: rec {
-      pname = "spicetify-cli";
-      version = "2.9.9";
-      src = pkgs.fetchgit {
-        url = "https://github.com/spicetify/${pname}";
-        rev = "v${version}";
-        sha256 = "1a6lqp6md9adxjxj4xpxj0j1b60yv3rpjshs91qx3q7blpsi3z4z";
-      };
-    });
+    spicetifyPackage = pkgs.spicetify-cli;
+    # spicetifyPackage = pkgs.spicetify-cli.overrideAttrs (_: rec {
+    #   pname = "spicetify-cli";
+    #   version = "2.9.9";
+    #   src = pkgs.fetchgit {
+    #     url = "https://github.com/spicetify/${pname}";
+    #     rev = "v${version}";
+    #     sha256 = "1a6lqp6md9adxjxj4xpxj0j1b60yv3rpjshs91qx3q7blpsi3z4z";
+    #   };
+    # });
     enable = true;
     theme = spicePkgs.themes.Dribbblish;
     colorScheme = "custom";
