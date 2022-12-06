@@ -88,6 +88,7 @@
         (nvim-config.packages.${pkgs.system}.mkNeovim {
           bannerPalette = config.system.theme.scheme;
         })
+        (callPackage ../../packages/ufetch.nix {})
         # unfree :(
         slack
         discord
