@@ -34,10 +34,7 @@
       url = "github:the-argus/gtk-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    modern-unix = {
-      url = "github:the-argus/modern-unix-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    modern-unix.url = "github:the-argus/modern-unix-flake";
 
     # non-nix imports (need fast updates):
     nvim-config.url = "github:the-argus/nvim-config";
