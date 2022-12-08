@@ -119,6 +119,7 @@
       "networkmanager"
       "openrazer"
       "plugdev"
+      "libvirtd"
     ];
   };
 
