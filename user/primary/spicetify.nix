@@ -6,7 +6,7 @@
   config,
   ...
 }: let
-  spicePkgs = spicetify-nix.pkgSets.${pkgs.system};
+  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
 in {
   # allow spotify to be installed if you don't have unfree enabled already
   nixpkgs.config.allowUnfreePredicate = pkg:
@@ -74,20 +74,20 @@ in {
       marketplace
     ];
     enabledExtensions = with spicePkgs.extensions; [
-      # "playlistIcons.js" # only needed if not using dribbblish
-      "fullAlbumDate.js"
-      "listPlaylistsWithSong.js"
-      "playlistIntersection.js"
-      "showQueueDuration.js"
-      "featureShuffle.js"
-      "playNext.js"
-      "keyboardShortcut.js"
-      "lastfm.js"
-      "genre.js"
-      "historyShortcut.js"
-      "hidePodcasts.js"
-      "fullAppDisplay.js"
-      "shuffle+.js"
+      # "playlistIcons" # only needed if not using dribbblish
+      fullAlbumDate
+      listPlaylistsWithSong
+      playlistIntersection
+      showQueueDuration
+      featureShuffle
+      playNext
+      keyboardShortcut
+      lastfm
+      genre
+      historyShortcut
+      hidePodcasts
+      fullAppDisplay
+      shuffle
     ];
   };
 }

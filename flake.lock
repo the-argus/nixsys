@@ -896,11 +896,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1670613495,
-        "narHash": "sha256-p1JH34WlAirIicuFBQFgrEVsGwxuw9U2fghsSgJssnc=",
+        "lastModified": 1670615946,
+        "narHash": "sha256-4yBln/buNgX19Bf8CnUdMichqX4n78QdCTeKf5xt2Nc=",
         "owner": "the-argus",
         "repo": "spicetify-nix",
-        "rev": "fa7353b161e0ca8588e96b707e92b80926a86830",
+        "rev": "c868779651a144e50f28c03a5558d6cfdbd777b1",
         "type": "github"
       },
       "original": {
