@@ -12,6 +12,7 @@ in {
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "spotify-unwrapped"
+      "spotify"
     ];
 
   # import the flake's module
