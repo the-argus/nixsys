@@ -57,7 +57,6 @@
       #   id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
       # }
       # {
-      #   # keepassxc browser
       #   id = "oboonakemofpalcgghocfoadofidjkkk";
       # }
     ];
@@ -97,7 +96,7 @@
         webcordPkg
         obs-studio
         element-desktop
-        keepassxc
+        bitwarden-cli
         pcmanfm
         qalculate-gtk
         pavucontrol

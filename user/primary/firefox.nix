@@ -125,7 +125,7 @@
 
     extensions = with firefox-addons; [
       ublock-origin
-      keepassxc-browser
+      bitwarden
       vimium
     ];
 
