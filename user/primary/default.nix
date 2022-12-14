@@ -97,6 +97,7 @@
         obs-studio
         element-desktop
         bitwarden-cli
+        (callPackage ../../packages/bwmenu.nix {})
         pcmanfm
         qalculate-gtk
         pavucontrol
