@@ -1,4 +1,4 @@
-{username}: {
+{username, ...}: {
   services.davfs2 = {
     enable = true;
     davUser = username;
