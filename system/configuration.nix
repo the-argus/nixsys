@@ -106,29 +106,22 @@
 
   users.defaultUserShell = pkgs.bash;
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users = {
-    groups = {
-      davfs2 = {
-        name = "davfs2";
-      };
-    };
-    users.${username} = {
-      shell = pkgs.zsh;
-      isNormalUser = true;
-      initialPassword = "test";
-      extraGroups = [
-        "davfs2"
-        "wheel"
-        "video"
-        "audio"
-        "jackaudio"
-        "systemd-network"
-        "networkmanager"
-        "openrazer"
-        "plugdev"
-        "libvirtd"
-      ];
-    };
+  users.users.${username} = {
+    shell = pkgs.zsh;
+    isNormalUser = true;
+    initialPassword = "test";
+    extraGroups = [
+      "davfs2"
+      "wheel"
+      "video"
+      "audio"
+      "jackaudio"
+      "systemd-network"
+      "networkmanager"
+      "openrazer"
+      "plugdev"
+      "libvirtd"
+    ];
   };
 
   environment.pathsToLink = ["/share/zsh"];
