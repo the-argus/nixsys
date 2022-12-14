@@ -174,12 +174,7 @@ keys = [
         lazy.spawn("sh " + os.path.expanduser("~/.local/bin/rofi-launchpad.sh")),
         desc="Rofi",
     ),
-    Key(
-        [mod],
-        "p",
-        lazy.spawn("sh " + os.path.expanduser("~/.scripts/rofi-powermenu.sh")),
-        desc="Powermenu",
-    ),
+    Key([mod], "p", lazy.spawn("bwmenu"), desc="Password manager"),
     Key(
         [],
         "XF86AudioMute",
