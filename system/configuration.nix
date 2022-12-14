@@ -168,7 +168,6 @@
 
       curlftpfs
       sshfs
-      davfs2 # maybe wdfs for mounting nextcloud instead?
 
       # build - essential
       gcc
