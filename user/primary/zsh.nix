@@ -224,7 +224,12 @@ in {
 
       function where () {
         if [ -n "$1" ]; then
-          readlink $(whereis cut | cut --delimiter " " --fields 2)
+          output=$(readlink $(whereis cut | cut --delimiter " " --fields 2))
+          if [ -L $output ]; then
+            where $output
+          else
+            echo $output
+          fi
         else
           whereis
         fi
