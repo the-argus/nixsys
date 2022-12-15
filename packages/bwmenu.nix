@@ -25,8 +25,8 @@ in
     name = "bw-rofi";
     src = fetchgit {
       url = "https://github.com/the-argus/bitwarden-rofi";
-      sha256 = "0b9gcsh8w7xsq7mlqbhqybis9bdpsvhimdjf7q31l9wn38xm9i4h";
-      rev = "fc2ed6ea0a8023ce3c379b3ec81e1392f6847c51";
+      sha256 = "1zfh1kn1c2fbnz3gqxdrwv5c5xkw5afibdyb4b0nfk40adwqslsp";
+      rev = "88e6bef0d88949289151870f42802dc2e90e0068";
     };
     dontBuild = true;
     installPhase = ''
