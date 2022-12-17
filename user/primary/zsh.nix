@@ -222,19 +222,6 @@ in {
       	command ls -la --color=auto --group-directories-first $@ | command grep "^d" && ls -la $1 | command grep -v "^d"
       }
 
-      function where () {
-        if [ -n "$1" ]; then
-          output=$(readlink $(whereis cut | cut --delimiter " " --fields 2))
-          if [ -L $output ]; then
-            where $output
-          else
-            echo $output
-          fi
-        else
-          whereis
-        fi
-      }
-
       ${
         if !enableModernUnix
         then ''
