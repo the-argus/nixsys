@@ -183,11 +183,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1671244630,
-        "narHash": "sha256-3BLBvHIWLcxWP1qEH8eBx2w90EC7DYq0khz8C1BIp/4=",
+        "lastModified": 1671251985,
+        "narHash": "sha256-faQOQMllTdUAsUq+hdOHBIxVU7oxIBnYnQfM6KunxNw=",
         "owner": "the-argus",
         "repo": "bitwarden-rofi",
-        "rev": "e8b954d4dcd54a9d739e99d4cf5781156db07406",
+        "rev": "c0499ad24bfd617964951e8e6cb36a19f00f2246",
         "type": "github"
       },
       "original": {
@@ -987,11 +987,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1671204993,
-        "narHash": "sha256-4uSkZKmJGOfX9WGelr45SK9CpwTqqNsp3Q81wp7fbTQ=",
+        "lastModified": 1671249771,
+        "narHash": "sha256-VFGaUOGfERhbbXJqzYJGroMqzSXmtameRjMiQ2390cs=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "e76923afbad333b4b229284395f96bdf7702b94b",
+        "rev": "6706d427adbf062d3dfefc03620381bbc1a3e9f4",
         "type": "gitlab"
       },
       "original": {
