@@ -176,6 +176,26 @@
         "type": "github"
       }
     },
+    "bitwarden-rofi": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1671237075,
+        "narHash": "sha256-Nz/aeqMkhskXTVg5sGaGD5mCfnSM8ZitDSOuxyx6ehc=",
+        "owner": "the-argus",
+        "repo": "bitwarden-rofi",
+        "rev": "ca9edef1401491d815bef830f81d71f90a470eba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "the-argus",
+        "repo": "bitwarden-rofi",
+        "type": "github"
+      }
+    },
     "chrome-extensions": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -917,6 +937,7 @@
         "arkenfox-userjs": "arkenfox-userjs",
         "audio-plugins": "audio-plugins",
         "banner": "banner",
+        "bitwarden-rofi": "bitwarden-rofi",
         "chrome-extensions": "chrome-extensions",
         "gtk-nix": "gtk-nix",
         "home-manager": "home-manager",

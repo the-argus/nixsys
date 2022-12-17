@@ -11,6 +11,7 @@
   nvim-config,
   username,
   stateVersion,
+  bitwarden-rofi,
   ...
 }: {
   imports = [
@@ -92,12 +93,13 @@
         slack
         discord
 
+        bitwarden-rofi.packages.${pkgs.system}.default
+
         # gui applications---------
         webcordPkg
         obs-studio
         element-desktop
         bitwarden-cli
-        (callPackage ../../packages/bwmenu.nix {})
         pcmanfm
         qalculate-gtk
         pavucontrol

@@ -19,6 +19,11 @@
       flake = false;
     };
 
+    bitwarden-rofi = {
+      url = github:the-argus/bitwarden-rofi;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     chrome-extensions = {
       url = "github:the-argus/chrome-extensions-nix";
       inputs.nixpkgs.follows = "nixpkgs";
