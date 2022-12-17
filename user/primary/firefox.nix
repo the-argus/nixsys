@@ -125,7 +125,6 @@
 
     extensions = with firefox-addons; [
       ublock-origin
-      bitwarden
       vimium
     ];
 
