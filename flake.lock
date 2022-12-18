@@ -745,11 +745,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1671108576,
-        "narHash": "sha256-6ggOL6KoaELNA1562tnPjtAnQ9SwsKRTgeuaXvPzCwI=",
+        "lastModified": 1671271357,
+        "narHash": "sha256-xRJdLbWK4v2SewmSStYrcLa0YGJpleufl44A19XSW8k=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0f5996b524c91677891a432cc99c7567c7c402b1",
+        "rev": "40f79f003b6377bd2f4ed4027dde1f8f922995dd",
         "type": "github"
       },
       "original": {
@@ -831,11 +831,11 @@
         "nixpkgs-old": "nixpkgs-old"
       },
       "locked": {
-        "lastModified": 1670732465,
-        "narHash": "sha256-oh/9CxuSG0fjCIeHHadYCvbSQ6ZGqL5/yalKhyRI8BE=",
+        "lastModified": 1671391507,
+        "narHash": "sha256-ZEu373gmOsdJ5tK3fxS21OSJElFUNCg77GB8aWa49x0=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "e6614c9853d86a7f1255cd5a927950cc55c3e319",
+        "rev": "9a2f1f287331b55e5e08340b032dbee2087bb68d",
         "type": "github"
       },
       "original": {
@@ -987,11 +987,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1671249771,
-        "narHash": "sha256-VFGaUOGfERhbbXJqzYJGroMqzSXmtameRjMiQ2390cs=",
+        "lastModified": 1671348587,
+        "narHash": "sha256-tWnrxs+81lnVKrREl5gTk0eTvr0TS280ozv1vk5NoXs=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "6706d427adbf062d3dfefc03620381bbc1a3e9f4",
+        "rev": "902deae607fa4b1086c2cd65698ca45305e75772",
         "type": "gitlab"
       },
       "original": {
