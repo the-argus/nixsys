@@ -39,6 +39,7 @@ from font import font
 from layouts import custom_layouts, floating
 from bar import my_bar
 from info import terminal
+from info import useDvorak
 
 mod = "mod4"
 # terminal = guess_terminal()
@@ -240,6 +241,15 @@ groups = [Group(f"{i+1}", label="") for i in range(5)]
 #  Group("4", label=""),
 #  Group("5", label="")
 #  ]
+
+def remap(key):
+    toDvorak = {
+        '1' : '&',
+        '2' : '['
+    }
+    if (useDvorak and (key in toDvorak)):
+        return toDvorak[key]
+    return key
 
 
 for i in groups:
