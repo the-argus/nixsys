@@ -43,7 +43,7 @@ in {
           else "False"
         }
         }
-        useDvorak = ${settings.useDvorak}
+        useDvorak = ${if settings.useDvorak then "True" else "False"}
         terminal = "${pkgs.${settings.terminal}}/bin/${settings.terminal}"
       '';
 
