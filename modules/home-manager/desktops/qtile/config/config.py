@@ -42,6 +42,7 @@ from info import terminal
 from info import useDvorak
 
 mod = "mod4"
+numlock = "mod2"
 # terminal = guess_terminal()
 
 float_types = ["dialog"]
@@ -220,6 +221,12 @@ keys = [
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "p", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key(
+        [mod],
+        "BackSpace",
+        lazy.spawn("sh " + os.path.expanduser("~/.local/bin/switch-kb-layout.sh")),
+        desc="Switch keyboard layout.",
+    )
     #    Key([mod], "r", lazy.spawncmd(),
     #        desc="Spawn a command using a prompt widget"),
 ]
@@ -242,12 +249,13 @@ groups = [Group(f"{i+1}", label="") for i in range(5)]
 #  Group("5", label="")
 #  ]
 
+
 def remap(key):
     toDvorak = {
         # '1' : '&',
         # '2' : '['
     }
-    if (useDvorak and (key in toDvorak)):
+    if useDvorak and (key in toDvorak):
         return toDvorak[key]
     return key
 

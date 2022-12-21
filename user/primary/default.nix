@@ -130,6 +130,8 @@
         # dev
         nodejs
         cargo
+
+        xkb-switch
       ]
       ++ ((import ../../lib {inherit lib;}).stringsToPkgs
         {inherit unstable localbuild remotebuild pkgs;}
