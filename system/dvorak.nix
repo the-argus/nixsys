@@ -8,7 +8,7 @@ lib.attrsets.optionalAttrs settings.useDvorak {
   services = {
     xserver = {
       layout = "us,us";
-      xkbVariant = "dvp,";
+      xkbVariant = ",dvp";
       xkbOptions = "compose:ralt,caps:ctrl_modifier,grp_led:caps";
     };
   };
