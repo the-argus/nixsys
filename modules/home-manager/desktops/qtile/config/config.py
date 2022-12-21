@@ -244,8 +244,8 @@ groups = [Group(f"{i+1}", label="") for i in range(5)]
 
 def remap(key):
     toDvorak = {
-        '1' : '&',
-        '2' : '['
+        # '1' : '&',
+        # '2' : '['
     }
     if (useDvorak and (key in toDvorak)):
         return toDvorak[key]
