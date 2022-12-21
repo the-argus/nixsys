@@ -21,12 +21,12 @@
         canTouchEfiVariables = true;
         efiSysMountPoint = "/efi";
       };
-      # grub = {
-      #   # enable = true;
-      #   # version = 2;
-      #   # device = "/dev/disk/by-uuid/444dd843-a3b1-4e59-9d47-c62cfab94d8b";
-      #   useOSProber = true;
-      # };
+      grub = {
+        #   # enable = true;
+        # version = 2;
+        devices = ["/dev/disk/by-label/WINBOOT"];
+        useOSProber = true;
+      };
       systemd-boot = {
         enable = true;
       };
@@ -141,4 +141,3 @@
 #     gcc.tune = "tigerlake";
 #   };
 # } else { })
-
