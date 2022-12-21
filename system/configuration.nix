@@ -10,20 +10,13 @@
   username,
   settings,
   additionalSystemPackages,
-  config,
   ...
 }: {
   #choose what host is being used (laptop or pc)
-  imports =
-    [
-      ../modules
-    ]
-    ++ settings.hardwareConfiguration
-    ++ (
-      if settings.useDvorak
-      then [./dvorak.nix]
-      else []
-    );
+  imports = [
+    ../modules
+    ./dvorak.nix
+  ];
 
   # kernel version
   # boot.kernelPackages = pkgs.linuxPackages_latest;
