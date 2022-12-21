@@ -13,10 +13,12 @@
   ...
 }: {
   #choose what host is being used (laptop or pc)
-  imports = [
-    ../modules
-    ./dvorak.nix
-  ];
+  imports =
+    [
+      ../modules
+      ./dvorak.nix
+    ]
+    ++ settings.hardwareConfiguration;
 
   # kernel version
   # boot.kernelPackages = pkgs.linuxPackages_latest;
