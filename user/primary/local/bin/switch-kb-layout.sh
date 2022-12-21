@@ -13,6 +13,7 @@ for layout in $LAYOUTS; do
     if [ -z $LAYOUT_AFTER_CURRENT ] && [ $REACHED_CURRENT -eq 1 ]; then
         LAYOUT_AFTER_CURRENT=$layout
         echo "switching to $LAYOUT_AFTER_CURRENT"
+        notify-send "layout: $LAYOUT_AFTER_CURRENT"
         xkb-switch -s $LAYOUT_AFTER_CURRENT
         exit 0
     fi
@@ -25,4 +26,5 @@ done
 LAYOUT_ARRAY=($LAYOUTS)
 TARGET=${LAYOUT_ARRAY[0]}
 echo "finding next item failed, switching to $TARGET"
+notify-send "layout: $TARGET"
 xkb-switch -s $TARGET
