@@ -94,54 +94,54 @@ in rec {
       mkCommand = command: "\"exec --no-startup-id ${command}\"";
 
       nobarKeys = {
-        "${cfg.config.modifier}+Tab" = "workspace back_and_forth";
-        "${cfg.config.modifier}+i" = mkCommand "$HOME/.local/bin/i3/isolate";
-        "${cfg.config.modifier}+Shift+i" = mkCommand "$HOME/.local/bin/i3/isolate undo";
-        "${cfg.config.modifier}+s" = mkCommand "rofi -show window";
+        "${modifier}+Tab" = "workspace back_and_forth";
+        "${modifier}+i" = mkCommand "$HOME/.local/bin/i3/isolate";
+        "${modifier}+Shift+i" = mkCommand "$HOME/.local/bin/i3/isolate undo";
+        "${modifier}+s" = mkCommand "rofi -show window";
       };
 
       # keys that shouldnt exist when using nobar
       noNobarKeys = {
-        "${cfg.config.modifier}+1" = "workspace number 1";
-        "${cfg.config.modifier}+2" = "workspace number 2";
-        "${cfg.config.modifier}+3" = "workspace number 3";
-        "${cfg.config.modifier}+4" = "workspace number 4";
-        "${cfg.config.modifier}+5" = "workspace number 5";
-        "${cfg.config.modifier}+6" = "workspace number 6";
-        "${cfg.config.modifier}+7" = "workspace number 7";
-        "${cfg.config.modifier}+8" = "workspace number 8";
-        "${cfg.config.modifier}+9" = "workspace number 9";
-        "${cfg.config.modifier}+0" = "workspace number 10";
+        "${modifier}+1" = "workspace number 1";
+        "${modifier}+2" = "workspace number 2";
+        "${modifier}+3" = "workspace number 3";
+        "${modifier}+4" = "workspace number 4";
+        "${modifier}+5" = "workspace number 5";
+        "${modifier}+6" = "workspace number 6";
+        "${modifier}+7" = "workspace number 7";
+        "${modifier}+8" = "workspace number 8";
+        "${modifier}+9" = "workspace number 9";
+        "${modifier}+0" = "workspace number 10";
 
-        "${cfg.config.modifier}+Shift+1" = "move container to workspace number 1";
-        "${cfg.config.modifier}+Shift+2" = "move container to workspace number 2";
-        "${cfg.config.modifier}+Shift+3" = "move container to workspace number 3";
-        "${cfg.config.modifier}+Shift+4" = "move container to workspace number 4";
-        "${cfg.config.modifier}+Shift+5" = "move container to workspace number 5";
-        "${cfg.config.modifier}+Shift+6" = "move container to workspace number 6";
-        "${cfg.config.modifier}+Shift+7" = "move container to workspace number 7";
-        "${cfg.config.modifier}+Shift+8" = "move container to workspace number 8";
-        "${cfg.config.modifier}+Shift+9" = "move container to workspace number 9";
-        "${cfg.config.modifier}+Shift+0" = "move container to workspace number 10";
+        "${modifier}+Shift+1" = "move container to workspace number 1";
+        "${modifier}+Shift+2" = "move container to workspace number 2";
+        "${modifier}+Shift+3" = "move container to workspace number 3";
+        "${modifier}+Shift+4" = "move container to workspace number 4";
+        "${modifier}+Shift+5" = "move container to workspace number 5";
+        "${modifier}+Shift+6" = "move container to workspace number 6";
+        "${modifier}+Shift+7" = "move container to workspace number 7";
+        "${modifier}+Shift+8" = "move container to workspace number 8";
+        "${modifier}+Shift+9" = "move container to workspace number 9";
+        "${modifier}+Shift+0" = "move container to workspace number 10";
       };
     in
       {
-        "${cfg.config.modifier}+Return" = "exec ${cfg.config.terminal}";
-        "${cfg.config.modifier}+Shift+q" = "kill";
+        "${modifier}+Return" = "exec ${cfg.config.terminal}";
+        "${modifier}+Shift+q" = "kill";
 
-        "${cfg.config.modifier}+${keys.left}" = "focus left";
-        "${cfg.config.modifier}+${keys.down}" = "focus down";
-        "${cfg.config.modifier}+${keys.up}" = "focus up";
-        "${cfg.config.modifier}+${keys.right}" = "focus right";
+        "${modifier}+${keys.left}" = "focus left";
+        "${modifier}+${keys.down}" = "focus down";
+        "${modifier}+${keys.up}" = "focus up";
+        "${modifier}+${keys.right}" = "focus right";
 
-        "${cfg.config.modifier}+Shift+${keys.left}" = "move left";
-        "${cfg.config.modifier}+Shift+${keys.down}" = "move down";
-        "${cfg.config.modifier}+Shift+${keys.up}" = "move up";
-        "${cfg.config.modifier}+Shift+${keys.right}" = "move right";
+        "${modifier}+Shift+${keys.left}" = "move left";
+        "${modifier}+Shift+${keys.down}" = "move down";
+        "${modifier}+Shift+${keys.up}" = "move up";
+        "${modifier}+Shift+${keys.right}" = "move right";
 
-        "${cfg.config.modifier}+b" = "split b";
-        "${cfg.config.modifier}+v" = "split v";
-        "${cfg.config.modifier}+f" = "fullscreen toggle";
+        "${modifier}+b" = "split b";
+        "${modifier}+v" = "split v";
+        "${modifier}+f" = "fullscreen toggle";
 
         "XF86Calculator" = mkCommand "qalculate-gtk";
         "XF86AudioRaiseVolume" = mkCommand "$HOME/.local/bin/volume.sh up";
@@ -151,18 +151,18 @@ in rec {
         "XF86MonBrightnessUp" = mkCommand "$HOME/.local/bin/brightness.sh up";
         "Print" = mkCommand "$HOME/.local/bin/screenshot.sh";
 
-        "${cfg.config.modifier}+space" = mkCommand "$HOME/.local/bin/rofi-launchpad.sh";
+        "${modifier}+space" = mkCommand "$HOME/.local/bin/rofi-launchpad.sh";
 
-        "${cfg.config.modifier}+Shift+space" = "floating toggle";
+        "${modifier}+Shift+space" = "floating toggle";
 
-        "${cfg.config.modifier}+Shift+minus" = "move scratchpad";
-        "${cfg.config.modifier}+minus" = "scratchpad show";
+        "${modifier}+Shift+minus" = "move scratchpad";
+        "${modifier}+minus" = "scratchpad show";
 
-        "${cfg.config.modifier}+Shift+c" = "reload";
-        "${cfg.config.modifier}+Shift+r" = "restart";
-        "${cfg.config.modifier}+Shift+e" = "exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
+        "${modifier}+Shift+c" = "reload";
+        "${modifier}+Shift+r" = "restart";
+        "${modifier}+Shift+e" = "exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
 
-        "${cfg.config.modifier}+r" = "mode resize";
+        "${modifier}+r" = "mode resize";
       }
       // (
         if cfg.nobar
@@ -178,7 +178,7 @@ in rec {
         ${keys.right} = "resize grow width 10 px or 10 ppt";
         "Escape" = "mode default";
         "Return" = "mode default";
-        "${cfg.config.modifier}+r" = "mode default";
+        "${modifier}+r" = "mode default";
       };
     };
 
