@@ -143,6 +143,8 @@ in rec {
         "${modifier}+b" = "split b";
         "${modifier}+v" = "split v";
         "${modifier}+f" = "fullscreen toggle";
+        
+        "${modifier}+Backspace" = mkCommand "$HOME/.local/bin/switch-kb-layout.sh";
 
         "XF86Calculator" = mkCommand "qalculate-gtk";
         "XF86AudioRaiseVolume" = mkCommand "$HOME/.local/bin/volume.sh up";
