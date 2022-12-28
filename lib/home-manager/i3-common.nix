@@ -88,7 +88,7 @@ in rec {
       keys
       ;
   in rec {
-    modifier = lib.mkDefault "Mod4"; # super key
+    modifier = "Mod4"; # super key
     workspaceAutoBackAndForth = lib.mkDefault true;
 
     keybindings = let
