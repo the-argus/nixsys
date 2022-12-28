@@ -157,6 +157,7 @@ in {
                 else "dock";
               hiddenState = "hide";
               position = "top";
+              modifier = "Mod1";
               trayOutput = "primary"; # originally none
               fonts = {
                 names = ["ProggySquare"];
