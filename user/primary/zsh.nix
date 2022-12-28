@@ -11,16 +11,33 @@
 
   plugins = {
     my-zsh = {name = "the-argus/my-zsh";};
-    zsh-window-title = rec {
+    zsh-window-title = let
+      # using full plugin adds 15ms to startup time
+      # but makes the window title include currently running commands
+      useFullPlugin = false;
+    in rec {
       name = "olets/zsh-window-title";
       source = pkgs.fetchgit {
         url = "https://github.com/olets/zsh-window-title";
         rev = "0253f338b3ef74f3e3c2e833b906c602c94552a7";
         sha256 = "0zdcrz0y7aw4f7c1i6b82pg2m24z5hfz7hmi4xlhqrpvz305bhas";
       };
-      init = ''
-        source ${source}/zsh-window-title.zsh
-      '';
+      init =
+        if useFullPlugin
+        then ''
+          source ${source}/zsh-window-title.zsh
+        ''
+        else ''
+          __zsh-window-title:precmd() {
+              ZSH_WINDOW_TITLE_DIRECTORY_DEPTH=2
+          	local title=$(print -P "%$ZSH_WINDOW_TITLE_DIRECTORY_DEPTH~")
+              if [ "${title:0:1}" = '~' ]; then
+                title=$(echo $title | sed '0,/~/{s/~/$HOME/}')
+              fi
+          	'builtin' 'echo' -ne "\033]0;$title\007"
+          }
+          add-zsh-hook precmd __zsh-window-title:precmd
+        '';
     };
     zsh-autocomplete = rec {
       name = "marlonrichert/zsh-autocomplete";
