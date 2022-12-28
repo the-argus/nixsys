@@ -4,9 +4,43 @@
   ...
 }: {
   home.file = {
-    ".local/bin" = {
+    ".local/bin" = let
+      i3python = pkgs.python310.withPackages (with pkgs.python310Packages; [
+        i3ipc
+      ]);
+    in {
       source = ./bin;
       recursive = true;
+    };
+
+    ".local/bin/i3/isolate" = {
+      text = ''
+        #!${i3python}/bin/python
+        import i3ipc as i3ipc
+        import subprocess
+
+        # initialize asynchronous i3 connection
+        i3 = i3ipc.Connection()
+
+        # range of workspaces to which the current window may be isolated
+        potential_workspaces = range(1, 11)
+
+        used_workspaces = i3.get_workspaces()
+        used_workspaces = { workspace.num:True for workspace in used_workspaces}
+
+        next_available_workspace = None
+        for workspace in potential_workspaces:
+            if not workspace in used_workspaces:
+                next_available_workspace = workspace
+                break
+
+        if next_available_workspace is None:
+            subprocess.Popen('i3-nagbar -t warning -m \'There are no available workspaces to isolate to.\'\')
+        else:
+            # success, move current window to ws
+            i3.command(f"move to workspace number {next_available_workspace}")
+            i3.command(f"workspace number {next_available_workspace}")
+      '';
     };
   };
 
