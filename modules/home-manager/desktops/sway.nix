@@ -43,21 +43,21 @@ in {
               # vidpaper = "~/Wallpapers/animated/video/compressed-koi.mp4";
             in
               mkStartup false ([
-                  "exec ${pkgs.wlsunset}/bin/wlsunset -l 43.2 -L -77.6 -t 5000 -T 6500"
-                  # "exec ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -c sway; swaymsg exit"
-                  # "exec oguri"
-                  # "exec mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" eDP-1 ${vidpaper}"
-                  # "exec mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" HDMI-A-1 ${vidpaper}"
-                  # "exec swaybg --image $imgpaper --output \"*\""
-                  # "exec /bin/sh ~/.scripts/random-mpvpaper.sh"
+                  "${pkgs.wlsunset}/bin/wlsunset -l 43.2 -L -77.6 -t 5000 -T 6500"
+                  # "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -c sway; swaymsg exit"
+                  # "oguri"
+                  # "mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" eDP-1 ${vidpaper}"
+                  # "mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" HDMI-A-1 ${vidpaper}"
+                  # "swaybg --image $imgpaper --output \"*\""
+                  # "/bin/sh ~/.scripts/random-mpvpaper.sh"
                 ]
                 # neither of these even work
                 ++ (lib.lists.optional
                   settings.usesWireless
-                  "exec ${pkgs.networkmanagerapplet}/bin/nm-applet")
+                  "${pkgs.networkmanagerapplet}/bin/nm-applet")
                 ++ (lib.lists.optional
                   settings.usesBluetooth
-                  "exec ${pkgs.blueman}/bin/blueman-applet"));
+                  "${pkgs.blueman}/bin/blueman-applet"));
             commandsAlways =
               mkStartup true [
               ];
@@ -68,7 +68,7 @@ in {
           # in sway i use a floating bar and id like the windows to always match
           # its gaps from the left and right
           # gaps.smartGaps = false;
-          menu = "${pkgs.wofi}/bin/wofi --show drun -I";
+          # menu = "${pkgs.wofi}/bin/wofi --show drun -I";
 
           output = {
             "*" = {
@@ -89,10 +89,14 @@ in {
             };
           };
 
-          keybindings."${cfg.config.modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+          keybindings =
+            common.config.keybindings
+            // {
+              "${cfg.config.modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
-          keybindings."Print" = "exec grim -t png ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
-          keybindings."${cfg.config.modifier}+Print" = "exec grim -t png -g \"$(slurp)\" ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
+              "Print" = "exec grim -t png ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
+              "${cfg.config.modifier}+Print" = "exec grim -t png -g \"$(slurp)\" ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
+            };
 
           input = {
             # "1739:52775:DLL0945:00_06CB:CE27_Touchpad"
