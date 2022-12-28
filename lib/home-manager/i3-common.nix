@@ -98,7 +98,7 @@ in rec {
         "${modifier}+Tab" = "workspace back_and_forth";
         "${modifier}+i" = mkCommand "$HOME/.local/bin/i3/isolate";
         "${modifier}+Shift+i" = mkCommand "$HOME/.local/bin/i3/isolate undo";
-        "${modifier}+s" = mkCommand "rofi -show combi -modes combi -combi-modes \"window,run\"";
+        "${modifier}+s" = mkCommand "rofi -show combi -modes combi -combi-modes \\\"window,run\\\"";
       };
 
       # keys that shouldnt exist when using nobar
