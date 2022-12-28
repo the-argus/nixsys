@@ -3,8 +3,8 @@
 pkgs.awesome.overrideAttrs (_: {
   src = pkgs.fetchgit {
     url = "https://github.com/awesomeWM/awesome";
-    rev = "b7bac1dc761f7e231355e76351500a97b27b6803";
-    sha256 = "0140429rlfpfnjz6rviy8s5s7x7pyrs3mmbx0qplkfww0ilrs72b";
+    rev = "ee0663459922a41f57fa2cc936da80d5857eedc9";
+    sha256 = "0wlhwabfm6mkkgf0s0f3nrm2masv6ma2g0xy24fa3z78vhwqxnib";
   };
   patches = [];
 })
