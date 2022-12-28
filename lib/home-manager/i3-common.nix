@@ -92,7 +92,7 @@ in rec {
     workspaceAutoBackAndForth = lib.mkDefault true;
 
     keybindings = let
-      mkCommand = command: "\"exec --no-startup-id ${command}\"";
+      mkCommand = command: "exec --no-startup-id ${command}";
 
       nobarKeys = {
         "${modifier}+Tab" = "workspace back_and_forth";
