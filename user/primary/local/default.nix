@@ -20,12 +20,39 @@
         #!${i3python}/bin/python
         import i3ipc as i3ipc
         import subprocess
+        import sys
+        from os.path import exists
 
         # initialize asynchronous i3 connection
         i3 = i3ipc.Connection()
 
         # range of workspaces to which the current window may be isolated
         potential_workspaces = range(1, 11)
+        # cache(s) to save info to
+        last_workspace_file = '/tmp/i3-last-workspace'
+        last_workspace = '0'
+
+        # record currently focused workspace for future undo commands
+        def record_current_workspace():
+            tree = i3.get_tree()
+            focused = tree.find_focused()
+            # subprocess.Popen(f'echo {focused.workspace} > {last_workspace_file}')
+            with open(last_workspace_file, 'w') as f:
+                f.write(str(focused.workspace().num))
+
+        def move_to(workspace):
+            record_current_workspace()
+            i3.command(f"move to workspace number {workspace}")
+            i3.command(f"workspace number {workspace}")
+
+        # isolate undo command
+        if len(sys.argv) > 1 and sys.argv[1] == 'undo':
+            # grab the last workspace if we are undoing
+            if exists(last_workspace_file):
+                with open(last_workspace_file, 'r') as f:
+                    last_workspace = f.read()
+            move_to(last_workspace)
+            exit(0)
 
         used_workspaces = i3.get_workspaces()
         used_workspaces = { workspace.num:True for workspace in used_workspaces}
@@ -40,8 +67,7 @@
             subprocess.Popen('i3-nagbar -t warning -m "There are no available workspaces to isolate to."')
         else:
             # success, move current window to ws
-            i3.command(f"move to workspace number {next_available_workspace}")
-            i3.command(f"workspace number {next_available_workspace}")
+            move_to(next_available_workspace)
       '';
     };
   };
