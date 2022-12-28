@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  #font-icons,
   ...
 }: let
   cfg = config.desktops;
@@ -53,8 +52,6 @@ in {
       dina-font
       victor-mono
 
-      (import ../../packages/font-icons.nix {inherit pkgs;})
-      #      import ../../packages/font-icons.nix { inherit pkgs; inherit font-icons;}
       (nerdfonts.override {fonts = ["FiraCode" "VictorMono"];})
     ];
 
