@@ -4,9 +4,10 @@
   ...
 }: {
   home.file = let
-    i3python = pkgs.python310.withPackages (with pkgs.python310Packages; [
-      i3ipc
-    ]);
+    i3python = pkgs.python310.withPackages (pythonPackages:
+      with pythonPackages; [
+        i3ipc
+      ]);
   in {
     ".local/bin" = {
       source = ./bin;
