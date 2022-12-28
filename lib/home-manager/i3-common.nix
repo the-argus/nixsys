@@ -93,7 +93,7 @@ in rec {
     keybindings = let
       mkCommand = command: "\"exec --no-startup-id ${command}\"";
 
-      nobarKeys = builtins.mapAttrs (n: mkOptionDefault) {
+      nobarKeys = {
         "${cfg.config.modifier}+Tab" = "workspace back_and_forth";
         "${cfg.config.modifier}+i" = mkCommand "$HOME/.local/bin/i3/isolate";
         "${cfg.config.modifier}+Shift+i" = mkCommand "$HOME/.local/bin/i3/isolate undo";
@@ -101,7 +101,7 @@ in rec {
       };
 
       # keys that shouldnt exist when using nobar
-      noNobarKeys = builtins.mapAttrs (n: mkOptionDefault) {
+      noNobarKeys = {
         "${cfg.config.modifier}+1" = "workspace number 1";
         "${cfg.config.modifier}+2" = "workspace number 2";
         "${cfg.config.modifier}+3" = "workspace number 3";
@@ -125,7 +125,7 @@ in rec {
         "${cfg.config.modifier}+Shift+0" = "move container to workspace number 10";
       };
     in
-      builtins.mapAttrs (n: mkOptionDefault) {
+      {
         "${cfg.config.modifier}+Return" = "exec ${cfg.config.terminal}";
         "${cfg.config.modifier}+Shift+q" = "kill";
 
