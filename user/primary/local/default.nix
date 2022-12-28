@@ -37,7 +37,7 @@
                 break
 
         if next_available_workspace is None:
-            subprocess.Popen('i3-nagbar -t warning -m \'There are no available workspaces to isolate to.\'\')
+            subprocess.Popen('i3-nagbar -t warning -m "There are no available workspaces to isolate to."')
         else:
             # success, move current window to ws
             i3.command(f"move to workspace number {next_available_workspace}")
