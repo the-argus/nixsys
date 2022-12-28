@@ -144,6 +144,8 @@ in rec {
         "${modifier}+v" = "split v";
         "${modifier}+f" = "fullscreen toggle";
         
+        "${modifier}+p" = mkCommand "bwmenu";
+        
         "${modifier}+Backspace" = mkCommand "$HOME/.local/bin/switch-kb-layout.sh";
 
         "XF86Calculator" = mkCommand "qalculate-gtk";
