@@ -117,6 +117,7 @@ in {
       common = import ../../../lib/home-manager/i3-common.nix {
         inherit config pkgs lib settings banner;
         inherit (cfg) nobar;
+        addQuotes = true;
       };
       inherit
         (common.commonInputs)

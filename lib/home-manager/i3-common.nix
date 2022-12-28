@@ -5,6 +5,7 @@
   settings,
   banner,
   nobar ? false,
+  addQuotes ? false,
   ...
 }: let
   inherit (config.system) theme;
@@ -92,7 +93,10 @@ in rec {
     workspaceAutoBackAndForth = lib.mkDefault true;
 
     keybindings = let
-      mkCommand = command: "exec --no-startup-id ${command}";
+      mkCommand =
+        if addQuotes
+        then command: "\"exec --no-startup-id ${command}\""
+        else command: "exec --no-startup-id ${command}";
 
       nobarKeys = {
         "${modifier}+Tab" = "workspace back_and_forth";
@@ -143,9 +147,9 @@ in rec {
         "${modifier}+b" = "split b";
         "${modifier}+v" = "split v";
         "${modifier}+f" = "fullscreen toggle";
-        
+
         "${modifier}+p" = mkCommand "bwmenu";
-        
+
         "${modifier}+BackSpace" = mkCommand "$HOME/.local/bin/switch-kb-layout.sh";
 
         "XF86Calculator" = mkCommand "qalculate-gtk";
