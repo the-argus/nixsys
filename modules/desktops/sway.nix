@@ -31,8 +31,7 @@ in {
     environment.systemPackages = with pkgs; [
       waybar
       swaybg
-      wofi
-      wofi-emoji
+      rofi-wayland
       wl-clipboard
       wlsunset
       grim

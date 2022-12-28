@@ -32,7 +32,7 @@ in {
       xmousepasteblock
       xfce.xfce4-clipman-plugin
       dunst
-      rofi
+      rofi-wayland
       flameshot
       derivations.picom
 

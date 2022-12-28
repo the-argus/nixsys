@@ -30,7 +30,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       ratpoison.contrib
-      rofi
+      rofi-wayland
       flameshot
       derivations.picom
     ];

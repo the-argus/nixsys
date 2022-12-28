@@ -154,7 +154,6 @@ in rec {
         "XF86AudioMute" = mkCommand "$HOME/.local/bin/volume.sh mute";
         "XF86MonBrightnessDown" = mkCommand "$HOME/.local/bin/brightness.sh down";
         "XF86MonBrightnessUp" = mkCommand "$HOME/.local/bin/brightness.sh up";
-        "Print" = mkCommand "$HOME/.local/bin/screenshot.sh";
 
         "${modifier}+space" = mkCommand "$HOME/.local/bin/rofi-launchpad.sh";
 
@@ -165,7 +164,6 @@ in rec {
 
         "${modifier}+Shift+c" = "reload";
         "${modifier}+Shift+r" = "restart";
-        "${modifier}+Shift+e" = "exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
 
         "${modifier}+r" = "mode resize";
       }

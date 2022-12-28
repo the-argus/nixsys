@@ -35,7 +35,7 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-      rofi
+      rofi-wayland
       flameshot
       derivations.picom
     ];

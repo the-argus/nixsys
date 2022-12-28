@@ -37,7 +37,7 @@ in {
       python310Packages.psutil # cpu widget
       xfce.xfce4-clipman-plugin
       dunst
-      rofi
+      rofi-wayland
       flameshot
       derivations.picom
 
