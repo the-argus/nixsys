@@ -133,8 +133,8 @@ in {
         common.config
         # add everything that is unique to i3
         // {
-          keybinds."${common.config.modifier}+Shift+e" = "exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
-          keybinds."Print" = "exec --no-startup-id \"$HOME/.local/bin/screenshot.sh\"";
+          keybindings."${common.config.modifier}+Shift+e" = "exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
+          keybindings."Print" = "exec --no-startup-id \"$HOME/.local/bin/screenshot.sh\"";
           startup =
             map (cmd: {command = cmd;})
             (
