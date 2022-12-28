@@ -146,7 +146,7 @@ in rec {
         
         "${modifier}+p" = mkCommand "bwmenu";
         
-        "${modifier}+Backspace" = mkCommand "$HOME/.local/bin/switch-kb-layout.sh";
+        "${modifier}+BackSpace" = mkCommand "$HOME/.local/bin/switch-kb-layout.sh";
 
         "XF86Calculator" = mkCommand "qalculate-gtk";
         "XF86AudioRaiseVolume" = mkCommand "$HOME/.local/bin/volume.sh up";
