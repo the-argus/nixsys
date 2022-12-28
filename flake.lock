@@ -183,11 +183,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1671556117,
-        "narHash": "sha256-onYDZgq/ILszCJ414srUg6eKYT16lleE5pRkVHzhotw=",
+        "lastModified": 1672262330,
+        "narHash": "sha256-gp19GPe86Y376vAh4O3c+dphK/uWRxGVaeNu5pp9nwk=",
         "owner": "the-argus",
         "repo": "bitwarden-rofi",
-        "rev": "d2f6dedc9be605ac4c6f6c1d7abccd0b9b5a5b2b",
+        "rev": "8db258819c0c8ad3cb08418cbf112deea49b1a36",
         "type": "github"
       },
       "original": {
@@ -596,11 +596,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1670253003,
-        "narHash": "sha256-/tJIy4+FbsQyslq1ipyicZ2psOEd8dvl4OJ9lfisjd0=",
+        "lastModified": 1672244468,
+        "narHash": "sha256-xaZb8AZqoXRCSqPusCk4ouf+fUNP8UJdafmMTF1Ltlw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0e8125916b420e41bf0d23a0aa33fadd0328beb3",
+        "rev": "89a8ba0b5b43b3350ff2e3ef37b66736b2ef8706",
         "type": "github"
       },
       "original": {
@@ -987,11 +987,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1672200168,
-        "narHash": "sha256-QCo1qEXo6AT+IOJs+52rPjPiWuGBQXY1BGriALpYCCo=",
+        "lastModified": 1672249003,
+        "narHash": "sha256-/jBbvTgquyNWoqDGS2GZdjuqSlGR7GcdIXNFMzQoktU=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "5c69c9a6263857e20709a190c871ba263210ef6f",
+        "rev": "2222760ff1e7bca24eab6659f89a4657b3a00bd0",
         "type": "gitlab"
       },
       "original": {
