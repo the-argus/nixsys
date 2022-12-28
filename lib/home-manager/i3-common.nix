@@ -4,6 +4,7 @@
   config,
   settings,
   banner,
+  nobar ? false,
   ...
 }: let
   inherit (config.system) theme;
@@ -126,7 +127,7 @@ in rec {
       };
     in
       {
-        "${modifier}+Return" = "exec ${cfg.config.terminal}";
+        "${modifier}+Return" = "exec ${settings.terminal}";
         "${modifier}+Shift+q" = "kill";
 
         "${modifier}+${keys.left}" = "focus left";
@@ -165,7 +166,7 @@ in rec {
         "${modifier}+r" = "mode resize";
       }
       // (
-        if cfg.nobar
+        if nobar
         then nobarKeys
         else noNobarKeys
       );

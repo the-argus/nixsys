@@ -11,12 +11,14 @@
 in {
   options.desktops.sway = {
     enable = mkEnableOption "Sway window manager configuration.";
+    nobar = mkEnableOption "Alternate tiling WM workflow with no status bar.";
   };
 
   config = mkIf cfg.enable {
     wayland.windowManager.sway = let
       common = import ../../../lib/home-manager/i3-common.nix {
         inherit config pkgs lib settings banner;
+        inherit (cfg) nobar;
       };
       inherit
         (common)

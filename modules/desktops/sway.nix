@@ -9,6 +9,7 @@
 in {
   options.desktops.sway = {
     enable = mkEnableOption "Sway Window Manager";
+    nobar = mkEnableOption "Alternate tiling WM workflow with no status bar.";
   };
 
   config = mkIf cfg.enable {
