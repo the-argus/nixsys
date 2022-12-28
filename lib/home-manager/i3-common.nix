@@ -95,7 +95,7 @@ in rec {
     keybindings = let
       mkCommand =
         if addQuotes
-        then command: "\"exec --no-startup-id ${command}\""
+        then command: "exec --no-startup-id \"${command}\""
         else command: "exec --no-startup-id ${command}";
 
       nobarKeys = {
