@@ -157,7 +157,6 @@ in {
                 else "dock";
               hiddenState = "hide";
               position = "top";
-              modifier = "Mod1";
               trayOutput = "primary"; # originally none
               fonts = {
                 names = ["ProggySquare"];
@@ -167,7 +166,9 @@ in {
                 bindsym button1 nop
                 tray_padding 0
                 workspace_min_width 40
-                i3bar_command i3bar -t
+                i3bar_command i3bar
+                status_command i3status
+                modifier Mod1;
               '';
               colors = rec {
                 background = inactive-bg; #000000CC
