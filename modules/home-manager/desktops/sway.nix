@@ -18,16 +18,12 @@ in {
     wayland.windowManager.sway = let
       common = import ../../../lib/home-manager/i3-common.nix {
         inherit config pkgs lib settings banner;
-        nobar =
-          if builtins.hasAttr "nobar" cfg
-          then cfg.nobar
-          else false;
+        inherit (cfg) nobar;
       };
       inherit
         (common)
         bg
         ;
-      cfg = config.wayland.windowManager.sway;
     in {
       enable = true;
       config =
@@ -95,10 +91,10 @@ in {
           keybindings =
             common.config.keybindings
             // {
-              "${cfg.config.modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+              "${common.config.modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
               "Print" = "exec grim -t png ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
-              "${cfg.config.modifier}+Print" = "exec grim -t png -g \"$(slurp)\" ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
+              "${common.config.modifier}+Print" = "exec grim -t png -g \"$(slurp)\" ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
             };
 
           input = {
