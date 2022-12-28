@@ -11,6 +11,7 @@
 in {
   options.desktops.i3gaps = {
     enable = mkEnableOption "I3 window manager configuration.";
+    nobar = mkEnableOption "Alternate tiling WM workflow with no status bar.";
   };
 
   config = mkIf cfg.enable {
@@ -142,7 +143,10 @@ in {
             );
           bars = [
             {
-              mode = "dock";
+              mode =
+                if cfg.nobar
+                then "hide"
+                else "dock";
               hiddenState = "hide";
               position = "top";
               trayOutput = "primary"; # originally none

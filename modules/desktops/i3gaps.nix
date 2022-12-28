@@ -19,6 +19,7 @@
 in {
   options.desktops.i3gaps = {
     enable = mkEnableOption "I3 Window Manager";
+    nobar = mkEnableOption "Alternate tiling WM workflow with no status bar.";
   };
 
   config = mkIf cfg.enable {
