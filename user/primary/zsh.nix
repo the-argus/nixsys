@@ -11,16 +11,16 @@
 
   plugins = {
     my-zsh = {name = "the-argus/my-zsh";};
-    zsh-window-title = {
-    name = "olets/zsh-window-title";
-    source = pkgs.fetchgit {
-      url = "https://github.com/olets/zsh-window-title";
-      rev = "0253f338b3ef74f3e3c2e833b906c602c94552a7";
-      sha256 = "0zdcrz0y7aw4f7c1i6b82pg2m24z5hfz7hmi4xlhqrpvz305bhas";
-    };
-    init = ''
+    zsh-window-title = rec {
+      name = "olets/zsh-window-title";
+      source = pkgs.fetchgit {
+        url = "https://github.com/olets/zsh-window-title";
+        rev = "0253f338b3ef74f3e3c2e833b906c602c94552a7";
+        sha256 = "0zdcrz0y7aw4f7c1i6b82pg2m24z5hfz7hmi4xlhqrpvz305bhas";
+      };
+      init = ''
         source ${source}/zsh-window-title.zsh
-    '';
+      '';
     };
     zsh-autocomplete = rec {
       name = "marlonrichert/zsh-autocomplete";
