@@ -15,6 +15,7 @@
     };
 
     ".local/bin/i3/isolate" = {
+      executable = true;
       text = ''
         #!${i3python}/bin/python
         import i3ipc as i3ipc
