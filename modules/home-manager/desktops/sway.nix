@@ -92,7 +92,7 @@ in {
           keybindings."${cfg.config.modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
           keybindings."Print" = "exec grim -t png ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
-          keybindings."${cfg.config.modifier}.Print" = "exec grim -t png -g \"$(slurp)\" ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
+          keybindings."${cfg.config.modifier}+Print" = "exec grim -t png -g \"$(slurp)\" ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
 
           input = {
             # "1739:52775:DLL0945:00_06CB:CE27_Touchpad"
