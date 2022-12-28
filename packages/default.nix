@@ -1,7 +1,7 @@
 {
   pkgs,
+  unstable,
   picom,
-  awesome,
   font-icons,
   ...
 }: {
@@ -10,8 +10,7 @@
     inherit picom;
   };
   awesome = import ./awesome.nix {
-    inherit pkgs;
-    inherit awesome;
+    inherit unstable;
   };
   font-icons = import ./font-icons.nix {
     inherit pkgs;
