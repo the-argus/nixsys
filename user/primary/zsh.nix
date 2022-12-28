@@ -115,6 +115,14 @@ in {
       autoload -U compinit && compinit
     }
 
+    sandbox_init_windowtitle() {
+      source ${pkgs.fetchgit {
+      url = "https://github.com/olets/zsh-window-title";
+      rev = "0253f338b3ef74f3e3c2e833b906c602c94552a7";
+      sha256 = "0zdcrz0y7aw4f7c1i6b82pg2m24z5hfz7hmi4xlhqrpvz305bhas";
+    }}/zsh-window-title.zsh
+    }
+
     sandbox_hook zoxide z
     sandbox_hook zoxide cd
     sandbox_hook completion cd
@@ -123,6 +131,7 @@ in {
     sandbox_hook completion kill
     sandbox_hook completion killall
     sandbox_hook completion pkill
+    sandbox_hook windowtitle cd
 
     # sandbox_hook mcfly mcfly
   '';
