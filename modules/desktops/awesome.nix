@@ -9,7 +9,10 @@
 }: let
   cfg = config.desktops.awesome;
   derivations = {
-    awesome = pkgs.callPackage (import ../../packages).awesome {};
+    awesome =
+      pkgs.callPackage
+      (import ../../packages).awesome
+      {inherit unstable;};
     picom =
       pkgs.callPackage (import ../../packages).picom
       {
