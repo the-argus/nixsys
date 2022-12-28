@@ -3,12 +3,12 @@
   config,
   ...
 }: {
-  home.file = {
-    ".local/bin" = let
-      i3python = pkgs.python310.withPackages (with pkgs.python310Packages; [
-        i3ipc
-      ]);
-    in {
+  home.file = let
+    i3python = pkgs.python310.withPackages (with pkgs.python310Packages; [
+      i3ipc
+    ]);
+  in {
+    ".local/bin" = {
       source = ./bin;
       recursive = true;
     };
