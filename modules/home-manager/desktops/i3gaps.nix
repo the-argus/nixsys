@@ -168,7 +168,7 @@ in {
                 workspace_min_width 40
                 i3bar_command i3bar
                 status_command i3status
-                modifier Mod1;
+                modifier Mod1
               '';
               colors = rec {
                 background = inactive-bg; #000000CC
