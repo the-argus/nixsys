@@ -125,13 +125,15 @@
         transmission
         ani-cli
         nix-prefetch-scripts
-        tigervnc
+        # tigervnc
 
         # dev
         nodejs
         cargo
-
+        
+        # nobar
         xkb-switch
+        playerctl
       ]
       ++ ((import ../../lib {inherit lib;}).stringsToPkgs
         {inherit unstable localbuild remotebuild pkgs;}
