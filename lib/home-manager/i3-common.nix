@@ -108,10 +108,12 @@ in rec {
         "${modifier}+i" = mkCommand "$HOME/.local/bin/i3/isolate";
         "${modifier}+Shift+i" = mkCommand "$HOME/.local/bin/i3/isolate undo";
         "${modifier}+s" = mkCommand "rofi -show combi -modes combi -combi-modes window,drun";
-        "${modifier}+m" = mkCommand "$HOME/.local/bin/nobar add playerctl";
-        "--release ${modifier}+m" = mkCommand "$HOME/.local/bin/nobar remove playerctl";
-        "${modifier}+n" = mkCommand "$HOME/.local/bin/nobar add time";
-        "--release ${modifier}+n" = mkCommand "$HOME/.local/bin/nobar remove time";
+
+        # "${modifier}+m" = mkCommand "$HOME/.local/bin/nobar add playerctl";
+        # "--release ${modifier}+m" = mkCommand "$HOME/.local/bin/nobar remove playerctl";
+        # "${modifier}+n" = mkCommand "$HOME/.local/bin/nobar add time";
+        # "--release ${modifier}+n" = mkCommand "$HOME/.local/bin/nobar remove time";
+        "${modifier}+n" = "mode nobar; exec eww open nobar";
       };
 
       # keys that shouldnt exist when using nobar
@@ -186,17 +188,27 @@ in rec {
         else noNobarKeys
       );
 
-    modes = {
-      resize = {
-        ${keys.left} = "resize shrink width 10 px or 10 ppt";
-        ${keys.down} = "resize grow height 10 px or 10 ppt";
-        ${keys.up} = "resize shrink height 10 px or 10 ppt";
-        ${keys.right} = "resize grow width 10 px or 10 ppt";
-        "Escape" = "mode default";
-        "Return" = "mode default";
-        "${modifier}+r" = "mode default";
+    modes =
+      {
+        resize = {
+          ${keys.left} = "resize shrink width 10 px or 10 ppt";
+          ${keys.down} = "resize grow height 10 px or 10 ppt";
+          ${keys.up} = "resize shrink height 10 px or 10 ppt";
+          ${keys.right} = "resize grow width 10 px or 10 ppt";
+          "Escape" = "mode default";
+          "Return" = "mode default";
+          "${modifier}+r" = "mode default";
+        };
+      }
+      // lib.attrsets.optionalAttrs nobar {
+        nobar = {
+          "m" = "exec eww update time-visible=true";
+          "--release m" = "exec eww update time-visible=false";
+          "," = "exec eww update playerctl-visible=true";
+          "--release ," = "exec eww update playerctl-visible=false";
+          "--release ${modifier}+n" = "mode default; exec eww close nobar";
+        };
       };
-    };
 
     workspaceOutputAssign = let
       primaryWS = map (value: {
