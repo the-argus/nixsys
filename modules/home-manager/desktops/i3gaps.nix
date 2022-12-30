@@ -211,12 +211,14 @@ in {
             "window_type = 'menu'",
             "window_type = 'tooltip'",
             "WM_NAME@:s = 'menu'",
+            "WM_NAME@:s = 'Eww - nobar'",
             #	"QTILE_FLOATING@:s = 'True'"
             "class_g     = 'i3bar'",
         ];
         round-borders = 1;
         round-borders-exclude = [
-            "WM_NAME@:s = 'Discord Updater'"
+            "WM_NAME@:s = 'Discord Updater'",
+            "WM_NAME@:s = 'Eww - nobar'",
             #	"QTILE_FLOATING@:s = 'True'",
             #  "QTILE_INTERNAL@:c"
         ];
@@ -242,7 +244,8 @@ in {
             "window_type = 'tooltip'",
             # firefox settings dropdown vvv
             "window_type = 'utility'",
-            "WM_NAME@:s = 'menu'"
+            "WM_NAME@:s = 'menu'",
+            "WM_NAME@:s = 'Eww - nobar'",
         #	"QTILE_FLOATING@:s != 'True'" #&& !QTILE_INTERNAL@:c"
         ];
 
@@ -294,6 +297,7 @@ in {
             "window_type = 'menu'",
             "class_g = 'rofi'",
             "class_g     = 'i3bar'",
+            "WM_NAME@:s = 'Eww - nobar'",
         ];
 
         experimental-backends = true;
