@@ -61,7 +61,7 @@ in {
               mkStartup true [
               ];
           in
-            commandsOnce ++ commandsAlways;
+            common.config.startup // (commandsOnce ++ commandsAlways);
           bars = [
           ];
           # in sway i use a floating bar and id like the windows to always match

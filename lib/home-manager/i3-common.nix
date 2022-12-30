@@ -92,6 +92,11 @@ in rec {
     modifier = "Mod4"; # super key
     workspaceAutoBackAndForth = lib.mkDefault true;
 
+    startup =
+      if nobar
+      then [{command = "nobar";}]
+      else [];
+
     keybindings = let
       mkCommand =
         if addQuotes
@@ -103,6 +108,10 @@ in rec {
         "${modifier}+i" = mkCommand "$HOME/.local/bin/i3/isolate";
         "${modifier}+Shift+i" = mkCommand "$HOME/.local/bin/i3/isolate undo";
         "${modifier}+s" = mkCommand "rofi -show combi -modes combi -combi-modes window,drun";
+        "${modifier}+m" = mkCommand "$HOME/.local/bin/nobar add playerctl";
+        "--release ${modifier}+m" = mkCommand "$HOME/.local/bin/nobar remove playerctl";
+        "${modifier}+n" = mkCommand "$HOME/.local/bin/nobar add time";
+        "--release ${modifier}+n" = mkCommand "$HOME/.local/bin/nobar remove time";
       };
 
       # keys that shouldnt exist when using nobar
@@ -144,7 +153,7 @@ in rec {
         "${modifier}+Shift+${keys.up}" = "move up";
         "${modifier}+Shift+${keys.right}" = "move right";
 
-        "${modifier}+b" = "split b";
+        "${modifier}+b" = "split h";
         "${modifier}+v" = "split v";
         "${modifier}+f" = "fullscreen toggle";
 

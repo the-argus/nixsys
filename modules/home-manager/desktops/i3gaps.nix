@@ -141,14 +141,15 @@ in {
               "Print" = "exec --no-startup-id \"$HOME/.local/bin/screenshot.sh\"";
             };
           startup =
-            map (cmd: {command = cmd;})
-            (
-              (pkgs.callPackage ../../../lib/home-manager/xorg.nix {inherit settings;})
-              .mkAutoStart {
-                isI3 = true;
-                picomConfigLocation = "~/.config/i3/picom.conf";
-              }
-            );
+            common.config.startup
+            // (map (cmd: {command = cmd;})
+              (
+                (pkgs.callPackage ../../../lib/home-manager/xorg.nix {inherit settings;})
+                .mkAutoStart {
+                  isI3 = true;
+                  picomConfigLocation = "~/.config/i3/picom.conf";
+                }
+              ));
           bars = [
             {
               mode =
