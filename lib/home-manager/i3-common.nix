@@ -112,6 +112,8 @@ in rec {
         "--release ${modifier}+m" = mkCommand "$HOME/.local/bin/nobar remove playerctl";
         "${modifier}+n" = mkCommand "$HOME/.local/bin/nobar add time";
         "--release ${modifier}+n" = mkCommand "$HOME/.local/bin/nobar remove time";
+        "${modifier}+a" = mkCommand "$HOME/.local/bin/nobar add system-stats";
+        "--release ${modifier}+a" = mkCommand "$HOME/.local/bin/nobar remove system-stats";
       };
 
       # keys that shouldnt exist when using nobar
