@@ -142,7 +142,7 @@ in {
             };
           startup =
             common.config.startup
-            // (map (cmd: {command = cmd;})
+            ++ (map (cmd: {command = cmd;})
               (
                 (pkgs.callPackage ../../../lib/home-manager/xorg.nix {inherit settings;})
                 .mkAutoStart {
