@@ -204,8 +204,8 @@ in rec {
         nobar = {
           "m" = "exec eww update time-visible=true";
           "--release m" = "exec eww update time-visible=false";
-          "b" = "exec eww update playerctl-visible=true";
-          "--release b" = "exec eww update playerctl-visible=false";
+          "," = "exec eww update playerctl-visible=true";
+          "--release ," = "exec eww update playerctl-visible=false";
           "--release ${modifier}+n" = "mode default; exec eww close nobar";
         };
       };
