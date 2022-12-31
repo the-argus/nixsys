@@ -107,7 +107,8 @@ in rec {
         "${modifier}+Tab" = "workspace back_and_forth";
         "${modifier}+i" = mkCommand "$HOME/.local/bin/i3/isolate";
         "${modifier}+Shift+i" = mkCommand "$HOME/.local/bin/i3/isolate undo";
-        "${modifier}+s" = mkCommand "rofi -show combi -modes combi -combi-modes window,drun";
+        # "${modifier}+s" = mkCommand "rofi -show combi -modes combi -combi-modes window,drun";
+        "${modifier}+s" = mkCommand "$HOME/.local/bin/i3/window-switcher";
         "${modifier}+m" = mkCommand "$HOME/.local/bin/nobar add playerctl";
         "--release ${modifier}+m" = mkCommand "$HOME/.local/bin/nobar remove playerctl";
         "${modifier}+n" = mkCommand "$HOME/.local/bin/nobar add time";

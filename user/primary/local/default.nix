@@ -14,6 +14,63 @@
       recursive = true;
     };
 
+    ".local/bin/i3/window-switcher" = {
+      executable = true;
+      text = ''
+        #!${i3python}/bin/python
+
+        import i3ipc as i3ipc
+        import subprocess
+
+        i3 = i3ipc.Connection()
+
+        tree = i3.get_tree()
+
+        visited_containers = set()
+        windows = {}
+
+        # store all the windows as window_title: container_id pairs
+        def collect_all_windows(tree_node: i3ipc.con.Con):
+            if not tree_node.id in visited_containers and tree_node.window_title != None:
+                windows[tree_node.window_title] = tree_node.id
+                visited_containers.add(tree_node.id)
+
+            for child in tree_node.descendants():
+                collect_all_windows(child)
+        collect_all_windows(tree)
+
+        # function to open an interactive rofi chooser and then return its output
+        def rofi_choose_between(options: list):
+            stdin = "\n".join(options)
+            rofi = subprocess.Popen(
+                ["rofi", "-dmenu"],
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+            )
+            chosen_window, _ = rofi.communicate(
+                input=stdin.encode("utf8"), timeout=None
+            )
+            return chosen_window.decode("utf8")
+        
+        if __name__ == "__main__":
+            focused = tree.find_focused()
+            if focused.window_title in windows:
+                print(focused.window_title)
+                # dont bother offering to switch to the currently focused window
+                windows.pop(focused.window_title)
+
+            # choose between the available window titles
+            chosen_window = rofi_choose_between(windows.keys()).strip()
+            if chosen_window == "":
+                print("No rofi selection made, exiting quietly.")
+                exit(0)
+            window_id = windows[chosen_window]
+            # focus the selected title
+            i3.command(f'[con_id="{window_id}"] focus')
+      '';
+    };
+
     ".local/bin/i3/isolate" = {
       executable = true;
       text = ''
