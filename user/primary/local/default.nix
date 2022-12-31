@@ -22,28 +22,20 @@
         import i3ipc as i3ipc
         import subprocess
 
-        i3 = i3ipc.Connection()
-
-        tree = i3.get_tree()
-
-        visited_containers = set()
-        windows = {}
-
         # store all the windows as window_title: container_id pairs
-        def collect_all_windows(tree_node: i3ipc.con.Con):
+        def collect_all_windows(tree_node: i3ipc.con.Con, collection: dict, visited_containers: set):
             if not tree_node.id in visited_containers and tree_node.window_title != None:
-                windows[tree_node.window_title] = tree_node.id
+                collection[tree_node.window_title.lower()] = tree_node.id
                 visited_containers.add(tree_node.id)
 
             for child in tree_node.descendants():
-                collect_all_windows(child)
-        collect_all_windows(tree)
+                collect_all_windows(child, collection, visited_containers)
 
         # function to open an interactive rofi chooser and then return its output
         def rofi_choose_between(options: list):
             stdin = "\n".join(options)
             rofi = subprocess.Popen(
-                ["rofi", "-dmenu"],
+                ["rofi", "-dmenu", "-matching", "fuzzy"],
                 stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
@@ -52,21 +44,31 @@
                 input=stdin.encode("utf8"), timeout=None
             )
             return chosen_window.decode("utf8")
-        
+
         if __name__ == "__main__":
+            # create variables and library objects
+            i3 = i3ipc.Connection()
+            tree = i3.get_tree()
+            visited_containers = set()
+            windows = {}
+
+            # make the windows dict contain all the windows
+            collect_all_windows(tree, windows, visited_containers)
+
+            # exclude the focused window
             focused = tree.find_focused()
             if focused.window_title in windows:
-                print(focused.window_title)
                 # dont bother offering to switch to the currently focused window
-                windows.pop(focused.window_title)
+                windows.pop(focused.window_title.lower())
 
-            # choose between the available window titles
+            # interactively choose between the available window titles
             chosen_window = rofi_choose_between(windows.keys()).strip()
             if chosen_window == "":
                 print("No rofi selection made, exiting quietly.")
                 exit(0)
             window_id = windows[chosen_window]
-            # focus the selected title
+
+            # focus the chosen title
             i3.command(f'[con_id="{window_id}"] focus')
       '';
     };
