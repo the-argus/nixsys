@@ -57,7 +57,7 @@
 
             # exclude the focused window
             focused = tree.find_focused()
-            if focused.window_title in windows:
+            if focused.window_title.lower() in windows:
                 # dont bother offering to switch to the currently focused window
                 windows.pop(focused.window_title.lower())
 
