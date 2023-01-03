@@ -94,7 +94,7 @@ in rec {
 
     startup =
       if nobar
-      then [{command = "exec --no-startup-id nobar";}]
+      then [{command = "nobar";}]
       else [];
 
     keybindings = let
