@@ -12,6 +12,7 @@
   username,
   stateVersion,
   bitwarden-rofi,
+  nobar,
   ...
 }: {
   imports = [
@@ -94,6 +95,8 @@
         discord
 
         bitwarden-rofi.packages.${pkgs.system}.default
+
+        nobar.packages.${pkgs.system}.default
 
         # gui applications---------
         webcordPkg

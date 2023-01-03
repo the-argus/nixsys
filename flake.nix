@@ -41,6 +41,11 @@
     };
     modern-unix.url = "github:the-argus/modern-unix-flake";
 
+    nobar = {
+      url = github:the-argus/nobar;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # non-nix imports (need fast updates):
     nvim-config.url = "github:the-argus/nvim-config";
 
