@@ -846,11 +846,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1672780620,
-        "narHash": "sha256-GaPTv9WVrvbMvpK2fT13qzSDo2xMLDVfigmfh6iWcY8=",
+        "lastModified": 1672782002,
+        "narHash": "sha256-NudvOM1tIWzcoHNHIgHcYAfFB8mRd3mGgGMZPlp48LU=",
         "owner": "the-argus",
         "repo": "nobar",
-        "rev": "e21f4555f34062654be5926669fcb2ef0971533c",
+        "rev": "6f0c0d512bca4a8ada43e5ee1b55f027b2facfc5",
         "type": "github"
       },
       "original": {
