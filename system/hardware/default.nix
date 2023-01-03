@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   plymouth,
   hostname,
   username,
@@ -35,7 +36,7 @@
   };
 
   boot.plymouth = {
-    enable = true;
+    enable = lib.mkDefault true;
     themePackages = [pkgs.plymouth-themes-package];
     theme = plymouth.themeName;
   };
