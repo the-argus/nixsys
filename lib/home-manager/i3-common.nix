@@ -94,7 +94,7 @@ in rec {
 
     startup =
       if nobar
-      then [{command = "exec --no-startup-id \"$HOME/.local/bin/nobar\"";}]
+      then [{command = "exec --no-startup-id nobar";}]
       else [];
 
     keybindings = let
