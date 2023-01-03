@@ -20,11 +20,11 @@
 
   rosePineTheme = {
     name = "rose-pine-gtk";
-    package = rose-pine;
+    package = pkgs.rose-pine-gtk-theme;
   };
   rosePineIcons = {
     name = "rose-pine-icons";
-    package = rose-pine;
+    package = pkgs.rose-pine-gtk-theme;
   };
 
   kanagawaTheme = {
