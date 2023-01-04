@@ -29,7 +29,7 @@
         ''
         else ''
           __zsh-window-title:precmd() {
-              ZSH_WINDOW_TITLE_DIRECTORY_DEPTH=2
+              ZSH_WINDOW_TITLE_DIRECTORY_DEPTH=8
           	local title=$(print -P "%$ZSH_WINDOW_TITLE_DIRECTORY_DEPTH~")
               if [ "${title:0:1}" = '~' ]; then
                 title=$(echo $title | sed '0,/~/{s/~/$HOME/}')
