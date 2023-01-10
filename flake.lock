@@ -868,11 +868,11 @@
         "nixpkgs-unstable": "nixpkgs-unstable_2"
       },
       "locked": {
-        "lastModified": 1672336980,
-        "narHash": "sha256-KLRz6YpiPZjhog/By6hFDkDBaCKVGWvL4putvuM5n5Y=",
+        "lastModified": 1673389785,
+        "narHash": "sha256-XJL9xcGSRhHMNoU//taL3UY3jyLggtu5daTaHuKhDEc=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "91214df6efa8e830506da411eab85803fbdc9b17",
+        "rev": "278bce07dc29146381533a64ceabcfa68a6a7a84",
         "type": "github"
       },
       "original": {
