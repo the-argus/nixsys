@@ -1018,11 +1018,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1673459471,
-        "narHash": "sha256-9++zFPGmgM7gNqPjEK6OTU/i72W6Ocz+2dfbK1EUbNo=",
+        "lastModified": 1673467095,
+        "narHash": "sha256-aXLj/or8wn9+o8NNKfHFhBFxAlCgmoYeGh0mqlTWCPA=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "6bb88d761bfa00720db92fb8e726eadd72ce8078",
+        "rev": "9b1f4630cb7dcd06e73f5444756a1b7d2ba8eb9d",
         "type": "github"
       },
       "original": {
