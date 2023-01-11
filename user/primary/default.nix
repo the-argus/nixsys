@@ -87,7 +87,13 @@
     with pkgs;
       [
         (nvim-config.packages.${pkgs.system}.mkNeovim {
-          bannerPalette = config.system.theme.scheme;
+          pluginsArgs = {
+            bannerPalette = config.system.theme.scheme;
+          };
+          wrapperArgs = {
+            viAlias = true;
+            vimAlias = true;
+          };
         })
         (callPackage ../../packages/ufetch.nix {})
         # unfree :(
@@ -133,7 +139,7 @@
         # dev
         nodejs
         cargo
-        
+
         # nobar
         xkb-switch
         playerctl
