@@ -822,22 +822,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-old": {
-      "locked": {
-        "lastModified": 1673345971,
-        "narHash": "sha256-4DfFcKLRfVUTyuGrGNNmw37IeIZSoku9tgTVmu/iD98=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "54644f409ab471e87014bb305eac8c50190bcf48",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-22.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1673315479,
@@ -849,22 +833,6 @@
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-unstable_2": {
-      "locked": {
-        "lastModified": 1673226411,
-        "narHash": "sha256-b6cGb5Ln7Zy80YO66+cbTyGdjZKtkoqB/iIIhDX9gRA=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "aa1d74709f5dac623adb4d48fdfb27cc2c92a4d4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
@@ -952,17 +920,17 @@
     },
     "nixpkgs_7": {
       "locked": {
-        "lastModified": 1668008070,
-        "narHash": "sha256-ruT0mhXXHfIxLnUq43gO+V2XVvUQZTpj7ZLE4/dgTIQ=",
+        "lastModified": 1673315479,
+        "narHash": "sha256-GNCFRtDHjTygXGJp/H+f2XQPMGxpYSmNiibIqYzihtM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e12211201092f08c24d710c1697cca16afae3a4c",
+        "rev": "c07552f6f7d4eead7806645ec03f7f1eb71ba6bd",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "rev": "e12211201092f08c24d710c1697cca16afae3a4c",
         "type": "github"
       }
     },
@@ -1047,16 +1015,14 @@
       "inputs": {
         "banner": "banner_3",
         "neorg-overlay": "neorg-overlay",
-        "nixpkgs": "nixpkgs_7",
-        "nixpkgs-old": "nixpkgs-old",
-        "nixpkgs-unstable": "nixpkgs-unstable_2"
+        "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1673455617,
-        "narHash": "sha256-f+koa3TquUEqEbDhL+YObzGCLXAy9e5OJBELgx4grxM=",
+        "lastModified": 1673459471,
+        "narHash": "sha256-9++zFPGmgM7gNqPjEK6OTU/i72W6Ocz+2dfbK1EUbNo=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "7d74c5e905fa8dd3559f155fd083197b93658445",
+        "rev": "6bb88d761bfa00720db92fb8e726eadd72ce8078",
         "type": "github"
       },
       "original": {
