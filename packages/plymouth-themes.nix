@@ -99,7 +99,7 @@
     // (invertListToAttrs "pack_2" pack_2)
     // (invertListToAttrs "pack_3" pack_3)
     // (invertListToAttrs "pack_4" pack_4);
-  themePath = "${availableThemes.${cfg.animationName}}/${cfg.animationName}";
+  themePath = "${availableThemes.${themeName}}/${themeName}";
 in
   pkgs.stdenv.mkDerivation rec {
     pname = "adi1090x-plymouth";
