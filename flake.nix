@@ -75,7 +75,14 @@
   in rec
   {
     createNixosConfiguration = settings: let
-      fs = finalizeSettings settings;
+      settingsWithDefaults =
+        settings
+        // {
+          allowedUnfree =
+            defaultGlobalSettings.allowedUnfree
+            // settings/allowedUnfree;
+        };
+      fs = finalizeSettings settingsWithDefaults;
     in {
       ${fs.hostname} = nixpkgs.lib.nixosSystem {
         inherit (fs) pkgs system;

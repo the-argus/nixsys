@@ -9,6 +9,9 @@
     "reaper"
     "slack"
     "discord"
+    "p4"
+    "steam-run"
+    "steam-run-native"
   ];
   allowBroken = false;
   plymouth = let

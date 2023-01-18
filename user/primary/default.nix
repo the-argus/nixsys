@@ -97,12 +97,17 @@
         })
         (callPackage ../../packages/ufetch.nix {})
         # unfree :(
+        p4
+        steam-run
+        steam-run-native
         slack
         discord
 
         bitwarden-rofi.packages.${pkgs.system}.default
 
         nobar.packages.${pkgs.system}.default
+        gimp
+        nextcloud-client
 
         # gui applications---------
         webcordPkg
