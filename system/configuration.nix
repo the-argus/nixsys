@@ -20,6 +20,8 @@
     ]
     ++ settings.hardwareConfiguration;
 
+  environment.variables.EDITOR = "nvim";
+
   # kernel version
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs.linuxPackages_zen;
