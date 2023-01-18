@@ -2,7 +2,6 @@
   system = "x86_64-linux";
   username = "argus";
   hostname = "evil";
-  useDvorak = true;
   # unfree packages that i explicitly use
   allowedUnfree = [
     "spotify"
@@ -14,12 +13,6 @@
     "steam-run-native"
   ];
   allowBroken = false;
-  plymouth = let
-    name = "rings";
-  in {
-    themeName = name;
-    themePath = "pack_4/${name}";
-  };
   terminal = "kitty";
   extraExtraSpecialArgs = {};
   extraSpecialArgs = {};
