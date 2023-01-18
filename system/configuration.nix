@@ -16,7 +16,6 @@
   imports =
     [
       ../modules
-      ./dvorak.nix
     ]
     ++ settings.hardwareConfiguration;
 
