@@ -3,7 +3,7 @@
   settings,
 }: let
   inherit (settings.optimization) useMusl useFlags;
-  inherit (settings) allowedUnfree system plymouth name;
+  inherit (settings) allowedUnfree system name;
 in {
   config =
     {
@@ -57,10 +57,6 @@ in {
     settings.additionalOverlays
     ++ [
       (_: super: {
-        plymouth-themes-package = import ../packages/plymouth-themes.nix ({
-            pkgs = super;
-          }
-          // settings.plymouth);
         gnome =
           super.gnome
           // {
