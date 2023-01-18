@@ -80,7 +80,7 @@
         // {
           allowedUnfree =
             defaultGlobalSettings.allowedUnfree
-            // settings/allowedUnfree;
+            ++ settings.allowedUnfree;
         };
       fs = finalizeSettings settingsWithDefaults;
     in {
