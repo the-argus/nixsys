@@ -65,24 +65,23 @@
     ...
   } @ inputs: let
     myLib = import ./lib {inherit (nixpkgs) lib;};
-    finalizeSettings = settings:
+    defaultGlobalSettings = myLib.globalConfig.defaults;
+    finalizeSettings = inputSettings:
       myLib.globalConfig.addPkgsToSettings {
         inherit nixpkgs-unstable nixpkgs;
-        inherit settings;
+        settings =
+          inputSettings
+          // {
+            allowedUnfree =
+              defaultGlobalSettings.allowedUnfree
+              ++ inputSettings.allowedUnfree;
+          };
       };
-    defaultGlobalSettings = myLib.globalConfig.defaults;
     stateVersion = "22.11";
   in rec
   {
     createNixosConfiguration = settings: let
-      settingsWithDefaults =
-        settings
-        // {
-          allowedUnfree =
-            defaultGlobalSettings.allowedUnfree
-            ++ settings.allowedUnfree;
-        };
-      fs = finalizeSettings settingsWithDefaults;
+      fs = finalizeSettings settings;
     in {
       ${fs.hostname} = nixpkgs.lib.nixosSystem {
         inherit (fs) pkgs system;
