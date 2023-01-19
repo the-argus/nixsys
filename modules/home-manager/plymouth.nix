@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: let
   cfg = config.services.plymouth;
