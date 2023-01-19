@@ -68,13 +68,4 @@ in {
           };
       })
     ];
-  # ++ (
-  #   if (builtins.hasAttr "theme" settings)
-  #   then [
-  #     (self: super: {
-  #       flakeTheme = settings.theme;
-  #     })
-  #   ]
-  #   else []
-  # );
 }

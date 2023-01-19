@@ -46,9 +46,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # non-nix imports (need fast updates):
     nvim-config.url = "github:the-argus/nvim-config";
 
+    # non-nix imports (need fast updates):
     arkenfox-userjs = {
       url = "github:arkenfox/user.js";
       flake = false;
