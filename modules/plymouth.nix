@@ -12,7 +12,7 @@ in {
     playFullAnimation = mkEnableOption "Wait for the boot animation to finish playing before opening login shell.";
     themesPackage = pkgs.callPackage ../packages/plymouth-themes.nix {inherit (cfg) themeName;};
     themeName = mkOption {
-      type = types.string;
+      type = types.str;
       default = "rings";
     };
   };
