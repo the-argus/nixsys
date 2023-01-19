@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkEnableOption mkOption types;
 in {
   options.services.plymouth = {
