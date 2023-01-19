@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: let
+  cfg = config.services.plymouth;
   inherit (lib) mkEnableOption mkOption types;
 in {
   options.services.plymouth = {
@@ -12,7 +13,7 @@ in {
       default = pkgs.callPackage ../packages/plymouth-themes.nix {inherit (cfg) themeName;};
       type = types.package;
     };
-    animationName = mkOption {
+    themeName = mkOption {
       type = types.str;
       default = "rings";
     };
