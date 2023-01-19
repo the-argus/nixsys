@@ -131,7 +131,7 @@
             inherit (fs) unstable remotebuild localbuild;
             inherit (fs) useFlags useMusl useClang;
             inherit (fs) usesEthernet usesWireless usesBluetooth;
-            inherit (fs) additionalUserPackages hostname username;
+            inherit (fs) hostname username;
             inherit stateVersion;
             settings = fs;
           };

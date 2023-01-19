@@ -45,9 +45,6 @@
     ];
     localbuild = [];
   };
-  additionalUserPackages = [
-    #"steam"
-  ]; # will be evaluated later
   additionalOverlays = [];
   hardwareConfiguration = [../system/hardware];
   usesWireless = true; # install and autostart nm-applet
