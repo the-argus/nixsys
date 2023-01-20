@@ -102,7 +102,7 @@
   themePath = "${availableThemes.${themeName}}/${themeName}";
 in
   pkgs.stdenv.mkDerivation rec {
-    pname = "adi1090x-plymouth";
+    pname = "adi1090x-plymouth-${themeName}";
     version = "0.0.1";
 
     src = pkgs.fetchgit {
@@ -114,7 +114,7 @@ in
     installPhase = ''
       mkdir -p $out/share/plymouth/themes/
       cp -r ${themePath} $out/share/plymouth/themes
-      cat ${themePath}/${themeName}.plymouth | sed  "s@\/usr\/@$out\/@" > $out/share/plymouth/themes/${themeName}/${themeName}.plymouth
+      sed -i $out/share/plymouth/themes/${themeName}/${themeName}.plymouth "s@\/usr\/@$out\/@"
     '';
 
     passthru = {

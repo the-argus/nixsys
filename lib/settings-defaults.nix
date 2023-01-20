@@ -21,20 +21,20 @@
     # packages to override with their unstable versions
     # all of these are things that i might want to move
     # to remotebuild at some point (so theyre FOSS)
-    unstable = [
-      "alejandra"
-      "wl-color-picker"
-      "heroic"
-      "solo2-cli"
-      "ani-cli"
-      "ungoogled-chromium"
-      "firefox"
-      "linuxPackages_latest"
-      "linuxPackages_zen"
-      "linuxPackages_xanmod_latest"
-      "OVMFFull"
-      "neovim"
-      "kitty"
+    unstable = pkgs: with pkgs; [
+      alejandra
+      wl-color-picker
+      heroic
+      solo2-cli
+      ani-cli
+      ungoogled-chromium
+      firefox
+      linuxPackages_latest
+      linuxPackages_zen
+      linuxPackages_xanmod_latest
+      OVMFFull
+      neovim
+      kitty
     ];
     # packages to build remotely
     remotebuild = [
