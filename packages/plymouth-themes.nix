@@ -114,7 +114,7 @@ in
     installPhase = ''
       mkdir -p $out/share/plymouth/themes/
       cp -r ${themePath} $out/share/plymouth/themes
-      sed -i $out/share/plymouth/themes/${themeName}/${themeName}.plymouth "s@\/usr\/@$out\/@"
+      sed -i $out/share/plymouth/themes/${themeName}/${themeName}.plymouth "s/\/usr/$out/g"
     '';
 
     passthru = {
