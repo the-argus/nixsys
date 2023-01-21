@@ -9,7 +9,6 @@
   localbuild,
   username,
   settings,
-  additionalSystemPackages,
   ...
 }: {
   #choose what host is being used (laptop or pc)
@@ -128,51 +127,47 @@
       xdg-desktop-portal
     ];
   };
-  environment.systemPackages = with pkgs;
-    [
-      # tui applications
-      (lib.meta.lowPrio vim)
-      ranger
-      htop
-      lynx
-      w3m
+  environment.systemPackages = with pkgs; [
+    # tui applications
+    (lib.meta.lowPrio vim)
+    ranger
+    htop
+    lynx
+    w3m
 
-      # cli applications
-      neofetch
-      tmatrix
-      cmatrix
-      zip
-      unzip
-      wget
-      curl
-      ffmpeg
-      direnv
-      nix-direnv-flakes
+    # cli applications
+    neofetch
+    tmatrix
+    cmatrix
+    zip
+    unzip
+    wget
+    curl
+    ffmpeg
+    direnv
+    nix-direnv-flakes
 
-      # util
-      git
-      home-manager
-      pam_u2f
-      polkit
-      usbutils
-      nix-index
-      alsa-utils
-      ix
-      killall
-      pciutils
-      inetutils
+    # util
+    git
+    home-manager
+    pam_u2f
+    polkit
+    usbutils
+    nix-index
+    alsa-utils
+    ix
+    killall
+    pciutils
+    inetutils
 
-      curlftpfs
-      sshfs
+    curlftpfs
+    sshfs
 
-      # build - essential
-      gcc
-      lld
-      llvm
-    ]
-    ++ ((import ../lib {inherit lib;}).stringsToPkgs
-      {inherit unstable localbuild remotebuild pkgs;}
-      additionalSystemPackages);
+    # build - essential
+    gcc
+    lld
+    llvm
+  ];
 
   system.stateVersion = "22.11";
 }

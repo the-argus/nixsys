@@ -92,7 +92,6 @@
             inherit (fs) unstable localbuild useMusl remotebuild;
             inherit (fs) useFlags plymouth usesWireless usesBluetooth;
             inherit (fs) usesEthernet hostname username;
-            inherit (fs) additionalSystemPackages;
             inherit stateVersion;
             settings = fs;
           };
