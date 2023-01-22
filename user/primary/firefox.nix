@@ -88,7 +88,7 @@
         name = username;
         id = 0;
         extraConfig = finalUserJS;
-        userChrome = (pkgs.callPackage ../../packages/firefox {}).userChrome.mkOriginal {
+        userChrome = (pkgs.callPackage ../../packages/firefox {}).userChrome.mkCascade {
           colors = config.banner.palette;
           inherit font;
         };
