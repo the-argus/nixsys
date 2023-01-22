@@ -36,11 +36,12 @@
     
     display: block;
 }
-#TabsToolbar { padding-right: 40px; }
+#TabsToolbar { padding-right: 200px; }
 
 /* Hide the new tab button */
 #new-tab-button {
     visibility: hidden;
+    z-index: 100;
 }
 
 
