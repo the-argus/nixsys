@@ -8,12 +8,14 @@
   /*  Global Border Radius
    *  applied to ALL UI elements
    */ --uc-border-radius: 0px;
+    --uc-border-radius: 8px;
 
 
   /*  The distance the Statuspanel floats
    *  away from the window border
    *  0 places directly in the corner
-   */ --uc-status-panel-spacing: 12px;
+   */
+    --uc-status-panel-spacing: 4px;
 
 }
 
@@ -38,7 +40,7 @@
 
 /* Hide the new tab button */
 #new-tab-button {
-    visibility: collapse;
+    visibility: hidden;
 }
 
 
@@ -76,14 +78,16 @@
   /*  Width of the URL Bar for the Oneline layout
    *  If enabled the max-width is applied on focus
    *  otherwise the URL Bar will always be it's min-width
-   */ --uc-urlbar-min-width: 35vw;
-      --uc-urlbar-max-width: 35vw;
+   */
+    --uc-urlbar-min-width: 0vw;
+    --uc-urlbar-max-width: 50vw;
 
   /*  Position of the URL Bar
    *  possible values:
    *  1 – tabs on the right
    *  3 – tabs on the left
-   */ --uc-urlbar-position: 1;
+   */
+    --uc-urlbar-position: 1;
 
   /*  Firefox can be a little wonky with the vertical
    *  URL Bar placement. Change this variable to adapt
