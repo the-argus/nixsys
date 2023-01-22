@@ -47,11 +47,17 @@
 #navigator-toolbox-background {
     position: absolute !important;;
 }
-/*#navigator-toolbox-background ~ #browser {
+#navigator-toolbox-background ~ #browser {
     margin-top: var(--browser-offset) !important;
-}*/
+}
 #navigator-toolbox-background:hover, #navigator-toolbox-background:focus-within {
     z-index: 9001 !important;
+}
+
+
+/* Hide the new tab button */
+#new-tab-button {
+    display: none;
 }
 
 
