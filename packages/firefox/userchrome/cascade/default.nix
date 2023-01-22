@@ -74,10 +74,10 @@
 
       /*  Cascades main Colour Scheme */
       --uc-base-colour:               #${colors.base00};
-      --uc-highlight-colour:          #${colors.highlight};
-      --uc-inverted-colour:           #${colors.pfg-highlight};
-      --uc-muted-colour:              #${colors.base03};
-      --uc-accent-colour:             #${colors.hialt0};
+      --uc-highlight-colour:          #${colors.base02};
+      --uc-inverted-colour:           #${colors.base05};
+      --uc-muted-colour:              #${colors.base06};
+      --uc-accent-colour:             #${colors.highlight};
     }
   '';
 
