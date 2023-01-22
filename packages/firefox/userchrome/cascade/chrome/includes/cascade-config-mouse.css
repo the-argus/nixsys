@@ -120,6 +120,7 @@
    *  show: -moz-inline-block
    *  hide: none
    */ --show-tab-close-button-hover: -moz-inline-block;
+   --show-tab-close-button-hover: -moz-inline-block;
 
 
   /*  Left and Right "dip" of the container indicator
