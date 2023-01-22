@@ -3,7 +3,6 @@
   arkenfox-userjs,
   lib,
   pkgs,
-  unstable,
   username,
   config,
   ...
@@ -11,28 +10,9 @@
   programs.firefox = let
     colors = with config.banner.palette; {
       firefox = let
+        # try to make this match nixsys/packages/firefox/userchrome/original.nix
         ffbg = base00;
-        ffhi = highlight;
       in {
-        userChrome = {
-          # whole background
-          bg = ffbg;
-          # the url text
-          urlbar-selected = ffhi; # rose pine 403C58
-          # tab title text
-          tabtext = ffhi; # rose pine 9BCED7
-
-          # dont matter
-          panel-disabled = ffbg; # rose pine f9f9fa
-          arrowpanel = base05; # rose pine fefefa
-          tab = urgent; # rose pine EA6F91
-          tab-selected = urgent; # rose pine 403C58
-          urlbar = ffhi; # rose pine 98c1d9
-          urlbar-results = ffhi; # rose pine F1CA93
-          sidebar = ffhi; # rose pine F1CA93
-          tab-soundplaying = warn; # rose pine 9c89b8
-          misc = hialt0; # rose pine ea6f91
-        };
         # user content (home page)
         userContent = {
           # dark colors
@@ -61,7 +41,6 @@
         };
       };
     };
-    assets = import ../../packages/firefox-assets {inherit pkgs;};
     baseUserJS = builtins.readFile "${arkenfox-userjs}/user.js";
     font = config.system.theme.font.display.name;
     finalUserJS = lib.strings.concatStrings [
@@ -98,30 +77,6 @@
     ];
   in {
     enable = true;
-    package = unstable.firefox;
-
-    # this is how you can set the gtk theme for firefox with home manager
-    # package =
-    #   let
-    #     parentPackage = unstable.firefox;
-    #     createSymlinkedFirefox = parent: pkgs.symlinkJoin
-    #       {
-    #         inherit (parent) name;
-    #         paths = [ parent ];
-    #         nativeBuildInputs = [ pkgs.makeWrapper ];
-    #         postBuild = ''
-    #           wrapProgram $out/bin/firefox \
-    #             --set GTK_THEME "rose-pine-gtk"
-    #         '';
-    #       };
-    #   in
-    #   pkgs.emptyDirectory.overrideAttrs (oa: {
-    #     override =
-    #       let
-    #         overridenFirefox = overrideFunc: (parentPackage.override) overrideFunc;
-    #       in
-    #       overrideFunc: (createSymlinkedFirefox (overridenFirefox overrideFunc));
-    #   });
 
     extensions = with firefox-addons; [
       ublock-origin
@@ -133,141 +88,10 @@
         name = username;
         id = 0;
         extraConfig = finalUserJS;
-        userChrome = ''
-          #fullscr-toggler { background-color: rgba(0, 0, 0, 0) !important; }
-          :root {
-            --uc-bg-color: #${colors.firefox.userChrome.bg};
-            --uc-show-new-tab-button: none;
-            --uc-show-tab-separators: none;
-            --uc-tab-separators-color: none;
-            --uc-tab-separators-width: none;
-            --uc-tab-fg-color: #${colors.firefox.userChrome.tabtext};
-            --autocomplete-popup-background: var(--mff-bg) !important;
-            --default-arrowpanel-background: var(--mff-bg) !important;
-            --default-arrowpanel-color: #${colors.firefox.userChrome.arrowpanel} !important;
-            --lwt-toolbarbutton-icon-fill: var(--mff-icon-color) !important;
-            --panel-disabled-color: #${colors.firefox.userChrome.panel-disabled}80;
-            --toolbar-bgcolor: var(--mff-bg) !important;
-            --urlbar-separator-color: transparent !important;
-            --mff-bg: #${colors.firefox.userChrome.bg};
-            --mff-icon-color: #${colors.firefox.userChrome.tabtext};
-            --mff-nav-toolbar-padding: 8px;
-            --mff-sidebar-bg: var(--mff-bg);
-            --mff-sidebar-color: #${colors.firefox.userChrome.sidebar};
-            --mff-tab-border-radius: 0px;
-            --mff-tab-color: #${colors.firefox.userChrome.tab};
-            --mff-tab-font-family: "${font}";
-            --mff-tab-font-size: 11pt;
-            --mff-tab-font-weight: 400;
-            --mff-tab-height: 32px;
-            --mff-tab-pinned-bg: #${colors.firefox.userChrome.tabtext};
-            --mff-tab-selected-bg: #${colors.firefox.userChrome.tab-selected};
-            --mff-tab-soundplaying-bg: #${colors.firefox.userChrome.tab-soundplaying};
-            --mff-urlbar-color: #${colors.firefox.userChrome.urlbar};
-            --mff-urlbar-focused-color: #${colors.firefox.userChrome.urlbar-selected};
-            --mff-urlbar-font-family: "${font}";
-            --mff-urlbar-font-size: 11pt;
-            --mff-urlbar-font-weight: 700;
-            --mff-urlbar-results-color: #${colors.firefox.userChrome.urlbar-results};
-            --mff-urlbar-results-font-family: "${font}";
-            --mff-urlbar-results-font-size: 11pt;
-            --mff-urlbar-results-font-weight: 700;
-            --mff-urlbar-results-url-color: #${colors.firefox.userChrome.urlbar};
-          }
-
-          #back-button > .toolbarbutton-icon{
-            --backbutton-background: transparent !important;
-            border: none !important;
-          }
-
-          #back-button {
-            list-style-image: url("${assets}/left-arrow.svg") !important;
-          }
-
-          #forward-button {
-            list-style-image: url("${assets}/right-arrow.svg") !important;
-          }
-
-          /* Options with pixel amounts could need to be adjusted, as this only works for my laptop's display */
-          #titlebar {
-            -moz-box-ordinal-group: 0 !important;
-          }
-
-          .tabbrowser-tab:not([fadein]),
-          #tracking-protection-icon-container,
-          #identity-box {
-            display: none !important;
-            border: none !important;
-          }
-          #urlbar-background, .titlebar-buttonbox-container, #nav-bar, .tabbrowser-tab:not([selected]) .tab-background{
-              background: var(--uc-bg-color) !important;
-            border: none !important;
-          }
-          #urlbar[breakout][breakout-extend] {
-              top: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
-              left: 0 !important;
-              width: 100% !important;
-          }
-
-          #urlbar[breakout][breakout-extend] > #urlbar-input-container {
-              height: var(--urlbar-height) !important;
-              padding-block: 0 !important;
-              padding-inline: 0 !important;
-          }
-
-          #urlbar[breakout][breakout-extend] > #urlbar-background {
-              animation-name: none !important;
-              box-shadow: none !important;
-          }
-          #urlbar-background {
-            box-shadow: none !important;
-          }
-          /*#tabs-newtab-button {
-            display: var(--uc-show-new-tab-button) !important;
-          }*/
-          .tabbrowser-tab::after {
-            border-left: var(--uc-tab-separators-width) solid var(--uc-tab-separators-color) !important;
-            display: var(--uc-show-tab-separators) !important;
-          }
-          .tabbrowser-tab[first-visible-tab][last-visible-tab]{
-            background-color: var(--uc-bar-bg-color) !important;
-          }
-          .tab-close-button.close-icon {
-            display: none !important;
-          }
-          .tabbrowser-tab:hover .tab-close-button.close-icon {
-            display: block !important;
-          }
-          #urlbar-input {
-            text-align: center !important;
-            color: var(--mff-urlbar-focused-color) !important;
-          }
-          #urlbar-input:focus {
-            text-align: left !important;
-          }
-          #urlbar-container {
-            margin-left: 3vw !important;
-          }
-          .tab-text.tab-label {
-            color: var(--uc-tab-fg-color) !important;
-          }
-          #navigator-toolbox {
-            border-bottom: 0px solid #${colors.firefox.userChrome.misc} !important;
-            background: var(--uc-bg-color) !important;
-          }
-
-          .urlbar-icon > image {
-            fill: var(--mff-icon-color) !important;
-            color: var(--mff-icon-color) !important;
-          }
-
-          .toolbarbutton-text {
-            color: var(--mff-icon-color)  !important;
-          }
-          .urlbar-icon {
-            color: var(--mff-icon-color)  !important;
-          }
-        '';
+        userChrome = (pkgs.callPackage ../../packages/firefox {}).userChrome.mkOriginal {
+          colors = config.banner.palette;
+          inherit font;
+        };
 
         userContent = ''
           :root {

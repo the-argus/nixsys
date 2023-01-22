@@ -1,5 +1,5 @@
-{pkgs, ...}:
-pkgs.stdenv.mkDerivation rec {
+{stdenvNoCC, ...}:
+stdenvNoCC.mkDerivation rec {
   pname = "firefox-assets";
   version = "0.0.1";
 

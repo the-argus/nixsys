@@ -1,0 +1,3 @@
+{callPackage, ...}: {
+  userChrome = callPackage ./userchrome {};
+}
