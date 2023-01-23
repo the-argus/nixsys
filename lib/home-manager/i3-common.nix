@@ -139,7 +139,7 @@ in rec {
         };
       in
         {
-          "${modifier}+Return" = "exec ${terminal}/bin/${terminal.name}";
+          "${modifier}+Return" = "exec ${terminal}/bin/${terminal.pname}";
           "${modifier}+Shift+q" = "kill";
 
           "${modifier}+${keys.left}" = "focus left";
@@ -298,6 +298,6 @@ in rec {
         smartGaps = true;
         smartBorders = "off";
       };
-      terminal = "${terminal}/bin/${terminal.name}";
+      terminal = "${terminal}/bin/${terminal.pname}";
     };
 }
