@@ -20,7 +20,7 @@ in {
   options.desktops = {
     enable = mkEnableOption "Desktop";
     terminal = mkOption {
-      type = types.package;
+      type = lib.types.package;
       default = pkgs.kitty;
     };
   };
