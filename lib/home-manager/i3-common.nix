@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   theme,
   palette,
@@ -290,6 +289,6 @@ in rec {
       smartGaps = true;
       smartBorders = "off";
     };
-    terminal = "${pkgs.${terminal}}/bin/${terminal.name}";
+    terminal = "${terminal}/bin/${terminal.name}";
   };
 }
