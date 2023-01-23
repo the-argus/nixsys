@@ -32,19 +32,18 @@
 #PanelUI-button {
     
     position: fixed;
-    top: 4px; right: 0;
-    width: 45px;
-    
+    top: 4px; right: 0; 
     display: block;
     z-index: 1000;
 }
 #PanelUI-menu-button * {
     height: 36px;
+    width: 36px;
 }
 #PanelUI-menu-button image {
   position: relative;
   top: -7px;
-  right: -1px;
+  right: -2px;
 }
 #TabsToolbar { margin-right: 6px; }
 
