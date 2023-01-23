@@ -1,3 +1,3 @@
-{pkgs, ...}: {
-  nordic = pkgs.callPackage ./nordic.nix {};
+{callPackage, ...}: {
+  nordic = callPackage ./nordic.nix {};
 }

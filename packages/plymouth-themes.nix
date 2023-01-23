@@ -1,5 +1,6 @@
 {
-  pkgs,
+  stdenv,
+  fetchgit,
   lib,
   themeName,
   ...
@@ -101,11 +102,11 @@
     // (invertListToAttrs "pack_4" pack_4);
   themePath = "${availableThemes.${themeName}}/${themeName}";
 in
-  pkgs.stdenv.mkDerivation rec {
+  stdenv.mkDerivation rec {
     pname = "adi1090x-plymouth-${themeName}";
     version = "0.0.1";
 
-    src = pkgs.fetchgit {
+    src = fetchgit {
       url = "https://github.com/adi1090x/plymouth-themes";
       rev = "bf2f570bee8e84c5c20caac353cbe1d811a4745f";
       sha256 = "0scgba00f6by08hb14wrz26qcbcysym69mdlv913mhm3rc1szlal";

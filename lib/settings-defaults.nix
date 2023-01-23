@@ -37,6 +37,7 @@
           OVMFFull
           neovim
           kitty
+          spotify-unwrapped
           ;
         nodePackages =
           original.nodePackages

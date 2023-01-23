@@ -38,7 +38,7 @@ in {
         gesture-improvements
         no-titlebar-when-maximized
         gtk-title-bar
-        (pkgs.callPackage ../../packages/fly-pie {})
+        pkgs.myPackages.fly-pie
       ]
       ++ (with pkgs; [
         # maui apps (replacements for evince, totem, and gedit respectively

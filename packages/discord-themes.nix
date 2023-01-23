@@ -1,5 +1,4 @@
 {
-  pkgs,
   stdenv,
   fetchgit,
   ...
@@ -50,7 +49,7 @@ in {
     sha256 = "0wjwxdhjdixmzgayb0r70hj65w8jsd47ifha9hxrrkzk6ws3fl58";
   };
 
-  mkFrostedGlass = url: (pkgs.stdenv.mkDerivation {
+  mkFrostedGlass = url: (stdenv.mkDerivation {
     name = "webcord-frosted-glass-theme";
     src = mkTheme {
       url = "https://github.com/DiscordStyles/FrostedGlass";
@@ -75,11 +74,10 @@ in {
 
   mkDiscordThemeFromSystemTheme = {
     config,
-    systemTheme,
+    font,
     ...
   }:
     with config.banner.palette; let
-      font = systemTheme.font.display;
       # light mode literally not supported lol
       css = builtins.toFile "THEME.theme.css" ''
         .theme-dark {
@@ -180,7 +178,7 @@ in {
             background-color: var(--background-modifier-selected)!important;
         }
       '';
-    in (pkgs.stdenv.mkDerivation {
+    in (stdenv.mkDerivation {
       name = "discord-theme-in-color";
       buildPhase = ''
       '';

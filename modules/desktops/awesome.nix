@@ -2,23 +2,11 @@
   lib,
   config,
   pkgs,
-  unstable,
-  awesome,
-  picom,
   ...
 }: let
   cfg = config.desktops.awesome;
   derivations = {
-    awesome =
-      pkgs.callPackage
-      (import ../../packages).awesome
-      {inherit unstable;};
-    picom =
-      pkgs.callPackage (import ../../packages).picom
-      {
-        pkgs = unstable;
-        inherit picom;
-      };
+    inherit (pkgs.myPackages) picom awesome;
   };
   inherit (lib) mkIf mkEnableOption;
 in {

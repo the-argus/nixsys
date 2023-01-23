@@ -2,18 +2,11 @@
   lib,
   config,
   pkgs,
-  unstable,
-  picom,
   ...
 }: let
   cfg = config.desktops.ratpoison;
   derivations = {
-    picom =
-      import ../../packages/picom.nix
-      {
-        pkgs = unstable;
-        inherit picom;
-      };
+    inherit (pkgs.myPackages) picom;
   };
   inherit (lib) mkIf mkEnableOption;
 in {

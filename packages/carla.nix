@@ -1,6 +1,15 @@
-{pkgs, ...}:
-pkgs.carla.overrideAttrs (_: {
-  nativeBuildInputs = with pkgs; [
+{
+  carla,
+  gcc,
+  gcc_multi,
+  python3Packages,
+  pkg-config,
+  which,
+  wrapQtAppsHook,
+  ...
+}:
+carla.overrideAttrs (_: {
+  nativeBuildInputs = [
     gcc
     gcc_multi
     python3Packages.wrapPython

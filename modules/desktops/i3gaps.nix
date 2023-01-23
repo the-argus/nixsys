@@ -2,18 +2,11 @@
   lib,
   config,
   pkgs,
-  picom,
-  unstable,
   ...
 }: let
   cfg = config.desktops.i3gaps;
   derivations = {
-    picom =
-      import ../../packages/picom.nix
-      {
-        pkgs = unstable;
-        inherit picom;
-      };
+    inherit (pkgs.myPackages) picom;
   };
   inherit (lib) mkIf mkEnableOption;
 in {

@@ -2,7 +2,6 @@
   pkgs,
   lib,
   settings,
-  picom,
   config,
   ...
 }: let
@@ -43,11 +42,7 @@ in rec {
       then execI3
       else execShell;
 
-    picomPkg =
-      import ../../packages/picom.nix
-      {
-        inherit pkgs picom;
-      };
+    picomPkg = pkgs.myPackages.picom;
   in
     map execFunc ([
         "${pkgs.dunst}/bin/dunst"

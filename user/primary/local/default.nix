@@ -57,7 +57,10 @@
           then
             pkgs.callPackage
             systemTheme.discordTheme
-            {inherit config systemTheme;}
+            {
+              inherit config;
+              inherit (systemTheme) font;
+            }
           else systemTheme.discordTheme;
       in {
         name = "Webcord";

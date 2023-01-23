@@ -1,10 +1,6 @@
 {
   pkgs,
-  unstable,
   banner,
-  remotebuild,
-  localbuild,
-  lib,
   webcord,
   config,
   nvim-config,
@@ -93,7 +89,6 @@
           vimAlias = true;
         };
       })
-      (callPackage ../../packages/ufetch.nix {})
       # unfree :(
       p4
       steam-run
@@ -126,8 +121,9 @@
       wl-color-picker
       epick
       pngquant
-
-      (pkgs.callPackage ../../packages/xgifwallpaper.nix {})
+        
+      myPackages.xgifwallpaper
+      myPackages.ufetch
 
       # tui
       cava

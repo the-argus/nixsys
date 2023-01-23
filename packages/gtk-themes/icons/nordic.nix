@@ -1,6 +1,4 @@
 {
-  pkgs,
-  lib,
   stdenv,
   fetchgit,
   gtk-engine-murrine,

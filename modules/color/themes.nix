@@ -11,10 +11,10 @@
   schemes = pkgs.callPackage ./schemes {inherit banner;};
 
   # discord theme packages -----------------------------------------
-  discordThemes = pkgs.callPackage ../../packages/discord-themes.nix {};
+  inherit (pkgs.myPackages) discordThemes;
 
   # gtk themes -----------------------------------------------------
-  allThemes = pkgs.callPackage ../../packages/gtk-themes {};
+  allThemes = pkgs.myPackages.gtkThemes;
   inherit (allThemes) kanagawa rose-pine marwaita darkg nord;
   inherit (allThemes) cursorThemes materialBlackFrost;
 
