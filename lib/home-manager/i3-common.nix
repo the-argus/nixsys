@@ -144,7 +144,7 @@ in rec {
       };
     in
       {
-        "${modifier}+Return" = "exec ${settings.terminal}";
+        "${modifier}+Return" = "exec ${config.desktops.terminal}/bin/${config.desktops.terminal.name}";
         "${modifier}+Shift+q" = "kill";
 
         "${modifier}+${keys.left}" = "focus left";
@@ -290,6 +290,6 @@ in rec {
       smartGaps = true;
       smartBorders = "off";
     };
-    terminal = "${pkgs.${settings.terminal}}/bin/${settings.terminal}";
+    terminal = "${pkgs.${config.desktops.terminal}}/bin/${config.desktops.terminal.name}";
   };
 }

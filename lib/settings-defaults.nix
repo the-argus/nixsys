@@ -13,7 +13,6 @@
     "steam-run-native"
   ];
   allowBroken = false;
-  terminal = "kitty";
   extraExtraSpecialArgs = {};
   extraSpecialArgs = {};
   additionalModules = [];

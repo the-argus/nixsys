@@ -44,7 +44,7 @@ in {
         }
         }
         useDvorak = ${if config.keyboard.dvorak.enable then "True" else "False"}
-        terminal = "${pkgs.${settings.terminal}}/bin/${settings.terminal}"
+        terminal = "${pkgs.${config.desktops.terminal}}/bin/${config.desktops.terminal.name}"
       '';
 
       # translate nix banner palette into python
