@@ -11,6 +11,7 @@
     "p4"
     "steam-run"
     "steam-run-native"
+    "steam-original"
   ];
   allowBroken = false;
   extraExtraSpecialArgs = {};
