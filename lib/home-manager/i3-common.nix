@@ -33,7 +33,8 @@ in rec {
       stringToFloat = str: let
         splitFloat = (
           # turn digits into sets of integers and their length
-          map (value: {
+          map
+          (value: {
             value = (lib.strings.toInt value) + 0.0;
             length = builtins.stringLength value;
           })
@@ -87,208 +88,216 @@ in rec {
       childBorder
       keys
       ;
-  in rec {
-    modifier = "Mod4"; # super key
-    workspaceAutoBackAndForth = lib.mkDefault true;
+  in
+    rec {
+      modifier = "Mod4"; # super key
 
-    startup =
-      if nobar
-      then [{command = "nobar";}]
-      else [];
+      keybindings = let
+        mkCommand =
+          if addQuotes
+          then command: "exec --no-startup-id \"${command}\""
+          else command: "exec --no-startup-id ${command}";
 
-    keybindings = let
-      mkCommand =
-        if addQuotes
-        then command: "exec --no-startup-id \"${command}\""
-        else command: "exec --no-startup-id ${command}";
+        nobarKeys = {
+          "${modifier}+Tab" = "workspace back_and_forth";
+          "${modifier}+i" = mkCommand "nobar isolate";
+          "${modifier}+Shift+i" = mkCommand "isolate undo";
+          # "${modifier}+s" = mkCommand "rofi -show combi -modes combi -combi-modes window,drun";
+          "${modifier}+s" = mkCommand "nobar window-switcher";
+          "${modifier}+m" = mkCommand "nobar add playerctl";
+          "--release ${modifier}+m" = mkCommand "nobar remove playerctl";
+          "${modifier}+n" = mkCommand "nobar add time";
+          "--release ${modifier}+n" = mkCommand "nobar remove time";
+          "${modifier}+a" = mkCommand "nobar add system-stats";
+          "--release ${modifier}+a" = mkCommand "nobar remove system-stats";
+          "${modifier}+o" = mkCommand "nobar bring-to";
+        };
 
-      nobarKeys = {
-        "${modifier}+Tab" = "workspace back_and_forth";
-        "${modifier}+i" = mkCommand "nobar isolate";
-        "${modifier}+Shift+i" = mkCommand "isolate undo";
-        # "${modifier}+s" = mkCommand "rofi -show combi -modes combi -combi-modes window,drun";
-        "${modifier}+s" = mkCommand "nobar window-switcher";
-        "${modifier}+m" = mkCommand "nobar add playerctl";
-        "--release ${modifier}+m" = mkCommand "nobar remove playerctl";
-        "${modifier}+n" = mkCommand "nobar add time";
-        "--release ${modifier}+n" = mkCommand "nobar remove time";
-        "${modifier}+a" = mkCommand "nobar add system-stats";
-        "--release ${modifier}+a" = mkCommand "nobar remove system-stats";
-        "${modifier}+o" = mkCommand "nobar bring-to";
+        # keys that shouldnt exist when using nobar
+        noNobarKeys = {
+          "${modifier}+1" = "workspace number 1";
+          "${modifier}+2" = "workspace number 2";
+          "${modifier}+3" = "workspace number 3";
+          "${modifier}+4" = "workspace number 4";
+          "${modifier}+5" = "workspace number 5";
+          "${modifier}+6" = "workspace number 6";
+          "${modifier}+7" = "workspace number 7";
+          "${modifier}+8" = "workspace number 8";
+          "${modifier}+9" = "workspace number 9";
+          "${modifier}+0" = "workspace number 10";
+
+          "${modifier}+Shift+1" = "move container to workspace number 1";
+          "${modifier}+Shift+2" = "move container to workspace number 2";
+          "${modifier}+Shift+3" = "move container to workspace number 3";
+          "${modifier}+Shift+4" = "move container to workspace number 4";
+          "${modifier}+Shift+5" = "move container to workspace number 5";
+          "${modifier}+Shift+6" = "move container to workspace number 6";
+          "${modifier}+Shift+7" = "move container to workspace number 7";
+          "${modifier}+Shift+8" = "move container to workspace number 8";
+          "${modifier}+Shift+9" = "move container to workspace number 9";
+          "${modifier}+Shift+0" = "move container to workspace number 10";
+        };
+      in
+        {
+          "${modifier}+Return" = "exec ${terminal}/bin/${terminal.name}";
+          "${modifier}+Shift+q" = "kill";
+
+          "${modifier}+${keys.left}" = "focus left";
+          "${modifier}+${keys.down}" = "focus down";
+          "${modifier}+${keys.up}" = "focus up";
+          "${modifier}+${keys.right}" = "focus right";
+
+          "${modifier}+Shift+${keys.left}" = "move left";
+          "${modifier}+Shift+${keys.down}" = "move down";
+          "${modifier}+Shift+${keys.up}" = "move up";
+          "${modifier}+Shift+${keys.right}" = "move right";
+
+          "${modifier}+b" = "split h";
+          "${modifier}+v" = "split v";
+          "${modifier}+f" = "fullscreen toggle";
+
+          "${modifier}+p" = mkCommand "bwmenu";
+
+          "${modifier}+BackSpace" = mkCommand "$HOME/.local/bin/switch-kb-layout.sh";
+
+          "XF86Calculator" = mkCommand "qalculate-gtk";
+          "XF86AudioRaiseVolume" = mkCommand "$HOME/.local/bin/volume.sh up";
+          "XF86AudioLowerVolume" = mkCommand "$HOME/.local/bin/volume.sh down";
+          "XF86AudioMute" = mkCommand "$HOME/.local/bin/volume.sh mute";
+          "XF86MonBrightnessDown" = mkCommand "$HOME/.local/bin/brightness.sh down";
+          "XF86MonBrightnessUp" = mkCommand "$HOME/.local/bin/brightness.sh up";
+
+          "${modifier}+space" = mkCommand "$HOME/.local/bin/rofi-launchpad.sh";
+
+          "${modifier}+Shift+space" = "floating toggle";
+
+          "${modifier}+Shift+minus" = "move scratchpad";
+          "${modifier}+minus" = "scratchpad show";
+
+          "${modifier}+Shift+c" = "reload";
+          "${modifier}+Shift+r" = "restart";
+
+          "${modifier}+r" = "mode resize";
+        }
+        // (
+          if nobar
+          then nobarKeys
+          else noNobarKeys
+        );
+
+      modes = {
+        resize = {
+          ${keys.left} = "resize shrink width 10 px or 10 ppt";
+          ${keys.down} = "resize grow height 10 px or 10 ppt";
+          ${keys.up} = "resize shrink height 10 px or 10 ppt";
+          ${keys.right} = "resize grow width 10 px or 10 ppt";
+          "Escape" = "mode default";
+          "Return" = "mode default";
+          "${modifier}+r" = "mode default";
+        };
       };
 
-      # keys that shouldnt exist when using nobar
-      noNobarKeys = {
-        "${modifier}+1" = "workspace number 1";
-        "${modifier}+2" = "workspace number 2";
-        "${modifier}+3" = "workspace number 3";
-        "${modifier}+4" = "workspace number 4";
-        "${modifier}+5" = "workspace number 5";
-        "${modifier}+6" = "workspace number 6";
-        "${modifier}+7" = "workspace number 7";
-        "${modifier}+8" = "workspace number 8";
-        "${modifier}+9" = "workspace number 9";
-        "${modifier}+0" = "workspace number 10";
+      workspaceOutputAssign = let
+        primaryWS =
+          map
+          (value: {
+            workspace = value;
+            output = "eDP-1";
+          }) ["1" "2" "3" "4" "5"];
+        secondaryWS =
+          map
+          (value: {
+            workspace = value;
+            output = "eDP-1 HDMI-A-1";
+          }) ["1B" "2B" "3B" "4B" "5B"];
+      in
+        primaryWS ++ secondaryWS;
 
-        "${modifier}+Shift+1" = "move container to workspace number 1";
-        "${modifier}+Shift+2" = "move container to workspace number 2";
-        "${modifier}+Shift+3" = "move container to workspace number 3";
-        "${modifier}+Shift+4" = "move container to workspace number 4";
-        "${modifier}+Shift+5" = "move container to workspace number 5";
-        "${modifier}+Shift+6" = "move container to workspace number 6";
-        "${modifier}+Shift+7" = "move container to workspace number 7";
-        "${modifier}+Shift+8" = "move container to workspace number 8";
-        "${modifier}+Shift+9" = "move container to workspace number 9";
-        "${modifier}+Shift+0" = "move container to workspace number 10";
+      floating = {
+        titlebar = true;
+        border = 4;
+        inherit modifier;
+        criteria = [
+          {"title" = "Steam - Update News";}
+          {"class" = "Pavucontrol";}
+        ];
       };
-    in
-      {
-        "${modifier}+Return" = "exec ${terminal}/bin/${terminal.name}";
-        "${modifier}+Shift+q" = "kill";
 
-        "${modifier}+${keys.left}" = "focus left";
-        "${modifier}+${keys.down}" = "focus down";
-        "${modifier}+${keys.up}" = "focus up";
-        "${modifier}+${keys.right}" = "focus right";
+      colors = rec {
+        background = transparent;
+        focused = {
+          border = bg;
+          background = bg;
+          inherit text indicator childBorder;
+        };
+        focusedInactive = {
+          border = inactive-border;
+          background = inactive-bg;
+          text = inactive-text;
+          inherit indicator childBorder;
+        };
+        unfocused = focusedInactive;
+        urgent = {
+          border = urgent-bg;
+          background = urgent-bg;
+          inherit text indicator childBorder;
+        };
+        # placeholder window is default but can be configured
+      };
+    }
+    // {
+      workspaceAutoBackAndForth = lib.mkDefault true;
 
-        "${modifier}+Shift+${keys.left}" = "move left";
-        "${modifier}+Shift+${keys.down}" = "move down";
-        "${modifier}+Shift+${keys.up}" = "move up";
-        "${modifier}+Shift+${keys.right}" = "move right";
+      window = {
+        titlebar = false;
+        border = 2;
+        # vv one of "none" "vertical" "horizontal" "both" "smart" vv
+        hideEdgeBorders = "smart";
+        commands = let
+          # this is the same as float criteria i believe
+          float = class: {
+            command = "floating enable";
+            criteria = {inherit class;};
+          };
+          rmBorder = class: {
+            command = "default_border 0";
+            criteria = {inherit class;};
+          };
+        in [
+          (float "nm-connection-editor")
+          (float "Qalculate-gtk")
+          (float "Calculator")
+          (float "keepassxc")
+          (rmBorder "waybar")
+        ];
+      };
 
-        "${modifier}+b" = "split h";
-        "${modifier}+v" = "split v";
-        "${modifier}+f" = "fullscreen toggle";
+      focus = {
+        newWindow = "smart";
+        followMouse = true;
+        forceWrapping = false;
+        mouseWarping = false;
+      };
 
-        "${modifier}+p" = mkCommand "bwmenu";
+      fonts = let
+        mainfont = theme.font.monospace;
+      in {
+        names = [(mainfont.name) "monospace"];
+        style = "Bold";
+        size = mainfont.size + 0.0;
+      };
 
-        "${modifier}+BackSpace" = mkCommand "$HOME/.local/bin/switch-kb-layout.sh";
-
-        "XF86Calculator" = mkCommand "qalculate-gtk";
-        "XF86AudioRaiseVolume" = mkCommand "$HOME/.local/bin/volume.sh up";
-        "XF86AudioLowerVolume" = mkCommand "$HOME/.local/bin/volume.sh down";
-        "XF86AudioMute" = mkCommand "$HOME/.local/bin/volume.sh mute";
-        "XF86MonBrightnessDown" = mkCommand "$HOME/.local/bin/brightness.sh down";
-        "XF86MonBrightnessUp" = mkCommand "$HOME/.local/bin/brightness.sh up";
-
-        "${modifier}+space" = mkCommand "$HOME/.local/bin/rofi-launchpad.sh";
-
-        "${modifier}+Shift+space" = "floating toggle";
-
-        "${modifier}+Shift+minus" = "move scratchpad";
-        "${modifier}+minus" = "scratchpad show";
-
-        "${modifier}+Shift+c" = "reload";
-        "${modifier}+Shift+r" = "restart";
-
-        "${modifier}+r" = "mode resize";
-      }
-      // (
+      startup =
         if nobar
-        then nobarKeys
-        else noNobarKeys
-      );
-
-    modes = {
-      resize = {
-        ${keys.left} = "resize shrink width 10 px or 10 ppt";
-        ${keys.down} = "resize grow height 10 px or 10 ppt";
-        ${keys.up} = "resize shrink height 10 px or 10 ppt";
-        ${keys.right} = "resize grow width 10 px or 10 ppt";
-        "Escape" = "mode default";
-        "Return" = "mode default";
-        "${modifier}+r" = "mode default";
+        then [{command = "nobar";}]
+        else [];
+      gaps = builtins.mapAttrs (_: value: lib.mkDefault value) rec {
+        inner = 10;
+        outer = 0;
+        # theres also: horizontal vertical top left bottom right
+        smartGaps = true;
+        smartBorders = "off";
       };
+      terminal = "${terminal}/bin/${terminal.name}";
     };
-
-    workspaceOutputAssign = let
-      primaryWS = map (value: {
-        workspace = value;
-        output = "eDP-1";
-      }) ["1" "2" "3" "4" "5"];
-      secondaryWS = map (value: {
-        workspace = value;
-        output = "eDP-1 HDMI-A-1";
-      }) ["1B" "2B" "3B" "4B" "5B"];
-    in
-      primaryWS ++ secondaryWS;
-
-    window = {
-      titlebar = false;
-      border = 2;
-      # vv one of "none" "vertical" "horizontal" "both" "smart" vv
-      hideEdgeBorders = "smart";
-      commands = let
-        # this is the same as float criteria i believe
-        float = class: {
-          command = "floating enable";
-          criteria = {inherit class;};
-        };
-        rmBorder = class: {
-          command = "default_border 0";
-          criteria = {inherit class;};
-        };
-      in [
-        (float "nm-connection-editor")
-        (float "Qalculate-gtk")
-        (float "Calculator")
-        (float "keepassxc")
-        (rmBorder "waybar")
-      ];
-    };
-    floating = {
-      titlebar = true;
-      border = 4;
-      inherit modifier;
-      criteria = [
-        {"title" = "Steam - Update News";}
-        {"class" = "Pavucontrol";}
-      ];
-    };
-
-    focus = {
-      newWindow = "smart";
-      followMouse = true;
-      forceWrapping = false;
-      mouseWarping = false;
-    };
-
-    fonts = let
-      mainfont = theme.font.monospace;
-    in {
-      names = [(mainfont.name) "monospace"];
-      style = "Bold";
-      size = mainfont.size + 0.0;
-    };
-
-    colors = rec {
-      background = transparent;
-      focused = {
-        border = bg;
-        background = bg;
-        inherit text indicator childBorder;
-      };
-      focusedInactive = {
-        border = inactive-border;
-        background = inactive-bg;
-        text = inactive-text;
-        inherit indicator childBorder;
-      };
-      unfocused = focusedInactive;
-      urgent = {
-        border = urgent-bg;
-        background = urgent-bg;
-        inherit text indicator childBorder;
-      };
-      # placeholder window is default but can be configured
-    };
-    gaps = builtins.mapAttrs (_: value: lib.mkDefault value) rec {
-      inner = 10;
-      outer = 0;
-      # theres also: horizontal vertical top left bottom right
-      smartGaps = true;
-      smartBorders = "off";
-    };
-    terminal = "${terminal}/bin/${terminal.name}";
-  };
 }
