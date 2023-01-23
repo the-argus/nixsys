@@ -33,15 +33,24 @@
     
     position: fixed;
     top: 4px; right: 0;
+    width: 45px;
     
     display: block;
+    z-index: 1000;
 }
-#TabsToolbar { padding-right: 200px; }
+#PanelUI-menu-button * {
+    height: 36px;
+}
+#PanelUI-menu-button image {
+  position: relative;
+  top: -7px;
+  right: -1px;
+}
+#TabsToolbar { margin-right: 6px; }
 
 /* Hide the new tab button */
-#new-tab-button {
+#new-tab-button,#tabs-newtab-button {
     visibility: hidden;
-    z-index: 100;
 }
 
 
