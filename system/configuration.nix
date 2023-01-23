@@ -4,9 +4,6 @@
 {
   pkgs,
   lib,
-  unstable,
-  remotebuild,
-  localbuild,
   username,
   settings,
   ...
@@ -125,6 +122,7 @@
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal
+      xdg-desktop-portal-gtk
     ];
   };
   environment.systemPackages = with pkgs; [
