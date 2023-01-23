@@ -2,7 +2,7 @@
   stdenv,
   fetchgit,
   lib,
-  themeName,
+  themeName ? "abstract_ring",
   ...
 }: let
   pack_1 = [
