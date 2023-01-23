@@ -1,15 +1,15 @@
 {
   pkgs,
   lib,
-  config,
-  settings,
+  theme,
+  palette,
+  terminal,
   banner,
   nobar ? false,
   addQuotes ? false,
   ...
 }: let
-  inherit (config.system) theme;
-  palette = config.banner.palette;
+  inherit theme palette;
 in rec {
   commonInputs = rec {
     keys = {
@@ -144,7 +144,7 @@ in rec {
       };
     in
       {
-        "${modifier}+Return" = "exec ${config.desktops.terminal}/bin/${config.desktops.terminal.name}";
+        "${modifier}+Return" = "exec ${terminal}/bin/${terminal.name}";
         "${modifier}+Shift+q" = "kill";
 
         "${modifier}+${keys.left}" = "focus left";
@@ -290,6 +290,6 @@ in rec {
       smartGaps = true;
       smartBorders = "off";
     };
-    terminal = "${pkgs.${config.desktops.terminal}}/bin/${config.desktops.terminal.name}";
+    terminal = "${pkgs.${terminal}}/bin/${terminal.name}";
   };
 }

@@ -115,7 +115,10 @@ in {
     };
     xsession.windowManager.i3 = let
       common = import ../../../lib/home-manager/i3-common.nix {
-        inherit config pkgs lib settings banner;
+        inherit pkgs lib settings banner;
+        inherit (config.system) theme;
+        inherit (config.banner) palette;
+        inherit (config.desktops) terminal;
         inherit (cfg) nobar;
         addQuotes = true;
       };
