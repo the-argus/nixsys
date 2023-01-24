@@ -11,7 +11,6 @@ in {
 
   # configure spicetify :)
   programs.spicetify = {
-    spotifyPackage = pkgs.spotify-unwrapped;
     spicetifyPackage = pkgs.spicetify-cli;
     enable = true;
     theme = spicePkgs.themes.Dribbblish;
