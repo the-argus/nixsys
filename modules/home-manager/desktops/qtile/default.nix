@@ -25,7 +25,7 @@ in {
           #!/bin/sh
           ${
             builtins.concatStringsSep "\n"
-            ((pkgs.callPackage ../../../../lib/home-manager/xorg.nix {})
+            ((pkgs.callPackage ../../../../lib/home-manager/xorg.nix {inherit config;})
               .mkAutoStart {
                 picomConfigLocation = "~/.config/qtile/config/picom.conf";
               })

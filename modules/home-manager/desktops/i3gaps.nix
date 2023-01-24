@@ -146,8 +146,7 @@ in {
             common.config.startup
             ++ (map (cmd: {command = cmd;})
               (
-                (pkgs.callPackage ../../../lib/home-manager/xorg.nix {})
-                .mkAutoStart {
+                (pkgs.callPackage ../../../lib/home-manager/xorg.nix {inherit config;}).mkAutoStart {
                   isI3 = true;
                   picomConfigLocation = "~/.config/i3/picom.conf";
                 }

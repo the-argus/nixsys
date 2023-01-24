@@ -194,7 +194,7 @@ in {
       }
       // (pkgs.callPackage
         ../../lib/home-manager/xorg.nix
-        {inherit settings config;})
+        {inherit config;})
       .startxAliases
       // (lib.optionalAttrs config.desktops.gnome.enable {
         gnome = "dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY && XDG_SESSION_TYPE=wayland dbus-run-session -- gnome-shell --display-server --wayland";
