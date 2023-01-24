@@ -59,7 +59,7 @@
             systemTheme.discordTheme
             {
               inherit config;
-              inherit (systemTheme) font;
+              font = systemTheme.font.display;
             }
           else systemTheme.discordTheme;
       in {
