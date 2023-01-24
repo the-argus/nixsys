@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  settings,
   config,
   banner,
   ...
@@ -26,7 +25,7 @@ in {
           #!/bin/sh
           ${
             builtins.concatStringsSep "\n"
-            ((pkgs.callPackage ../../../../lib/home-manager/xorg.nix {inherit settings;})
+            ((pkgs.callPackage ../../../../lib/home-manager/xorg.nix {})
               .mkAutoStart {
                 picomConfigLocation = "~/.config/qtile/config/picom.conf";
               })
@@ -38,12 +37,16 @@ in {
       ".config/qtile/info.py".text = ''
         hardware = {
             "hasBattery": ${
-          if settings.hasBattery
+          if config.system.hardware.hasBattery
           then "True"
           else "False"
         }
         }
-        useDvorak = ${if config.keyboard.dvorak.enable then "True" else "False"}
+        useDvorak = ${
+          if config.keyboard.dvorak.enable
+          then "True"
+          else "False"
+        }
         terminal = "${config.desktops.terminal}/bin/${config.desktops.terminal.pname}"
       '';
 

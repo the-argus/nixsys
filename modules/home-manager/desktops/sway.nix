@@ -2,7 +2,6 @@
   pkgs,
   lib,
   banner,
-  settings,
   config,
   ...
 }: let
@@ -17,7 +16,7 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.sway = let
       common = import ../../../lib/home-manager/i3-common.nix {
-        inherit pkgs lib settings banner;
+        inherit pkgs lib banner;
         inherit (config.system) theme;
         inherit (config.banner) palette;
         inherit (config.desktops) terminal;
@@ -55,10 +54,10 @@ in {
                 ]
                 # neither of these even work
                 ++ (lib.lists.optional
-                  settings.usesWireless
+                  config.system.hardware.usesWireless
                   "${pkgs.networkmanagerapplet}/bin/nm-applet")
                 ++ (lib.lists.optional
-                  settings.usesBluetooth
+                  config.system.hardware.usesBluetooth
                   "${pkgs.blueman}/bin/blueman-applet"));
             commandsAlways =
               mkStartup true [

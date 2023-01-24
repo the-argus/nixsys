@@ -90,8 +90,8 @@
           // fs.extraSpecialArgs
           // {
             inherit (fs) unstable localbuild useMusl remotebuild;
-            inherit (fs) useFlags plymouth usesWireless usesBluetooth;
-            inherit (fs) usesEthernet hostname username;
+            inherit (fs) useFlags plymouth;
+            inherit (fs) hostname username;
             inherit stateVersion;
             settings = fs;
           };
@@ -129,7 +129,6 @@
           // {
             inherit (fs) unstable remotebuild localbuild;
             inherit (fs) useFlags useMusl useClang;
-            inherit (fs) usesEthernet usesWireless usesBluetooth;
             inherit (fs) hostname username;
             inherit stateVersion;
             settings = fs;

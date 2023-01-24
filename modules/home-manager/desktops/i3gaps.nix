@@ -2,7 +2,6 @@
   pkgs,
   lib,
   banner,
-  settings,
   config,
   ...
 }: let
@@ -31,7 +30,7 @@ in {
         align = "center";
       in {
         "wireless _first_" = {
-          enable = settings.usesWireless;
+          enable = config.system.hardware.usesWireless;
           position = 5;
           settings = {
             inherit align min_width;
@@ -40,7 +39,7 @@ in {
           };
         };
         "ethernet _first_" = {
-          enable = settings.usesEthernet;
+          enable = config.system.hardware.usesEthernet;
           position = 6;
           settings = {
             inherit align min_width;
@@ -115,7 +114,7 @@ in {
     };
     xsession.windowManager.i3 = let
       common = import ../../../lib/home-manager/i3-common.nix {
-        inherit pkgs lib settings banner;
+        inherit pkgs lib banner;
         inherit (config.system) theme;
         inherit (config.banner) palette;
         inherit (config.desktops) terminal;
@@ -147,7 +146,7 @@ in {
             common.config.startup
             ++ (map (cmd: {command = cmd;})
               (
-                (pkgs.callPackage ../../../lib/home-manager/xorg.nix {inherit settings;})
+                (pkgs.callPackage ../../../lib/home-manager/xorg.nix {})
                 .mkAutoStart {
                   isI3 = true;
                   picomConfigLocation = "~/.config/i3/picom.conf";

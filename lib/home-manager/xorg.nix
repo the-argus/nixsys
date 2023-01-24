@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  settings,
   config,
   ...
 }: let
@@ -54,7 +53,7 @@ in rec {
         # restore feh wallpaper
         "$HOME/.fehbg"
       ]
-      ++ (optionalList settings.usesWireless wirelessAutostart)
-      ++ (optionalList settings.usesBluetooth bluetoothAutostart)
-      ++ (optionalList settings.usesMouse mouseAutostart));
+      ++ (optionalList config.system.hardware.usesWireless wirelessAutostart)
+      ++ (optionalList config.system.hardware.usesBluetooth bluetoothAutostart)
+      ++ (optionalList config.system.hardware.usesMouse mouseAutostart));
 }

@@ -8,5 +8,6 @@
     ./davfs2.nix
     ./dvorak.nix
     ./plymouth.nix
+    ./hardware.nix
   ];
 }

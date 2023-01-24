@@ -3,6 +3,6 @@
     ./desktops
     ./gaming
     ./dvorak.nix
-    ./plymouth.nix
+    ../hardware.nix
   ];
 }
