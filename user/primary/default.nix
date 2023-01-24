@@ -121,7 +121,7 @@
       wl-color-picker
       epick
       pngquant
-        
+
       myPackages.xgifwallpaper
       myPackages.ufetch
 
