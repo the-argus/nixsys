@@ -50,7 +50,7 @@
     localbuild = _: _: {};
   };
   additionalOverlays = [];
-  hardwareConfiguration = [../system/hardware];
+  additionalNixosModules = [../system/hardware];
   optimization = {
     arch = "tigerlake";
     # use musl instead of glibc
