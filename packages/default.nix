@@ -6,7 +6,7 @@
   # meta packages
   gtkThemes = callPackage ./gtk-themes {};
   discordThemes = callPackage ./discord-themes.nix {};
-  firefoxPackages = callPackage ./firefox-assets {};
+  firefoxPackages = callPackage ./firefox {};
 
   # indivdual packages
   picom = callPackage ./picom.nix {};
