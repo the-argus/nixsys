@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.desktops;
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib) mkIf mkEnableOption mkOption;
 in {
   imports = [
     ./sway.nix
