@@ -21,6 +21,10 @@ in {
 
   options.desktops = {
     enable = mkEnableOption "Desktop";
+    terminal = mkOption {
+      type = lib.types.package;
+      default = pkgs.kitty;
+    };
   };
 
   config = mkIf cfg.enable {
