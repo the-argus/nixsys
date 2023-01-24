@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  settings,
   ...
 }: {
   programs.waybar = {
@@ -61,7 +60,7 @@
             max-length = 50;
           }
           // (
-            if settings.usesWireless
+            if config.system.hardware.usesWireless
             then {
               on-click = "nm-connection-editor";
             }
