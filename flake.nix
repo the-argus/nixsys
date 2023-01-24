@@ -97,7 +97,7 @@
           };
         modules = [
           {
-            imports = [./system/configuration.nix ./modules fs.additionalNixosModules];
+            imports = [./system/configuration.nix ./modules] ++ fs.additionalNixosModules;
           }
         ];
       };
