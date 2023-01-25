@@ -80,70 +80,71 @@
   home.packages = let
     webcordPkg = webcord.packages.${pkgs.system}.default;
   in
-    with pkgs; [
-      (nvim-config.packages.${pkgs.system}.mkNeovim {
-        pluginsArgs = {
-          bannerPalette = config.system.theme.scheme;
-        };
-        wrapperArgs = {
-          viAlias = true;
-          vimAlias = true;
-        };
-      })
-      # unfree :(
-      slack
-      discord
+    with pkgs;
+      [
+        (nvim-config.packages.${pkgs.system}.mkNeovim {
+          pluginsArgs = {
+            bannerPalette = config.system.theme.scheme;
+          };
+          wrapperArgs = {
+            viAlias = true;
+            vimAlias = true;
+          };
+        })
+        # unfree :(
+        slack
+        discord
 
-      bitwarden-rofi.packages.${pkgs.system}.default
+        bitwarden-rofi.packages.${pkgs.system}.default
 
-      nobar.packages.${pkgs.system}.default
-      nextcloud-client
+        nobar.packages.${pkgs.system}.default
+        nextcloud-client
 
-      # gui applications---------
-      bitwarden-cli
-      pcmanfm
-      qalculate-gtk
-      pavucontrol
-      sxiv
-      mpv
-      zathura
-      qpwgraph
-      qdirstat
+        # gui applications---------
+        bitwarden-cli
+        pcmanfm
+        qalculate-gtk
+        pavucontrol
+        sxiv
+        mpv
+        zathura
+        qpwgraph
+        qdirstat
 
-      # color palette
-      wl-color-picker
-      # epick
-      # pngquant
+        # color palette
+        wl-color-picker
+        # epick
+        # pngquant
 
-      # cli
-      solo2-cli
-      nix-prefetch-scripts
-      # tigervnc
+        # cli
+        solo2-cli
+        nix-prefetch-scripts
+        # tigervnc
+      ]
+      ++ (lib.lists.optionals (!config.system.minimal) [
+        # unfree :(
+        p4
+        steam-run
+        steam-run-native
 
-    ] ++ (lib.lists.optionals (!config.system.minimal) [
-      # unfree :(
-      p4
-      steam-run
-      steam-run-native
+        # gui
+        gimp
+        pinta
+        webcordPkg
+        obs-studio
+        element-desktop
+        myPackages.xgifwallpaper
 
-      # gui
-      gimp
-      pinta
-      webcordPkg
-      obs-studio
-      element-desktop
-      myPackages.xgifwallpaper
+        # tui
+        cava
 
-      # tui
-      cava
+        # cli
+        myPackages.ufetch
+        transmission
+        ani-cli
 
-      # cli
-      myPackages.ufetch
-      transmission
-      ani-cli
-
-      # dev
-      nodejs
-      cargo
-    ]);
+        # dev
+        nodejs
+        cargo
+      ]);
 }

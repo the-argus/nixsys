@@ -124,47 +124,48 @@
       xdg-desktop-portal-gtk
     ];
   };
-  environment.systemPackages = with pkgs; [
-    # tui applications
-    (lib.meta.lowPrio vim)
-    ranger
-    htop
+  environment.systemPackages = with pkgs;
+    [
+      # tui applications
+      (lib.meta.lowPrio vim)
+      ranger
+      htop
 
-    # cli applications
-    zip
-    unzip
-    wget
-    curl
-    ffmpeg
-    direnv
-    nix-direnv-flakes
+      # cli applications
+      zip
+      unzip
+      wget
+      curl
+      ffmpeg
+      direnv
+      nix-direnv-flakes
 
-    # util
-    git
-    home-manager
-    pam_u2f
-    polkit
-    usbutils
-    nix-index
-    alsa-utils
-    ix
-    killall
-    pciutils
-    inetutils
+      # util
+      git
+      home-manager
+      pam_u2f
+      polkit
+      usbutils
+      nix-index
+      alsa-utils
+      ix
+      killall
+      pciutils
+      inetutils
 
+      # build - essential
+      gcc
+      lld
+      llvm
+    ]
+    ++ (lib.lists.optionals (!config.system.minimal) [
+      sshfs
 
-    # build - essential
-    gcc
-    lld
-    llvm
-  ] ++ (lib.lists.optionals (!config.system.minimal) [
-    sshfs
-
-    # cli applications
-    neofetch
-    tmatrix
-    cmatrix
-  ]);
+      # cli applications
+      neofetch
+      tmatrix
+      cmatrix
+    ]);
 
   system.stateVersion = "22.11";
 }
