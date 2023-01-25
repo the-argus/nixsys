@@ -23,8 +23,13 @@ in {
 
     xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gnome];
 
-    environment.systemPackages = with pkgs.gnomeExtensions;
-      [
+    environment.systemPackages =
+      (with pkgs.gnomeExtensions; [
+        unstable.gnomeExtensions.keep-awake
+        no-titlebar-when-maximized
+        gtk-title-bar
+      ])
+      ++ (lib.lists.optionals (!config.system.minimal) (with pkgs.gnomeExtensions; [
         appindicator
         # unstable.gnomeExtensions.transparent-window
         # compiz-alike-windows-effect
@@ -33,13 +38,10 @@ in {
         burn-my-windows
         blur-my-shell
         just-perfection
-        unstable.gnomeExtensions.keep-awake
         dash-to-panel
         gesture-improvements
-        no-titlebar-when-maximized
-        gtk-title-bar
         pkgs.myPackages.fly-pie
-      ]
+      ]))
       ++ (with pkgs; [
         # maui apps (replacements for evince, totem, and gedit respectively
         # shelf

@@ -12,7 +12,7 @@ in {
     steam = mkEnableOption "Enable steam and the hardware changes necessary for it.";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && !config.system.minimal) {
     hardware.steam-hardware.enable = cfg.steam;
   };
 }

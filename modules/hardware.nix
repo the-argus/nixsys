@@ -8,10 +8,12 @@
     hasBattery = true; # battery widget in tiling WMs
   };
 
-  inherit (lib) mkOption;
+  inherit (lib) mkOption mkEnableOption;
   inherit (lib.types) bool;
 in {
-  options.system.hardware = {
+  options.system = {
+    minimal = mkEnableOption "Disables the installation of many packages.";
+    hardware = {
     usesWireless = mkOption {
       type = bool;
       default = defaults.usesWireless;
@@ -36,6 +38,7 @@ in {
       type = bool;
       default = defaults.hasBattery;
       description = "Whether the system has a battery and needs charge to be displayed.";
+    };
     };
   };
 }

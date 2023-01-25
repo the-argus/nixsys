@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   banner,
   webcord,
   config,
@@ -90,22 +91,15 @@
         };
       })
       # unfree :(
-      p4
-      steam-run
-      steam-run-native
       slack
       discord
 
       bitwarden-rofi.packages.${pkgs.system}.default
 
       nobar.packages.${pkgs.system}.default
-      gimp
       nextcloud-client
 
       # gui applications---------
-      webcordPkg
-      obs-studio
-      element-desktop
       bitwarden-cli
       pcmanfm
       qalculate-gtk
@@ -116,31 +110,40 @@
       qpwgraph
       qdirstat
 
-      pinta
       # color palette
       wl-color-picker
-      epick
-      pngquant
+      # epick
+      # pngquant
 
+      # cli
+      solo2-cli
+      nix-prefetch-scripts
+      # tigervnc
+
+    ] ++ (lib.lists.optionals (!config.system.minimal) [
+      # unfree :(
+      p4
+      steam-run
+      steam-run-native
+
+      # gui
+      gimp
+      pinta
+      webcordPkg
+      obs-studio
+      element-desktop
       myPackages.xgifwallpaper
-      myPackages.ufetch
 
       # tui
       cava
 
       # cli
-      solo2-cli
+      myPackages.ufetch
       transmission
       ani-cli
-      nix-prefetch-scripts
-      # tigervnc
 
       # dev
       nodejs
       cargo
-
-      # nobar
-      xkb-switch
-      playerctl
-    ];
+    ]);
 }

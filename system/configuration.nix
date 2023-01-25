@@ -4,6 +4,7 @@
 {
   pkgs,
   lib,
+  config,
   username,
   settings,
   ...
@@ -128,13 +129,8 @@
     (lib.meta.lowPrio vim)
     ranger
     htop
-    lynx
-    w3m
 
     # cli applications
-    neofetch
-    tmatrix
-    cmatrix
     zip
     unzip
     wget
@@ -156,14 +152,19 @@
     pciutils
     inetutils
 
-    curlftpfs
-    sshfs
 
     # build - essential
     gcc
     lld
     llvm
-  ];
+  ] ++ (lib.lists.optionals (!config.system.minimal) [
+    sshfs
+
+    # cli applications
+    neofetch
+    tmatrix
+    cmatrix
+  ]);
 
   system.stateVersion = "22.11";
 }

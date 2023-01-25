@@ -15,7 +15,7 @@ in {
     typing = mkEnableOption "Install some typing games";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && !config.system.minimal) {
     home.packages = with pkgs;
       [
         heroic

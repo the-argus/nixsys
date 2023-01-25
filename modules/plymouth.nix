@@ -21,7 +21,7 @@ in {
   };
   config = mkIf cfg.enable {
     boot.plymouth = {
-      enable = cfg.enable;
+      enable = cfg.enable && (!config.system.minimal);
       themePackages = [cfg.themesPackage];
       theme = cfg.themeName;
     };

@@ -6,18 +6,13 @@
   username,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption mkOption types;
+  inherit (lib) mkIf mkEnableOption;
 in {
-  # options.virtualization.containers.podman.enable = mkOption {
-  #   description = "Enable podman";
-  #   type = types.bool;
-  #   default = true;
-  # };
   options.virtualization.containers.podman.enable =
     mkEnableOption
     "Enable podman";
 
-  config = mkIf config.virtualization.containers.podman.enable {
+  config = mkIf (config.virtualization.containers.podman.enable && (!config.system.minimal)) {
     users.extraUsers.${username} = {
       subUidRanges = [
         {

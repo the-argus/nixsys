@@ -53,7 +53,6 @@ in {
       noto-fonts-emoji
       noto-fonts-cjk
       liberation_ttf
-      dina-font
       victor-mono
 
       (nerdfonts.override {fonts = ["FiraCode" "VictorMono"];})

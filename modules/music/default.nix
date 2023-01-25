@@ -9,7 +9,7 @@
 in {
   options.music.enable = mkEnableOption "Music Production Software";
 
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && !config.system.minimal) {
     environment.systemPackages = with pkgs; [
       # vst emulation
       wineWowPackages.full
