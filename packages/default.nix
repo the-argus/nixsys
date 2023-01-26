@@ -18,4 +18,5 @@
   xgifwallpaper = callPackage ./xgifwallpaper.nix {};
   fly-pie = callPackage ./fly-pie {};
   firefox-assets = callPackage ./firefox-assets {};
+  neovim-remote = callPackage ./neovim-remote.nix {};
 }
