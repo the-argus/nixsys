@@ -73,7 +73,7 @@ in {
             for binary in $src/bin/*; do
               ln -sf $binary $out/bin/$(${super.coreutils-full}/bin/basename $binary)
             done
-            wrapProgram --set PYTHONDONTWRITEBYTECODE "yes" $out/qtile
+            wrapProgram $out/qtile --set PYTHONDONTWRITEBYTECODE "yes"
           '';
         };
         gnome =
