@@ -63,6 +63,19 @@ in {
         xdg-desktop-portal-gtk = super.xdg-desktop-portal-gtk.override {
           buildPortalsInGnome = false;
         };
+        qtile = super.stdenv.mkDerivation {
+          name = "qtile-wrapped";
+          src = super.qtile;
+          nativeBuildInputs = [super.buildPackages.makeWrapper];
+          dontUnpack = true;
+          installPhase = ''
+            mkdir -p $out/bin
+            for binary in $src/bin/*; do
+              ln -sf $binary $out/bin/$(${super.coreutils-full}/bin/basename $binary)
+            done
+            wrapProgram --set PYTHONDONTWRITEBYTECODE "yes" $out/qtile
+          '';
+        };
         gnome =
           super.gnome
           // {
