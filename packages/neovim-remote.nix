@@ -26,7 +26,7 @@ writeShellScriptBin "nvim-remote" ''
           IS_UNITY="yes"
           continue
       fi
-      appended_str="${appended_str} ${arg}"
+      appended_str="${"\${appended_str}} ${"\${arg}"}"
   done
   # there's always a space at the front? get rid of that
   appended_str=${appended_str:1}
