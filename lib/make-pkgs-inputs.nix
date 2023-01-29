@@ -70,9 +70,7 @@ in {
           dontUnpack = true;
           installPhase = ''
             mkdir -p $out/bin
-            for binary in $src/bin/*; do
-              ln -sf $binary $out/bin/$(${super.coreutils-full}/bin/basename $binary)
-            done
+            ln -sf $src/bin/qtile $out/bin/qtile
             wrapProgram $out/bin/qtile --set PYTHONDONTWRITEBYTECODE "yes"
           '';
         };
