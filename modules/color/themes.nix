@@ -1,5 +1,6 @@
 {
   pkgs,
+  unstable,
   lib,
   banner,
   settings,
@@ -19,12 +20,12 @@
   inherit (allThemes) cursorThemes materialBlackFrost;
 
   rosePineTheme = {
-    name = "rose-pine-gtk";
+    name = "rose-pine";
     package = pkgs.rose-pine-gtk-theme;
   };
   rosePineIcons = {
-    name = "rose-pine-icons";
-    package = pkgs.rose-pine-gtk-theme;
+    name = "rose-pine";
+    package = unstable.rose-pine-icon-theme;
   };
 
   kanagawaTheme = {
