@@ -52,6 +52,8 @@ in rec {
 
         # restore feh wallpaper
         "$HOME/.fehbg"
+
+        "${pkgs.blugon}/bin/blugon"
       ]
       ++ (optionalList config.system.hardware.usesWireless wirelessAutostart)
       ++ (optionalList config.system.hardware.usesBluetooth bluetoothAutostart)
