@@ -19,17 +19,17 @@ base0F: "d65d0e" # brown
 
 
 # banner extensions
-highlight:      "b8bb26"
-hialt0:         "8ec07c"
-hialt1:         "83a598"
-hialt2:         "8ec07c"
+highlight:      "be5a40"
+hialt0:         "8b4337"
+hialt1:         "bf4321"
+hialt2:         "fe8019"
 urgent:         "fb4934"
 warn:           "fe8019"
 confirm:        "fabd2f"
 link:           "8ec07c"
 
-pfg-highlight:  "282828"
-pfg-hialt0:     "282828"
+pfg-highlight:  "fbf1c7"
+pfg-hialt0:     "fbf1c7"
 pfg-hialt1:     "282828"
 pfg-hialt2:     "282828"
 pfg-urgent:     "fbf1c7"
