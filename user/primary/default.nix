@@ -120,7 +120,6 @@
         # cli
         solo2-cli
         nix-prefetch-scripts
-        blugon
         # tigervnc
       ]
       ++ (lib.lists.optionals (!config.system.minimal) [
