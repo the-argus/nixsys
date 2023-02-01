@@ -26,6 +26,7 @@
     ./spicetify.nix
     ./waybar.nix
     ./rofi.nix
+    ./blugon.nix
     ../../modules/color/themes.nix
     ../../modules/home-manager
     banner.module
