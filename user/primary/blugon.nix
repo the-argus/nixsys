@@ -41,7 +41,7 @@
     color14 = 55ffff
     color15 = ffffff
   '';
-  myBlugon = pkgs.blugon.overrideAttrs {
+  myBlugon = pkgs.blugon.overrideAttrs (_: {
     postInstall = ''
       # this should be in postPatch but thats used by the original pkg
       rm -rf $out/lib/systemd
@@ -54,7 +54,7 @@
       ${pkgs.coreutils-full}/bin/chmod +wr $out/bin/blugon
       sed -i "s/CONFIG_FILE_CURRENT = CONFIG_DIR + \'current\'/CONFIG_FILE_CURRENT = \/home\/${username}\/.cache\/blugon-current" $out/bin/blugon
     '';
-  };
+  });
 in {
   home.packages = with pkgs; [
     myBlugon
