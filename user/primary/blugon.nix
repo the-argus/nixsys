@@ -52,7 +52,7 @@
       ln -sf ${blugonConfig} $out/share/blugon/myconfig/config
 
       ${pkgs.coreutils-full}/bin/chmod +wr $out/bin/blugon
-      sed -i "s|CONFIG_FILE_CURRENT = CONFIG_DIR + 'current'|CONFIG_FILE_CURRENT = \/home\/${username}\/.cache\/blugon-current|g" $out/bin/blugon
+      sed -i "s|CONFIG_FILE_CURRENT = CONFIG_DIR + 'current'|CONFIG_FILE_CURRENT = '\/home\/${username}\/.cache\/blugon-current'|g" $out/bin/blugon
     '';
   });
 in {
