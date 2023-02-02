@@ -124,7 +124,7 @@
       scheme = schemes.gruv;
       gtk = {
         theme = {
-          package = pkgs.gruvbox-gtk-theme;
+          package = unstable.gruvbox-gtk-theme;
           name = "Gruvbox-Dark-B";
         };
         iconTheme = {
