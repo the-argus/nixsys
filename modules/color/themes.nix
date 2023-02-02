@@ -107,14 +107,26 @@
       scheme = schemes.amber-forest;
     };
 
-    gruvbox = override defaultTheme rec {
+    gruvboxWithGtkNix = override defaultTheme rec {
       scheme = schemes.gruv;
       gtk = {
         theme = "gtkNix";
-        # theme = {
-        #   package = pkgs.gruvbox-dark-gtk;
-        #   name = "gruvbox-dark";
-        # };
+        iconTheme = {
+          package = pkgs.gruvbox-dark-icons-gtk;
+          name = "oomox-gruvbox-dark";
+        };
+        cursorTheme = cursorThemes.googleDotBlack;
+      };
+      discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
+    };
+
+    gruvbox = override defaultTheme rec {
+      scheme = schemes.gruv;
+      gtk = {
+        theme = {
+          package = pkgs.gruvbox-gtk-theme;
+          name = "Gruvbox-Dark-B";
+        };
         iconTheme = {
           package = pkgs.gruvbox-dark-icons-gtk;
           name = "oomox-gruvbox-dark";
