@@ -20,6 +20,7 @@
     previewer = {
       source = pkgs.writeShellScript "lf-previewer.sh" ''
         # kitty previews
+        kitty +icat --silent --clear
         if [[ "$( ${pkgs.file}/bin/file -Lb --mime-type "$1")" =~ ^image ]]; then
           file=$1
           w=$2
