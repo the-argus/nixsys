@@ -27,6 +27,7 @@
     ./waybar.nix
     ./rofi.nix
     ./blugon.nix
+    ./lf.nix
     ../../modules/color/themes.nix
     ../../modules/home-manager
     banner.module
@@ -146,6 +147,7 @@
         myPackages.ufetch
         transmission
         ani-cli
+        glow
 
         # dev
         nodejs
