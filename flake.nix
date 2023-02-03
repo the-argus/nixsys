@@ -56,6 +56,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
@@ -142,5 +143,17 @@
       createHomeConfigurations defaultGlobalSettings;
     devShell.${defaultGlobalSettings.system} =
       (finalizeSettings defaultGlobalSettings).pkgs.mkShell {};
+
+    hosts = {
+      laptop = let
+        laptopSettings = import ./hosts/laptop;
+      in {
+        nixosConfigurations = self.createNixosConfiguration laptopSettings;
+        homeConfigurations = {
+          "${laptopSettings.username}" =
+            self.createHomeConfigurations laptopSettings;
+        };
+      };
+    };
   };
 }
