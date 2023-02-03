@@ -20,7 +20,6 @@
     previewer = {
       source = pkgs.writeShellScript "lf-previewer.sh" ''
         # kitty previews
-        kitty +icat --clear &
         if [[ "$( ${pkgs.file}/bin/file -Lb --mime-type "$1")" =~ ^image ]]; then
           file=$1
           w=$2
@@ -41,6 +40,14 @@
         esac
       '';
       keybinding = "i";
+
+      extraConfig = let
+        cleaner = pkgs.writeShellScript "lf-cleaner.sh" ''
+          kitty +icat --clear --silent --transfer-mode file
+        '';
+      in ''
+        set cleaner ${cleaner}
+      '';
     };
   };
 }
