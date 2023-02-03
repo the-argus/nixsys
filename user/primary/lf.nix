@@ -2,6 +2,8 @@
   home.packages = with pkgs; [
     # for pdftotext
     poppler_utils
+    # for highlighting source text
+    highlight
   ];
   programs.lf = {
     enable = true;
@@ -18,7 +20,7 @@
     previewer = {
       source = pkgs.writeShellScript "lf-previewer.sh" ''
         # kitty previews
-        if [[ "$( file -Lb --mime-type "$1")" =~ ^image ]]; then
+        if [[ "$( ${pkgs.file}/bin/file -Lb --mime-type "$1")" =~ ^image ]]; then
           file=$1
           w=$2
           h=$3
