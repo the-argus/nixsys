@@ -79,12 +79,18 @@
           };
       };
     stateVersion = "22.11";
-  in rec
-  {
+
+    hosts = {
+      laptop = import ./hosts/laptop {
+        inherit nixpkgs;
+        hostname = "evil";
+      };
+    };
+  in {
     createNixosConfiguration = settings: let
       fs = finalizeSettings settings;
-    in {
-      ${fs.hostname} = nixpkgs.lib.nixosSystem {
+    in
+      nixpkgs.lib.nixosSystem {
         inherit (fs) pkgs system;
         specialArgs =
           inputs
@@ -102,7 +108,6 @@
           }
         ];
       };
-    };
 
     createHomeConfigurations = settings: let
       fs = finalizeSettings settings;
@@ -138,22 +143,17 @@
 
     inherit finalizeSettings;
 
-    nixosConfigurations = createNixosConfiguration defaultGlobalSettings;
-    homeConfigurations.${defaultGlobalSettings.username} =
-      createHomeConfigurations defaultGlobalSettings;
+    nixosConfigurations = rec {
+      default = self.createNixosConfiguration defaultGlobalSettings;
+      laptop = self.createNixosConfiguration hosts.laptop;
+      ${hosts.laptop.hostname} = laptop;
+    };
+    homeConfigurations = {
+      "default" =
+        self.createHomeConfigurations defaultGlobalSettings;
+      laptop = self.createHomeConfigurations hosts.laptop;
+    };
     devShell.${defaultGlobalSettings.system} =
       (finalizeSettings defaultGlobalSettings).pkgs.mkShell {};
-
-    hosts = {
-      laptop = let
-        laptopSettings = import ./hosts/laptop;
-      in {
-        nixosConfigurations = self.createNixosConfiguration laptopSettings;
-        homeConfigurations = {
-          "${laptopSettings.username}" =
-            self.createHomeConfigurations laptopSettings;
-        };
-      };
-    };
   };
 }

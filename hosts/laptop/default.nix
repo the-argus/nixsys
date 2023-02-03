@@ -1,4 +1,4 @@
-{nixpkgs, ...}: let
+{nixpkgs, hostname ? "evil", ...}: let
   override = nixpkgs.lib.attrsets.recursiveUpdate;
 in rec {
   # theme = "amber-forest";
@@ -7,7 +7,7 @@ in rec {
   theme = "gruvboxWithGtkNix";
   system = "x86_64-linux";
   username = "argus";
-  hostname = "evil";
+  inherit hostname;
   useDvorak = true;
   # unfree packages that i explicitly use
   allowedUnfree = [
