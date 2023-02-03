@@ -24,7 +24,7 @@
           h=$3
           x=$4
           y=$5
-          kitty +icat --silent --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file"
+          kitty +icat --silent --transfer-mode file --place "${"\${w}x\${h}@\${x}x\${y}"}" "$file"
           exit 0
         fi
         case "$1" in
