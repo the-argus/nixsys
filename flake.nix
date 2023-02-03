@@ -85,6 +85,10 @@
         inherit nixpkgs;
         hostname = "evil";
       };
+      pc = import ./hosts/pc {
+        inherit nixpkgs;
+        hostname = "mutant";
+      };
     };
   in {
     createNixosConfiguration = settings: let
@@ -143,15 +147,17 @@
 
     inherit finalizeSettings;
 
-    nixosConfigurations = rec {
+    nixosConfigurations = {
       default = self.createNixosConfiguration defaultGlobalSettings;
       laptop = self.createNixosConfiguration hosts.laptop;
-      ${hosts.laptop.hostname} = laptop;
+      ${hosts.laptop.hostname} = self.nixosConfigurations.laptop;
+      pc = self.createNixosConfiguration hosts.pc;
+      ${hosts.pc.hostname} = self.nixosConfigurations.pc;
     };
     homeConfigurations = {
-      "default" =
-        self.createHomeConfigurations defaultGlobalSettings;
+      default = self.createHomeConfigurations defaultGlobalSettings;
       laptop = self.createHomeConfigurations hosts.laptop;
+      pc = self.createHomeConfigurations hosts.pc;
     };
     devShell.${defaultGlobalSettings.system} =
       (finalizeSettings defaultGlobalSettings).pkgs.mkShell {};
