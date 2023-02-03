@@ -40,14 +40,13 @@
         esac
       '';
       keybinding = "i";
-
-      extraConfig = let
-        cleaner = pkgs.writeShellScript "lf-cleaner.sh" ''
-          kitty +icat --clear --silent --transfer-mode file
-        '';
-      in ''
-        set cleaner ${cleaner}
-      '';
     };
+    extraConfig = let
+      cleaner = pkgs.writeShellScript "lf-cleaner.sh" ''
+        kitty +icat --clear --silent --transfer-mode file
+      '';
+    in ''
+      set cleaner ${cleaner}
+    '';
   };
 }
