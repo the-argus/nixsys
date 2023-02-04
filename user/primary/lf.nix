@@ -59,8 +59,8 @@ in {
     '';
 
     commands = {
-      paste = ''${pkgs.myPackages.cp-p}/bin/cp-p --lf-paste $id'';
-      trash = "${pkgs.trash-cli}/bin/trash $fx";
+      paste = ''${"$"}${pkgs.myPackages.cp-p}/bin/cp-p --lf-paste $id'';
+      trash = "${"$"}${pkgs.trash-cli}/bin/trash $fx";
       z = ''
         %{{
           result="$(zoxide query --exclude $PWD $@)"
