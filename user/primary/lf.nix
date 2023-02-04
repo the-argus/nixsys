@@ -60,38 +60,75 @@ in {
 
     commands = {
       paste = ''${pkgs.myPackages.cp-p}/bin/cp-p --lf-paste $id'';
+      trash = "${pkgs.trash-cli}/bin/trash $fx";
       z = ''
-        result="$(zoxide query --exclude $PWD $@)"
-        lf -remote "send $id cd $result"
+        %{{
+          result="$(zoxide query --exclude $PWD $@)"
+          lf -remote "send $id cd $result"
+        }}
       '';
 
       zi = ''
-        result="$(zoxide query -i)"
-        lf -remote "send $id cd $result"
+        ${"\${{"}
+          result="$(zoxide query -i)"
+          lf -remote "send $id cd $result"
+        }}
       '';
 
-      git_pull = ''clear; git pull --rebase || true; echo "press ENTER"; read ENTER'';
-      git_status = ''clear; git status; echo "press ENTER"; read ENTER'';
-      git_log = ''clear; git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit'';
+      git_pull = "\${{clear; git pull --rebase || true; echo \"press ENTER\"; read ENTER}}";
+      git_status = "\${{clear; git status; echo \"press ENTER\"; read ENTER}}";
+      git_log = "\${{clear; git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit}}";
 
       on-cd = ''
-        # display git repository status in your prompt
-        source ${pkgs.git}/share/bash-completion/completions/git-prompt.sh
-        GIT_PS1_SHOWDIRTYSTATE=auto
-        GIT_PS1_SHOWSTASHSTATE=auto
-        GIT_PS1_SHOWUNTRACKEDFILES=auto
-        GIT_PS1_SHOWUPSTREAM=auto
-        GIT_PS1_COMPRESSSPARSESTATE=auto
-        git=$(__git_ps1 " [GIT BRANCH:> %s]") || true
-        fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m$git\033[0m"
-        lf -remote "send $id set promptfmt \"$fmt\""
+        &{{
+          # display git repository status in your prompt
+          source ${pkgs.git}/share/bash-completion/completions/git-prompt.sh
+          GIT_PS1_SHOWDIRTYSTATE=auto
+          GIT_PS1_SHOWSTASHSTATE=auto
+          GIT_PS1_SHOWUNTRACKEDFILES=auto
+          GIT_PS1_SHOWUPSTREAM=auto
+          GIT_PS1_COMPRESSSPARSESTATE=auto
+          git=$(__git_ps1 " [GIT BRANCH:> %s]") || true
+          fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m$git\033[0m"
+          lf -remote "send $id set promptfmt \"$fmt\""
+        }}
+      '';
+
+      fzf_jump = ''
+        ${"\${{"}
+          res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+          if [ -d "$res" ] ; then
+            cmd="cd"
+          elif [ -f "$res" ] ; then
+            cmd="select"
+          else
+            exit 0
+          fi
+          lf -remote "send $id $cmd \"$res\""
+        }}
+      '';
+
+      fzf_search = ''
+        ${"\${{"}
+        res="$( \
+          RG_PREFIX="rg --column --line-number --no-heading --color=always \
+            --smart-case "
+          FZF_DEFAULT_COMMAND="$RG_PREFIX ${"''"}" \
+            fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+            --ansi --layout=reverse --header 'Search in files' \
+            | cut -d':' -f1
+          )"
+          [ ! -z "$res" ] && lf -remote "send $id select \"$res\""
+        }}
       '';
     };
 
     keybindings = {
-      gp = "git_pull";
-      gs = "git_status";
-      gl = "git_log";
+      gp = ":git_pull";
+      gs = ":git_status";
+      gl = ":git_log";
+      "<c-f>" = ":fzf_jump";
+      "<c-r>" = ":fzf_search";
     };
   };
 }

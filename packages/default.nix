@@ -20,4 +20,5 @@
   firefox-assets = callPackage ./firefox-assets {};
   neovim-remote = callPackage ./neovim-remote.nix {};
   cp-p = callPackage ./cp-p.nix {};
+  rgf = callPackage ./rgf.nix {};
 }
