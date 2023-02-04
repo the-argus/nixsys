@@ -59,7 +59,7 @@ in {
     '';
 
     commands = {
-      paste = ''$cp-p --lf-paste $id'';
+      paste = ''${pkgs.myPackages.cp-p}/bin/cp-p --lf-paste $id'';
       z = ''
         result="$(zoxide query --exclude $PWD $@)"
         lf -remote "send $id cd $result"
