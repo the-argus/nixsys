@@ -46,7 +46,7 @@ in {
       icons = true;
       ignorecase = true;
       preview = true;
-      shell = "sh";
+      shell = "${pkgs.dash}/bin/dash";
       shellopts = "-eu";
       tabstop = 2;
     };
@@ -56,6 +56,19 @@ in {
     };
     extraConfig = ''
       set cleaner ${cleaner}
+
+      ${"\${{"}
+        w=$(tput cols)
+        if [ $w -le 80 ]; then
+          lf -remote "send $id set ratios 1:2"
+        elif [ $w -le 160 ]; then
+          lf -remote "send $id set ratios 1:2:3"
+        else
+          lf -remote "send $id set ratios 1:2:3:5"
+        fi
+      }}
+
+      %[ $LF_LEVEL -eq 1 ] || echo "Warning: You're in a nested lf instance!"
     '';
 
     commands = {
@@ -63,14 +76,15 @@ in {
       trash = "${"$"}${pkgs.trash-cli}/bin/trash $fx";
       z = ''
         %{{
-          result="$(zoxide query --exclude $PWD $@)"
+          # result="$(zoxide query --exclude $PWD $@)"
+          result="$(zoxide query $@)"
           lf -remote "send $id cd $result"
         }}
       '';
 
       zi = ''
         ${"\${{"}
-          result="$(zoxide query -i)"
+          result="$(zoxide query $@ -i)"
           lf -remote "send $id cd $result"
         }}
       '';
@@ -91,6 +105,9 @@ in {
           git=$(__git_ps1 " [GIT BRANCH:> %s]") || true
           fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m$git\033[0m"
           lf -remote "send $id set promptfmt \"$fmt\""
+
+          # set window title
+          printf "\033]0; $(pwd | sed "s|$HOME|~|") - lf\007" > /dev/tty
         }}
       '';
 
@@ -121,6 +138,50 @@ in {
           [ ! -z "$res" ] && lf -remote "send $id select \"$res\""
         }}
       '';
+
+      # mkdir command which joins spaces into one name
+      mkdir = "%IFS=\" \"; mkdir -p -- \"$*\"";
+
+      bulkrename = ''
+        ${"\${{"}
+          ${pkgs.vimv-rs}/bin/vimv --git -- $(basename -a -- $fx)
+
+          lf -remote "send $id load"
+          lf -remote "send $id unselect"
+        }}
+      '';
+
+      select_files = ''
+        ${"\${{"}
+          { echo "$fs"; find -L "$(pwd)" -mindepth 1 -maxdepth 1 -type f; } |
+            if [ "$lf_hidden" = "false" ]; then
+              # remove any hidden files so you only select files you can see.
+              grep -v '/\.[^/]\+$'
+            else
+              cat
+            fi |
+            sed '/^$/d' | sort | uniq -u |
+            xargs -d '\n' -r -I{} lf -remote "send $id toggle {}"
+        }}
+      '';
+
+      select_dirs = ''
+        ${"\${{"}
+          { echo "$fs"; find -L "$(pwd)" -mindepth 1 -maxdepth 1 -type d; } |
+            if [ "$lf_hidden" = "false" ]; then
+              grep -v '/\.[^/]\+$'
+            else
+              cat
+            fi |
+            sed '/^$/d' | sort | uniq -u |
+            xargs -d '\n' -r -I{} lf -remote "send $id toggle {}"
+        }}
+      '';
+
+      yank_dirname = "$dirname -- \"$f\" | head -c-1 | xclip -i -selection clipboard";
+      yank_path = "$printf '%s' \"$fx\" | xclip -i -selection clipboard";
+      yank_basename = "$basename -a -- $fx | head -c-1 | xclip -i -selection clipboard";
+      yank_basename_without_extension = "&basename -a -- $fx | rev | cut -d. -f2- | rev | head -c-1 | xclip -i -selection clipboard";
     };
 
     keybindings = {
@@ -129,6 +190,8 @@ in {
       gl = ":git_log";
       "<c-f>" = ":fzf_jump";
       "<c-r>" = ":fzf_search";
+      a = "push :mkdir<space>";
+      "<c-z>" = "$ kill -STOP $PPID";
     };
   };
 }
