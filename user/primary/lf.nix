@@ -57,5 +57,41 @@ in {
     extraConfig = ''
       set cleaner ${cleaner}
     '';
+
+    commands = {
+      paste = ''$cp-p --lf-paste $id'';
+      z = ''
+        result="$(zoxide query --exclude $PWD $@)"
+        lf -remote "send $id cd $result"
+      '';
+
+      zi = ''
+        result="$(zoxide query -i)"
+        lf -remote "send $id cd $result"
+      '';
+
+      git_pull = ''clear; git pull --rebase || true; echo "press ENTER"; read ENTER'';
+      git_status = ''clear; git status; echo "press ENTER"; read ENTER'';
+      git_log = ''clear; git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit'';
+
+      on-cd = ''
+        # display git repository status in your prompt
+        source ${pkgs.git}/share/bash-completion/completions/git-prompt.sh
+        GIT_PS1_SHOWDIRTYSTATE=auto
+        GIT_PS1_SHOWSTASHSTATE=auto
+        GIT_PS1_SHOWUNTRACKEDFILES=auto
+        GIT_PS1_SHOWUPSTREAM=auto
+        GIT_PS1_COMPRESSSPARSESTATE=auto
+        git=$(__git_ps1 " [GIT BRANCH:> %s]") || true
+        fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m$git\033[0m"
+        lf -remote "send $id set promptfmt \"$fmt\""
+      '';
+    };
+
+    keybindings = {
+      gp = "git_pull";
+      gs = "git_status";
+      gl = "git_log";
+    };
   };
 }

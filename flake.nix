@@ -39,7 +39,10 @@
       url = "github:the-argus/gtk-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    modern-unix.url = "github:the-argus/modern-unix-flake";
+    modern-unix = {
+      url = "github:the-argus/modern-unix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nobar = {
       url = github:the-argus/nobar;
