@@ -39,10 +39,9 @@
       url = "github:the-argus/gtk-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    modern-unix = {
-      url = "github:the-argus/modern-unix-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    # provides home manager module so it's always up to date with pkgs
+    modern-unix.url = "github:the-argus/modern-unix-flake";
 
     nobar = {
       url = github:the-argus/nobar;
