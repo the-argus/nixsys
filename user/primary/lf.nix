@@ -27,7 +27,7 @@
           x=$4
           y=$5
           kitty +icat --silent --transfer-mode file --place "${"\${w}x\${h}@\${x}x\${y}"}" "$file"
-          exit 0
+          exit 1
         fi
         case "$1" in
           *.tar*) tar tf "$1";;
