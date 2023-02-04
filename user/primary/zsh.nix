@@ -282,30 +282,25 @@ in {
 
       function ip () { command ip -color=auto "$@"; }
 
-      function fm {
-        local IFS=$'\t\n'
-        local tempfile="$(mktemp -t tmp.XXXXXX)"
-        local ranger_cmd=(
-          command
-          ranger
-          --cmd="map q chain shell echo %d > "$tempfile"; quitall"
-        )
-
-        ${"$\{ranger_cmd[@]}"} "$@"
-        if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
-          cd -- "$(cat "$tempfile")" || return
+      lfcd () {
+        tmp="$(mktemp)"
+        lf -last-dir-path="$tmp" "$@"
+        if [ -f "$tmp" ]; then
+          dir="$(cat "$tmp")"
+          rm -f "$tmp"
+          if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+              cd "$dir"
+            fi
+          fi
         fi
-        command rm -f -- "$tempfile" 2>/dev/null
-        clear
       }
-
-      alias ranger=fm
-      alias look="command ranger"
-      alias view="command ranger"
+      # bind ctrl-o to lfcd
+      bindkey -s '^o' 'lfcd\n'
 
       duk ()
       {
-         sudo du -k "$@" | sort -n
+        sudo du -k "$@" | sort -n
       }
 
       function compress () {

@@ -1,4 +1,9 @@
 {pkgs, ...}: let
+  iconsfile = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/gokcehan/lf/master/etc/icons.example";
+    sha256 = "04jnldz0y2fj4ymypzmvs7jjbvvjrwzdp99qp9r12syfk65nh9cn";
+  };
+
   cleaner = pkgs.writeShellScript "lf-cleaner.sh" ''
     kitty +icat --clear --silent --transfer-mode file
   '';
@@ -38,6 +43,7 @@
     )
   '';
 in {
+  home.file.".config/lf/icons".source = iconsfile;
   programs.lf = {
     enable = true;
     settings = {
@@ -49,6 +55,7 @@ in {
       shell = "${pkgs.dash}/bin/dash";
       shellopts = "-eu";
       tabstop = 2;
+      info = "size";
     };
     previewer = {
       source = sandbox;
@@ -59,12 +66,10 @@ in {
 
       ${"\${{"}
         w=$(tput cols)
-        if [ $w -le 80 ]; then
+        if [ $w -le 160 ]; then
           lf -remote "send $id set ratios 1:2"
-        elif [ $w -le 160 ]; then
-          lf -remote "send $id set ratios 1:2:3"
         else
-          lf -remote "send $id set ratios 1:2:3:5"
+          lf -remote "send $id set ratios 1:2:3"
         fi
       }}
 
@@ -192,6 +197,10 @@ in {
       "<c-r>" = ":fzf_search";
       a = "push :mkdir<space>";
       "<c-z>" = "$ kill -STOP $PPID";
+      "<c-j>" = ":half-down";
+      "<c-k>" = ":half-up";
+      "<enter>" = ":open";
+      "<c-h>" = ":set hidden!";
     };
   };
 }
