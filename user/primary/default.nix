@@ -148,6 +148,7 @@
         transmission
         ani-cli
         glow
+        myPackages.rgf
 
         # dev
         nodejs
