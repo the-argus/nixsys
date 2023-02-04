@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   iconsfile = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/gokcehan/lf/master/etc/icons.example";
+    url = "https://raw.githubusercontent.com/gokcehan/lf/b47cf6d5a525c39db268c2f7b77e2b7497843b17/etc/icons.example";
     sha256 = "04jnldz0y2fj4ymypzmvs7jjbvvjrwzdp99qp9r12syfk65nh9cn";
   };
 
