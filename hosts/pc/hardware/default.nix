@@ -16,8 +16,6 @@
    */
   nix.package = pkgs.nixFlakes;
 
-  hardware.steam-hardware.enable = true;
-
   environment.etc = {
     # softdep isnt really necessary but i dont believe it hurts
     "vfio.conf" = {
