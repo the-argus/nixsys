@@ -152,6 +152,7 @@
       killall
       pciutils
       inetutils
+      file
 
       # build - essential
       gcc
