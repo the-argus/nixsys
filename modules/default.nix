@@ -9,5 +9,6 @@
     ./dvorak.nix
     ./plymouth.nix
     ./hardware.nix
+    ./ly.nix
   ];
 }

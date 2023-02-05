@@ -21,4 +21,5 @@
   neovim-remote = callPackage ./neovim-remote.nix {};
   cp-p = callPackage ./cp-p.nix {};
   rgf = callPackage ./rgf.nix {};
+  ly = callPackage ./ly.nix {};
 }

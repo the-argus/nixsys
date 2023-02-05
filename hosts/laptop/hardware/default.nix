@@ -56,12 +56,17 @@
   # choose display manager
   # services.xserver.desktopManager.plasma5.enable = true;
   # services.xserver.displayManager.startx.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.displayManager.ly = {
-  #   enable = true;
-  #   defaultUsers = username;
-  # };
+  services.xserver.displayManager.ly = {
+    enable = true;
+    defaultUser = username;
+    package = pkgs.myPackages.ly;
+    extraConfig = ''
+      animate = true
+      animation = 0
+    '';
+  };
   # environment.etc.issue = {
   #   source = pkgs.writeText "issue" ''
   #     testing..
