@@ -7,8 +7,9 @@ repository are some browser extensions and installed flatpaks.
 
 ## Usage
 
-To apply or update, enter the shell:``nix develop``
-then enter "rebuild" or "update", respectively.
+To apply or update, install nix-direnv-flakes:
+``nix shell nixpkgs#nix-direnv-flakes``. Then run ``direnv allow`` to enter the
+environment. Finally, run "rebuild" or "update", respectively.
 
 You can find configurations for different machines inside of the ``hosts/``
 directory. In order to build the configurations for different hosts instead
