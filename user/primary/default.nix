@@ -77,6 +77,9 @@
       "x-scheme-handler/chrome" = ["firefox.desktop"];
     };
   };
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-18.1.0"
+  ];
 
   # extra packages
   home.packages = let
@@ -96,6 +99,7 @@
         # unfree :(
         slack
         discord
+        obsidian
 
         bitwarden-rofi.packages.${pkgs.system}.default
 

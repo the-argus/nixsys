@@ -12,6 +12,7 @@
     "steam-run"
     "steam-run-native"
     "steam-original"
+    "obsidian"
   ];
   allowBroken = false;
   extraExtraSpecialArgs = {};
