@@ -164,6 +164,10 @@
     devShell.${defaultGlobalSettings.system} =
       (finalizeSettings defaultGlobalSettings).pkgs.mkShell {};
 
+    packages.${defaultGlobalSettings.system} = {
+      myPackages = (finalizeSettings defaultGlobalSettings).pkgs.callPackage ./packages {};
+    };
+
     formatter.${defaultGlobalSettings.system} = (finalizeSettings defaultGlobalSettings).pkgs.alejandra;
   };
 }
