@@ -3,6 +3,7 @@
   lib,
   fetchFromGitHub,
   linux-pam,
+  libxcb,
 }:
 stdenv.mkDerivation rec {
   pname = "ly";
@@ -16,8 +17,16 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  buildInputs = [linux-pam];
-  makeFlags = ["FLAGS=-Wno-error"];
+  buildInputs = [linux-pam libxcb];
+  makeFlags = ["FLAGS="];
+
+  patches = [
+    ./remove-debug-flags.patch
+  ];
+
+  buildPhase = ''
+    make
+  '';
 
   installPhase = ''
     mkdir -p $out/bin

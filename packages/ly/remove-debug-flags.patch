@@ -1,0 +1,19 @@
+---
+ makefile | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/makefile b/makefile
+index f8cc6ed..55a76e8 100644
+--- a/makefile
++++ b/makefile
+@@ -1,7 +1,5 @@
+ NAME = ly
+ CC = gcc
+-FLAGS = -std=c99 -pedantic -g
+-FLAGS+= -Wall -Wextra -Werror=vla -Wno-unused-parameter
+ #FLAGS+= -DDEBUG
+ FLAGS+= -DGIT_VERSION_STRING=\"$(shell git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')\"
+ LINK = -lpam -lxcb
+-- 
+2.38.3
+
