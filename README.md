@@ -3,7 +3,7 @@
 This repository describes the setup of both my laptop and PC. It's a relatively
 large flake because I am very committed to reproducibility. The only things in
 my setup that don't exactly match what you will get from building this
-repository are some browser extensions and installed flatpaks.
+repository are some browser extensions, installed flatpaks, and my [wallpapers.](https://github.com/the-argus/wallpapers)
 
 ## Usage
 
