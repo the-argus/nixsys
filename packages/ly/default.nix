@@ -13,7 +13,7 @@ stdenv.mkDerivation rec {
     owner = "fairyglade";
     repo = "ly";
     rev = "b5d3ef0a7034407b746b6193c464bb9c497eb54b";
-    sha256 = "sha256-orCqjKlK6U1q7NDoMwxZZE44cyG8yuxdCCk1cQAalP0=";
+    sha256 = "sha256-SZp+aGxYXqV7q61sZHv/Glo0ID3/NSv6KdCD3llzm5c=";
     fetchSubmodules = true;
   };
 
