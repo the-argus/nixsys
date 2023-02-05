@@ -148,13 +148,15 @@ A complex set which must at least contain the following:
 
 ```nix
 {
-  arch = "";
-  useMusl = false;
-  useFlags = false;
-  useClang = false;
-  useNative = false;
-  USE = [];
-};
+  optimization = {
+    arch = "";
+    useMusl = false;
+    useFlags = false;
+    useClang = false;
+    useNative = false;
+    USE = [];
+  };
+}
 ```
 
 Setting ``useFlags`` to true will enable all of the custom build settings, and
@@ -178,14 +180,16 @@ respectively:
 
 ```nix
 {
-  name = "unstable";
-};
-{
-  name = "remotebuild";
-};
-{
-  name = "localbuild";
-};
+  unstableOverrides = {
+    name = "unstable";
+  };
+  remotebuildOverrides = {
+    name = "remotebuild";
+  };
+  localbuildOverrides = {
+    name = "localbuild";
+  };
+}
 ```
 
 These can be used to select certain packages to have specific optimizations, or
