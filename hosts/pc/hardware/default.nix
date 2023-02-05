@@ -12,8 +12,8 @@
   ];
 
   /*
-   nix.package = pkgs.nixVersions.nix_2_7;
-   */
+  nix.package = pkgs.nixVersions.nix_2_7;
+  */
   nix.package = pkgs.nixFlakes;
 
   environment.etc = {

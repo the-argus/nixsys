@@ -163,5 +163,7 @@
     };
     devShell.${defaultGlobalSettings.system} =
       (finalizeSettings defaultGlobalSettings).pkgs.mkShell {};
+
+    formatter.${defaultGlobalSettings.system} = (finalizeSettings defaultGlobalSettings).pkgs.alejandra;
   };
 }

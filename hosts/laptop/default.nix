@@ -1,4 +1,8 @@
-{nixpkgs, hostname ? "evil", ...}: let
+{
+  nixpkgs,
+  hostname ? "evil",
+  ...
+}: let
   override = nixpkgs.lib.attrsets.recursiveUpdate;
 in rec {
   # theme = "amber-forest";
