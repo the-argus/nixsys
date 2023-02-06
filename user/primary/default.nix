@@ -101,7 +101,9 @@
         discord
         obsidian
 
-        bitwarden-rofi.packages.${pkgs.system}.default
+        (bitwarden-rofi.packages.${pkgs.system}.default.override
+          # roughly 300 hours lol
+          {autoLock = 1000000;})
 
         nobar.packages.${pkgs.system}.default
         nextcloud-client
