@@ -6,10 +6,14 @@
   ...
 }: let
   cfg = config.desktops.i3gaps;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf mkOption;
 in {
   options.desktops.i3gaps = {
     enable = mkEnableOption "I3 window manager configuration.";
+    package = mkOption {
+      type = lib.types.package;
+      default = pkgs.i3-gaps;
+    };
     nobar = mkEnableOption "Alternate tiling WM workflow with no status bar.";
   };
 
@@ -131,7 +135,7 @@ in {
         ;
     in {
       enable = true;
-      package = pkgs.i3-gaps;
+      package = cfg.package;
       config =
         common.config
         # add everything that is unique to i3
