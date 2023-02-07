@@ -2,13 +2,14 @@
   stdenvNoCC,
   python3Minimal,
   ntfy-sh,
+  libnotify,
   ...
 }:
 stdenvNoCC.mkDerivation {
   name = "ntfy-notify-send";
   src = ./.;
 
-  buildInputs = [python3Minimal ntfy-sh];
+  buildInputs = [python3Minimal ntfy-sh libnotify];
 
   dontBuild = true;
   postPatch = ''
