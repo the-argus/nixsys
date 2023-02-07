@@ -22,4 +22,5 @@
   cp-p = callPackage ./cp-p.nix {};
   rgf = callPackage ./rgf.nix {};
   ly = callPackage ./ly {};
+  ntfy-notify-send = callPackage ./ntfy-notify-send {};
 }

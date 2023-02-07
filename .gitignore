@@ -2,7 +2,7 @@
 .direnv/
 
 # built package
-result/
+result
 
 # packer
 packer_compiled.lua
