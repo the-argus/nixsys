@@ -824,11 +824,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1675545634,
-        "narHash": "sha256-TbQeQcM5TA/wIho6xtzG+inUfiGzUXi8ewwttiQWYJE=",
+        "lastModified": 1675942811,
+        "narHash": "sha256-/v4Z9mJmADTpXrdIlAjFa1e+gkpIIROR670UVDQFwIw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0591d6b57bfeb55dfeec99a671843337bc2c3323",
+        "rev": "724bfc0892363087709bd3a5a1666296759154b1",
         "type": "github"
       },
       "original": {
@@ -856,11 +856,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1675681488,
-        "narHash": "sha256-0E/oYpixC+joFk7UrY60TwZcdthzP2BXmJwne3Ni8ZI=",
+        "lastModified": 1675918889,
+        "narHash": "sha256-hy7re4F9AEQqwZxubct7jBRos6md26bmxnCjxf5utJA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "13fdd3945d8a2da5e4afe35d8a629193a9680911",
+        "rev": "49efda9011e8cdcd6c1aad30384cb1dc230c82fe",
         "type": "github"
       },
       "original": {
@@ -1018,11 +1018,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1674703162,
-        "narHash": "sha256-QL7o4fjM0R/05BXv/wcSordiUbdJGVJiRGJTPQ4YIcE=",
+        "lastModified": 1676171351,
+        "narHash": "sha256-9iXi3+IAS5dRUAwEH9vAQwVslOa+Hyz/mobN12HrM4M=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "9574a6840cab9086673e7c6cd556e5364e5e06b3",
+        "rev": "94073ee844d703a43de47ba239f396bc074ef642",
         "type": "github"
       },
       "original": {
@@ -1175,11 +1175,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1675656170,
-        "narHash": "sha256-iTpOdj88Oy5aEPQU6vpsZSuSQppqO6byriHk9d++PtM=",
+        "lastModified": 1676001776,
+        "narHash": "sha256-0h4k/xQAKLFio1b/t5p+u3K5XbypzlivJKo1+JfiRns=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "19f5562b6ebc392bebbecb20c565cd1531c365f4",
+        "rev": "b58196f62286b884c545eb40202365b1b947669a",
         "type": "gitlab"
       },
       "original": {
@@ -1195,11 +1195,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1675736279,
+        "lastModified": 1675736383,
         "narHash": "sha256-fjQmN3pYGstBNHCFdmPzDf1/Dt04v3b7+/w4cQ4gkKo=",
         "owner": "the-argus",
         "repo": "spicetify-nix",
-        "rev": "4e00dd14c80ecd1a37e25c13a3fa8e8805b33e40",
+        "rev": "ec85c2a2f5d1035142b8e383cc77b68bb0b9ebc8",
         "type": "github"
       },
       "original": {
