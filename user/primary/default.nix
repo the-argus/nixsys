@@ -126,6 +126,7 @@
         # pngquant
 
         # cli
+        trash-cli
         solo2-cli
         nix-prefetch-scripts
         # tigervnc

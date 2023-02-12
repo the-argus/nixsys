@@ -190,6 +190,7 @@ in {
         cageff = "cage \"/bin/firefox -p Unconfigured\"";
         awesomedoc = "firefox ${pkgs.awesome.doc}/share/doc/awesome/doc/index.html & disown";
         ix = "curl -F 'f:1=<-' ix.io";
+        rm = "echo \"Don't rm... use trash! Sends files to ~/.local/share/Trash.\"";
       }
       // (pkgs.callPackage
         ../../lib/home-manager/xorg.nix
