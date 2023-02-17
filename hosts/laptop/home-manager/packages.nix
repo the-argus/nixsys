@@ -14,5 +14,7 @@
     # blender
     arandr
     iio-sensor-proxy
+
+    ifuse
   ];
 }
