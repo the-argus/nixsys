@@ -3,8 +3,12 @@
 import subprocess
 import signal
 import json
+import os
 
-ntfy_command = ["ntfy", "subscribe", "ntfy.sh/ian_obsidian_notifs_x77bf"]
+ntfy_command = ["ntfy", "subscribe"]
+
+with open(os.path.expanduser("~/.config/ntfy_subscription")) as f:
+    ntfy_command.append(f.readline())
 
 def notify(notification_text: str):
     subprocess.Popen(["notify-send", notification_text])
