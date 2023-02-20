@@ -8,7 +8,7 @@ import os
 ntfy_command = ["ntfy", "subscribe"]
 
 with open(os.path.expanduser("~/.config/ntfy_subscription")) as f:
-    ntfy_command.append(f.readline())
+    ntfy_command.append(f.readline()[:-1]) # remove newline
 
 def notify(notification_text: str):
     subprocess.Popen(["notify-send", notification_text])
