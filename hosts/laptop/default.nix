@@ -45,6 +45,7 @@ in rec {
           ungoogled-chromium
           firefox
           OVMFFull
+          prismlauncher
           ;
         linuxKernel =
           original.linuxKernel

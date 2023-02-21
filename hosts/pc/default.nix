@@ -57,6 +57,7 @@ in rec {
           ferium
           OVMFFull
           linuxPackages_xanmod_latest
+          prismlauncher
           ;
         linuxKernel =
           original.linuxKernel
