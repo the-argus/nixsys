@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  username,
+  ...
+}: {
   systemd.user.services.ntfy-recieve = {
     Unit = {
       Description = "Get notifications from from ntfy.sh to notify-send.";
@@ -7,6 +11,7 @@
 
     Service = {
       Type = "simple";
+      User = username;
       ExecStart = "${pkgs.myPackages.ntfy-notify-send}/bin/ntfy-notify-send";
       RestartForceExitStatus = 11;
       RestartSec = 0;
