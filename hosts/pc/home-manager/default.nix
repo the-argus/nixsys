@@ -14,5 +14,6 @@
     zoom-us
     ferium
     protontricks
+    filezilla
   ];
 }
