@@ -77,6 +77,7 @@ in {
     '';
 
     commands = {
+      open = "$set -f; ${pkgs.myPackages.rifle}/bin/rifle -p 0 $fx";
       paste = ''${"$"}${pkgs.myPackages.cp-p}/bin/cp-p --lf-paste $id'';
       trash = "${"$"}${pkgs.trash-cli}/bin/trash $fx";
       z = ''
