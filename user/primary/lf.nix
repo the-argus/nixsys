@@ -64,6 +64,8 @@ in {
     extraConfig = ''
       set cleaner ${cleaner}
 
+      set ifs "\n"
+
       ${"\${{"}
         w=$(tput cols)
         if [ $w -le 160 ]; then
