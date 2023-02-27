@@ -1,6 +1,5 @@
 {
   pkgs,
-  username,
   ...
 }: {
   systemd.user.services.ntfy-recieve = {
@@ -11,7 +10,6 @@
 
     Service = {
       Type = "simple";
-      User = username;
       ExecStart = "${pkgs.myPackages.ntfy-notify-send}/bin/ntfy-notify-send";
       RestartForceExitStatus = 11;
       RestartSec = 0;
