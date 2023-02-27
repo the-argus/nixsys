@@ -110,6 +110,7 @@
         nextcloud-client
 
         # gui applications---------
+        musescore
         bitwarden-cli
         pcmanfm
         qalculate-gtk
