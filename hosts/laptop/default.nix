@@ -37,6 +37,7 @@ in rec {
     unstable = unstable: original:
       with unstable; {
         inherit
+          musescore
           alejandra
           wl-color-picker
           heroic

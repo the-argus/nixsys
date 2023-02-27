@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    musescore
     # libreoffice-fresh
     # aseprite-unfree
     # krita
