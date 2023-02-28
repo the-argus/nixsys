@@ -15,4 +15,8 @@ rustPlatform.buildRustPackage rec {
   };
 
   cargoSha256 = "sha256-tknAH0u+abVIshXxDkHxbzOfDkpL3gwCdiopdsIADtQ=";
+
+  prePatch = ''
+    sed -i "s/use std::os::fd::AsRawFd;/use std::os::unix::io::AsRawFd;/g" src/main.rs
+  '';
 }
