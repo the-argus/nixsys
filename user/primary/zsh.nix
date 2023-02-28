@@ -106,6 +106,10 @@
 in {
   imports = [modern-unix.homeManagerModule];
 
+  home.sessionVariables = {
+    SUDO_ASKPASS = "${pkgs.myPackages.sudo-askpass}/bin/sudo-askpass";
+  };
+
   programs.starship = {
     enable = true;
     settings = {
@@ -192,6 +196,7 @@ in {
         ix = "curl -F 'f:1=<-' ix.io";
         rm = "echo \"Don't rm... use trash! Sends files to ~/.local/share/Trash.\"";
         nocolor = ''sed "s/\x1B\[[0-9;]\{1,\}[A-Za-z]//g"'';
+        sudo = "sudo -A";
       }
       // (pkgs.callPackage
         ../../lib/home-manager/xorg.nix
