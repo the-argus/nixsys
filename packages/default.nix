@@ -24,4 +24,5 @@
   ly = callPackage ./ly {};
   ntfy-notify-send = callPackage ./ntfy-notify-send {};
   rifle = callPackage ./rifle.nix {};
+  sudo-askpass = callPackage ./sudo-askpass {};
 }
