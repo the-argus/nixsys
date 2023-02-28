@@ -191,6 +191,7 @@ in {
         awesomedoc = "firefox ${pkgs.awesome.doc}/share/doc/awesome/doc/index.html & disown";
         ix = "curl -F 'f:1=<-' ix.io";
         rm = "echo \"Don't rm... use trash! Sends files to ~/.local/share/Trash.\"";
+        nocolor = ''sed "s/\x1B\[[0-9;]\{1,\}[A-Za-z]//g"'';
       }
       // (pkgs.callPackage
         ../../lib/home-manager/xorg.nix
