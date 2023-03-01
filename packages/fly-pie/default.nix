@@ -9,13 +9,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "gnome-shell-extension-fly-pie";
-  version = "16";
+  version = "18";
 
   src = fetchFromGitHub {
     owner = "Schneegans";
     repo = "Fly-Pie";
     rev = "v${version}";
-    sha256 = "15ixjn962910jx3jnjmbx2lxb5wvv1l1az00rba3s2vbcd7fiwh7";
+    sha256 = "sha256-2dHdY/X4cm6zIys35Knc9g6+k15q9ykChqhAtvs9Aok=";
   };
 
   nativeBuildInputs = [
@@ -26,7 +26,7 @@ stdenv.mkDerivation rec {
   ];
 
   dontPatch = false;
-  patches = [./0001-shell-patch.patch ./0001-remove-install-phase.patch];
+  patches = [./0001-remove-install-phase.patch];
 
   installPhase = ''
     ls .
