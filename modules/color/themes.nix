@@ -103,6 +103,10 @@
       opacity = "0.8";
     };
 
+    macchiato = override defaultTheme {
+      scheme = schemes.macchiato;
+    };
+
     amber-forest = override defaultTheme rec {
       scheme = schemes.amber-forest;
     };

@@ -16,4 +16,6 @@ in {
   gruv = banner.lib.parsers.basicYamlToBanner ./gruvbox.yaml;
 
   amber-forest = banner.lib.parsers.basicYamlToBanner ./amber-forest.yaml;
+
+  macchiato = banner.lib.parsers.basicYamlToBanner ./macchiato.yaml;
 }

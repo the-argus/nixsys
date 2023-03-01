@@ -8,7 +8,8 @@ in rec {
   # theme = "amber-forest";
   # theme = "nordicWithGtkNix";
   # theme = "drifter";
-  theme = "gruvboxWithGtkNix";
+  # theme = "gruvboxWithGtkNix";
+  theme = "macchiato";
   system = "x86_64-linux";
   username = "argus";
   inherit hostname;
