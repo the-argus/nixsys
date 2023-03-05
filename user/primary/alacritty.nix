@@ -23,7 +23,7 @@
         # main = config.system.theme.font.monospace.name;
         main = "TamzenForPowerline";
       in {
-        size = 17;
+        size = 13.5;
         normal.family = main;
         bold.family = main;
         italic.family = main;
