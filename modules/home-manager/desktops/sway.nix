@@ -35,7 +35,8 @@ in {
           # startup = ...
           startup = let
             mkStartup = always: list:
-              map (command: {
+              map
+              (command: {
                 inherit command always;
               })
               list;
@@ -104,6 +105,10 @@ in {
             "Touchpad" = {
               tap = "enabled";
               natural_scroll = "disabled";
+            };
+
+            "type:keyboard" = {
+              xkb_options = "ctrl:swapcaps";
             };
           };
         };
