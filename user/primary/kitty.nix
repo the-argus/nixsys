@@ -4,7 +4,11 @@
   ...
 }: {
   programs.kitty = let
-    font = config.system.theme.font.monospace;
+    font = {
+      name = "Cozette";
+      size = 14;
+      package = pkgs.cozette;
+    };
     opacity = config.system.theme.opacity;
 
     kittyColorFormat = _: (value: "#${value}");

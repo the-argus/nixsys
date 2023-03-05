@@ -1,6 +1,7 @@
 {
   callPackage,
   lib,
+  original-kitty,
   ...
 }: {
   # meta packages
@@ -25,4 +26,5 @@
   ntfy-notify-send = callPackage ./ntfy-notify-send {};
   rifle = callPackage ./rifle.nix {};
   sudo-askpass = callPackage ./sudo-askpass {};
+  kitty = callPackage ./kitty {inherit original-kitty;};
 }

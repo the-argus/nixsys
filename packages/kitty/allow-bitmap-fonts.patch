@@ -1,0 +1,57 @@
+From 3682144d08b0d99897c9f8c1b1503a93f4c65ab2 Mon Sep 17 00:00:00 2001
+From: Ian McFarlane <i.mcfarlane2002@gmail.com>
+Date: Sun, 5 Mar 2023 00:23:36 -0500
+Subject: [PATCH] allow bitmap fonts
+
+---
+ kitty/fast_data_types.pyi | 4 ++--
+ kitty/fontconfig.c        | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/kitty/fast_data_types.pyi b/kitty/fast_data_types.pyi
+index fe6b2fb42..209bae8b0 100644
+--- a/kitty/fast_data_types.pyi
++++ b/kitty/fast_data_types.pyi
+@@ -389,7 +389,7 @@ class FontConfigPattern(TypedDict):
+ 
+ def fc_list(
+     spacing: int = -1,
+-    allow_bitmapped_fonts: bool = False
++    allow_bitmapped_fonts: bool = True
+ ) -> Tuple[FontConfigPattern, ...]:
+     pass
+ 
+@@ -399,7 +399,7 @@ def fc_match(
+     bold: bool = False,
+     italic: bool = False,
+     spacing: int = FC_MONO,
+-    allow_bitmapped_fonts: bool = False,
++    allow_bitmapped_fonts: bool = True,
+     size_in_pts: float = 0.,
+     dpi: float = 0.
+ ) -> FontConfigPattern:
+diff --git a/kitty/fontconfig.c b/kitty/fontconfig.c
+index 9710f2109..f7f346626 100644
+--- a/kitty/fontconfig.c
++++ b/kitty/fontconfig.c
+@@ -233,7 +233,7 @@ font_set(FcFontSet *fs) {
+ static PyObject*
+ fc_list(PyObject UNUSED *self, PyObject *args) {
+     ensure_initialized();
+-    int allow_bitmapped_fonts = 0, spacing = -1;
++    int allow_bitmapped_fonts = 1, spacing = -1;
+     PyObject *ans = NULL;
+     FcObjectSet *os = NULL;
+     FcPattern *pat = NULL;
+@@ -341,7 +341,7 @@ static PyObject*
+ fc_match(PyObject UNUSED *self, PyObject *args) {
+     ensure_initialized();
+     char *family = NULL;
+-    int bold = 0, italic = 0, allow_bitmapped_fonts = 0, spacing = FC_MONO;
++    int bold = 0, italic = 0, allow_bitmapped_fonts = 1, spacing = FC_MONO;
+     double size_in_pts = 0, dpi = 0;
+     FcPattern *pat = NULL;
+     PyObject *ans = NULL;
+-- 
+2.38.4
+
