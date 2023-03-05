@@ -24,7 +24,7 @@
         # main = "TamzenForPowerline";
       in {
         # size = 13.5; # TamzenForPowerline
-        size = 9;
+        size = 12;
         normal.family = main;
         bold.family = main;
         italic.family = main;
