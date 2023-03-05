@@ -99,6 +99,7 @@ in {
 
               "Print" = "exec grim -t png ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
               "${common.config.modifier}+Print" = "exec grim -t png -g \"$(slurp)\" ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
+              "${common.config.modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
             };
 
           input = {
