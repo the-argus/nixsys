@@ -50,9 +50,8 @@ in {
                   # "oguri"
                   # "mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" eDP-1 ${vidpaper}"
                   # "mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" HDMI-A-1 ${vidpaper}"
-                  # "swaybg --image $imgpaper --output \"*\""
+                  "swaybg --image ~/Wallpapers/gruv/fossil-gruv.png --output \"*\""
                   # "/bin/sh ~/.scripts/random-mpvpaper.sh"
-                  "~/.local/bin/swaybg.sh"
                 ]
                 # neither of these even work
                 ++ (lib.lists.optional
