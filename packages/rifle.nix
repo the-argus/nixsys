@@ -6,8 +6,8 @@
   ...
 }: let
   contents = fetchurl {
-    url = "https://raw.githubusercontent.com/ranger/ranger/master/ranger/ext/rifle.py";
-    sha256 = "1lwq0n25336q6hkq7gywfc6vp5hbv8aar25slc95mnikbfsvxwp3";
+    url = "https://raw.githubusercontent.com/ranger/ranger/f1444faf59bfd921e1b5dbb98d8b12c7af1cf371/ranger/ext/rifle.py";
+    sha256 = "sha256-MfFrAEQqr55kDVAI4p0MmoGtzEhvPdKEKLBbzhxZiH4=";
   };
 in
   stdenvNoCC.mkDerivation {
