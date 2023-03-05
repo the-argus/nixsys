@@ -49,6 +49,9 @@ in {
       fira-code
       fira-code-symbols
       cozette
+      tamzen
+      envypn-font
+      creep
       noto-fonts
       noto-fonts-emoji
       noto-fonts-cjk
