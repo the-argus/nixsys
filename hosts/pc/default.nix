@@ -58,6 +58,7 @@ in rec {
           OVMFFull
           linuxPackages_xanmod_latest
           prismlauncher
+          godot_4
           ;
         linuxKernel =
           original.linuxKernel
