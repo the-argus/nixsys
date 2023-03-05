@@ -122,11 +122,14 @@
 
       #workspaces button {
         border-radius: 0px;
-      	background: transparent;
-      	color: @highlight;
-        background-color: @pfg-highlight;
+      	/*background: transparent;*/
+        background: @base00;
+      	/*color: @highlight;*/
+        color: @base03;
+        /*background-color: @pfg-highlight;*/
       	font-weight: bold;
-      	border: 2px solid @highlight;
+      	/*border: 2px solid @highlight;*/
+      	border: 0px solid @base00;
         border-radius: 0px;
         padding: 6px 9px 5px 10px;
         margin: 0px 4px;
