@@ -67,7 +67,7 @@ in rec {
     text = mkColor palette.base05;
     inactive-text = bg;
     urgent-bg = mkColor palette.urgent;
-    inactive-border = (mkColor palette.base00) + "00";
+    inactive-border = mkColor palette.base00;
 
     transparent = "#00000000";
     indicator = "#424242";
@@ -99,7 +99,6 @@ in rec {
           else command: "exec --no-startup-id ${command}";
 
         nobarKeys = {
-          "${modifier}+Tab" = "workspace back_and_forth";
           "${modifier}+i" = mkCommand "nobar isolate";
           "${modifier}+Shift+i" = mkCommand "isolate undo";
           # "${modifier}+s" = mkCommand "rofi -show combi -modes combi -combi-modes window,drun";
@@ -139,6 +138,7 @@ in rec {
         };
       in
         {
+          "${modifier}+Tab" = "workspace back_and_forth";
           "${modifier}+Return" = "exec ${terminal}/bin/${terminal.pname}";
           "${modifier}+Shift+q" = "kill";
 
