@@ -249,7 +249,7 @@ in rec {
       };
     }
     // {
-      workspaceAutoBackAndForth = lib.mkDefault true;
+      workspaceAutoBackAndForth = lib.mkDefault false;
 
       window = {
         titlebar = false;
