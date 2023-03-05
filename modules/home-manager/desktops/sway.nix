@@ -52,6 +52,7 @@ in {
                   # "mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" HDMI-A-1 ${vidpaper}"
                   # "swaybg --image $imgpaper --output \"*\""
                   # "/bin/sh ~/.scripts/random-mpvpaper.sh"
+                  "/bin/sh ~/.local/bin/swaybg.sh"
                 ]
                 # neither of these even work
                 ++ (lib.lists.optional
@@ -74,9 +75,6 @@ in {
           # menu = "${pkgs.wofi}/bin/wofi --show drun -I";
 
           output = {
-            "*" = {
-              bg = "~/Wallpapers/rose/delorean.png fill";
-            };
             "eDP-1" = {
               pos = "0 520";
             };
