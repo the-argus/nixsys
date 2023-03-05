@@ -20,10 +20,11 @@
       };
 
       font = let
-        # main = config.system.theme.font.monospace.name;
-        main = "TamzenForPowerline";
+        main = config.system.theme.font.monospace.name;
+        # main = "TamzenForPowerline";
       in {
-        size = 13.5;
+        # size = 13.5; # TamzenForPowerline
+        size = 9;
         normal.family = main;
         bold.family = main;
         italic.family = main;
