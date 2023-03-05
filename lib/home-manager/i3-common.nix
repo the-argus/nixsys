@@ -19,7 +19,7 @@ in rec {
     };
     inherit palette;
     mkColor = color: "#${color}";
-    bg = mkColor palette.highlight;
+    bg = mkColor palette.base00;
     inactive-bg = let
       opacity = theme.opacity;
 
@@ -64,13 +64,14 @@ in rec {
         * (
           stringToFloat opacity
         ))));
-    text = bg;
+    text = mkColor palette.base05;
     inactive-text = bg;
     urgent-bg = mkColor palette.urgent;
     inactive-border = (mkColor palette.base00) + "00";
 
     transparent = "#00000000";
     indicator = "#424242";
+    highlight = mkColor palette.highlight;
     childBorder = mkColor palette.base02;
   };
 
@@ -85,7 +86,6 @@ in rec {
       inactive-border
       transparent
       indicator
-      childBorder
       keys
       ;
   in
@@ -226,21 +226,24 @@ in rec {
       colors = rec {
         background = transparent;
         focused = {
-          border = text;
+          border = commonInputs.highlight;
           background = bg;
-          inherit text indicator childBorder;
+          inherit text indicator;
+          childBorder = commonInputs.highlight;
         };
         focusedInactive = {
           border = inactive-border;
           background = inactive-bg;
           text = inactive-text;
-          inherit indicator childBorder;
+          inherit indicator;
+          childBorder = inactive-bg;
         };
         unfocused = focusedInactive;
         urgent = {
           border = urgent-bg;
           background = urgent-bg;
-          inherit text indicator childBorder;
+          inherit text indicator;
+          childBorder = urgent-bg;
         };
         # placeholder window is default but can be configured
       };
