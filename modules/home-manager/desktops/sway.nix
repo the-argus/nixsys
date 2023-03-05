@@ -52,7 +52,7 @@ in {
                   # "mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" HDMI-A-1 ${vidpaper}"
                   # "swaybg --image $imgpaper --output \"*\""
                   # "/bin/sh ~/.scripts/random-mpvpaper.sh"
-                  "/bin/sh ~/.local/bin/swaybg.sh"
+                  "~/.local/bin/swaybg.sh"
                 ]
                 # neither of these even work
                 ++ (lib.lists.optional
