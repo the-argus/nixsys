@@ -1175,11 +1175,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1677988963,
-        "narHash": "sha256-38/yTiVZA/XKODPIDjt/2SUlTTwYNfgADyxtFeqrVWQ=",
+        "lastModified": 1678050445,
+        "narHash": "sha256-hb5npDiqf7JjrBzLxjT537n4cQ3Doc4HFdJsdDbY8QE=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "2cc676a3b111ea430813875d7a740f0cac4e9d07",
+        "rev": "fdf844be089a42aa3a2c9450bc769b33de5856a2",
         "type": "gitlab"
       },
       "original": {
