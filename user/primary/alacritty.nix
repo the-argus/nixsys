@@ -20,7 +20,8 @@
       };
 
       font = let
-        main = config.system.theme.font.monospace.name;
+        # main = config.system.theme.font.monospace.name;
+        main = "Cozette";
       in {
         size = 9;
         normal.family = main;
