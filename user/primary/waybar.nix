@@ -22,10 +22,10 @@
           "clock"
           "custom/powerbutton"
         ];
-        margin-left = 4;
-        margin-right = 6;
-        margin-top = 6;
-        margin-bottom = -2;
+        margin-left = 0;
+        margin-right = 0;
+        margin-top = 0;
+        margin-bottom = 0;
         battery = {
           format = "{capacity}% {icon}";
           format-icons = [
@@ -109,9 +109,10 @@
       window#waybar {
       	/*background: #000000;*/
         /* TRANSPARENT */
-      	background: rgba(0, 0, 0, 0);
+      	/* background: rgba(0, 0, 0, 0); */
+        background: @base02;
         color: @base05;
-        border-radius: 8px;
+        /* border-radius: 8px; */
       }
 
       #workspaces {
@@ -155,7 +156,6 @@
         color: @pfg-highlight;
         border-radius: 0px;
         padding: 6px 20px 4px 20px;
-      	margin: 0 2px;
       }
 
       window#waybar.empty #window {
@@ -208,8 +208,8 @@
       }
 
       #network {
-        background: @highlight;
-        color: @pfg-highlight;
+        background: @hialt0;
+        color: @pfg-hialt0;
       }
 
       #network.disconnected {
@@ -229,12 +229,12 @@
       }
 
       #custom-powerbutton {
-        background: @base02;
-        color: @base07;
+        background: @base05;
+        color: @base02;
       	font-weight: bold;
       	font-size: ${builtins.toString (font.size + 2)}px;
         padding: 5px 10px 0px 10px;
-      	margin: 0 2px;
+      	margin: 0 0 0 0px;
       }
 
       #tray {
