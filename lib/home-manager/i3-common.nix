@@ -226,7 +226,7 @@ in rec {
       colors = rec {
         background = transparent;
         focused = {
-          border = bg;
+          border = text;
           background = bg;
           inherit text indicator childBorder;
         };
