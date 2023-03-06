@@ -46,7 +46,7 @@ in {
                   # "oguri"
                   # "mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" eDP-1 ${vidpaper}"
                   # "mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" HDMI-A-1 ${vidpaper}"
-                  "swaybg --image ~/Wallpapers/gruv/fossil-gruv.png --output \"*\""
+                  "swaybg --image ~/Wallpapers/${config.system.theme.wallpaper} --output \"*\""
                   # "/bin/sh ~/.scripts/random-mpvpaper.sh"
                 ]
                 # neither of these even work

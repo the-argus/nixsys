@@ -69,6 +69,7 @@
 
   availableThemes = rec {
     defaultTheme = rec {
+      wallpaper = "rose/delorean.png";
       gtk = {
         # theme = rosePineTheme;
         theme = "gtkNix";
@@ -104,14 +105,24 @@
     };
 
     macchiato = override defaultTheme {
+      wallpaper = "colourful-place.jpg";
       scheme = schemes.macchiato;
+      font = override defaultTheme.font {
+        monospace = {
+          name = "VictorMono Nerd Font";
+          size = 14;
+          package = pkgs.nerdfonts.override {fonts = ["VictorMono"];};
+        };
+      };
     };
 
     amber-forest = override defaultTheme rec {
+      wallpaper = "paradise.jpg";
       scheme = schemes.amber-forest;
     };
 
     gruvboxWithGtkNix = override defaultTheme rec {
+      wallpaper = "gruv/pawel-czerwinski-gruvpaint.jpg";
       scheme = schemes.gruv;
       gtk = {
         theme = "gtkNix";
@@ -125,6 +136,7 @@
     };
 
     gruvbox = override defaultTheme rec {
+      wallpaper = "gruv/fossil-gruv.png";
       scheme = schemes.gruv;
       gtk = {
         theme = {
@@ -146,6 +158,7 @@
     };
 
     gtk4 = override defaultTheme {
+      wallpaper = "overlookers-colored.jpg";
       gtk = {
         theme = darkGTheme;
         iconTheme = numixCircleIcons;
@@ -163,6 +176,7 @@
     };
 
     nordic = override defaultTheme {
+      wallpaper = "nord/lake.png";
       gtk = {
         theme = nordicTheme;
         iconTheme = nordzyIcons;
@@ -174,10 +188,12 @@
     };
 
     nordicWithGtkNix = override nordic {
+      wallpaper = "nord/canyon.png";
       gtk.theme = "gtkNix";
     };
 
     orchis = override defaultTheme {
+      wallpaper = "green-sky.png";
       gtk = {
         theme = {
           name = "Orchis-Light"; # Orchis, Orchis-Light, Orchis-Compact, Orchis-Dark, Orchis-Dark-Compact, Orchis-Green, Orchis-Green Compact, etc
@@ -192,6 +208,7 @@
     };
 
     drifter = override defaultTheme rec {
+      wallpaper = "hld-wallpaper.png";
       font = defaultTheme.font;
       scheme = schemes.drifter;
       gtk = {
