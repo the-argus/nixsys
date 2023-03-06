@@ -39,6 +39,7 @@
           neovim
           kitty
           spotify
+          godot_4
           ;
         nodePackages =
           original.nodePackages

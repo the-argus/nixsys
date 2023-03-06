@@ -10,7 +10,6 @@
     steam
     jre8
     aseprite
-    godot_4
     zoom-us
     ferium
     protontricks

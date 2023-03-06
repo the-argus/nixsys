@@ -48,6 +48,7 @@ in rec {
           firefox
           OVMFFull
           prismlauncher
+          godot_4
           ;
         linuxKernel =
           original.linuxKernel

@@ -108,6 +108,7 @@
 
         nobar.packages.${pkgs.system}.default
         nextcloud-client
+        godot_4
 
         # gui applications---------
         bitwarden-cli
