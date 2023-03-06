@@ -5,6 +5,7 @@
         set selection-clipboard clipboard
         set recolor                     "true"
         set recolor-keephue             "true"
+        set smooth-scroll               "true"
 
         set default-bg                  "#${base00}"
         set default-fg                  "#${base05}"
