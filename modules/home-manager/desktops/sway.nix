@@ -96,8 +96,7 @@ in {
             };
 
           input = {
-            # "1739:52775:DLL0945:00_06CB:CE27_Touchpad"
-            "Touchpad" = {
+            "type:touchpad" = {
               tap = "enabled";
               natural_scroll = "disabled";
             };
