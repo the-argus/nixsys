@@ -22,10 +22,6 @@ in {
         inherit (config.desktops) terminal;
         inherit (cfg) nobar;
       };
-      inherit
-        (common)
-        bg
-        ;
     in {
       enable = true;
       config =

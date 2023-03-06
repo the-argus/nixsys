@@ -3,7 +3,7 @@
     enable = true;
     sway = {
       enable = true;
-      nobar = true;
+      nobar = false;
     };
     awesome.enable = false;
     ratpoison.enable = false;
