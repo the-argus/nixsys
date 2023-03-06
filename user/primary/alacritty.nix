@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.alacritty = {
     enable = true;
 
@@ -25,7 +29,15 @@
       in {
         # size = 13.5; # TamzenForPowerline
         size = 12;
-        normal.family = main;
+        normal =
+          {
+            family = main;
+          }
+          // (lib.attrsets.optionalAttrs
+            (main == "VictorMono Nerd Font")
+            {
+              style = "Semibold";
+            });
         bold.family = main;
         italic.family = main;
         bold_italic.family = main;
