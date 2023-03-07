@@ -80,7 +80,7 @@ in {
 
           seat = {
             "*" = {
-              hide_cursor = "when-typing enable";
+              # hide_cursor = "when-typing enable";
               xcursor_theme = "${config.system.theme.gtk.cursorTheme.name} 24";
             };
           };
