@@ -183,11 +183,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1676413474,
-        "narHash": "sha256-RIG4Xs4idmwGB4wWLUkV3m+7kxIKv4Q5otsge+swPbU=",
+        "lastModified": 1678159256,
+        "narHash": "sha256-IemCt+8f0j9rTR6EuX5PoJhevIFxkmYFYMFj25/37+Y=",
         "owner": "the-argus",
         "repo": "bitwarden-rofi",
-        "rev": "22ae498d79d8ecb0627e2590b709e00fd8143da6",
+        "rev": "9c71f0842f84e6f686cb301f3cec87476113a990",
         "type": "github"
       },
       "original": {
@@ -824,11 +824,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1677932085,
-        "narHash": "sha256-+AB4dYllWig8iO6vAiGGYl0NEgmMgGHpy9gzWJ3322g=",
+        "lastModified": 1678111249,
+        "narHash": "sha256-ZTIbK7vthZwti5XeLZE+twkb4l44q01q2XoLMmmJe94=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3c5319ad3aa51551182ac82ea17ab1c6b0f0df89",
+        "rev": "a028e2873d7fcf44e66b784b4ba061824315537f",
         "type": "github"
       },
       "original": {
@@ -856,11 +856,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1677779205,
-        "narHash": "sha256-6DBjL9wjq86p2GczmwnHtFRnWPBPItc67gapWENBgX8=",
+        "lastModified": 1678137616,
+        "narHash": "sha256-T+lWTRdcYaOnZQW+Ehdlg+YldC2l9cq2GXJFPq22Nxc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "96e18717904dfedcd884541e5a92bf9ff632cf39",
+        "rev": "7edcdf7b169c33cd3eef9aba50521ce93ee666b8",
         "type": "github"
       },
       "original": {
@@ -1175,11 +1175,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1678050445,
-        "narHash": "sha256-hb5npDiqf7JjrBzLxjT537n4cQ3Doc4HFdJsdDbY8QE=",
+        "lastModified": 1678248153,
+        "narHash": "sha256-ypWkZJ7Mx8oo42nOuo2RtzamYbqWP07DqXIwxTVUmbY=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "fdf844be089a42aa3a2c9450bc769b33de5856a2",
+        "rev": "551f7965000b60365f5652ac50bf66fd6928101c",
         "type": "gitlab"
       },
       "original": {
