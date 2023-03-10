@@ -234,6 +234,14 @@ in {
       exec ${cfg.package}/bin/emptty
     '';
 
+    systemd.services.display-manager.onFailure = [
+      "plymouth-quit.service"
+    ];
+    services.dbus.packages = [cfg.package];
+    systemd.user.services.dbus.wantedBy = ["default.target"];
+    systemd.services.plymouth-quit.wantedBy = lib.mkForce [];
+    systemd.services.emptty.enable = false;
+
     environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString cfg.configuration);
   };
 }
