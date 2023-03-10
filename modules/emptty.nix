@@ -38,6 +38,21 @@
   };
 
   availableColors = ["BLACK" "LIGHT_BLACK"];
+
+  empttyToString = type:
+    if builtins.typeOf type == "bool"
+    then
+      (
+        if type
+        then "true"
+        else "false"
+      )
+    else builtins.toString type;
+
+  optionsToString = optionsSet:
+    lib.attrsets.mapAttrsToList
+    (name: value: "${name}=${empttyToString value}")
+    optionsSet;
 in {
   options = {
     services.xserver.displayManager.emptty = {
@@ -112,7 +127,7 @@ in {
               mkEnableOption
               (lib.mdDoc "Prints available WM/DE each on new line instead of printing on single line.");
             LOGGING = mkOption {
-              type = type.nullOr (types.enum ["default" "appending" "disabled"]);
+              type = types.nullOr (types.enum ["default" "appending" "disabled"]);
               default = null;
               description = lib.mdDoc "Defines the way, how is logging handled. Possible values are \"default\", \"appending\" or \"disabled\".";
             };
@@ -138,7 +153,7 @@ in {
               description = lib.mdDoc "Overrides the default path to the dynamic motd.";
             };
             MOTD_PATH = mkOption {
-              type = type.nullOr (types.oneOf [types.string types.path]);
+              type = types.nullOr (types.oneOf [types.string types.path]);
               default = null;
               description = lib.mdDoc "Overrides the default path to the static motd.";
             };
@@ -187,27 +202,12 @@ in {
         };
       };
     };
-
-    empttyToString = type:
-      if builtins.typeOf type == "bool"
-      then
-        (
-          if type
-          then "true"
-          else "false"
-        )
-      else builtins.toString type;
-
-    optionsToString = optionsSet:
-      lib.attrsets.mapAttrsToList
-      (name: value: "${name}=${empttyToString value}")
-      optionsSet;
   };
 
   config = mkIf cfg.enable {
     assertions = [
       {
-        assertion = services.xserver.enable;
+        assertion = config.services.xserver.enable;
         message = ''
           emptty requires services.xserver.enable to be true
         '';
