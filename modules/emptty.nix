@@ -240,7 +240,7 @@ in {
     services.dbus.packages = [cfg.package];
     systemd.user.services.dbus.wantedBy = ["default.target"];
     systemd.services.plymouth-quit.wantedBy = lib.mkForce [];
-    systemd.services.emptty.enable = false;
+    systemd.services.emptty.enable = true;
 
     environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString cfg.configuration);
   };
