@@ -10,5 +10,6 @@
     ./plymouth.nix
     ./hardware.nix
     ./ly.nix
+    ./emptty.nix
   ];
 }
