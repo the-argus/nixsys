@@ -1,7 +1,7 @@
 {
   callPackage,
   lib,
-  original-kitty,
+  original-kitty ? null,
   ...
 }: {
   # meta packages
@@ -27,4 +27,5 @@
   rifle = callPackage ./rifle.nix {};
   sudo-askpass = callPackage ./sudo-askpass {};
   kitty = callPackage ./kitty {inherit original-kitty;};
+  emptty = callPackage ./emptty/default.nix {};
 }
