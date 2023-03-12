@@ -229,15 +229,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = config.services.xserver.enable;
-        message = ''
-          emptty requires services.xserver.enable to be true
-        '';
-      }
-    ];
-
     # symlink configuration for use by the program
     environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString cfg.configuration);
     # services.emptty.settings.terminal.vt = mkDefault cfg.configuration.TTY_NUMBER;
@@ -313,8 +304,6 @@ in {
         -session        optional        pam_kwallet5.so auto_start force_run
       '';
     };
-
-    # systemd.defaultUnit = "graphical.target";
 
     environment.systemPackages = [cfg.package];
     services.xserver.displayManager.lightdm.enable = false;
