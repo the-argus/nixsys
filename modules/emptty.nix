@@ -10,7 +10,7 @@
 
   defaultConfig = {
     # 1:1 with https://github.com/tvrzna/emptty/blob/master/res/conf
-    TTY_NUMBER = 7;
+    TTY_NUMBER = 1;
     SWITCH_TTY = true;
     PRINT_ISSUE = true;
     PRINT_MOTD = true;
