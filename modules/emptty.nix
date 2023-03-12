@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf mkOption mkEnableOption types;
+  inherit (lib.strings) optionalString;
   cfg = config.services.xserver.displayManager.emptty;
 
   defaultConfig = {
@@ -51,7 +52,9 @@
 
   optionsToString = optionsSet:
     lib.attrsets.mapAttrsToList
-    (name: value: "${name}=${empttyToString value}")
+    (name: value: (
+      optionalString (value != null) "${name}=${empttyToString value}"
+    ))
     optionsSet;
 in {
   options = {
