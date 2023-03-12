@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf mkOption mkEnableOption types;
+  inherit (lib) mkIf mkOption mkEnableOption types mkDefault;
   inherit (lib.strings) optionalString;
   cfg = config.services.xserver.displayManager.emptty;
 
@@ -37,7 +37,7 @@
     ROOTLESS_XORG = null;
     IDENTIFY_ENVS = false;
   };
-  
+
   # TODO: update this to include all colors
   availableColors = ["BLACK" "LIGHT_BLACK"];
 
@@ -66,6 +66,18 @@ in {
         type = types.package;
         default = pkgs.myPackages.emptty;
         description = lib.mdDoc "Derivation to use for emptty.";
+      };
+
+      restart = mkOption {
+        type = types.bool;
+        default = true;
+        # TODO: set up autologin to see if this is actually true for emptty. it
+        # is true for greetd
+        description = lib.mdDoc ''
+          Whether to restart emptty when it terminates (e.g. on failure).
+          This is usually desirable so a user can always log in, but should be disabled when using autologin,
+          because every emptty restart will trigger the autologin again.
+        '';
       };
 
       configuration = mkOption {
@@ -226,63 +238,86 @@ in {
       }
     ];
 
-    systemd.services.display-manager.after = [
-      "rc-local.service"
-      "systemd-machined.service"
-      "systemd-user-sessions.service"
-      "getty@tty7.service"
-      "user.slice"
-    ];
-    systemd.services.display-manager.requires = [
-      "user.slice"
-    ];
-    systemd.services.display-manager.conflicts = [
-      "getty@tty7.service"
-    ];
-    systemd.services.display-manager.onFailure = [
-      "plymouth-quit.service"
-    ];
-    systemd.services.display-manager.serviceConfig = {
-      # I think we could do:
-      # services.xserver.displayManager.job.environment = config.services.xserver.displayManager.job.environment // cfg.configuration;
-      # but im hoping that the emptty maintainer will stop using environment variables at some point...
-      EnvironmentFile = "/etc/emptty/conf";
-      Type = "idle";
-      Restart = "always";
-      TTYPath = "/dev/tty/${builtins.toString cfg.configuration.TTY_NUMBER}";
-      TTYReset = "yes";
-      KillMode = "process";
-      IgnoreSIGPIPE = "no";
-      SendSIGHUP = "yes";
+    # symlink configuration for use by the program
+    environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString cfg.configuration);
+    # services.emptty.settings.terminal.vt = mkDefault cfg.configuration.TTY_NUMBER;
+
+    # This prevents nixos-rebuild from killing emptty by activating getty again (TODO: check if this is actually true lol)
+    systemd.services."autovt@${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
+
+    systemd.services.emptty = {
+      unitConfig = {
+        Wants = [
+          "systemd-user-sessions.service"
+        ];
+        After = [
+          "systemd-user-sessions.service"
+          "plymouth-quit-wait.service"
+          "getty@${builtins.toString cfg.configuration.TTY_NUMBER}.service"
+        ];
+        Conflicts = [
+          "getty@${builtins.toString cfg.configuration.TTY_NUMBER}.service"
+        ];
+      };
+
+      serviceConfig = {
+        # this does have the --config option, but I'm choosing to symlink it to
+        # /etc/emptty/conf for easier discoverability by new users
+        ExecStart = "${cfg.package}bin/emptty -d";
+
+        Restart = mkIf cfg.restart "always";
+
+        # Defaults from emptty upstream configuration
+
+        # i think we could do:
+        # services.xserver.displayManager.job.environment = config.services.xserver.displayManager.job.environment // cfg.configuration;
+        # but im hoping that the emptty maintainer will stop using environment variables at some point...
+        EnvironmentFile = "/etc/emptty/conf";
+        Type = "idle";
+        TTYPath = "/dev/tty${builtins.toString cfg.configuration.TTY_NUMBER}";
+        TTYReset = "yes";
+        KillMode = "process";
+        IgnoreSIGPIPE = "no";
+        SendSIGHUP = "yes";
+      };
+
+      # Don't kill a user session when using nixos-rebuild
+      restartIfChanged = false;
+
+      wantedBy = ["graphical.target"];
     };
 
-    services.xserver.displayManager.job.execCmd = ''
-      exec ${cfg.package}/bin/emptty -d
-    '';
+    systemd.defaultUnit = "graphical.target";
 
-    security.pam.services.emptty.text = ''
-      auth            sufficient      pam_succeed_if.so user ingroup nopasswdlogin
-      auth            include         system-login
-      -auth           optional        pam_gnome_keyring.so
-      -auth           optional        pam_kwallet5.so
-      account         include         system-login
-      password        include         system-login
-      session         include         system-login
-      -session        optional        pam_gnome_keyring.so auto_start
-      -session        optional        pam_kwallet5.so auto_start force_run
-    '';
+    # services.emptty.settings.default_session.user = mkDefault "emptty";
+
+    # users.users.emptty = {
+    #   isSystemUser = true;
+    #   group = "emptty";
+    # };
+
+    # users.groups.emptty = {};
+
+    security.pam.services.emptty = {
+      allowNullPassword = true;
+      startSession = true;
+      text = ''
+        auth            sufficient      pam_succeed_if.so user ingroup nopasswdlogin
+        auth            include         system-login
+        -auth           optional        pam_gnome_keyring.so
+        -auth           optional        pam_kwallet5.so
+        account         include         system-login
+        password        include         system-login
+        session         include         system-login
+        -session        optional        pam_gnome_keyring.so auto_start
+        -session        optional        pam_kwallet5.so auto_start force_run
+      '';
+    };
 
     # systemd.defaultUnit = "graphical.target";
 
     environment.systemPackages = [cfg.package];
-    services.dbus.packages = [cfg.package];
-    
-    systemd.user.services.dbus.wantedBy = ["default.target"];
-    systemd.services.plymouth-quit.wantedBy = lib.mkForce [];
-    
     services.xserver.displayManager.lightdm.enable = false;
-    systemd.services.emptty.enable = false; # we're using display-manager.service
-
-    environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString cfg.configuration);
+    systemd.services.emptty.enable = true;
   };
 }
