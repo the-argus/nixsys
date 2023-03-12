@@ -254,9 +254,9 @@ in {
       serviceConfig = {
         # this does have the --config option, but I'm choosing to symlink it to
         # /etc/emptty/conf for easier discoverability by new users
-        ExecStart = "${cfg.package}bin/emptty -d";
+        ExecStart = "${cfg.package}/bin/emptty -d";
 
-        Restart = mkIf cfg.restart "always";
+        # Restart = mkIf cfg.restart "always";
 
         # Defaults from emptty upstream configuration
 
@@ -280,26 +280,17 @@ in {
 
     systemd.defaultUnit = "graphical.target";
 
-    # services.emptty.settings.default_session.user = mkDefault "emptty";
-
-    # users.users.emptty = {
-    #   isSystemUser = true;
-    #   group = "emptty";
-    # };
-
-    # users.groups.emptty = {};
-
     security.pam.services.emptty = {
       allowNullPassword = true;
       startSession = true;
       text = ''
         auth            sufficient      pam_succeed_if.so user ingroup nopasswdlogin
-        auth            include         system-login
+        auth            include         login
         -auth           optional        pam_gnome_keyring.so
         -auth           optional        pam_kwallet5.so
-        account         include         system-login
-        password        include         system-login
-        session         include         system-login
+        account         include         login
+        password        include         login
+        session         include         login
         -session        optional        pam_gnome_keyring.so auto_start
         -session        optional        pam_kwallet5.so auto_start force_run
       '';
