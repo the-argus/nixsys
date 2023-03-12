@@ -35,7 +35,7 @@ buildGoModule rec {
     mkdir -p $out
     make DESTDIR=$out install
     make DESTDIR=$out install-manual
-    make DESTDIR=$out install-systemd
+    # make DESTDIR=$out install-systemd
 
     if [ -d $out/usr ]; then
       mv $out/usr/* $out
