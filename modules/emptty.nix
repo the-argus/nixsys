@@ -71,7 +71,7 @@ in {
             TTY_NUMBER = mkOption {
               type = types.int;
               default = defaultConfig.TTY_NUMBER;
-              description = "TTY where emptty will start.";
+              description = lib.mdDoc "TTY where emptty will start.";
             };
             SWITCH_TTY = mkOption {
               type = types.bool;
@@ -204,7 +204,7 @@ in {
             IDENTIFY_ENVS = mkOption {
               type = types.bool;
               default = defaultConfig.IDENTIFY_ENVS;
-              description = "If set true, environmental groups are printed to differ Xorg/Wayland/Custom/UserCustom desktops.";
+              description = lib.mdDoc "If set true, environmental groups are printed to differ Xorg/Wayland/Custom/UserCustom desktops.";
             };
           };
         };
