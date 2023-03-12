@@ -37,7 +37,8 @@
     ROOTLESS_XORG = null;
     IDENTIFY_ENVS = false;
   };
-
+  
+  # TODO: update this to include all colors
   availableColors = ["BLACK" "LIGHT_BLACK"];
 
   empttyToString = type:
@@ -225,26 +226,39 @@ in {
       }
     ];
 
-    systemd.services.emptty = {
-      Unit = {
-        Description = "emptty display manager";
-        After = "systemd-user-sessions.service";
-      };
-      Service = {
-        EnvironmentFile = "/etc/emptty/conf";
-        Type = "idle";
-        ExecStart = "${cfg.package}/bin/emptty -d";
-        Restart = "always";
-        TTYPath = "/dev/tty/${cfg.TTY_NUMBER}";
-        TTYReset = "yes";
-        KillMode = "process";
-        IgnoreSIGPIPE = "no";
-        SendSIGHUP = "yes";
-      };
-      Install = {
-        Alias = "display-manager.service";
-      };
+    systemd.services.display-manager.after = [
+      "rc-local.service"
+      "systemd-machined.service"
+      "systemd-user-sessions.service"
+      "getty@tty7.service"
+      "user.slice"
+    ];
+    systemd.services.display-manager.requires = [
+      "user.slice"
+    ];
+    systemd.services.display-manager.conflicts = [
+      "getty@tty7.service"
+    ];
+    systemd.services.display-manager.onFailure = [
+      "plymouth-quit.service"
+    ];
+    systemd.services.display-manager.serviceConfig = {
+      # I think we could do:
+      # services.xserver.displayManager.job.environment = config.services.xserver.displayManager.job.environment // cfg.configuration;
+      # but im hoping that the emptty maintainer will stop using environment variables at some point...
+      EnvironmentFile = "/etc/emptty/conf";
+      Type = "idle";
+      Restart = "always";
+      TTYPath = "/dev/tty/${builtins.toString cfg.configuration.TTY_NUMBER}";
+      TTYReset = "yes";
+      KillMode = "process";
+      IgnoreSIGPIPE = "no";
+      SendSIGHUP = "yes";
     };
+
+    services.xserver.displayManager.job.execCmd = ''
+      exec ${cfg.package}/bin/emptty -d
+    '';
 
     security.pam.services.emptty.text = ''
       auth            sufficient      pam_succeed_if.so user ingroup nopasswdlogin
@@ -258,21 +272,16 @@ in {
       -session        optional        pam_kwallet5.so auto_start force_run
     '';
 
-    systemd.defaultUnit = "graphical.target";
+    # systemd.defaultUnit = "graphical.target";
 
-    services.xserver.displayManager.job.execCmd = ''
-      exec ${cfg.package}/bin/emptty
-    '';
-
-    systemd.services.display-manager.onFailure = [
-      "plymouth-quit.service"
-    ];
     environment.systemPackages = [cfg.package];
     services.dbus.packages = [cfg.package];
+    
     systemd.user.services.dbus.wantedBy = ["default.target"];
     systemd.services.plymouth-quit.wantedBy = lib.mkForce [];
+    
     services.xserver.displayManager.lightdm.enable = false;
-    systemd.services.emptty.enable = true;
+    systemd.services.emptty.enable = false; # we're using display-manager.service
 
     environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString cfg.configuration);
   };
