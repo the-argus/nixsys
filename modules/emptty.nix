@@ -245,6 +245,7 @@ in {
     systemd.services.display-manager.onFailure = [
       "plymouth-quit.service"
     ];
+    environment.systemPackages = [cfg.package];
     services.dbus.packages = [cfg.package];
     systemd.user.services.dbus.wantedBy = ["default.target"];
     systemd.services.plymouth-quit.wantedBy = lib.mkForce [];
