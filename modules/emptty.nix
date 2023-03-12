@@ -300,6 +300,6 @@ in {
     services.xserver.displayManager.lightdm.enable = false;
     systemd.services.emptty.enable = true;
     
-    meta.maintainers = with maintainers; [ the-argus ];
+    # meta.maintainers = with maintainers; [ the-argus ];
   };
 }
