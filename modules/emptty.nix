@@ -16,7 +16,7 @@
     DEFAULT_USER = null;
     AUTOLOGIN = false;
     AUTOLOGIN_SESSION = null;
-    AUTOLOGIN_MAX_RETRY = 2;
+    AUTOLOGIN_MAX_RETRY = null;
     LANG = null;
     DBUS_LAUNCH = true;
     XINITRC_LAUNCH = false;
@@ -70,35 +70,37 @@ in {
           options = {
             TTY_NUMBER = mkOption {
               type = types.int;
-              default = 7;
+              default = defaultConfig.TTY_NUMBER;
               description = "TTY where emptty will start.";
             };
             SWITCH_TTY = mkOption {
               type = types.bool;
-              default = true;
+              default = defaultConfig.SWITCH_TTY;
               description = lib.mdDoc "Enables switching to defined TTY number.";
             };
             PRINT_ISSUE = mkOption {
               type = types.bool;
-              default = true;
+              default = defaultConfig.PRINT_ISSUE;
               description = lib.mdDoc "Enables printing of /etc/issue in daemon mode.";
             };
             PRINT_MOTD = mkOption {
               type = types.bool;
-              default = true;
+              default = defaultConfig.PRINT_MOTD;
               description = lib.mdDoc "Enables printing of default motd, /etc/emptty/motd or /etc/emptty/motd-gen.sh.";
             };
             DEFAULT_USER = mkOption {
               type = types.nullOr types.string;
-              default = null;
+              default = defaultConfig.DEFAULT_USER;
               description = lib.mdDoc "Preselected user, if AUTOLOGIN is enabled, this user is logged in.";
             };
-            AUTOLOGIN =
-              mkEnableOption
-              (lib.mdDoc "Enables Autologin, if DEFAULT_USER is defined and part of nopasswdlogin group.");
+            AUTOLOGIN = mkOption {
+              type = types.bool;
+              default = defaultConfig.AUTOLOGIN;
+              description = lib.mdDoc "Enables Autologin, if DEFAULT_USER is defined and part of nopasswdlogin group.";
+            };
             AUTOLOGIN_SESSION = mkOption {
               type = types.nullOr types.string;
-              default = null;
+              default = defaultConfig.AUTOLOGIN_SESSION;
               description =
                 lib.mdDoc
                 "The default session used, if Autologin is enabled. If session is not found in list of sessions, it proceeds to manual selection.";
@@ -106,98 +108,104 @@ in {
             };
             AUTOLOGIN_MAX_RETRY = mkOption {
               type = types.nullOr types.int;
-              default = null;
+              default = defaultConfig.AUTOLOGIN_MAX_RETRY;
               description = lib.mdDoc "If Autologin is enabled and session does not start correctly, the number of retries in short period is kept to eventually stop the infinite loop of restarts. -1 is for infinite retries, 0 is for no retry.";
             };
             LANG = mkOption {
               type = types.nullOr types.string;
-              default = null;
+              default = defaultConfig.LANG;
               description = lib.mdDoc "Default LANG, if user does not have set own in init script.";
               example = "en_US.UTF-8";
             };
             DBUS_LAUNCH = mkOption {
               type = types.bool;
-              default = true;
+              default = defaultConfig.DBUS_LAUNCH;
               description = lib.mdDoc "Starts desktop with calling \"dbus-launch\".";
             };
-            XINITRC_LAUNCH =
-              mkEnableOption
-              (lib.mdDoc "Starts Xorg desktop with calling \"~/.xinitrc\" script, if is true, file exists and selected WM/DE is Xorg session, it overrides DBUS_LAUNCH.");
-            VERTICAL_SELECTION =
-              mkEnableOption
-              (lib.mdDoc "Prints available WM/DE each on new line instead of printing on single line.");
+            XINITRC_LAUNCH = mkOption {
+              type = types.bool;
+              default = defaultConfig.XINITRC_LAUNCH;
+              description = lib.mdDoc "Starts Xorg desktop with calling \"~/.xinitrc\" script, if is true, file exists and selected WM/DE is Xorg session, it overrides DBUS_LAUNCH.";
+            };
+            VERTICAL_SELECTION = mkOption {
+              type = types.bool;
+              default = defaultConfig.XINITRC_LAUNCH;
+              description = lib.mdDoc "Prints available WM/DE each on new line instead of printing on single line.";
+            };
             LOGGING = mkOption {
               type = types.nullOr (types.enum ["default" "appending" "disabled"]);
-              default = null;
+              default = defaultConfig.LOGGING;
               description = lib.mdDoc "Defines the way, how is logging handled. Possible values are \"default\", \"appending\" or \"disabled\".";
             };
             LOGGING_FILE = mkOption {
               type = types.nullOr (types.oneOf [types.string types.path]);
-              default = null;
+              default = defaultConfig.LOGGING_FILE;
               description = lib.mdDoc "Overrides path of log file";
               example = "/var/log/emptty/$\{TTY_NUMBER}.log";
             };
             XORG_ARGS = mkOption {
               type = types.nullOr types.string;
-              default = null;
+              default = defaultConfig.XORG_ARGS;
               description = lib.mdDoc "Arguments passed to Xorg server.";
             };
             DYNAMIC_MOTD = mkOption {
               type = types.nullOr types.bool;
-              default = null;
+              default = defaultConfig.DYNAMIC_MOTD;
               description = lib.mdDoc "Allows to use dynamic motd script to generate custom MOTD.";
             };
             DYNAMIC_MOTD_PATH = mkOption {
               type = types.nullOr (types.oneOf [types.package types.string types.path]);
-              default = null;
+              default = defaultConfig.DYNAMIC_MOTD_PATH;
               description = lib.mdDoc "Overrides the default path to the dynamic motd.";
             };
             MOTD_PATH = mkOption {
               type = types.nullOr (types.oneOf [types.string types.path]);
-              default = null;
+              default = defaultConfig.MOTD_PATH;
               description = lib.mdDoc "Overrides the default path to the static motd.";
             };
             FG_COLOR = mkOption {
               type = types.nullOr (types.enum availableColors);
-              default = null;
+              default = defaultConfig.FG_COLOR;
               description = lib.mdDoc "Foreground color, available only in daemon mode.";
             };
             BG_COLOR = mkOption {
               type = types.nullOr (types.enum availableColors);
-              default = null;
+              default = defaultConfig.BG_COLOR;
               description = lib.mdDoc "Background color, available only in daemon mode.";
             };
             ENABLE_NUMLOCK = mkOption {
               type = types.nullOr types.bool;
-              default = null;
+              default = defaultConfig.ENABLE_NUMLOCK;
               description = lib.mdDoc "Enables numlock in daemon mode.";
             };
             SESSION_ERROR_LOGGING = mkOption {
               type = types.nullOr (types.enum ["default" "appending" "disabled"]);
-              default = null;
+              default = defaultConfig.SESSION_ERROR_LOGGING;
               description = lib.mdDoc "Defines how the logging of session errors handled. Possible values are \"default\", \"appending\" or \"disabled\".";
             };
             SESSION_ERROR_LOGGING_FILE = mkOption {
               type = types.nullOr (types.oneOf [types.path types.string]);
-              default = null;
+              default = defaultConfig.SESSION_ERROR_LOGGING_FILE;
               description = lib.mdDoc "Overrides path of session errors log file.";
               example = "/var/log/emptty/session-errors.$\{TTY_NUMBER}.log";
             };
             DEFAULT_XAUTHORITY = mkOption {
               type = types.nullOr types.bool;
-              default = null;
+              default = defaultConfig.DEFAULT_XAUTHORITY;
               description =
                 lib.mdDoc
                 "If set true, it will not use `.emptty-xauth` file, but the standard `~/.Xauthority` file. This allows to handle xauth issues.";
             };
             ROOTLESS_XORG = mkOption {
               type = types.nullOr types.bool;
-              default = null;
+              default = defaultConfig.ROOTLESS_XORG;
               description = lib.mdDoc "If true, and emptty is running in daemon mode, Xorg will be started in rootless mode (provided the system allows it).";
             };
-            IDENTIFY_ENVS =
-              mkEnableOption
-              "If set true, environmental groups are printed to differ Xorg/Wayland/Custom/UserCustom desktops.";
+            IDENTIFY_ENVS = mkOption {
+              type = types.bool;
+              default = defaultConfig.IDENTIFY_ENVS;
+              description = "If set true, environmental groups are printed to differ Xorg/Wayland/Custom/UserCustom desktops.";
+            };
           };
         };
       };
