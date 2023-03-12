@@ -225,7 +225,26 @@ in {
       }
     ];
 
-    services.xserver.displayManager.lightdm.enable = false;
+    systemd.services.emptty = {
+      Unit = {
+        Description = "emptty display manager";
+        After = "systemd-user-sessions.service";
+      };
+      Service = {
+        EnvironmentFile = "/etc/emptty/conf";
+        Type = "idle";
+        ExecStart = "${cfg.package}/bin/emptty -d";
+        Restart = "always";
+        TTYPath = "/dev/tty/${cfg.TTY_NUMBER}";
+        TTYReset = "yes";
+        KillMode = "process";
+        IgnoreSIGPIPE = "no";
+        SendSIGHUP = "yes";
+      };
+      Install = {
+        Alias = "display-manager.service";
+      };
+    };
 
     security.pam.services.emptty.text = ''
       auth            sufficient      pam_succeed_if.so user ingroup nopasswdlogin
@@ -252,6 +271,7 @@ in {
     services.dbus.packages = [cfg.package];
     systemd.user.services.dbus.wantedBy = ["default.target"];
     systemd.services.plymouth-quit.wantedBy = lib.mkForce [];
+    services.xserver.displayManager.lightdm.enable = false;
     systemd.services.emptty.enable = true;
 
     environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString cfg.configuration);
