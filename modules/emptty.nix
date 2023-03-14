@@ -15,27 +15,35 @@
     PRINT_ISSUE = true;
     PRINT_MOTD = true;
     DEFAULT_USER = null;
+    DEFAULT_SESSION = null;
+    DEFAULT_SESSION_ENV = null;
     AUTOLOGIN = false;
     AUTOLOGIN_SESSION = null;
+    AUTOLOGIN_SESSION_ENV = null;
     AUTOLOGIN_MAX_RETRY = null;
     LANG = null;
     DBUS_LAUNCH = true;
+    ALWAYS_DBUS_LAUNCH = false;
     XINITRC_LAUNCH = false;
     VERTICAL_SELECTION = false;
     LOGGING = null;
     LOGGING_FILE = null;
     XORG_ARGS = null;
-    DYNAMIC_MOTD = null;
-    DYNAMIC_MOTD_PATH = null;
-    MOTD_PATH = null;
+    DYNAMIC_MOTD = false;
+    DYNAMIC_MOTD_PATH = "/etc/emptty/motd-gen.sh";
+    MOTD_PATH = "/etc/emptty/motd";
     FG_COLOR = null;
     BG_COLOR = null;
-    ENABLE_NUMLOCK = null;
+    DISPLAY_START_SCRIPT = null;
+    DISPLAY_STOP_SCRIPT = null;
+    ENABLE_NUMLOCK = false;
     SESSION_ERROR_LOGGING = null;
     SESSION_ERROR_LOGGING_FILE = null;
     DEFAULT_XAUTHORITY = null;
     ROOTLESS_XORG = null;
     IDENTIFY_ENVS = false;
+    HIDE_ENTER_LOGIN = false;
+    HID_ENTER_PASSWORD = false;
   };
 
   availableColors = [
@@ -125,6 +133,16 @@ in {
               default = defaultConfig.DEFAULT_USER;
               description = lib.mdDoc "Preselected user, if AUTOLOGIN is enabled, this user is logged in.";
             };
+            DEFAULT_SESSION = mkOption {
+              type = types.nullOr types.string;
+              default = defaultConfig.DEFAULT_SESSION;
+              description = lib.mdDoc "Preselected desktop session, if user does not use ``emptty`` file. Has lower priority than ``AUTOLOGIN_SESSION``.";
+            };
+            DEFAULT_SESSION_ENV = mkOption {
+              type = types.nullOr (types.enum ["xorg" "wayland"]);
+              default = defaultConfig.DEFAULT_SESSION_ENV;
+              description = lib.mdDoc "Optional environment of preselected desktop session, if user does not use ``emptty`` file.";
+            };
             AUTOLOGIN = mkOption {
               type = types.bool;
               default = defaultConfig.AUTOLOGIN;
@@ -137,6 +155,11 @@ in {
                 lib.mdDoc
                 "The default session used, if Autologin is enabled. If session is not found in list of sessions, it proceeds to manual selection.";
               example = "i3";
+            };
+            AUTOLOGIN_SESSION_ENV = mkOption {
+              type = types.nullOr (types.enum ["xorg" "wayland"]);
+              default = defaultConfig.AUTOLOGIN_SESSION_ENV;
+              description = lib.mdDoc "Optional environment of autologin desktop session.";
             };
             AUTOLOGIN_MAX_RETRY = mkOption {
               type = types.nullOr types.int;
@@ -152,7 +175,12 @@ in {
             DBUS_LAUNCH = mkOption {
               type = types.bool;
               default = defaultConfig.DBUS_LAUNCH;
-              description = lib.mdDoc "Starts desktop with calling \"dbus-launch\".";
+              description = lib.mdDoc "Starts \"dbus-launch\" before desktop command. After end of session \"dbus-daemon\" is interrupted. If user config is handled as script (does not contain Exec option), this config is overridden to false.";
+            };
+            ALWAYS_DBUS_LAUNCH = mkOption {
+              type = types.bool;
+              default = defaultConfig.ALWAYS_DBUS_LAUNCH;
+              description = lib.mdDoc "Starts \"dbus-launch\" before desktop command in any case, ``DBUS_LAUNCH`` value is ignored. It also starts even if XINITRC_LAUNCH is set to true. After end of session \"dbus-daemon\" is interrupted.";
             };
             XINITRC_LAUNCH = mkOption {
               type = types.bool;
@@ -210,6 +238,16 @@ in {
               default = defaultConfig.ENABLE_NUMLOCK;
               description = lib.mdDoc "Enables numlock in daemon mode.";
             };
+            DISPLAY_START_SCRIPT = mkOption {
+              type = types.nullOr (types.oneOf [types.string types.path]);
+              default = defaultConfig.DISPLAY_START_SCRIPT;
+              description = lib.mdDoc "Script started before Display (Xorg/Wayland) starts. **NOTE:** The script is started as default user; in daemon mode it means ``root``.";
+            };
+            DISPLAY_STOP_SCRIPT = mkOption {
+              type = types.nullOr (types.oneOf [types.string types.path]);
+              default = defaultConfig.DISPLAY_STOP_SCRIPT;
+              description = lib.mdDoc "Script started after Display (Xorg/Wayland) stops. **NOTE:** The script is started as default user; in daemon mode it means ``root``.";
+            };
             SESSION_ERROR_LOGGING = mkOption {
               type = types.nullOr (types.enum ["default" "appending" "disabled"]);
               default = defaultConfig.SESSION_ERROR_LOGGING;
@@ -237,6 +275,16 @@ in {
               type = types.bool;
               default = defaultConfig.IDENTIFY_ENVS;
               description = lib.mdDoc "If set true, environmental groups are printed to differ Xorg/Wayland/Custom/UserCustom desktops.";
+            };
+            HIDE_ENTER_LOGIN = mkOption {
+              type = types.bool;
+              default = defaultConfig.HIDE_ENTER_LOGIN;
+              description = lib.mdDoc "If set true, \"hostname login:\" is not displayed. ";
+            };
+            HID_ENTER_PASSWORD = mkOption {
+              type = types.bool;
+              default = defaultConfig.HID_ENTER_PASSWORD;
+              description = lib.mdDoc "If set true, \"Password:\" is not displayed. ";
             };
           };
         };
@@ -312,7 +360,11 @@ in {
       '';
     };
 
-    environment.systemPackages = [cfg.package];
+    environment.systemPackages =
+      [cfg.package]
+      ++ (lib.lists.optionals
+        (cfg.configuration.DBUS_LAUNCH or cfg.configuration.ALWAYS_DBUS_LAUNCH)
+        [pkgs.dbus]);
     services.xserver.displayManager.lightdm.enable = false;
     systemd.services.emptty.enable = true;
 
