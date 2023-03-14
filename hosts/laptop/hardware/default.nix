@@ -57,8 +57,8 @@
   # services.xserver.desktopManager.plasma5.enable = true;
   # services.xserver.displayManager.startx.enable = true;
   # services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.emptty.enable = false;
+  services.xserver.displayManager.lightdm.enable = false;
+  services.xserver.displayManager.emptty.enable = true;
   services.xserver.displayManager.ly = {
     enable = false;
     defaultUser = username;
