@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf mkOption mkEnableOption types mkDefault;
+  inherit (lib) mkIf mkOption mkEnableOption types;
   inherit (lib.strings) optionalString;
   cfg = config.services.xserver.displayManager.emptty;
 
