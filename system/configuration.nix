@@ -75,8 +75,10 @@
 
   # modules
   music.enable = true; # music production software and configuration
-  virtualization.enable = true;
-  virtualization.firmware.ovmfPackage = pkgs.OVMFFull;
+  virtualization = {
+    enable = lib.mkDefault false;
+    firmware.ovmfPackage = pkgs.OVMFFull;
+  };
 
   # Set your time zone.
   time.timeZone = lib.mkDefault "America/New_York";
