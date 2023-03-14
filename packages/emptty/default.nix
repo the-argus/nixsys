@@ -24,6 +24,11 @@ buildGoModule rec {
 
   tags = lib.lists.optionals noX11 ["noxlib"];
 
+  prePatch = ''
+    sed -i "s|/usr/share/xsessions/|/run/current-system/sw/share/xsessions|g" src/desktop.go
+    sed -i "s|/usr/share/wayland-sessions/|/run/current-system/sw/share/wayland-sessions|g" src/desktop.go
+  '';
+
   buildPhase = ''
     runHook preBuild
     make build
