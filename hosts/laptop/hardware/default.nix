@@ -46,7 +46,7 @@
   # systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 5";
 
   virtualization = {
-    enable = true;
+    enable = false;
     containers = {
       docker.enable = false;
       podman.enable = false;
