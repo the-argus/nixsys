@@ -38,8 +38,24 @@
     IDENTIFY_ENVS = false;
   };
 
-  # TODO: update this to include all colors
-  availableColors = ["BLACK" "LIGHT_BLACK"];
+  availableColors = [
+    "BLACK"
+    "RED"
+    "GREEN"
+    "YELLOW"
+    "BLUE"
+    "PURPLE"
+    "CYAN"
+    "WHITE"
+    "LIGHT_BLACK"
+    "LIGHT_RED"
+    "LIGHT_GREEN"
+    "LIGHT_YELLOW"
+    "LIGHT_BLUE"
+    "LIGHT_PURPLE"
+    "LIGHT_CYAN"
+    "LIGHT_WHITE"
+  ];
 
   empttyToString = type:
     if builtins.typeOf type == "bool"
@@ -299,7 +315,7 @@ in {
     environment.systemPackages = [cfg.package];
     services.xserver.displayManager.lightdm.enable = false;
     systemd.services.emptty.enable = true;
-    
+
     # meta.maintainers = with maintainers; [ the-argus ];
   };
 }
