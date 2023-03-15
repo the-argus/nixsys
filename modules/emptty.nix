@@ -295,6 +295,8 @@ in {
   config = mkIf cfg.enable {
     # symlink configuration for use by the program
     environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString cfg.configuration);
+    environment.etc."emptty/share/xsessions".source = "${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions";
+    environment.etc."emptty/share/wayland-sessions".source = "${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-sessions";
     # services.emptty.settings.terminal.vt = mkDefault cfg.configuration.TTY_NUMBER;
 
     # This prevents nixos-rebuild from killing emptty by activating getty again (TODO: check if this is actually true lol)

@@ -5,6 +5,7 @@
   libX11,
   pam,
   stdenv,
+  wayland,
   noX11 ? false,
 }:
 buildGoModule rec {
@@ -18,15 +19,16 @@ buildGoModule rec {
     hash = "sha256-CbTPJgnKMWMXdG6Hr8xT9ae4Q9MxAfhITn5WSCzCmI4=";
   };
 
-  buildInputs = [pam] ++ (lib.lists.optionals (!noX11) [libX11]);
+  buildInputs = [wayland pam] ++ (lib.lists.optionals (!noX11) [libX11]);
 
   vendorHash = "sha256-tviPb05puHvBdDkSsRrBExUVxQy+DzmkjB+W9W2CG4M=";
 
   tags = lib.lists.optionals noX11 ["noxlib"];
 
   prePatch = ''
-    sed -i "s|/usr/share/xsessions/|/run/current-system/sw/share/xsessions|g" src/desktop.go
-    sed -i "s|/usr/share/wayland-sessions/|/run/current-system/sw/share/wayland-sessions|g" src/desktop.go
+    # these locations are used by the module
+    sed -i "s|/usr/share/xsessions/|/etc/emptty/share/xsessions|g" src/desktop.go
+    sed -i "s|/usr/share/wayland-sessions/|/etc/emptty/share/wayland-sessions|g" src/desktop.go
   '';
 
   buildPhase = ''

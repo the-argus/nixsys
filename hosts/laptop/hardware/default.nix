@@ -58,7 +58,14 @@
   # services.xserver.displayManager.startx.enable = true;
   # services.xserver.displayManager.gdm.enable = true;
   services.xserver.displayManager.lightdm.enable = false;
-  services.xserver.displayManager.emptty.enable = true;
+  services.xserver.displayManager.emptty = {
+    enable = true;
+    configuration = {
+      DEFAULT_USER = username;
+      DEFAULT_SESSION = "sway";
+      DEFAULT_SESSION_ENV = "wayland";
+    };
+  };
   services.xserver.displayManager.ly = {
     enable = false;
     defaultUser = username;
