@@ -4,14 +4,18 @@
   lib,
   libX11,
   pam,
+  pam_u2f,
   stdenv,
+  getent,
+  makeWrapper,
   wayland,
   noX11 ? false,
+  noU2f ? false,
 }:
 buildGoModule rec {
   pname = "emptty";
   version = "0.9.1";
-  
+
   src = fetchFromGitHub {
     owner = "tvrzna";
     repo = pname;
@@ -19,7 +23,10 @@ buildGoModule rec {
     sha256 = "1zm703yw9y4ma508hscbry5ml1xz0lwqpk4rfn8vx7gadnjs56gr";
   };
 
-  buildInputs = [wayland pam] ++ (lib.lists.optionals (!noX11) [libX11]);
+  buildInputs =
+    [makeWrapper wayland pam]
+    ++ (lib.lists.optionals (!noX11) [libX11])
+    ++ (lib.lists.optionals (!noU2f) [pam_u2f]);
 
   vendorHash = "sha256-tviPb05puHvBdDkSsRrBExUVxQy+DzmkjB+W9W2CG4M=";
 
@@ -44,6 +51,12 @@ buildGoModule rec {
     fi
 
     runHook postInstall
+  '';
+
+  postFixup = ''
+    wrapProgram \
+        $out/bin/emptty \
+        --prefix PATH ":" ${lib.makeBinPath [getent]}
   '';
 
   meta = with lib; {
