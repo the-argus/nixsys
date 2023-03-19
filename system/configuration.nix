@@ -163,6 +163,7 @@
     ]
     ++ (lib.lists.optionals (!config.system.minimal) [
       sshfs
+      ntfs3g
 
       # cli applications
       neofetch
