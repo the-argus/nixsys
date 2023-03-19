@@ -82,7 +82,11 @@
   # Set your time zone.
   time.timeZone = lib.mkDefault "America/New_York";
 
-  # documentation.doc.enable = false;
+  documentation = {
+    info.enable = false;
+    dev.enable = true;
+    nixos.enable = false;
+  };
   # this line is hardcoded to be green
   # services.getty.greetingLine = "Welcome, ${username}.";
 
