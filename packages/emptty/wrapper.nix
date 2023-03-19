@@ -8,7 +8,7 @@
   lib,
   ...
 }: let
-  path = lib.makeBinPath ([getent util-linuxMinimal] ++ additionalPathEntries);
+  runtimePath = lib.makeBinPath ([getent util-linuxMinimal] ++ additionalPathEntries);
 in
   stdenvNoCC.mkDerivation {
     name = "empty-wrapper";
@@ -24,6 +24,6 @@ in
     postFixup = ''
       wrapProgram \
           $out/bin/emptty \
-          --prefix PATH ":" ${path}
+          --prefix PATH ":" ${runtimePath}
     '';
   }
