@@ -73,6 +73,7 @@
   };
 
   # desktops ------------------------------------------------------------------
+  music.enable = true; # music production software and configuration
 
   virtualization = {
     enable = true;

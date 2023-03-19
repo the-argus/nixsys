@@ -74,7 +74,6 @@
     override defaultSettings (settings.nix or {});
 
   # modules
-  music.enable = true; # music production software and configuration
   virtualization = {
     enable = lib.mkDefault false;
     firmware.ovmfPackage = pkgs.OVMFFull;
