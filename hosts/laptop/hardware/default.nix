@@ -62,8 +62,6 @@
     enable = true;
     configuration = {
       DEFAULT_USER = username;
-      DEFAULT_SESSION = "sway";
-      DEFAULT_SESSION_ENV = "wayland";
     };
   };
   services.xserver.displayManager.ly = {
