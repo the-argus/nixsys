@@ -3,7 +3,7 @@
   lib,
   original-kitty ? null,
   ...
-}: {
+}: rec {
   # meta packages
   gtkThemes = callPackage ./gtk-themes {};
   discordThemes = callPackage ./discord-themes.nix {};
@@ -27,5 +27,6 @@
   rifle = callPackage ./rifle.nix {};
   sudo-askpass = callPackage ./sudo-askpass {};
   kitty = callPackage ./kitty {inherit original-kitty;};
-  emptty = callPackage ./emptty/default.nix {};
+  emptty-unwrapped = callPackage ./emptty/default.nix {};
+  emptty = callPackage ./emptty/wrapper.nix {inherit emptty-unwrapped;};
 }

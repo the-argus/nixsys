@@ -6,8 +6,6 @@
   pam,
   pam_u2f,
   stdenv,
-  getent,
-  makeWrapper,
   wayland,
   noX11 ? false,
   noU2f ? false,
@@ -24,7 +22,7 @@ buildGoModule rec {
   };
 
   buildInputs =
-    [makeWrapper wayland pam]
+    [wayland pam]
     ++ (lib.lists.optionals (!noX11) [libX11])
     ++ (lib.lists.optionals (!noU2f) [pam_u2f]);
 
@@ -51,12 +49,6 @@ buildGoModule rec {
     fi
 
     runHook postInstall
-  '';
-
-  postFixup = ''
-    wrapProgram \
-        $out/bin/emptty \
-        --prefix PATH ":" ${lib.makeBinPath [getent]}
   '';
 
   meta = with lib; {
