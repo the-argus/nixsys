@@ -14,7 +14,7 @@
   # for a WiFi printer
   services.avahi.openFirewall = true;
 
-  time.timeZone = "Europe/Paris";
+  time.timeZone = "America/New_York";
 
   # dual booting with windows boot loader mounted on /efi
   boot = {
