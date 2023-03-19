@@ -68,6 +68,7 @@ in {
         yelp
       ])
       ++ (with pkgs.gnome; [
+        rygel
         gnome-calculator
         gnome-logs
         gnome-disk-utility
