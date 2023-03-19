@@ -19,8 +19,8 @@ buildGoModule rec {
   src = fetchFromGitHub {
     owner = "tvrzna";
     repo = pname;
-    rev = "9d2be5e6b101593f42a561418d15fa68562d4b6e";
-    sha256 = "1zm703yw9y4ma508hscbry5ml1xz0lwqpk4rfn8vx7gadnjs56gr";
+    rev = "18de1cefcbff00e3468abe5573a2af2d848e7553";
+    sha256 = "0jzhcbw1ckpsmmxm2g51lvkspsrl7lkn9xfifkk97mvm22qs4p49";
   };
 
   buildInputs =
