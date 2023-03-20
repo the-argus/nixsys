@@ -534,11 +534,11 @@
     },
     "flake-utils_5": {
       "locked": {
-        "lastModified": 1676283394,
-        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
+        "lastModified": 1678901627,
+        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
+        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
         "type": "github"
       },
       "original": {
@@ -1206,11 +1206,11 @@
     "spicetify-cli": {
       "flake": false,
       "locked": {
-        "lastModified": 1677851665,
-        "narHash": "sha256-C5J+OJjoiPOo/scVd48lTBJKKWial3TCkCIDBSerO+4=",
+        "lastModified": 1679323949,
+        "narHash": "sha256-zmYMl3dWN1taycAgDRxRKMEPDJ+V7AawU9TC+t1z9TQ=",
         "owner": "spicetify",
         "repo": "spicetify-cli",
-        "rev": "c9d8068d58d8c45f961ca42edcea47d7be904164",
+        "rev": "e2895417ee8dfd98a3ddd8167fc8a832d3a3b95c",
         "type": "github"
       },
       "original": {
