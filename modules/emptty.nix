@@ -303,6 +303,7 @@ in {
 
     # This prevents nixos-rebuild from killing emptty by activating getty again (TODO: check if this is actually true lol)
     systemd.services."autovt@${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
+    systemd.services."getty@${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
 
     systemd.services.emptty = {
       unitConfig = {
