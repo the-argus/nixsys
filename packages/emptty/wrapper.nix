@@ -8,7 +8,7 @@
   lib,
   ...
 }: let
-  runtimePath = lib.makeBinPath ([getent] ++ additionalPathEntries);
+  runtimePath = lib.makeBinPath ([getent util-linuxMinimal] ++ additionalPathEntries);
 in
   stdenvNoCC.mkDerivation {
     name = "empty-wrapper";
