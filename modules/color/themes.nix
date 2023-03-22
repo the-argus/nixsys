@@ -114,9 +114,9 @@
         #   package = pkgs.cascadia-code;
         # };
         monospace = {
-          name = "scientifica";
-          size = 12;
-          package = pkgs.scientifica;
+          name = "Martian Mono";
+          size = 8;
+          package = pkgs.martian-mono;
         };
       };
     };
