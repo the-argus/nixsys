@@ -29,4 +29,5 @@
   kitty = callPackage ./kitty {inherit original-kitty;};
   emptty-unwrapped = callPackage ./emptty/default.nix {};
   emptty = callPackage ./emptty/wrapper.nix {inherit emptty-unwrapped;};
+  typst = callPackage ./typst {};
 }
