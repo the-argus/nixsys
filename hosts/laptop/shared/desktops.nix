@@ -14,5 +14,6 @@
     };
     gnome.enable = true;
     # plasma.enable = true;
+    terminal = pkgs.alacritty;
   };
 }

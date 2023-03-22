@@ -108,10 +108,15 @@
       wallpaper = "colourful-place.jpg";
       scheme = schemes.macchiato;
       font = override defaultTheme.font {
+        # monospace = {
+        #   name = "Cascadia Code";
+        #   size = 12;
+        #   package = pkgs.cascadia-code;
+        # };
         monospace = {
-          name = "Cascadia Code";
+          name = "scientifica";
           size = 12;
-          package = pkgs.cascadia-code;
+          package = pkgs.scientifica;
         };
       };
     };
