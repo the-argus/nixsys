@@ -15,4 +15,13 @@ rustPlatform.buildRustPackage rec {
   };
 
   cargoSha256 = "sha256-NG7zrQ3M+jGn3VkwkIu/deEqt1Q7FQiyW/LdmNLYVNs=";
+  
+  installPhase = ''
+    runHook preInstall
+    
+    mkdir $out
+    cp -r target/* $out/
+
+    runHook postInstall
+  '';
 }
