@@ -165,7 +165,13 @@
       (finalizeSettings defaultGlobalSettings).pkgs.mkShell {};
 
     packages.${defaultGlobalSettings.system} = {
-      myPackages = (finalizeSettings defaultGlobalSettings).pkgs.callPackage ./packages {};
+      # wacky setup to make sure typst is unstable
+      myPackages = let
+        fs = finalizeSettings defaultGlobalSettings;
+        called = fs.pkgs.callPackage ./packages {};
+        unstableCalled = fs.unstable.callPackage ./packages {};
+      in
+        called // {inherit (unstableCalled) typst;};
     };
 
     formatter.${defaultGlobalSettings.system} = (finalizeSettings defaultGlobalSettings).pkgs.alejandra;
