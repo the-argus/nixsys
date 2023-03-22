@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  unstable,
   ...
 }: let
   cfg = config.desktops;
@@ -46,6 +47,11 @@ in {
 
     # fonts -------------------------------------------------------------------
     fonts.fonts = with pkgs; [
+      # unfree :(
+      # vistafonts
+      # ttf-envy-code-r
+      # corefonts
+      
       fira-code
       fira-code-symbols
       cozette
@@ -57,6 +63,24 @@ in {
       noto-fonts-cjk
       liberation_ttf
       victor-mono
+      tt2020
+      arkpandora_ttf
+      times-newer-roman
+      tewi-font
+      spleen
+      scientifica
+      recursive
+      ocr-a # cyberpunk hacker font thats actually readable
+      mononoki
+      montserrat
+      monocraft
+      monoid # monospace, ligatures and language support
+      martian-mono # rounded monospace font
+      unstable.garamond-libre
+      gelasio
+      courier-prime
+      comic-relief
+      cascadia-code # microsoft ligatures font
 
       (nerdfonts.override {fonts = ["FiraCode" "VictorMono"];})
     ];
