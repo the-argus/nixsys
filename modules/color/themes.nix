@@ -109,9 +109,9 @@
       scheme = schemes.macchiato;
       font = override defaultTheme.font {
         monospace = {
-          name = "VictorMono Nerd Font";
-          size = 14;
-          package = pkgs.nerdfonts.override {fonts = ["VictorMono"];};
+          name = "Cascadia Code";
+          size = 12;
+          package = pkgs.cascadia-code;
         };
       };
     };
