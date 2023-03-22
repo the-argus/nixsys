@@ -115,7 +115,7 @@
         # };
         monospace = {
           name = "Martian Mono";
-          size = 8;
+          size = 12;
           package = pkgs.martian-mono;
         };
       };
