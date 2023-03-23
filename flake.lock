@@ -1015,7 +1015,7 @@
         "banner": "banner_3",
         "neorg-overlay": "neorg-overlay",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ]
       },
       "locked": {
