@@ -11,34 +11,23 @@ godot_4_mono.overrideAttrs (oa: {
 
   outputs = ["out"];
   dontBuild = true;
-  buildPhase = " ";
-  installPhase = ''echo "No output intended. Run make-deps.sh instead." > $out'';
+  buildPhase = ''
+    # Without RestorePackagesPath set, it restores packages to a temp directory. Specifying
+    # a path ensures we have a place to run nuget-to-nix.
+    nugetRestore() { dotnet msbuild -t:Restore -p:RestorePackagesPath=nugetPackages $1; }
 
-  makeDeps = ''
-    set -e
-    outdir="$(pwd)"
-    wrkdir="$(mktemp -d)"
-    pushd "$wrkdir" > /dev/null
-      unpackPhase
-      cd source
-      patchPhase
-      configurePhase
+    nugetRestore modules/mono/glue/GodotSharp/GodotSharp.sln
+    nugetRestore modules/mono/editor/GodotTools/GodotTools.sln
+  '';
 
-      # Without RestorePackagesPath set, it restores packages to a temp directory. Specifying
-      # a path ensures we have a place to run nuget-to-nix.
-      nugetRestore() { dotnet msbuild -t:Restore -p:RestorePackagesPath=nugetPackages $1; }
-
-      nugetRestore modules/mono/glue/GodotSharp/GodotSharp.sln
-      nugetRestore modules/mono/editor/GodotTools/GodotTools.sln
-
-      nuget-to-nix nugetPackages > "$outdir"/deps.nix
-    popd > /dev/null
-    rm -rf "$wrkdir"
+  installPhase = ''
+    mkdir -p $out
+    cp -r * $out
   '';
 
   meta =
     oa.meta
     // {
-      description = "A derivation with no output that exists to provide an environment for make-deps.sh";
+      description = "Produces the unpacked source of godot, in preparation for nuget-to-nix";
     };
 })

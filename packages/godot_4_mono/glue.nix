@@ -26,7 +26,9 @@ godot_4.overrideAttrs (base: {
 
     glue="$out"/modules/mono/glue
     mkdir -p "$glue"
-    bin/godot_server.x11.opt.tools.64.mono --generate-mono-glue "$glue"
+    # bin/godot_server.x11.opt.tools.64.mono --generate-mono-glue "$glue"
+    mkdir -p $out/test
+    cp -r * $out/test
 
     runHook postInstall
   '';
