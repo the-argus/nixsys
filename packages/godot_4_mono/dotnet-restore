@@ -1,0 +1,22 @@
+#!/bin/sh
+
+final_output=$PWD/deps.nix
+
+workdir=$(mktemp -d)
+mkdir -p $workdir
+
+cp -r result/. $workdir/
+chmod -R +w $workdir
+
+pushd $workdir > /dev/null
+
+# Without RestorePackagesPath set, it restores packages to a temp directory. Specifying
+# a path ensures we have a place to run nuget-to-nix.
+nugetRestore() { dotnet msbuild -t:Restore -p:RestorePackagesPath=nugetPackages $1; }
+
+nugetRestore modules/mono/glue/GodotSharp/GodotSharp.sln
+nugetRestore modules/mono/editor/GodotTools/GodotTools.sln
+
+nuget-to-nix nugetPackages > $final_output
+
+popd > /dev/null

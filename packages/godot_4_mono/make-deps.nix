@@ -1,24 +1,19 @@
 {
   godot_4_mono,
   nuget-to-nix,
+  dotnet-sdk,
+  ...
 }:
 godot_4_mono.overrideAttrs (oa: {
   pname = "godot-mono-make-deps";
 
-  nativeBuildInputs = oa.nativeBuildInputs ++ [nuget-to-nix];
+  nativeBuildInputs = oa.nativeBuildInputs ++ [nuget-to-nix dotnet-sdk];
 
   shouldConfigureNuget = false;
 
   outputs = ["out"];
-  dontBuild = true;
-  buildPhase = ''
-    # Without RestorePackagesPath set, it restores packages to a temp directory. Specifying
-    # a path ensures we have a place to run nuget-to-nix.
-    nugetRestore() { dotnet msbuild -t:Restore -p:RestorePackagesPath=nugetPackages $1; }
 
-    nugetRestore modules/mono/glue/GodotSharp/GodotSharp.sln
-    nugetRestore modules/mono/editor/GodotTools/GodotTools.sln
-  '';
+  dontBuild = true;
 
   installPhase = ''
     mkdir -p $out

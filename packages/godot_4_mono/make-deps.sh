@@ -1,6 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/sh
 outdir=$PWD
+nix build \
+  ../../.#myPackages.godot_4_mono.make-deps
 nix shell \
   --inputs-from ../.. \
-  ../../.#myPackages.godot_4_mono.make-deps \
-  nixpkgs#nuget-to-nix
+  nixpkgs#nuget-to-nix \
+  nixpkgs#dotnet-sdk \
+  --command "./dotnet-restore"
