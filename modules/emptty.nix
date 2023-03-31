@@ -303,7 +303,7 @@ in {
 
     # This prevents nixos-rebuild from killing emptty by activating getty again (TODO: check if this is actually true lol)
     systemd.services."autovt@${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
-    systemd.services."getty@${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
+    systemd.services."getty@tty${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
 
     systemd.services.emptty = {
       unitConfig = {
@@ -313,10 +313,10 @@ in {
         After = [
           "systemd-user-sessions.service"
           "plymouth-quit-wait.service"
-          "getty@${builtins.toString cfg.configuration.TTY_NUMBER}.service"
+          "getty@tty${builtins.toString cfg.configuration.TTY_NUMBER}.service"
         ];
         Conflicts = [
-          "getty@${builtins.toString cfg.configuration.TTY_NUMBER}.service"
+          "getty@tty${builtins.toString cfg.configuration.TTY_NUMBER}.service"
         ];
       };
 
