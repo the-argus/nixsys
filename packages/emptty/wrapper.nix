@@ -7,9 +7,18 @@
   getent,
   xorg,
   lib,
+  needXServer ? true,
   ...
 }: let
-  runtimePath = lib.makeBinPath ([getent util-linuxMinimal xorg.xauth] ++ additionalPathEntries);
+  runtimePath = lib.makeBinPath ([
+      getent
+      util-linuxMinimal
+      xorg.xauth
+    ]
+    ++ (lib.lists.optionals needXServer [
+      xorg.xorgserver
+    ])
+    ++ additionalPathEntries);
 in
   stdenvNoCC.mkDerivation {
     name = "empty-wrapper";
