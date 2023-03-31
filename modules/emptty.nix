@@ -369,7 +369,7 @@ in {
       };
 
       environment.systemPackages =
-        [package]
+        [cfg.package]
         ++ (lib.lists.optionals
           (cfg.configuration.DBUS_LAUNCH or cfg.configuration.ALWAYS_DBUS_LAUNCH)
           [pkgs.dbus]);

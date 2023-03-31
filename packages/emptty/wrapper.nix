@@ -12,21 +12,15 @@
   systemPath ? null,
   ...
 }: let
-  packagesPath = lib.makeBinPath ([
+  runtimePath = lib.makeBinPath ([
       getent
       util-linuxMinimal
       dbus
       xorg.xauth
     ]
-    ++ (lib.lists.optionals needXServer [
-      xorg.xorgserver
-    ])
+    ++ (lib.lists.optionals needXServer [xorg.xorgserver])
+    ++ (lib.lists.optionals (systemPath != null) [systemPath])
     ++ additionalPathEntries);
-
-  runtimePath =
-    if systemPath != null
-    then "${systemPath}:${packagesPath}"
-    else packagesPath;
 in
   stdenvNoCC.mkDerivation {
     name = "empty-wrapper";
