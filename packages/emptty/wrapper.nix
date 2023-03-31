@@ -9,9 +9,10 @@
   xorg,
   lib,
   needXServer ? true,
+  systemPath ? null,
   ...
 }: let
-  runtimePath = lib.makeBinPath ([
+  packagesPath = lib.makeBinPath ([
       getent
       util-linuxMinimal
       dbus
@@ -21,6 +22,11 @@
       xorg.xorgserver
     ])
     ++ additionalPathEntries);
+
+  runtimePath =
+    if systemPath != null
+    then "${systemPath}:${packagesPath}"
+    else packagesPath;
 in
   stdenvNoCC.mkDerivation {
     name = "empty-wrapper";
