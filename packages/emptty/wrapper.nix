@@ -5,6 +5,7 @@
   additionalPathEntries ? [],
   util-linuxMinimal,
   getent,
+  dbus,
   xorg,
   lib,
   needXServer ? true,
@@ -13,6 +14,7 @@
   runtimePath = lib.makeBinPath ([
       getent
       util-linuxMinimal
+      dbus
       xorg.xauth
     ]
     ++ (lib.lists.optionals needXServer [
