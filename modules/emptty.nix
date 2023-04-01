@@ -28,7 +28,6 @@
     VERTICAL_SELECTION = false;
     LOGGING = null;
     LOGGING_FILE = null;
-    XORG_ARGS = null;
     DYNAMIC_MOTD = false;
     DYNAMIC_MOTD_PATH = "/etc/emptty/motd-gen.sh";
     MOTD_PATH = "/etc/emptty/motd";
@@ -203,11 +202,6 @@ in {
               description = lib.mdDoc "Overrides path of log file";
               example = "/var/log/emptty/$\{TTY_NUMBER}.log";
             };
-            XORG_ARGS = mkOption {
-              type = types.nullOr types.string;
-              default = defaultConfig.XORG_ARGS;
-              description = lib.mdDoc "Arguments passed to Xorg server.";
-            };
             DYNAMIC_MOTD = mkOption {
               type = types.nullOr types.bool;
               default = defaultConfig.DYNAMIC_MOTD;
@@ -299,6 +293,7 @@ in {
       # symlink configuration for use by the program
       environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString (cfg.configuration
         // {
+          XORG_ARGS = config.services.xserver.displayManager.xserverArgs;
           XORG_SESSIONS_PATH = "${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions/";
           WAYLAND_SESSIONS_PATH = "${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-sessions/";
         }));
