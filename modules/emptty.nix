@@ -4,12 +4,11 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf mkOption mkEnableOption types;
+  inherit (lib) mkIf mkOption mkEnableOption types mkDefault;
   inherit (lib.strings) optionalString;
   cfg = config.services.xserver.displayManager.emptty;
 
   defaultConfig = {
-    # 1:1 with https://github.com/tvrzna/emptty/blob/master/res/conf
     TTY_NUMBER = 1;
     SWITCH_TTY = true;
     PRINT_ISSUE = true;
@@ -42,7 +41,7 @@
     ROOTLESS_XORG = null;
     IDENTIFY_ENVS = false;
     HIDE_ENTER_LOGIN = false;
-    HID_ENTER_PASSWORD = false;
+    HIDE_ENTER_PASSWORD = false;
   };
 
   availableColors = [
@@ -280,9 +279,9 @@ in {
               default = defaultConfig.HIDE_ENTER_LOGIN;
               description = lib.mdDoc "If set true, \"hostname login:\" is not displayed. ";
             };
-            HID_ENTER_PASSWORD = mkOption {
+            HIDE_ENTER_PASSWORD = mkOption {
               type = types.bool;
-              default = defaultConfig.HID_ENTER_PASSWORD;
+              default = defaultConfig.HIDE_ENTER_PASSWORD;
               description = lib.mdDoc "If set true, \"Password:\" is not displayed. ";
             };
           };
@@ -292,23 +291,23 @@ in {
   };
 
   config = let
+    # package needs to use the system path so it can invoke WMs and the Xorg server
     package = cfg.package.override {systemPath = config.system.path;};
   in
     mkIf cfg.enable {
-      # symlink configuration for use by the program
+      # symlink configuration for use by the program. could also be done in serviceConfig
       environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString (cfg.configuration
         // {
           XORG_ARGS = config.services.xserver.displayManager.xserverArgs;
           XORG_SESSIONS_PATH = "${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions/";
           WAYLAND_SESSIONS_PATH = "${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-sessions/";
         }));
-      # services.emptty.settings.terminal.vt = mkDefault cfg.configuration.TTY_NUMBER;
 
-      # This prevents nixos-rebuild from killing emptty by activating getty again (TODO: check if this is actually true lol)
+      # emptty should be the only thing running on the TTYs
       systemd.services."autovt@${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
       systemd.services."getty@tty${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
 
-      # most other display manager modules enable these.
+      # most other display manager modules enable these
       security.polkit.enable = true;
       services.dbus.enable = true;
 
@@ -332,13 +331,9 @@ in {
           # /etc/emptty/conf for easier discoverability by new users
           ExecStart = "${package}/bin/emptty -d";
 
-          # Restart = mkIf cfg.restart "always";
+          Restart = mkIf cfg.restart "always";
 
           # Defaults from emptty upstream configuration
-
-          # i think we could do:
-          # services.xserver.displayManager.job.environment = config.services.xserver.displayManager.job.environment // cfg.configuration;
-          # but im hoping that the emptty maintainer will stop using environment variables at some point...
           EnvironmentFile = "/etc/emptty/conf";
           Type = "idle";
           TTYPath = "/dev/tty${builtins.toString cfg.configuration.TTY_NUMBER}";
@@ -346,7 +341,6 @@ in {
           KillMode = "process";
           IgnoreSIGPIPE = "no";
           SendSIGHUP = "yes";
-          Restart = "always";
         };
 
         # Don't kill a user session when using nixos-rebuild
@@ -354,7 +348,7 @@ in {
 
         wantedBy = ["graphical.target"];
       };
-
+      systemd.services.emptty.enable = true;
       systemd.defaultUnit = "graphical.target";
 
       security.pam.services.emptty = {
@@ -373,14 +367,10 @@ in {
         '';
       };
 
-      environment.systemPackages =
-        [cfg.package]
-        ++ (lib.lists.optionals
-          (cfg.configuration.DBUS_LAUNCH or cfg.configuration.ALWAYS_DBUS_LAUNCH)
-          [pkgs.dbus]);
+      # disable lightdm, the default DM
       services.xserver.displayManager.lightdm.enable = false;
-      systemd.services.emptty.enable = true;
 
+      # rotate emptty logs, if logrotate is enabled
       services.logrotate.settings = {
         "/var/log/emptty" = mapAttrs (_: mkDefault) {
           frequency = "monthly";
@@ -389,7 +379,5 @@ in {
           minsize = "1M";
         };
       };
-
-      # meta.maintainers = with maintainers; [ the-argus ];
     };
 }
