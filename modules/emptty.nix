@@ -303,6 +303,10 @@ in {
       systemd.services."autovt@${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
       systemd.services."getty@tty${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
 
+      # most other display manager modules enable these.
+      security.polkit.enable = true;
+      services.dbus.enable = true;
+
       systemd.services.emptty = {
         unitConfig = {
           Wants = [
