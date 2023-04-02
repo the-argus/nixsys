@@ -2,6 +2,7 @@
   godot_4,
   mono,
   stdenv,
+  ...
 }: let
   monoEnabledGodot = godot_4.overrideAttrs (base: {
     pname = "godot-mono-glue";
@@ -11,7 +12,6 @@
       base.sconsFlags
       ++ [
         "module_mono_enabled=yes"
-        "mono_glue=false"
         "mono_prefix=${mono}" # not sure if this is necessary. may be vestigal
       ];
 
@@ -22,10 +22,7 @@
     outputs = ["out"];
 
     installPhase = ''
-      glue="$out"/modules/mono/glue
-      mkdir -p "$glue"
-      ls -al bin
-
+      mkdir -p $out
       cp -r * $out
     '';
   });
@@ -36,22 +33,14 @@ in
 
     src = monoEnabledGodot;
 
-    buildPhase = ''
-      DISPLAY=:0 bin/godot.linuxbsd.editor.x86_64.mono --headless --generate-mono-glue "$glue"
-    '';
-
     nativeBuildInputs = [mono];
 
+    # just build straight into $out, avoid any copying to and from the build dir
+    dontUnpack = true;
+    dontBuild = true;
     installPhase = ''
-      mkdir -p "$out/bin"
-      cp bin/godot.* $out/bin/
-      installManPage misc/dist/linux/godot.6
-      mkdir -p "$out"/share/{applications,icons/hicolor/scalable/apps}
-      cp misc/dist/linux/org.godotengine.Godot.desktop "$out/share/applications/"
-      substituteInPlace "$out/share/applications/org.godotengine.Godot.desktop" \
-        --replace "Exec=godot" "Exec=$out/bin/godot"
-      cp icon.svg "$out/share/icons/hicolor/scalable/apps/godot.svg"
-      cp icon.png "$out/share/icons/godot.png"
+      mkdir -p $out/modules/mono/glue
+      $src/bin/godot.linuxbsd.editor.x86_64.mono --headless --generate-mono-glue $out/modules/mono/glue/
     '';
 
     meta =
