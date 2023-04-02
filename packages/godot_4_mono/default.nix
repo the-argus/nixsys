@@ -34,7 +34,7 @@
       <?xml version="1.0" encoding="utf-8"?>
       <configuration>
         <packageSources>
-          <add key="${pname}-deps" value="${nugetSource}/lib" />
+          <add key="godot-mono-deps" value="${nugetSource}/lib" />
         </packageSources>
       </configuration>
     '';
