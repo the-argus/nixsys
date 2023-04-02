@@ -1,6 +1,6 @@
 {...}: {
   services.plymouth = {
-    enable = false;
+    enable = true;
     themeName = "seal";
   };
 }
