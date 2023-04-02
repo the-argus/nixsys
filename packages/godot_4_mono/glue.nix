@@ -1,41 +1,62 @@
 {
   godot_4,
   mono,
-}:
-godot_4.overrideAttrs (base: {
-  pname = "godot-mono-glue";
-  buildDescription = "mono glue";
-  buildPlatform = "server";
+  stdenv,
+}: let
+  monoEnabledGodot = godot_4.overrideAttrs (base: {
+    pname = "godot-mono-glue";
+    buildDescription = "mono glue";
 
-  sconsFlags =
-    base.sconsFlags
-    ++ [
-      "module_mono_enabled=true"
-      "mono_glue=false" # Indicates not to expect already existing glue.
-      "mono_prefix=${mono}"
-    ];
+    sconsFlags =
+      base.sconsFlags
+      ++ [
+        "module_mono_enabled=yes"
+        "mono_glue=false"
+        "mono_prefix=${mono}" # not sure if this is necessary. may be vestigal
+      ];
 
-  nativeBuildInputs = base.nativeBuildInputs ++ [mono];
+    nativeBuildInputs = base.nativeBuildInputs ++ [mono];
 
-  # patches = base.patches ++ [./gen_cs_glue_version.py.patch];
+    # patches = base.patches ++ [./gen_cs_glue_version.py.patch];
 
-  outputs = ["out"];
+    outputs = ["out"];
 
-  installPhase = ''
-    runHook preInstall
+    installPhase = ''
+      glue="$out"/modules/mono/glue
+      mkdir -p "$glue"
+      ls -al bin
 
-    glue="$out"/modules/mono/glue
-    mkdir -p "$glue"
-    # bin/godot_server.x11.opt.tools.64.mono --generate-mono-glue "$glue"
-    mkdir -p $out/test
-    cp -r * $out/test
+      cp -r * $out
+    '';
+  });
+in
+  stdenv.mkDerivation {
+    pname = "godot-mono-glue";
+    version = monoEnabledGodot.version;
 
-    runHook postInstall
-  '';
+    src = monoEnabledGodot;
 
-  meta =
-    base.meta
-    // {
-      homepage = "https://docs.godotengine.org/en/stable/development/compiling/compiling_with_mono.html#generate-the-glue";
-    };
-})
+    buildPhase = ''
+      DISPLAY=:0 bin/godot.linuxbsd.editor.x86_64.mono --headless --generate-mono-glue "$glue"
+    '';
+
+    nativeBuildInputs = [mono];
+
+    installPhase = ''
+      mkdir -p "$out/bin"
+      cp bin/godot.* $out/bin/
+      installManPage misc/dist/linux/godot.6
+      mkdir -p "$out"/share/{applications,icons/hicolor/scalable/apps}
+      cp misc/dist/linux/org.godotengine.Godot.desktop "$out/share/applications/"
+      substituteInPlace "$out/share/applications/org.godotengine.Godot.desktop" \
+        --replace "Exec=godot" "Exec=$out/bin/godot"
+      cp icon.svg "$out/share/icons/hicolor/scalable/apps/godot.svg"
+      cp icon.png "$out/share/icons/godot.png"
+    '';
+
+    meta =
+      monoEnabledGodot.meta
+      // {
+        homepage = "https://docs.godotengine.org/en/stable/development/compiling/compiling_with_mono.html#generate-the-glue";
+      };
+  }

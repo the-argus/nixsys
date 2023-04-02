@@ -7,6 +7,7 @@
   dotnet-sdk,
   writeText,
 }: let
+  glue = callPackage ./glue.nix {};
   godot_4_mono = godot_4.overrideAttrs (oa: rec {
     pname = "godot_4_mono";
 
@@ -14,7 +15,7 @@
 
     nativeBuildInputs = oa.nativeBuildInputs ++ [mono dotnet-sdk];
 
-    glue = callPackage ./glue.nix {};
+    inherit glue;
 
     nugetDeps = mkNugetDeps {
       name = "deps";
@@ -71,5 +72,6 @@ in
   godot_4_mono.overrideAttrs (_: {
     passthru = {
       make-deps = callPackage ./make-deps.nix {inherit godot_4_mono;};
+      inherit glue;
     };
   })
