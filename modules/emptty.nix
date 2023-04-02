@@ -341,6 +341,7 @@ in {
           KillMode = "process";
           IgnoreSIGPIPE = "no";
           SendSIGHUP = "yes";
+          Restart = "always";
         };
 
         # Don't kill a user session when using nixos-rebuild
