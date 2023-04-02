@@ -5,10 +5,13 @@
   ...
 }: let
   inherit (lib) mkIf mkOption mkEnableOption types mkDefault;
+  inherit (builtins) mapAttrs;
   inherit (lib.strings) optionalString;
   cfg = config.services.xserver.displayManager.emptty;
 
   defaultConfig = {
+    # note that XORG_ARGS is not included here
+    # config.services.xserver.displayManager.xserverArgs should be used instead
     TTY_NUMBER = 1;
     SWITCH_TTY = true;
     PRINT_ISSUE = true;
@@ -80,11 +83,6 @@
     ))
     optionsSet;
 in {
-  imports = [
-    (mkRemovedOptionModule
-      ["services" "xserver" "displayManager" "emptty" "configuration" "XORG_ARGS"]
-      "Use config.services.xserver.displayManager.xserverArgs instead.")
-  ];
   options = {
     services.xserver.displayManager.emptty = {
       enable = mkEnableOption (lib.mdDoc "Whether to enable emptty as the display manager.");
