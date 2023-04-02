@@ -81,6 +81,11 @@
     ))
     optionsSet;
 in {
+  imports = [
+    (mkRemovedOptionModule
+      ["services" "xserver" "displayManager" "emptty" "configuration" "XORG_ARGS"]
+      "Use config.services.xserver.displayManager.xserverArgs instead.")
+  ];
   options = {
     services.xserver.displayManager.emptty = {
       enable = mkEnableOption (lib.mdDoc "Whether to enable emptty as the display manager.");
@@ -375,6 +380,15 @@ in {
           [pkgs.dbus]);
       services.xserver.displayManager.lightdm.enable = false;
       systemd.services.emptty.enable = true;
+
+      services.logrotate.settings = {
+        "/var/log/emptty" = mapAttrs (_: mkDefault) {
+          frequency = "monthly";
+          rotate = 1;
+          create = "0660 root ${config.users.groups.utmp.name}";
+          minsize = "1M";
+        };
+      };
 
       # meta.maintainers = with maintainers; [ the-argus ];
     };
