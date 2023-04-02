@@ -4,12 +4,14 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf mkOption mkEnableOption types;
+  inherit (lib) mkIf mkOption mkEnableOption types mkDefault;
+  inherit (builtins) mapAttrs;
   inherit (lib.strings) optionalString;
   cfg = config.services.xserver.displayManager.emptty;
 
   defaultConfig = {
-    # 1:1 with https://github.com/tvrzna/emptty/blob/master/res/conf
+    # note that XORG_ARGS is not included here
+    # config.services.xserver.displayManager.xserverArgs should be used instead
     TTY_NUMBER = 1;
     SWITCH_TTY = true;
     PRINT_ISSUE = true;
@@ -28,7 +30,6 @@
     VERTICAL_SELECTION = false;
     LOGGING = null;
     LOGGING_FILE = null;
-    XORG_ARGS = null;
     DYNAMIC_MOTD = false;
     DYNAMIC_MOTD_PATH = "/etc/emptty/motd-gen.sh";
     MOTD_PATH = "/etc/emptty/motd";
@@ -43,7 +44,7 @@
     ROOTLESS_XORG = null;
     IDENTIFY_ENVS = false;
     HIDE_ENTER_LOGIN = false;
-    HID_ENTER_PASSWORD = false;
+    HIDE_ENTER_PASSWORD = false;
   };
 
   availableColors = [
@@ -203,11 +204,6 @@ in {
               description = lib.mdDoc "Overrides path of log file";
               example = "/var/log/emptty/$\{TTY_NUMBER}.log";
             };
-            XORG_ARGS = mkOption {
-              type = types.nullOr types.string;
-              default = defaultConfig.XORG_ARGS;
-              description = lib.mdDoc "Arguments passed to Xorg server.";
-            };
             DYNAMIC_MOTD = mkOption {
               type = types.nullOr types.bool;
               default = defaultConfig.DYNAMIC_MOTD;
@@ -281,9 +277,9 @@ in {
               default = defaultConfig.HIDE_ENTER_LOGIN;
               description = lib.mdDoc "If set true, \"hostname login:\" is not displayed. ";
             };
-            HID_ENTER_PASSWORD = mkOption {
+            HIDE_ENTER_PASSWORD = mkOption {
               type = types.bool;
-              default = defaultConfig.HID_ENTER_PASSWORD;
+              default = defaultConfig.HIDE_ENTER_PASSWORD;
               description = lib.mdDoc "If set true, \"Password:\" is not displayed. ";
             };
           };
@@ -292,87 +288,94 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
-    # symlink configuration for use by the program
-    environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString (cfg.configuration
-      // {
-        XORG_SESSIONS_PATH = "${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions/";
-        WAYLAND_SESSIONS_PATH = "${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-sessions/";
-      }));
-    # services.emptty.settings.terminal.vt = mkDefault cfg.configuration.TTY_NUMBER;
+  config = let
+    # package needs to use the system path so it can invoke WMs and the Xorg server
+    package = cfg.package.override {systemPath = config.system.path;};
+  in
+    mkIf cfg.enable {
+      # symlink configuration for use by the program. could also be done in serviceConfig
+      environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString (cfg.configuration
+        // {
+          XORG_ARGS = config.services.xserver.displayManager.xserverArgs;
+          XORG_SESSIONS_PATH = "${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions/";
+          WAYLAND_SESSIONS_PATH = "${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-sessions/";
+        }));
 
-    # This prevents nixos-rebuild from killing emptty by activating getty again (TODO: check if this is actually true lol)
-    systemd.services."autovt@${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
-    systemd.services."getty@${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
+      # emptty should be the only thing running on the TTYs
+      systemd.services."autovt@${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
+      systemd.services."getty@tty${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
 
-    systemd.services.emptty = {
-      unitConfig = {
-        Wants = [
-          "systemd-user-sessions.service"
-        ];
-        After = [
-          "systemd-user-sessions.service"
-          "plymouth-quit-wait.service"
-          "getty@${builtins.toString cfg.configuration.TTY_NUMBER}.service"
-        ];
-        Conflicts = [
-          "getty@${builtins.toString cfg.configuration.TTY_NUMBER}.service"
-        ];
+      # most other display manager modules enable these
+      security.polkit.enable = true;
+      services.dbus.enable = true;
+
+      systemd.services.emptty = {
+        unitConfig = {
+          Wants = [
+            "systemd-user-sessions.service"
+          ];
+          After = [
+            "systemd-user-sessions.service"
+            "plymouth-quit-wait.service"
+            "getty@tty${builtins.toString cfg.configuration.TTY_NUMBER}.service"
+          ];
+          Conflicts = [
+            "getty@tty${builtins.toString cfg.configuration.TTY_NUMBER}.service"
+          ];
+        };
+
+        serviceConfig = {
+          # this does have the --config option, but I'm choosing to symlink it to
+          # /etc/emptty/conf for easier discoverability by new users
+          ExecStart = "${package}/bin/emptty -d";
+
+          Restart = mkIf cfg.restart "always";
+
+          # Defaults from emptty upstream configuration
+          EnvironmentFile = "/etc/emptty/conf";
+          Type = "idle";
+          TTYPath = "/dev/tty${builtins.toString cfg.configuration.TTY_NUMBER}";
+          TTYReset = "yes";
+          KillMode = "process";
+          IgnoreSIGPIPE = "no";
+          SendSIGHUP = "yes";
+        };
+
+        # Don't kill a user session when using nixos-rebuild
+        restartIfChanged = false;
+
+        wantedBy = ["graphical.target"];
+      };
+      systemd.services.emptty.enable = true;
+      systemd.defaultUnit = "graphical.target";
+
+      security.pam.services.emptty = {
+        allowNullPassword = true;
+        startSession = true;
+        text = ''
+          auth            sufficient      pam_succeed_if.so user ingroup nopasswdlogin
+          auth            include         login
+          -auth           optional        pam_gnome_keyring.so
+          -auth           optional        pam_kwallet5.so
+          account         include         login
+          password        include         login
+          session         include         login
+          -session        optional        pam_gnome_keyring.so auto_start
+          -session        optional        pam_kwallet5.so auto_start force_run
+        '';
       };
 
-      serviceConfig = {
-        # this does have the --config option, but I'm choosing to symlink it to
-        # /etc/emptty/conf for easier discoverability by new users
-        ExecStart = "${cfg.package}/bin/emptty -d";
+      # disable lightdm, the default DM
+      services.xserver.displayManager.lightdm.enable = false;
 
-        # Restart = mkIf cfg.restart "always";
-
-        # Defaults from emptty upstream configuration
-
-        # i think we could do:
-        # services.xserver.displayManager.job.environment = config.services.xserver.displayManager.job.environment // cfg.configuration;
-        # but im hoping that the emptty maintainer will stop using environment variables at some point...
-        EnvironmentFile = "/etc/emptty/conf";
-        Type = "idle";
-        TTYPath = "/dev/tty${builtins.toString cfg.configuration.TTY_NUMBER}";
-        TTYReset = "yes";
-        KillMode = "process";
-        IgnoreSIGPIPE = "no";
-        SendSIGHUP = "yes";
+      # rotate emptty logs, if logrotate is enabled
+      services.logrotate.settings = {
+        "/var/log/emptty" = mapAttrs (_: mkDefault) {
+          frequency = "monthly";
+          rotate = 1;
+          create = "0660 root ${config.users.groups.utmp.name}";
+          minsize = "1M";
+        };
       };
-
-      # Don't kill a user session when using nixos-rebuild
-      restartIfChanged = false;
-
-      wantedBy = ["graphical.target"];
     };
-
-    systemd.defaultUnit = "graphical.target";
-
-    security.pam.services.emptty = {
-      allowNullPassword = true;
-      startSession = true;
-      text = ''
-        auth            sufficient      pam_succeed_if.so user ingroup nopasswdlogin
-        auth            include         login
-        -auth           optional        pam_gnome_keyring.so
-        -auth           optional        pam_kwallet5.so
-        account         include         login
-        password        include         login
-        session         include         login
-        -session        optional        pam_gnome_keyring.so auto_start
-        -session        optional        pam_kwallet5.so auto_start force_run
-      '';
-    };
-
-    environment.systemPackages =
-      [cfg.package]
-      ++ (lib.lists.optionals
-        (cfg.configuration.DBUS_LAUNCH or cfg.configuration.ALWAYS_DBUS_LAUNCH)
-        [pkgs.dbus]);
-    services.xserver.displayManager.lightdm.enable = false;
-    systemd.services.emptty.enable = true;
-
-    # meta.maintainers = with maintainers; [ the-argus ];
-  };
 }

@@ -5,11 +5,20 @@
   additionalPathEntries ? [],
   util-linuxMinimal,
   getent,
+  dbus,
   xorg,
   lib,
+  systemPath ? null,
   ...
 }: let
-  runtimePath = lib.makeBinPath ([getent util-linuxMinimal xorg.xauth] ++ additionalPathEntries);
+  runtimePath = lib.makeBinPath ([
+      getent
+      util-linuxMinimal
+      dbus
+      xorg.xauth
+    ]
+    ++ (lib.lists.optionals (systemPath != null) [systemPath])
+    ++ additionalPathEntries);
 in
   stdenvNoCC.mkDerivation {
     name = "empty-wrapper";
