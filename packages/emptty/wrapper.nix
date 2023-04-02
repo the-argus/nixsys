@@ -8,7 +8,6 @@
   dbus,
   xorg,
   lib,
-  needXServer ? true,
   systemPath ? null,
   ...
 }: let
@@ -18,7 +17,6 @@
       dbus
       xorg.xauth
     ]
-    ++ (lib.lists.optionals needXServer [xorg.xorgserver])
     ++ (lib.lists.optionals (systemPath != null) [systemPath])
     ++ additionalPathEntries);
 in
