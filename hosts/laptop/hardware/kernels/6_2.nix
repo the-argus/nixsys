@@ -13,7 +13,7 @@
 builtins.toFile "kernelconfig" ''
   #
   # Automatically generated file; DO NOT EDIT.
-  # Linux/x86 6.2.5 Kernel Configuration
+  # Linux/x86 6.2.9 Kernel Configuration
   #
   CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.3.0"
   CONFIG_CC_IS_GCC=y
@@ -547,7 +547,6 @@ builtins.toFile "kernelconfig" ''
   CONFIG_ACPI_HOTPLUG_CPU=y
   # CONFIG_ACPI_PROCESSOR_AGGREGATOR is not set
   CONFIG_ACPI_THERMAL=y
-  CONFIG_ACPI_PLATFORM_PROFILE=m
   CONFIG_ARCH_HAS_ACPI_TABLE_UPGRADE=y
   CONFIG_ACPI_TABLE_UPGRADE=y
   # CONFIG_ACPI_DEBUG is not set
@@ -565,7 +564,7 @@ builtins.toFile "kernelconfig" ''
   # CONFIG_ACPI_CONFIGFS is not set
   # CONFIG_ACPI_PFRUT is not set
   CONFIG_ACPI_PCC=y
-  CONFIG_ACPI_FFH=y
+  # CONFIG_ACPI_FFH is not set
   # CONFIG_PMIC_OPREGION is not set
   CONFIG_ACPI_PRMT=y
   CONFIG_X86_PM_TIMER=y
@@ -594,7 +593,7 @@ builtins.toFile "kernelconfig" ''
   CONFIG_X86_INTEL_PSTATE=y
   # CONFIG_X86_PCC_CPUFREQ is not set
   # CONFIG_X86_AMD_PSTATE is not set
-  CONFIG_X86_AMD_PSTATE_UT=m
+  # CONFIG_X86_AMD_PSTATE_UT is not set
   # CONFIG_X86_ACPI_CPUFREQ is not set
   # CONFIG_X86_SPEEDSTEP_CENTRINO is not set
   # CONFIG_X86_P4_CLOCKMOD is not set
@@ -1985,7 +1984,7 @@ builtins.toFile "kernelconfig" ''
   CONFIG_UNIX98_PTYS=y
   CONFIG_LEGACY_PTYS=y
   CONFIG_LEGACY_PTY_COUNT=256
-  CONFIG_LEGACY_TIOCSTI=y
+  # CONFIG_LEGACY_TIOCSTI is not set
   CONFIG_LDISC_AUTOLOAD=y
 
   #
@@ -3754,7 +3753,7 @@ builtins.toFile "kernelconfig" ''
   # CONFIG_ACERHDF is not set
   # CONFIG_ACER_WIRELESS is not set
   # CONFIG_ACER_WMI is not set
-  CONFIG_AMD_PMF=m
+  # CONFIG_AMD_PMF is not set
   # CONFIG_AMD_PMC is not set
   # CONFIG_AMD_HSMP is not set
   # CONFIG_ADV_SWBUTTON is not set
