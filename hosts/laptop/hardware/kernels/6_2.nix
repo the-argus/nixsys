@@ -2054,7 +2054,19 @@ builtins.toFile "kernelconfig" ''
   CONFIG_HPET=y
   # CONFIG_HPET_MMAP is not set
   # CONFIG_HANGCHECK_TIMER is not set
-  # CONFIG_TCG_TPM is not set
+  CONFIG_TCG_TPM=m
+  # CONFIG_TCG_TIS is not set
+  # CONFIG_TCG_TIS_I2C is not set
+  # CONFIG_TCG_TIS_I2C_CR50 is not set
+  # CONFIG_TCG_TIS_I2C_ATMEL is not set
+  # CONFIG_TCG_TIS_I2C_INFINEON is not set
+  # CONFIG_TCG_TIS_I2C_NUVOTON is not set
+  # CONFIG_TCG_NSC is not set
+  # CONFIG_TCG_ATMEL is not set
+  # CONFIG_TCG_INFINEON is not set
+  # CONFIG_TCG_CRB is not set
+  # CONFIG_TCG_VTPM_PROXY is not set
+  # CONFIG_TCG_TIS_ST33ZP24_I2C is not set
   # CONFIG_TELCLOCK is not set
   # CONFIG_XILLYBUS is not set
   # CONFIG_XILLYUSB is not set
@@ -4226,7 +4238,8 @@ builtins.toFile "kernelconfig" ''
   CONFIG_KEYS=y
   # CONFIG_KEYS_REQUEST_CACHE is not set
   # CONFIG_PERSISTENT_KEYRINGS is not set
-  # CONFIG_TRUSTED_KEYS is not set
+  CONFIG_TRUSTED_KEYS=m
+  CONFIG_TRUSTED_KEYS_TPM=y
   # CONFIG_ENCRYPTED_KEYS is not set
   # CONFIG_KEY_DH_OPERATIONS is not set
   # CONFIG_SECURITY_DMESG_RESTRICT is not set
@@ -4375,7 +4388,7 @@ builtins.toFile "kernelconfig" ''
   # CONFIG_CRYPTO_MICHAEL_MIC is not set
   # CONFIG_CRYPTO_POLY1305 is not set
   # CONFIG_CRYPTO_RMD160 is not set
-  # CONFIG_CRYPTO_SHA1 is not set
+  CONFIG_CRYPTO_SHA1=m
   CONFIG_CRYPTO_SHA256=y
   CONFIG_CRYPTO_SHA512=y
   # CONFIG_CRYPTO_SHA3 is not set
@@ -4636,6 +4649,8 @@ builtins.toFile "kernelconfig" ''
   CONFIG_STACKDEPOT=y
   CONFIG_SBITMAP=y
   # end of Library routines
+
+  CONFIG_ASN1_ENCODER=m
 
   #
   # Kernel hacking
