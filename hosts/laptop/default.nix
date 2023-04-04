@@ -135,10 +135,10 @@ in rec {
       kernel = import ./hardware/kernels/lib/kernel-overlay.nix {
         inherit override hostname;
         baseKernelSuffix = "xanmod_latest";
-        kernelConfig = ./hardware/kernels/5_19.nix;
+        kernelConfig = ./hardware/kernels/6_2.nix;
       };
     in [
-      # kernel
+      kernel
     ];
   };
   localbuildOverrides = override remotebuildOverrides {
