@@ -138,7 +138,7 @@ in rec {
         kernelConfig = ./hardware/kernels/6_2.nix;
       };
     in [
-      kernel
+      # kernel
     ];
   };
   localbuildOverrides = override remotebuildOverrides {
