@@ -79,7 +79,7 @@
       font = rec {
         monospace = {
           name = "FiraCode Nerd Font"; # "VictorMono Nerd Font";
-          size = 14;
+          size = 12;
           package = pkgs.nerdfonts.override {
             fonts = [
               # "VictorMono"
