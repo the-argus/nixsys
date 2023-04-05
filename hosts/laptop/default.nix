@@ -9,7 +9,7 @@ in rec {
   # theme = "nordicWithGtkNix";
   # theme = "drifter";
   # theme = "gruvboxWithGtkNix";
-  theme = "macchiato";
+  # theme = "macchiato";
   system = "x86_64-linux";
   username = "argus";
   inherit hostname;
