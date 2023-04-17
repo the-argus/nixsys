@@ -197,6 +197,7 @@ in {
         rm = "rm -i";
         nocolor = ''sed "s/\x1B\[[0-9;]\{1,\}[A-Za-z]//g"'';
         sudo = "sudo -A";
+        all = "git commit -am";
       }
       // (pkgs.callPackage
         ../../lib/home-manager/xorg.nix
