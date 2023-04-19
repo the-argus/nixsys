@@ -137,6 +137,13 @@
 
             ./modules/color/themes.nix
             ./modules/home-manager
+            ({...}: {
+              home = {
+                inherit (fs) username;
+                inherit stateVersion;
+                homeDirectory = "/home/${fs.username}";
+              };
+            })
           ]
           ++ fs.additionalModules;
         extraSpecialArgs =

@@ -5,8 +5,6 @@
   webcord,
   config,
   nvim-config,
-  username,
-  stateVersion,
   bitwarden-rofi,
   nobar,
   ...
@@ -31,11 +29,6 @@
     ./ntfy.nix
     banner.module
   ];
-
-  home = {
-    inherit username stateVersion;
-    homeDirectory = "/home/${username}";
-  };
 
   banner.palette = config.system.theme.scheme;
 
