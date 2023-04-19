@@ -29,8 +29,6 @@
     ./blugon.nix
     ./lf.nix
     ./ntfy.nix
-    ../../modules/color/themes.nix
-    ../../modules/home-manager
     banner.module
   ];
 

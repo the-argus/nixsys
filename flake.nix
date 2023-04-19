@@ -134,6 +134,9 @@
           [
             userFolder
             audio-plugins.homeManagerModules.${fs.system}
+
+            ./modules/color/themes.nix
+            ./modules/home-manager
           ]
           ++ fs.additionalModules;
         extraSpecialArgs =
