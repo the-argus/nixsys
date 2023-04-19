@@ -94,6 +94,9 @@
         inherit nixpkgs;
         hostname = "mutant";
       };
+      tui = import ./hosts/tui {
+        inherit nixpkgs;
+      };
     };
   in {
     createNixosConfiguration = settings: let
@@ -118,7 +121,7 @@
         ];
       };
 
-    createHomeConfigurations = settings: let
+    createHomeConfigurations = userFolder: settings: let
       fs = finalizeSettings settings;
       inherit
         (import "${rycee-expressions}" {inherit (fs) pkgs;})
@@ -129,7 +132,7 @@
         inherit (fs) pkgs;
         modules =
           [
-            ./user/primary
+            userFolder
             audio-plugins.homeManagerModules.${fs.system}
           ]
           ++ fs.additionalModules;
@@ -160,9 +163,10 @@
       ${hosts.pc.hostname} = self.nixosConfigurations.pc;
     };
     homeConfigurations = {
-      default = self.createHomeConfigurations defaultGlobalSettings;
-      laptop = self.createHomeConfigurations hosts.laptop;
-      pc = self.createHomeConfigurations hosts.pc;
+      default = self.createHomeConfigurations ./user/primary defaultGlobalSettings;
+      laptop = self.createHomeConfigurations ./user/primary hosts.laptop;
+      pc = self.createHomeConfigurations ./user/primary hosts.pc;
+      tui = self.createHomeConfigurations ./user/tui hosts.tui;
     };
     devShell.${defaultGlobalSettings.system} =
       (finalizeSettings defaultGlobalSettings).pkgs.mkShell {};
