@@ -5,9 +5,8 @@
   ...
 }: {
   imports = [
-    ../primary/zsh.nix
+    ./bash.nix
     ../primary/lf.nix
-    ../primary/git.nix
   ];
 
   home.packages = with pkgs; [
@@ -21,10 +20,6 @@
         vimAlias = false;
       };
     })
-    nix-prefetch-scripts
-    trash-cli
     myPackages.ufetch
-    glow
-    myPackages.rgf
   ];
 }
