@@ -6,7 +6,6 @@ in {
       add_newline = false;
     };
     enableBashIntegration = true;
-    enableZshIntegration = false;
   };
 
   programs.bash = {
@@ -36,12 +35,39 @@ in {
     };
 
     initExtra = ''
-      eval "$(starship init bash)"
-      eval "$(zoxide init bash)"
-      eval "$(mcfly init zsh)"
+      eval "$(${pkgs.zoxide}/bin/zoxide init bash)"
+      eval "$(${pkgs.mcfly}/bin/mcfly init bash)"
+      eval "$(${pkgs.direnv}/bin/direnv hook bash)"
 
       function lsd () {
-        command lsd $@ --group-dirs=first --color=auto
+        lsd --color=auto --group-dirs=first $@
+      }
+      function lsdl () {
+        lsd -la $@
+      }
+
+      function ls () {
+        command ls --color=auto --group-directories-first $@
+      }
+      function lsl () {
+      	command ls -la --color=auto --group-directories-first $@ | command grep "^d" && ls -la $1 | command grep -v "^d"
+      }
+
+
+      function ip () { command ip -color=auto "$@"; }
+
+      lfcd () {
+        tmp="$(mktemp)"
+        lf -last-dir-path="$tmp" "$@"
+        if [ -f "$tmp" ]; then
+          dir="$(cat "$tmp")"
+          rm -f "$tmp"
+          if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+              cd "$dir"
+            fi
+          fi
+        fi
       }
     '';
 
@@ -49,6 +75,7 @@ in {
   };
 
   home.packages = with pkgs; [
+    direnv
     zoxide
     fzf
     mcfly
