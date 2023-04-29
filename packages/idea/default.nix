@@ -31,6 +31,9 @@ in
 
     installPhase = ''
       mkdir -p $out/bin
+      ln -sf $src/idea-community $out/idea-community
+      ln -sf $src/libexec $out/libexec
+      ln -sf $src/share $out/share
       ln -sf $src/bin/idea-community $out/bin/idea-community
     '';
 
