@@ -4,6 +4,7 @@
 
   home.packages = with pkgs; [
     jetbrains.idea-community
+    xorg_sys_opengl
     blender
     steam
     jre8
