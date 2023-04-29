@@ -21,7 +21,7 @@
     ./dunst.nix
     ./zathura.nix
     ./music.nix
-    # ./spicetify.nix
+    ./spicetify.nix
     ./waybar.nix
     ./rofi.nix
     ./blugon.nix
