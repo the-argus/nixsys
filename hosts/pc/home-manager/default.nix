@@ -3,8 +3,7 @@
   programs.yabridge.enable = true;
 
   home.packages = with pkgs; [
-    jetbrains.idea-community
-    xorg_sys_opengl
+    myPackages.IDEA
     blender
     steam
     jre8
