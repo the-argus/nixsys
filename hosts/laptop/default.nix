@@ -47,7 +47,6 @@ in rec {
           ungoogled-chromium
           firefox
           OVMFFull
-          prismlauncher
           godot_4
           ;
         linuxKernel =
