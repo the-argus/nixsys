@@ -3,6 +3,7 @@
   programs.yabridge.enable = true;
 
   home.packages = with pkgs; [
+    kdenlive
     myPackages.IDEA
     blender
     steam
