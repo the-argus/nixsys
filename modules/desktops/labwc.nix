@@ -30,7 +30,6 @@ in {
 
       environment.systemPackages = with pkgs; [
         labwcPackage
-        wlrctl # cool scripting stuff I hear
         swaybg
         rofi-wayland
         wl-clipboard
