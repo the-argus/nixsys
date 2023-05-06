@@ -22,7 +22,7 @@
 }:
 stdenv.mkDerivation rec {
   pname = "labwc";
-  version = "0.5.3";
+  version = "0.6.2";
 
   src = fetchFromGitHub {
     owner = "labwc";
