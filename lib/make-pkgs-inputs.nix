@@ -64,6 +64,17 @@ in {
         xdg-desktop-portal-gtk = super.xdg-desktop-portal-gtk.override {
           buildPortalsInGnome = false;
         };
+        gnome =
+          super.gnome
+          // {
+            seahorse = super.gnome.seahorse.overrideAttrs (_: {
+              postInstall = ''
+                rm $out/share/applications/org.gnome.seahorse.Application.desktop
+              '';
+            });
+          };
+      })
+      (_: super: {
         qtile = super.stdenv.mkDerivation {
           name = "qtile-wrapped";
           src = super.qtile;
@@ -75,15 +86,6 @@ in {
             wrapProgram $out/bin/qtile --set PYTHONDONTWRITEBYTECODE "yes"
           '';
         };
-        gnome =
-          super.gnome
-          // {
-            seahorse = super.gnome.seahorse.overrideAttrs (_: {
-              postInstall = ''
-                rm $out/share/applications/org.gnome.seahorse.Application.desktop
-              '';
-            });
-          };
       })
     ];
 }

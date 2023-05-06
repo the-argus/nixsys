@@ -60,19 +60,7 @@ in rec {
               };
           };
       };
-    localbuild = localbuild: _:
-      with localbuild; {
-        inherit
-          # "xorg"
-          gnome-shell
-          gdm
-          qtile
-          zsh
-          zplug
-          kitty
-          starship
-          ;
-      };
+    localbuild = _: _: {};
     remotebuild = _: _: {};
   };
   additionalNixosModules = [./hardware ./shared];
