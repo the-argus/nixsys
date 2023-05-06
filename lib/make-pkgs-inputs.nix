@@ -2,19 +2,19 @@
   lib,
   settings,
 }: let
-  inherit (settings.optimization) useMusl useFlags;
+  inherit (settings.optimization) useMusl useFlags useClang;
   inherit (settings) allowedUnfree system name;
 in {
   config =
+    # always needs allowBroken and allowedUnfree
     {
       inherit (settings) allowBroken;
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowedUnfree;
     }
+    # replace the stdenv if a setting that needs it is set
     // (
-      if
-        settings.optimization.useFlags
-        or settings.optimization.useClang
-      then {
+      lib.attrsets.optionalAttrs (useFlags || useClang)
+      {
         replaceStdenv = {
           pkgs,
           unstable,
@@ -28,30 +28,24 @@ in {
             inherit settings;
           };
       }
-      else {}
     );
 
   localSystem =
-    {
-      inherit system;
-    }
+    # always needs system
+    {inherit system;}
+    # add libc = musl if set
+    // (lib.attrsets.optionalAttrs useMusl {
+      libc = "musl";
+      config = "x86_64-unknown-linux-musl";
+    })
+    # add gcc arch and tune flags if using
     // (
-      if useMusl
-      then {
-        libc = "musl";
-        config = "x86_64-unknown-linux-musl";
-      }
-      else {}
-    )
-    // (
-      if useFlags
-      then {
+      lib.attrsets.optionalAttrs useFlags {
         gcc = {
           arch = settings.optimization.arch;
           tune = settings.optimization.arch;
         };
       }
-      else {}
     );
 
   overlays =
