@@ -1,10 +1,11 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   cfg = config.desktops.labwc;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf literalExpression mkOption types;
 in {
   options.desktops.labwc = {
     enable = mkEnableOption "Labwc Window Manager";

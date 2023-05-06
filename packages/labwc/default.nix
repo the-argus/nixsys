@@ -54,4 +54,6 @@ stdenv.mkDerivation rec {
   ];
 
   mesonFlags = lib.optional enableXWayland "-Dxwayland=enabled";
+
+  passthru.providedSessions = ["labwc"];
 }
