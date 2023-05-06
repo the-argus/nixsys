@@ -18,6 +18,7 @@ in {
     ./gnome.nix
     ./plasma.nix
     ./i3gaps.nix
+    ./labwc.nix
   ];
 
   options.desktops = {
@@ -51,7 +52,7 @@ in {
       # vistafonts
       # ttf-envy-code-r
       # corefonts
-      
+
       fira-code
       fira-code-symbols
       cozette

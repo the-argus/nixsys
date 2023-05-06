@@ -15,6 +15,7 @@ in {
     ./awesome.nix
     ./ratpoison.nix
     ./plasma.nix
+    ./lawbc.nix
   ];
 
   options.desktops = {

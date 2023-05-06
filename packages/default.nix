@@ -32,4 +32,5 @@
   typst = callPackage ./typst {};
   godot_4_mono = callPackage ./godot_4_mono {};
   IDEA = callPackage ./idea {};
+  labwc = callPackage ./labwc {};
 }
