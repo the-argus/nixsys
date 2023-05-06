@@ -23,7 +23,9 @@ in {
   };
 
   config = let
-    labwcPackage = cfg.package;
+    labwcPackage = cfg.package.overrideAttrs (_: {
+      passthru.providedSessions = ["labwc"];
+    });
   in
     mkIf cfg.enable {
       desktops.wayland.enable = true;
