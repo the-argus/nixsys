@@ -16,7 +16,7 @@ in {
     };
     package = mkOption {
       type = types.package;
-      default = pkgs.myPackages.labwc;
+      default = pkgs.labwc;
       defaultText = literalExpression "pkgs.labwc";
       description = "The package containing /bin/labwc and correct, override-able options to invoke when launching the window manager.";
     };
