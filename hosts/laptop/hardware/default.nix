@@ -62,6 +62,7 @@
     enable = true;
     configuration = {
       DEFAULT_USER = username;
+      DBUS_LAUNCH = false;
     };
   };
   services.xserver.displayManager.ly = {
