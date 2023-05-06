@@ -17,8 +17,6 @@
           '';
         });
       };
-  })
-  (_: super: {
     qtile = super.stdenv.mkDerivation {
       name = "qtile-wrapped";
       src = super.qtile;
