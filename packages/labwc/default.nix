@@ -55,6 +55,10 @@ stdenv.mkDerivation rec {
 
   mesonFlags = lib.optional enableXWayland "-Dxwayland=enabled";
 
+makeWrapperArgs = [
+  "--add-flag "
+];
+
   postFixup = ''
     substituteInPlace $out/share/wayland-sessions/labwc.desktop \
       --replace "Exec=labwc" "Exec=$out/bin/labwc"

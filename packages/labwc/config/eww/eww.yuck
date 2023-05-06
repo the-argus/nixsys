@@ -1,0 +1,22 @@
+; the window of the labwc bar
+(defwindow labwc
+  :wm-ignore true
+  :geometry (geometry
+              :width "100%"
+              :height "40px")
+  (bar_root))
+
+; this is like a function that builds a widget
+(defwidget bar_root []
+  (box
+    :orientation "horizontal"
+    :class "bar_root"
+    ("test text")
+    (label :text "${time.hour}:${time.min}")
+    (button
+      :onclick "notify-send button"
+      :onrightclick "notify-send button_right")))
+
+(defpoll time
+  :interval "1s"
+  `date +'{"hour":"%H","min":"%M"}'`)
