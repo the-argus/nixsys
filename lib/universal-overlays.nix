@@ -17,17 +17,8 @@
           '';
         });
       };
-    qtile-unwrapped = super.stdenv.mkDerivation {
-      name = "qtile-half-wrapped";
-      src = super.qtile-unwrapped;
-      nativeBuildInputs = [super.buildPackages.makeWrapper];
-      dontUnpack = true;
-      installPhase = ''
-        mkdir -p $out/bin
-        ln -sf $src/bin/qtile $out/bin/qtile
-        ln -sf $src/lib $out/lib
-        wrapProgram $out/bin/qtile --set PYTHONDONTWRITEBYTECODE "yes"
-      '';
-    };
+    qtile-unwrapped = super.qtile-unwrapped.overrideAttrs (oa: {
+      makeWrapperArgs = oa.makeWrapperArgs ++ ["--set PYTHONDONTWRITEBYTECODE \"yes\""];
+    });
   })
 ]
