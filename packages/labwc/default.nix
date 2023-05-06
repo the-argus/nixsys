@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
     owner = "labwc";
     repo = pname;
     rev = version;
-    hash = "sha256-YD2bGxa7uss6KRvOGM0kn8dM+277ubaYeOB7ugRZCcY=";
+    sha256 = "sha256-yZ1tXx7AA9pFc5C6c/J3B03/TfXw1PsAunNNiee3BGU=";
   };
 
   nativeBuildInputs = [

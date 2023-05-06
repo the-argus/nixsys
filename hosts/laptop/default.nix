@@ -48,6 +48,7 @@ in rec {
           firefox
           OVMFFull
           godot_4
+          labwc
           ;
         linuxKernel =
           original.linuxKernel
