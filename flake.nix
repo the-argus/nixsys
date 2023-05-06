@@ -72,17 +72,9 @@
   } @ inputs: let
     myLib = import ./lib {inherit (nixpkgs) lib;};
     defaultGlobalSettings = myLib.globalConfig.defaults;
-    finalizeSettings = inputSettings:
-      myLib.globalConfig.addPkgsToSettings {
-        inherit nixpkgs-unstable nixpkgs;
-        settings =
-          inputSettings
-          // {
-            allowedUnfree =
-              defaultGlobalSettings.allowedUnfree
-              ++ inputSettings.allowedUnfree;
-          };
-      };
+    finalizeSettings = myLib.globalConfig.mkFinalizer {
+      inherit nixpkgs nixpkgs-unstable;
+    };
     stateVersion = "22.11";
 
     hosts = {
