@@ -23,7 +23,7 @@ in {
   };
 
   config = let
-    labwcPackage = cfg.package.override {inherit (cfg) enableXWayland;};
+    labwcPackage = cfg.package;
   in
     mkIf cfg.enable {
       desktops.wayland.enable = true;
