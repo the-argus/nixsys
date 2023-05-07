@@ -56,7 +56,7 @@ stdenv.mkDerivation rec {
   mesonFlags = lib.optional enableXWayland "-Dxwayland=enabled";
 
   makeWrapperArgs = builtins.trace "Evaluating myPackages.labwc, which wraps labwc to use my config. This program may be double wrapped." [
-    "--add-flags \"-C ${./config}\""
+    "--add-flags \"-C ${../../user/primary/config/labwc}\""
   ];
 
   postFixup = ''

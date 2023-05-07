@@ -2,6 +2,7 @@
   imports = [
     ./ranger
     ./neofetch
+    ./labwc
   ];
 
   home.file.".xinitrc".text = ''

@@ -21,7 +21,7 @@
       makeWrapperArgs = oa.makeWrapperArgs ++ ["--set PYTHONDONTWRITEBYTECODE \"yes\""];
     });
 
-    labwc = super.callPackage ../packages/labwc/wrapper.nix {labwc-original = super.labwc;};
-    labwc-unwrapped = super.labwc;
+    # labwc = super.callPackage ../packages/labwc/wrapper.nix {labwc-original = super.labwc;};
+    # labwc-unwrapped = super.labwc;
   })
 ]
