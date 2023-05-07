@@ -21,6 +21,6 @@ stdenvNoCC.mkDerivation {
     ln -sf $src/bin/labwc $out/bin/labwc
 
     wrapProgram $out/bin/labwc \
-      --add-flags "-c ${./config}"
+      --add-flags "-C ${./config}"
   '';
 }
