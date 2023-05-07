@@ -536,12 +536,15 @@
       }
     },
     "flake-utils_5": {
+      "inputs": {
+        "systems": "systems_2"
+      },
       "locked": {
-        "lastModified": 1676283394,
-        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
+        "lastModified": 1681202837,
+        "narHash": "sha256-H+Rh19JDwRtpVPAWp64F+rlEtxUWBAQW28eAi3SRSzg=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
+        "rev": "cfacdce06f30d2b68473a46042957675eebb3401",
         "type": "github"
       },
       "original": {
@@ -842,11 +845,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1683194677,
-        "narHash": "sha256-Am7aCGNy/h6RMnvg7Pn4PHQXZZq9FyIUA9klYxBwyDI=",
+        "lastModified": 1683408522,
+        "narHash": "sha256-9kcPh6Uxo17a3kK3XCHhcWiV1Yu1kYj22RHiymUhMkU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0d8145a5d81ebf6698077b21042380a3a66a11c7",
+        "rev": "897876e4c484f1e8f92009fd11b7d988a121a4e7",
         "type": "github"
       },
       "original": {
@@ -874,11 +877,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1683207485,
-        "narHash": "sha256-gs+PHt/y/XQB7S8+YyBLAM8LjgYpPZUVFQBwpFSmJro=",
+        "lastModified": 1683383741,
+        "narHash": "sha256-rAQSBnFGNKNomUUyVl+7v0tnp45677t4Ovlh9f57k6Q=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "cc45a3f8c98e1c33ca996e3504adefbf660a72d1",
+        "rev": "adc7c6f1bbaa73cda26be2323353b63a05b42f61",
         "type": "github"
       },
       "original": {
@@ -1179,33 +1182,17 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1683276988,
-        "narHash": "sha256-+Ld4GdH8ekWzZ8SzRZQ13JhiOmroR5M18oKKEOgueGQ=",
+        "lastModified": 1683456933,
+        "narHash": "sha256-0j21dIvDcpwvgjuzTPvf3G0g0TrepycvViU9J6VFl2k=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "355160d8477e458a2fc575213f52b4895a9157d3",
+        "rev": "29b05be3ff6358b6ac1af6e6d9853f03afee0ab6",
         "type": "gitlab"
       },
       "original": {
         "owner": "rycee",
         "repo": "nur-expressions",
         "type": "gitlab"
-      }
-    },
-    "spicetify-cli": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1677851665,
-        "narHash": "sha256-C5J+OJjoiPOo/scVd48lTBJKKWial3TCkCIDBSerO+4=",
-        "owner": "spicetify",
-        "repo": "spicetify-cli",
-        "rev": "c9d8068d58d8c45f961ca42edcea47d7be904164",
-        "type": "github"
-      },
-      "original": {
-        "owner": "spicetify",
-        "repo": "spicetify-cli",
-        "type": "github"
       }
     },
     "spicetify-nix": {
@@ -1213,15 +1200,14 @@
         "flake-utils": "flake-utils_5",
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "spicetify-cli": "spicetify-cli"
+        ]
       },
       "locked": {
-        "lastModified": 1679401262,
-        "narHash": "sha256-6HuFHrkQsjrP7bOUUN501q8FFsTwpMsw5+brsIUDJuY=",
+        "lastModified": 1683481236,
+        "narHash": "sha256-Y3T2wbbz6Kzm/Kv24Yu90AbdZDuT85Srw6muuVm+2Es=",
         "owner": "the-argus",
         "repo": "spicetify-nix",
-        "rev": "f89305a9af65abf3edfba10d12c2d1a572caddb6",
+        "rev": "7683b3cc2354008c66133926c0f35f8aea7ccb4a",
         "type": "github"
       },
       "original": {
@@ -1231,6 +1217,21 @@
       }
     },
     "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_2": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
