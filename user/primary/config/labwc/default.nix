@@ -1,7 +1,7 @@
-{...}: {
+{pkgs, ...}: {
   home.file = {
     ".config/labwc" = {
-      source = ./config;
+      source = pkgs.callPackage ./config-wrapper.nix {};
       recursive = true;
     };
   };
