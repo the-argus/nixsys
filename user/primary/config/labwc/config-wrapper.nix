@@ -1,16 +1,15 @@
 {
   stdenvNoCC,
   labwc,
-  buildPackages,
   ...
 }:
 stdenvNoCC.mkDerivation {
   pname = "labwc-config";
-  version = ${labwc.version};
+  version = labwc.version;
 
   src = ./config;
 
-  postInstall = ''
+  installPhase = ''
     mkdir $out
     cp -r . $out
   '';
