@@ -7,6 +7,7 @@
     qtile.enable = true;
     i3gaps.enable = true;
     gnome.enable = true;
+    labwc.enable = true;
     # plasma.enable = true;
     terminal = pkgs.kitty;
   };
