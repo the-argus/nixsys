@@ -11,7 +11,7 @@
     # fbterm
     virt-viewer
     # obsidian
-    eww
+    eww-wayland
     # blender
     arandr
     iio-sensor-proxy
