@@ -24,7 +24,6 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      eww
       myPackages.wlrctl # cool scripting stuff I hear
     ];
   };
