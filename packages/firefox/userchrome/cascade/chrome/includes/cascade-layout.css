@@ -17,6 +17,14 @@
 #sidebar-box,
 #nav-bar { box-shadow: none !important; }
 
+#navigator-toolbox {
+  /*
+   * this is some gross hardcoding... somewhere there is 4 padding at the top of
+   * the titlebar element, and then in the cascade-config we set things to be
+   * 36 px tall, so to make it even you need another 4 on the other side
+   */
+  height: 44px;
+}
 
 #main-window,
 #toolbar-menubar,
