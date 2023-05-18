@@ -32,7 +32,7 @@
     webcord.url = "github:fufexan/webcord-flake";
 
     spicetify-nix = {
-      url = "github:the-argus/spicetify-nix?ref=dev";
+      url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gtk-nix = {
