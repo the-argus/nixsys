@@ -1,15 +1,13 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    musescore
+    # musescore
     # libreoffice-fresh
     # aseprite-unfree
     # krita
-    cool-retro-term
     # cage
     itd
     # screen
     # fbterm
-    virt-viewer
     # obsidian
     eww-wayland
     # blender
