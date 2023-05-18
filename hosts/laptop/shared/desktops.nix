@@ -9,8 +9,8 @@
     ratpoison.enable = false;
     qtile.enable = true;
     i3gaps = {
-      enable = true;
-      nobar = true;
+      enable = false;
+      nobar = false;
     };
     gnome.enable = true;
     labwc.enable = true;
