@@ -70,7 +70,8 @@
     };
   };
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-18.1.0"
+    # need this for obsidian
+    "electron-21.4.0"
   ];
 
   # extra packages
