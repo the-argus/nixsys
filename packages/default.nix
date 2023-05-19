@@ -34,4 +34,5 @@
   IDEA = callPackage ./idea {};
   labwc = callPackage ./labwc {};
   wlrctl = callPackage ./wlrctl {};
+  sway-osd = callPackage ./sway-osd {};
 }
