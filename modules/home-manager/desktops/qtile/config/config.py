@@ -53,6 +53,7 @@ float_names = [
     "Network Connections",
     "Color Picker",
     "Steam Guard - Computer Authorization Required",
+    "Time Tracker",
 ]
 
 # @hook.subscribe.client_new
