@@ -3,8 +3,6 @@
   makeWrapper,
   emptty-unwrapped,
   additionalPathEntries ? [],
-  util-linuxMinimal,
-  getent,
   dbus,
   xorg,
   lib,
@@ -12,8 +10,6 @@
   ...
 }: let
   runtimePath = lib.makeBinPath ([
-      getent
-      util-linuxMinimal
       dbus
       xorg.xauth
     ]
