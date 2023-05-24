@@ -14,6 +14,8 @@
     arandr
     iio-sensor-proxy
 
+    rocketchat-desktop
+
     ifuse
   ];
 }
