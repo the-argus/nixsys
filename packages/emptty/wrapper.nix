@@ -4,14 +4,12 @@
   emptty-unwrapped,
   additionalPathEntries ? [],
   dbus,
-  xorg,
   lib,
   systemPath ? null,
   ...
 }: let
   runtimePath = lib.makeBinPath ([
       dbus
-      xorg.xauth
     ]
     ++ (lib.lists.optionals (systemPath != null) [systemPath])
     ++ additionalPathEntries);
