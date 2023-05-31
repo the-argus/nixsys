@@ -81,6 +81,7 @@
     with pkgs;
       [
         (nvim-config.packages.${pkgs.system}.mkNeovim {
+          useQmlls = true;
           pluginsArgs = {
             bannerPalette = config.system.theme.scheme;
           };
