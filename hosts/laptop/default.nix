@@ -7,7 +7,7 @@
 in rec {
   # theme = "amber-forest";
   # theme = "nordicWithGtkNix";
-  # theme = "drifter";
+  theme = "drifter";
   # theme = "gruvboxWithGtkNix";
   # theme = "macchiato";
   system = "x86_64-linux";
