@@ -17,7 +17,7 @@
   # gtk themes -----------------------------------------------------
   allThemes = pkgs.myPackages.gtkThemes;
   inherit (allThemes) kanagawa rose-pine marwaita darkg nord;
-  inherit (allThemes) cursorThemes materialBlackFrost;
+  inherit (allThemes) cursorThemes material-black-frost;
 
   rosePineTheme = {
     name = "rose-pine";
@@ -34,11 +34,11 @@
   };
 
   materialBlackFrostTheme = {
-    package = materialBlackFrost;
+    package = material-black-frost;
     name = "Material-Black-Frost";
   };
   materialBlackFrostIcons = {
-    package = materialBlackFrost;
+    package = material-black-frost;
     name = "Black-Frost-Numix-FLAT"; # also Black-Frost-Numix and Black-Frost-Suru
   };
 
