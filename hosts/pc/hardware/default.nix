@@ -128,7 +128,7 @@
 
   services.openssh = {
     enable = false;
-    PermitRootLogin = "no";
+    settings.PermitRootLogin = "no";
   };
   users.users.${username}.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJt9P8Vba+rp/5Rw/BmP1LcUGV03QlFaH8Wf6wKwqEuV i.mcfarlane2002@gmail.com"
