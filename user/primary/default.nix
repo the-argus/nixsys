@@ -72,6 +72,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     # need this for obsidian
     "electron-21.4.0"
+    "nodejs-14.21.3"
   ];
 
   # extra packages

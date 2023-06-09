@@ -78,16 +78,15 @@
   in {
     enable = true;
 
-    extensions = with firefox-addons; [
-      ublock-origin
-      vimium
-    ];
-
     profiles = {
       ${username} = {
         name = username;
         id = 0;
         extraConfig = finalUserJS;
+        extensions = with firefox-addons; [
+          ublock-origin
+          vimium
+        ];
         userChrome = pkgs.myPackages.firefoxPackages.userChrome.mkCascade {
           colors = config.banner.palette;
           inherit font;
