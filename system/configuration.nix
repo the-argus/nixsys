@@ -68,6 +68,7 @@
           # if useMusl then [
           "gravity.cs.illinois.edu-1:yymmNS/WMf0iTj2NnD0nrVV8cBOXM9ivAkEdO1Lro3U="
         ];
+        auto-optimise-store = true;
       };
     };
   in

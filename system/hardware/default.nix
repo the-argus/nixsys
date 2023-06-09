@@ -11,8 +11,6 @@
     ../../modules
   ];
 
-  nix.settings.auto-optimise-store = true;
-
   hardware.pulseaudio.support32Bit = config.hardware.pulseaudio.enable;
 
   # dual booting with windows boot loader mounted on /efi
@@ -135,4 +133,3 @@
 #     gcc.tune = "tigerlake";
 #   };
 # } else { })
-
