@@ -2,7 +2,7 @@
 [
   (_: super: rec {
     myPackages = super.callPackage ../packages {original-kitty = super.kitty;};
-    kitty = myPackages.kitty;
+    # kitty = myPackages.kitty;
     # this avoids conflicts with the version of xdg-desktop-portal gtk
     # that gets installed when you enable gnome
     xdg-desktop-portal-gtk = super.xdg-desktop-portal-gtk.override {

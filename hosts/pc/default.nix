@@ -5,7 +5,8 @@
 }: let
   override = nixpkgs.lib.attrsets.recursiveUpdate;
 in rec {
-  theme = "gruvboxWithGtkNix";
+  # theme = "gruvboxWithGtkNix";
+  theme = "gruvbox";
   system = "x86_64-linux";
   username = "argus";
   inherit hostname;

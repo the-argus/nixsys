@@ -49,7 +49,6 @@
       # efi-only grub
       grub = {
         enable = false;
-        version = 2;
         device = "nodev";
         efiSupport = true;
         useOSProber = true;
@@ -76,9 +75,9 @@
   music.enable = true; # music production software and configuration
 
   virtualization = {
-    enable = true;
+    enable = false;
     containers = {
-      podman.enable = true;
+      podman.enable = false;
       docker.enable = false;
     };
   };
@@ -129,7 +128,7 @@
 
   services.openssh = {
     enable = false;
-    permitRootLogin = "no";
+    settings.PermitRootLogin = "no";
   };
   users.users.${username}.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJt9P8Vba+rp/5Rw/BmP1LcUGV03QlFaH8Wf6wKwqEuV i.mcfarlane2002@gmail.com"

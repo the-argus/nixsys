@@ -93,7 +93,7 @@
         # unfree :(
         slack
         discord
-        obsidian
+        # obsidian
 
         (bitwarden-rofi.packages.${pkgs.system}.default.override
           # roughly 300 hours lol
@@ -137,7 +137,7 @@
         webcordPkg
         obs-studio
         element-desktop
-        myPackages.xgifwallpaper
+        # myPackages.xgifwallpaper
 
         # tui
         (myPackages.neovim-remote.override {

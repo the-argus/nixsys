@@ -11,8 +11,6 @@
     ../../modules
   ];
 
-  nix.settings.auto-optimise-store = true;
-
   hardware.pulseaudio.support32Bit = config.hardware.pulseaudio.enable;
 
   # dual booting with windows boot loader mounted on /efi
@@ -25,7 +23,6 @@
       };
       grub = {
         #   # enable = true;
-        # version = 2;
         devices = ["/dev/disk/by-label/WINBOOT"];
         useOSProber = true;
       };
@@ -135,4 +132,3 @@
 #     gcc.tune = "tigerlake";
 #   };
 # } else { })
-
