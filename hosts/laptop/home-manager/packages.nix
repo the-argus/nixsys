@@ -15,7 +15,6 @@
     iio-sensor-proxy
 
     rocketchat-desktop
-    git-review
 
     ifuse
   ];
