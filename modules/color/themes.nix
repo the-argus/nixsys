@@ -218,7 +218,7 @@
       scheme = schemes.drifter;
       gtk = {
         iconTheme = materialBlackFrostIcons;
-        theme = "gtkNix";
+        theme = materialBlackFrostTheme;
         cursorTheme = cursorThemes.breezeXBlack;
       };
       opacity = "0.7";
