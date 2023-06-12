@@ -135,28 +135,16 @@ in {
   };
 
   home.file.".config/sandboxd/sandboxrc".text = ''
-    sandbox_init_zoxide() {
-      eval "$(zoxide init zsh)"
-    }
-
-    # sandbox_init_mcfly() {
-    #   eval "$(mcfly init zsh)"
-    # }
-
     sandbox_init_completion() {
       autoload -U compinit && compinit
     }
 
-    sandbox_hook zoxide z
-    sandbox_hook zoxide cd
     sandbox_hook completion cd
     sandbox_hook completion git
     sandbox_hook completion systemctl
     sandbox_hook completion kill
     sandbox_hook completion killall
     sandbox_hook completion pkill
-
-    # sandbox_hook mcfly mcfly
   '';
 
   programs.zsh = let
@@ -378,6 +366,8 @@ in {
         then "eval \"$(modern-unix)\""
         else ""
       }
+
+      eval "$(zoxide init zsh --cmd cd)"
     '';
   };
 }
