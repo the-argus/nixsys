@@ -15,6 +15,7 @@
   ];
 
   environment.variables.EDITOR = "nvim";
+  services.dbus.implementation = "broker";
 
   # kernel version
   # boot.kernelPackages = pkgs.linuxPackages_latest;

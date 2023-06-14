@@ -307,8 +307,6 @@ in {
 
       # most other display manager modules enable this
       security.polkit.enable = true;
-      # they also enable this but it slows everything down for me
-      services.dbus.enable = false;
 
       systemd.services.emptty = {
         unitConfig = {
