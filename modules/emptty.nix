@@ -305,9 +305,10 @@ in {
       systemd.services."autovt@${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
       systemd.services."getty@tty${builtins.toString cfg.configuration.TTY_NUMBER}".enable = false;
 
-      # most other display manager modules enable these
+      # most other display manager modules enable this
       security.polkit.enable = true;
-      services.dbus.enable = true;
+      # they also enable this but it slows everything down for me
+      services.dbus.enable = false;
 
       systemd.services.emptty = {
         unitConfig = {
