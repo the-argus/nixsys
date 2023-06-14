@@ -55,14 +55,14 @@
 
       echo "Overlaying godot glue."
       cp -R --no-preserve=mode "$glue"/. .
-      
+
       if [ $shouldConfigureNuget ]; then
         echo "Configuring NuGet."
         mkdir -p ~/.nuget/NuGet
         ln -s "$nugetConfig" ~/.nuget/NuGet/NuGet.Config
       fi
     '';
-    
+
     postBuild = ''
       python3 modules/mono/build_scripts/build_assemblies.py --godot-output-dir=bin
     '';

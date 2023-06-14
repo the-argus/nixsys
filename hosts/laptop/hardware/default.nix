@@ -114,7 +114,7 @@
 
   # hardware ------------------------------------------------------------------
   hardware.openrazer.enable = true;
-  hardware.ckb-next.enable =  true;
+  hardware.ckb-next.enable = true;
 
   # networking-----------------------------------------------------------------
   networking.hostName = hostname;

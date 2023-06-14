@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   systemd.user.services.ntfy-recieve = {
     Unit = {
       Description = "Get notifications from from ntfy.sh to notify-send.";
