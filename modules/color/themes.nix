@@ -144,10 +144,11 @@
       wallpaper = "gruv/fossil-gruv.png";
       scheme = schemes.gruv;
       gtk = {
-        theme = {
-          package = unstable.gruvbox-gtk-theme;
-          name = "Gruvbox-Dark-B";
-        };
+        theme = kanagawaTheme;
+        # theme = {
+        #   package = unstable.gruvbox-gtk-theme;
+        #   name = "Gruvbox-Dark-B";
+        # };
         iconTheme = {
           package = pkgs.gruvbox-dark-icons-gtk;
           name = "oomox-gruvbox-dark";
