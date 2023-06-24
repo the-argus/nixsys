@@ -137,6 +137,7 @@
         webcordPkg
         obs-studio
         element-desktop
+        myPackages.charm
         # myPackages.xgifwallpaper
 
         # tui

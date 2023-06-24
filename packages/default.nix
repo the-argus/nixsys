@@ -35,4 +35,6 @@
   labwc = callPackage ./labwc {};
   wlrctl = callPackage ./wlrctl {};
   sway-osd = callPackage ./sway-osd {};
+  qtkeychain = callPackage ./qtkeychain {};
+  charm = callPackage ./charm {inherit qtkeychain;};
 }

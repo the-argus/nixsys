@@ -1,0 +1,41 @@
+---
+ CMakeLists.txt | 23 -----------------------
+ 1 file changed, 23 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 35a991fe..9f3a9197 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -55,29 +55,6 @@ if (BUILD_FOR_DISTRIBUTION)
+   set(GIT_DETAILS "--abbrev=0")
+ endif()
+ 
+-IF( EXISTS ${GIT_EXECUTABLE} )
+-    MATH(EXPR PREV_PATCH_VERSION "${PROJECT_VERSION_MAJOR}-1")
+-
+-    SET(GIT_LOG_FORMAT "--pretty=format:LOG_BOUNDARY- %sLOG_BOUNDARY,")
+-    EXECUTE_PROCESS(COMMAND ${GIT_EXECUTABLE} log --abbrev-commit --date=relative ${GIT_LOG_FORMAT} release_${PREV_PATCH_VERSION}..HEAD --no-merges
+-        RESULT_VARIABLE GIT_RESULT
+-        OUTPUT_VARIABLE CHARM_CHANGELOG
+-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+-    )
+-    IF( NOT GIT_RESULT EQUAL 0 )
+-        MESSAGE( FATAL_ERROR "Cannot get 'git log'!" )
+-    ENDIF()
+-ENDIF()
+-
+-# JSON needs an erray with strings surrounded by "" each line, but without "" in the strings
+-# The log we surround with a somewhat unique string, so we can get rid of any " in the logs and later
+-# replace that string with "
+-STRING(REPLACE "\"" "" CHARM_CHANGELOG ${CHARM_CHANGELOG})
+-STRING(REPLACE "LOG_BOUNDARY" "\"" CHARM_CHANGELOG ${CHARM_CHANGELOG})
+-
+-# Must append an empty string, or the JSON will be invalid, as the array terminates with a ,
+-STRING(APPEND CHARM_CHANGELOG "\n\"\"")
+-
+ MESSAGE( STATUS "Building Charm ${Charm_VERSION} in ${CMAKE_BUILD_TYPE} mode" )
+ 
+ option(BUILD_INTERNAL_QTKEYCHAIN "Enable build of external project qtkeychain" ON)
+-- 
+2.40.1
+
