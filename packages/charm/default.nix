@@ -39,6 +39,7 @@ in
       qtsvg
       qtconnectivity
       qtkeychain
+      qtwayland
       libsodium
       extra-cmake-modules
     ];
