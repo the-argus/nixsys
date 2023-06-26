@@ -153,6 +153,7 @@
         ani-cli
         glow
         myPackages.rgf
+        shotgun
 
         # dev
         nodejs
