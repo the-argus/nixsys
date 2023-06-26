@@ -219,6 +219,7 @@ in rec {
         inherit modifier;
         criteria = [
           {"title" = "Steam - Update News";}
+          {"title" = "Time Tracker";}
           {"class" = "Pavucontrol";}
         ];
       };
