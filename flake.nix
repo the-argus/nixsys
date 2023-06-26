@@ -24,6 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    kdab-flake = {
+      url = github:the-argus/kdab-flake;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     chrome-extensions = {
       url = "github:the-argus/chrome-extensions-nix";
       inputs.nixpkgs.follows = "nixpkgs";

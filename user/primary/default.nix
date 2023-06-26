@@ -6,6 +6,7 @@
   config,
   nvim-config,
   bitwarden-rofi,
+  kdab-flake,
   nobar,
   ...
 }: {
@@ -137,7 +138,7 @@
         webcordPkg
         obs-studio
         element-desktop
-        myPackages.charm
+        kdab-flake.packages.${system}.software.charm
         # myPackages.xgifwallpaper
 
         # tui
