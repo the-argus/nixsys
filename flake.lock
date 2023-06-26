@@ -721,11 +721,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1687815512,
-        "narHash": "sha256-/z9GRdSj2l246a5s6lnIE8a12Sx5AqA/PdubV5CQpRM=",
+        "lastModified": 1687815923,
+        "narHash": "sha256-nNEajX+QWnL81tqh14FJcCT91TZXGe+eszwDzwXfEAQ=",
         "owner": "the-argus",
         "repo": "kdab-flake",
-        "rev": "2c07f2f2f507435997876ff9c8e0a8a86ed38c96",
+        "rev": "8929ec79cca1d977e34e51945f66e8ef1fe6024b",
         "type": "github"
       },
       "original": {
