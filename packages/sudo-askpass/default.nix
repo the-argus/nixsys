@@ -10,9 +10,11 @@ rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "Absolpega";
     repo = "simple-terminal-sudo-askpass";
-    rev = "aa0caa13801a19037af607016c0b719aaf97939d";
-    sha256 = "15wy59j5hxlin30nzm4kkx8jvd78pq0mccx6895b3f10khywhjxf";
+    rev = "84dd6ef95c37f81d7e852b9e8d6cda188b5e060d";
+    sha256 = "00gwbqcv9mbypcfznmdal7m5jh3lrsnvqf2n71nf8k5hm658z2l3";
   };
 
-  cargoSha256 = "sha256-AZpzhaNiWvve/XiFc+Ba/ZN7mG5DzbE8DZofXdq6mJ0=";
+  cargoHash = "sha256-T4vHg6XWoTpd+ZaS9cfwyguVCcdjyyCvjrZr56fBc/o=";
+
+  cargoPatches = [./add-cargo-lock.patch];
 }
