@@ -209,7 +209,7 @@ in rec {
           (value: {
             workspace = value;
             output = "eDP-1 HDMI-A-1";
-          }) ["1B" "2B" "3B" "4B" "5B"];
+          }) ["6" "7" "8" "9" "10"];
       in
         primaryWS ++ secondaryWS;
 
