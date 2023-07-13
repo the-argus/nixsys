@@ -208,7 +208,7 @@ in rec {
           map
           (value: {
             workspace = value;
-            output = "eDP-1 HDMI-A-1";
+            output = "HDMI-A-1 eDP-1 ";
           }) ["6" "7" "8" "9" "10"];
       in
         primaryWS ++ secondaryWS;
