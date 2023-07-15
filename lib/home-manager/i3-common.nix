@@ -208,8 +208,8 @@ in rec {
           map
           (value: {
             workspace = value;
-            output = "eDP-1 HDMI-A-1";
-          }) ["1B" "2B" "3B" "4B" "5B"];
+            output = "HDMI-A-1 eDP-1 ";
+          }) ["6" "7" "8" "9" "10"];
       in
         primaryWS ++ secondaryWS;
 
@@ -219,6 +219,7 @@ in rec {
         inherit modifier;
         criteria = [
           {"title" = "Steam - Update News";}
+          {"title" = "Time Tracker";}
           {"class" = "Pavucontrol";}
         ];
       };

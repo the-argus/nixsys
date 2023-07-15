@@ -6,6 +6,8 @@
   config,
   nvim-config,
   bitwarden-rofi,
+  kdab-flake,
+  kdab-viewer,
   nobar,
   ...
 }: {
@@ -101,7 +103,7 @@
 
         nobar.packages.${pkgs.system}.default
         nextcloud-client
-        godot_4
+        # godot_4
 
         # gui applications---------
         bitwarden-cli
@@ -127,7 +129,6 @@
       ]
       ++ (lib.lists.optionals (!config.system.minimal) [
         # unfree :(
-        p4
         steam-run
         steam-run-native
 
@@ -137,6 +138,8 @@
         webcordPkg
         obs-studio
         element-desktop
+        kdab-flake.packages.${system}.software.charm
+        kdab-viewer.packages.${system}.default
         # myPackages.xgifwallpaper
 
         # tui
@@ -148,12 +151,13 @@
         # cli
         myPackages.ufetch
         transmission
-        ani-cli
+        # ani-cli
         glow
         myPackages.rgf
+        shotgun
 
         # dev
-        nodejs
+        # nodejs
         cargo
       ]);
 }

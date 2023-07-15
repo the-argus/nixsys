@@ -20,7 +20,17 @@
     };
 
     bitwarden-rofi = {
-      url = github:the-argus/bitwarden-rofi;
+      url = "github:the-argus/bitwarden-rofi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    kdab-flake = {
+      url = "github:the-argus/kdab-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    kdab-viewer = {
+      url = "git+ssh://codereview.kdab.com:29418/kdab/KDABViewer?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -44,7 +54,7 @@
     modern-unix.url = "github:the-argus/modern-unix-flake";
 
     nobar = {
-      url = github:the-argus/nobar;
+      url = "github:the-argus/nobar";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
