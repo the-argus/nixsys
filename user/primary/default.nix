@@ -156,6 +156,8 @@
         myPackages.rgf
         shotgun
 
+        mullvad-vpn
+
         # dev
         # nodejs
         cargo
