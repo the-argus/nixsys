@@ -133,15 +133,8 @@
   };
 
   services.mullvad-vpn.enable = true;
-  systemd.services."mullvad-daemon".postStart = let
-    mullvad = "${config.services.mullvad-vpn.package}/bin/mullvad";
-  in ''
-    while ! ${mullvad} status >/dev/null; do sleep 1; done
-    ${mullvad} auto-connect set on
-    ${mullvad} tunnel ipv6 set on # I don't really use this but eh
-    ${mullvad} set default \
-      --block-ads --block-trackers --block-malware
-  '';
+  networking.firewall.checkReversePath = "loose";
+  networking.wireguard.enable = true;
 
   environment.systemPackages = with pkgs;
     [
