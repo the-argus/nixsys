@@ -144,18 +144,18 @@
       wallpaper = "gruv/fossil-gruv.png";
       scheme = schemes.gruv;
       gtk = {
-        theme = kanagawaTheme;
-        # theme = {
-        #   package = unstable.gruvbox-gtk-theme;
-        #   name = "Gruvbox-Dark-B";
-        # };
+        theme = {
+          package = unstable.gruvbox-gtk-theme;
+          name = "Gruvbox-Dark-B";
+        };
         iconTheme = {
           package = pkgs.gruvbox-dark-icons-gtk;
           name = "oomox-gruvbox-dark";
         };
-        cursorTheme = cursorThemes.googleDotBlack;
+        cursorTheme = cursorThemes.posysImproved;
       };
       discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;
+      opacity = "0.9";
     };
 
     rosepine = override defaultTheme {
