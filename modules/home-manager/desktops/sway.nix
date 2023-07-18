@@ -21,6 +21,7 @@ in {
       sway-contrib.grimshot
       sway-contrib.inactive-windows-transparency
       swaycons
+      clipman
     ];
 
     wayland.windowManager.sway = let
@@ -61,6 +62,7 @@ in {
                   ''inactive-windows-transparency.py -o 0.8''
                   ''swaycons''
                   # "/bin/sh ~/.scripts/random-mpvpaper.sh"
+                  ''wl-paste --watch clipman store''
                 ]
                 # neither of these even work
                 ++ (lib.lists.optional
@@ -107,6 +109,7 @@ in {
               "Print" = "exec grim -t png ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
               "${common.config.modifier}+Print" = "exec grim -t png -g \"$(slurp)\" ~/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png";
               "${common.config.modifier}+Return" = "exec ${config.desktops.terminal}/bin/${config.desktops.terminal.pname}";
+              "${common.config.modifier}+M" = "exec clipman pick --tool=rofi";
             };
 
           input = {

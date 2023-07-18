@@ -25,6 +25,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       myPackages.wlrctl # cool scripting stuff I hear
+      clipman
     ];
   };
 }
