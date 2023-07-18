@@ -14,6 +14,15 @@ in {
   };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      swaylock-effects
+      swayidle
+      swaynag-battery
+      sway-contrib.grimshot
+      sway-contrib.inactive-windows-transparency
+      swaycons
+    ];
+
     wayland.windowManager.sway = let
       common = import ../../../lib/home-manager/i3-common.nix {
         inherit pkgs lib banner;
@@ -47,6 +56,10 @@ in {
                   # "mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" eDP-1 ${vidpaper}"
                   # "mpvpaper -o \"--loop-file=inf --shuffle --scale=linear\" HDMI-A-1 ${vidpaper}"
                   "swaybg --image ~/Wallpapers/${config.system.theme.wallpaper} --output \"*\""
+                  ''swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f -c 000000''
+                  ''swaynag-battery --threshold 30''
+                  ''inactive-windows-transparency.py -o 0.8''
+                  ''swaycons''
                   # "/bin/sh ~/.scripts/random-mpvpaper.sh"
                 ]
                 # neither of these even work

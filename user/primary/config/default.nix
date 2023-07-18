@@ -3,6 +3,7 @@
     ./ranger
     ./neofetch
     ./labwc
+    ./swaycons
   ];
 
   home.file.".xinitrc".text = ''
