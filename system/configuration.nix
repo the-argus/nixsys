@@ -86,7 +86,7 @@
 
   documentation = {
     info.enable = false;
-    dev.enable = true;
+    dev.enable = false;
     nixos.enable = false;
   };
   # this line is hardcoded to be green
@@ -140,7 +140,6 @@
     [
       # tui applications
       (lib.meta.lowPrio vim)
-      ranger
       htop
 
       # cli applications
@@ -170,11 +169,10 @@
       # build - essential
       gcc
       lld
-      llvm
     ]
     ++ (lib.lists.optionals (!config.system.minimal) [
-      sshfs
-      ntfs3g
+      # sshfs
+      # ntfs3g
 
       # cli applications
       neofetch

@@ -7,12 +7,12 @@
     };
     awesome.enable = false;
     ratpoison.enable = false;
-    qtile.enable = true;
+    qtile.enable = false;
     i3gaps = {
       enable = false;
       nobar = false;
     };
-    gnome.enable = true;
+    gnome.enable = false;
     labwc.enable = true;
     # plasma.enable = true;
     terminal = pkgs.kitty;

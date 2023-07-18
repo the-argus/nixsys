@@ -5,7 +5,7 @@
     # aseprite-unfree
     # krita
     # cage
-    itd
+    # itd
     # screen
     # fbterm
     # obsidian

@@ -83,7 +83,7 @@
     with pkgs;
       [
         (nvim-config.packages.${pkgs.system}.mkNeovim {
-          useQmlls = true;
+          useQmlls = false;
           pluginsArgs = {
             bannerPalette = config.system.theme.scheme;
           };
@@ -94,7 +94,6 @@
         })
         # unfree :(
         slack
-        discord
         obsidian
 
         (bitwarden-rofi.packages.${pkgs.system}.default.override
@@ -110,16 +109,10 @@
         pcmanfm
         qalculate-gtk
         pavucontrol
-        sxiv
         mpv
         zathura
         qpwgraph
         qdirstat
-
-        # color palette
-        wl-color-picker
-        # epick
-        # pngquant
 
         # cli
         trash-cli
@@ -133,7 +126,6 @@
         steam-run-native
 
         # gui
-        gimp
         pinta
         webcordPkg
         obs-studio
@@ -143,9 +135,9 @@
         # myPackages.xgifwallpaper
 
         # tui
-        (myPackages.neovim-remote.override {
-          inherit (config.desktops) terminal;
-        })
+        # (myPackages.neovim-remote.override {
+        #   inherit (config.desktops) terminal;
+        # })
         cava
 
         # cli

@@ -39,8 +39,8 @@
     # sway.enable = true;
     # awesome.enable = true;
     # ratpoison.enable = true;
-    qtile.enable = true;
-    i3gaps.enable = true;
+    qtile.enable = false;
+    i3gaps.enable = false;
     gnome.enable = true;
     # plasma.enable = true;
   };
