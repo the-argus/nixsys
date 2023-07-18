@@ -83,11 +83,11 @@
     with pkgs;
       [
         (nvim-config.packages.${pkgs.system}.mkNeovim {
-          useQmlls = false;
           pluginsArgs = {
             bannerPalette = config.system.theme.scheme;
           };
           wrapperArgs = {
+            useQmlls = false;
             viAlias = true;
             vimAlias = true;
           };
