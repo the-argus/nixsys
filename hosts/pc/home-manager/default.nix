@@ -10,8 +10,7 @@
     jre8
     aseprite
     zoom-us
-    ferium
     protontricks
-    filezilla
+    blender
   ];
 }
