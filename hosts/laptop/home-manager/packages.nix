@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  kdab-viewer,
+  kdab-flake,
+  ...
+}: {
   home.packages = with pkgs; [
     # musescore
     # libreoffice-fresh
@@ -17,5 +22,7 @@
     rocketchat-desktop
 
     ifuse
+    kdab-viewer.packages.${system}.default
+    kdab-flake.packages.${system}.software.charm
   ];
 }

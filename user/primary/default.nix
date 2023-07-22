@@ -6,8 +6,6 @@
   config,
   nvim-config,
   bitwarden-rofi,
-  kdab-flake,
-  kdab-viewer,
   nobar,
   ...
 }: {
@@ -130,8 +128,6 @@
         webcordPkg
         obs-studio
         element-desktop
-        kdab-flake.packages.${system}.software.charm
-        kdab-viewer.packages.${system}.default
         # myPackages.xgifwallpaper
 
         # tui
