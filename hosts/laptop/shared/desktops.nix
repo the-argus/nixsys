@@ -7,7 +7,7 @@
     };
     awesome.enable = false;
     ratpoison.enable = false;
-    qtile.enable = false;
+    qtile.enable = true;
     i3gaps = {
       enable = false;
       nobar = false;
