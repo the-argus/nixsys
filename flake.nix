@@ -24,10 +24,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    kdab-flake = {
-      url = "github:the-argus/kdab-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    kdab-flake.url = "github:the-argus/kdab-flake";
 
     kdab-viewer = {
       url = "git+ssh://codereview.kdab.com:29418/kdab/KDABViewer?submodules=1";
