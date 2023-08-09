@@ -749,11 +749,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1690511678,
-        "narHash": "sha256-ilmWuqo7ezJF4TQo88CujYyLNSbRJ/KbHx0BsIvptcU=",
+        "lastModified": 1691098065,
+        "narHash": "sha256-lmTDEyT1toZqUPUiTTiHDPC4IZxHWHhV3ryB8mwVVcU=",
         "owner": "the-argus",
         "repo": "kdab-flake",
-        "rev": "99d61b33302664b7f4de4531350624054cb2b019",
+        "rev": "3be8db82c9207b53290278cb6ebf2d43fa32a395",
         "type": "github"
       },
       "original": {
@@ -770,11 +770,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1689890349,
-        "narHash": "sha256-kYO5oI9CKpGiDbyv2T3ddiDbyJpqteM/sE/gKVUVvYI=",
+        "lastModified": 1691094861,
+        "narHash": "sha256-Y/z5J2nY9dP5gtYgpzW3j+wco/5FxEDoF9cm8w3t8Io=",
         "ref": "refs/heads/master",
-        "rev": "891170322344d83a8de6bcc0bd7d5b0d18994af4",
-        "revCount": 6295,
+        "rev": "d0e473476e61599930c086e0ada7b2ba9b6f81ee",
+        "revCount": 6305,
         "submodules": true,
         "type": "git",
         "url": "ssh://codereview.kdab.com:29418/kdab/KDABViewer"
@@ -969,11 +969,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1690272529,
-        "narHash": "sha256-MakzcKXEdv/I4qJUtq/k/eG+rVmyOZLnYNC2w1mB59Y=",
+        "lastModified": 1691472822,
+        "narHash": "sha256-XVfYZ2oB3lNPVq6sHCY9WkdQ8lHoIDzzbpg8bB6oBxA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ef99fa5c5ed624460217c31ac4271cfb5cb2502c",
+        "rev": "41c7605718399dcfa53dd7083793b6ae3bc969ff",
         "type": "github"
       },
       "original": {
@@ -1032,11 +1032,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1690370995,
-        "narHash": "sha256-9z//23jGegLJrf3ITStLwVf715O39dq5u48Kr/XW14U=",
+        "lastModified": 1691421349,
+        "narHash": "sha256-RRJyX0CUrs4uW4gMhd/X4rcDG8PTgaaCQM5rXEJOx6g=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f3fbbc36b4e179a5985b9ab12624e9dfe7989341",
+        "rev": "011567f35433879aae5024fc6ec53f2a0568a6c4",
         "type": "github"
       },
       "original": {
@@ -1340,11 +1340,11 @@
     "rycee-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1690476993,
-        "narHash": "sha256-Oxi/BMT/IeBCG4QW1VFj0tZody/oF1ZlVpCfTiOG5+g=",
+        "lastModified": 1691506987,
+        "narHash": "sha256-mpeGt5k0aILY3Ma61XgSHcPz7wt4sJkWOqfDAROnygo=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "80362180fbb8d54df27b6c050576f1d2cb0e6afc",
+        "rev": "6f6a6a54586cf4a60577ade570d03c5bdd73b0ce",
         "type": "gitlab"
       },
       "original": {
@@ -1361,11 +1361,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1686173678,
-        "narHash": "sha256-aYzl34xb3u9I57sqkvSldQKltCnxhjvvLABjgFRxOVE=",
+        "lastModified": 1691164102,
+        "narHash": "sha256-6IIW9wbavLptd0FDbVwBAGftuqcVO+kg66DN7ne5Hp8=",
         "owner": "the-argus",
         "repo": "spicetify-nix",
-        "rev": "f024752b691ac2dcb2ad378d72a2e3084ce83b79",
+        "rev": "48dd31ec1d13638d0818349a9f9a2463f29c9a2a",
         "type": "github"
       },
       "original": {
