@@ -28,7 +28,6 @@
 
     kdab-viewer = {
       url = "git+ssh://codereview.kdab.com:29418/kdab/KDABViewer?submodules=1";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     chrome-extensions = {
