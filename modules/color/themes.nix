@@ -218,9 +218,11 @@
       font = defaultTheme.font;
       scheme = schemes.drifter;
       gtk = {
-        iconTheme = materialBlackFrostIcons;
-        theme = materialBlackFrostTheme;
-        cursorTheme = cursorThemes.breezeXBlack;
+        theme = "gtkNix";
+        iconTheme = {
+          name = "Tela-circle";
+          package = pkgs.tela-circle-icon-theme;
+        };
       };
       opacity = "0.9";
       discordTheme = discordThemes.mkDiscordThemeFromSystemTheme;

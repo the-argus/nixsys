@@ -20,18 +20,20 @@ in {
   };
 
   gtkNix =
-    pkgs.lib.mkIf (
+    pkgs.lib.mkIf
+    (
       if (builtins.typeOf gtk.theme == "string")
       then (gtk.theme == "gtkNix")
       else false
-    ) {
+    )
+    {
       enable = true;
       configuration = {
         radius = "8px";
         disabled-opacity = 0.6;
       };
       palette = config.banner.palette;
-    };
+  };
 
   gtk = {
     enable = true;
@@ -43,7 +45,8 @@ in {
     iconTheme = gtk.iconTheme;
 
     theme =
-      pkgs.lib.mkIf (
+      pkgs.lib.mkIf
+      (
         if (builtins.typeOf gtk.theme == "string")
         then
           (
