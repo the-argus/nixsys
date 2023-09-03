@@ -114,17 +114,32 @@
   };
 
   services.pipewire.package =
-    (import (pkgs.fetchgit {
-      url = "https://github.com/K900/nixpkgs";
-      rev = "092f4eb681a6aee6b50614eedac74629cb48db23";
-      sha256 = "1vx4fn4x32m0q91776pww8b9zqlg28x732ghj47lcfgzqdhwbdh4";
-    }) {system = "x86_64-linux";})
+    (import
+      (pkgs.fetchgit {
+        url = "https://github.com/K900/nixpkgs";
+        rev = "092f4eb681a6aee6b50614eedac74629cb48db23";
+        sha256 = "1vx4fn4x32m0q91776pww8b9zqlg28x732ghj47lcfgzqdhwbdh4";
+      })
+      {system = "x86_64-linux";})
     .pipewire;
 
   # networking ----------------------------------------------------------------
-  networking.interfaces.enp39s0.useDHCP = true;
-  networking.hostName = hostname; # Define your hostname.
-  networking.wireless.enable = false;
+  networking =
+    (
+      if config.system.hardware.usesWireless
+      then {
+        networkmanager.enable = true;
+        interfaces."wlp37s0" = {useDHCP = false;};
+        useDHCP = false;
+      }
+      else {
+        interfaces.enp39s0.useDHCP = true;
+        wireless.enable = false;
+      }
+    )
+    // {
+      hostName = hostname; # Define your hostname.
+    };
 
   services.openssh = {
     enable = false;
@@ -162,5 +177,6 @@
   environment.systemPackages = with pkgs; [
     razergenie
     virt-manager
+    dhcpcd # for manually starting dhcpcd with wpa_supplicant
   ];
 }

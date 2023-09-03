@@ -119,7 +119,7 @@
   # networking-----------------------------------------------------------------
   networking.hostName = hostname;
   networking.interfaces."wlp0s20f3" = {useDHCP = false;};
-  networking.wireless.interfaces = ["wlp0s20f3"];
+  # networking.wireless.interfaces = ["wlp0s20f3"];
   networking.networkmanager.enable = true;
   networking.useDHCP = false;
   # networking.wireless.enable = true;

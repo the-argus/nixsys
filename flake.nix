@@ -26,9 +26,9 @@
 
     kdab-flake.url = "github:the-argus/kdab-flake";
 
-    kdab-viewer = {
-      url = "git+ssh://codereview.kdab.com:29418/kdab/KDABViewer?submodules=1";
-    };
+    # kdab-viewer = {
+    #   url = "git+ssh://codereview.kdab.com:29418/kdab/KDABViewer?submodules=1";
+    # };
 
     chrome-extensions = {
       url = "github:the-argus/chrome-extensions-nix";

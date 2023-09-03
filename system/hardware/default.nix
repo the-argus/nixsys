@@ -120,7 +120,6 @@
     bluez
     bluez-alsa
     bluez-tools
-    networkmanagerapplet
     libimobiledevice
     razergenie
   ];
