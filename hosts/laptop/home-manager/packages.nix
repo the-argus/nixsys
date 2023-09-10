@@ -1,6 +1,6 @@
 {
   pkgs,
-  kdab-viewer,
+  # kdab-viewer,
   kdab-flake,
   ...
 }: {
@@ -22,7 +22,7 @@
     rocketchat-desktop
 
     ifuse
-    kdab-viewer.packages.${system}.default
+    # kdab-viewer.packages.${system}.default
     kdab-flake.packages.${system}.software.charm
   ];
 }
