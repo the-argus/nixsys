@@ -31,6 +31,7 @@
   emptty = callPackage ./emptty/wrapper.nix {inherit emptty-unwrapped;};
   typst = callPackage ./typst {};
   godot_4_mono = callPackage ./godot_4_mono {};
+  godot_4_mono-bin = callPackage ./godot_4_mono-bin {};
   IDEA = callPackage ./idea {};
   labwc = callPackage ./labwc {};
   wlrctl = callPackage ./wlrctl {};
