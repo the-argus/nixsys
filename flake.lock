@@ -909,11 +909,11 @@
         "nixpkgs-pinned": "nixpkgs-pinned"
       },
       "locked": {
-        "lastModified": 1694960755,
-        "narHash": "sha256-Yh63ECgoLCohlBcmyuOyCk/RnK3iy9tKPmiQP40xLV8=",
+        "lastModified": 1694961162,
+        "narHash": "sha256-rmMJQnczJUdbGB0s7Rw6RqXSmM1qcTvo/lKgT/doAJk=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "d91ce9a321605f0a0c8530481fe7b82b761c2d36",
+        "rev": "d81f83186a3a1abf732345112b02b341b41175ff",
         "type": "github"
       },
       "original": {
