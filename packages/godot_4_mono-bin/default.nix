@@ -15,7 +15,7 @@
   eudev,
   alsaLib,
   pulseaudio,
-  dotnet-netcore,
+  dotnet-sdk,
   ...
 }:
 stdenv.mkDerivation rec {
@@ -72,7 +72,7 @@ stdenv.mkDerivation rec {
       ++ (lib.optionals alsaSupport [alsaLib])
       ++ (lib.optionals pulseSupport [pulseaudio]));
 
-    binPath = lib.makeBinPath [dotnet-netcore];
+    binPath = lib.makeBinPath [dotnet-sdk];
   in ''
     wrapProgram $out/bin/godot4 \
       --prefix LD_LIBRARY_PATH : ${dynamicLibraryPath} \
