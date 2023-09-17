@@ -8,6 +8,14 @@
       source = ./bin;
       recursive = true;
     };
+
+    ".local/bin/nvim-remote" = {
+      source = "${
+        (pkgs.myPackages.neovim-remote.override {
+          inherit (config.desktops) terminal;
+        })
+      }/bin/nvim-remote";
+    };
   };
 
   xdg.desktopEntries = let

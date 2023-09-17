@@ -131,9 +131,6 @@
         # myPackages.xgifwallpaper
 
         # tui
-        # (myPackages.neovim-remote.override {
-        #   inherit (config.desktops) terminal;
-        # })
         cava
 
         # cli
