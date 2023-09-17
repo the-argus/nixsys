@@ -13,6 +13,7 @@
     "steam-run-native"
     "steam-original"
     "obsidian"
+    "unityhub"
   ];
   allowBroken = false;
   extraExtraSpecialArgs = {};

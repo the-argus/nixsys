@@ -94,6 +94,7 @@
         slack
         obsidian
         p4
+        unityhub
 
         (bitwarden-rofi.packages.${pkgs.system}.default.override
           # roughly 300 hours lol
