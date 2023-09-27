@@ -16,6 +16,14 @@
         })
       }/bin/nvim-remote";
     };
+
+    ".local/bin/neovide-remote" = {
+      source = "${
+        (pkgs.myPackages.neovim-remote.override {
+          isNeovide = true;
+        })
+      }/bin/neovide-remote";
+    };
   };
 
   xdg.desktopEntries = let
