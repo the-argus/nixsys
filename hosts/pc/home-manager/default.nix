@@ -12,5 +12,6 @@
     zoom-us
     protontricks
     blender
+    pulseeffects-pw
   ];
 }
