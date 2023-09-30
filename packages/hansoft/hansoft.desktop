@@ -1,0 +1,9 @@
+
+[Desktop Entry]
+Name=Hansoft
+GenericName=Task Board
+Comment=A glorified to-do list
+Icon=notes
+Terminal=false
+Type=Application
+StartupWMClass=Hansoft

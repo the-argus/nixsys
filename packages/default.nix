@@ -37,4 +37,5 @@
   wlrctl = callPackage ./wlrctl {};
   sway-osd = callPackage ./sway-osd {};
   kdab-viewer = callPackage ./kdab-viewer {};
+  hansoft = callPackage ./hansoft {};
 }
