@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     kdenlive
     myPackages.IDEA
+    myPackages.hansoft
     blender
     steam
     jre8
