@@ -14,5 +14,7 @@
     protontricks
     blender
     pulseeffects-pw
+
+    rocketchat-desktop
   ];
 }
