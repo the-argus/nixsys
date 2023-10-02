@@ -60,12 +60,10 @@
         extra-experimental-features = ["nix-command" "flakes"];
         substituters = [
           "https://cache.nixos.org/"
-          "https://webcord.cachix.org"
           # ] ++ (if useMusl then [
           # "https://cache.allvm.org/"
         ];
         trusted-public-keys = [
-          "webcord.cachix.org-1:l555jqOZGHd2C9+vS8ccdh8FhqnGe8L78QrHNn+EFEs="
           # if useMusl then [
           # "gravity.cs.illinois.edu-1:yymmNS/WMf0iTj2NnD0nrVV8cBOXM9ivAkEdO1Lro3U="
         ];
