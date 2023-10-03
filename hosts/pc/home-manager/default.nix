@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  kdab-flake,
+  ...
+}: {
   imports = [];
   programs.yabridge.enable = true;
 
@@ -16,5 +20,6 @@
     pulseeffects-pw
 
     rocketchat-desktop
+    kdab-flake.packages.${system}.software.charm
   ];
 }
