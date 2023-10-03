@@ -10,11 +10,22 @@
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     mutableExtensionsDir = false;
+
+    userSettings = {
+      extensions.autoCheckUpdates = false;
+      update.mode = "none";
+      workbench.colorTheme = "Catppuccin Mocha";
+      workbench.iconTheme = "catppuccin-mocha";
+    };
+
     extensions = with pkgs.vscode-extensions; [
       unstable.vscode-extensions.catppuccin.catppuccin-vsc
       unstable.vscode-extensions.catppuccin.catppuccin-vsc-icons
       editorconfig.editorconfig
       ms-dotnettools.csharp
+
+      asvetliakov.vscode-neovim
+      # vscodevim.vim
     ];
   };
 }
