@@ -21,6 +21,7 @@ in rec {
     "discord"
     "ue4"
     "zoom"
+    "rider"
   ];
   allowBroken = false;
   extraExtraSpecialArgs = {};

@@ -27,7 +27,7 @@
     ./blugon.nix
     ./lf.nix
     ./ntfy.nix
-    ./vscode.nix
+    # ./vscode.nix
     banner.module
   ];
 
