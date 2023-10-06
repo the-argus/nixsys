@@ -18,6 +18,7 @@ stdenvNoCC.mkDerivation {
   in ''
     mkdir $out/bin -p
     ln -sf $src/bin/codium $out/bin/codium
+    ln -sf $src/share $out/share
 
     wrapProgram $out/bin/codium \
       --prefix PATH : ${path}
