@@ -7,7 +7,7 @@
   programs.vscode = {
     enable = true;
     package = pkgs.myPackages.vscodium-wrapper.override {
-      additionalPackages = with pkgs; [dotnet-sdk];
+      additionalPackages = with pkgs; [dotnet-sdk omnisharp-roslyn];
     };
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
