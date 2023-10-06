@@ -6,7 +6,9 @@
 }: {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.myPackages.vscodium-wrapper.override {
+      additionalPackages = with pkgs; [dotnet-sdk];
+    };
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     mutableExtensionsDir = false;
