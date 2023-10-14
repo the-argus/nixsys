@@ -9,7 +9,7 @@
   home.packages = with pkgs; [
     kdenlive
     myPackages.IDEA
-    jetbrains.rider
+    # jetbrains.rider
     myPackages.hansoft
     blender
     steam
