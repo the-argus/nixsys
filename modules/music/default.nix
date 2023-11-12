@@ -12,8 +12,8 @@ in {
   config = mkIf (cfg.enable && !config.system.minimal) {
     environment.systemPackages = with pkgs; [
       # vst emulation
-      wineWowPackages.full
-      winetricks
+      # wineWowPackages.full
+      # winetricks
       # (import ../../packages/carla.nix {inherit pkgs;})
       # carla
       # airwave is unfortunately out of date
