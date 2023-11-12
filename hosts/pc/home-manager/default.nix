@@ -10,7 +10,7 @@
     kdenlive
     myPackages.IDEA
     # jetbrains.rider
-    myPackages.hansoft
+    # myPackages.hansoft
     blender
     steam
     jre8

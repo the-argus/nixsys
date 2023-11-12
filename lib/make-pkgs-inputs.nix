@@ -9,6 +9,9 @@ in {
     # always needs allowBroken and allowedUnfree
     {
       inherit (settings) allowBroken;
+      permittedInsecurePackages = [
+        "electron-24.8.6"
+      ];
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowedUnfree;
     }
     # replace the stdenv if a setting that needs it is set

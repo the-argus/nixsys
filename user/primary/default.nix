@@ -70,10 +70,6 @@
       "x-scheme-handler/chrome" = ["firefox.desktop"];
     };
   };
-  nixpkgs.config.permittedInsecurePackages = [
-    # need this for obsidian
-    "electron-21.4.0"
-  ];
 
   # extra packages
   home.packages = let

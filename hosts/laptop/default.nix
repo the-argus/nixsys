@@ -1,4 +1,3 @@
-{
   nixpkgs,
   hostname ? "evil",
   ...
