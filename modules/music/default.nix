@@ -24,7 +24,7 @@ in {
 
     # low latency setup
     services.pipewire = {
-      jack.enable = true;
+      # jack.enable = true;
       # config = {
       #   pipewire = {
       #     "context.properties" = {
