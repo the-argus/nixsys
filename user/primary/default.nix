@@ -2,7 +2,6 @@
   pkgs,
   lib,
   banner,
-  webcord,
   config,
   nvim-config,
   bitwarden-rofi,
@@ -72,76 +71,74 @@
   };
 
   # extra packages
-  home.packages = let
-    webcordPkg = webcord.packages.${pkgs.system}.default;
-  in
-    with pkgs;
-      [
-        (nvim-config.packages.${pkgs.system}.mkNeovim {
-          pluginsArgs = {
-            bannerPalette = config.system.theme.scheme;
-          };
-          wrapperArgs = {
-            useQmlls = false;
-            viAlias = true;
-            vimAlias = true;
-          };
-        })
-        # unfree :(
-        slack
-        obsidian
-        p4
-        unityhub
+  home.packages = with pkgs;
+    [
+      (nvim-config.packages.${pkgs.system}.mkNeovim {
+        pluginsArgs = {
+          bannerPalette = config.system.theme.scheme;
+        };
+        wrapperArgs = {
+          useQmlls = false;
+          viAlias = true;
+          vimAlias = true;
+        };
+      })
+      # unfree :(
+      slack
+      obsidian
+      p4
+      unityhub
 
-        (bitwarden-rofi.packages.${pkgs.system}.default.override
-          # roughly 300 hours lol
-          {autoLock = 1000000;})
+      (bitwarden-rofi.packages.${pkgs.system}.default.override
+        # roughly 300 hours lol
+        {autoLock = 1000000;})
 
-        nobar.packages.${pkgs.system}.default
-        nextcloud-client
-        myPackages.godot_4_mono-bin
+      nobar.packages.${pkgs.system}.default
+      nextcloud-client
+      myPackages.godot_4_mono-bin
 
-        # gui applications---------
-        bitwarden-cli
-        pcmanfm
-        qalculate-gtk
-        pavucontrol
-        mpv
-        zathura
-        qpwgraph
-        qdirstat
+      webcord
 
-        # cli
-        trash-cli
-        solo2-cli
-        nix-prefetch-scripts
-        # tigervnc
-      ]
-      ++ (lib.lists.optionals (!config.system.minimal) [
-        # unfree :(
-        steam-run
-        steam-run-native
+      # gui applications---------
+      bitwarden-cli
+      pcmanfm
+      qalculate-gtk
+      pavucontrol
+      mpv
+      zathura
+      qpwgraph
+      qdirstat
 
-        # gui
-        pinta
-        webcordPkg
-        obs-studio
-        element-desktop
-        # myPackages.xgifwallpaper
+      # cli
+      trash-cli
+      solo2-cli
+      nix-prefetch-scripts
+      # tigervnc
+    ]
+    ++ (lib.lists.optionals (!config.system.minimal) [
+      # unfree :(
+      steam-run
+      steam-run-native
 
-        # tui
-        cava
+      # gui
+      pinta
+      obs-studio
+      element-desktop
+      # myPackages.xgifwallpaper
 
-        # cli
-        myPackages.ufetch
-        transmission
-        # ani-cli
-        glow
-        myPackages.rgf
-        shotgun
+      # tui
+      cava
 
-        # dev
-        # nodejs
-        cargo
-      ]);
+      # cli
+      myPackages.ufetch
+      transmission
+      # ani-cli
+      glow
+      myPackages.rgf
+      shotgun
+
+      # dev
+      # nodejs
+      cargo
+    ]);
 }

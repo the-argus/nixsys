@@ -35,8 +35,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    webcord.url = "github:fufexan/webcord-flake";
-
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";

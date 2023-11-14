@@ -10,6 +10,18 @@ with (pkgs.callPackage ./pkgs.nix {}); {
       theme = let
         systemTheme = config.system.theme;
       in
+        # theme = let
+        #   systemTheme = config.system.theme;
+        # in
+        #   if builtins.typeOf systemTheme.discordTheme == "lambda"
+        #   then
+        #     pkgs.callPackage
+        #     systemTheme.discordTheme
+        #     {
+        #       inherit config;
+        #       font = systemTheme.font.display;
+        #     }
+        #   else systemTheme.discordTheme;
         pkgs.callPackage systemTheme.discordTheme {inherit config systemTheme;};
     in {
       source = theme;

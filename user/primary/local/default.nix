@@ -65,22 +65,9 @@
       #   type = "Application";
       #   categories = [ "Network" "InstantMessaging" ];
       # };
-      webcord = let
-        theme = let
-          systemTheme = config.system.theme;
-        in
-          if builtins.typeOf systemTheme.discordTheme == "lambda"
-          then
-            pkgs.callPackage
-            systemTheme.discordTheme
-            {
-              inherit config;
-              font = systemTheme.font.display;
-            }
-          else systemTheme.discordTheme;
-      in {
+      webcord = {
         name = "Webcord";
-        exec = ''webcord --add-css-theme=${theme}/THEME.theme.css'';
+        exec = ''webcord --force-audio-share-support'';
         icon = "discord";
       };
 
