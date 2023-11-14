@@ -27,6 +27,7 @@
     ./lf.nix
     ./ntfy.nix
     # ./vscode.nix
+    ./webcord.nix
     banner.module
   ];
 

@@ -22,7 +22,10 @@ with (pkgs.callPackage ./pkgs.nix {}); {
         #       font = systemTheme.font.display;
         #     }
         #   else systemTheme.discordTheme;
-        pkgs.callPackage systemTheme.discordTheme {inherit config systemTheme;};
+        pkgs.callPackage systemTheme.discordTheme {
+          font = systemTheme.font.display;
+          inherit config;
+        };
     in {
       source = theme;
       # source = (mkFrostedGlass "https://raw.githubusercontent.com/the-argus/wallpapers/main/matte/delorean.png");

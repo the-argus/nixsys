@@ -79,7 +79,7 @@ in {
   }:
     with config.banner.palette; let
       # light mode literally not supported lol
-      css = builtins.toFile "THEME.theme.css" ''
+      css = builtins.toFile "system.theme.css" ''
         .theme-dark {
             --background-primary: #${base02};
             --background-secondary: #${base01};
@@ -184,7 +184,7 @@ in {
       '';
       installPhase = ''
         mkdir $out
-        cp ${css} $out/THEME.theme.css
+        cp ${css} $out/system.theme.css
       '';
       dontUnpack = true;
     });
