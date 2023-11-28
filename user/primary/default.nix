@@ -55,22 +55,6 @@
     ];
   };
 
-  xdg.mimeApps = {
-    enable = true;
-    associations.added = {
-      "inode/directory" = ["ranger.desktop"];
-      "x-scheme-handler/http" = ["firefox.desktop"];
-      "x-scheme-handler/https" = ["firefox.desktop"];
-      "x-scheme-handler/chrome" = ["firefox.desktop"];
-    };
-    defaultApplications = {
-      "inode/directory" = ["ranger.desktop"];
-      "x-scheme-handler/http" = ["firefox.desktop"];
-      "x-scheme-handler/https" = ["firefox.desktop"];
-      "x-scheme-handler/chrome" = ["firefox.desktop"];
-    };
-  };
-
   # extra packages
   home.packages = with pkgs;
     [
@@ -87,21 +71,18 @@
       # unfree :(
       slack
       obsidian
-      p4
-      unityhub
 
       (bitwarden-rofi.packages.${pkgs.system}.default.override
         # roughly 300 hours lol
         {autoLock = 1000000;})
 
-      nobar.packages.${pkgs.system}.default
+      # nobar.packages.${pkgs.system}.default
       nextcloud-client
       myPackages.godot_4_mono-bin
 
       webcord
 
       # gui applications---------
-      bitwarden-cli
       pcmanfm
       qalculate-gtk
       pavucontrol
@@ -111,6 +92,7 @@
       qdirstat
 
       # cli
+      bitwarden-cli
       trash-cli
       solo2-cli
       nix-prefetch-scripts
