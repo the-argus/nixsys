@@ -7,17 +7,17 @@
   programs.yabridge.enable = true;
 
   home.packages = with pkgs; [
-    kdenlive
+    # kdenlive
     myPackages.IDEA
     # jetbrains.rider
     # myPackages.hansoft
-    blender
+    # blender
+    gimp
     steam
     jre8
     aseprite
     zoom-us
     protontricks
-    blender
     pulseeffects-pw
 
     rocketchat-desktop
