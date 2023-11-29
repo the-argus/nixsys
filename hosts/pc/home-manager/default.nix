@@ -13,6 +13,7 @@
     # myPackages.hansoft
     # blender
     gimp
+    inkscape
     steam
     jre8
     aseprite
