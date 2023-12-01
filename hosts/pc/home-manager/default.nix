@@ -12,7 +12,7 @@
     # jetbrains.rider
     # myPackages.hansoft
     # blender
-    gimp
+    (gimp-with-plugins.override {plugins = with pkgs.gimpPlugins; [gmic];})
     inkscape
     steam
     jre8
