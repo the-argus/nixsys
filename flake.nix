@@ -2,10 +2,10 @@
   description = "the-argus nixos system configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/release-23.11";
       # home manager use our nixpkgs and not its own
       inputs.nixpkgs.follows = "nixpkgs";
     };
