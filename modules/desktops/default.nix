@@ -47,7 +47,7 @@ in {
     ];
 
     # fonts -------------------------------------------------------------------
-    fonts.fonts = with pkgs; [
+    fonts.packages = with pkgs; [
       # unfree :(
       # vistafonts
       # ttf-envy-code-r

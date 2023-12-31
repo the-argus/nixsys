@@ -130,12 +130,12 @@ in {
               description = lib.mdDoc "Enables printing of default motd, /etc/emptty/motd or /etc/emptty/motd-gen.sh.";
             };
             DEFAULT_USER = mkOption {
-              type = types.nullOr types.string;
+              type = types.nullOr types.str;
               default = defaultConfig.DEFAULT_USER;
               description = lib.mdDoc "Preselected user, if AUTOLOGIN is enabled, this user is logged in.";
             };
             DEFAULT_SESSION = mkOption {
-              type = types.nullOr types.string;
+              type = types.nullOr types.str;
               default = defaultConfig.DEFAULT_SESSION;
               description = lib.mdDoc "Preselected desktop session, if user does not use ``emptty`` file. Has lower priority than ``AUTOLOGIN_SESSION``.";
             };
@@ -150,7 +150,7 @@ in {
               description = lib.mdDoc "Enables Autologin, if DEFAULT_USER is defined and part of nopasswdlogin group.";
             };
             AUTOLOGIN_SESSION = mkOption {
-              type = types.nullOr types.string;
+              type = types.nullOr types.str;
               default = defaultConfig.AUTOLOGIN_SESSION;
               description =
                 lib.mdDoc
@@ -168,7 +168,7 @@ in {
               description = lib.mdDoc "If Autologin is enabled and session does not start correctly, the number of retries in short period is kept to eventually stop the infinite loop of restarts. -1 is for infinite retries, 0 is for no retry.";
             };
             LANG = mkOption {
-              type = types.nullOr types.string;
+              type = types.nullOr types.str;
               default = defaultConfig.LANG;
               description = lib.mdDoc "Default LANG, if user does not have set own in init script.";
               example = "en_US.UTF-8";
@@ -199,7 +199,7 @@ in {
               description = lib.mdDoc "Defines the way, how is logging handled. Possible values are \"default\", \"appending\" or \"disabled\".";
             };
             LOGGING_FILE = mkOption {
-              type = types.nullOr (types.oneOf [types.string types.path]);
+              type = types.nullOr (types.oneOf [types.str types.path]);
               default = defaultConfig.LOGGING_FILE;
               description = lib.mdDoc "Overrides path of log file";
               example = "/var/log/emptty/$\{TTY_NUMBER}.log";
@@ -210,12 +210,12 @@ in {
               description = lib.mdDoc "Allows to use dynamic motd script to generate custom MOTD.";
             };
             DYNAMIC_MOTD_PATH = mkOption {
-              type = types.nullOr (types.oneOf [types.package types.string types.path]);
+              type = types.nullOr (types.oneOf [types.package types.str types.path]);
               default = defaultConfig.DYNAMIC_MOTD_PATH;
               description = lib.mdDoc "Overrides the default path to the dynamic motd.";
             };
             MOTD_PATH = mkOption {
-              type = types.nullOr (types.oneOf [types.string types.path]);
+              type = types.nullOr (types.oneOf [types.str types.path]);
               default = defaultConfig.MOTD_PATH;
               description = lib.mdDoc "Overrides the default path to the static motd.";
             };
@@ -235,12 +235,12 @@ in {
               description = lib.mdDoc "Enables numlock in daemon mode.";
             };
             DISPLAY_START_SCRIPT = mkOption {
-              type = types.nullOr (types.oneOf [types.string types.path]);
+              type = types.nullOr (types.oneOf [types.str types.path]);
               default = defaultConfig.DISPLAY_START_SCRIPT;
               description = lib.mdDoc "Script started before Display (Xorg/Wayland) starts. **NOTE:** The script is started as default user; in daemon mode it means ``root``.";
             };
             DISPLAY_STOP_SCRIPT = mkOption {
-              type = types.nullOr (types.oneOf [types.string types.path]);
+              type = types.nullOr (types.oneOf [types.str types.path]);
               default = defaultConfig.DISPLAY_STOP_SCRIPT;
               description = lib.mdDoc "Script started after Display (Xorg/Wayland) stops. **NOTE:** The script is started as default user; in daemon mode it means ``root``.";
             };
@@ -250,7 +250,7 @@ in {
               description = lib.mdDoc "Defines how the logging of session errors handled. Possible values are \"default\", \"appending\" or \"disabled\".";
             };
             SESSION_ERROR_LOGGING_FILE = mkOption {
-              type = types.nullOr (types.oneOf [types.path types.string]);
+              type = types.nullOr (types.oneOf [types.path types.str]);
               default = defaultConfig.SESSION_ERROR_LOGGING_FILE;
               description = lib.mdDoc "Overrides path of session errors log file.";
               example = "/var/log/emptty/session-errors.$\{TTY_NUMBER}.log";

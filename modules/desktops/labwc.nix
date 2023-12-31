@@ -41,7 +41,7 @@ in {
 
       security.polkit.enable = true;
       hardware.opengl.enable = mkDefault true;
-      fonts.enableDefaultFonts = mkDefault true;
+      fonts.enableDefaultPackages = mkDefault true;
       programs.dconf.enable = mkDefault true;
       # To make a labwc session available if a display manager like SDDM is enabled:
       services.xserver.displayManager.sessionPackages = [labwcPackage];

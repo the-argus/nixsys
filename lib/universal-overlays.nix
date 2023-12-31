@@ -8,6 +8,9 @@
     xdg-desktop-portal-gtk = super.xdg-desktop-portal-gtk.override {
       buildPortalsInGnome = false;
     };
+    # HACK: i couldn't find where in my config i was referencing exa, so i just
+    # globally replaced it with eza
+    exa = super.eza;
     gnome =
       super.gnome
       // {
@@ -18,7 +21,7 @@
         });
       };
     qtile-unwrapped = super.qtile-unwrapped.overrideAttrs (oa: {
-      makeWrapperArgs = oa.makeWrapperArgs ++ ["--set PYTHONDONTWRITEBYTECODE \"yes\""];
+      makeWrapperArgs = (oa.makeWrapperArgs or []) ++ ["--set PYTHONDONTWRITEBYTECODE \"yes\""];
     });
 
     # labwc = super.callPackage ../packages/labwc/wrapper.nix {labwc-original = super.labwc;};

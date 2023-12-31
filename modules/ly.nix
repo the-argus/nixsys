@@ -87,7 +87,7 @@ in {
       };
 
       extraConfig = mkOption {
-        type = types.nullOr types.string;
+        type = types.nullOr types.str;
         default = "";
         example = literalExpression ''
           animate = true

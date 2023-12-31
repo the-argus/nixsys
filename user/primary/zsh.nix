@@ -156,7 +156,7 @@ in {
 
     dotDir = dDir;
     enableCompletion = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     enableAutosuggestions = true;
 
     history = {

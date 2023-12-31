@@ -37,8 +37,8 @@
     initrd = {
       verbose = false;
       systemd.enable = true;
-      services.swraid.enable = false;
     };
+    swraid.enable = false;
   };
 
   # makes plymouth wait 5 seconds while playing

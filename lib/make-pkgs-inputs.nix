@@ -10,7 +10,7 @@ in {
     {
       inherit (settings) allowBroken;
       permittedInsecurePackages = [
-        "electron-24.8.6"
+        "electron-25.9.0"
       ];
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowedUnfree;
     }
