@@ -88,8 +88,9 @@ in {
       );
 
     enabledCustomApps = with spicePkgs.apps; [
-      new-releases
-      lyrics-plus
+      # BUG: new releases and lyrics plus both cause "something went wrong"
+      # new-releases
+      # lyrics-plus
       localFiles
       marketplace
     ];
