@@ -104,6 +104,10 @@
       opacity = "0.8";
     };
 
+    rosepineOpaque = override defaultTheme {
+      opacity = "1.0";
+    };
+
     macchiato = override defaultTheme {
       wallpaper = "colourful-place.jpg";
       scheme = schemes.macchiato;
