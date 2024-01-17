@@ -22,6 +22,7 @@ in rec {
     "ue4"
     "zoom"
     "rider"
+    "aseprite"
   ];
   allowBroken = false;
   extraExtraSpecialArgs = {};

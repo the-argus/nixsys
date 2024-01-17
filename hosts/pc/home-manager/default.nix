@@ -19,7 +19,8 @@
     aseprite
     zoom-us
     protontricks
-    pulseeffects-pw
+    # pulseeffects-pw
+    pulseeffects-legacy
 
     rocketchat-desktop
     kdab-flake.packages.${system}.software.charm
