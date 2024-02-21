@@ -177,6 +177,9 @@
   environment.systemPackages = with pkgs; [
     razergenie
     virt-manager
+    vial
     dhcpcd # for manually starting dhcpcd with wpa_supplicant
   ];
+
+  services.udev.packages = with pkgs; [vial];
 }
