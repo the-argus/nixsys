@@ -7,7 +7,7 @@
   programs.yabridge.enable = true;
 
   home.packages = with pkgs; [
-    # kdenlive
+    kdenlive
     myPackages.IDEA
     # jetbrains.rider
     # myPackages.hansoft
