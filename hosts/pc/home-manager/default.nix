@@ -8,11 +8,11 @@
 
   home.packages = with pkgs; [
     kdenlive
-    myPackages.IDEA
+    # myPackages.IDEA
     # jetbrains.rider
     # myPackages.hansoft
     # blender
-    (gimp-with-plugins.override {plugins = with pkgs.gimpPlugins; [gmic];})
+    # (gimp-with-plugins.override {plugins = with pkgs.gimpPlugins; [gmic];})
     inkscape
     steam
     jre8
@@ -20,6 +20,8 @@
     zoom-us
     protontricks
     xournalpp
+
+    distrobox
 
     rocketchat-desktop
     kdab-flake.packages.${system}.software.charm
