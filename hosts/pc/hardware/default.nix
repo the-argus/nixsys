@@ -77,7 +77,7 @@
   virtualization = {
     enable = false;
     containers = {
-      podman.enable = false;
+      podman.enable = true;
       docker.enable = false;
     };
   };
