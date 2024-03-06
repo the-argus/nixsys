@@ -75,7 +75,7 @@
   music.enable = true; # music production software and configuration
 
   virtualization = {
-    enable = false;
+    enable = true;
     containers = {
       podman.enable = true;
       docker.enable = false;
