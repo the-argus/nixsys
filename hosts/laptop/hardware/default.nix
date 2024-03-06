@@ -48,7 +48,7 @@
     enable = false;
     containers = {
       docker.enable = false;
-      podman.enable = false;
+      podman.enable = true;
     };
   };
 
