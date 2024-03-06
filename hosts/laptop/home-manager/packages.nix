@@ -19,6 +19,8 @@
     arandr
     iio-sensor-proxy
 
+    distrobox
+
     rocketchat-desktop
 
     ifuse
