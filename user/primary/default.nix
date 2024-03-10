@@ -96,6 +96,7 @@
       trash-cli
       solo2-cli
       nix-prefetch-scripts
+      repgrep
       # tigervnc
     ]
     ++ (lib.lists.optionals (!config.system.minimal) [
