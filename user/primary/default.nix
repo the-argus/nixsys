@@ -97,6 +97,7 @@
       solo2-cli
       nix-prefetch-scripts
       repgrep
+      xorg.xhost
       # tigervnc
     ]
     ++ (lib.lists.optionals (!config.system.minimal) [
