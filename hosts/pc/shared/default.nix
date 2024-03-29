@@ -6,5 +6,5 @@
 
   gaming.minecraft = true;
   gaming.enable = true;
-  gaming.steam = true;
+  gaming.steam = false;
 }

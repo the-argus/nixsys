@@ -19,7 +19,7 @@
     ./kitty.nix
     ./dunst.nix
     ./zathura.nix
-    ./music.nix
+    # ./music.nix
     ./spicetify.nix
     ./waybar.nix
     ./rofi.nix
@@ -78,7 +78,7 @@
 
       # nobar.packages.${pkgs.system}.default
       nextcloud-client
-      myPackages.godot_4_mono-bin
+      # myPackages.godot_4_mono-bin
 
       webcord
 
@@ -98,6 +98,10 @@
       nix-prefetch-scripts
       repgrep
       xorg.xhost
+      direnv
+      nix-index
+      neofetch
+      nix-direnv-flakes
       # tigervnc
     ]
     ++ (lib.lists.optionals (!config.system.minimal) [

@@ -146,8 +146,6 @@
       wget
       curl
       ffmpeg
-      direnv
-      nix-direnv-flakes
       mullvad-vpn
 
       # util
@@ -156,7 +154,6 @@
       pam_u2f
       polkit
       usbutils
-      nix-index
       alsa-utils
       ix
       killall
