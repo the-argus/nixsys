@@ -58,15 +58,15 @@
   # extra packages
   home.packages = with pkgs;
     [
-      (nvim-config.packages.${pkgs.system}.mkNeovim {
-        pluginsArgs = {
-          bannerPalette = config.system.theme.scheme;
-        };
-        wrapperArgs = {
-          useQmlls = false;
-          viAlias = true;
-          vimAlias = true;
-        };
+     (nvim-config.packages.${pkgs.system}.mkNeovim {
+       pluginsArgs = {
+         bannerPalette = config.system.theme.scheme;
+       };
+       wrapperArgs = {
+         useQmlls = false;
+         viAlias = true;
+         vimAlias = true;
+       };
       })
       # unfree :(
       slack
