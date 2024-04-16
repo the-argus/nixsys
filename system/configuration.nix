@@ -130,7 +130,7 @@
     ];
   };
 
-  services.mullvad-vpn.enable = true;
+  # services.mullvad-vpn.enable = true;
   networking.firewall.checkReversePath = "loose";
   networking.wireguard.enable = true;
 
@@ -146,7 +146,7 @@
       wget
       curl
       ffmpeg
-      mullvad-vpn
+      # mullvad-vpn
 
       # util
       git
