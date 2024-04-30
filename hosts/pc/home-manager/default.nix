@@ -11,6 +11,8 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    trenchbroom
+    godot_4
     kdenlive
     # myPackages.IDEA
     # jetbrains.rider
