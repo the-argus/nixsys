@@ -97,6 +97,7 @@
       solo2-cli
       nix-prefetch-scripts
       repgrep
+      myPackages.ctrlf
       xorg.xhost
       direnv
       nix-index
