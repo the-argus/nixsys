@@ -79,6 +79,8 @@
       # nobar.packages.${pkgs.system}.default
       nextcloud-client
       # myPackages.godot_4_mono-bin
+      trenchbroom
+      godot_4
 
       webcord
 
