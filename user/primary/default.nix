@@ -5,7 +5,8 @@
   config,
   nvim-config,
   bitwarden-rofi,
-  nobar,
+  unstable,
+  # nobar,
   ...
 }: {
   imports = [
@@ -79,7 +80,7 @@
       # nobar.packages.${pkgs.system}.default
       nextcloud-client
       # myPackages.godot_4_mono-bin
-      trenchbroom
+      unstable.trenchbroom
       godot_4
 
       webcord

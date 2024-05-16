@@ -50,7 +50,6 @@ in rec {
     unstable = unstable: original:
       with unstable; {
         inherit
-          trenchbroom
           alejandra
           wl-color-picker
           heroic
