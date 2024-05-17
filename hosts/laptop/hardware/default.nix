@@ -112,10 +112,6 @@
     '';
   };
 
-  # hardware ------------------------------------------------------------------
-  hardware.openrazer.enable = true;
-  hardware.ckb-next.enable = true;
-
   # networking-----------------------------------------------------------------
   networking.hostName = hostname;
   networking.interfaces."wlp0s20f3" = {useDHCP = false;};
