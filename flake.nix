@@ -2,10 +2,10 @@
   description = "the-argus nixos system configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       # home manager use our nixpkgs and not its own
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -23,12 +23,6 @@
       url = "github:the-argus/bitwarden-rofi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    kdab-flake.url = "github:the-argus/kdab-flake";
-
-    # kdab-viewer = {
-    #   url = "git+ssh://codereview.kdab.com:29418/kdab/KDABViewer?submodules=1";
-    # };
 
     chrome-extensions = {
       url = "github:the-argus/chrome-extensions-nix";

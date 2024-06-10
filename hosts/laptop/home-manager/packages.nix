@@ -1,7 +1,5 @@
 {
   pkgs,
-  # kdab-viewer,
-  kdab-flake,
   ...
 }: {
   home.packages = with pkgs; [
@@ -18,13 +16,7 @@
     # blender
     arandr
     iio-sensor-proxy
-
     distrobox
-
-    rocketchat-desktop
-
     ifuse
-    # kdab-viewer.packages.${system}.default
-    kdab-flake.packages.${system}.software.charm
   ];
 }

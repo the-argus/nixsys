@@ -1,6 +1,5 @@
 {
   pkgs,
-  kdab-flake,
   unstable,
   ...
 }: {
@@ -27,11 +26,6 @@
     home-manager
     razergenie
     vial
-
-    distrobox
-
-    rocketchat-desktop
-    kdab-flake.packages.${system}.software.charm
 
     feh
     xclip

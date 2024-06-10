@@ -36,7 +36,6 @@
   labwc = callPackage ./labwc {};
   wlrctl = callPackage ./wlrctl {};
   sway-osd = callPackage ./sway-osd {};
-  kdab-viewer = callPackage ./kdab-viewer {};
   hansoft = callPackage ./hansoft {};
   vscodium-wrapper = callPackage ./vscodium-wrapper {};
   ctrlf = callPackage ./ctrlf {};
