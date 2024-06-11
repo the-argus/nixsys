@@ -157,7 +157,7 @@ in {
     dotDir = dDir;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
 
     history = {
       path = "$HOME/${dDir}/histfile";

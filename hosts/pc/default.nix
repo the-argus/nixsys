@@ -23,6 +23,7 @@ in rec {
     "zoom"
     "rider"
     "aseprite"
+    "libXNVCtrl"
   ];
   allowBroken = false;
   extraExtraSpecialArgs = {};
