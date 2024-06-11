@@ -13,15 +13,16 @@ in {
   };
 
   config = mkIf cfg.enable {
+    services.libinput = {
+      enable = true;
+      touchpad.naturalScrolling = false;
+      touchpad.middleEmulation = true;
+      touchpad.tapping = true;
+      mouse.accelProfile = "flat";
+    };
     services.xserver =
       {
         enable = true;
-
-        libinput.enable = true;
-        libinput.touchpad.naturalScrolling = false;
-        libinput.touchpad.middleEmulation = true;
-        libinput.touchpad.tapping = true;
-        libinput.mouse.accelProfile = "flat";
       }
       // (
         if options.services.xserver ? "excludePackages"

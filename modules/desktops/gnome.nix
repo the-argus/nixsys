@@ -27,7 +27,7 @@ in {
       (with pkgs.gnomeExtensions; [
         unstable.gnomeExtensions.keep-awake
         no-titlebar-when-maximized
-        gtk-title-bar
+        # gtk-title-bar
       ])
       ++ (lib.lists.optionals (!config.system.minimal) (with pkgs.gnomeExtensions; [
         appindicator

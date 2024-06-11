@@ -2,9 +2,7 @@
   services.davfs2 = {
     enable = true;
     davUser = username;
-    extraConfig = ''
-      use_locks 0
-    '';
+    settings.globalSection.use_locks = false;
   };
   # desired output : https://nextcloud.rprox.duckdns.org/nextcloud/remote.php/dav/files/argus/ /home/argus/Nextcloud davfs user,rw,auto 0 0
   fileSystems."/home/${username}/Nextcloud" = {
