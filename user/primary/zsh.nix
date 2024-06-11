@@ -131,7 +131,7 @@ in {
     excludePackages = with pkgs; [
       # mcfly
     ];
-    initZoxide = false; # handle this in sandboxd
+    zoxideOptions = ["--cmd" "cd"];
   };
 
   home.file.".config/sandboxd/sandboxrc".text = ''
@@ -366,8 +366,6 @@ in {
         then "eval \"$(modern-unix)\""
         else ""
       }
-
-      eval "$(zoxide init zsh --cmd cd)"
     '';
   };
 }
