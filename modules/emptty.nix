@@ -297,8 +297,8 @@ in {
       environment.etc."emptty/conf".text = builtins.concatStringsSep "\n" (optionsToString (cfg.configuration
         // {
           XORG_ARGS = config.services.xserver.displayManager.xserverArgs;
-          XORG_SESSIONS_PATH = "${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions/";
-          WAYLAND_SESSIONS_PATH = "${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-sessions/";
+          XORG_SESSIONS_PATH = "${config.services.displayManager.sessionData.desktops}/share/xsessions/";
+          WAYLAND_SESSIONS_PATH = "${config.services.displayManager.sessionData.desktops}/share/wayland-sessions/";
         }));
 
       # emptty should be the only thing running on the TTYs
