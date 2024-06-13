@@ -13,7 +13,7 @@
       nobar = false;
     };
     gnome.enable = true;
-    labwc.enable = true;
+    labwc.enable = false;
     # plasma.enable = true;
     terminal = pkgs.kitty;
   };

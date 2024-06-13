@@ -12,11 +12,11 @@
     # screen
     # fbterm
     # obsidian
-    eww-wayland
+    # eww-wayland
     # blender
     arandr
     iio-sensor-proxy
-    distrobox
+    # distrobox
     ifuse
   ];
 }

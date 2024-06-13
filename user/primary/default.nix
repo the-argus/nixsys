@@ -70,7 +70,7 @@
        };
       })
       # unfree :(
-      slack
+      # slack
       obsidian
 
       (bitwarden-rofi.packages.${pkgs.system}.default.override
@@ -91,17 +91,17 @@
       pavucontrol
       mpv
       zathura
-      qpwgraph
+      # qpwgraph
       qdirstat
 
       # cli
       bitwarden-cli
-      trash-cli
-      solo2-cli
+      # trash-cli
+      # solo2-cli
       nix-prefetch-scripts
       repgrep
       myPackages.ctrlf
-      xorg.xhost
+      # xorg.xhost
       direnv
       nix-index
       neofetch
@@ -110,13 +110,13 @@
     ]
     ++ (lib.lists.optionals (!config.system.minimal) [
       # unfree :(
-      steam-run
-      steam-run-native
+      # steam-run
+      # steam-run-native
 
       # gui
       pinta
       obs-studio
-      element-desktop
+      # element-desktop
       # myPackages.xgifwallpaper
 
       # tui
@@ -127,11 +127,11 @@
       transmission
       # ani-cli
       glow
-      myPackages.rgf
+      # myPackages.rgf
       shotgun
 
       # dev
       # nodejs
-      cargo
+      # cargo
     ]);
 }
