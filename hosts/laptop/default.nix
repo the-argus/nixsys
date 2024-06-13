@@ -27,6 +27,7 @@ in rec {
     "aseprite"
     "steam"
     "steam-original"
+    "libXNVCtrl"
   ];
   allowBroken = true;
   extraExtraSpecialArgs = {};
