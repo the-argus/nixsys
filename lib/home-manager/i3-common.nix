@@ -60,10 +60,11 @@ in rec {
         lib.strings.toInt intStr;
     in
       (mkColor palette.base00)
-      + (banner.lib.color.decimalToHex (floatToInt (256
-        * (
-          stringToFloat opacity
-        ))));
+      + (
+        if opacity == "1.0"
+        then ""
+        else (banner.lib.color.decimalToHex (floatToInt (256 * (stringToFloat opacity))))
+      );
     text = mkColor palette.base05;
     inactive-text = bg;
     urgent-bg = mkColor palette.urgent;
