@@ -311,21 +311,6 @@
         "type": "github"
       }
     },
-    "modern-unix": {
-      "locked": {
-        "lastModified": 1718075125,
-        "narHash": "sha256-SehNHo4XceebQM2E0q7eQnStQ7IUJF2id/JZHUap6vM=",
-        "owner": "the-argus",
-        "repo": "modern-unix-flake",
-        "rev": "81aacd78f02952b629ee500591b7fa8f1af28c9a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "the-argus",
-        "repo": "modern-unix-flake",
-        "type": "github"
-      }
-    },
     "neorg": {
       "flake": false,
       "locked": {
@@ -602,7 +587,6 @@
         "chrome-extensions": "chrome-extensions",
         "gtk-nix": "gtk-nix",
         "home-manager": "home-manager",
-        "modern-unix": "modern-unix",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nobar": "nobar",

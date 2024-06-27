@@ -38,9 +38,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # provides home manager module so it's always up to date with pkgs
-    modern-unix.url = "github:the-argus/modern-unix-flake";
-
     nobar = {
       url = "github:the-argus/nobar";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -2,13 +2,10 @@
   pkgs,
   username,
   settings,
-  modern-unix,
   config,
   lib,
   ...
 }: let
-  enableModernUnix = true;
-
   plugins = {
     my-zsh = {name = "the-argus/my-zsh";};
     zsh-window-title = let
@@ -104,8 +101,6 @@
     };
   };
 in {
-  imports = [modern-unix.homeManagerModule];
-
   home.sessionVariables = {
     SUDO_ASKPASS = "${pkgs.myPackages.sudo-askpass}/bin/sudo-askpass";
   };
@@ -124,15 +119,6 @@ in {
     #!/bin/sh
     eval "$(starship init bash)"
   '';
-
-  programs.modernUnix = {
-    enable = enableModernUnix;
-    initExtra = ''alias df="duf"'';
-    excludePackages = with pkgs; [
-      # mcfly
-    ];
-    zoxideOptions = ["--cmd" "cd"];
-  };
 
   home.file.".config/sandboxd/sandboxrc".text = ''
     sandbox_init_completion() {
@@ -251,30 +237,6 @@ in {
         readlink $(whereis $1 | cut --delimiter " " --fields 2)
       }
 
-      ${
-        if !enableModernUnix
-        then ''
-        ''
-        else ''
-          function lsd () {
-            lsd --color=auto --group-dirs=first $@
-          }
-          function lsdl () {
-            lsd -la $@
-          }
-        ''
-      }
-
-      ${
-        if !enableModernUnix
-        then ''
-          function diff () { command diff --color=auto "$@"; }
-
-          function grep () { command grep "$@" --color=always; }
-        ''
-        else ""
-      }
-
       function ip () { command ip -color=auto "$@"; }
 
       lfcd () {
@@ -361,11 +323,6 @@ in {
 
 
       eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
-      ${
-        if enableModernUnix
-        then "eval \"$(modern-unix)\""
-        else ""
-      }
     '';
   };
 }
