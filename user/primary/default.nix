@@ -20,7 +20,7 @@
     ./kitty.nix
     ./dunst.nix
     ./zathura.nix
-    # ./music.nix
+    ./music.nix
     ./spicetify.nix
     ./waybar.nix
     ./rofi.nix
