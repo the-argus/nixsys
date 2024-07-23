@@ -102,6 +102,9 @@
       repgrep
       myPackages.ctrlf
       # xorg.xhost
+      ripgrep
+      duf
+      fd
       direnv
       nix-index
       neofetch
