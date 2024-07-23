@@ -1,8 +1,6 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
+    reaper
     # musescore
     # libreoffice-fresh
     # aseprite-unfree
