@@ -19,7 +19,7 @@
     inkscape
     steam
     jre8
-    # aseprite
+    aseprite
     zoom-us
     protontricks
     xournalpp
