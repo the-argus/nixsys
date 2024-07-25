@@ -5,11 +5,18 @@
   homeDirectory,
   mpkgs,
   ...
-}: {
+}: let 
+  ypkg = unstable.yabridge.override (_: {
+    version = "4.0.2";
+  });
+  yctlpkg = unstable.yabridgectl.override (_: {
+    yabridge = ypkg;
+  });
+in {
   programs.yabridge = {
     enable = lib.mkDefault true;
-    # package = unstable.yabridge;
-    # ctlPackage = unstable.yabridgectl;
+    # package = ypkg;
+    # ctlPackage = yctlpkg;
     suppressFreemiumWarning = true;
     suppressUnmaintainedWarning = true;
     plugins = with mpkgs;
@@ -24,6 +31,7 @@
     nativePlugins = let
       # plugins packaged in audio-plugins-nix
       internal = with mpkgs.native; [
+        effects.derez2
         (mpkgs.lib.wrapPluginPath effects.fire-bin
           "Fire-Linux/VST3/Fire.vst3/Contents/x86_64-linux")
         # synths.dexed
