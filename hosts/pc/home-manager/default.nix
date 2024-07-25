@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [];
-  programs.yabridge.enable = false;
+  programs.yabridge.enable = true;
 
   # make home manager update fonts
   fonts.fontconfig.enable = true;
@@ -19,7 +19,7 @@
     inkscape
     steam
     jre8
-    # aseprite
+    aseprite
     zoom-us
     protontricks
     xournalpp
