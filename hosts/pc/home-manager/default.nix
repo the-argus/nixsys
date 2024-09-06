@@ -10,6 +10,7 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    blender
     kdenlive
     # myPackages.IDEA
     # jetbrains.rider
