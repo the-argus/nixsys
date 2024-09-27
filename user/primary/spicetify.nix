@@ -4,16 +4,16 @@
   config,
   ...
 }: let
-  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
+  spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
 in {
   # import the flake's module
-  imports = [spicetify-nix.homeManagerModule];
+  imports = [spicetify-nix.homeManagerModules.default];
 
   # configure spicetify :)
   programs.spicetify = rec {
     spicetifyPackage = pkgs.spicetify-cli;
     enable = true;
-    theme = spicePkgs.themes.Onepunch;
+    theme = spicePkgs.themes.dribbblish;
     colorScheme = "custom";
 
     customColorScheme = let
@@ -27,7 +27,7 @@ in {
       };
     in
       with config.banner.palette; (
-        if theme == spicePkgs.themes.Dribbblish
+        if theme == spicePkgs.themes.dribbblish
         then {
           text = center.text;
           subtext = center.text; # "F0F0F0";
@@ -46,7 +46,7 @@ in {
           notification-error = urgent;
           misc = base04;
         }
-        else if theme == spicePkgs.themes.Flow
+        else if theme == spicePkgs.themes.flow
         then {
           text = base05;
           gradientTop = base04;
@@ -63,7 +63,7 @@ in {
           notification-error = urgent;
           card-hover = hialt0;
         }
-        else if theme == spicePkgs.themes.Onepunch
+        else if theme == spicePkgs.themes.onepunch
         then {
           text = base05;
           subtext = base0B;
@@ -88,9 +88,8 @@ in {
       );
 
     enabledCustomApps = with spicePkgs.apps; [
-      # BUG: new releases and lyrics plus both cause "something went wrong"
-      # new-releases
-      # lyrics-plus
+      newReleases
+      lyricsPlus
       localFiles
       marketplace
     ];
