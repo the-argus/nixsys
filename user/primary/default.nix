@@ -81,7 +81,7 @@
       nextcloud-client
       # myPackages.godot_4_mono-bin
       unstable.trenchbroom
-      godot_4
+      # godot_4
 
       webcord
 
