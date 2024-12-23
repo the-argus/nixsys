@@ -63,6 +63,31 @@
         fpath+=(${source}/src)
       '';
     };
+
+    zsh-fzf-history-search = rec {
+      name = "joshskidmore/zsh-fzf-history-search";
+      source = pkgs.fetchgit {
+        url = "https://github.com/${name}";
+        rev = "d5a9730b5b4cb0b39959f7f1044f9c52743832ba";
+        sha256 = "1dm1asa4ff5r42nadmj0s6hgyk1ljrckw7val8fz2n0892b8h2mm";
+      };
+      init = ''
+        source ${source}/zsh-fzf-history-search.zsh
+      '';
+    };
+
+    zsh-fzf-tab = rec {
+      name = "Aloxaf/fzf-tab";
+      source = pkgs.fetchgit {
+        url = "https://github.com/${name}";
+        rev = "6aced3f35def61c5edf9d790e945e8bb4fe7b305";
+        sha256 = "1brljd9744wg8p9v3q39kdys33jb03d27pd0apbg1cz0a2r1wqqi";
+      };
+      init = ''
+        source ${source}/fzf-tab.plugin.zsh
+      '';
+    };
+
     zsh-autopair = rec {
       name = "hlissner/zsh-autopair";
       source = pkgs.fetchgit {
@@ -147,9 +172,13 @@ in {
 
     history = {
       path = "$HOME/${dDir}/histfile";
+      save = 100000;
+      size = 100000;
       ignorePatterns = ["ls *" "exit" "clear" "fg"];
-      ignoreDups = true;
-      share = false;
+      ignoreDups = false;
+      ignoreAllDups = true;
+      extended = true; # save timestamps
+      share = false; # dont share history between terminal sessions
     };
 
     shellAliases =
@@ -172,6 +201,7 @@ in {
         nocolor = ''sed "s/\x1B\[[0-9;]\{1,\}[A-Za-z]//g"'';
         sudo = "sudo -A";
         all = "git commit -am";
+        cd = "z";
       }
       // (pkgs.callPackage
         ../../lib/home-manager/xorg.nix
@@ -190,12 +220,20 @@ in {
         zsh-completions
         # nix-zsh-completions # these dont work and have weird side effects
         zsh-autopair
+        zsh-fzf-history-search
+        zsh-fzf-tab
+
         sandboxd
       ];
     };
 
     # plugins = with plugins; [zsh-nix-shell];
-    completionInit = '''';
+    completionInit = ''
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+      zstyle ':completion:*' list-colors "${"\${(s.:.)LS_COLORS}"}"
+      zstyle ':completion:*' menu no
+      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+    '';
     # completionInit = ''
     #   # compatibility between nix and autocomplete
     #   bindkey "''${key[Up]}" up-line-or-search
@@ -217,7 +255,12 @@ in {
       ${zsh-nix-shell.init}
       ${zsh-autopair.init}
       ${zsh-window-title.init}
+      ${zsh-fzf-history-search.init}
+      ${zsh-fzf-tab.init}
       # INCLUDES---------------------------------------------------------------
+
+      # enable appending
+      setopt APPEND_HISTORY
 
       # hole in reproducability bc i like to add aliases quickly
       [ -f  "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
@@ -321,8 +364,9 @@ in {
       # zstyle ':deer:' height 35
       # zstyle :deer: show_hidden yes
 
-
       eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
+
+      eval "$(zoxide init zsh)"
     '';
   };
 }

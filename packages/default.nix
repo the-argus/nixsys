@@ -2,6 +2,7 @@
   callPackage,
   lib,
   original-kitty ? null,
+  fzf,
   ...
 }: rec {
   # meta packages
@@ -39,4 +40,5 @@
   hansoft = callPackage ./hansoft {};
   vscodium-wrapper = callPackage ./vscodium-wrapper {};
   ctrlf = callPackage ./ctrlf {};
+  fzf-16 = callPackage ./fzf-16 {fzf-original = fzf;};
 }

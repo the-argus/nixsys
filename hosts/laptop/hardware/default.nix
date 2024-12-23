@@ -125,6 +125,12 @@
 
   # bluetooth------------------------------------------------------------------
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.settings = {
+    General = {
+      AutoEnable = true;
+      ControllerMode = "bredr";
+    };
+  };
   services.blueman.enable = true;
 
   # packages-------------------------------------------------------------------

@@ -1,8 +1,7 @@
-{pkgs, nixpkgs-master, ...}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # musescore
     # libreoffice-fresh
-    # aseprite-unfree
     # krita
     # cage
     # itd
@@ -11,9 +10,10 @@
     # obsidian
     # eww-wayland
     # blender
-    (import nixpkgs-master { localSystem = pkgs.system; }).godot_4
+    godot_4
     arandr
     iio-sensor-proxy
+    aseprite
     # distrobox
     ifuse
   ];

@@ -60,7 +60,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
-    nixpkgs-master,
+    # nixpkgs-master,
     home-manager,
     rycee-expressions,
     # , nur

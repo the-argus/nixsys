@@ -105,6 +105,9 @@
       ripgrep
       duf
       fd
+      tldr
+      zoxide
+      myPackages.fzf-16
       direnv
       nix-index
       neofetch
