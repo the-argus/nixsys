@@ -298,6 +298,9 @@ in {
       # bind ctrl-o to lfcd
       bindkey -s '^o' 'lfcd\n'
 
+      # bind ctrl-h to a commonly-CD'ed directory search. h for "history?"
+      bindkey -s '^h' 'cd \$(zoxide query --list --all | fzf)\n'
+
       duk ()
       {
         sudo du -k "$@" | sort -n
