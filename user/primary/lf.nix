@@ -7,41 +7,6 @@
   cleaner = pkgs.writeShellScript "lf-cleaner.sh" ''
     kitty +icat --clear --silent --transfer-mode file
   '';
-
-  previewer = pkgs.writeShellScript "lf-previewer.sh" ''
-    case "$1" in
-      *.tar*) tar tf "$1";;
-      *.zip) unzip -l "$1";;
-      *.rar) unrar l "$1";;
-      *.7z) 7z l "$1";;
-      *.pdf) ${pkgs.poppler_utils}/bin/pdftotext "$1" -;;
-      *.md) ${pkgs.glow}/bin/glow "$1";;
-      *) ${pkgs.highlight}/bin/highlight -O ansi "$1";;
-    esac
-  '';
-
-  sandbox = pkgs.writeShellScript "lf-sandbox.sh" ''
-    # kitty previews
-    if [[ "$( ${pkgs.file}/bin/file -Lb --mime-type "$1")" =~ ^image ]]; then
-      file=$1
-      w=$2
-      h=$3
-      x=$4
-      y=$5
-      kitty +icat --silent --transfer-mode file --place "${"\${w}x\${h}@\${x}x\${y}"}" "$file"
-      exit 1
-    fi
-    set -euo pipefail
-    (
-      exec ${pkgs.bubblewrap}/bin/bwrap \
-       --proc /proc \
-       --dev /dev  \
-       --ro-bind / / \
-       --unshare-all \
-       --new-session \
-       ${pkgs.runtimeShell} ${previewer} "$@"
-    )
-  '';
 in {
   home.file.".config/lf/icons".source = iconsfile;
   programs.lf = {
@@ -58,7 +23,7 @@ in {
       info = "size";
     };
     previewer = {
-      source = sandbox;
+      source = "${pkgs.myPackages.lf-kitty-previewer}/bin/lf-kitty-previewer.sh";
       keybinding = "i";
     };
     extraConfig = ''
@@ -136,7 +101,7 @@ in {
       fzf_search = ''
         ${"\${{"}
         res="$( \
-          RG_PREFIX="rg --column --line-number --no-heading --color=always \
+          RG_PREFIX="rg --column --line-number --no-heading \
             --smart-case "
           FZF_DEFAULT_COMMAND="$RG_PREFIX ${"''"}" \
             fzf --bind "change:reload:$RG_PREFIX {q} || true" \
@@ -157,6 +122,10 @@ in {
           lf -remote "send $id load"
           lf -remote "send $id unselect"
         }}
+      '';
+
+      rename = ''
+        %[ -e $1 ] && printf "file exists" || mv $f $1
       '';
 
       select_files = ''
