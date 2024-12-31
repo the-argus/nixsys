@@ -27,6 +27,7 @@ in rec {
     "aseprite"
     "steam"
     "steam-original"
+    "steam-unwrapped"
     "libXNVCtrl"
   ];
   allowBroken = true;

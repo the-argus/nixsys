@@ -39,7 +39,7 @@ in {
         blur-my-shell
         just-perfection
         dash-to-panel
-        gesture-improvements
+        # gesture-improvements
         pkgs.myPackages.fly-pie
       ]))
       ++ (with pkgs; [
@@ -48,7 +48,7 @@ in {
         # clip
         # nota
         # index-fm
-        gnome.gnome-terminal
+        gnome-terminal
       ]);
 
     hardware.pulseaudio.enable = false;
@@ -67,7 +67,7 @@ in {
         simple-scan
         yelp
       ])
-      ++ (with pkgs.gnome; [
+      ++ (with pkgs; [
         rygel
         gnome-calculator
         gnome-logs

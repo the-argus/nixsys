@@ -7,7 +7,7 @@
   gawk,
   file,
   librsvg,
-  imagemagick7_light,
+  imagemagick_light,
   ffmpeg,
   ffmpegthumbnailer,
   poppler_utils,
@@ -27,7 +27,7 @@
     coreutils # md5sum, readlink, tr, basename
     file
     librsvg.out # rsvg-convert
-    imagemagick7_light.out # convert, identify
+    imagemagick_light.out # convert, identify
     ffmpeg
     ffmpegthumbnailer
     poppler_utils # pdftoppm

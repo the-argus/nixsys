@@ -103,7 +103,7 @@
 
   #	services.xserver.videoDrivers = [ "intel" ];
   services.xserver = {
-    videoDriver = "intel";
+    # videoDriver = "intel";
 
     config = ''
       Section "ServerFlags"

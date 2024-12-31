@@ -3,6 +3,7 @@
   lib,
   original-kitty ? null,
   fzf,
+  picom,
   ...
 }: rec {
   # meta packages
@@ -11,7 +12,7 @@
   firefoxPackages = callPackage ./firefox {};
 
   # indivdual packages
-  picom = callPackage ./picom.nix {};
+  inherit picom;
   awesome = callPackage ./awesome.nix {};
   airwave = lib.trivial.warn "airwave is deprecated" (callPackage ./airwave.nix {});
   carla = callPackage ./carla.nix {};

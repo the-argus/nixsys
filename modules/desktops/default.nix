@@ -61,7 +61,7 @@ in {
       creep
       noto-fonts
       noto-fonts-emoji
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       liberation_ttf
       victor-mono
       tt2020
@@ -88,9 +88,8 @@ in {
 
     # hardware ----------------------------------------------------------------
     # OpenGL
-    hardware.opengl = {
-      driSupport = true;
-      driSupport32Bit = true;
+    hardware.graphics = {
+      enable32Bit = true;
       extraPackages = with pkgs; [
       ];
       extraPackages32 = with pkgs.pkgsi686Linux;

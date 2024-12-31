@@ -130,7 +130,7 @@
 
       # cli
       myPackages.ufetch
-      transmission
+      transmission_4
       # ani-cli
       glow
       # myPackages.rgf

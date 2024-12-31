@@ -45,7 +45,7 @@
     # creep
     noto-fonts
     noto-fonts-emoji
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     liberation_ttf
     victor-mono
     tt2020
