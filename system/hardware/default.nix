@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   hostname,
   username,
   ...
@@ -10,8 +9,6 @@
     ./hardware-configuration.nix
     ../../modules
   ];
-
-  hardware.pulseaudio.support32Bit = config.hardware.pulseaudio.enable;
 
   # dual booting with windows boot loader mounted on /efi
   boot = {
@@ -76,15 +73,6 @@
   };
 
   # display -------------------------------------------------------------------
-  hardware.opengl = {
-    driSupport32Bit = true;
-    extraPackages = with pkgs; [
-    ];
-    extraPackages32 = with pkgs.pkgsi686Linux;
-      [libva libvdpau-va-gl vaapiVdpau]
-      ++ lib.optionals config.services.pipewire.enable [pipewire];
-  };
-
   #	services.xserver.videoDrivers = [ "intel" ];
   services.xserver = {
     videoDriver = "intel";

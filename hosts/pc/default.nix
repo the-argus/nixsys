@@ -18,6 +18,7 @@ in rec {
     "steam"
     "steam-run"
     "steam-original"
+    "steam-unwrapped"
     "discord"
     "ue4"
     "zoom"

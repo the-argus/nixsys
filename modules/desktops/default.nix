@@ -90,8 +90,6 @@ in {
     # OpenGL
     hardware.graphics = {
       enable32Bit = true;
-      extraPackages = with pkgs; [
-      ];
       extraPackages32 = with pkgs.pkgsi686Linux;
         [libva libvdpau-va-gl vaapiVdpau]
         ++ lib.optionals config.services.pipewire.enable [pipewire];

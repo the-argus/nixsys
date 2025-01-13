@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   hostname,
   username,
   ...
@@ -11,10 +10,7 @@
     ./plymouth.nix
   ];
 
-  /*
-  nix.package = pkgs.nixVersions.nix_2_7;
-  */
-  nix.package = pkgs.nixFlakes;
+  nix.package = pkgs.nixVersions.stable;
 
   environment.etc = {
     # softdep isnt really necessary but i dont believe it hurts
@@ -150,16 +146,6 @@
   ];
 
   # display -------------------------------------------------------------------
-  hardware.opengl = {
-    driSupport32Bit = true;
-    extraPackages = with pkgs; [
-    ];
-    extraPackages32 = with pkgs.pkgsi686Linux;
-      [libva libvdpau-va-gl vaapiVdpau]
-      ++ lib.optionals config.services.pipewire.enable [pipewire];
-  };
-  hardware.pulseaudio.support32Bit = config.hardware.pulseaudio.enable;
-
   #	services.xserver.videoDrivers = [ "amdgpu" ];
   services.xserver = {
     videoDriver = "amdgpu";
