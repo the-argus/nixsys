@@ -65,6 +65,8 @@
       systemd.enable = true;
     };
     swraid.enable = false;
+
+    supportedFilesystems = [ "ntfs" ];
   };
 
   # desktops ------------------------------------------------------------------
