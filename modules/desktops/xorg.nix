@@ -35,6 +35,9 @@ in {
         else {}
       );
 
+    services.xserver.displayManager.sessionCommands = "${pkgs.xorg.xkbcomp}/bin/xkbcomp ${pkgs.myPackages.keyboard-layout} $DISPLAY";
+
+
     environment.systemPackages = with pkgs; [
       feh
       xclip

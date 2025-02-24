@@ -48,7 +48,6 @@ in rec {
         "${pkgs.xfce.xfce4-clipman-plugin}/bin/xfce4-clipman"
         "${pkgs.xclip}/bin/xclip"
         "${picomPkg}/bin/picom --config ${picomConfigLocation} > ~/picom.log 2>&1"
-        "${pkgs.xorg.setxkbmap}/bin/setxkbmap -option \"ctrl:swapcaps\""
 
         # restore feh wallpaper
         "$HOME/.fehbg"
