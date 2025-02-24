@@ -20,9 +20,15 @@ in {
       touchpad.tapping = true;
       mouse.accelProfile = "flat";
     };
+
     services.xserver =
       {
         enable = true;
+        xkb.extraLayouts.cycle-special-keys = {
+          description = "Makes escape -> caps lock, caps lock -> ctrl, and ctrl -> escape";
+          languages = ["eng"];
+          symbolsFile = ./symbols/cycle-special-keys;
+        };
       }
       // (
         if options.services.xserver ? "excludePackages"
@@ -34,9 +40,6 @@ in {
         }
         else {}
       );
-
-    services.xserver.displayManager.sessionCommands = "${pkgs.xorg.xkbcomp}/bin/xkbcomp ${pkgs.myPackages.keyboard-layout} $DISPLAY";
-
 
     environment.systemPackages = with pkgs; [
       feh

@@ -96,6 +96,7 @@
   console = {
     font = "Lat2-Terminus16";
     keyMap = lib.mkDefault "us";
+    useXkbConfig = true;
   };
 
   programs.zsh.enable = true;

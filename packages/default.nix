@@ -43,5 +43,4 @@
   ctrlf = callPackage ./ctrlf {};
   fzf-16 = callPackage ./fzf-16 {fzf-original = fzf;};
   lf-kitty-previewer = callPackage ./lf-kitty-previewer {};
-  keyboard-layout = callPackage ./keyboard-layout {};
 }

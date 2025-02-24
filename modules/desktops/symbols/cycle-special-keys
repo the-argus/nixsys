@@ -1,0 +1,7 @@
+xkb_symbols  "cycle-special-keys" {
+  include "pc+us+inet(evdev)"
+
+  key <CAPS> { [ Control_L ] };
+  key <ESC> { [ Caps_Lock ] };
+  key <LCTL> { [ Escape ] };
+};
