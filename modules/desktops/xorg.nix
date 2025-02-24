@@ -24,10 +24,13 @@ in {
     services.xserver =
       {
         enable = true;
-        xkb.extraLayouts.cycle-special-keys = {
-          description = "Makes escape -> caps lock, caps lock -> ctrl, and ctrl -> escape";
-          languages = ["eng"];
-          symbolsFile = ./symbols/cycle-special-keys;
+        xkb = {
+          extraLayouts.cycle-special-keys = {
+            description = "Makes escape -> caps lock, caps lock -> ctrl, and ctrl -> escape";
+            languages = ["eng"];
+            symbolsFile = ./symbols/cycle-special-keys;
+          };
+          layout = "cycle-special-keys";
         };
       }
       // (
