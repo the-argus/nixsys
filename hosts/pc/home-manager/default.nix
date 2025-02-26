@@ -10,6 +10,7 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    godot_4
     blender
     kdenlive
     # myPackages.IDEA
