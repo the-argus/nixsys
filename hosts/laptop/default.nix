@@ -29,6 +29,7 @@ in rec {
     "steam-original"
     "steam-unwrapped"
     "libXNVCtrl"
+    "vst2-sdk"
   ];
   allowBroken = true;
   extraExtraSpecialArgs = {};

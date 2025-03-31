@@ -11,7 +11,7 @@ in {
       inherit (settings) allowBroken;
       permittedInsecurePackages = [
         "electron-25.9.0"
-        "freeimage-unstable-2021-11-01"
+        "freeimage-3.18.0-unstable-2024-04-18"
       ];
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowedUnfree;
     }

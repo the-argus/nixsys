@@ -1,6 +1,5 @@
 {
   pkgs,
-  unstable,
   spicetify-nix,
   config,
   ...
@@ -12,7 +11,6 @@ in {
 
   # configure spicetify :)
   programs.spicetify = rec {
-    spicetifyPackage = unstable.spicetify-cli;
     enable = true;
     theme = spicePkgs.themes.dribbblish;
     colorScheme = "custom";
