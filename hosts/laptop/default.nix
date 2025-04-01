@@ -52,7 +52,6 @@ in rec {
           ungoogled-chromium
           firefox
           OVMFFull
-          godot_4
           labwc
           ;
         linuxKernel =
