@@ -25,6 +25,7 @@ in rec {
     "rider"
     "aseprite"
     "libXNVCtrl"
+    "vst2-sdk"
   ];
   allowBroken = false;
   extraExtraSpecialArgs = {};
