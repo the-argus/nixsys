@@ -245,6 +245,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-nvim-pinned": {
+      "locked": {
+        "lastModified": 1734649271,
+        "narHash": "sha256-4EVBRhOjMDuGtMaofAIqzJbg4Ql7Ai0PSeuVZTHjyKQ=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d70bd19e0a38ad4790d3913bf08fcbfc9eeca507",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d70bd19e0a38ad4790d3913bf08fcbfc9eeca507",
+        "type": "github"
+      }
+    },
     "nixpkgs-pinned": {
       "locked": {
         "lastModified": 1685383865,
@@ -333,7 +349,7 @@
       "inputs": {
         "banner": "banner_3",
         "nixpkgs": [
-          "nixpkgs-unstable"
+          "nixpkgs-nvim-pinned"
         ],
         "nixpkgs-pinned": "nixpkgs-pinned"
       },
@@ -362,6 +378,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-master": "nixpkgs-master",
+        "nixpkgs-nvim-pinned": "nixpkgs-nvim-pinned",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nobar": "nobar",
         "nvim-config": "nvim-config",
