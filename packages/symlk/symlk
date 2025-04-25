@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+
+import subprocess
+import bisect
+import sys
+import dataclasses
+
+@dataclasses.dataclass
+class Symbol:
+	addr: int
+	size: int
+	ty: str
+	scope: str
+	name: str
+
+readelf = subprocess.run(
+	["readelf", "-s", "bin/kernel.bin"],
+	capture_output=True,
+	encoding="UTF-8"
+)
+
+symbols = []
+
+text_start = None
+text_end = None
+
+for line in readelf.stdout.split("\n")[3:-1]:
+	parts = list(line.split());
+	sym = Symbol(
+		addr=int(parts[1], 16),
+		size=int(parts[2], 0),
+		ty=parts[3],
+		scope=parts[4],
+		name=parts[7] if len(parts) >= 8 else "",
+	)
+	symbols.append(sym)
+	if sym.name == "text_start":
+		text_start = sym.addr
+	if sym.name == "text_end":
+		text_end = sym.addr
+
+symbols.sort(key=lambda s: s.addr)
+
+def find_sym(addr):
+	try:
+		if addr.startswith("0x") or addr.startswith("0X"):
+			addr = int(arg[2:], 16)
+		else:
+			addr = int(arg, 10)
+	except:
+		print(f"Invalid address: {addr}")
+		return
+
+	print(f"Address 0x{addr:016X}:")
+	idx = bisect.bisect_right(symbols, addr, key=lambda s: s.addr)
+	for i in range(idx-1, 0, -1):
+		sym = symbols[i]
+		if sym.addr < text_start:
+			break
+		if sym.addr > text_end:
+			break
+		print(f"\t{sym.name:<20} [0x{sym.addr:016X} : 0x{sym.size:04X}] {sym.ty:<7} {sym.scope:<7}")
+		if sym.ty == "FUNC":
+			return
+	print("\t<end of text>")
+
+for arg in sys.argv[1:]:
+	find_sym(arg.strip())

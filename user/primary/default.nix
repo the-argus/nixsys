@@ -113,6 +113,8 @@
       neofetch
       nix-direnv-flakes
       # tigervnc
+
+      myPackages.symlk
     ]
     ++ (lib.lists.optionals (!config.system.minimal) [
       # unfree :(
