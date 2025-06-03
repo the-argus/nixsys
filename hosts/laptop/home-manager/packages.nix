@@ -10,6 +10,7 @@
     # obsidian
     # eww-wayland
     # blender
+    rocketchat-desktop
     godot_4
     arandr
     iio-sensor-proxy

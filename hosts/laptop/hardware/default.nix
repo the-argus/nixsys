@@ -16,6 +16,11 @@
 
   time.timeZone = "America/New_York";
 
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
   # dual booting with windows boot loader mounted on /efi
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
