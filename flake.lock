@@ -101,11 +101,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1710793242,
-        "narHash": "sha256-zA/+yHwlnccOhhhkQwkLxhL0kuNsq4Z9h58vC0/QCxo=",
+        "lastModified": 1748979469,
+        "narHash": "sha256-Slx5fn2eF51OXURl9ugeqc8yA0IWndEyi3a/7TT37eo=",
         "owner": "the-argus",
         "repo": "bitwarden-rofi",
-        "rev": "bb9668ba2848c852b3b81c74cec9db919c3bcb3a",
+        "rev": "4485ae6d4d524c5332917b87793f4cc0635f7091",
         "type": "github"
       },
       "original": {
