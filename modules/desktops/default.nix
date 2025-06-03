@@ -36,6 +36,15 @@ in {
       (pkgs.lib.mkForce
         "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass");
 
+    # enable stuff for gpg so password prompting works
+    # services.pcscd.enable = true;
+    # services.dbus.packages = [ pkgs.gcr ];
+    programs.gnupg.agent = {
+      enable = true;
+      pinentryPackage = pkgs.pinentry-gtk2;
+      enableSSHSupport = true;
+    };
+
     # Enable CUPS to print documents.
     services.printing.enable = true;
 
