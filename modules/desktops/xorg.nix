@@ -21,17 +21,13 @@ in {
       mouse.accelProfile = "flat";
     };
 
+    console.useXkbConfig = true;
+
     services.xserver =
       {
         enable = true;
-        xkb = {
-          extraLayouts.cycle-special-keys = {
-            description = "Makes escape -> caps lock, caps lock -> ctrl, and ctrl -> escape";
-            languages = ["eng"];
-            symbolsFile = ./symbols/cycle-special-keys;
-          };
-          layout = "cycle-special-keys";
-        };
+        xkb.dir = "${pkgs.myPackages.patched_xkeyboardconfig}/etc/X11/xkb";
+        exportConfiguration = true;
       }
       // (
         if options.services.xserver ? "excludePackages"

@@ -34,6 +34,7 @@ in {
       };
     in {
       enable = true;
+      checkConfig = false; # custom keyboard is in my home directory, not picked up during build
       config =
         common.config
         # add everything that is unique to sway
@@ -90,7 +91,7 @@ in {
             };
             "HDMI-A-1" = {
               pos = "1920 0";
-              mode = "1920x1080@60.020Hz";
+              mode = "2560x1440@144.0Hz";
             };
           };
 
@@ -119,7 +120,7 @@ in {
             };
 
             "type:keyboard" = {
-              xkb_options = "ctrl:swapcaps";
+              xkb_layout = "custom";
             };
           };
         };
