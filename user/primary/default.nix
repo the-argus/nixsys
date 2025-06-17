@@ -84,6 +84,7 @@
       # godot_4
 
       webcord
+      discord
 
       # gui applications---------
       pcmanfm

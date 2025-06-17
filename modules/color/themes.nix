@@ -80,12 +80,7 @@
         monospace = {
           name = "FiraCode Nerd Font"; # "VictorMono Nerd Font";
           size = 12;
-          package = pkgs.nerdfonts.override {
-            fonts = [
-              # "VictorMono"
-              "FiraCode "
-            ];
-          };
+          package = pkgs.nerd-fonts.fira-code;
           #   name = "Sarasa Gothic";
           #   size = 14;
           #   package = pkgs.sarasa-gothic;

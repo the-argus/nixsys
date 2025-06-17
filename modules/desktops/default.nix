@@ -92,7 +92,8 @@ in {
       comic-relief
       cascadia-code # microsoft ligatures font
 
-      (nerdfonts.override {fonts = ["FiraCode" "VictorMono"];})
+      nerd-fonts.fira-code
+      nerd-fonts.victor-mono
     ];
 
     # hardware ----------------------------------------------------------------
