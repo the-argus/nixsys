@@ -12,7 +12,7 @@
   home.packages = with pkgs; [
     godot_4
     blender
-    kdenlive
+    kdePackages.kdenlive
     # myPackages.IDEA
     # jetbrains.rider
     # myPackages.hansoft
@@ -68,6 +68,7 @@
     comic-relief
     cascadia-code # microsoft ligatures font
 
-    (nerdfonts.override {fonts = ["FiraCode" "VictorMono"];})
+    nerd-fonts.fira-code
+    nerd-fonts.victor-mono
   ];
 }
