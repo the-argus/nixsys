@@ -156,7 +156,6 @@
       polkit
       usbutils
       alsa-utils
-      ix
       killall
       pciutils
       inetutils

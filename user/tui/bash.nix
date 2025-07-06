@@ -19,7 +19,6 @@ in {
       fim = "nvim $(fd -t f | fzf)";
 
       # unused mostly
-      ix = "curl -F 'f:1=<-' ix.io";
       rm = "rm -i";
       nocolor = ''sed "s/\x1B\[[0-9;]\{1,\}[A-Za-z]//g"'';
       sudo = "sudo -A";

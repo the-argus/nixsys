@@ -196,7 +196,6 @@ in {
         # unused mostly
         cageff = "cage \"/bin/firefox -p Unconfigured\"";
         awesomedoc = "firefox ${pkgs.awesome.doc}/share/doc/awesome/doc/index.html & disown";
-        ix = "curl -F 'f:1=<-' ix.io";
         rm = "rm -i";
         nocolor = ''sed "s/\x1B\[[0-9;]\{1,\}[A-Za-z]//g"'';
         sudo = "sudo -A";
