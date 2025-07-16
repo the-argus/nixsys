@@ -67,6 +67,7 @@
          useQmlls = false;
          viAlias = true;
          vimAlias = true;
+         latestZls = pkgs.zls;
        };
       })
       # unfree :(
