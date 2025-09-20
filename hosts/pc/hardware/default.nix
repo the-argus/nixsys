@@ -166,5 +166,8 @@
     dhcpcd # for manually starting dhcpcd with wpa_supplicant
   ];
 
-  services.udev.packages = with pkgs; [vial];
+  services.udev.packages = with pkgs; [
+    vial
+    qmk-udev-rules
+  ];
 }
