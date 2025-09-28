@@ -31,6 +31,7 @@
   };
 
   boot = {
+    kernel.sysctl."kernel.yama.ptrace_scope" = "0";
     #kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = ["nordrand" "quiet" "systemd.show_status=0" "loglevel=4" "rd.systemd.show_status=auto" "rd.udev.log-priority=3" "rdblacklist=nouveau" "vfio-pci.ids=10de:1180,10de:0e0a"];
