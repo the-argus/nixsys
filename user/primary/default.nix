@@ -97,6 +97,7 @@
       qdirstat
 
       # cli
+      distrobox
       bitwarden-cli
       # trash-cli
       # solo2-cli
