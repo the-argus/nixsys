@@ -126,10 +126,6 @@
     };
   };
 in {
-  home.sessionVariables = {
-    SUDO_ASKPASS = "${pkgs.myPackages.sudo-askpass}/bin/sudo-askpass";
-  };
-
   programs.starship = {
     enable = true;
     settings = {
