@@ -1,3 +1,3 @@
 {...}: {
-  programs.yabridge.enable = true;
+  programs.yabridge.enable = false;
 }

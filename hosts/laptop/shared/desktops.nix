@@ -9,10 +9,10 @@
     ratpoison.enable = false;
     qtile.enable = true;
     i3gaps = {
-      enable = false;
+      enable = true;
       nobar = false;
     };
-    gnome.enable = true;
+    gnome.enable = false;
     labwc.enable = false;
     # plasma.enable = true;
     terminal = pkgs.kitty;

@@ -1,7 +1,7 @@
 {...}: {
   gaming = {
-    enable = true;
-    minecraft = true;
-    steam = true;
+    enable = false;
+    minecraft = false;
+    steam = false;
   };
 }

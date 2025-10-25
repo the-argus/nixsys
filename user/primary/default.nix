@@ -13,20 +13,20 @@
     ./config # configures *everything* that can't be done in nix
     ./local
     ./zsh.nix
-    ./git.nix
-    ./gtk.nix
-    ./firefox.nix
-    ./alacritty.nix
-    ./kitty.nix
-    ./dunst.nix
-    ./zathura.nix
-    ./music.nix
-    ./spicetify.nix
+    #./git.nix
+    #./gtk.nix
+    #./firefox.nix
+    #./alacritty.nix
+    # ./kitty.nix
+    #./dunst.nix
+    #./zathura.nix
+    # .i/music.nix
+    # ./spicetify.nix
     ./waybar.nix
     ./rofi.nix
     ./blugon.nix
     ./lf.nix
-    ./ntfy.nix
+    # ./ntfy.nix
     # ./vscode.nix
     # ./webcord.nix
     banner.module
@@ -64,9 +64,6 @@
         vimAlias = true;
         latestZls = unstable.zls_0_16;
       })
-      # unfree :(
-      # slack
-      obsidian
 
       (bitwarden-rofi.packages.${pkgs.system}.default.override
         # roughly 300 hours lol
@@ -88,19 +85,24 @@
       discord
 
       # gui applications---------
-      pcmanfm
+      #pcmanfm
       qalculate-gtk
       pavucontrol
-      mpv
-      zathura
-      # qpwgraph
+      #mpv
+      #zathura
+      qpwgraph
       qdirstat
+      mqtt-explorer
+
+      starship
+      home-manager
 
       # cli
       claude-code
 
       distrobox
       bitwarden-cli
+      wl-clipboard
       # trash-cli
       # solo2-cli
       nix-prefetch-scripts
@@ -123,28 +125,15 @@
     ]
     ++ (lib.lists.optionals (!config.system.minimal) [
       # unfree :(
-      # steam-run
-      # steam-run-native
 
       # gui
       pinta
-      obs-studio
-      # element-desktop
-      # myPackages.xgifwallpaper
-
-      # tui
-      cava
+      # obs-studio
 
       # cli
-      myPackages.ufetch
-      transmission_4
-      # ani-cli
-      glow
-      # myPackages.rgf
-      shotgun
-
-      # dev
-      # nodejs
-      # cargo
+      # myPackages.ufetch
+      # transmission_4
+      # glow
+      # shotgun
     ]);
 }
