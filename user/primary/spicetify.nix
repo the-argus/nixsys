@@ -12,7 +12,7 @@ in {
   # configure spicetify :)
   programs.spicetify = rec {
     enable = true;
-    theme = spicePkgs.themes.dribbblish;
+    theme = spicePkgs.themes.flow;
     colorScheme = "custom";
 
     customColorScheme = let

@@ -31,6 +31,7 @@ in rec {
     "steam-unwrapped"
     "libXNVCtrl"
     "vst2-sdk"
+    "mqtt-explorer"
   ];
   allowBroken = true;
   extraExtraSpecialArgs = {};

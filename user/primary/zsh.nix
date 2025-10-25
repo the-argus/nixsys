@@ -56,11 +56,11 @@
       name = "zsh-users/zsh-completions";
       source = pkgs.fetchgit {
         url = "https://github.com/zsh-users/zsh-completions";
-        rev = "879f4b6515d3e7808e8d97d65c679ed8d044f57a";
-        sha256 = "11bsbx9jx1n9hqb2lmw3dmv0s585sh5sppz476w71qkq8xmar3c0";
+        rev = "e07f6fb780725e9c0f50a7666700cf91ded30222";
+        sha256 = "15c4pkxv2zhwzclqarkkcssdkkbp5svxdrrg95q8b2nn9gbb2cf6";
       };
       init = ''
-        fpath+=(${source}/src)
+        fpath=(${source}/src $fpath)
       '';
     };
 
@@ -80,8 +80,8 @@
       name = "Aloxaf/fzf-tab";
       source = pkgs.fetchgit {
         url = "https://github.com/${name}";
-        rev = "6aced3f35def61c5edf9d790e945e8bb4fe7b305";
-        sha256 = "1brljd9744wg8p9v3q39kdys33jb03d27pd0apbg1cz0a2r1wqqi";
+        rev = "2abe1f2f1cbcb3d3c6b879d849d683de5688111f";
+        sha256 = "04k6g2vhh97kx8iah7ci22zk2lab49xfyw38vxsv48chamrm5kyd";
       };
       init = ''
         source ${source}/fzf-tab.plugin.zsh
@@ -92,8 +92,8 @@
       name = "hlissner/zsh-autopair";
       source = pkgs.fetchgit {
         url = "https://github.com/hlissner/zsh-autopair";
-        rev = "396c38a7468458ba29011f2ad4112e4fd35f78e6";
-        sha256 = "0q9wg8jlhlz2xn08rdml6fljglqd1a2gbdp063c8b8ay24zz2w9x";
+        rev = "449a7c3d095bc8f3d78cf37b9549f8bb4c383f3d";
+        sha256 = "1x16y24hbwcaxfhqabw4x26jmpxzz2zzmlvs9nnbzaxyi20cwfyz";
       };
       init = ''
         source ${source}/autopair.zsh
@@ -117,8 +117,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "chisui";
         repo = "zsh-nix-shell";
-        rev = "v0.5.0";
-        sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
+        rev = "82ca15e638cc208e6d8368e34a1625ed75e08f90";
+        sha256 = "1l99ayc9j9ns450blf4rs8511lygc2xvbhkg1xp791abcn8krn26";
       };
       init = ''
         source ${src}/nix-shell.plugin.zsh
@@ -141,21 +141,12 @@ in {
 
   # make starship work with bash (nix develop)
   home.file.".bashrc".text = ''
-    #!/bin/sh
+    #!/bin/sh 
+    if [ -f /etc/bashrc ]; then
+        source /etc/bashrc
+    fi
+
     eval "$(starship init bash)"
-  '';
-
-  home.file.".config/sandboxd/sandboxrc".text = ''
-    sandbox_init_completion() {
-      autoload -U compinit && compinit
-    }
-
-    sandbox_hook completion cd
-    sandbox_hook completion git
-    sandbox_hook completion systemctl
-    sandbox_hook completion kill
-    sandbox_hook completion killall
-    sandbox_hook completion pkill
   '';
 
   programs.zsh = let
@@ -249,7 +240,8 @@ in {
 
     initExtra = with plugins; ''
       # PLUGINS----------------------------------------------------------------
-      ${sandboxd.init}
+      autoload -Uz compinit
+      compinit -D
       ${zsh-completions.init}
       ${zsh-nix-shell.init}
       ${zsh-autopair.init}
@@ -257,6 +249,8 @@ in {
       ${zsh-fzf-history-search.init}
       ${zsh-fzf-tab.init}
       # INCLUDES---------------------------------------------------------------
+
+      fastfetch
 
       # enable appending
       setopt APPEND_HISTORY
