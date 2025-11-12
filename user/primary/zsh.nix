@@ -185,7 +185,6 @@ in {
         awesomedoc = "firefox ${pkgs.awesome.doc}/share/doc/awesome/doc/index.html & disown";
         rm = "rm -i";
         nocolor = ''sed "s/\x1B\[[0-9;]\{1,\}[A-Za-z]//g"'';
-        sudo = "sudo -A";
         all = "git commit -am";
         cd = "z";
       }
