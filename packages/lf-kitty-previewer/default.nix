@@ -10,7 +10,7 @@
   imagemagick_light,
   ffmpeg,
   ffmpegthumbnailer,
-  poppler_utils,
+  poppler-utils,
   fontforge,
   ncurses,
   highlight,
@@ -30,7 +30,7 @@
     imagemagick_light.out # convert, identify
     ffmpeg
     ffmpegthumbnailer
-    poppler_utils # pdftoppm
+    poppler-utils # pdftoppm
     fontforge # fontimage, for font previews
     ncurses # tput
     highlight

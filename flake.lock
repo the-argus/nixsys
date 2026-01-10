@@ -98,11 +98,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1748984790,
-        "narHash": "sha256-r6+Lg8lg6fH/Un+ZwSLfSlBPPfYy3PVjwaBLJlyzt48=",
+        "lastModified": 1768010237,
+        "narHash": "sha256-ggzDYoLp3dj3E70qq1VMNBpfrNdTqNxcLP7PBrDePd0=",
         "owner": "the-argus",
         "repo": "bitwarden-rofi",
-        "rev": "8e81484d9bc308204aa66482c9301ad4bd0af7fb",
+        "rev": "0cca952c501e5679cb6293d2c48b723e3a60e72c",
         "type": "github"
       },
       "original": {
@@ -228,11 +228,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1768002881,
-        "narHash": "sha256-hVRcTqq/BHoU95sBxEgypKNev9EeSJ8X8tbfebfw3Js=",
+        "lastModified": 1768009907,
+        "narHash": "sha256-eJ1gXdbIs9dgsV2qNYqvEDL685AYs/GfK5vel8+Otx8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f799a009ed17d1e6f4089c9a00363f9379c58d29",
+        "rev": "9c1788045267a92a8aba2d36577f359d7c19339f",
         "type": "github"
       },
       "original": {

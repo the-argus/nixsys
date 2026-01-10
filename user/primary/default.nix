@@ -113,7 +113,7 @@
       direnv
       nix-index
       neofetch
-      nix-direnv-flakes
+      nix-direnv
       # tigervnc
 
       myPackages.symlk
