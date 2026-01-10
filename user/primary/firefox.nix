@@ -83,7 +83,7 @@
         name = username;
         id = 0;
         extraConfig = finalUserJS;
-        extensions = with firefox-addons; [
+        extensions.packages = with firefox-addons; [
           ublock-origin
           vimium
         ];

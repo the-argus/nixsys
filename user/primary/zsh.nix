@@ -159,7 +159,7 @@ in {
   '';
 
   programs.zsh = let
-    dDir = ".config/zsh";
+    dDir = config.xdg.configHome;
   in {
     enable = true;
 
@@ -171,7 +171,7 @@ in {
     autosuggestion.enable = true;
 
     history = {
-      path = "$HOME/${dDir}/histfile";
+      path = "${dDir}/histfile";
       save = 100000;
       size = 100000;
       ignorePatterns = ["ls *" "exit" "clear" "fg"];

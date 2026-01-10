@@ -69,7 +69,7 @@ in {
       envypn-font
       creep
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       noto-fonts-cjk-sans
       liberation_ttf
       victor-mono
