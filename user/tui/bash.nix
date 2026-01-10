@@ -83,6 +83,6 @@ in {
     lsd
     duf
     bat
-    tldr
+    tealdeer
   ];
 }

@@ -108,7 +108,7 @@
       ripgrep
       duf
       fd
-      tldr
+      tealdeer
       zoxide
       myPackages.fzf-16
       direnv
