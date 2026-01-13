@@ -23,7 +23,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       ratpoison.contrib
-      rofi-wayland
+      rofi
       flameshot
       derivations.picom
     ];

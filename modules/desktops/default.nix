@@ -101,7 +101,7 @@ in {
     hardware.graphics = {
       enable32Bit = true;
       extraPackages32 = with pkgs.pkgsi686Linux;
-        [libva libvdpau-va-gl vaapiVdpau]
+        [libva libvdpau-va-gl libva-vdpau-driver]
         ++ lib.optionals config.services.pipewire.enable [pipewire];
     };
 

@@ -33,7 +33,7 @@ in {
       environment.systemPackages = with pkgs; [
         labwcPackage
         swaybg
-        rofi-wayland
+        rofi
         wl-clipboard
         wlsunset
         imv
