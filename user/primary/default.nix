@@ -82,6 +82,8 @@
       nextcloud-client
       # myPackages.godot_4_mono-bin
       # godot_4
+      appimage-run # for trenchbroom
+
 
       webcord
       discord
