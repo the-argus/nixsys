@@ -244,17 +244,17 @@
     },
     "nixpkgs-nvim-pinned": {
       "locked": {
-        "lastModified": 1734649271,
-        "narHash": "sha256-4EVBRhOjMDuGtMaofAIqzJbg4Ql7Ai0PSeuVZTHjyKQ=",
+        "lastModified": 1767892417,
+        "narHash": "sha256-dhhvQY67aboBk8b0/u0XB6vwHdgbROZT3fJAjyNh5Ww=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d70bd19e0a38ad4790d3913bf08fcbfc9eeca507",
+        "rev": "3497aa5c9457a9d88d71fa93a4a8368816fbeeba",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d70bd19e0a38ad4790d3913bf08fcbfc9eeca507",
+        "rev": "3497aa5c9457a9d88d71fa93a4a8368816fbeeba",
         "type": "github"
       }
     },
@@ -367,11 +367,11 @@
         "nixpkgs-pinned": "nixpkgs-pinned"
       },
       "locked": {
-        "lastModified": 1758315413,
-        "narHash": "sha256-3+kIynl9lhHm7fkMVhJzouLOTr8M4Uh4t8r7G+M4XX0=",
+        "lastModified": 1771194947,
+        "narHash": "sha256-N3Jip2/nSIswUcqZn+EYkZc73eumpD/EOmrLBaMB7mo=",
         "owner": "the-argus",
         "repo": "nvim-config",
-        "rev": "e92e0df5dffb27620a1b2173980c70cb32246af4",
+        "rev": "bec67d4dcfc9124f97ed3f33e0cde598cfa7063e",
         "type": "github"
       },
       "original": {
