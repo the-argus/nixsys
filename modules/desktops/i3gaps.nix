@@ -14,7 +14,7 @@ in {
     enable = mkEnableOption "I3 Window Manager";
     package = mkOption {
       type = lib.types.package;
-      default = pkgs.i3-gaps;
+      default = pkgs.i3;
     };
     nobar = mkEnableOption "Alternate tiling WM workflow with no status bar.";
   };
