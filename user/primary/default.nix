@@ -27,6 +27,7 @@
     ./rofi.nix
     ./blugon.nix
     ./lf.nix
+    ./tmux.nix
     # ./ntfy.nix
     # ./vscode.nix
     # ./webcord.nix
