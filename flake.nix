@@ -49,6 +49,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    tmux-which-key = {
+      url = "github:alexwforsythe/tmux-which-key";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # non-nix imports (need fast updates):
     arkenfox-userjs = {
       url = "github:arkenfox/user.js";
@@ -65,6 +70,7 @@
     rycee-expressions,
     # , nur
     audio-plugins,
+    tmux-which-key,
     ...
   } @ inputs: let
     myLib = import ./lib {inherit (nixpkgs) lib;};
@@ -78,10 +84,14 @@
       laptop = import ./hosts/laptop {
         inherit nixpkgs;
         hostname = "evil";
+        extraOverlays = [tmux-which-key.overlays.default];
+        extraModules = [tmux-which-key.homeManagerModules.default];
       };
       pc = import ./hosts/pc {
         inherit nixpkgs;
         hostname = "mutant";
+        extraOverlays = [tmux-which-key.overlays.default];
+        extraModules = [tmux-which-key.homeManagerModules.default];
       };
       tui = import ./hosts/tui {
         inherit nixpkgs;

@@ -1,4 +1,9 @@
-{nixpkgs, ...}: let
+{
+  nixpkgs,
+  extraOverlays ? [],
+  extraModules ? [],
+  ...
+}: let
   override = nixpkgs.lib.attrsets.recursiveUpdate;
 in rec {
   system = "x86_64-linux";
@@ -9,8 +14,8 @@ in rec {
   allowBroken = true;
   extraExtraSpecialArgs = {};
   extraSpecialArgs = {};
-  additionalModules = [./home-manager];
-  additionalOverlays = [];
+  additionalModules = [./home-manager] ++ extraModules;
+  additionalOverlays = [] ++ extraOverlays;
   packageSelections = {
     # packages to override with their unstable versions
     # all of these are things that i might want to move

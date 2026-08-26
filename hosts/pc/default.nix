@@ -1,5 +1,6 @@
 {
   nixpkgs,
+  extraOverlays ? [],
   hostname ? "mutant",
   ...
 }: let
@@ -35,13 +36,15 @@ in rec {
     ./shared
     ./home-manager
   ];
-  additionalOverlays = [
-    (_: super: {
-      steam = super.steam.override {
-        extraLibraries = _: [super.mesa.drivers];
-      };
-    })
-  ];
+  additionalOverlays =
+    [
+      (_: super: {
+        steam = super.steam.override {
+          extraLibraries = _: [super.mesa.drivers];
+        };
+      })
+    ]
+    ++ extraOverlays;
   additionalNixosModules = [./hardware ./shared];
   packageSelections = {
     remotebuild = remotebuild: _:
