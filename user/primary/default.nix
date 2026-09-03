@@ -59,16 +59,10 @@
   # extra packages
   home.packages = with pkgs;
     [
-     (nvim-config.packages.${pkgs.system}.mkNeovim {
-       pluginsArgs = {
-         bannerPalette = config.system.theme.scheme;
-       };
-       wrapperArgs = {
-         useQmlls = false;
-         viAlias = true;
-         vimAlias = true;
-         latestZls = unstable.zls_0_15;
-       };
+      (nvim-config.packages.${pkgs.system}.mkNeovim {
+        viAlias = true;
+        vimAlias = true;
+        latestZls = unstable.zls_0_16;
       })
       # unfree :(
       # slack
@@ -83,7 +77,6 @@
       # myPackages.godot_4_mono-bin
       # godot_4
       appimage-run # for trenchbroom
-
 
       webcord
       discord

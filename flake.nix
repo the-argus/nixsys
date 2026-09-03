@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-nvim-pinned.url = "github:nixos/nixpkgs?rev=3497aa5c9457a9d88d71fa93a4a8368816fbeeba"; # nixpkgs-unstable as of 02-15-2026
     nixpkgs-master.url = "github:nixos/nixpkgs?ref=master";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -46,8 +45,8 @@
     };
 
     nvim-config = {
-      url = "github:the-argus/nvim-config";
-      inputs.nixpkgs.follows = "nixpkgs-nvim-pinned";
+      url = "git+https://github.com/the-argus/nvim-config";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # non-nix imports (need fast updates):
