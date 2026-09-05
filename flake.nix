@@ -2,11 +2,11 @@
   description = "the-argus nixos system configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs?ref=master";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       # home manager use our nixpkgs and not its own
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -97,7 +97,13 @@
           inputs
           // fs.extraSpecialArgs
           // {
-            inherit (fs) unstable localbuild useMusl remotebuild;
+            inherit
+              (fs)
+              unstable
+              localbuild
+              useMusl
+              remotebuild
+              ;
             inherit (fs) useFlags plymouth;
             inherit (fs) hostname username;
             inherit stateVersion;
@@ -105,7 +111,12 @@
           };
         modules = [
           {
-            imports = [./system/configuration.nix ./modules] ++ fs.additionalNixosModules;
+            imports =
+              [
+                ./system/configuration.nix
+                ./modules
+              ]
+              ++ fs.additionalNixosModules;
           }
         ];
       };
@@ -168,7 +179,8 @@
       tui = self.createHomeConfigurations ./user/tui hosts.tui;
     };
     devShell.${defaultGlobalSettings.system} =
-      (finalizeSettings defaultGlobalSettings).pkgs.mkShell {};
+      (finalizeSettings defaultGlobalSettings).pkgs.mkShell
+      {};
 
     packages.${defaultGlobalSettings.system} = {
       # wacky setup to make sure typst is unstable
