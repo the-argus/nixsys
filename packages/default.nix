@@ -45,4 +45,7 @@
   lf-kitty-previewer = callPackage ./lf-kitty-previewer {};
   symlk = callPackage ./symlk {};
   patched_xkeyboardconfig = callPackage ./patched_xkeyboardconfig {};
+  neuwld = callPackage ./neuwld {};
+  neuswc = callPackage ./neuswc {inherit neuwld;};
+  hevel = callPackage ./hevel {inherit neuswc;};
 }
