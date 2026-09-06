@@ -78,7 +78,9 @@
       # godot_4
       appimage-run # for trenchbroom
 
-      webcord
+      ironwail
+
+      # webcord
       discord
 
       # gui applications---------
@@ -107,7 +109,7 @@
       myPackages.fzf-16
       direnv
       nix-index
-      neofetch
+      fastfetch
       nix-direnv
       # tigervnc
 

@@ -14,7 +14,8 @@ in {
 
     shellAliases = {
       # regular aliases
-      nf = "neofetch";
+      nf = "fastfetch";
+      neofetch = "fastfetch";
       search = "nix search nixpkgs";
       fim = "nvim $(fd -t f | fzf)";
 

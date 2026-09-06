@@ -318,11 +318,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788533222,
-        "narHash": "sha256-w075cGxXAWWmlu60edow+djrj4doTq/5/ANICEzbjHc=",
+        "lastModified": 1788654138,
+        "narHash": "sha256-BgUj+siBZmA4n3xeYnQt5bXPqMqnSkT/eyxvl0AIoyA=",
         "ref": "refs/heads/main",
-        "rev": "e13d34713fbd372e2a607f4b53ebcf004813fcd9",
-        "revCount": 70,
+        "rev": "c868017e08ba66774b0db222b1a263aa9720d287",
+        "revCount": 79,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/the-argus/nvim-config"

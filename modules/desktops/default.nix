@@ -76,7 +76,6 @@ in {
       tt2020
       arkpandora_ttf
       times-newer-roman
-      tewi-font
       spleen
       scientifica
       recursive

@@ -14,6 +14,7 @@
       };
     qtile-unwrapped = super.qtile-unwrapped.overrideAttrs (oa: {
       makeWrapperArgs = (oa.makeWrapperArgs or []) ++ ["--set PYTHONDONTWRITEBYTECODE \"yes\""];
+      doCheck = false;
     });
 
     # labwc = super.callPackage ../packages/labwc/wrapper.nix {labwc-original = super.labwc;};

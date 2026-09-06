@@ -35,7 +35,6 @@
     ueberzug
     xorg.xauth
     xorg.xf86inputsynaptics
-    xorg.xf86inputmouse
 
     # fonts
     fira-code
