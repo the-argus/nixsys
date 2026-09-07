@@ -12,6 +12,7 @@ in rec {
   inherit hostname;
   # unfree packages that i explicitly use
   allowedUnfree = [
+    "claude-code"
     "spotify"
     "reaper"
     "slack"

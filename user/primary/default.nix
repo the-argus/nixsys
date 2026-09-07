@@ -93,6 +93,8 @@
       qdirstat
 
       # cli
+      claude-code
+
       distrobox
       bitwarden-cli
       # trash-cli

@@ -18,6 +18,7 @@ in rec {
   useDvorak = true;
   # unfree packages that i explicitly use
   allowedUnfree = [
+    "claude-code"
     "obsidian"
     "spotify"
     "reaper"
