@@ -3,16 +3,8 @@
   lib,
   fetchgit,
   gnumake,
+  pkg-config,
   neuswc,
-  # transitive dependencies of neuswc
-  wayland,
-  pixman,
-  wayland-protocols,
-  libxkbcommon,
-  fontconfig,
-  libdrm,
-  freetype,
-  xwayland,
   ...
 }:
 stdenv.mkDerivation {
@@ -25,21 +17,16 @@ stdenv.mkDerivation {
     hash = "sha256-ad4euUV+jJYG58aO9tfKyCq8sznDf2tHj7RmORqnP1o=";
   };
 
-  nativeBuildInputs = [gnumake];
-
-  buildInputs = [
-    xwayland
-    neuswc
-
-    # transitive dependencies of neuswc
-    wayland
-    pixman
-    wayland-protocols
-    libxkbcommon
-    fontconfig
-    libdrm
-    freetype
+  nativeBuildInputs = [
+    gnumake
+    pkg-config
   ];
+
+  buildInputs = [neuswc];
+
+  # uses a makefile hardcoded to /usr/local, luckily it uses this as a prefix
+  # for everything and we can just override it
+  makeFlags = ["PREFIX=$(out)"];
 
   meta = with lib; {
     description = "a scrollable, floating window manager for Wayland that uses mouse chords for all commands";

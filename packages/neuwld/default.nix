@@ -37,7 +37,13 @@ stdenv.mkDerivation {
     "-Dwayland=enabled" # auto by default
   ];
 
-  buildInputs = [
+  # publicly requires fontconfig and pixman, everything else is private
+  #
+  # However, it seems that, I guess partially because static linking requires
+  # transitive -l flags, and partially because of the developer putting
+  # everything into the pkg config file, we have to forward everything for
+  # downstream pkgconfig
+  propagatedBuildInputs = [
     wayland
     pixman
     libdrm

@@ -11,9 +11,6 @@
   pixman,
   wayland-protocols,
   libxkbcommon,
-  fontconfig,
-  libdrm,
-  freetype,
   xwayland,
   libxcb,
   libxcb-wm,
@@ -39,7 +36,16 @@ stdenv.mkDerivation {
     wayland-scanner
   ];
 
-  buildInputs = [
+  # does not publicly require anything. the only sort of exceptioin is wayland
+  # server, which you must use in order for using neuswc to make sense. it
+  # doesn't strictly depend on it though because the wayland types are forward
+  # declared.
+  #
+  # However, it seems that, I guess partially because static linking requires
+  # transitive -l flags, and partially because of the developer putting
+  # everything into the pkg config file, we have to forward everything for
+  # downstream pkgconfig
+  propagatedBuildInputs = [
     wayland
     xwayland
     libxcb
@@ -49,11 +55,6 @@ stdenv.mkDerivation {
     pixman
     wayland-protocols
     libxkbcommon
-
-    # transitive system dependencies of neuwld
-    fontconfig
-    libdrm
-    freetype
   ];
 
   meta = with lib; {

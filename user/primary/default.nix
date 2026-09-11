@@ -80,6 +80,10 @@
 
       ironwail
 
+      # hevel and the swc-launch launcher for it
+      myPackages.hevel
+      myPackages.neuswc
+
       # webcord
       discord
 
