@@ -65,24 +65,19 @@
         latestZls = unstable.zls_0_16;
       })
 
-      (bitwarden-rofi.packages.${pkgs.system}.default.override
-        # roughly 300 hours lol
-        {autoLock = 1000000;})
+      # (bitwarden-rofi.packages.${pkgs.system}.default.override
+      #   # roughly 300 hours lol
+      #   {autoLock = 1000000;})
 
       # nobar.packages.${pkgs.system}.default
-      nextcloud-client
+      # nextcloud-client
       # myPackages.godot_4_mono-bin
       # godot_4
       appimage-run # for trenchbroom
 
-      ironwail
-
       # hevel and the swc-launch launcher for it
       myPackages.hevel
       myPackages.neuswc
-
-      # webcord
-      discord
 
       # gui applications---------
       #pcmanfm
