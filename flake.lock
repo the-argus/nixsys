@@ -347,7 +347,8 @@
         "nobar": "nobar",
         "nvim-config": "nvim-config",
         "rycee-expressions": "rycee-expressions",
-        "spicetify-nix": "spicetify-nix"
+        "spicetify-nix": "spicetify-nix",
+        "tmux-which-key": "tmux-which-key"
       }
     },
     "rycee-expressions": {
@@ -444,6 +445,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tmux-which-key": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778948988,
+        "narHash": "sha256-eEFe85W/byPtxiRhdAaT22fEFNKsi5AEKsYAuDYcTCo=",
+        "owner": "alexwforsythe",
+        "repo": "tmux-which-key",
+        "rev": "85fb9756447b989f3b94e515d1e6ee7fec76cba2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alexwforsythe",
+        "repo": "tmux-which-key",
         "type": "github"
       }
     }
