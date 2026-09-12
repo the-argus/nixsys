@@ -28,7 +28,7 @@ from typing import List  # noqa: F401
 import os
 import subprocess
 
-from libqtile import bar, layout, widget, hook
+from libqtile import bar, layout, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
@@ -72,7 +72,6 @@ def browser(c):
         c.togroup(c.qtile.current_group.name)
 
 
-@hook.subscribe.float_change
 @hook.subscribe.client_new
 @hook.subscribe.client_focus
 def set_hint(window):
@@ -80,6 +79,11 @@ def set_hint(window):
         "QTILE_FLOATING", str(window.floating), type="STRING", format=8
     )
 
+@hook.subscribe.float_change
+def set_hint_on_float_change():
+    window = qtile.current_window
+    if window is not None:
+        set_hint(window)
 
 @hook.subscribe.startup_once
 def autostart():
