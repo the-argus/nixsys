@@ -42,7 +42,10 @@ in rec {
       };
     })
   ];
-  additionalNixosModules = [./hardware ./shared];
+  additionalNixosModules = [
+    ./hardware
+    ./shared
+  ];
   packageSelections = {
     remotebuild = remotebuild: _:
       with remotebuild; {
@@ -83,7 +86,6 @@ in rec {
           gnome
           plymouth
           gdm
-          qtile
           zsh
           zplug
           kitty

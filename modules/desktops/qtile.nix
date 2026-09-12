@@ -27,7 +27,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       xmousepasteblock
-      python312Packages.psutil # cpu widget
+      python3Packages.psutil # cpu widget
       xfce.xfce4-clipman-plugin
       dunst
       rofi

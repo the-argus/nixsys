@@ -27,8 +27,8 @@ in {
           after = ["graphical-session-pre.target"];
         };
 
-        # To make a hevel session available if a display manager like SDDM is enabled:
-        services.displayManager.sessionPackages = package;
+        # TODO: To make a hevel session available if a display manager like SDDM is enabled:
+        # services.displayManager.sessionPackages = [package];
       }
 
       # this attrset is from wayland-session.nix in nixpkgs
@@ -46,7 +46,7 @@ in {
         services.graphical-desktop.enable = true;
 
         xdg.portal.wlr.enable = true;
-        xdg.portal.extraPortals = true [
+        xdg.portal.extraPortals = [
           pkgs.xdg-desktop-portal-gtk
         ];
 
