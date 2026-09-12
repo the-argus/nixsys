@@ -11,5 +11,6 @@
     ./hardware.nix
     ./ly.nix
     ./emptty.nix
+    ./keyboard.nix
   ];
 }

@@ -26,7 +26,6 @@ in {
     services.xserver =
       {
         enable = true;
-        xkb.dir = "${pkgs.myPackages.patched_xkeyboardconfig}/etc/X11/xkb";
         exportConfiguration = true;
       }
       // (
