@@ -18,6 +18,10 @@ in {
     ./labwc.nix
   ];
 
+  # just for compatibility with the nixos module, ATM there is no configuration
+  # for hevel it is just patches, so home-manager has nothing to do
+  options.programs.hevel.enable = mkEnableOption "Hevel";
+
   options.desktops = {
     enable = mkEnableOption "Desktop";
     terminal = mkOption {

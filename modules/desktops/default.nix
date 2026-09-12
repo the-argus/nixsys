@@ -19,6 +19,7 @@ in {
     ./plasma.nix
     ./i3gaps.nix
     ./labwc.nix
+    ./hevel.nix
   ];
 
   options.desktops = {

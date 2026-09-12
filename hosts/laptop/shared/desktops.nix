@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  programs.hevel.enable = true;
   desktops = {
     enable = true;
     sway = {
