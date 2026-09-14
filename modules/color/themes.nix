@@ -78,9 +78,12 @@
       };
       font = rec {
         monospace = {
-          name = "FiraCode Nerd Font"; # "VictorMono Nerd Font";
-          size = 12;
-          package = pkgs.nerd-fonts.fira-code;
+          name = "Agave Nerd Font";
+          size = 13;
+          package = pkgs.nerd-fonts.agave;
+          # name = "FiraCode Nerd Font"; # "VictorMono Nerd Font";
+          # size = 12;
+          # package = pkgs.nerd-fonts.fira-code;
           #   name = "Sarasa Gothic";
           #   size = 14;
           #   package = pkgs.sarasa-gothic;
