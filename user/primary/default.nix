@@ -18,6 +18,7 @@
     ./firefox.nix
     ./alacritty.nix
     ./kitty.nix
+    ./ghostty.nix
     ./dunst.nix
     ./zathura.nix
     ./music.nix
