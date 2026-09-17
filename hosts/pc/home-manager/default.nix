@@ -29,6 +29,9 @@
     razergenie
     vial
 
+    steamtinkerlaunch
+    lutris
+
     feh
     xclip
     xcolor

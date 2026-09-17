@@ -21,35 +21,35 @@
 
       # black
       color0 = ansi00;
-      color8 = ansi00;
+      color8 = ansi08;
 
       # red
       color1 = ansi01;
-      color9 = ansi01;
+      color9 = ansi09;
 
       # green
       color2 = ansi02;
-      color10 = ansi02;
+      color10 = ansi0A;
 
       # yellow
       color3 = ansi03;
-      color11 = ansi03;
+      color11 = ansi0B;
 
       # blue
       color4 = ansi04;
-      color12 = ansi04;
+      color12 = ansi0C;
 
       # magenta
       color5 = ansi05;
-      color13 = ansi05;
+      color13 = ansi0D;
 
       # cyan
       color6 = ansi06;
-      color14 = ansi06;
+      color14 = ansi0E;
 
       # white
       color7 = ansi07;
-      color15 = ansi07;
+      color15 = ansi0F;
     };
 
     themeFormatted = builtins.mapAttrs kittyColorFormat theme;

@@ -23,22 +23,22 @@
       window-decoration = "none";
 
       palette = with config.banner.palette; [
-        "0=#${base00}"
-        "1=#${base01}"
-        "2=#${base02}"
-        "3=#${base03}"
-        "4=#${base04}"
-        "5=#${base05}"
-        "6=#${base06}"
-        "7=#${base07}"
-        "8=#${base08}"
-        "9=#${base09}"
-        "10=#${base0A}"
-        "11=#${base0B}"
-        "12=#${base0C}"
-        "13=#${base0D}"
-        "14=#${base0E}"
-        "15=#${base0F}"
+        "0=#${ansi00}"
+        "1=#${ansi01}"
+        "2=#${ansi02}"
+        "3=#${ansi03}"
+        "4=#${ansi04}"
+        "5=#${ansi05}"
+        "6=#${ansi06}"
+        "7=#${ansi07}"
+        "8=#${ansi08}"
+        "9=#${ansi09}"
+        "10=#${ansi0A}"
+        "11=#${ansi0B}"
+        "12=#${ansi0C}"
+        "13=#${ansi0D}"
+        "14=#${ansi0E}"
+        "15=#${ansi0F}"
       ];
 
       background = "${config.banner.palette.base00}";
