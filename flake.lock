@@ -60,11 +60,32 @@
         ]
       },
       "locked": {
-        "lastModified": 1669224926,
-        "narHash": "sha256-UK19yx8jNqbPfBZNUeJr2Sms7BhbDAUyJBF5w2CT6Hc=",
+        "lastModified": 1789527514,
+        "narHash": "sha256-TF5bOwz4hOkOnfNvj2ItBC1nSfzoYtrKFnmjzYlBqT4=",
         "owner": "the-argus",
         "repo": "banner.nix",
-        "rev": "253556f4068f5cb9728e49ac42d630cdc0ccfd58",
+        "rev": "ded3b41cb3b6e8528c74f00775f3462c6fb17d6b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "the-argus",
+        "repo": "banner.nix",
+        "type": "github"
+      }
+    },
+    "banner_3": {
+      "inputs": {
+        "nixpkgs": [
+          "nvim-config",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789527514,
+        "narHash": "sha256-TF5bOwz4hOkOnfNvj2ItBC1nSfzoYtrKFnmjzYlBqT4=",
+        "owner": "the-argus",
+        "repo": "banner.nix",
+        "rev": "ded3b41cb3b6e8528c74f00775f3462c6fb17d6b",
         "type": "github"
       },
       "original": {
@@ -176,11 +197,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1692384535,
-        "narHash": "sha256-lFOEsDLV7kuEAcHS7HfyGewTcdSkzTxM+l3XwGhzLgU=",
+        "lastModified": 1789613599,
+        "narHash": "sha256-Tg5ycQl+CSrO8imJeFx60zJSk2/I1aS50VGmm95FP4E=",
         "owner": "the-argus",
         "repo": "gtk-nix",
-        "rev": "e77b9e68aa818b87389c682b4fd018ad451a85d3",
+        "rev": "8beccb9f6db35ddecce0ccb55a3841214e36f546",
         "type": "github"
       },
       "original": {
@@ -312,17 +333,18 @@
     },
     "nvim-config": {
       "inputs": {
+        "banner": "banner_3",
         "flake-utils": "flake-utils_3",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1789605215,
-        "narHash": "sha256-CLDmZLqCOy0HgfRdC1uK+1Tj8c2BIKojQQYM39nCVOo=",
+        "lastModified": 1789617285,
+        "narHash": "sha256-gVYiJtmQLwtzGR1bWPPZzGQVuCwHasWmL2xBQf+b9fk=",
         "ref": "refs/heads/main",
-        "rev": "12c3a47f9f37603b032cf970e13d750dd16b4074",
-        "revCount": 98,
+        "rev": "79e5581a8062accca6b16d91b3908e9af060ee83",
+        "revCount": 101,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/the-argus/nvim-config"

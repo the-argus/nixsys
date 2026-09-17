@@ -64,14 +64,17 @@
         viAlias = true;
         vimAlias = true;
         latestZls = unstable.zls_0_16;
+        bannerPalette = config.banner.palette;
       })
       # unfree :(
       # slack
       obsidian
 
-      (bitwarden-rofi.packages.${pkgs.system}.default.override
+      (
+        bitwarden-rofi.packages.${pkgs.system}.default.override
         # roughly 300 hours lol
-        {autoLock = 1000000;})
+        {autoLock = 1000000;}
+      )
 
       # nobar.packages.${pkgs.system}.default
       nextcloud-client
