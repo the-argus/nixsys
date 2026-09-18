@@ -14,7 +14,7 @@
     godot_4
     arandr
     iio-sensor-proxy
-    aseprite
+    # aseprite
     # distrobox
     ifuse
   ];
