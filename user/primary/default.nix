@@ -100,6 +100,9 @@
       # qpwgraph
       qdirstat
 
+      signal-desktop
+      signal-cli
+
       # cli
       claude-code
 
