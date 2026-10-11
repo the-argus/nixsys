@@ -16,7 +16,7 @@
     audio-plugins.url = "github:the-argus/audio-plugins-nix";
 
     rycee-expressions = {
-      url = "gitlab:rycee/nur-expressions";
+      url = "git+https://git.sr.ht/~rycee/nur-expressions";
       flake = false;
     };
 

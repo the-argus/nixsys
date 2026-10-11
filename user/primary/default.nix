@@ -104,7 +104,7 @@
       signal-cli
 
       # cli
-      claude-code
+      unstable.claude-code
 
       distrobox
       bitwarden-cli
