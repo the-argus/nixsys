@@ -6,5 +6,5 @@
     ../hardware.nix
   ];
 
-  xsession.enable = true;
+  xsession.enable = false;
 }
