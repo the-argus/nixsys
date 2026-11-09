@@ -16,7 +16,8 @@
       (super.pythonPackagesExtensions or [])
       ++ [
         (_: pyprev: {
-          qtile = pyprev.qtile.overrideAttrs (oa: {
+          # qtile needs newer wlroots version tha normal wlroots which is 0.19
+          qtile = (pyprev.qtile.override {wlroots = super.wlroots_0_20;}).overrideAttrs (oa: {
             makeWrapperArgs = (oa.makeWrapperArgs or []) ++ ["--set PYTHONDONTWRITEBYTECODE yes"];
 
             # it seems they don't even build qtile on hydra, I guess tests will
