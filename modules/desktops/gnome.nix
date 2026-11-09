@@ -19,6 +19,12 @@ in {
 
     desktops.wayland.enable = true;
 
+    # nixos lightdm will start this fake graphical session target for things that aren't "systemd-aware" like qtile,
+    # in some cases it can end up not being shut down
+    services.xserver.displayManager.sessionCommands = ''
+      /run/current-system/systemd/bin/systemctl --user stop nixos-fake-graphical-session.target graphical-session.target
+    '';
+
     programs.dconf.enable = true;
 
     xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gnome];
