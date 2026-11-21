@@ -39,6 +39,7 @@
   fileSystems."/home/argus/external" = {
     device = "/dev/disk/by-label/EXT4SSD";
     fsType = "ext4";
+    options = ["rw" "uid=1000"];
   };
 
   fileSystems."/boot/efi" = {
