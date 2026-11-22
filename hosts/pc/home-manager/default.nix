@@ -20,7 +20,6 @@
     # (gimp-with-plugins.override {plugins = with pkgs.gimpPlugins; [gmic];})
     inkscape
     steam
-    jre8
     aseprite
     zoom-us
     protontricks

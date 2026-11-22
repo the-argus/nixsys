@@ -23,8 +23,6 @@ in {
       ]
       ++ (lib.lists.optionals cfg.minecraft (with pkgs; [
         prismlauncher
-        unstable.ferium
-        jre8
       ]))
       ++ (lib.lists.optionals cfg.steam (with pkgs; [
         steam
